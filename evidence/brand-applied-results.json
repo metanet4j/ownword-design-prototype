@@ -1,0 +1,18 @@
+{
+  "passed": 12,
+  "checks": [
+    "Static branded startup remains visible before app execution",
+    "Startup honors saved language and theme",
+    "Header and favicon reference supplied brand assets",
+    "Identity resolution presents named brand loading status",
+    "Creation uses brand loader with operation text",
+    "Saving uses brand loader with operation text",
+    "Reduced motion stops logo animation",
+    "Creation and save finish successfully",
+    "Public Identity card carries the brand",
+    "320px Public Identity fits en light",
+    "320px Public Identity fits zh dark",
+    "Brand navigation preserves published identity"
+  ],
+  "method": "Real browser; app.jsx blocked for startup observation, operation timers stretched to 8 seconds only in test session."
+}

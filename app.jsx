@@ -149,7 +149,7 @@ function App() {
   return <div className={`app page-${state.page}`} onPointerDown={e => {if (!e.target.closest('button, input, textarea, select, a, .identity-object')) window.dispatchEvent(new Event('ownword-vault'));}}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
-      <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}>ownword<span className="brand-dot" aria-hidden="true"></span></Button>
+      <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
       <nav aria-label={t('myIdentity')} className="topnav">
         {state.wallet && state.published && <Button variant="quiet" aria-current={state.page === 'identity' ? 'page' : undefined} onClick={() => navigate('identity')}>{t('myIdentity')}</Button>}
         <div className="preference-anchor"><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs}>{locale === 'en' ? 'EN' : '中文'}<span className="pref-separator" aria-hidden="true">/</span>{t(theme)}</Button>
@@ -172,7 +172,7 @@ function App() {
         <div className="horizon"><span>{t('horizonCaption')}</span></div>
         <p className="welcome-note">{t('welcomeNote')}</p>
       </section>}
-      {state.page === 'resolving' && <section className="center-state">{heading('resolving', 'resolvingBody', 'connected')}<div className="loading-orbit" role="status" aria-label={t('resolving')}></div><S2.Skeleton /><Button onClick={disconnect}>{t('disconnect')}</Button></section>}
+      {state.page === 'resolving' && <section className="center-state">{heading('resolving', 'resolvingBody', 'connected')}<LoadingMark label={t('resolving')} /><S2.Skeleton /><Button onClick={disconnect}>{t('disconnect')}</Button></section>}
       {state.page === 'resolve-error' && <section className="center-state">{heading('resolveFailed', 'resolveFailedBody', 'connected')}<div className="state-symbol error-symbol" aria-hidden="true">!</div><div className="action-row"><Button variant="accent" onClick={resolveAgain}>{t('retry')}</Button><Button onClick={disconnect}>{t('disconnect')}</Button></div></section>}
       {isFlow && <ol className="flow-steps" aria-label={t('setup')}>
         {['setupStep', 'reviewStep', 'confirmStep', 'doneStep'].map((step, i) => <li key={step} aria-current={(state.page === 'setup' ? 0 : state.page === 'review' ? (state.busy ? 2 : 1) : 3) === i ? 'step' : undefined}><span>{String(i + 1).padStart(2, '0')}</span>{t(step)}</li>)}
@@ -196,7 +196,7 @@ function App() {
         <aside>{heading('reviewHeading', 'reviewBody', 'review')}<p className="impact">{t(state.published ? 'saveImpact' : 'createImpact')}</p><p className="hint">{t('controlStatement')}</p></aside>
         <div className="review-profile"><div className="person-row"><Portrait profile={state.draft} /><div><span className="profile-type">{t(state.draft.type)}</span><h2>{state.draft.name}</h2></div></div><p className="bio">{state.draft.bio || t('noBio')}</p><Identifier id={bapId} t={t} failCopy={failCopy} /><p className="hint">{t(state.published ? 'published' : 'localId')}</p>
           {state.error && <div className="error-block" role="alert"><strong>{t(state.error)}</strong><p>{t('operationFailedBody')}</p></div>}
-          {state.busy ? <div className="processing" role="status"><div className="loading-orbit small"></div><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p><Button onClick={switchAccount}>{t('accountSwitch')}</Button></div> : <div className="form-footer"><Button variant="quiet" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
+          {state.busy ? <div className="processing" role="status"><LoadingMark small /><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p><Button onClick={switchAccount}>{t('accountSwitch')}</Button></div> : <div className="form-footer"><Button variant="quiet" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
         </div>
       </section>}
       {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}

@@ -1,0 +1,117 @@
+{
+  "axeVersion": "4.12.1",
+  "counts": {
+    "inapplicable": 49,
+    "incomplete": 1,
+    "passes": 40,
+    "violations": 0
+  },
+  "incomplete": [
+    {
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodeCount": 10,
+      "nodes": [
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span class=\"wordmark-small\"><img class=\"brand-mark\" src=\"brand/ownword-mark.svg\" width=\"32\" height=\"32\" alt=\"\" aria-hidden=\"true\">ownword</span>",
+          "target": [
+            ".wordmark-small"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span class=\"eyebrow\">Public Identity</span>",
+          "target": [
+            ".plate-top > .eyebrow"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span role=\"img\" aria-label=\"Maya Revised\">MR</span>",
+          "target": [
+            "span[role=\"img\"]"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span class=\"profile-type\">Person</span>",
+          "target": [
+            ".profile-type"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<h2>Maya Revised</h2>",
+          "target": [
+            "h2"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<p class=\"bio\">No bio yet.</p>",
+          "target": [
+            ".bio"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span>BAP ID</span>",
+          "target": [
+            ".plate-id > span"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<code>2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD</code>",
+          "target": [
+            ".plate-id > code"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span>Identity, owned by you.</span>",
+          "target": [
+            ".plate-foot > span:nth-child(1)"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span>OWNWORD</span>",
+          "target": [
+            ".plate-foot > span:nth-child(2)"
+          ]
+        }
+      ],
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ]
+    }
+  ],
+  "lifecycle": {
+    "effectiveLaunch": {
+      "browserLaunched": true,
+      "engine": "chrome",
+      "launchHash": 12798390076057945372
+    },
+    "launched": false,
+    "relaunchedBrowser": false,
+    "restartedBackground": false,
+    "restoreStatus": "not_configured",
+    "reused": true,
+    "saveStatus": "not_attempted"
+  },
+  "url": "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html",
+  "violations": []
+}

@@ -1,5 +1,12 @@
 const S2 = window.ReactSpectrumS2_ad4872;
 
+function BrandMark() {
+  return <img className="brand-mark" src="brand/ownword-mark.svg" width="32" height="32" alt="" aria-hidden="true" />;
+}
+function LoadingMark({small = false, label}) {
+  return <div className={`brand-loading ${small ? 'small' : ''}`} role={label ? 'status' : undefined} aria-label={label} aria-hidden={label ? undefined : true}><BrandMark /></div>;
+}
+
 // The imported S2 bundle is a cosmetic preview. Add behavior to its returned
 // elements without copying or modifying the design-system implementation.
 function Button({children, onClick, variant = 'secondary', ...props}) {
@@ -61,7 +68,7 @@ function IdentityCard({profile, id, t, failCopy, rotating, setRotating, angle, s
       <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} style={{'--angle': `${angle}deg`}}>
         <div className="plate-depth" aria-hidden="true"></div>
         <article className="identity-plate">
-          <div className="plate-top"><span className="wordmark-small">ownword</span><span className="eyebrow">{t('publicIdentity')}</span></div>
+          <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('publicIdentity')}</span></div>
           <div className="plate-person"><Portrait profile={profile} large /><span className="profile-type">{t(profile.type)}</span><h2>{profile.name}</h2><p className="bio">{profile.bio || t('noBio')}</p></div>
           <div className="plate-id"><span>BAP ID</span><code>{id}</code></div>
           <div className="plate-foot"><span>{t('ownedByYou')}</span><span>OWNWORD</span></div>
@@ -74,4 +81,4 @@ function IdentityCard({profile, id, t, failCopy, rotating, setRotating, angle, s
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
   </div>;
 }
-Object.assign(window, {S2, Button, Field, Portrait, Dome, Modal, Identifier, IdentityCard});
+Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Identifier, IdentityCard});
