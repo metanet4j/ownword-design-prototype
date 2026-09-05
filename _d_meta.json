@@ -11,7 +11,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-09-05T15:44:47.316Z",
+  "updatedAt": "2026-09-05T16:08:32.670Z",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -35,6 +35,19 @@
           "viewport": {
             "width": 1320,
             "height": 1000
+          }
+        }
+      ]
+    },
+    "Ownword 品牌方向探索": {
+      "versions": [
+        {
+          "path": "brand-explorations.html",
+          "createdAt": "2026-09-05T16:08:32.668Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1180
           }
         }
       ]
