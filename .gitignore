@@ -1,0 +1,5 @@
+__pycache__/
+*.log
+!evidence/http-access.log
+*-debug.png
+server.*.log

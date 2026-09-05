@@ -1,0 +1,32 @@
+{
+  "type": "design",
+  "designSystems": [
+    {
+      "name": "React Spectrum 2 / S2 Design System",
+      "slug": "react-spectrum-s2",
+      "namespace": "ReactSpectrumS2_ad4872",
+      "dsFolder": "_ds/react-spectrum-s2",
+      "sourcePath": "designs/react-spectrum-s2"
+    }
+  ],
+  "primaryDesignSystem": "react-spectrum-s2",
+  "createdAt": "2026-09-05T14:25:19.554Z",
+  "updatedAt": "2026-09-05T14:55:54.959Z",
+  "assets": {
+    "Ownword — Dome and Horizon": {
+      "versions": [
+        {
+          "path": "index.html",
+          "createdAt": "2026-09-05T14:55:54.957Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
+    }
+  },
+  "title": "Ownword — Dome and Horizon",
+  "prompt": "design-astra-001: PRD v0.1 React Spectrum S2，七线穹顶、无刻度地平与旋转 Public Identity，全新交互原型。"
+}

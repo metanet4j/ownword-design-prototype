@@ -1,0 +1,45 @@
+HTTP access log excerpt captured during final verification on 2026-09-05.
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/font-faces.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/page.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/s2-tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/components/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/semantic.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/guidelines/cards.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/app.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/_ds_bundle.js HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:06] "GET /own-word-prototype-s2-astra-001/model.js HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:09] "GET /own-word-prototype-s2-astra-001/components.jsx HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:09] "GET /own-word-prototype-s2-astra-001/app.jsx HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:10] code 404, message File not found
+127.0.0.1 - - [05/Sep/2026 23:12:10] code 404, message File not found
+127.0.0.1 - - [05/Sep/2026 23:12:10] "GET /own-word-prototype-s2-astra-001/tokens/font-faces.css HTTP/1.1" 404 -
+127.0.0.1 - - [05/Sep/2026 23:12:10] "GET /own-word-prototype-s2-astra-001/tokens/page.css HTTP/1.1" 404 -
+127.0.0.1 - - [05/Sep/2026 23:12:10] code 404, message File not found
+127.0.0.1 - - [05/Sep/2026 23:12:10] code 404, message File not found
+127.0.0.1 - - [05/Sep/2026 23:12:10] "GET /own-word-prototype-s2-astra-001/tokens/s2-tokens.css HTTP/1.1" 404 -
+127.0.0.1 - - [05/Sep/2026 23:12:10] code 404, message File not found
+127.0.0.1 - - [05/Sep/2026 23:12:10] code 404, message File not found
+127.0.0.1 - - [05/Sep/2026 23:12:10] "GET /own-word-prototype-s2-astra-001/guidelines/cards.css HTTP/1.1" 404 -
+127.0.0.1 - - [05/Sep/2026 23:12:10] "GET /own-word-prototype-s2-astra-001/tokens/semantic.css HTTP/1.1" 404 -
+127.0.0.1 - - [05/Sep/2026 23:12:10] "GET /own-word-prototype-s2-astra-001/components/components.css HTTP/1.1" 404 -
+127.0.0.1 - - [05/Sep/2026 23:12:11] "GET /own-word-prototype-s2-astra-001/index.html HTTP/1.1" 304 -
+127.0.0.1 - - [05/Sep/2026 23:12:11] "GET /own-word-prototype-s2-astra-001/app.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:12:11] "GET /own-word-prototype-s2-astra-001/model.js HTTP/1.1" 304 -
+127.0.0.1 - - [05/Sep/2026 23:12:11] "GET /own-word-prototype-s2-astra-001/components.jsx HTTP/1.1" 304 -
+127.0.0.1 - - [05/Sep/2026 23:12:11] "GET /own-word-prototype-s2-astra-001/app.jsx HTTP/1.1" 304 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/page.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/font-faces.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/s2-tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/tokens/semantic.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/guidelines/cards.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/components/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/styles.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/app.css HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/_ds/react-spectrum-s2/_ds_bundle.js HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:10] "GET /own-word-prototype-s2-astra-001/model.js HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:11] "GET /own-word-prototype-s2-astra-001/components.jsx HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:11] "GET /own-word-prototype-s2-astra-001/app.jsx HTTP/1.1" 200 -
+127.0.0.1 - - [05/Sep/2026 23:13:35] "GET /own-word-prototype-s2-astra-001/app.css HTTP/1.1" 304 -

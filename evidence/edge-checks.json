@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-05",
+  "session": "ownword-astra-001",
+  "checks": [
+    {"name": "Local PNG avatar", "result": "pass", "observed": {"blobUrl": true, "naturalWidthPositive": true}},
+    {"name": "Invalid avatar file", "result": "pass", "observed": "Choose a valid PNG, JPEG or WebP image."},
+    {"name": "Remove avatar", "result": "pass", "observed": "Remove image action returned to initials"},
+    {"name": "Wallet dialog keyboard", "result": "pass", "observed": {"focusTrapped": true, "focusVisible": true}},
+    {"name": "Switch account while creating", "result": "pass", "observed": {"account": "North Studio", "oldNamePresent": false, "bapId": "3GkA8rRtC4a6oX9PzM2cV7mHxTqB5wEeNs"}},
+    {"name": "Reduced motion", "result": "pass", "observed": {"reducedMotion": true, "autoplay": false, "animationName": "none"}},
+    {"name": "Pointer plays sky lines", "result": "pass", "observed": "vault data-pulse=true after pointer press"}
+  ]
+}
