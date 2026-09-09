@@ -159,7 +159,7 @@ function App() {
       </nav>
     </header>
     <Dome label={t('domeLabel')} />
-    <main id="main" data-screen-label={state.page}>
+    <main id="main" data-screen-label={state.page} tabIndex="-1">
       {state.notice && <div className="notice" role="status"><span className="notice-mark" aria-hidden="true"></span><div><strong>{t(state.notice)}</strong>{state.notice.includes('Cancelled') && <p>{state.notice === 'connectCancelled' ? t('identityUnchanged') : t('retained')}</p>}</div></div>}
       {storageError && <p role="alert">{t('persistFailed')}</p>}
       {state.page === 'welcome' && <section className="welcome">

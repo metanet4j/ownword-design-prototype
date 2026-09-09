@@ -1,9 +1,12 @@
 {
-  "passed": 365,
+  "passed": 373,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
     "Keyboard plays sky lines",
+    "Skip link becomes visible when focused",
+    "5 keyboard stops show a visible focus ring",
+    "Skip link moves focus into the main landmark",
     "welcome en/light 320px no page overflow",
     "welcome en/light 320px controls fit",
     "welcome en/light 390px no page overflow",
@@ -45,6 +48,8 @@
     "welcome zh/dark 320px touch targets",
     "welcome zh/dark axe 0 violations",
     "welcome 1440px no page overflow",
+    "Wallet dialog moves focus inside",
+    "Closing the dialog returns focus to its trigger",
     "Connection cancellation returns to welcome",
     "Connection failure provides retry",
     "Resolution failure explains and offers retry or disconnect",
@@ -270,6 +275,9 @@
     "My Identity shows avatar, name, type, bio and BAP ID",
     "Icon buttons expose accessible names",
     "Status states carry text, not colour alone",
+    "Reduced motion emulation active",
+    "Reduced motion stops automatic 3D rotation",
+    "Reduced motion shortens decorative animation",
     "public en/light 320px no page overflow",
     "public en/light 320px controls fit",
     "public en/light 390px no page overflow",
@@ -371,10 +379,11 @@
     {
       "screen": "welcome en/light",
       "rule": "color-contrast",
-      "nodes": 3,
+      "nodes": 4,
       "targets": [
         ".eyebrow",
         ".horizon > span",
+        ".welcome-body",
         ".welcome-intro"
       ],
       "reasons": [
@@ -385,10 +394,11 @@
     {
       "screen": "welcome en/dark",
       "rule": "color-contrast",
-      "nodes": 3,
+      "nodes": 4,
       "targets": [
         ".eyebrow",
         ".horizon > span",
+        ".welcome-body",
         ".welcome-intro"
       ],
       "reasons": [

@@ -15,6 +15,8 @@
 | `check-model.cjs` | 59 项状态断言 |
 | `check-browser.py` | 360 项浏览器断言（双语、双主题、四宽度、axe） |
 | `check-offline.py` | 4 项离线启动断言（阻断外部域） |
+| `check-tokens.py` | 设计系统令牌解析检查（66 个引用对 2509 个令牌） |
+| `brand.html`、`brand-explorations.html` | 品牌图标规范与方向探索页，供设计参考；不是产品页面，生产不迁移 |
 
 ## 2. 状态机契约（必须原样移植）
 

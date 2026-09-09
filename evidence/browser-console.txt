@@ -23,6 +23,8 @@
 [info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "public", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "public", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "edit", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "edit", wallet: "connected", operation: "none", account: 0, notice: "saveCancelled", ...}
