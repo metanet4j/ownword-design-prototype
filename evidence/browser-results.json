@@ -1,5 +1,5 @@
 {
-  "passed": 381,
+  "passed": 382,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
@@ -381,17 +381,17 @@
     "Dark theme applies different semantic surface tokens",
     "Locale and theme preserve profile and BAP ID",
     "Preferences persist after refresh",
+    "Unwritable storage is announced instead of failing silently",
     "Unavailable wallet explains recovery"
   ],
   "axeIncomplete": [
     {
       "screen": "welcome en/light",
       "rule": "color-contrast",
-      "nodes": 4,
+      "nodes": 3,
       "targets": [
         ".eyebrow",
         ".horizon > span",
-        ".welcome-body",
         ".welcome-intro"
       ],
       "reasons": [
@@ -402,11 +402,10 @@
     {
       "screen": "welcome en/dark",
       "rule": "color-contrast",
-      "nodes": 4,
+      "nodes": 3,
       "targets": [
         ".eyebrow",
         ".horizon > span",
-        ".welcome-body",
         ".welcome-intro"
       ],
       "reasons": [

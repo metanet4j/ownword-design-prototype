@@ -44,7 +44,7 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 | 5.6 取消更新 | 浏览器 `Save cancellation retains editing values on form`；模型 `saveCancelled` 保留 draft |
 | 5.6 未保存离开 | 浏览器 `Unsaved changes ask before leaving`、`Keep editing preserves draft`；模型 `DISCARD_ASK`/`DISCARD`/`STAY` |
 | 8.8 首次访问 | 浏览器 `First visit English and Light` |
-| 8.8 切换中文 | 浏览器 `Preferences persist after refresh`（`lang=zh-CN`）；`zh/*` 组检查 |
+| 8.8 切换中文 | 浏览器 `Preferences persist after refresh`（`lang=zh-CN`）；`zh/*` 组检查；`Unwritable storage is announced instead of failing silently`（设备存储不可写时不静默失败） |
 | 8.8 保留协议值 | 浏览器 `Locale and theme preserve profile and BAP ID` |
 | 5.9 切换深色 | 浏览器 `Dark theme applies different semantic surface tokens`、`Preferences persist after refresh` |
 | 5.9 切换浅色 | 8 屏 `en light and dark layouts match`（动画定格到 t=0 后逐元素比对矩形，深浅主题布局零位移） |
@@ -115,6 +115,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 - 新增 `settle()`：测量与 axe 之前等待有限 CSS 过渡结束。按钮存在 150ms 的 `color/background/border` 过渡，切换语言或主题后立即审计会采到过渡中间色，曾误报 `ready zh/light` 对比度 4.17:1；稳定后实测为 `rgb(255,255,255)` 文字配 `rgb(59,99,251)` 背景，axe 0 violations。
 - 响应式矩阵由 320px 扩展为 320/390/768/960，另保留 1440 桌面截图。
 - axe 断言由“无严重/致命”收紧为 **0 violations**；incomplete 逐条记录屏幕、规则、目标与原因到 `evidence/axe-incomplete-summary.json`。
+- 新增错误路径断言：把 `Storage.prototype.setItem` 改为抛错后切换偏好，页面以 `role="alert"` 明示「偏好无法保存」，不静默失败。
 - 新增主题断言：8 屏浅色/深色布局矩形逐一相等（`en light and dark layouts match`），对应 PRD 5.9「切换浅色布局不位移」。
 - 新增无障碍断言：跳至正文链接聚焦可见并把焦点移入 `main` 地标、键盘 Tab 经过的 5 个控件都有可见焦点环、钱包弹窗打开时焦点进入弹窗且关闭后回到触发按钮、`prefers-reduced-motion` 下 3D 自动旋转关闭且装饰动画时长降为 0.01ms。
 - 修复：`main` 缺 `tabindex="-1"` 导致跳至正文链接不移动焦点；补上后实测 `document.activeElement === main`，并加 `main:focus { outline: none }`。
@@ -122,7 +123,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：59 条状态断言、381 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：59 条状态断言、382 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

@@ -2,11 +2,10 @@
   {
     "screen": "welcome en/light",
     "rule": "color-contrast",
-    "nodes": 4,
+    "nodes": 3,
     "targets": [
       ".eyebrow",
       ".horizon > span",
-      ".welcome-body",
       ".welcome-intro"
     ],
     "reasons": [
@@ -17,11 +16,10 @@
   {
     "screen": "welcome en/dark",
     "rule": "color-contrast",
-    "nodes": 4,
+    "nodes": 3,
     "targets": [
       ".eyebrow",
       ".horizon > span",
-      ".welcome-body",
       ".welcome-intro"
     ],
     "reasons": [
