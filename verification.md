@@ -89,6 +89,8 @@ OWNWORD_PORT=4312 python3 check-offline.py
 
 `check-browser.py` 用 `OWNWORD_URL`（整条 URL，优先）或 `OWNWORD_PORT`（默认 4311）指向实时服务。`check-offline.py` 用 `--allowed-domains 127.0.0.1,localhost` 阻断全部外部请求，验证启动只依赖本地资源（`evidence/offline-startup.json`）。
 
+干净检出复现（2026-09-09）：`git archive HEAD` 解压到临时目录、用独立端口服务后，四个脚本结果与工作区一致（59 / 66-of-66 / 4 / 382）。记录见 `evidence/clean-checkout-verification.json`——已提交的树不依赖未跟踪文件、浏览器缓存或工作区外资源。
+
 浏览器检查使用宿主环境的独立 agent-browser 会话。`evidence/browser-results.json` 记录逐项结果；`evidence/*-axe.json` 是各页面审计；`evidence/*-320.png` 和 `*-desktop.png` 为截图。控制台日志使用 `[Ownword prototype]` 前缀，不记录填写内容；输出保存到 `evidence/browser-console.txt`。HTTP 访问日志在启动服务的终端；交付时保存本次记录到 `evidence/http-access.log`。不连接数据库、后端、真实 Wallet 或 Indexer，因此不存在数据库连接串或真实交易证据。
 
 HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会话对照表明：页面初始请求零错误，8 个样式文件正常加载；运行审计才出现向项目根目录错误解析的 CSS `@import` 请求。前后网络记录为 `evidence/network-before-audit.json`、`network-after-audit.json`。据此归因为审计工具的路径解析，不是页面样式加载失败；没有复制一套重复 CSS 来掩盖探测错误。
