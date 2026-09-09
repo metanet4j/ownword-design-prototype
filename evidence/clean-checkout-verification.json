@@ -1,13 +1,14 @@
 {
-  "method": "git archive HEAD 解压到 /tmp/astra-clean（无工作区残留），用独立端口 4313 服务，依次运行四个检查脚本",
-  "commit": "b194fa9d9f3bd57ff9e7dbe50eb4ca361267a55a",
-  "trackedFiles": 1145,
-  "server": "python3 -m http.server 4313 --bind 127.0.0.1 --directory /tmp/astra-clean",
+  "method": "git archive HEAD 解压到 /tmp/astra-clean2（无工作区残留），用独立端口 4314 服务，依次运行全部检查脚本",
+  "commit": "aeb2cdf2fb29c666a920c79e4e213274807410fd",
+  "trackedFiles": 1149,
+  "server": "python3 -m http.server 4314 --bind 127.0.0.1 --directory /tmp/astra-clean2",
   "results": {
-    "check-model.cjs": "59 model assertions passed",
+    "check-model.cjs": "62 model assertions passed",
+    "check-copy.cjs": "4 copy contract checks passed (142 keys)",
     "check-tokens.py": "66/66 referenced tokens resolve",
     "check-offline.py": "4 offline startup checks passed (all external domains blocked)",
-    "check-browser.py": "382 browser checks passed; 26 axe incomplete recorded; axe 0 violations"
+    "check-browser.py": "389 browser checks passed; 26 axe incomplete recorded; axe 0 violations"
   },
-  "conclusion": "已提交的树自包含：不依赖未跟踪文件、浏览器缓存或工作区外资源，四个脚本在干净检出上得到与工作区完全一致的结果"
+  "conclusion": "已提交的树自包含：不依赖未跟踪文件、浏览器缓存或工作区外资源，五个脚本在干净检出上得到与工作区完全一致的结果"
 }
