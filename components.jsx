@@ -12,7 +12,7 @@ function LoadingMark({small = false, label}) {
 function Button({children, onClick, variant = 'secondary', ...props}) {
   return React.cloneElement(S2.Button({children, onPress: onClick, variant, isDisabled: props.disabled}), props);
 }
-function Field({id, label, value, onChange, multiline, error, required, maxLength}) {
+function Field({errorKey, id, label, value, onChange, multiline, error, required, maxLength}) {
   const base = (multiline ? S2.TextArea : S2.TextField)({label, value: value || ' '});
   function wire(node) {
     if (!React.isValidElement(node)) return node;
@@ -20,7 +20,7 @@ function Field({id, label, value, onChange, multiline, error, required, maxLengt
     if (node.type === 'input' || node.type === 'textarea') return React.cloneElement(node, {id, value, defaultValue: undefined, required, maxLength, 'aria-invalid': !!error, 'aria-describedby': error ? `${id}-error` : undefined, onChange: e => onChange(e.target.value)});
     return React.cloneElement(node, {}, React.Children.map(node.props.children, wire));
   }
-  return <div className="field-wrap">{wire(base)}{error && <p id={`${id}-error`} className="field-error" role="alert">{error}</p>}</div>;
+  return <div className="field-wrap">{wire(base)}{error && <p id={`${id}-error`} className="field-error" role="alert" data-field-error={errorKey || ""}>{error}</p>}</div>;
 }
 function Portrait({profile, large = false}) {
   return <div className={`portrait ${large ? 'large' : ''}`}>
@@ -37,14 +37,36 @@ function Dome({label}) {
     </span>
   </button>;
 }
-function Modal({title, children, onCancel, closeLabel}) {
+function useDismissable(open, onClose, ref) {
+  React.useEffect(() => {
+    if (!open) return undefined;
+    // Escape and Tab-out are the keyboard equivalents of clicking away; the
+    // dialog check keeps a modal confirmation in charge of its own dismissal.
+    const pointer = e => {if (!document.querySelector('dialog[open]') && ref.current && !ref.current.contains(e.target)) onClose();};
+    const key = e => {
+      if (e.key !== 'Escape' || document.querySelector('dialog[open]')) return;
+      onClose();
+      ref.current?.querySelector('button')?.focus();
+    };
+    const focusin = e => {if (ref.current && e.target instanceof Node && !ref.current.contains(e.target)) onClose();};
+    document.addEventListener('pointerdown', pointer);
+    document.addEventListener('keydown', key);
+    document.addEventListener('focusin', focusin);
+    return () => {
+      document.removeEventListener('pointerdown', pointer);
+      document.removeEventListener('keydown', key);
+      document.removeEventListener('focusin', focusin);
+    };
+  }, [open, onClose, ref]);
+}
+function Modal({title, titleKey, children, onCancel, closeLabel}) {
   const dialog = React.useRef(null);
   React.useEffect(() => {
     const previous = document.activeElement;
     dialog.current.showModal();
     return () => {if (previous?.isConnected) previous.focus();};
   }, []);
-  return <dialog ref={dialog} className="modal" aria-labelledby="dialog-title" onCancel={e => {e.preventDefault(); onCancel();}}>
+  return <dialog ref={dialog} className="modal" data-modal-title={titleKey || ""} aria-labelledby="dialog-title" onCancel={e => {e.preventDefault(); onCancel();}}>
     <div className="modal-top"><span className="eyebrow">OWNWORD</span><Button variant="quiet" onClick={onCancel} aria-label={title + ' — ' + closeLabel}>{closeLabel}</Button></div>
     <h2 id="dialog-title">{title}</h2>{children}
   </dialog>;
@@ -57,8 +79,8 @@ function Identifier({id, t, failCopy = false}) {
     catch {setFeedback('copyFailed');}
   }
   return <div className="identifier">
-    <div className="identifier-top"><span className="eyebrow">BAP ID</span><span className="copy-feedback" role="status">{feedback ? t(feedback) : ''}</span></div>
-    <div className="identifier-value"><code title={id}>{id}</code><Button onClick={copy} aria-label={t('copyBap')}>{t('copy')}</Button></div>
+    <div className="identifier-top"><span className="eyebrow">BAP ID</span><span className="copy-feedback" role="status" data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
+    <div className="identifier-value"><code title={id}>{id}</code><Button data-action="copy" onClick={copy} aria-label={t('copyBap')}>{t('copy')}</Button></div>
   </div>;
 }
 function IdentityCard({profile, id, t, failCopy, rotating, setRotating, angle, setAngle}) {
@@ -76,9 +98,9 @@ function IdentityCard({profile, id, t, failCopy, rotating, setRotating, angle, s
       </div>
     </div>
     <div className="object-shadow" aria-hidden="true"></div>
-    <div className="rotation-controls"><Button onClick={() => setRotating(!rotating)} aria-pressed={rotating}>{t(rotating ? 'pauseRotation' : 'rotate')}</Button><Button variant="quiet" onClick={() => {setRotating(false); setAngle(0);}}>{t('resetView')}</Button></div>
+    <div className="rotation-controls"><Button data-action="toggle-rotation" onClick={() => setRotating(!rotating)} aria-pressed={rotating}>{t(rotating ? 'pauseRotation' : 'rotate')}</Button><Button variant="quiet" data-action="reset-view" onClick={() => {setRotating(false); setAngle(0);}}>{t('resetView')}</Button></div>
     <label className="rotation-label">{t('angle')}<input aria-label={t('angle')} type="range" min="-40" max="40" value={angle} onChange={e => {setRotating(false); setAngle(+e.target.value);}} /></label>
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
   </div>;
 }
-Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Identifier, IdentityCard});
+Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Identifier, IdentityCard, useDismissable});

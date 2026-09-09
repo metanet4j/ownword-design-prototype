@@ -30,6 +30,7 @@
       case 'CONNECT_FAILED': return {...s, modal: null, error: 'connectFailed'};
       case 'PROCESS': return {...s, modal: null, busy: a.operation, epoch: s.epoch + 1};
       case 'RESULT': return a.fail ? {...s, busy: '', error: a.operation === 'create' ? 'createFailed' : 'saveFailed'} : {...s, busy: '', page: a.operation === 'create' ? 'ready' : 'identity', published: true, incomplete: false, profile: {...s.draft}, notice: a.operation === 'save' ? 'saved' : '', error: ''};
+      case 'CLEAR_NOTICE': return s.notice === a.notice ? {...s, notice: ''} : s;
       case 'GO': return {...s, page: a.page, notice: '', error: ''};
       case 'DISCARD_ASK': return {...s, modal: 'discard', destination: a.page};
       case 'DISCARD': return s.destination === 'welcome' ? {...initial(), epoch: s.epoch + 1} : {...s, modal: null, draft: {...s.profile}, page: s.destination, error: '', notice: ''};

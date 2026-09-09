@@ -8,6 +8,7 @@
 | --- | --- |
 | `index.html` | 加载顺序：S2 令牌与组件 CSS → `vendor/` 的 React/ReactDOM/Babel → `model.js` → `components.jsx` → `app.jsx` |
 | `model.js` | 纯函数状态机：`initial()`、`validate()`、`reducer()`。无 DOM、无计时器 |
+| `copy.js` | 双语词典（142 键），术语权威是核心认知第 2 节；`check-copy.cjs` 校验键对齐、空串与禁区词 |
 | `app.jsx` | 界面与副作用：计时器、剪贴板、头像本地预览、偏好持久化、导航保护 |
 | `components.jsx` | S2 组件适配层：为设计系统返回的元素补受控输入、ARIA、事件与表单提交 |
 | `app.css` | 视觉：穹顶、地平线、语义表面、3D 身份板 |
@@ -16,6 +17,7 @@
 | `check-browser.py` | 360 项浏览器断言（双语、双主题、四宽度、axe） |
 | `check-offline.py` | 4 项离线启动断言（阻断外部域） |
 | `check-tokens.py` | 设计系统令牌解析检查（66 个引用对 2509 个令牌） |
+| `check-copy.cjs` | 双语词典契约检查 |
 | `brand.html`、`brand-explorations.html` | 品牌图标规范与方向探索页，供设计参考；不是产品页面，生产不迁移 |
 
 ## 2. 状态机契约（必须原样移植）
@@ -81,6 +83,10 @@
 | 演示面板：页脚 `Interactive prototype`（场景选择、复制失败开关、重置） | 生产删除，只保留在测试构建 | — | 禁止进入生产 |
 | 人为延时 850ms / 1500ms | 真实网络延迟 | — | 保留加载状态与可取消性，不保留延时 |
 | 内存态：刷新清空会话 | 需定义会话恢复策略（本版未规定，属实现决策） | — | 待实现方决策 |
+
+## 3.1 小屏弹窗（实测）
+
+320×800 下钱包确认弹窗内容高于视口，弹窗内部可滚动（`max-height` + `overflow-y:auto`）。主操作（Cancel / Approve）在首屏可见，原型专用的「模拟失败 / 切换账户 / 断开」一行需滚动。生产实现需保证主操作在 320px 首屏可见，次级操作允许滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖这一点。
 
 ## 4. 不得丢失的可观察行为
 

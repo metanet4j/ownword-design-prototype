@@ -43,4 +43,10 @@ for (const old of [creating, processing, editing, step(editing, {type: 'PROCESS'
 const discard = step(step(cancelled, {type: 'DISCARD_ASK', page: 'identity'}), {type: 'DISCARD'});
 eq(discard.draft, discard.profile); eq(discard.page, 'identity');
 eq(step(step(creating, {type: 'DISCARD_ASK', page: 'welcome'}), {type: 'DISCARD'}).wallet, false);
+// Transient confirmations clear only for the notice they were scheduled for,
+// and never for a newer operation (epoch guard).
+const transient = {...initial(), notice: 'saved', error: 'saveFailed', epoch: 4};
+eq(step(transient, {type: 'CLEAR_NOTICE', notice: 'saved', epoch: 4}), {...transient, notice: ''});
+eq(step(transient, {type: 'CLEAR_NOTICE', notice: 'connectCancelled', epoch: 4}), transient);
+eq(step(transient, {type: 'CLEAR_NOTICE', notice: 'saved', epoch: 3}), transient);
 console.log(`${checks} model assertions passed`);

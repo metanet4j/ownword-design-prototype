@@ -11,6 +11,8 @@
 
 ## 实现
 
+`copy.js` 集中保存中英双语词典（142 键），术语权威是核心认知第 2 节；`check-copy.cjs` 校验两语言键集一致、无空串、无第 2.3 节禁区用词、无重复长句。界面状态通过 `data-*` 属性暴露（`data-screen-label`、`data-notice`、`data-error`、`data-busy`、`data-incomplete`、`data-copy-feedback`、`data-field-error`、`data-modal-title`、`data-action`），断言因此不依赖文案。
+
 `index.html` 按 Baoyu Design 导入结果加载 S2 的全部 CSS 依赖及组件 bundle。React、ReactDOM 与 Babel 从 `vendor/` 本地加载（同版本原文件，`integrity` 保留作校验，来源与哈希见 [vendor/README.md](vendor/README.md)），因此启动不依赖 CDN。`components.jsx` 消费其 Button、TextField、TextArea，`app.jsx` 另用 StatusLight、Skeleton。组件源是本地视觉样件；适配层为其返回元素添加受控输入、ARIA、事件及表单提交。弹窗使用浏览器原生 dialog 管理焦点和 Escape，不修改源设计系统。
 
 `app.css` 以 S2 的字体、颜色、语义表面、圆角与间距令牌构成视觉。穹顶由七条 CSS 椭圆线组成，点击空白处、触摸及键盘均可触发依次律动。铁灰地平线无刻度。Public Identity 使用有厚度的 CSS 3D 身份板，支持旋转、拖动、滑块与重置；尊重减少动态效果偏好。
@@ -44,7 +46,7 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 | 5.6 取消更新 | 浏览器 `Save cancellation retains editing values on form`；模型 `saveCancelled` 保留 draft |
 | 5.6 未保存离开 | 浏览器 `Unsaved changes ask before leaving`、`Keep editing preserves draft`；模型 `DISCARD_ASK`/`DISCARD`/`STAY` |
 | 8.8 首次访问 | 浏览器 `First visit English and Light` |
-| 8.8 切换中文 | 浏览器 `Preferences persist after refresh`（`lang=zh-CN`）；`zh/*` 组检查；`Unwritable storage is announced instead of failing silently`（设备存储不可写时不静默失败） |
+| 8.8 切换中文 | 浏览器 `Preferences persist after refresh`（`lang=zh-CN`）；`zh/*` 组检查；`Unwritable storage is announced instead of failing silently`（设备存储不可写时不静默失败）；面板 `Escape closes the panel and returns focus to its trigger`、`Clicking outside closes the panel`、`Tabbing out of the panel closes it` |
 | 8.8 保留协议值 | 浏览器 `Locale and theme preserve profile and BAP ID` |
 | 5.9 切换深色 | 浏览器 `Dark theme applies different semantic surface tokens`、`Preferences persist after refresh` |
 | 5.9 切换浅色 | 8 屏 `en light and dark layouts match`（动画定格到 t=0 后逐元素比对矩形，深浅主题布局零位移） |
@@ -83,6 +85,8 @@ curl -s "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html" | dif
 
 ```bash
 node check-model.cjs
+node check-copy.cjs
+python3 check-tokens.py
 OWNWORD_PORT=4312 python3 check-browser.py
 OWNWORD_PORT=4312 python3 check-offline.py
 ```
@@ -111,6 +115,15 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 ## 本次复核
 
+批 1 加固（2026-09-09，文案与断言解耦）：
+
+- 词典抽到 `copy.js`（142 键，中英对齐），新增 `check-copy.cjs` 契约检查。
+- 断言锚点由文案改为 `data-*` 状态属性，点击改为 `data-action`；文案改动不再牵动 389 项断言。
+- 偏好面板：点外点击、Escape（焦点回归触发按钮）、Tab 移出三种方式均可关闭；补 `aria-controls`。
+- 确认类提示 6 秒后自动消失，悬停或聚焦时暂停；`Failed` 类错误常驻不消失（`role="status"` 需要足够阅读时间）。
+- 320×800 实测：钱包确认弹窗内容高于视口、弹窗内可滚动，**主操作 Cancel/Approve 首屏可见**，原型专用的模拟行需滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖。
+- 测试脚本加固：点击前先 `scrollIntoView`（`behavior:"instant"`，避免 `scroll-behavior: smooth` 造成坐标漂移）；布局签名改用绝对坐标（与滚动无关）。
+
 观测层加固（2026-09-09）：
 
 - `check-browser.py` 的服务地址改为读 `OWNWORD_URL` / `OWNWORD_PORT`（默认 4311），避免误测同端口的快照服务。
@@ -125,7 +138,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：59 条状态断言、382 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：62 条状态断言、389 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

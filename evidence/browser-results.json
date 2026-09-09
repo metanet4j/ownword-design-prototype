@@ -1,5 +1,5 @@
 {
-  "passed": 382,
+  "passed": 389,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
@@ -49,9 +49,15 @@
     "welcome zh/dark 320px touch targets",
     "welcome zh/dark axe 0 violations",
     "welcome 1440px no page overflow",
+    "Preferences panel opens with aria-expanded",
+    "Escape closes the panel and returns focus to its trigger",
+    "Clicking outside closes the panel",
+    "Tabbing out of the panel closes it",
     "Wallet dialog moves focus inside",
     "Closing the dialog returns focus to its trigger",
     "Connection cancellation returns to welcome",
+    "Hovering keeps the confirmation on screen",
+    "Confirmation clears after six seconds",
     "Connection failure provides retry",
     "Resolution failure explains and offers retry or disconnect",
     "resolve-error en/light 320px no page overflow",
@@ -188,6 +194,7 @@
     "Copy success feedback",
     "Clipboard contains complete BAP ID",
     "Copy failure preserves identifier",
+    "Dialog primary actions stay inside a 320px viewport",
     "Escape cancels wallet creation",
     "Cancelled creation preserves values",
     "Creation failure retains review and retry",
@@ -388,10 +395,11 @@
     {
       "screen": "welcome en/light",
       "rule": "color-contrast",
-      "nodes": 3,
+      "nodes": 4,
       "targets": [
         ".eyebrow",
         ".horizon > span",
+        ".welcome-body",
         ".welcome-intro"
       ],
       "reasons": [
