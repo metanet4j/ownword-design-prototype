@@ -75,7 +75,7 @@
 | 钱包确认弹窗：Approve / Cancel / Simulate failure（`app.jsx` 的 `confirmConnection`、`approveOperation`） | Yours Wallet Provider（`@1sat/react` 的 `WalletProvider`：`connect`、`disconnect`、`status`、`identityKey`；`signWithBAP`）。参考 `reference/yours-wallet-main/.../docs/provider-api.md` | 输入：用户手势与待签内容；输出：连接状态、`identityKey`、签名结果；取消 = 用户拒绝签名；失败 = provider 抛错 | PRD 5.1、5.2 |
 | 身份解析：850ms 计时器 + 场景选择 | 按 `identityKey` 查询已发布 BAP 身份与 profile（Indexer / 1sat-stack） | 输入：`identityKey`；输出：`{exists, profile, published, incomplete}` 或解析失败 | PRD 5.3 |
 | 创建/更新：`PROCESS` → 1500ms → `RESULT` | BAP 签名 + 广播交易，返回 TxID | 输入：profile 字段 + `identityKey`；输出：TxID 或失败原因 | PRD 5.4、5.6；核心认知 11.7 |
-| 无对应状态 | 交易确认状态归一化（SEEN / ACCEPTED / MINED / IMMUTABLE） | 输入：交易查询结果；输出：归一化状态与「Confirmation pending」提示 | 核心认知 11.8、12.3 |
+| 公开身份卡背面的「链上记录」：`transaction` fixture（区块高度、确认状态、TxID） | 交易查询结果 → `{state: 'pending'\|'confirmed', txid: string\|null, blockHeight: number\|null}`。生产按核心认知第 12 节第 3 项归一化（SEEN / ACCEPTED / MINED / IMMUTABLE），原型只呈现 pending / confirmed 两态 | 输入：交易查询结果；输出：区块高度、确认状态与 TxID | 核心认知 11.8、12.3 |
 | 头像：本地 blob URL 预览，无上传 | 维持本地预览。v0.1 第 9 节第 1 项裁决为「支持本地、暂不支持 URL」 | 输入：用户选择的图片文件；输出：预览或格式错误提示 | PRD 5.4、第 9 节裁决 |
 | 复制：Clipboard API + `Copied` / `Couldn't copy` 反馈 | 同一 API；必须复制完整原值 | 输入：可见的缩略 BAP ID；输出：剪贴板完整值 + 不改布局的反馈 | PRD 5.5；核心认知 11.6 |
 | 语言与主题：`localStorage` 持久化 | 保留为客户端偏好 | 输入：用户选择；输出：界面语言/主题；链上标识与用户内容不得改变 | PRD 8.8、5.9；核心认知 11.11 |

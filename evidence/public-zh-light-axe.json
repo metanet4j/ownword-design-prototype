@@ -18,14 +18,14 @@
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
           "html": "<span class=\"wordmark-small\"><img class=\"brand-mark\" src=\"brand/ownword-mark.svg\" width=\"32\" height=\"32\" alt=\"\" aria-hidden=\"true\">ownword</span>",
           "target": [
-            ".wordmark-small"
+            ".plate-front > .plate-top > .wordmark-small"
           ]
         },
         {
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
           "html": "<span class=\"eyebrow\">公开身份</span>",
           "target": [
-            ".plate-top > .eyebrow"
+            ".plate-front > .plate-top > .eyebrow"
           ]
         },
         {
@@ -74,14 +74,14 @@
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
           "html": "<span>身份，属于你。</span>",
           "target": [
-            ".plate-foot > span:nth-child(1)"
+            ".plate-front > .plate-foot > span:nth-child(1)"
           ]
         },
         {
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
           "html": "<span>OWNWORD</span>",
           "target": [
-            ".plate-foot > span:nth-child(2)"
+            ".plate-front > .plate-foot > span:nth-child(2)"
           ]
         }
       ],

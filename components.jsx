@@ -71,7 +71,7 @@ function Modal({title, titleKey, children, onCancel, closeLabel}) {
     <h2 id="dialog-title">{title}</h2>{children}
   </dialog>;
 }
-function Identifier({id, t, failCopy = false}) {
+function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap'}) {
   const [feedback, setFeedback] = React.useState('');
   React.useEffect(() => {setFeedback('');}, [id]);
   async function copy() {
@@ -79,27 +79,42 @@ function Identifier({id, t, failCopy = false}) {
     catch {setFeedback('copyFailed');}
   }
   return <div className="identifier">
-    <div className="identifier-top"><span className="eyebrow">BAP ID</span><span className="copy-feedback" role="status" data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
-    <div className="identifier-value"><code title={id}>{id}</code><Button data-action="copy" onClick={copy} aria-label={t('copyBap')}>{t('copy')}</Button></div>
+    <div className="identifier-top"><span className="eyebrow">{label}</span><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
+    <div className="identifier-value"><code title={id}>{id}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
   </div>;
 }
-function IdentityCard({profile, id, t, failCopy, rotating, setRotating, angle, setAngle}) {
+function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotating, angle, setAngle}) {
   const drag = React.useRef(null);
+  const normalized = ((angle % 360) + 360) % 360;
+  // The back face is only exposed while the card is turned past 90 degrees;
+  // auto-rotation keeps the front in the accessibility tree.
+  const back = normalized > 90 && normalized < 270;
   return <div className="identity-stage">
     <div className="identity-object" onPointerDown={e => {if (e.target.closest('button')) return; drag.current = {x: e.clientX, angle}; setRotating(false); e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e => {if (drag.current) setAngle(drag.current.angle + (e.clientX - drag.current.x) * .35);}} onPointerUp={() => {drag.current = null;}} onPointerCancel={() => {drag.current = null;}}>
-      <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} style={{'--angle': `${angle}deg`}}>
+      <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} data-face={back ? 'back' : 'front'} style={{'--angle': `${angle}deg`}}>
         <div className="plate-depth" aria-hidden="true"></div>
-        <article className="identity-plate">
+        <article className="identity-plate plate-front" aria-hidden={back} inert={back ? '' : undefined}>
           <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('publicIdentity')}</span></div>
           <div className="plate-person"><Portrait profile={profile} large /><span className="profile-type">{t(profile.type)}</span><h2>{profile.name}</h2><p className="bio">{profile.bio || t('noBio')}</p></div>
           <div className="plate-id"><span>BAP ID</span><code>{id}</code></div>
           <div className="plate-foot"><span>{t('ownedByYou')}</span><span>OWNWORD</span></div>
         </article>
+        <article className="identity-plate plate-back" aria-hidden={!back} inert={!back ? '' : undefined}>
+          <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('chainRecord')}</span></div>
+          <div className="chain-heading"><h3>{t('identityPublication')}</h3><p>{profile.name}</p></div>
+          <dl className="chain-facts">
+            <div><dt>{t('blockHeight')}</dt><dd data-chain="block">{transaction && transaction.blockHeight ? transaction.blockHeight.toLocaleString('en-US') : t('pendingBlock')}</dd></div>
+            <div><dt>{t('confirmation')}</dt><dd data-chain="confirmation">{t(transaction && transaction.blockHeight ? 'confirmed' : 'pendingConfirmation')}</dd></div>
+          </dl>
+          {transaction ? <Identifier id={transaction.txid} label={t('publicationTx')} copyLabel="copyTx" target="tx" t={t} failCopy={failCopy} /> : <p className="hint">{t('recordUnavailable')}</p>}
+          <div className="plate-foot"><span>{t('sampleRecord')}</span><span>BSV</span></div>
+        </article>
       </div>
     </div>
     <div className="object-shadow" aria-hidden="true"></div>
+    <div className="card-actions"><Button data-action="toggle-face" onClick={() => {setRotating(false); setAngle(back ? 0 : 180);}}>{t(back ? 'showFront' : 'showRecord')}</Button></div>
     <div className="rotation-controls"><Button data-action="toggle-rotation" onClick={() => setRotating(!rotating)} aria-pressed={rotating}>{t(rotating ? 'pauseRotation' : 'rotate')}</Button><Button variant="quiet" data-action="reset-view" onClick={() => {setRotating(false); setAngle(0);}}>{t('resetView')}</Button></div>
-    <label className="rotation-label">{t('angle')}<input aria-label={t('angle')} type="range" min="-40" max="40" value={angle} onChange={e => {setRotating(false); setAngle(+e.target.value);}} /></label>
+    <label className="rotation-label">{t('angle')}<input aria-label={t('angle')} type="range" min="-180" max="180" value={angle} onChange={e => {setRotating(false); setAngle(+e.target.value);}} /></label>
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
   </div>;
 }

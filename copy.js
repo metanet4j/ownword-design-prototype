@@ -29,7 +29,8 @@
     save: 'Save Changes', discardTitle: 'Discard unsaved changes?', discardBody: 'Your changes have not been saved. Keep editing, or discard them to leave this page.', keepEditing: 'Keep editing', discard: 'Discard changes',
     accountChanged: 'Account changed. Pending operations were cancelled.', identityUnchanged: 'Your identity is unchanged.', current: 'Current', preferenceHint: 'Language and appearance stay on this device.', demoAccount: 'Demo account', demoData: 'Sample identity · prototype data',
     setupStep: 'Profile', reviewStep: 'Review', confirmStep: 'Confirm', doneStep: 'Ready', copyFailureOn: 'Copy failure simulation is on', privatePreview: 'Public view preview',
-    walletStatus: 'Wallet status', persistFailed: 'Preferences could not be saved on this device.', reducedMotion: 'Reduced motion follows your device preference.'
+    walletStatus: 'Wallet status', persistFailed: 'Preferences could not be saved on this device.', reducedMotion: 'Reduced motion follows your device preference.',
+    chainRecord: 'Chain record', identityPublication: 'Identity publication', blockHeight: 'Block height', confirmation: 'Confirmation', confirmed: 'Confirmed', pendingConfirmation: 'Awaiting block confirmation', pendingBlock: 'Awaiting block', publicationTx: 'Publication TxID', copyTx: 'Copy publication TxID', showRecord: 'View chain record', showFront: 'View identity', recordUnavailable: 'Transaction record unavailable', sampleRecord: 'Sample record · prototype data'
   },
   zh: {
     connect: '连接钱包', connected: '已连接', notConnected: '未连接', connecting: '正在连接', disconnect: '断开连接', accountSwitch: '切换账户', wallet: '钱包',
@@ -59,7 +60,8 @@
     save: '保存修改', discardTitle: '放弃未保存的修改？', discardBody: '修改尚未保存。可继续编辑，或放弃修改后离开。', keepEditing: '继续编辑', discard: '放弃修改',
     accountChanged: '账户已切换，进行中的操作已取消。', identityUnchanged: '身份未改变。', current: '当前', preferenceHint: '语言与主题偏好保存在此设备。', demoAccount: '演示账户', demoData: '示例身份 · 原型数据',
     setupStep: '资料', reviewStep: '核对', confirmStep: '确认', doneStep: '就绪', copyFailureOn: '已开启复制失败模拟', privatePreview: '公开展示预览',
-    walletStatus: '钱包状态', persistFailed: '无法在此设备保存偏好。', reducedMotion: '动画遵循设备的减少动态效果设置。'
+    walletStatus: '钱包状态', persistFailed: '无法在此设备保存偏好。', reducedMotion: '动画遵循设备的减少动态效果设置。',
+    chainRecord: '链上记录', identityPublication: '身份发布记录', blockHeight: '区块高度', confirmation: '确认状态', confirmed: '已确认', pendingConfirmation: '等待区块确认', pendingBlock: '等待入块', publicationTx: '发布交易 TxID', copyTx: '复制发布交易 TxID', showRecord: '查看链上记录', showFront: '查看身份', recordUnavailable: '暂无交易记录', sampleRecord: '示例记录 · 原型数据'
   }
   };
   const api = {en: words.en, zh: words.zh, locales: ['en', 'zh'], keys: Object.keys(words.en)};

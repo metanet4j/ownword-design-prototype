@@ -49,4 +49,15 @@ const transient = {...initial(), notice: 'saved', error: 'saveFailed', epoch: 4}
 eq(step(transient, {type: 'CLEAR_NOTICE', notice: 'saved', epoch: 4}), {...transient, notice: ''});
 eq(step(transient, {type: 'CLEAR_NOTICE', notice: 'connectCancelled', epoch: 4}), transient);
 eq(step(transient, {type: 'CLEAR_NOTICE', notice: 'saved', epoch: 3}), transient);
+// Chain record: a new publication is pending, an existing identity is confirmed,
+// and the record never survives a session change.
+const createdRecord = step(step(initial(), {type: 'PROCESS', operation: 'create'}), {type: 'RESULT', operation: 'create'});
+eq(createdRecord.transaction.blockHeight, null);
+eq(typeof createdRecord.transaction.txid, 'string');
+const existingRecord = connect('existing');
+eq(existingRecord.transaction.blockHeight, 912684);
+eq(step(existingRecord, {type: 'DISCONNECT'}).transaction, null);
+eq(step(existingRecord, {type: 'SWITCH'}).transaction, null);
+eq(step(existingRecord, {type: 'RESULT', operation: 'save'}).transaction, existingRecord.transaction);
+eq(step(step(initial(), {type: 'PROCESS', operation: 'create'}), {type: 'RESULT', operation: 'create', fail: true}).transaction, null);
 console.log(`${checks} model assertions passed`);
