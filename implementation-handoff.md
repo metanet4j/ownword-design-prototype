@@ -32,6 +32,40 @@
 
 `check-model.cjs` 是这套契约的可执行回归测试，生产实现应保留等价断言。
 
+动作与转移（`model.js` 的 `reducer`，可直接照搬）：
+
+| 动作 | 效果 |
+| --- | --- |
+| `CONNECT` | 打开钱包确认弹窗 |
+| `CONNECTED` | `wallet=true`、进入 `resolving`、`epoch+1` |
+| `RESOLVED {scenario}` | `resolveFail` → `resolve-error`；`existing` → `identity`；`incomplete` → `setup` 且 `incomplete=true`；否则 → `setup` |
+| `RETRY_RESOLVE` | 重新进入 `resolving`、`epoch+1` |
+| `CONNECT_FAILED` | `error=connectFailed`、关闭弹窗 |
+| `DRAFT {field,value}` | 只改 `draft`，清除提示与错误 |
+| `REVIEW` | 进入 `review` |
+| `EDIT` | 进入 `edit`，`draft=profile` |
+| `AUTHORIZE {operation}` | 打开该操作的钱包确认弹窗 |
+| `CANCEL` | 关闭弹窗；`connect` → `connectCancelled`，`create` → `createCancelled`，`save` → `saveCancelled` 并回到表单 |
+| `PROCESS {operation}` | 关闭弹窗、进入 `busy`、`epoch+1` |
+| `RESULT {operation,fail}` | 失败 → `createFailed`/`saveFailed` 且保留 `draft`；成功 → `create` 进 `ready`、`save` 进 `identity`，`profile=draft`、`published=true` |
+| `GO {page}` | 直接切换页面并清提示 |
+| `DISCARD_ASK {page}` / `DISCARD` / `STAY` | 离开未保存表单的三分支 |
+| `SWITCH` | 回到初始态但保留钱包、切换 `account`、进入 `resolving`、`epoch+1` |
+| `DISCONNECT` | 回到初始态、`epoch+1` |
+
+文件对应关系（原型 → 生产模块）：
+
+| 原型 | 生产 |
+| --- | --- |
+| `model.js` | 状态层（store/reducer）与其单元测试 |
+| `app.jsx` 的页面分支 | 路由与页面组件 |
+| `app.jsx` 的计时器与副作用 | 真实网络调用、会话恢复、剪贴板 |
+| `components.jsx` | 设计系统适配层（生产直接用组件库，不再需要 DOM 适配） |
+| `app.css` | 主题与布局样式 |
+| `vendor/` | 包管理器依赖 |
+| `check-model.cjs` | 状态机回归测试 |
+| `check-browser.py`、`check-offline.py`、`check-tokens.py` | 端到端与一致性测试的起点 |
+
 ## 3. 模拟点 → 生产替换
 
 | 原型行为 | 生产替换 | 输入 / 输出 | 验收 |

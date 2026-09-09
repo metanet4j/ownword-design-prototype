@@ -103,8 +103,22 @@ def pref(locale='en', theme='light'):
 
 WIDTHS = (320, 390, 768, 960)
 
+def freeze_animations():
+    """Pin every running animation to t=0 so layout signatures are deterministic."""
+    js('document.getAnimations().forEach(a=>{a.currentTime=0;a.pause()});true')
+
+def resume_animations():
+    js('document.getAnimations().forEach(a=>a.play());true')
+
+def layout_signature():
+    freeze_animations()
+    signature = js('JSON.stringify(Array.from(document.querySelectorAll("main button, main h1, main .identifier, main .person-row, main .page-heading")).map(e=>{const r=e.getBoundingClientRect();return [Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)]}))')
+    resume_animations()
+    return signature
+
 def inspect(label, matrix=False):
     combinations = [('en', 'light'), ('en', 'dark'), ('zh', 'light'), ('zh', 'dark')] if matrix else [('en', 'light')]
+    light_layout = None
     for locale, theme in combinations:
         pref(locale, theme)
         for width in WIDTHS:
@@ -112,6 +126,15 @@ def inspect(label, matrix=False):
             settle()
             expect('document.documentElement.scrollWidth <= innerWidth', f'{label} {locale}/{theme} {width}px no page overflow')
             expect('Array.from(document.querySelectorAll("main button, main input:not([hidden]), main textarea")).filter(e=>e.getBoundingClientRect().width).every(e=>{const r=e.getBoundingClientRect();return r.left>=-1&&r.right<=innerWidth+1})', f'{label} {locale}/{theme} {width}px controls fit')
+        if locale == 'en':
+            call('set', 'viewport', 390, 800); settle()
+            signature = layout_signature()
+            if theme == 'light':
+                light_layout = signature
+            else:
+                assert signature == light_layout, f'{label}: layout shifted between light and dark\n{light_layout}\n{signature}'
+                results.append(f'{label} en light and dark layouts match')
+                print(f'PASS {label} en light and dark layouts match', flush=True)
         call('set', 'viewport', 320, 800)
         settle()
         expect('Array.from(document.querySelectorAll("main button, main input:not([hidden]), main textarea")).filter(e=>e.getBoundingClientRect().width).every(e=>{const r=e.getBoundingClientRect();return r.width>=24&&r.height>=44})', f'{label} {locale}/{theme} 320px touch targets')
