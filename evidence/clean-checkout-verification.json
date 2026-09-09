@@ -1,17 +1,21 @@
 {
-  "method": "本轮仅改动文档（implementation-handoff.md、verification.md），脚本与原型代码未变",
-  "commit": "4cb61e5b603697c6e3909a3a35dd2cbc218ba832",
-  "previousVerification": "e0b4b4f",
+  "method": "本轮改动为 check-copy.cjs（新增信息性长度报告）+ 文档；原型代码未变",
+  "commit": "6e122db8e321d35beee4cef4bd3c0d7055507f55",
+  "previousVerification": "3ae0a6e",
   "changedFiles": [
-    "implementation-handoff.md",
+    "check-copy.cjs",
+    "evidence/copy-length.json",
     "verification.md"
   ],
-  "codeOrScriptChanges": [],
-  "reusedEvidence": "e0b4b4f 的干净检出结果（69 模型 / 4 词典 / 66-66 令牌 / 4 离线 / 430 浏览器 / axe 0 violations）对代码与脚本仍然有效",
+  "codeOrScriptChanges": [
+    "check-copy.cjs",
+    "evidence/copy-length.json"
+  ],
+  "reusedEvidence": "浏览器 430 项与离线 4 项沿用 e0b4b4f 干净检出结果（原型代码自那时起未变）",
   "rechecked": {
     "check-model.cjs": "69 model assertions passed",
-    "check-copy.cjs": "4 copy contract checks passed (155 keys)",
+    "check-copy.cjs": "4 copy contract checks passed (155 keys); length report written",
     "check-tokens.py": "66/66 referenced tokens resolve"
   },
-  "conclusion": "文档更正不改变可执行行为；代码级证据沿用上一轮干净检出，模型/词典/令牌检查已在本轮重跑"
+  "conclusion": "仅测试脚本与文档变更；原型行为未变，代码级证据沿用上一轮干净检出，三项脚本本轮重跑通过"
 }
