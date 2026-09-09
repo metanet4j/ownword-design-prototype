@@ -71,6 +71,23 @@ PRD v0.1 没有该界面。它落实的是核心认知第 11.8 条「交易已�
 | 浏览器 `Chain record shows block height and confirmation state` | 两态文案存在 |
 | 浏览器 `Publication TxID copy works` | 复制完整 TxID |
 
+## 生产替换契约的依据
+
+[implementation-handoff.md](implementation-handoff.md) 的每项替换声明都指向可查的依据，不凭印象书写：
+
+| 声明 | 依据 |
+| --- | --- |
+| 连接、断开、状态、`identityKey` | `reference/yours-wallet-main/yours-wallet-main/docs/provider-api.md`「Connection」「useWallet Hook」 |
+| 动作调用前需 `createContext(wallet, {chain, services})` | 同文件「Context & Action Pattern」 |
+| 解析身份用 `getProfile`（返回 `{bapId?, profile?, error?}`） | 同文件「Identity (BAP) · Get Profile」 |
+| 建身份 / 改资料用 `publishIdentity` / `updateProfile` | 同文件「Identity (BAP)」 |
+| `signWithBAP` 只属于内容 Inscription，不是身份签名入口 | 同文件「Ordinals · Inscribe」 |
+| 头像、默认主题、断开范围、无分享 URL、无 Key Rotation | 产品设计 v0.1 第 9 节裁决 |
+| 复制完整原值、账户切换取消敏感操作、偏好不改变链上标识 | 核心认知第 11 节第 6/10/11 条 |
+| 交易确认状态归一化未关闭 | 核心认知第 12 节第 3 项 |
+
+2026-09-09 复核时更正了一处错误：早期把 `signWithBAP` 写为身份发布的签名替换点，实际它只用于内容 Inscription；身份发布/更新由 `publishIdentity`、`updateProfile` 完成。
+
 ## 核心认知可验证验收映射（v0.1 范围内）
 
 [核心认知](../../_task/system-design/spec/核心认知.md)第 11 节共 12 条，其中 4 条落在 v0.1 原型范围；其余属 Content、Artifact、Relationship 或 Binding，本版无对应界面。

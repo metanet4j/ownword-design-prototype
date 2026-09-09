@@ -72,9 +72,9 @@
 
 | 原型行为 | 生产替换 | 输入 / 输出 | 验收 |
 | --- | --- | --- | --- |
-| 钱包确认弹窗：Approve / Cancel / Simulate failure（`app.jsx` 的 `confirmConnection`、`approveOperation`） | Yours Wallet Provider（`@1sat/react` 的 `WalletProvider`：`connect`、`disconnect`、`status`、`identityKey`；`signWithBAP`）。参考 `reference/yours-wallet-main/.../docs/provider-api.md` | 输入：用户手势与待签内容；输出：连接状态、`identityKey`、签名结果；取消 = 用户拒绝签名；失败 = provider 抛错 | PRD 5.1、5.2 |
-| 身份解析：850ms 计时器 + 场景选择 | 按 `identityKey` 查询已发布 BAP 身份与 profile（Indexer / 1sat-stack） | 输入：`identityKey`；输出：`{exists, profile, published, incomplete}` 或解析失败 | PRD 5.3 |
-| 创建/更新：`PROCESS` → 1500ms → `RESULT` | BAP 签名 + 广播交易，返回 TxID | 输入：profile 字段 + `identityKey`；输出：TxID 或失败原因 | PRD 5.4、5.6；核心认知 11.7 |
+| 钱包确认弹窗：Approve / Cancel / Simulate failure（`app.jsx` 的 `confirmConnection`、`approveOperation`） | `@1sat/react`：`WalletProvider` 包裹应用并自动发现 BRC-100 钱包，`useWallet()` 提供 `wallet`、`status`（`disconnected`/`detecting`/`selecting`/`connecting`/`connected`）、`providerType`、`identityKey`、`connect()`、`disconnect()` | 输入：用户手势；输出：连接状态与 `identityKey`；取消 = 用户拒绝或关闭钱包请求；失败 = `connect()` 抛错或 `status` 未达 `connected` | PRD 5.1、5.2；依据 provider-api.md「Connection」「Context & Action Pattern」 |
+| 身份解析：850ms 计时器 + 场景选择 | `@1sat/actions` 的 `getProfile.execute(ctx, {})` → `{bapId?, profile?, error?}`；`ctx` 由 `createContext(wallet, {chain, services})` 建立，`services` 来自 `@1sat/client` 的 `OneSatServices` | 输入：钱包上下文；输出：`bapId` 与 `profile`，或 `error` | PRD 5.3；依据 provider-api.md「Identity (BAP)」「Context & Action Pattern」 |
+| 创建/更新：`PROCESS` → 1500ms → `RESULT` | `publishIdentity.execute(ctx, {})` 建初始 BAP ID；`updateProfile.execute(ctx, {profile})` 更新资料（文档注明未发布时会自动发布）。签名由动作内部完成 | 输入：`profile` 字段与钱包上下文；输出：发布结果或 `error` | PRD 5.4、5.6；核心认知 11.7；依据 provider-api.md「Identity (BAP)」 |
 | 公开身份卡背面的「链上记录」：`transaction` fixture（区块高度、确认状态、TxID） | 交易查询结果 → `{state: 'pending'\|'confirmed', txid: string\|null, blockHeight: number\|null}`。生产按核心认知第 12 节第 3 项归一化（SEEN / ACCEPTED / MINED / IMMUTABLE），原型只呈现 pending / confirmed 两态 | 输入：交易查询结果；输出：区块高度、确认状态与 TxID | 核心认知 11.8、12.3 |
 | 头像：本地 blob URL 预览，无上传 | 维持本地预览。v0.1 第 9 节第 1 项裁决为「支持本地、暂不支持 URL」 | 输入：用户选择的图片文件；输出：预览或格式错误提示 | PRD 5.4、第 9 节裁决 |
 | 复制：Clipboard API + `Copied` / `Couldn't copy` 反馈 | 同一 API；必须复制完整原值 | 输入：可见的缩略 BAP ID；输出：剪贴板完整值 + 不改布局的反馈 | PRD 5.5；核心认知 11.6 |
@@ -83,6 +83,10 @@
 | 演示面板：页脚 `Interactive prototype`（场景选择、复制失败开关、重置） | 生产删除，只保留在测试构建 | — | 禁止进入生产 |
 | 人为延时 850ms / 1500ms | 真实网络延迟 | — | 保留加载状态与可取消性，不保留延时 |
 | 内存态：刷新清空会话 | 需定义会话恢复策略（本版未规定，属实现决策） | — | 待实现方决策 |
+
+### 3.0.1 签名入口的边界（据参考文档核实）
+
+`signWithBAP` **不是**身份发布的签名入口——它是 `@1sat/actions` 的 `inscribe.execute(ctx, {...})` 上的一个可选字段，用于内容 Inscription 的 BAP 签名。身份发布、资料更新、Key Rotation 分别由 `publishIdentity`、`updateProfile`、`rotateIdentity` 完成，签名在这些动作内部处理。本文早期版本把 `signWithBAP` 列为身份签名替换点是错的，已按 `reference/yours-wallet-main/yours-wallet-main/docs/provider-api.md` 更正。
 
 ## 3.1 小屏弹窗（实测）
 
