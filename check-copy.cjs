@@ -47,4 +47,23 @@ results.push('no duplicated long sentences');
 
 writeFileSync(join(__dirname, 'evidence', 'copy-contract.json'),
   JSON.stringify({passed: results.length, checks: results, keys: en.length}, null, 2));
+
+// Copy-length audit: informational, not a gate. It ranks the longest strings so
+// a rewrite decision can start from data instead of impressions.
+const lengths = en.map(key => ({
+  key,
+  en: copy.en[key],
+  zh: copy.zh[key],
+  enLength: copy.en[key].length,
+  zhLength: copy.zh[key].length
+})).sort((a, b) => b.enLength - a.enLength);
+const LONG_EN = 100;
+const LONG_ZH = 40;
+const long = lengths.filter(item => item.enLength > LONG_EN || item.zhLength > LONG_ZH);
+writeFileSync(join(__dirname, 'evidence', 'copy-length.json'),
+  JSON.stringify({thresholds: {en: LONG_EN, zh: LONG_ZH}, longCount: long.length, longest: lengths.slice(0, 20), long}, null, 2));
 console.log(`${results.length} copy contract checks passed (${en.length} keys)`);
+console.log(`${long.length} strings exceed the length thresholds (en > ${LONG_EN} or zh > ${LONG_ZH} chars)`);
+for (const item of long.slice(0, 10)) {
+  console.log(`  ${item.enLength}/${item.zhLength}  ${item.key}: ${item.en.slice(0, 70)}${item.en.length > 70 ? '…' : ''}`);
+}

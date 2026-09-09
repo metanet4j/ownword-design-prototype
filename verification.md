@@ -71,6 +71,16 @@ PRD v0.1 没有该界面。它落实的是核心认知第 11.8 条「交易已�
 | 浏览器 `Chain record shows block height and confirmation state` | 两态文案存在 |
 | 浏览器 `Publication TxID copy works` | 复制完整 TxID |
 
+## 文案长度审计（2026-09-09）
+
+`check-copy.cjs` 额外输出长度排名到 `evidence/copy-length.json`（信息性，不作门禁）。155 条键里：
+
+- 英文超过 100 字符的只有 2 条：`simulatorHint`（115，演示面板专用，生产删除）、`connectBody`（104，钱包确认正文）。
+- 超过 80 字符的共 8 条，集中在错误与空状态正文（`connectFailedBody`、`completeBody`、`discardBody`、`resolveFailedBody`、`processingBody`、`welcomeBody`）。
+- 同一键的中文普遍只有英文的 1/3～1/4（如 115/32、104/24），长度压力只在英文侧。
+
+据此，文案精简的数据结论是：**值得改的是这 8～10 条长正文**（错误、空状态、确认弹窗），短标签无需重写；全站重写缺乏数据支撑。
+
 ## 生产替换契约的依据
 
 [implementation-handoff.md](implementation-handoff.md) 的每项替换声明都指向可查的依据，不凭印象书写：

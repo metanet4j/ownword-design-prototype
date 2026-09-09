@@ -1,0 +1,165 @@
+{
+  "thresholds": {
+    "en": 100,
+    "zh": 40
+  },
+  "longCount": 2,
+  "longest": [
+    {
+      "key": "simulatorHint",
+      "en": "Choose a scenario, then connect or resolve again. Wallet confirmations let you approve, cancel or simulate failure.",
+      "zh": "选择场景后连接或重新解析。钱包确认窗口支持批准、取消和模拟失败。",
+      "enLength": 115,
+      "zhLength": 32
+    },
+    {
+      "key": "connectBody",
+      "en": "Allow this application to see your current wallet identity. Publishing requires a separate confirmation.",
+      "zh": "允许应用查看当前钱包身份。发布操作需要另行确认。",
+      "enLength": 104,
+      "zhLength": 24
+    },
+    {
+      "key": "processingBody",
+      "en": "Waiting for the operation to finish. You can disconnect or switch account to cancel this operation.",
+      "zh": "正在等待操作完成。断开连接或切换账户可取消此操作。",
+      "enLength": 99,
+      "zhLength": 25
+    },
+    {
+      "key": "welcomeBody",
+      "en": "Begin with your wallet. Create an identity you control, and give your words a lasting home.",
+      "zh": "从钱包开始，创建由你掌控的身份，让你的话语有一个长久的归属。",
+      "enLength": 91,
+      "zhLength": 30
+    },
+    {
+      "key": "connectFailedBody",
+      "en": "The wallet connection could not be completed. Your identity is unchanged. Try again.",
+      "zh": "无法完成钱包连接，身份未改变。请重试。",
+      "enLength": 84,
+      "zhLength": 19
+    },
+    {
+      "key": "completeBody",
+      "en": "Your identity is already published. Add the missing profile information to continue.",
+      "zh": "你的身份已发布。请补全资料后继续。",
+      "enLength": 84,
+      "zhLength": 17
+    },
+    {
+      "key": "discardBody",
+      "en": "Your changes have not been saved. Keep editing, or discard them to leave this page.",
+      "zh": "修改尚未保存。可继续编辑，或放弃修改后离开。",
+      "enLength": 83,
+      "zhLength": 22
+    },
+    {
+      "key": "resolveFailedBody",
+      "en": "Your wallet is connected, but the identity lookup failed. Try again or disconnect.",
+      "zh": "钱包已连接，但身份查询失败。请重试或断开连接。",
+      "enLength": 82,
+      "zhLength": 23
+    },
+    {
+      "key": "saveImpact",
+      "en": "Your updated profile will become public. Your BAP ID will not change.",
+      "zh": "更新后的资料将公开发布，BAP ID 保持不变。",
+      "enLength": 69,
+      "zhLength": 24
+    },
+    {
+      "key": "retained",
+      "en": "Your editing values are kept. Review them and try again when ready.",
+      "zh": "已保留填写内容。核对后可重新尝试。",
+      "enLength": 67,
+      "zhLength": 17
+    },
+    {
+      "key": "simulatorNote",
+      "en": "Demo only. No wallet connection, signature or transaction is sent.",
+      "zh": "仅作演示。不会连接钱包、签名或发送交易。",
+      "enLength": 66,
+      "zhLength": 20
+    },
+    {
+      "key": "missingBody",
+      "en": "No supported wallet was found. Open Yours Wallet, then try again.",
+      "zh": "未发现支持的钱包。请打开 Yours Wallet 后重试。",
+      "enLength": 65,
+      "zhLength": 30
+    },
+    {
+      "key": "operationFailedBody",
+      "en": "The operation did not complete. Your values are kept. Try again.",
+      "zh": "操作未完成，已保留填写内容。请重试。",
+      "enLength": 64,
+      "zhLength": 18
+    },
+    {
+      "key": "readyBody",
+      "en": "You now have a place to stand. Your wallet remains in control.",
+      "zh": "现在，你有了自己的坐标。钱包始终由你掌控。",
+      "enLength": 62,
+      "zhLength": 21
+    },
+    {
+      "key": "resolvingBody",
+      "en": "Checking whether your wallet has a published identity.",
+      "zh": "正在查询当前钱包是否已有公开身份。",
+      "enLength": 54,
+      "zhLength": 17
+    },
+    {
+      "key": "reviewBody",
+      "en": "Review the details before confirming in your wallet.",
+      "zh": "核对资料后，在钱包中确认。",
+      "enLength": 52,
+      "zhLength": 13
+    },
+    {
+      "key": "accountChanged",
+      "en": "Account changed. Pending operations were cancelled.",
+      "zh": "账户已切换，进行中的操作已取消。",
+      "enLength": 51,
+      "zhLength": 16
+    },
+    {
+      "key": "editBody",
+      "en": "Update how you appear. Your BAP ID stays the same.",
+      "zh": "更新展示资料，BAP ID 保持不变。",
+      "enLength": 50,
+      "zhLength": 19
+    },
+    {
+      "key": "welcomeIntro",
+      "en": "A place to stand. A voice that belongs to you.",
+      "zh": "立于自己的坐标，发出自己的声音。",
+      "enLength": 46,
+      "zhLength": 16
+    },
+    {
+      "key": "setupBody",
+      "en": "Choose how your identity appears to the world.",
+      "zh": "选择你向世界展示自己的方式。",
+      "enLength": 46,
+      "zhLength": 14
+    }
+  ],
+  "long": [
+    {
+      "key": "simulatorHint",
+      "en": "Choose a scenario, then connect or resolve again. Wallet confirmations let you approve, cancel or simulate failure.",
+      "zh": "选择场景后连接或重新解析。钱包确认窗口支持批准、取消和模拟失败。",
+      "enLength": 115,
+      "zhLength": 32
+    },
+    {
+      "key": "connectBody",
+      "en": "Allow this application to see your current wallet identity. Publishing requires a separate confirmation.",
+      "zh": "允许应用查看当前钱包身份。发布操作需要另行确认。",
+      "enLength": 104,
+      "zhLength": 24
+    }
+  ]
+}
