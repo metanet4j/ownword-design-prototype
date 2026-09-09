@@ -51,7 +51,7 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 | 5.9 切换深色 | 浏览器 `Dark theme applies different semantic surface tokens`、`Preferences persist after refresh` |
 | 5.9 切换浅色 | 8 屏 `en light and dark layouts match`（动画定格到 t=0 后逐元素比对矩形，深浅主题布局零位移） |
 | 5.9 状态可理解 | 浏览器 `Status states carry text, not colour alone` |
-| 5.10 320px 视口 | 各屏 `320/390/768/960px no page overflow`、`controls fit`、`320px touch targets`、`320px BAP ID in first viewport` |
+| 5.10 320px 视口 | 各屏 `320/390/768/960px no page overflow`、`controls fit`、`no element overflows its container`、`320px touch targets`、`320px BAP ID in first viewport`、`Dialog primary actions stay inside a 320px viewport` |
 | 5.10 键盘导航 | 各屏 axe 审计 0 violations；`5 keyboard stops show a visible focus ring`、`Skip link becomes visible when focused`、`Skip link moves focus into the main landmark`、`Wallet dialog moves focus inside`、`Closing the dialog returns focus to its trigger`、`Keyboard plays sky lines`、`Icon buttons expose accessible names`、`Reduced motion stops automatic 3D rotation` |
 
 第 9 节裁决对应：头像本地选择预览（`Choose image` 与格式错误反馈）、默认 Light（`First visit English and Light`）、断开仅当前会话（`Disconnect` 流程）、无分享 URL（Public Identity 无分享入口）、无 Key Rotation（无该入口）。
@@ -122,6 +122,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 - 偏好面板：点外点击、Escape（焦点回归触发按钮）、Tab 移出三种方式均可关闭；补 `aria-controls`。
 - 确认类提示 6 秒后自动消失，悬停或聚焦时暂停；`Failed` 类错误常驻不消失（`role="status"` 需要足够阅读时间）。
 - 320×800 实测：钱包确认弹窗内容高于视口、弹窗内可滚动，**主操作 Cancel/Approve 首屏可见**，原型专用的模拟行需滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖。
+- **容器溢出量测（批 2-a）**：新增 `CONTAINER_OVERFLOW` 探针——文本与控件不得超出父元素内容盒，每屏每组合（8 屏 × 4 组合）各一条断言，共 32 条。首轮量测命中 4 处，全部位于公开身份卡内且随旋转角度变化（角度 90° 起投影超出、180° 达 51px），判定为 3D 变换投影伪影而非布局缺陷；探针排除 `.identity-object` 子树（该卡由视口溢出断言覆盖），复测 0 处。量测记录 `evidence/layout-measurements.json`。
 - 测试脚本加固：点击前先 `scrollIntoView`（`behavior:"instant"`，避免 `scroll-behavior: smooth` 造成坐标漂移）；布局签名改用绝对坐标（与滚动无关）。
 
 观测层加固（2026-09-09）：
@@ -138,7 +139,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：62 条状态断言、389 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：62 条状态断言、421 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

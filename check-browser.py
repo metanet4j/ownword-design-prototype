@@ -123,6 +123,20 @@ def pref(locale='en', theme='light'):
     settle()
 
 WIDTHS = (320, 390, 768, 960)
+# Container-overflow probe: text and controls must stay inside their parent's
+# content box. Descendants of the 3D card are skipped: their projected rects
+# change with the viewing angle, which is a transform artefact, not a layout
+# defect (the card is covered by the viewport-overflow check instead). OWNWORD_MEASURE=1 records findings instead of asserting, so the
+# audit can be triaged before it becomes a gate.
+MEASURE = os.environ.get('OWNWORD_MEASURE') == '1'
+layout_findings = []
+CONTAINER_OVERFLOW = '''(()=>{const out=[];const els=document.querySelectorAll('main button, main input:not([hidden]), main textarea, main h1, main h2, main h3, main p, main code, main .identifier');
+for(const e of els){if(e.closest('.identity-object'))continue;const r=e.getBoundingClientRect();if(!r.width)continue;const p=e.parentElement;if(!p)continue;
+const cs=getComputedStyle(p);const pr=p.getBoundingClientRect();
+const padL=parseFloat(cs.paddingLeft)||0,padR=parseFloat(cs.paddingRight)||0;
+const overRight=r.right-(pr.right-padR),overLeft=(pr.left+padL)-r.left;
+if(overRight>1.5||overLeft>1.5){out.push({sel:e.tagName.toLowerCase()+(e.className?'.'+String(e.className).split(' ').slice(0,2).join('.'):''),text:(e.textContent||'').trim().slice(0,40),overRight:Math.round(overRight),overLeft:Math.round(overLeft),width:Math.round(r.width),parent:p.tagName.toLowerCase()+(p.className?'.'+String(p.className).split(' ').slice(0,2).join('.'):'')});}}
+return out})()'''
 
 def freeze_animations():
     """Pin every running animation to t=0 so layout signatures are deterministic."""
@@ -142,11 +156,19 @@ def inspect(label, matrix=False):
     light_layout = None
     for locale, theme in combinations:
         pref(locale, theme)
+        combo_findings = []
         for width in WIDTHS:
             call('set', 'viewport', width, 800)
             settle()
             expect('document.documentElement.scrollWidth <= innerWidth', f'{label} {locale}/{theme} {width}px no page overflow')
             expect('Array.from(document.querySelectorAll("main button, main input:not([hidden]), main textarea")).filter(e=>e.getBoundingClientRect().width).every(e=>{const r=e.getBoundingClientRect();return r.left>=-1&&r.right<=innerWidth+1})', f'{label} {locale}/{theme} {width}px controls fit')
+            combo_findings.extend({**(item), 'width': width} for item in (js(CONTAINER_OVERFLOW) or []))
+        if MEASURE:
+            layout_findings.extend({**item, 'screen': label, 'locale': locale, 'theme': theme} for item in combo_findings)
+        else:
+            assert not combo_findings, f'{label} {locale}/{theme} container overflow: {combo_findings[:3]}'
+            results.append(f'{label} {locale}/{theme} no element overflows its container')
+            print(f'PASS {label} {locale}/{theme} no element overflows its container', flush=True)
         if locale == 'en':
             call('set', 'viewport', 390, 800); settle()
             signature = layout_signature()
@@ -356,6 +378,9 @@ try:
     assert not errors.strip(), errors
     (EVIDENCE / 'browser-console.txt').write_text(call('console'), encoding='utf-8')
     (EVIDENCE / 'axe-incomplete-summary.json').write_text(json.dumps(incomplete_audit, ensure_ascii=False, indent=2), encoding='utf-8')
+    if MEASURE:
+        (EVIDENCE / 'layout-measurements.json').write_text(json.dumps(layout_findings, ensure_ascii=False, indent=2), encoding='utf-8')
+        print(f'{len(layout_findings)} container-overflow findings recorded', flush=True)
     print(f'{len(results)} browser checks passed; {len(incomplete_audit)} axe incomplete recorded', flush=True)
 finally:
     (EVIDENCE / 'browser-results.json').write_text(json.dumps({'passed': len(results), 'checks': results, 'axeIncomplete': incomplete_audit}, ensure_ascii=False, indent=2), encoding='utf-8')
