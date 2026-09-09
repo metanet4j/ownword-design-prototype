@@ -1,14 +1,17 @@
 {
-  "method": "git archive HEAD 解压到 /tmp/astra-clean5（无工作区残留），用独立端口 4317 服务，依次运行全部检查脚本",
-  "commit": "6d73ac5c3a2eb0a80cdf055723ece268deae352a",
-  "trackedFiles": 1153,
-  "server": "python3 -m http.server 4317 --bind 127.0.0.1 --directory /tmp/astra-clean5",
-  "results": {
+  "method": "本轮仅改动文档（implementation-handoff.md、verification.md），脚本与原型代码未变",
+  "commit": "4cb61e5b603697c6e3909a3a35dd2cbc218ba832",
+  "previousVerification": "e0b4b4f",
+  "changedFiles": [
+    "implementation-handoff.md",
+    "verification.md"
+  ],
+  "codeOrScriptChanges": [],
+  "reusedEvidence": "e0b4b4f 的干净检出结果（69 模型 / 4 词典 / 66-66 令牌 / 4 离线 / 430 浏览器 / axe 0 violations）对代码与脚本仍然有效",
+  "rechecked": {
     "check-model.cjs": "69 model assertions passed",
     "check-copy.cjs": "4 copy contract checks passed (155 keys)",
-    "check-tokens.py": "66/66 referenced tokens resolve",
-    "check-offline.py": "4 offline startup checks passed (all external domains blocked)",
-    "check-browser.py": "430 browser checks passed; 29 axe incomplete recorded; axe 0 violations (32 page + 3 dialog audits)"
+    "check-tokens.py": "66/66 referenced tokens resolve"
   },
-  "conclusion": "已提交的树自包含：不依赖未跟踪文件、浏览器缓存或工作区外资源，五个脚本在干净检出上得到与工作区完全一致的结果"
+  "conclusion": "文档更正不改变可执行行为；代码级证据沿用上一轮干净检出，模型/词典/令牌检查已在本轮重跑"
 }
