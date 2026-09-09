@@ -12,8 +12,15 @@
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
       "id": "color-contrast",
       "impact": "serious",
-      "nodeCount": 1,
+      "nodeCount": 2,
       "nodes": [
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+          "html": "<p>Choose how your identity appears to the world.</p>",
+          "target": [
+            ".page-heading > p:nth-child(3)"
+          ]
+        },
         {
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
           "html": "<span role=\"img\" aria-label=\"Maya Chen\">MC</span>",
@@ -40,7 +47,7 @@
     "effectiveLaunch": {
       "browserLaunched": true,
       "engine": "chrome",
-      "launchHash": 12798390076057945372
+      "launchHash": 1274995755638644409
     },
     "launched": false,
     "relaunchedBrowser": false,
@@ -49,6 +56,6 @@
     "reused": true,
     "saveStatus": "not_attempted"
   },
-  "url": "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html",
+  "url": "http://127.0.0.1:4312/own-word-prototype-s2-astra-001/index.html",
   "violations": []
 }

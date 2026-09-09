@@ -1,0 +1,338 @@
+[
+  {
+    "screen": "welcome en/light",
+    "rule": "color-contrast",
+    "nodes": 3,
+    "targets": [
+      ".eyebrow",
+      ".horizon > span",
+      ".welcome-intro"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "welcome en/dark",
+    "rule": "color-contrast",
+    "nodes": 3,
+    "targets": [
+      ".eyebrow",
+      ".horizon > span",
+      ".welcome-intro"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "welcome zh/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      ".horizon > span"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "welcome zh/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      ".horizon > span"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "resolve-error en/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "p:nth-child(3)"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements"
+    ]
+  },
+  {
+    "screen": "resolve-error en/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "p:nth-child(3)"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements"
+    ]
+  },
+  {
+    "screen": "setup en/light",
+    "rule": "color-contrast",
+    "nodes": 2,
+    "targets": [
+      ".page-heading > p:nth-child(3)",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "setup en/dark",
+    "rule": "color-contrast",
+    "nodes": 2,
+    "targets": [
+      ".page-heading > p:nth-child(3)",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "setup zh/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "setup zh/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "review en/light",
+    "rule": "color-contrast",
+    "nodes": 2,
+    "targets": [
+      ".page-heading > p:nth-child(3)",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "review en/dark",
+    "rule": "color-contrast",
+    "nodes": 2,
+    "targets": [
+      ".page-heading > p:nth-child(3)",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "review zh/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "review zh/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "identity en/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "identity en/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "identity zh/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "identity zh/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "public en/light",
+    "rule": "color-contrast",
+    "nodes": 10,
+    "targets": [
+      ".bio",
+      ".plate-foot > span:nth-child(1)",
+      ".plate-foot > span:nth-child(2)",
+      ".plate-id > code",
+      ".plate-id > span",
+      ".plate-top > .eyebrow",
+      ".profile-type",
+      ".wordmark-small",
+      "h2",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "public en/dark",
+    "rule": "color-contrast",
+    "nodes": 10,
+    "targets": [
+      ".bio",
+      ".plate-foot > span:nth-child(1)",
+      ".plate-foot > span:nth-child(2)",
+      ".plate-id > code",
+      ".plate-id > span",
+      ".plate-top > .eyebrow",
+      ".profile-type",
+      ".wordmark-small",
+      "h2",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "public zh/light",
+    "rule": "color-contrast",
+    "nodes": 10,
+    "targets": [
+      ".bio",
+      ".plate-foot > span:nth-child(1)",
+      ".plate-foot > span:nth-child(2)",
+      ".plate-id > code",
+      ".plate-id > span",
+      ".plate-top > .eyebrow",
+      ".profile-type",
+      ".wordmark-small",
+      "h2",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "public zh/dark",
+    "rule": "color-contrast",
+    "nodes": 10,
+    "targets": [
+      ".bio",
+      ".plate-foot > span:nth-child(1)",
+      ".plate-foot > span:nth-child(2)",
+      ".plate-id > code",
+      ".plate-id > span",
+      ".plate-top > .eyebrow",
+      ".profile-type",
+      ".wordmark-small",
+      "h2",
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "edit en/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "edit en/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "edit zh/light",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "edit zh/dark",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  }
+]

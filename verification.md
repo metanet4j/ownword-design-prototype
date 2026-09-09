@@ -35,18 +35,26 @@
 
 ## 复现与观测
 
-在工作区根目录运行：
+在工作区根目录启动静态服务（Linux / macOS / Windows 通用，端口可换）：
 
-```powershell
-python -m http.server 4311 --bind 127.0.0.1 --directory C:\haodev\ownword\designs
+```bash
+python3 -m http.server 4311 --bind 127.0.0.1 --directory ownword/designs
 ```
 
-访问 [原型](http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html)。在本项目目录运行：
+访问 [原型](http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html)。先确认服务的就是当前工作区文件，否则检查脚本会验到别的版本：
 
-```powershell
+```bash
+curl -s "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html" | diff - index.html && echo LIVE
+```
+
+不一致说明该端口上跑的是快照或另一份拷贝，换端口（例如 4312）后重跑。在本项目目录运行：
+
+```bash
 node check-model.cjs
-python check-browser.py
+OWNWORD_PORT=4312 python3 check-browser.py
 ```
+
+`check-browser.py` 用 `OWNWORD_URL`（整条 URL，优先）或 `OWNWORD_PORT`（默认 4311）指向实时服务。
 
 浏览器检查使用宿主环境的独立 agent-browser 会话。`evidence/browser-results.json` 记录逐项结果；`evidence/*-axe.json` 是各页面审计；`evidence/*-320.png` 和 `*-desktop.png` 为截图。控制台日志使用 `[Ownword prototype]` 前缀，不记录填写内容；输出保存到 `evidence/browser-console.txt`。HTTP 访问日志在启动服务的终端；交付时保存本次记录到 `evidence/http-access.log`。不连接数据库、后端、真实 Wallet 或 Indexer，因此不存在数据库连接串或真实交易证据。
 
@@ -62,9 +70,17 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 ## 本次复核
 
-已发现并修复：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
+观测层加固（2026-09-09）：
 
-最终结果：59 条状态断言、125 项浏览器检查、7 项交互补查通过。32 份 axe 审计无严重或致命违规；运行错误列表为空。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+- `check-browser.py` 的服务地址改为读 `OWNWORD_URL` / `OWNWORD_PORT`（默认 4311），避免误测同端口的快照服务。
+- 新增 `settle()`：测量与 axe 之前等待有限 CSS 过渡结束。按钮存在 150ms 的 `color/background/border` 过渡，切换语言或主题后立即审计会采到过渡中间色，曾误报 `ready zh/light` 对比度 4.17:1；稳定后实测为 `rgb(255,255,255)` 文字配 `rgb(59,99,251)` 背景，axe 0 violations。
+- 响应式矩阵由 320px 扩展为 320/390/768/960，另保留 1440 桌面截图。
+- axe 断言由“无严重/致命”收紧为 **0 violations**；incomplete 逐条记录屏幕、规则、目标与原因到 `evidence/axe-incomplete-summary.json`。
+- 新增显式断言：320px 下 BAP ID 首屏可见、图标按钮具备可访问名称、状态不以颜色单独表达。
+
+已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
+
+最终结果：59 条状态断言、360 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

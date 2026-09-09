@@ -1,62 +1,178 @@
 {
-  "passed": 125,
+  "passed": 360,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
     "Keyboard plays sky lines",
     "welcome en/light 320px no page overflow",
-    "welcome en/light controls fit and touch targets",
-    "welcome en/light axe no serious/critical violations",
+    "welcome en/light 320px controls fit",
+    "welcome en/light 390px no page overflow",
+    "welcome en/light 390px controls fit",
+    "welcome en/light 768px no page overflow",
+    "welcome en/light 768px controls fit",
+    "welcome en/light 960px no page overflow",
+    "welcome en/light 960px controls fit",
+    "welcome en/light 320px touch targets",
+    "welcome en/light axe 0 violations",
     "welcome en/dark 320px no page overflow",
-    "welcome en/dark controls fit and touch targets",
-    "welcome en/dark axe no serious/critical violations",
+    "welcome en/dark 320px controls fit",
+    "welcome en/dark 390px no page overflow",
+    "welcome en/dark 390px controls fit",
+    "welcome en/dark 768px no page overflow",
+    "welcome en/dark 768px controls fit",
+    "welcome en/dark 960px no page overflow",
+    "welcome en/dark 960px controls fit",
+    "welcome en/dark 320px touch targets",
+    "welcome en/dark axe 0 violations",
     "welcome zh/light 320px no page overflow",
-    "welcome zh/light controls fit and touch targets",
-    "welcome zh/light axe no serious/critical violations",
+    "welcome zh/light 320px controls fit",
+    "welcome zh/light 390px no page overflow",
+    "welcome zh/light 390px controls fit",
+    "welcome zh/light 768px no page overflow",
+    "welcome zh/light 768px controls fit",
+    "welcome zh/light 960px no page overflow",
+    "welcome zh/light 960px controls fit",
+    "welcome zh/light 320px touch targets",
+    "welcome zh/light axe 0 violations",
     "welcome zh/dark 320px no page overflow",
-    "welcome zh/dark controls fit and touch targets",
-    "welcome zh/dark axe no serious/critical violations",
+    "welcome zh/dark 320px controls fit",
+    "welcome zh/dark 390px no page overflow",
+    "welcome zh/dark 390px controls fit",
+    "welcome zh/dark 768px no page overflow",
+    "welcome zh/dark 768px controls fit",
+    "welcome zh/dark 960px no page overflow",
+    "welcome zh/dark 960px controls fit",
+    "welcome zh/dark 320px touch targets",
+    "welcome zh/dark axe 0 violations",
+    "welcome 1440px no page overflow",
     "Connection cancellation returns to welcome",
     "Connection failure provides retry",
     "resolve-error en/light 320px no page overflow",
-    "resolve-error en/light controls fit and touch targets",
-    "resolve-error en/light axe no serious/critical violations",
+    "resolve-error en/light 320px controls fit",
+    "resolve-error en/light 390px no page overflow",
+    "resolve-error en/light 390px controls fit",
+    "resolve-error en/light 768px no page overflow",
+    "resolve-error en/light 768px controls fit",
+    "resolve-error en/light 960px no page overflow",
+    "resolve-error en/light 960px controls fit",
+    "resolve-error en/light 320px touch targets",
+    "resolve-error en/light axe 0 violations",
     "resolve-error en/dark 320px no page overflow",
-    "resolve-error en/dark controls fit and touch targets",
-    "resolve-error en/dark axe no serious/critical violations",
+    "resolve-error en/dark 320px controls fit",
+    "resolve-error en/dark 390px no page overflow",
+    "resolve-error en/dark 390px controls fit",
+    "resolve-error en/dark 768px no page overflow",
+    "resolve-error en/dark 768px controls fit",
+    "resolve-error en/dark 960px no page overflow",
+    "resolve-error en/dark 960px controls fit",
+    "resolve-error en/dark 320px touch targets",
+    "resolve-error en/dark axe 0 violations",
     "resolve-error zh/light 320px no page overflow",
-    "resolve-error zh/light controls fit and touch targets",
-    "resolve-error zh/light axe no serious/critical violations",
+    "resolve-error zh/light 320px controls fit",
+    "resolve-error zh/light 390px no page overflow",
+    "resolve-error zh/light 390px controls fit",
+    "resolve-error zh/light 768px no page overflow",
+    "resolve-error zh/light 768px controls fit",
+    "resolve-error zh/light 960px no page overflow",
+    "resolve-error zh/light 960px controls fit",
+    "resolve-error zh/light 320px touch targets",
+    "resolve-error zh/light axe 0 violations",
     "resolve-error zh/dark 320px no page overflow",
-    "resolve-error zh/dark controls fit and touch targets",
-    "resolve-error zh/dark axe no serious/critical violations",
+    "resolve-error zh/dark 320px controls fit",
+    "resolve-error zh/dark 390px no page overflow",
+    "resolve-error zh/dark 390px controls fit",
+    "resolve-error zh/dark 768px no page overflow",
+    "resolve-error zh/dark 768px controls fit",
+    "resolve-error zh/dark 960px no page overflow",
+    "resolve-error zh/dark 960px controls fit",
+    "resolve-error zh/dark 320px touch targets",
+    "resolve-error zh/dark axe 0 violations",
+    "resolve-error 1440px no page overflow",
     "Invalid required name blocks Review",
     "Name maximum 100 enforced",
     "Bio maximum 1000 enforced",
     "setup en/light 320px no page overflow",
-    "setup en/light controls fit and touch targets",
-    "setup en/light axe no serious/critical violations",
+    "setup en/light 320px controls fit",
+    "setup en/light 390px no page overflow",
+    "setup en/light 390px controls fit",
+    "setup en/light 768px no page overflow",
+    "setup en/light 768px controls fit",
+    "setup en/light 960px no page overflow",
+    "setup en/light 960px controls fit",
+    "setup en/light 320px touch targets",
+    "setup en/light axe 0 violations",
     "setup en/dark 320px no page overflow",
-    "setup en/dark controls fit and touch targets",
-    "setup en/dark axe no serious/critical violations",
+    "setup en/dark 320px controls fit",
+    "setup en/dark 390px no page overflow",
+    "setup en/dark 390px controls fit",
+    "setup en/dark 768px no page overflow",
+    "setup en/dark 768px controls fit",
+    "setup en/dark 960px no page overflow",
+    "setup en/dark 960px controls fit",
+    "setup en/dark 320px touch targets",
+    "setup en/dark axe 0 violations",
     "setup zh/light 320px no page overflow",
-    "setup zh/light controls fit and touch targets",
-    "setup zh/light axe no serious/critical violations",
+    "setup zh/light 320px controls fit",
+    "setup zh/light 390px no page overflow",
+    "setup zh/light 390px controls fit",
+    "setup zh/light 768px no page overflow",
+    "setup zh/light 768px controls fit",
+    "setup zh/light 960px no page overflow",
+    "setup zh/light 960px controls fit",
+    "setup zh/light 320px touch targets",
+    "setup zh/light axe 0 violations",
     "setup zh/dark 320px no page overflow",
-    "setup zh/dark controls fit and touch targets",
-    "setup zh/dark axe no serious/critical violations",
+    "setup zh/dark 320px controls fit",
+    "setup zh/dark 390px no page overflow",
+    "setup zh/dark 390px controls fit",
+    "setup zh/dark 768px no page overflow",
+    "setup zh/dark 768px controls fit",
+    "setup zh/dark 960px no page overflow",
+    "setup zh/dark 960px controls fit",
+    "setup zh/dark 320px touch targets",
+    "setup zh/dark axe 0 violations",
+    "setup 1440px no page overflow",
     "review en/light 320px no page overflow",
-    "review en/light controls fit and touch targets",
-    "review en/light axe no serious/critical violations",
+    "review en/light 320px controls fit",
+    "review en/light 390px no page overflow",
+    "review en/light 390px controls fit",
+    "review en/light 768px no page overflow",
+    "review en/light 768px controls fit",
+    "review en/light 960px no page overflow",
+    "review en/light 960px controls fit",
+    "review en/light 320px touch targets",
+    "review en/light axe 0 violations",
     "review en/dark 320px no page overflow",
-    "review en/dark controls fit and touch targets",
-    "review en/dark axe no serious/critical violations",
+    "review en/dark 320px controls fit",
+    "review en/dark 390px no page overflow",
+    "review en/dark 390px controls fit",
+    "review en/dark 768px no page overflow",
+    "review en/dark 768px controls fit",
+    "review en/dark 960px no page overflow",
+    "review en/dark 960px controls fit",
+    "review en/dark 320px touch targets",
+    "review en/dark axe 0 violations",
     "review zh/light 320px no page overflow",
-    "review zh/light controls fit and touch targets",
-    "review zh/light axe no serious/critical violations",
+    "review zh/light 320px controls fit",
+    "review zh/light 390px no page overflow",
+    "review zh/light 390px controls fit",
+    "review zh/light 768px no page overflow",
+    "review zh/light 768px controls fit",
+    "review zh/light 960px no page overflow",
+    "review zh/light 960px controls fit",
+    "review zh/light 320px touch targets",
+    "review zh/light axe 0 violations",
     "review zh/dark 320px no page overflow",
-    "review zh/dark controls fit and touch targets",
-    "review zh/dark axe no serious/critical violations",
+    "review zh/dark 320px controls fit",
+    "review zh/dark 390px no page overflow",
+    "review zh/dark 390px controls fit",
+    "review zh/dark 768px no page overflow",
+    "review zh/dark 768px controls fit",
+    "review zh/dark 960px no page overflow",
+    "review zh/dark 960px controls fit",
+    "review zh/dark 320px touch targets",
+    "review zh/dark axe 0 violations",
+    "review 1440px no page overflow",
     "Copy success feedback",
     "Clipboard contains complete BAP ID",
     "Copy failure preserves identifier",
@@ -65,59 +181,178 @@
     "Creation failure retains review and retry",
     "Creation processing visible",
     "ready en/light 320px no page overflow",
-    "ready en/light controls fit and touch targets",
-    "ready en/light axe no serious/critical violations",
+    "ready en/light 320px controls fit",
+    "ready en/light 390px no page overflow",
+    "ready en/light 390px controls fit",
+    "ready en/light 768px no page overflow",
+    "ready en/light 768px controls fit",
+    "ready en/light 960px no page overflow",
+    "ready en/light 960px controls fit",
+    "ready en/light 320px touch targets",
+    "ready en/light axe 0 violations",
     "ready en/dark 320px no page overflow",
-    "ready en/dark controls fit and touch targets",
-    "ready en/dark axe no serious/critical violations",
+    "ready en/dark 320px controls fit",
+    "ready en/dark 390px no page overflow",
+    "ready en/dark 390px controls fit",
+    "ready en/dark 768px no page overflow",
+    "ready en/dark 768px controls fit",
+    "ready en/dark 960px no page overflow",
+    "ready en/dark 960px controls fit",
+    "ready en/dark 320px touch targets",
+    "ready en/dark axe 0 violations",
     "ready zh/light 320px no page overflow",
-    "ready zh/light controls fit and touch targets",
-    "ready zh/light axe no serious/critical violations",
+    "ready zh/light 320px controls fit",
+    "ready zh/light 390px no page overflow",
+    "ready zh/light 390px controls fit",
+    "ready zh/light 768px no page overflow",
+    "ready zh/light 768px controls fit",
+    "ready zh/light 960px no page overflow",
+    "ready zh/light 960px controls fit",
+    "ready zh/light 320px touch targets",
+    "ready zh/light axe 0 violations",
     "ready zh/dark 320px no page overflow",
-    "ready zh/dark controls fit and touch targets",
-    "ready zh/dark axe no serious/critical violations",
+    "ready zh/dark 320px controls fit",
+    "ready zh/dark 390px no page overflow",
+    "ready zh/dark 390px controls fit",
+    "ready zh/dark 768px no page overflow",
+    "ready zh/dark 768px controls fit",
+    "ready zh/dark 960px no page overflow",
+    "ready zh/dark 960px controls fit",
+    "ready zh/dark 320px touch targets",
+    "ready zh/dark axe 0 violations",
+    "ready 1440px no page overflow",
     "identity en/light 320px no page overflow",
-    "identity en/light controls fit and touch targets",
-    "identity en/light axe no serious/critical violations",
+    "identity en/light 320px controls fit",
+    "identity en/light 390px no page overflow",
+    "identity en/light 390px controls fit",
+    "identity en/light 768px no page overflow",
+    "identity en/light 768px controls fit",
+    "identity en/light 960px no page overflow",
+    "identity en/light 960px controls fit",
+    "identity en/light 320px touch targets",
+    "identity en/light axe 0 violations",
     "identity en/dark 320px no page overflow",
-    "identity en/dark controls fit and touch targets",
-    "identity en/dark axe no serious/critical violations",
+    "identity en/dark 320px controls fit",
+    "identity en/dark 390px no page overflow",
+    "identity en/dark 390px controls fit",
+    "identity en/dark 768px no page overflow",
+    "identity en/dark 768px controls fit",
+    "identity en/dark 960px no page overflow",
+    "identity en/dark 960px controls fit",
+    "identity en/dark 320px touch targets",
+    "identity en/dark axe 0 violations",
     "identity zh/light 320px no page overflow",
-    "identity zh/light controls fit and touch targets",
-    "identity zh/light axe no serious/critical violations",
+    "identity zh/light 320px controls fit",
+    "identity zh/light 390px no page overflow",
+    "identity zh/light 390px controls fit",
+    "identity zh/light 768px no page overflow",
+    "identity zh/light 768px controls fit",
+    "identity zh/light 960px no page overflow",
+    "identity zh/light 960px controls fit",
+    "identity zh/light 320px touch targets",
+    "identity zh/light axe 0 violations",
     "identity zh/dark 320px no page overflow",
-    "identity zh/dark controls fit and touch targets",
-    "identity zh/dark axe no serious/critical violations",
+    "identity zh/dark 320px controls fit",
+    "identity zh/dark 390px no page overflow",
+    "identity zh/dark 390px controls fit",
+    "identity zh/dark 768px no page overflow",
+    "identity zh/dark 768px controls fit",
+    "identity zh/dark 960px no page overflow",
+    "identity zh/dark 960px controls fit",
+    "identity zh/dark 320px touch targets",
+    "identity zh/dark axe 0 violations",
+    "identity 1440px no page overflow",
     "Desktop BAP ID in first viewport",
+    "320px BAP ID in first viewport",
+    "Icon buttons expose accessible names",
+    "Status states carry text, not colour alone",
     "public en/light 320px no page overflow",
-    "public en/light controls fit and touch targets",
-    "public en/light axe no serious/critical violations",
+    "public en/light 320px controls fit",
+    "public en/light 390px no page overflow",
+    "public en/light 390px controls fit",
+    "public en/light 768px no page overflow",
+    "public en/light 768px controls fit",
+    "public en/light 960px no page overflow",
+    "public en/light 960px controls fit",
+    "public en/light 320px touch targets",
+    "public en/light axe 0 violations",
     "public en/dark 320px no page overflow",
-    "public en/dark controls fit and touch targets",
-    "public en/dark axe no serious/critical violations",
+    "public en/dark 320px controls fit",
+    "public en/dark 390px no page overflow",
+    "public en/dark 390px controls fit",
+    "public en/dark 768px no page overflow",
+    "public en/dark 768px controls fit",
+    "public en/dark 960px no page overflow",
+    "public en/dark 960px controls fit",
+    "public en/dark 320px touch targets",
+    "public en/dark axe 0 violations",
     "public zh/light 320px no page overflow",
-    "public zh/light controls fit and touch targets",
-    "public zh/light axe no serious/critical violations",
+    "public zh/light 320px controls fit",
+    "public zh/light 390px no page overflow",
+    "public zh/light 390px controls fit",
+    "public zh/light 768px no page overflow",
+    "public zh/light 768px controls fit",
+    "public zh/light 960px no page overflow",
+    "public zh/light 960px controls fit",
+    "public zh/light 320px touch targets",
+    "public zh/light axe 0 violations",
     "public zh/dark 320px no page overflow",
-    "public zh/dark controls fit and touch targets",
-    "public zh/dark axe no serious/critical violations",
+    "public zh/dark 320px controls fit",
+    "public zh/dark 390px no page overflow",
+    "public zh/dark 390px controls fit",
+    "public zh/dark 768px no page overflow",
+    "public zh/dark 768px controls fit",
+    "public zh/dark 960px no page overflow",
+    "public zh/dark 960px controls fit",
+    "public zh/dark 320px touch targets",
+    "public zh/dark axe 0 violations",
+    "public 1440px no page overflow",
     "Public Identity rotates",
     "3D viewing angle controllable",
     "Unsaved changes ask before leaving",
     "Keep editing preserves draft",
     "Save cancellation retains editing values on form",
     "edit en/light 320px no page overflow",
-    "edit en/light controls fit and touch targets",
-    "edit en/light axe no serious/critical violations",
+    "edit en/light 320px controls fit",
+    "edit en/light 390px no page overflow",
+    "edit en/light 390px controls fit",
+    "edit en/light 768px no page overflow",
+    "edit en/light 768px controls fit",
+    "edit en/light 960px no page overflow",
+    "edit en/light 960px controls fit",
+    "edit en/light 320px touch targets",
+    "edit en/light axe 0 violations",
     "edit en/dark 320px no page overflow",
-    "edit en/dark controls fit and touch targets",
-    "edit en/dark axe no serious/critical violations",
+    "edit en/dark 320px controls fit",
+    "edit en/dark 390px no page overflow",
+    "edit en/dark 390px controls fit",
+    "edit en/dark 768px no page overflow",
+    "edit en/dark 768px controls fit",
+    "edit en/dark 960px no page overflow",
+    "edit en/dark 960px controls fit",
+    "edit en/dark 320px touch targets",
+    "edit en/dark axe 0 violations",
     "edit zh/light 320px no page overflow",
-    "edit zh/light controls fit and touch targets",
-    "edit zh/light axe no serious/critical violations",
+    "edit zh/light 320px controls fit",
+    "edit zh/light 390px no page overflow",
+    "edit zh/light 390px controls fit",
+    "edit zh/light 768px no page overflow",
+    "edit zh/light 768px controls fit",
+    "edit zh/light 960px no page overflow",
+    "edit zh/light 960px controls fit",
+    "edit zh/light 320px touch targets",
+    "edit zh/light axe 0 violations",
     "edit zh/dark 320px no page overflow",
-    "edit zh/dark controls fit and touch targets",
-    "edit zh/dark axe no serious/critical violations",
+    "edit zh/dark 320px controls fit",
+    "edit zh/dark 390px no page overflow",
+    "edit zh/dark 390px controls fit",
+    "edit zh/dark 768px no page overflow",
+    "edit zh/dark 768px controls fit",
+    "edit zh/dark 960px no page overflow",
+    "edit zh/dark 960px controls fit",
+    "edit zh/dark 320px touch targets",
+    "edit zh/dark axe 0 violations",
+    "edit 1440px no page overflow",
     "Save updates My Identity",
     "Profile update keeps BAP ID",
     "Account switch cancels confirmation and clears old identity",
@@ -126,5 +361,343 @@
     "Locale and theme preserve profile and BAP ID",
     "Preferences persist after refresh",
     "Unavailable wallet explains recovery"
+  ],
+  "axeIncomplete": [
+    {
+      "screen": "welcome en/light",
+      "rule": "color-contrast",
+      "nodes": 3,
+      "targets": [
+        ".eyebrow",
+        ".horizon > span",
+        ".welcome-intro"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "welcome en/dark",
+      "rule": "color-contrast",
+      "nodes": 3,
+      "targets": [
+        ".eyebrow",
+        ".horizon > span",
+        ".welcome-intro"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "welcome zh/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "welcome zh/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "resolve-error en/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "p:nth-child(3)"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements"
+      ]
+    },
+    {
+      "screen": "resolve-error en/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "p:nth-child(3)"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements"
+      ]
+    },
+    {
+      "screen": "setup en/light",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".page-heading > p:nth-child(3)",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "setup en/dark",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".page-heading > p:nth-child(3)",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "setup zh/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "setup zh/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "review en/light",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".page-heading > p:nth-child(3)",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "review en/dark",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".page-heading > p:nth-child(3)",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "review zh/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "review zh/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "identity en/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "identity en/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "identity zh/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "identity zh/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "public en/light",
+      "rule": "color-contrast",
+      "nodes": 10,
+      "targets": [
+        ".bio",
+        ".plate-foot > span:nth-child(1)",
+        ".plate-foot > span:nth-child(2)",
+        ".plate-id > code",
+        ".plate-id > span",
+        ".plate-top > .eyebrow",
+        ".profile-type",
+        ".wordmark-small",
+        "h2",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "public en/dark",
+      "rule": "color-contrast",
+      "nodes": 10,
+      "targets": [
+        ".bio",
+        ".plate-foot > span:nth-child(1)",
+        ".plate-foot > span:nth-child(2)",
+        ".plate-id > code",
+        ".plate-id > span",
+        ".plate-top > .eyebrow",
+        ".profile-type",
+        ".wordmark-small",
+        "h2",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "public zh/light",
+      "rule": "color-contrast",
+      "nodes": 10,
+      "targets": [
+        ".bio",
+        ".plate-foot > span:nth-child(1)",
+        ".plate-foot > span:nth-child(2)",
+        ".plate-id > code",
+        ".plate-id > span",
+        ".plate-top > .eyebrow",
+        ".profile-type",
+        ".wordmark-small",
+        "h2",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "public zh/dark",
+      "rule": "color-contrast",
+      "nodes": 10,
+      "targets": [
+        ".bio",
+        ".plate-foot > span:nth-child(1)",
+        ".plate-foot > span:nth-child(2)",
+        ".plate-id > code",
+        ".plate-id > span",
+        ".plate-top > .eyebrow",
+        ".profile-type",
+        ".wordmark-small",
+        "h2",
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "edit en/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "edit en/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "edit zh/light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "edit zh/dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    }
   ]
 }
