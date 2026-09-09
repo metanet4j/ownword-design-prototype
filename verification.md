@@ -5,12 +5,13 @@
 - 唯一业务事实来源：[核心认知](../../_task/system-design/spec/核心认知.md)。本文件只记录实现映射、设计取舍与验证证据。
 - 版本范围与 BDD：[产品设计 v0.1](../../_task/system-design/spec/prd/v0.1/设计文档v0.1.md)，以第 9 节已填写裁决收窄前文范围。
 - 当前任务：[feature_list.json](../../_task/system-design/feature_list.json)，`design-astra-001`。
+- 实现交接：[implementation-handoff.md](implementation-handoff.md) 记录状态机契约、模拟点与生产替换清单；本文只记录验收映射与证据。
 - 设计来源：[React Spectrum S2](../react-spectrum-s2/readme.md)，独立导入到 [_ds/react-spectrum-s2](_ds/react-spectrum-s2)。资产索引见 [_d_meta.json](_d_meta.json)。
 - 未读取、复制或参考其他原型的代码、DOM、CSS、截图；未读取 draft。
 
 ## 实现
 
-`index.html` 按 Baoyu Design 导入结果加载 S2 的全部 CSS 依赖及组件 bundle。`components.jsx` 消费其 Button、TextField、TextArea，`app.jsx` 另用 StatusLight、Skeleton。组件源是本地视觉样件；适配层为其返回元素添加受控输入、ARIA、事件及表单提交。弹窗使用浏览器原生 dialog 管理焦点和 Escape，不修改源设计系统。
+`index.html` 按 Baoyu Design 导入结果加载 S2 的全部 CSS 依赖及组件 bundle。React、ReactDOM 与 Babel 从 `vendor/` 本地加载（同版本原文件，`integrity` 保留作校验，来源与哈希见 [vendor/README.md](vendor/README.md)），因此启动不依赖 CDN。`components.jsx` 消费其 Button、TextField、TextArea，`app.jsx` 另用 StatusLight、Skeleton。组件源是本地视觉样件；适配层为其返回元素添加受控输入、ARIA、事件及表单提交。弹窗使用浏览器原生 dialog 管理焦点和 Escape，不修改源设计系统。
 
 `app.css` 以 S2 的字体、颜色、语义表面、圆角与间距令牌构成视觉。穹顶由七条 CSS 椭圆线组成，点击空白处、触摸及键盘均可触发依次律动。铁灰地平线无刻度。Public Identity 使用有厚度的 CSS 3D 身份板，支持旋转、拖动、滑块与重置；尊重减少动态效果偏好。
 
@@ -52,9 +53,10 @@ curl -s "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html" | dif
 ```bash
 node check-model.cjs
 OWNWORD_PORT=4312 python3 check-browser.py
+OWNWORD_PORT=4312 python3 check-offline.py
 ```
 
-`check-browser.py` 用 `OWNWORD_URL`（整条 URL，优先）或 `OWNWORD_PORT`（默认 4311）指向实时服务。
+`check-browser.py` 用 `OWNWORD_URL`（整条 URL，优先）或 `OWNWORD_PORT`（默认 4311）指向实时服务。`check-offline.py` 用 `--allowed-domains 127.0.0.1,localhost` 阻断全部外部请求，验证启动只依赖本地资源（`evidence/offline-startup.json`）。
 
 浏览器检查使用宿主环境的独立 agent-browser 会话。`evidence/browser-results.json` 记录逐项结果；`evidence/*-axe.json` 是各页面审计；`evidence/*-320.png` 和 `*-desktop.png` 为截图。控制台日志使用 `[Ownword prototype]` 前缀，不记录填写内容；输出保存到 `evidence/browser-console.txt`。HTTP 访问日志在启动服务的终端；交付时保存本次记录到 `evidence/http-access.log`。不连接数据库、后端、真实 Wallet 或 Indexer，因此不存在数据库连接串或真实交易证据。
 

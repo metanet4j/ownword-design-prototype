@@ -1,0 +1,9 @@
+{
+  "passed": 4,
+  "checks": [
+    "All startup scripts load from the local origin",
+    "Welcome renders with external requests blocked",
+    "Boot placeholder replaced by the application",
+    "Babel compiles JSX offline and the flow reaches Setup"
+  ]
+}
