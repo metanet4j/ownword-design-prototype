@@ -122,6 +122,24 @@ def pref(locale='en', theme='light'):
     click_selector('.preferences > button')
     settle()
 
+def audit_dialog(label):
+    """Audit an open dialog: page-level axe misses modal states."""
+    settle()
+    a11y = call('a11y', json_result=True)
+    (EVIDENCE / f'dialog-{label}-axe.json').write_text(json.dumps(a11y, ensure_ascii=False, indent=2), encoding='utf-8')
+    assert not a11y['violations'], f'dialog {label}: {a11y["violations"]}'
+    for rule in a11y.get('incomplete', []):
+        nodes = rule.get('nodes', [])
+        incomplete_audit.append({
+            'screen': f'dialog {label}',
+            'rule': rule['id'],
+            'nodes': rule.get('nodeCount', 0),
+            'targets': sorted({target for node in nodes for target in (node.get('target') or [])}),
+            'reasons': sorted({(node.get('failureSummary') or '').split('Fix any of the following:')[-1].strip() for node in nodes if node.get('failureSummary')}),
+        })
+    results.append(f'dialog {label} axe 0 violations')
+    print(f'PASS dialog {label} axe 0 violations ({len(a11y.get("incomplete", []))} incomplete recorded)', flush=True)
+
 WIDTHS = (320, 390, 768, 960)
 # Container-overflow probe: text and controls must stay inside their parent's
 # content box. Descendants of the 3D card are skipped: their projected rects
@@ -253,6 +271,8 @@ try:
     expect('!document.querySelector("#preferences-panel")', 'Tabbing out of the panel closes it')
     click_action('connect')
     expect('!!document.querySelector("dialog[open]") && document.activeElement.closest("dialog") !== null', 'Wallet dialog moves focus inside')
+    expect('!!document.querySelector("dialog[open]").getAttribute("aria-labelledby") && !!document.getElementById(document.querySelector("dialog[open]").getAttribute("aria-labelledby")).textContent.trim()', 'Wallet dialog exposes an accessible name')
+    audit_dialog('wallet-confirmation')
     click_action('cancel')
     expect('document.activeElement.dataset.action === "connect"', 'Closing the dialog returns focus to its trigger')
     expect('document.querySelector("[data-notice]")?.dataset.notice === "connectCancelled" && document.querySelector("[data-notice]").textContent.trim().length > 0', 'Connection cancellation returns to welcome')
@@ -301,6 +321,7 @@ try:
     click_action('submit-operation')
     call('set', 'viewport', 320, 800)
     expect('["[data-action=cancel]", "[data-action=approve]"].every(s=>{const r=document.querySelector(s).getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight})', 'Dialog primary actions stay inside a 320px viewport')
+    audit_dialog('create-confirmation-320')
     call('screenshot', '--full', str(EVIDENCE / 'wallet-confirmation-320.png'))
     call('press', 'Escape')
     expect('document.querySelector("[data-notice]")?.dataset.notice === "createCancelled"', 'Escape cancels wallet creation')
@@ -346,6 +367,7 @@ try:
     call('fill', '#profile-name', 'Maya Revised')
     click_action('back')
     expect('document.querySelector("dialog[data-modal-title]")?.dataset.modalTitle === "discardTitle" && document.querySelector("dialog[open]").textContent.trim().length > 0', 'Unsaved changes ask before leaving')
+    audit_dialog('discard-changes')
     click_action('keep-editing')
     expect('document.querySelector("#profile-name").value === "Maya Revised"', 'Keep editing preserves draft')
     click_action('review'); click_action('submit-operation'); click_action('cancel')

@@ -51,6 +51,17 @@
     ]
   },
   {
+    "screen": "dialog wallet-confirmation",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "dialog > p"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements"
+    ]
+  },
+  {
     "screen": "resolve-error en/light",
     "rule": "color-contrast",
     "nodes": 1,
@@ -163,6 +174,17 @@
     "nodes": 1,
     "targets": [
       "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "dialog create-confirmation-320",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      ".compact > .portrait > span[role=\"img\"][aria-label=\"Maya Chen\"]"
     ],
     "reasons": [
       "Element's background color could not be determined due to a background gradient"
@@ -290,6 +312,17 @@
     ],
     "reasons": [
       "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "dialog discard-changes",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "dialog > p"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements"
     ]
   },
   {

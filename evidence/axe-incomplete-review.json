@@ -444,6 +444,114 @@
         44
       ],
       "pass": true
+    },
+    {
+      "target": "dialog body text (wallet-confirmation, light)",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 8.06,
+      "worstBackground": [
+        255,
+        255,
+        255
+      ],
+      "pass": true
+    },
+    {
+      "target": "dialog body text (wallet-confirmation, dark)",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 7.25,
+      "worstBackground": [
+        34,
+        34,
+        34
+      ],
+      "pass": true
+    },
+    {
+      "target": "dialog body text (discard-changes, light)",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 8.06,
+      "worstBackground": [
+        255,
+        255,
+        255
+      ],
+      "pass": true
+    },
+    {
+      "target": "dialog body text (discard-changes, dark)",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 7.25,
+      "worstBackground": [
+        34,
+        34,
+        34
+      ],
+      "pass": true
+    },
+    {
+      "target": "compact portrait initials (create-confirmation, light)",
+      "color": [
+        16,
+        40,
+        140
+      ],
+      "fontSize": 39,
+      "fontWeight": 400,
+      "required": 3.0,
+      "worstRatio": 12.32,
+      "worstBackground": [
+        255,
+        255,
+        255
+      ],
+      "pass": true
+    },
+    {
+      "target": "compact portrait initials (create-confirmation, dark)",
+      "color": [
+        181,
+        213,
+        253
+      ],
+      "fontSize": 39,
+      "fontWeight": 400,
+      "required": 3.0,
+      "worstRatio": 10.53,
+      "worstBackground": [
+        34,
+        34,
+        34
+      ],
+      "pass": true
     }
   ],
   "worst": {
