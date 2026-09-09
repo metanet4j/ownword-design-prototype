@@ -1,5 +1,5 @@
 {
-  "passed": 360,
+  "passed": 365,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
@@ -47,6 +47,7 @@
     "welcome 1440px no page overflow",
     "Connection cancellation returns to welcome",
     "Connection failure provides retry",
+    "Resolution failure explains and offers retry or disconnect",
     "resolve-error en/light 320px no page overflow",
     "resolve-error en/light 320px controls fit",
     "resolve-error en/light 390px no page overflow",
@@ -88,6 +89,8 @@
     "resolve-error zh/dark 320px touch targets",
     "resolve-error zh/dark axe 0 violations",
     "resolve-error 1440px no page overflow",
+    "Published identity opens My Identity",
+    "Connection shows Connected status",
     "Invalid required name blocks Review",
     "Name maximum 100 enforced",
     "Bio maximum 1000 enforced",
@@ -264,6 +267,7 @@
     "identity 1440px no page overflow",
     "Desktop BAP ID in first viewport",
     "320px BAP ID in first viewport",
+    "My Identity shows avatar, name, type, bio and BAP ID",
     "Icon buttons expose accessible names",
     "Status states carry text, not colour alone",
     "public en/light 320px no page overflow",
@@ -358,6 +362,7 @@
     "Account switch cancels confirmation and clears old identity",
     "Incomplete identity routes to completion",
     "Incomplete published identity updates profile without duplicate creation",
+    "Dark theme applies different semantic surface tokens",
     "Locale and theme preserve profile and BAP ID",
     "Preferences persist after refresh",
     "Unavailable wallet explains recovery"

@@ -19,20 +19,51 @@
 
 ## BDD 对应
 
-| PRD 验收 | 可操作入口与实现 | 证据 |
-| --- | --- | --- |
-| 5.1 连接成功、取消、失败 | Welcome / 钱包确认中的 Approve、Cancel、Simulate failure | `check-browser.py`；`check-model.cjs` |
-| 5.2 切换账户、断开 | 页脚与确认窗口；清除旧身份、取消回调、重新解析 | 同上，会话序号断言涵盖 Review、确认和 Processing |
-| 5.3 完整、缺失、不完整、失败分流 | 页脚 Interactive prototype 面板中的场景选择 | 浏览器分流与错误恢复检查 |
-| 5.4 创建及必填校验 | Setup / Review / 钱包确认 / Creating / Ready | 空白名称、100/101 字符、1000/1001 字符；成功、取消、失败 |
-| 5.5 展示与完整复制 | My Identity / Review / Public Identity；面板可模拟复制失败 | 实际 Clipboard 读回比较；反馈不改变布局 |
-| 5.6 修改与离开保护 | Edit Profile / Review / 钱包确认；Back / Discard / Keep editing | 取消保留表单，保存更新资料，BAP ID 不变 |
-| 5.7 Key Rotation | 按第 9 节裁决排除 | 原型无该入口；未改变核心认知 |
-| 8.8 国际化 | 顶栏 EN/Light 或 中文/浅色 偏好面板 | 默认英文；双语切换、刷新持久化、标识与用户内容不变 |
-| 5.9 主题 | 同一偏好面板 | 默认 Light；Light/Dark 语义令牌；状态有文字 |
-| 5.10 响应式、无障碍 | 全部产品页及弹窗 | 320px 四组合布局、axe、键盘焦点、触控尺寸、截图 |
-| 第 9 节头像裁决 | Choose image | 本地图片预览；格式错误反馈；移除 |
-| 第 9 节 Public Identity 裁决 | Public Identity | 应用内公开展示，无分享 URL 功能 |
+PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 条按第 9 节第 5 项裁决下放 v0.1.1，不在原型范围。其余 **28 条**逐条映射如下，断言名与 `evidence/browser-results.json` 的 `checks` 一一对应，模型断言见 `evidence/model-results.txt`。
+
+| PRD 场景 | 断言与证据 |
+| --- | --- |
+| 5.1 连接成功 | 浏览器 `Connection shows Connected status`；模型 `CONNECTED` 后 `wallet=true`、`page=resolving` |
+| 5.1 用户取消 | 浏览器 `Connection cancellation returns to welcome`；模型 `notice=connectCancelled` |
+| 5.1 连接失败 | 浏览器 `Connection failure provides retry`；模型 `error=connectFailed` |
+| 5.2 切换账户 | 浏览器 `Account switch cancels confirmation and clears old identity`；模型 4 组 `SWITCH` 后旧 `epoch` 回调被丢弃 |
+| 5.2 断开连接 | 浏览器流程 `Disconnect` 回到 Welcome；模型 `wallet=false`、`page=welcome` |
+| 5.3 已发布完整 → My Identity | 浏览器 `Published identity opens My Identity` |
+| 5.3 身份不存在 → Setup | 模型 `connect('new').page=setup`；浏览器 `Invalid required name blocks Review` 前的 setup 路径 |
+| 5.3 资料不完整 → Setup + 提示 | 浏览器 `Incomplete identity routes to completion`；模型 `incomplete=true` |
+| 5.3 解析失败 | 浏览器 `Resolution failure explains and offers retry or disconnect`；模型 `page=resolve-error` |
+| 5.4 核对有效资料 | 浏览器 `My Identity shows avatar, name, type, bio and BAP ID` 前的 Review 路径与 `review` 组检查 |
+| 5.4 阻止无效资料 | 浏览器 `Invalid required name blocks Review`、`Name maximum 100 enforced`、`Bio maximum 1000 enforced`；模型 `validate()` 5 组 |
+| 5.4 创建成功 | 浏览器 `Creation processing visible`、`ready` 组检查；模型 `RESULT` 后 `page=ready`、`published=true` |
+| 5.4 取消创建 | 浏览器 `Escape cancels wallet creation`、`Cancelled creation preserves values`；模型 `createCancelled` |
+| 5.4 创建失败 | 浏览器 `Creation failure retains review and retry`；模型 `createFailed` 且 `published=false` |
+| 5.5 打开 My Identity | 浏览器 `My Identity shows avatar, name, type, bio and BAP ID`、`Desktop/320px BAP ID in first viewport` |
+| 5.5 复制完整 BAP ID | 浏览器 `Copy success feedback`、`Clipboard contains complete BAP ID` |
+| 5.5 复制失败 | 浏览器 `Copy failure preserves identifier` |
+| 5.6 保存修改 | 浏览器 `Save updates My Identity`、`Profile update keeps BAP ID`；模型 `saved.profile.name` 与 `ids` 不变 |
+| 5.6 取消更新 | 浏览器 `Save cancellation retains editing values on form`；模型 `saveCancelled` 保留 draft |
+| 5.6 未保存离开 | 浏览器 `Unsaved changes ask before leaving`、`Keep editing preserves draft`；模型 `DISCARD_ASK`/`DISCARD`/`STAY` |
+| 8.8 首次访问 | 浏览器 `First visit English and Light` |
+| 8.8 切换中文 | 浏览器 `Preferences persist after refresh`（`lang=zh-CN`）；`zh/*` 组检查 |
+| 8.8 保留协议值 | 浏览器 `Locale and theme preserve profile and BAP ID` |
+| 5.9 切换深色 | 浏览器 `Dark theme applies different semantic surface tokens`、`Preferences persist after refresh` |
+| 5.9 切换浅色 | `inspect()` 四组合中的 `light` 组；`edit`/`review` 等屏布局检查 |
+| 5.9 状态可理解 | 浏览器 `Status states carry text, not colour alone` |
+| 5.10 320px 视口 | 各屏 `320/390/768/960px no page overflow`、`controls fit`、`320px touch targets`、`320px BAP ID in first viewport` |
+| 5.10 键盘导航 | 各屏 axe 审计 0 violations（含 focus 相关规则）；浏览器 `Icon buttons expose accessible names`、`Keyboard plays sky lines` |
+
+第 9 节裁决对应：头像本地选择预览（`Choose image` 与格式错误反馈）、默认 Light（`First visit English and Light`）、断开仅当前会话（`Disconnect` 流程）、无分享 URL（Public Identity 无分享入口）、无 Key Rotation（无该入口）。
+
+## 核心认知可验证验收映射（v0.1 范围内）
+
+[核心认知](../../_task/system-design/spec/核心认知.md)第 11 节共 12 条，其中 4 条落在 v0.1 原型范围；其余属 Content、Artifact、Relationship 或 Binding，本版无对应界面。
+
+| 核心认知 11.x | 断言 |
+| --- | --- |
+| 6 缩略值 Copy 返回完整原值 | `Clipboard contains complete BAP ID` |
+| 7 Wallet 拒绝发布 → Cancelled 且 Draft 不变 | `Escape cancels wallet creation`、`Cancelled creation preserves values` |
+| 10 Account Switch 取消敏感操作并显示新 Identity | `Account switch cancels confirmation and clears old identity` |
+| 11 语言/主题刷新后偏好保留，链上标识与内容不变 | `Preferences persist after refresh`、`Locale and theme preserve profile and BAP ID` |
 
 ## 复现与观测
 
@@ -78,11 +109,11 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 - 新增 `settle()`：测量与 axe 之前等待有限 CSS 过渡结束。按钮存在 150ms 的 `color/background/border` 过渡，切换语言或主题后立即审计会采到过渡中间色，曾误报 `ready zh/light` 对比度 4.17:1；稳定后实测为 `rgb(255,255,255)` 文字配 `rgb(59,99,251)` 背景，axe 0 violations。
 - 响应式矩阵由 320px 扩展为 320/390/768/960，另保留 1440 桌面截图。
 - axe 断言由“无严重/致命”收紧为 **0 violations**；incomplete 逐条记录屏幕、规则、目标与原因到 `evidence/axe-incomplete-summary.json`。
-- 新增显式断言：320px 下 BAP ID 首屏可见、图标按钮具备可访问名称、状态不以颜色单独表达。
+- 新增显式断言：连接后状态显示 Connected、解析失败解释并给出 Try Again 与 Disconnect、已发布身份直接进入 My Identity、My Identity 呈现头像/姓名/类型/简介/BAP ID 五项、切换深色后语义表面令牌改变、320px 下 BAP ID 首屏可见、图标按钮具备可访问名称、状态不以颜色单独表达。
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：59 条状态断言、360 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：59 条状态断言、365 项浏览器检查通过。32 份 axe 审计 0 violations；26 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变或伪元素之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

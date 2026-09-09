@@ -8,6 +8,9 @@
 [info] [Ownword prototype] {page: "resolve-error", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
 [info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
