@@ -1,0 +1,470 @@
+{
+  "method": "axe 无法判定背景的文本：取实测计算样式（颜色/字号/字重）+ 元素实际背景（页面表面或身份卡渐变端点），按 WCAG 2.1 计算最差对比度",
+  "thresholds": {
+    "normal": 4.5,
+    "large": 3.0
+  },
+  "entries": [
+    {
+      "target": ".eyebrow / .plate-top .eyebrow",
+      "theme": "light",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 15,
+      "fontWeight": 650,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 6.64,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": ".eyebrow",
+      "theme": "dark",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 15,
+      "fontWeight": 650,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 6.37,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": ".welcome-intro",
+      "theme": "light",
+      "color": [
+        41,
+        41,
+        41
+      ],
+      "fontSize": 22,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 13.7,
+      "worstBackground": [
+        248,
+        248,
+        248
+      ],
+      "pass": true
+    },
+    {
+      "target": ".welcome-intro",
+      "theme": "dark",
+      "color": [
+        219,
+        219,
+        219
+      ],
+      "fontSize": 22,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 12.44,
+      "worstBackground": [
+        27,
+        27,
+        27
+      ],
+      "pass": true
+    },
+    {
+      "target": ".horizon > span",
+      "theme": "light",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 7.59,
+      "worstBackground": [
+        248,
+        248,
+        248
+      ],
+      "pass": true
+    },
+    {
+      "target": ".horizon > span",
+      "theme": "dark",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 7.85,
+      "worstBackground": [
+        27,
+        27,
+        27
+      ],
+      "pass": true
+    },
+    {
+      "target": ".page-heading > p",
+      "theme": "light",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 17,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 7.59,
+      "worstBackground": [
+        248,
+        248,
+        248
+      ],
+      "pass": true
+    },
+    {
+      "target": ".page-heading > p",
+      "theme": "dark",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 17,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 7.85,
+      "worstBackground": [
+        27,
+        27,
+        27
+      ],
+      "pass": true
+    },
+    {
+      "target": "span[role=img] setup portrait",
+      "theme": "light",
+      "color": [
+        16,
+        40,
+        140
+      ],
+      "fontSize": 39,
+      "fontWeight": 400,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 11.6,
+      "worstBackground": [
+        248,
+        248,
+        248
+      ],
+      "pass": true
+    },
+    {
+      "target": "span[role=img] setup portrait",
+      "theme": "dark",
+      "color": [
+        181,
+        213,
+        253
+      ],
+      "fontSize": 39,
+      "fontWeight": 400,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 11.4,
+      "worstBackground": [
+        27,
+        27,
+        27
+      ],
+      "pass": true
+    },
+    {
+      "target": "span[role=img] plate portrait",
+      "theme": "light",
+      "color": [
+        16,
+        40,
+        140
+      ],
+      "fontSize": 27,
+      "fontWeight": 400,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 10.15,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "span[role=img] plate portrait",
+      "theme": "dark",
+      "color": [
+        181,
+        213,
+        253
+      ],
+      "fontSize": 27,
+      "fontWeight": 400,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 9.24,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-person h2",
+      "theme": "light",
+      "color": [
+        41,
+        41,
+        41
+      ],
+      "fontSize": 34,
+      "fontWeight": 500,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 11.98,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-person h2",
+      "theme": "dark",
+      "color": [
+        219,
+        219,
+        219
+      ],
+      "fontSize": 34,
+      "fontWeight": 500,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 10.09,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-person .bio / .profile-type",
+      "theme": "light",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 6.64,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-person .bio / .profile-type",
+      "theme": "dark",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 6.37,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-id > span / code",
+      "theme": "light",
+      "color": [
+        41,
+        41,
+        41
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 11.98,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-id > span / code",
+      "theme": "dark",
+      "color": [
+        219,
+        219,
+        219
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 10.09,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-foot > span",
+      "theme": "light",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 12,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 6.64,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": ".plate-foot > span",
+      "theme": "dark",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 12,
+      "fontWeight": 400,
+      "largeText": false,
+      "required": 4.5,
+      "worstRatio": 6.37,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": ".wordmark-small",
+      "theme": "light",
+      "color": [
+        41,
+        41,
+        41
+      ],
+      "fontSize": 27,
+      "fontWeight": 750,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 11.98,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": ".wordmark-small",
+      "theme": "dark",
+      "color": [
+        219,
+        219,
+        219
+      ],
+      "fontSize": 27,
+      "fontWeight": 750,
+      "largeText": true,
+      "required": 3.0,
+      "worstRatio": 10.09,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    }
+  ],
+  "worst": {
+    "target": ".eyebrow",
+    "theme": "dark",
+    "color": [
+      175,
+      175,
+      175
+    ],
+    "fontSize": 15,
+    "fontWeight": 650,
+    "largeText": false,
+    "required": 4.5,
+    "worstRatio": 6.37,
+    "worstBackground": [
+      44,
+      44,
+      44
+    ],
+    "pass": true
+  },
+  "allPass": true
+}

@@ -1,0 +1,26 @@
+# 术语与禁区用词扫描（核心认知 §2.2/§2.3）
+# 命令: grep -o <term> app.jsx components.jsx index.html | wc -l
+# 日期: 2026-09-09
+
+注册           0
+登录           0
+sign up          0
+Sign up          0
+log in           0
+Log in           0
+register         0
+Register         0
+Verified         0
+BAP NFT          0
+Submit           1
+Broadcast        0
+Push             0
+Create BAP NFT   0
+
+# 用户可见文案中的 Publish 用词（核心认知统一为 Published）
+      2 Published
+      1 Publishing
+     17 published
+
+# 唯一 Submit 命中为表单事件处理器名，不是用户文案:
+184:        <form className="profile-form" noValidate onSubmit={e => {e.preventDefault(); checkForm();}}>

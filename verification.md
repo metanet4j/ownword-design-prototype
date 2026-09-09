@@ -93,6 +93,12 @@ OWNWORD_PORT=4312 python3 check-offline.py
 
 HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会话对照表明：页面初始请求零错误，8 个样式文件正常加载；运行审计才出现向项目根目录错误解析的 CSS `@import` 请求。前后网络记录为 `evidence/network-before-audit.json`、`network-after-audit.json`。据此归因为审计工具的路径解析，不是页面样式加载失败；没有复制一套重复 CSS 来掩盖探测错误。
 
+## 术语与设计系统一致性
+
+- **术语**：按核心认知第 2.3 节扫描原型文案与结构，禁区用词命中数为 0（`注册`、`登录`、`sign up`、`log in`、`register`、`Verified`、`BAP NFT`、`Create BAP NFT`、`Broadcast`、`Push`）；唯一 `Submit` 命中是表单事件处理器名 `onSubmit`，不是用户文案。Publish 用词统一为 `Published` / `Publishing`。记录见 `evidence/term-scan.txt`。
+- **设计系统**：`check-tokens.py` 提取原型自身 CSS 中全部 `var(--s2*)` 引用，与 `_ds/react-spectrum-s2` 下 7 个 CSS 文件定义的 2509 个令牌比对，66 个引用全部解析，无未定义令牌。记录见 `evidence/token-resolution.json`。
+- **axe incomplete 复核**：26 项 incomplete 均为 `color-contrast`，原因是文本位于装饰层、渐变或伪元素之上，axe 无法判定背景。逐项复核方式：取实测计算样式（颜色、字号、字重）与元素实际背景（页面表面或身份卡渐变的三个端点色），按 WCAG 2.1 计算最差对比度。22 组组合全部达标，最差 6.37:1（`.eyebrow` 深色，要求 4.5:1）。记录见 `evidence/axe-incomplete-review.json`。
+
 ## 同步评估与边界
 
 - PRD：本次落实现有 v0.1 验收与第 9 节裁决，无新增需求，不修改 PRD。
