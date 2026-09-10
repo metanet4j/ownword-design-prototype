@@ -1,14 +1,14 @@
 {
-  "method": "git archive HEAD 解压到 /tmp/astra-clean14（无工作区残留），用独立端口 4326 服务，依次运行全部检查脚本",
-  "commit": "bba7343af3b606e7b3cf725dd09b970c10381249",
-  "trackedFiles": 1178,
-  "server": "python3 -m http.server 4326 --bind 127.0.0.1 --directory /tmp/astra-clean14",
+  "method": "git archive HEAD 解压到 /tmp/astra-clean15（无工作区残留），用独立端口 4327 服务，依次运行全部检查脚本",
+  "commit": "61129808931753044a7ff30c24e8d1a10f50e193",
+  "trackedFiles": 1177,
+  "server": "python3 -m http.server 4327 --bind 127.0.0.1 --directory /tmp/astra-clean15",
   "results": {
     "check-model.cjs": "74 model assertions passed",
     "check-copy.cjs": "4 copy contract checks passed (155 keys)",
     "check-tokens.py": "66/66 referenced tokens resolve",
     "check-offline.py": "4 offline startup checks passed (all external domains blocked)",
-    "check-browser.py": "448 browser checks passed; 32 axe incomplete recorded; axe 0 violations"
+    "check-browser.py": "451 browser checks passed; 32 axe incomplete recorded; axe 0 violations"
   },
-  "conclusion": "干净检出五脚本与工作区结果一致（含 320x568 矮屏弹窗修复）"
+  "conclusion": "干净检出五脚本与工作区结果一致（含减少动效修复与解析中状态断言改造）"
 }
