@@ -101,10 +101,17 @@ function Modal({title, titleKey, children, onCancel, closeLabel}) {
 }
 function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap'}) {
   const [feedback, setFeedback] = React.useState('');
-  React.useEffect(() => {setFeedback('');}, [id]);
+  const feedbackTimer = React.useRef(0);
+  const announce = value => {
+    setFeedback(value);
+    clearTimeout(feedbackTimer.current);
+    // A confirmation should not outlive its moment; six seconds matches the notice cadence.
+    feedbackTimer.current = setTimeout(() => setFeedback(''), 6000);
+  };
+  React.useEffect(() => {setFeedback(''); return () => clearTimeout(feedbackTimer.current);}, [id]);
   async function copy() {
-    try {if (failCopy) throw new Error('Simulated clipboard failure'); await navigator.clipboard.writeText(id); setFeedback('copied');}
-    catch {setFeedback('copyFailed');}
+    try {if (failCopy) throw new Error('Simulated clipboard failure'); await navigator.clipboard.writeText(id); announce('copied');}
+    catch {announce('copyFailed');}
   }
   return <div className="identifier">
     <div className="identifier-top"><span className="eyebrow">{label}</span><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>

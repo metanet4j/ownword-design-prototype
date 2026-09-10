@@ -13,8 +13,19 @@
     {name: 'North Studio', type: 'Organization', bio: 'An independent practice for ideas that endure.', image: ''}
   ];
   function initial() { return {page: 'welcome', wallet: false, account: 0, published: false, transaction: null, profile: emptyProfile(), draft: emptyProfile(), modal: null, notice: '', error: '', busy: '', epoch: 0, incomplete: false}; }
+  // Count what the user perceives as characters: one ZWJ family emoji is one
+  // character, not seven code points. Falls back to code points where the
+  // platform lacks Intl.Segmenter.
+  const segmenter = typeof Intl !== 'undefined' && Intl.Segmenter ? new Intl.Segmenter(undefined, {granularity: 'grapheme'}) : null;
+  function countGraphemes(value) {
+    const text = String(value || '');
+    if (!segmenter) return [...text].length;
+    let count = 0;
+    for (const _ of segmenter.segment(text)) count++;
+    return count;
+  }
   function validate(p) {
-    return {name: !p.name.trim() ? 'required' : [...p.name].length > 100 ? 'nameLong' : '', bio: [...p.bio].length > 1000 ? 'bioLong' : '', type: !['Person', 'Organization'].includes(p.type) ? 'typeRequired' : ''};
+    return {name: !p.name.trim() ? 'required' : countGraphemes(p.name) > 100 ? 'nameLong' : '', bio: countGraphemes(p.bio) > 1000 ? 'bioLong' : '', type: !['Person', 'Organization'].includes(p.type) ? 'typeRequired' : ''};
   }
   function reducer(s, a) {
     if (a.epoch !== undefined && a.epoch !== s.epoch) return s;
@@ -46,7 +57,7 @@
       default: return s;
     }
   }
-  const api = {ids, fixtures, transactions, emptyProfile, initial, validate, reducer};
+  const api = {ids, fixtures, transactions, emptyProfile, initial, countGraphemes, validate, reducer};
   if (typeof module !== 'undefined') module.exports = api;
   else root.OwnwordModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);

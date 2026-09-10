@@ -1,5 +1,5 @@
 {
-  "passed": 440,
+  "passed": 443,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
@@ -117,10 +117,12 @@
     "resolve-error zh/dark axe 0 violations",
     "resolve-error 1440px no page overflow",
     "Published identity opens My Identity",
+    "Decorative skeleton stays out of the accessibility tree",
     "identity-resolving axe 0 violations",
     "Connection shows Connected status",
     "Invalid required name blocks Review",
     "Name maximum 100 enforced",
+    "Character counter counts grapheme clusters, not code points",
     "Bio maximum 1000 enforced",
     "setup en/light 320px no page overflow",
     "setup en/light 320px controls fit",
@@ -215,6 +217,7 @@
     "review zh/dark axe 0 violations",
     "review 1440px no page overflow",
     "Copy success feedback",
+    "Copy confirmation clears itself after six seconds",
     "Clipboard contains complete BAP ID",
     "Copy failure preserves identifier",
     "Dialog primary actions stay inside a 320px viewport",

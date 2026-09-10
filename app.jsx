@@ -1,6 +1,6 @@
 const words = window.OwnwordCopy;
 function App() {
-  const {initial, reducer, validate, ids} = OwnwordModel;
+  const {initial, reducer, validate, countGraphemes, ids} = OwnwordModel;
   const {useDismissable} = window;
   const [state, dispatch] = React.useReducer(reducer, undefined, initial);
   const pref = (key, fallback) => {try {return localStorage.getItem(`ownword-astra-${key}`) || fallback;} catch {return fallback;}};
@@ -122,7 +122,7 @@ function App() {
         <div className="horizon"><span>{t('horizonCaption')}</span></div>
         <p className="welcome-note">{t('welcomeNote')}</p>
       </section>}
-      {state.page === 'resolving' && <section className="center-state">{heading('resolving', 'resolvingBody', 'connected')}<LoadingMark label={t('resolving')} /><S2.Skeleton /><Button onClick={disconnect}>{t('disconnect')}</Button></section>}
+      {state.page === 'resolving' && <section className="center-state">{heading('resolving', 'resolvingBody', 'connected')}<LoadingMark label={t('resolving')} /><span aria-hidden="true"><S2.Skeleton /></span><Button onClick={disconnect}>{t('disconnect')}</Button></section>}
       {state.page === 'resolve-error' && <section className="center-state">{heading('resolveFailed', 'resolveFailedBody', 'connected')}<div className="state-symbol error-symbol" aria-hidden="true">!</div><div className="action-row"><Button variant="accent" data-action="retry" onClick={resolveAgain}>{t('retry')}</Button><Button data-action="disconnect" onClick={disconnect}>{t('disconnect')}</Button></div></section>}
       {isFlow && <ol className="flow-steps" aria-label={t('setup')}>
         {['setupStep', 'reviewStep', 'confirmStep', 'doneStep'].map((step, i) => <li key={step} aria-current={(state.page === 'setup' ? 0 : state.page === 'review' ? (state.busy ? 2 : 1) : 3) === i ? 'step' : undefined}><span>{String(i + 1).padStart(2, '0')}</span>{t(step)}</li>)}
@@ -138,7 +138,7 @@ function App() {
           <Field id="profile-name" label={`${t('name')} *`} value={state.draft.name} onChange={value => dispatch({type: 'DRAFT', field: 'name', value})} error={errors.name ? t(errors.name) : ''} errorKey={errors.name || ''} required />
           <fieldset className="type-choice"><legend>{t('type')} *</legend><div className="choice-row">{['Person', 'Organization'].map(type => <Button key={type} aria-pressed={state.draft.type === type} onClick={() => dispatch({type: 'DRAFT', field: 'type', value: type})}>{t(type)}</Button>)}</div>{errors.type && <p className="field-error" data-field-error={errors.type}>{t(errors.type)}</p>}</fieldset>
           <Field id="profile-bio" label={`${t('bio')} · ${t('optional')}`} multiline value={state.draft.bio} onChange={value => dispatch({type: 'DRAFT', field: 'bio', value})} error={errors.bio ? t(errors.bio) : ''} errorKey={errors.bio || ''} />
-          <p className="character-count">{[...state.draft.bio].length} / 1000</p>
+          <p className="character-count">{countGraphemes(state.draft.bio)} / 1000</p>
           <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => navigate(state.published ? 'identity' : 'welcome')}>{t('back')}</Button><Button variant="accent" data-action="review" type="submit">{t(editing ? 'review' : 'review')}</Button></div>
         </form>
       </section>}

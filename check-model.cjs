@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const {initial, reducer: step, validate, ids} = require('./model.js');
+const {initial, reducer: step, validate, countGraphemes, ids} = require('./model.js');
 let checks = 0;
 const eq = (a, b) => {assert.deepEqual(a, b); checks++;};
 const connect = scenario => step(step(initial(), {type: 'CONNECTED'}), {type: 'RESOLVED', scenario});
@@ -60,4 +60,11 @@ eq(step(existingRecord, {type: 'DISCONNECT'}).transaction, null);
 eq(step(existingRecord, {type: 'SWITCH'}).transaction, null);
 eq(step(existingRecord, {type: 'RESULT', operation: 'save'}).transaction, existingRecord.transaction);
 eq(step(step(initial(), {type: 'PROCESS', operation: 'create'}), {type: 'RESULT', operation: 'create', fail: true}).transaction, null);
+// Character counting follows grapheme clusters: one family emoji is one character.
+const family = '\u{1F468}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F466}';
+eq(countGraphemes(family.repeat(5)), 5);
+eq(countGraphemes('字'), 1);
+eq(validate({name: family.repeat(15), bio: '', type: 'Person'}).name, '');
+eq(validate({name: 'a'.repeat(101), bio: '', type: 'Person'}).name, 'nameLong');
+eq(validate({name: 'a'.repeat(100), bio: family.repeat(5), type: 'Person'}).bio, '');
 console.log(`${checks} model assertions passed`);

@@ -56,6 +56,20 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 
 第 9 节裁决对应：头像本地选择预览（`Choose image` 与格式错误反馈）、默认 Light（`First visit English and Light`）、断开仅当前会话（`Disconnect` 流程）、无分享 URL（Public Identity 无分享入口）、无 Key Rotation（无该入口）。
 
+## 探索式测试（dogfood，2026-09-10）
+
+按 `agent-browser` 的 dogfood 技能跑了一轮探索式测试（不预设断言，主动找问题），报告与截图见 [`evidence/dogfood/report.md`](evidence/dogfood/report.md)。共 5 项发现：1 medium、4 low，无 critical/high。其中 3 项已修并补断言：
+
+| 发现 | 级别 | 处置 |
+| --- | --- | --- |
+| 浏览器后退键直接离开应用，会话静默丢失（无站内路由） | medium | 记录为实现边界：生产需真实路由与会话恢复（实现交接「内存态」一行） |
+| 字符计数按码点而非字素簇（5 个家庭 emoji 显示 35/1000） | low | 已修：`model.js` 新增 `countGraphemes()`（`Intl.Segmenter`，无则回退码点），校验与计数器统一口径 |
+| 复制反馈「Copied」永不消失 | low | 已修：`Identifier` 6 秒后自动清除（与确认提示同节奏） |
+| 解析中装饰骨架未标记 `aria-hidden` | low | 已修：骨架容器补 `aria-hidden="true"` |
+| 320px 弹窗次级操作被裁出首屏 | low | 记录为实现交接 3.2 的可接受行为（模拟区生产会删除） |
+
+**证据说明**：本环境无头浏览器无法录制 WebM（`agent-browser record` 报 `No frames captured`），故报告以分步截图替代 repro 视频，报告内已注明。
+
 ## 穹顶交互契约（批 2-b）
 
 | 输入 | 行为 |
@@ -217,7 +231,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：69 条状态断言、440 项浏览器检查通过。39 份 axe 审计（32 份页面 + 7 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：74 条状态断言、443 项浏览器检查通过。39 份 axe 审计（32 份页面 + 7 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

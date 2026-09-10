@@ -250,6 +250,7 @@ def connect(value='new', audit=None):
     click_action('connect')
     click_action('approve')
     if audit:
+        expect('!document.querySelector(".s2d-skeleton") || !!document.querySelector(".s2d-skeleton").closest(String.raw`[aria-hidden="true"]`)', 'Decorative skeleton stays out of the accessibility tree')
         audit_state(audit, when='document.querySelector("main").dataset.busy === "resolving"')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
@@ -327,6 +328,8 @@ try:
     call('fill', '#profile-name', 'x' * 101); click_action('review')
     expect('document.querySelector("#profile-name-error")?.dataset.fieldError === "nameLong"', 'Name maximum 100 enforced')
     call('fill', '#profile-name', 'Maya Chen')
+    call('fill', '#profile-bio', '\U0001F468\u200D\U0001F469\u200D\U0001F467\u200D\U0001F466' * 5)
+    expect('document.querySelector(".character-count").textContent.trim().startsWith("5 /")', 'Character counter counts grapheme clusters, not code points')
     call('fill', '#profile-bio', 'x' * 1001); click_action('review')
     expect('document.querySelector("#profile-bio-error")?.dataset.fieldError === "bioLong"', 'Bio maximum 1000 enforced')
     call('fill', '#profile-bio', 'Thinking in systems. Writing with intention.')
@@ -337,6 +340,8 @@ try:
     inspect('review', True)
     click_action('copy-bap')
     wait_until('document.querySelector("[data-copy-target=bap]")?.dataset.copyFeedback === "copied" && document.querySelector("[data-copy-target=bap]").textContent.trim().length > 0', 'Copy success feedback', diagnostic='(document.querySelector("[data-copy-target=bap]")||{}).dataset.copyFeedback')
+    time.sleep(6.5)
+    expect('document.querySelector("[data-copy-target=bap]").dataset.copyFeedback === ""', 'Copy confirmation clears itself after six seconds')
     # Paste through a user gesture; direct Clipboard.readText needs a separate
     # browser permission and is not part of this product's Copy behavior.
     click_action('back'); call('fill', '#profile-name', ''); call('focus', '#profile-name'); call('clipboard', 'paste')
