@@ -1,5 +1,5 @@
 {
-  "passed": 436,
+  "passed": 437,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
@@ -63,7 +63,7 @@
     "Tabbing out of the panel closes it",
     "Wallet dialog moves focus inside",
     "Wallet dialog exposes an accessible name",
-    "dialog wallet-confirmation axe 0 violations",
+    "wallet-confirmation axe 0 violations",
     "Closing the dialog returns focus to its trigger",
     "Connection cancellation returns to welcome",
     "Hovering keeps the confirmation on screen",
@@ -217,7 +217,7 @@
     "Clipboard contains complete BAP ID",
     "Copy failure preserves identifier",
     "Dialog primary actions stay inside a 320px viewport",
-    "dialog create-confirmation-320 axe 0 violations",
+    "create-confirmation-320 axe 0 violations",
     "Escape cancels wallet creation",
     "Cancelled creation preserves values",
     "Creation failure retains review and retry",
@@ -373,12 +373,13 @@
     "Public Identity rotates",
     "3D viewing angle controllable",
     "Turning past 90 degrees exposes the chain record face",
+    "chain-record-face axe 0 violations",
     "Only one card face stays in the accessibility tree",
     "Chain record shows block height and confirmation state",
     "Publication TxID copy works",
     "Flip control returns to the identity face",
     "Unsaved changes ask before leaving",
-    "dialog discard-changes axe 0 violations",
+    "discard-changes axe 0 violations",
     "Keep editing preserves draft",
     "Save cancellation retains editing values on form",
     "edit en/light 320px no page overflow",
@@ -490,7 +491,7 @@
       ]
     },
     {
-      "screen": "dialog wallet-confirmation",
+      "screen": "wallet-confirmation",
       "rule": "color-contrast",
       "nodes": 1,
       "targets": [
@@ -619,7 +620,7 @@
       ]
     },
     {
-      "screen": "dialog create-confirmation-320",
+      "screen": "create-confirmation-320",
       "rule": "color-contrast",
       "nodes": 1,
       "targets": [
@@ -685,8 +686,8 @@
         ".plate-front > .plate-top > .wordmark-small",
         ".plate-id > code",
         ".plate-id > span",
+        ".plate-person > h2",
         ".profile-type",
-        "h2",
         "span[role=\"img\"]"
       ],
       "reasons": [
@@ -705,8 +706,8 @@
         ".plate-front > .plate-top > .wordmark-small",
         ".plate-id > code",
         ".plate-id > span",
+        ".plate-person > h2",
         ".profile-type",
-        "h2",
         "span[role=\"img\"]"
       ],
       "reasons": [
@@ -725,8 +726,8 @@
         ".plate-front > .plate-top > .wordmark-small",
         ".plate-id > code",
         ".plate-id > span",
+        ".plate-person > h2",
         ".profile-type",
-        "h2",
         "span[role=\"img\"]"
       ],
       "reasons": [
@@ -745,8 +746,8 @@
         ".plate-front > .plate-top > .wordmark-small",
         ".plate-id > code",
         ".plate-id > span",
+        ".plate-person > h2",
         ".profile-type",
-        "h2",
         "span[role=\"img\"]"
       ],
       "reasons": [
@@ -754,7 +755,27 @@
       ]
     },
     {
-      "screen": "dialog discard-changes",
+      "screen": "chain-record-face",
+      "rule": "color-contrast",
+      "nodes": 14,
+      "targets": [
+        ".chain-heading > h2",
+        ".chain-heading > p",
+        ".plate-back > .identifier > .identifier-top > .eyebrow",
+        ".plate-back > .identifier > .identifier-value > code",
+        ".plate-back > .plate-top > .eyebrow",
+        ".plate-back > .plate-top > .wordmark-small",
+        "dd[data-chain=\"block\"]",
+        "dd[data-chain=\"confirmation\"]",
+        "div:nth-child(1) > dt",
+        "div:nth-child(2) > dt"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "discard-changes",
       "rule": "color-contrast",
       "nodes": 1,
       "targets": [

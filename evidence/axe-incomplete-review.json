@@ -552,6 +552,258 @@
         34
       ],
       "pass": true
+    },
+    {
+      "target": "chain heading (light)",
+      "color": [
+        41,
+        41,
+        41
+      ],
+      "fontSize": 34,
+      "fontWeight": 500,
+      "required": 3.0,
+      "worstRatio": 11.98,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "chain heading (dark)",
+      "color": [
+        219,
+        219,
+        219
+      ],
+      "fontSize": 34,
+      "fontWeight": 500,
+      "required": 3.0,
+      "worstRatio": 10.09,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": "chain heading note (light)",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 17,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 6.64,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "chain heading note (dark)",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 17,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 6.37,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": "chain eyebrow (light)",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 13,
+      "fontWeight": 650,
+      "required": 4.5,
+      "worstRatio": 6.64,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "chain eyebrow (dark)",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 13,
+      "fontWeight": 650,
+      "required": 4.5,
+      "worstRatio": 6.37,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": "wordmark (light)",
+      "color": [
+        41,
+        41,
+        41
+      ],
+      "fontSize": 27,
+      "fontWeight": 750,
+      "required": 3.0,
+      "worstRatio": 11.98,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "wordmark (dark)",
+      "color": [
+        219,
+        219,
+        219
+      ],
+      "fontSize": 27,
+      "fontWeight": 750,
+      "required": 3.0,
+      "worstRatio": 10.09,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": "block height / confirmation value (light)",
+      "color": [
+        41,
+        41,
+        41
+      ],
+      "fontSize": 19,
+      "fontWeight": 600,
+      "required": 4.5,
+      "worstRatio": 11.98,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "block height / confirmation value (dark)",
+      "color": [
+        219,
+        219,
+        219
+      ],
+      "fontSize": 19,
+      "fontWeight": 600,
+      "required": 4.5,
+      "worstRatio": 10.09,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": "chain fact label (light)",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 13,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 6.64,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "chain fact label (dark)",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 13,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 6.37,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
+    },
+    {
+      "target": "publication TxID (light)",
+      "color": [
+        19,
+        19,
+        19
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 15.3,
+      "worstBackground": [
+        233,
+        233,
+        233
+      ],
+      "pass": true
+    },
+    {
+      "target": "publication TxID (dark)",
+      "color": [
+        242,
+        242,
+        242
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 12.47,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
     }
   ],
   "worst": {

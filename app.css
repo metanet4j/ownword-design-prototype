@@ -290,7 +290,7 @@ main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; paddi
 .identity-sculpture[data-face="back"] .plate-front { pointer-events: none; }
 .plate-back { position: absolute; inset: 0; transform: rotateY(180deg); display: flex; flex-direction: column; gap: var(--s2-spacing-300); }
 .chain-heading { margin-top: var(--s2-spacing-500); }
-.chain-heading h3 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-700); font-weight: 500; letter-spacing: -.03em; }
+.chain-heading h2 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-700); font-weight: 500; letter-spacing: -.03em; }
 .chain-heading > p { margin-top: var(--s2-spacing-100); color: var(--s2-gray-700); font-size: var(--s2-font-size-100); }
 .chain-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s2-spacing-300); margin: 0; padding-top: var(--s2-spacing-300); border-top: 1px solid var(--s2-gray-400); }
 .chain-facts > div { display: grid; gap: var(--s2-spacing-100); }

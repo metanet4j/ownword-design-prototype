@@ -46,7 +46,7 @@
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
           "html": "<h2>Maya Chen</h2>",
           "target": [
-            "h2"
+            ".plate-person > h2"
           ]
         },
         {

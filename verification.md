@@ -178,7 +178,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 - **术语**：按核心认知第 2.3 节扫描原型文案与结构，禁区用词命中数为 0（`注册`、`登录`、`sign up`、`log in`、`register`、`Verified`、`BAP NFT`、`Create BAP NFT`、`Broadcast`、`Push`）；唯一 `Submit` 命中是表单事件处理器名 `onSubmit`，不是用户文案。Publish 用词统一为 `Published` / `Publishing`。记录见 `evidence/term-scan.txt`。
 - **设计系统**：`check-tokens.py` 提取原型自身 CSS 中全部 `var(--s2*)` 引用，与 `_ds/react-spectrum-s2` 下 7 个 CSS 文件定义的 2509 个令牌比对，66 个引用全部解析，无未定义令牌。记录见 `evidence/token-resolution.json`。
-- **axe incomplete 复核**：29 项 incomplete 均为 `color-contrast`，原因是文本位于装饰层、渐变或伪元素之上，axe 无法判定背景。逐项复核方式：取实测计算样式（颜色、字号、字重）与元素实际背景（页面表面或身份卡渐变的三个端点色），按 WCAG 2.1 计算最差对比度。28 组组合全部达标，最差 6.37:1（`.eyebrow` 深色，要求 4.5:1）。记录见 `evidence/axe-incomplete-review.json`。
+- **axe incomplete 复核**：29 项 incomplete 均为 `color-contrast`，原因是文本位于装饰层、渐变或伪元素之上，axe 无法判定背景。逐项复核方式：取实测计算样式（颜色、字号、字重）与元素实际背景（页面表面或身份卡渐变的三个端点色），按 WCAG 2.1 计算最差对比度。42 组组合全部达标，最差 6.37:1（`.eyebrow` 深色，要求 4.5:1）。记录见 `evidence/axe-incomplete-review.json`。
 
 ## 同步评估与边界
 
@@ -197,7 +197,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 - 偏好面板：点外点击、Escape（焦点回归触发按钮）、Tab 移出三种方式均可关闭；补 `aria-controls`。
 - 确认类提示 6 秒后自动消失，悬停或聚焦时暂停；`Failed` 类错误常驻不消失（`role="status"` 需要足够阅读时间）。
 - 320×800 实测：钱包确认弹窗内容高于视口、弹窗内可滚动，**主操作 Cancel/Approve 首屏可见**，原型专用的模拟行需滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖。
-- **弹窗审计（批 3-b，2026-09-09）**：axe 原先只覆盖页面状态，未覆盖弹窗。新增 `audit_dialog()`，在钱包确认、创建确认（320px）、放弃修改三个弹窗打开时各做一次审计——**violations 全为 0**，incomplete 各 1 项（`color-contrast`，弹窗正文与紧凑头像）。另新增断言「弹窗具备可访问名称」（`aria-labelledby` 指向非空标题）。弹窗证据 `evidence/dialog-*-axe.json`；新增 3 项 incomplete 已并入逐条对比度复核（共 28 组，全部达标，最差仍是 6.37:1）。
+- **瞬时状态审计（批 3-b）**：axe 原先只覆盖页面状态，弹窗打开、卡背面露出这些状态从未审计。新增 `audit_state()`，对钱包确认、创建确认（320px）、放弃修改三个弹窗与**公开身份卡背面**各做一次审计。弹窗 violations 全为 0；**卡背面首次审计即抓到一个真实违规**——背面标题用 `<h3>`，而正面 `aria-hidden` 后页面只剩 h1 → 触发 `heading-order`（Heading levels should only increase by one）。改为 `<h2>` 后复测 0 violations。另新增断言「弹窗具备可访问名称」（`aria-labelledby` 指向非空标题）。证据 `evidence/state-*-axe.json`；新增 incomplete 已并入逐条对比度复核（共 42 组，全部达标，最差仍是 6.37:1）。
 - **交互缺陷（批 3-a 中修复）**：双面卡在 180° 时，装饰层 `.plate-depth` 与背面重叠，遮挡背面「复制发布交易 TxID」按钮的点击点（`elementFromPoint` 命中 `.plate-depth`）。给 `.plate-depth` 与不可见的那一面加 `pointer-events: none` 后按钮可点。这是真实鼠标可用性缺陷，不是测试问题。
 - **链上记录（批 3-a，超出 PRD v0.1 的扩展）**：公开身份卡改为双面——正面身份，背面「链上记录」显示区块高度、确认状态与发布 TxID（有值才显示）。翻面由「查看链上记录 / 查看身份」按钮或视角滑块跨过 90° 触发；同一时刻只有一面在可访问树里（另一面 `inert` + `aria-hidden`）。数据是显示用 fixture（`model.js` 的 `transactions`），新建身份为 pending、已发布身份为 confirmed；核心认知第 12 节第 3 项状态映射未关闭，因此只显示 pending/confirmed 两态，不显示 SEEN/ACCEPTED/MINED 等枚举名。
 - **容器溢出量测（批 2-a）**：新增 `CONTAINER_OVERFLOW` 探针——文本与控件不得超出父元素内容盒，每屏每组合（8 屏 × 4 组合）各一条断言，共 32 条。首轮量测命中 4 处，全部位于公开身份卡内且随旋转角度变化（角度 90° 起投影超出、180° 达 51px），判定为 3D 变换投影伪影而非布局缺陷；探针排除 `.identity-object` 子树（该卡由视口溢出断言覆盖），复测 0 处。量测记录 `evidence/layout-measurements.json`。
@@ -217,7 +217,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：69 条状态断言、436 项浏览器检查通过。35 份 axe 审计（32 份页面 + 3 份弹窗）0 violations；29 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：69 条状态断言、437 项浏览器检查通过。36 份 axe 审计（32 份页面 + 3 份弹窗 + 1 份卡背面）0 violations；30 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

@@ -50,7 +50,7 @@
     ]
   },
   {
-    "screen": "dialog wallet-confirmation",
+    "screen": "wallet-confirmation",
     "rule": "color-contrast",
     "nodes": 1,
     "targets": [
@@ -179,7 +179,7 @@
     ]
   },
   {
-    "screen": "dialog create-confirmation-320",
+    "screen": "create-confirmation-320",
     "rule": "color-contrast",
     "nodes": 1,
     "targets": [
@@ -245,8 +245,8 @@
       ".plate-front > .plate-top > .wordmark-small",
       ".plate-id > code",
       ".plate-id > span",
+      ".plate-person > h2",
       ".profile-type",
-      "h2",
       "span[role=\"img\"]"
     ],
     "reasons": [
@@ -265,8 +265,8 @@
       ".plate-front > .plate-top > .wordmark-small",
       ".plate-id > code",
       ".plate-id > span",
+      ".plate-person > h2",
       ".profile-type",
-      "h2",
       "span[role=\"img\"]"
     ],
     "reasons": [
@@ -285,8 +285,8 @@
       ".plate-front > .plate-top > .wordmark-small",
       ".plate-id > code",
       ".plate-id > span",
+      ".plate-person > h2",
       ".profile-type",
-      "h2",
       "span[role=\"img\"]"
     ],
     "reasons": [
@@ -305,8 +305,8 @@
       ".plate-front > .plate-top > .wordmark-small",
       ".plate-id > code",
       ".plate-id > span",
+      ".plate-person > h2",
       ".profile-type",
-      "h2",
       "span[role=\"img\"]"
     ],
     "reasons": [
@@ -314,7 +314,27 @@
     ]
   },
   {
-    "screen": "dialog discard-changes",
+    "screen": "chain-record-face",
+    "rule": "color-contrast",
+    "nodes": 14,
+    "targets": [
+      ".chain-heading > h2",
+      ".chain-heading > p",
+      ".plate-back > .identifier > .identifier-top > .eyebrow",
+      ".plate-back > .identifier > .identifier-value > code",
+      ".plate-back > .plate-top > .eyebrow",
+      ".plate-back > .plate-top > .wordmark-small",
+      "dd[data-chain=\"block\"]",
+      "dd[data-chain=\"confirmation\"]",
+      "div:nth-child(1) > dt",
+      "div:nth-child(2) > dt"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a pseudo element"
+    ]
+  },
+  {
+    "screen": "discard-changes",
     "rule": "color-contrast",
     "nodes": 1,
     "targets": [

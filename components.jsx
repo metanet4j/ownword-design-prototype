@@ -129,7 +129,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
         </article>
         <article className="identity-plate plate-back" aria-hidden={!back} inert={!back ? '' : undefined}>
           <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('chainRecord')}</span></div>
-          <div className="chain-heading"><h3>{t('identityPublication')}</h3><p>{profile.name}</p></div>
+          <div className="chain-heading"><h2>{t('identityPublication')}</h2><p>{profile.name}</p></div>
           <dl className="chain-facts">
             <div><dt>{t('blockHeight')}</dt><dd data-chain="block">{transaction && transaction.blockHeight ? transaction.blockHeight.toLocaleString('en-US') : t('pendingBlock')}</dd></div>
             <div><dt>{t('confirmation')}</dt><dd data-chain="confirmation">{t(transaction && transaction.blockHeight ? 'confirmed' : 'pendingConfirmation')}</dd></div>
