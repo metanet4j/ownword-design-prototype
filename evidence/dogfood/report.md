@@ -14,11 +14,11 @@
 |----------|-------|
 | Critical | 0 |
 | High | 0 |
-| Medium | 1 |
-| Low | 4 |
-| **Total** | **5** |
+| Medium | 2 |
+| Low | 5 |
+| **Total** | **7** |
 
-已修：ISSUE-002、ISSUE-003、ISSUE-004（见各条 Status）。保留记录：ISSUE-001（超出 v0.1 范围）、ISSUE-005（已在实现交接 3.2 记录为可接受行为）。
+已修：ISSUE-002、ISSUE-003、ISSUE-004、ISSUE-006、ISSUE-007（见各条 Status）。保留记录：ISSUE-001（超出 v0.1 范围）、ISSUE-005（已在实现交接 3.2 记录为可接受行为）。
 
 ## Issues
 
@@ -123,3 +123,44 @@
 **Actual**：次级操作部分在首屏之外。
 
 **Notes**：模拟区是原型脚手架、生产会删除，因此不作为缺陷修复；已由断言 `Dialog primary actions stay inside a 320px viewport` 守住主操作可见性。
+
+### ISSUE-006: 首屏加载时把焦点移进 main，第一次 Tab 落在页面中段
+
+| Field | Value |
+|-------|-------|
+| **Severity** | medium |
+| **Category** | accessibility |
+| **URL** | 首次加载（任意页面进入前） |
+| **Status** | **已修** |
+| **Repro Video** | N/A |
+
+**Repro steps**
+
+1. 打开应用（不点任何东西），读取 `document.activeElement` → `H1`（应用在挂载时主动把焦点移到 `main h1`）
+2. 按一次 Tab → 焦点落到「Connect Wallet」，**跳过了跳至正文链接、品牌按钮、偏好设置与穹顶按钮**
+3. 继续 Tab → 焦点跑到 `BODY`，再按一次才回到 `skip-link`，然后才轮到顶栏
+
+**Expected**：首屏不改动焦点，Tab 从文档开头（skip link）开始；站内页面切换时再移动焦点。
+**Actual**：首屏即抢焦点，键盘用户第一下 Tab 就进入 `main` 中段，必须绕整页一圈才能回到顶栏，等于让 skip link 失去意义。
+
+**修复**：`app.jsx` 增加 `firstPaint` ref，仅首屏跳过焦点搬移；站内路由切换仍聚焦新页面的 h1。
+
+### ISSUE-007: 翻面显示的「链上记录」在 Tab 顺序里位于翻面按钮之前
+
+| Field | Value |
+|-------|-------|
+| **Severity** | low |
+| **Category** | accessibility / ux |
+| **URL** | `#public` → 卡背面 |
+| **Status** | **已修** |
+| **Repro Video** | N/A |
+
+**Repro steps**
+
+1. 键盘走到「View chain record」按 Enter 翻面
+2. 继续按 Tab：焦点走向「暂停旋转 → 重置视角 → 视角滑块 → 页面底部 BAP ID → 返回」，**始终不到刚露出的 TxID 复制按钮**（它在 DOM 中位于翻面按钮之前，只能靠 Shift+Tab 或绕整页返回）
+
+**Expected**：翻面后焦点进入刚显示出来的内容。
+**Actual**：新内容在 Tab 顺序中"在身后"，键盘用户要绕整页才能操作它。
+
+**修复**：显式翻面按钮在设定角度后用 `requestAnimationFrame` 把焦点移到背面第一个可操作元素（`copy-tx`）；用视角滑块跨过 90° 时不搬焦点（避免拖动过程中焦点被抢，属有意取舍，已在 `verification.md` 记录）。

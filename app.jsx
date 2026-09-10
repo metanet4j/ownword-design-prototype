@@ -17,6 +17,7 @@ function App() {
   const [storageError, setStorageError] = React.useState(false);
   const [noticePaused, setNoticePaused] = React.useState(false);
   const prefsRef = React.useRef(null);
+  const firstPaint = React.useRef(true);
   const pendingResult = React.useRef(false);
   const operationScenario = React.useRef('new');
   const currentState = React.useRef(state);
@@ -52,6 +53,9 @@ function App() {
   React.useEffect(() => {
     console.info('[Ownword prototype]', {page: state.page, wallet: state.wallet ? 'connected' : 'disconnected', operation: state.busy || state.modal || 'none', account: state.account, notice: state.notice, error: state.error, epoch: state.epoch});
     setErrors({}); setImageError('');
+    // Route changes move focus to the new heading; the first paint must not, or
+    // Tab would start inside main and skip the skip-link and topbar controls.
+    if (firstPaint.current) {firstPaint.current = false; return;}
     if (!state.modal) document.querySelector('main h1')?.focus({preventScroll: true});
   }, [state.page, state.epoch]);
   React.useEffect(() => {

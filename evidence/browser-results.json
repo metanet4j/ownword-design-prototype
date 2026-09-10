@@ -1,6 +1,8 @@
 {
-  "passed": 443,
+  "passed": 446,
   "checks": [
+    "First paint leaves focus at the document start",
+    "First Tab reaches the skip link instead of landing inside main",
     "First visit English and Light",
     "Exactly seven sky lines",
     "Keyboard plays sky lines",
@@ -383,6 +385,7 @@
     "Chain record shows block height and confirmation state",
     "Publication TxID copy works",
     "Flip control returns to the identity face",
+    "Flip control reveals the chain record and moves focus into it",
     "Unsaved changes ask before leaving",
     "discard-changes axe 0 violations",
     "Keep editing preserves draft",

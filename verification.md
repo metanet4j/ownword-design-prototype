@@ -58,7 +58,7 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 
 ## 探索式测试（dogfood，2026-09-10）
 
-按 `agent-browser` 的 dogfood 技能跑了一轮探索式测试（不预设断言，主动找问题），报告与截图见 [`evidence/dogfood/report.md`](evidence/dogfood/report.md)。共 5 项发现：1 medium、4 low，无 critical/high。其中 3 项已修并补断言：
+按 `agent-browser` 的 dogfood 技能跑了一轮探索式测试（不预设断言，主动找问题），报告与截图见 [`evidence/dogfood/report.md`](evidence/dogfood/report.md)。共 7 项发现：2 medium、5 low，无 critical/high（后两项来自键盘全程的定向探索）。其中 5 项已修并补断言：
 
 | 发现 | 级别 | 处置 |
 | --- | --- | --- |
@@ -67,6 +67,8 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 | 复制反馈「Copied」永不消失 | low | 已修：`Identifier` 6 秒后自动清除（与确认提示同节奏） |
 | 解析中装饰骨架未标记 `aria-hidden` | low | 已修：骨架容器补 `aria-hidden="true"` |
 | 320px 弹窗次级操作被裁出首屏 | low | 记录为实现交接 3.2 的可接受行为（模拟区生产会删除） |
+| 首屏抢焦点：第一次 Tab 落在 `main` 中段，跳过 skip link 与顶栏 | medium | 已修：`firstPaint` ref 仅首屏跳过焦点搬移；新增断言「首屏焦点在文档起点」「第一次 Tab 到达 skip link」 |
+| 翻面后新露出的 TxID 复制按钮在 Tab 顺序中位于翻面按钮之前 | low | 已修：显式翻面按钮用 rAF 把焦点移入背面；滑块跨 90° 时不搬焦点（有意取舍） |
 
 **证据说明**：本环境无头浏览器无法录制 WebM（`agent-browser record` 报 `No frames captured`），故报告以分步截图替代 repro 视频，报告内已注明。
 
@@ -231,7 +233,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：74 条状态断言、443 项浏览器检查通过。39 份 axe 审计（32 份页面 + 7 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：74 条状态断言、446 项浏览器检查通过。39 份 axe 审计（32 份页面 + 7 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 
