@@ -171,7 +171,10 @@ def resume_animations():
 
 def layout_signature():
     freeze_animations()
-    signature = js('JSON.stringify(Array.from(document.querySelectorAll("main button, main h1, main .identifier, main .person-row, main .page-heading")).map(e=>{const r=e.getBoundingClientRect();return [Math.round(r.x+scrollX),Math.round(r.y+scrollY),Math.round(r.width),Math.round(r.height)]}))')
+    # Absolute x plus y relative to the first measured element: a transient notice
+    # (it auto-dismisses after 6s) shifts everything uniformly between passes and
+    # would otherwise read as a theme-driven layout shift.
+    signature = js('JSON.stringify((()=>{const els=Array.from(document.querySelectorAll("main button, main h1, main .identifier, main .person-row, main .page-heading"));const rects=els.map(e=>e.getBoundingClientRect());const base=rects.length?rects[0].top+scrollY:0;return rects.map(r=>[Math.round(r.x+scrollX),Math.round(r.y+scrollY-base),Math.round(r.width),Math.round(r.height)])})())')
     resume_animations()
     return signature
 
