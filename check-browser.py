@@ -72,6 +72,9 @@ def click_action(name):
     """
     js(f'document.querySelector(\'[data-action="{name}"]\')?.scrollIntoView({{block: "center", behavior: "instant"}})')
     time.sleep(0.05)
+    # The 3D card animates its transform; a coordinate click fired mid-transition
+    # can land beside the target, so wait for finite transitions first.
+    settle()
     call('click', f'[data-action="{name}"]')
 
 def state(attribute):
