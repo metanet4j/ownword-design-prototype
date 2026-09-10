@@ -1,5 +1,5 @@
 {
-  "passed": 446,
+  "passed": 448,
   "checks": [
     "First paint leaves focus at the document start",
     "First Tab reaches the skip link instead of landing inside main",
@@ -66,6 +66,7 @@
     "Wallet dialog moves focus inside",
     "Wallet dialog exposes an accessible name",
     "wallet-confirmation axe 0 violations",
+    "Wallet dialog keeps its actions inside a 320x568 viewport",
     "Closing the dialog returns focus to its trigger",
     "Connection cancellation returns to welcome",
     "Hovering keeps the confirmation on screen",
@@ -223,6 +224,7 @@
     "Clipboard contains complete BAP ID",
     "Copy failure preserves identifier",
     "Dialog primary actions stay inside a 320px viewport",
+    "Dialog primary actions stay inside a 320x568 viewport",
     "create-confirmation-320 axe 0 violations",
     "Escape cancels wallet creation",
     "Cancelled creation preserves values",

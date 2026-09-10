@@ -14,11 +14,11 @@
 |----------|-------|
 | Critical | 0 |
 | High | 0 |
-| Medium | 2 |
+| Medium | 3 |
 | Low | 5 |
-| **Total** | **7** |
+| **Total** | **8** |
 
-已修：ISSUE-002、ISSUE-003、ISSUE-004、ISSUE-006、ISSUE-007（见各条 Status）。保留记录：ISSUE-001（超出 v0.1 范围）、ISSUE-005（已在实现交接 3.2 记录为可接受行为）。
+已修：ISSUE-002、ISSUE-003、ISSUE-004、ISSUE-006、ISSUE-007、ISSUE-008（见各条 Status）。保留记录：ISSUE-001（超出 v0.1 范围）、ISSUE-005（已在实现交接 3.2 记录为可接受行为）。
 
 ## Issues
 
@@ -164,3 +164,24 @@
 **Actual**：新内容在 Tab 顺序中"在身后"，键盘用户要绕整页才能操作它。
 
 **修复**：显式翻面按钮在设定角度后用 `requestAnimationFrame` 把焦点移到背面第一个可操作元素（`copy-tx`）；用视角滑块跨过 90° 时不搬焦点（避免拖动过程中焦点被抢，属有意取舍，已在 `verification.md` 记录）。
+
+### ISSUE-008: 320×568 矮屏下创建确认弹窗的主操作在首屏之外
+
+| Field | Value |
+|-------|-------|
+| **Severity** | medium |
+| **Category** | ux / visual |
+| **URL** | `#review` → 钱包确认弹窗（320×568，iPhone SE 一代尺寸） |
+| **Status** | **已修** |
+| **Repro Video** | N/A |
+
+**Repro steps**
+
+1. 视口设为 320×568（此前所有断言只覆盖 320×800）
+2. 走到 Review，点「Create Identity」打开创建确认弹窗
+3. 测量 Cancel / Approve：`top=711, bottom=755`，而视口高度只有 568 —— **两个主操作都在首屏之外**，用户必须先意识到弹窗内可滚动才能确认（`small-320-create-dialog.png`）
+
+**Expected**：PRD 5.10 要求「主操作保持可用」。320×800 下主操作可见，但更矮的机型（iPhone SE 一代 320×568）下不可见，等于该验收在真实最小机型上失守。
+**Actual**：弹窗内容（身份摘要 + BAP ID + 模拟说明）把操作行推到 711px。
+
+**修复**：新增 `@media (max-height: 640px)` —— 弹窗内操作行改为 `position: sticky; bottom: 0` 常驻滚动视口底部，并在矮屏隐藏原型专用的「Simulated wallet confirmation」说明行。修复后实测 Cancel/Approve 位于 459–503（视口 568 内）。新增 2 条断言：`Wallet dialog keeps its actions inside a 320x568 viewport`、`Dialog primary actions stay inside a 320x568 viewport`。

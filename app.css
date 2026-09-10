@@ -280,6 +280,12 @@ main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; paddi
   .scenario-panel { right: 16px; bottom: 16px; padding: var(--s2-spacing-300); }
   .preferences { position: fixed; right: 16px; top: 78px; width: min(296px, calc(100vw - 32px)); }
 }
+@media (max-height: 640px) {
+  /* The confirmation actions are the point of the dialog: pin them to the
+     scrollport so short phones (320x568) do not require hunting inside it. */
+  .modal .action-row { position: sticky; bottom: 0; z-index: 2; background: var(--s2d-layer-raised); margin-bottom: calc(-1 * var(--s2-spacing-500)); padding-block: var(--s2-spacing-200) var(--s2-spacing-500); }
+  .modal .simulation-label { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .brand-loading .brand-mark, .brand-loading::before { animation: none; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
