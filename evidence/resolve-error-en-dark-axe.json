@@ -16,7 +16,7 @@
       "nodes": [
         {
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
-          "html": "<p>Your wallet is connected, but the identity lookup failed. Try again or disconnect.</p>",
+          "html": "<p>Try again, or disconnect and switch to another account.</p>",
           "target": [
             "p:nth-child(3)"
           ]

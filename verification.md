@@ -96,6 +96,24 @@ PRD v0.1 没有该界面。它落实的是核心认知第 11.8 条「交易已�
 
 据此，文案精简的数据结论是：**值得改的是这 8～10 条长正文**（错误、空状态、确认弹窗），短标签无需重写；全站重写缺乏数据支撑。
 
+### 已执行的精简（保守范围）
+
+按上述结论只改 7 条产品长正文，规则是：**标题已说明的失败不在正文重复、每条保留全部产品事实、术语只用核心认知第 2 节的词**。演示面板专用的 `simulatorHint`/`simulatorNote` 不在产品界面，未改。
+
+| 键 | 改前（en） | 改后（en） |
+| --- | --- | --- |
+| `welcomeBody` | Begin with your wallet. Create an identity you control, and give your words a lasting home. (91) | Start with your wallet. Your identity and your words stay yours. (62) |
+| `connectBody` | Allow this application to see your current wallet identity. Publishing requires a separate confirmation. (104) | Let this app see your wallet identity. Publishing needs a separate confirmation. (78) |
+| `processingBody` | Waiting for the operation to finish. You can disconnect or switch account to cancel this operation. (99) | Waiting for the wallet. Disconnecting or switching account cancels this operation. (82) |
+| `connectFailedBody` | The wallet connection could not be completed. Your identity is unchanged. Try again. (84) | Your identity is unchanged. Check your wallet and try again. (60) |
+| `completeBody` | Your identity is already published. Add the missing profile information to continue. (84) | Already published. Add the missing profile details to continue. (64) |
+| `discardBody` | Your changes have not been saved. Keep editing, or discard them to leave this page. (83) | Changes are not saved. Keep editing, or discard them to leave. (62) |
+| `resolveFailedBody` | Your wallet is connected, but the identity lookup failed. Try again or disconnect. (82) | Try again, or disconnect and switch to another account. (56) |
+
+中文同步改写（例：`从钱包开始，创建由你掌控的身份，让你的话语有一个长久的归属。` → `从钱包开始。身份与话语，都由你掌控。`）。改后超过 80 字符的产品文案只剩 `processingBody`（82，为保留"断开或切换账户会取消本操作"这一产品事实），超过 100 字符的只剩演示面板专用的 `simulatorHint`。
+
+精简后 436 项浏览器检查、69 项模型断言、词典契约与令牌检查全部重跑通过。
+
 ## 生产替换契约的依据
 
 [implementation-handoff.md](implementation-handoff.md) 的每项替换声明都指向可查的依据，不凭印象书写：

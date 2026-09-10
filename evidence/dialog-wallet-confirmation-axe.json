@@ -16,7 +16,7 @@
       "nodes": [
         {
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
-          "html": "<p>Allow this application to see your current wallet identity. Publishing requires a separate confirmation.</p>",
+          "html": "<p>Let this app see your wallet identity. Publishing needs a separate confirmation.</p>",
           "target": [
             "dialog > p"
           ]

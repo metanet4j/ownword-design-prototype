@@ -3,7 +3,7 @@
     "en": 100,
     "zh": 40
   },
-  "longCount": 2,
+  "longCount": 1,
   "longest": [
     {
       "key": "simulatorHint",
@@ -13,53 +13,18 @@
       "zhLength": 32
     },
     {
-      "key": "connectBody",
-      "en": "Allow this application to see your current wallet identity. Publishing requires a separate confirmation.",
-      "zh": "允许应用查看当前钱包身份。发布操作需要另行确认。",
-      "enLength": 104,
-      "zhLength": 24
-    },
-    {
       "key": "processingBody",
-      "en": "Waiting for the operation to finish. You can disconnect or switch account to cancel this operation.",
-      "zh": "正在等待操作完成。断开连接或切换账户可取消此操作。",
-      "enLength": 99,
-      "zhLength": 25
-    },
-    {
-      "key": "welcomeBody",
-      "en": "Begin with your wallet. Create an identity you control, and give your words a lasting home.",
-      "zh": "从钱包开始，创建由你掌控的身份，让你的话语有一个长久的归属。",
-      "enLength": 91,
-      "zhLength": 30
-    },
-    {
-      "key": "connectFailedBody",
-      "en": "The wallet connection could not be completed. Your identity is unchanged. Try again.",
-      "zh": "无法完成钱包连接，身份未改变。请重试。",
-      "enLength": 84,
-      "zhLength": 19
-    },
-    {
-      "key": "completeBody",
-      "en": "Your identity is already published. Add the missing profile information to continue.",
-      "zh": "你的身份已发布。请补全资料后继续。",
-      "enLength": 84,
-      "zhLength": 17
-    },
-    {
-      "key": "discardBody",
-      "en": "Your changes have not been saved. Keep editing, or discard them to leave this page.",
-      "zh": "修改尚未保存。可继续编辑，或放弃修改后离开。",
-      "enLength": 83,
-      "zhLength": 22
-    },
-    {
-      "key": "resolveFailedBody",
-      "en": "Your wallet is connected, but the identity lookup failed. Try again or disconnect.",
-      "zh": "钱包已连接，但身份查询失败。请重试或断开连接。",
+      "en": "Waiting for the wallet. Disconnecting or switching account cancels this operation.",
+      "zh": "正在等待钱包返回。断开或切换账户会取消此操作。",
       "enLength": 82,
       "zhLength": 23
+    },
+    {
+      "key": "connectBody",
+      "en": "Let this app see your wallet identity. Publishing needs a separate confirmation.",
+      "zh": "允许应用查看钱包身份；发布时另行确认。",
+      "enLength": 80,
+      "zhLength": 19
     },
     {
       "key": "saveImpact",
@@ -90,6 +55,13 @@
       "zhLength": 30
     },
     {
+      "key": "welcomeBody",
+      "en": "Start with your wallet. Your identity and your words stay yours.",
+      "zh": "从钱包开始。身份与话语，都由你掌控。",
+      "enLength": 64,
+      "zhLength": 18
+    },
+    {
       "key": "operationFailedBody",
       "en": "The operation did not complete. Your values are kept. Try again.",
       "zh": "操作未完成，已保留填写内容。请重试。",
@@ -97,11 +69,39 @@
       "zhLength": 18
     },
     {
+      "key": "completeBody",
+      "en": "Already published. Add the missing profile details to continue.",
+      "zh": "身份已发布。补全资料后继续。",
+      "enLength": 63,
+      "zhLength": 14
+    },
+    {
       "key": "readyBody",
       "en": "You now have a place to stand. Your wallet remains in control.",
       "zh": "现在，你有了自己的坐标。钱包始终由你掌控。",
       "enLength": 62,
       "zhLength": 21
+    },
+    {
+      "key": "discardBody",
+      "en": "Changes are not saved. Keep editing, or discard them to leave.",
+      "zh": "修改未保存。继续编辑，或放弃后离开。",
+      "enLength": 62,
+      "zhLength": 18
+    },
+    {
+      "key": "connectFailedBody",
+      "en": "Your identity is unchanged. Check your wallet and try again.",
+      "zh": "身份未改变。请检查钱包后重试。",
+      "enLength": 60,
+      "zhLength": 15
+    },
+    {
+      "key": "resolveFailedBody",
+      "en": "Try again, or disconnect and switch to another account.",
+      "zh": "可重试，或断开后切换其他账户。",
+      "enLength": 55,
+      "zhLength": 15
     },
     {
       "key": "resolvingBody",
@@ -153,13 +153,6 @@
       "zh": "选择场景后连接或重新解析。钱包确认窗口支持批准、取消和模拟失败。",
       "enLength": 115,
       "zhLength": 32
-    },
-    {
-      "key": "connectBody",
-      "en": "Allow this application to see your current wallet identity. Publishing requires a separate confirmation.",
-      "zh": "允许应用查看当前钱包身份。发布操作需要另行确认。",
-      "enLength": 104,
-      "zhLength": 24
     }
   ]
 }
