@@ -1,21 +1,14 @@
 {
-  "method": "本轮改动为 check-copy.cjs（新增信息性长度报告）+ 文档；原型代码未变",
-  "commit": "6e122db8e321d35beee4cef4bd3c0d7055507f55",
-  "previousVerification": "3ae0a6e",
-  "changedFiles": [
-    "check-copy.cjs",
-    "evidence/copy-length.json",
-    "verification.md"
-  ],
-  "codeOrScriptChanges": [
-    "check-copy.cjs",
-    "evidence/copy-length.json"
-  ],
-  "reusedEvidence": "浏览器 430 项与离线 4 项沿用 e0b4b4f 干净检出结果（原型代码自那时起未变）",
-  "rechecked": {
+  "method": "git archive HEAD 解压到 /tmp/astra-clean8（无工作区残留），用独立端口 4320 服务，依次运行全部检查脚本",
+  "commit": "0d83481cbc7eb9218c8653afe2ebafa179be741a",
+  "trackedFiles": 1154,
+  "server": "python3 -m http.server 4320 --bind 127.0.0.1 --directory /tmp/astra-clean8",
+  "results": {
     "check-model.cjs": "69 model assertions passed",
-    "check-copy.cjs": "4 copy contract checks passed (155 keys); length report written",
-    "check-tokens.py": "66/66 referenced tokens resolve"
+    "check-copy.cjs": "4 copy contract checks passed (155 keys)",
+    "check-tokens.py": "66/66 referenced tokens resolve",
+    "check-offline.py": "4 offline startup checks passed (all external domains blocked)",
+    "check-browser.py": "436 browser checks passed; 29 axe incomplete recorded; axe 0 violations (32 page + 3 dialog audits)"
   },
-  "conclusion": "仅测试脚本与文档变更；原型行为未变，代码级证据沿用上一轮干净检出，三项脚本本轮重跑通过"
+  "conclusion": "干净检出五脚本与工作区结果一致；本轮同时修掉两处测试稳定性问题（坐标点击未等过渡结束、深浅布局签名被自动消失提示干扰）"
 }
