@@ -190,6 +190,17 @@
     ]
   },
   {
+    "screen": "processing-create",
+    "rule": "color-contrast",
+    "nodes": 1,
+    "targets": [
+      "span[role=\"img\"]"
+    ],
+    "reasons": [
+      "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
     "screen": "identity en/light",
     "rule": "color-contrast",
     "nodes": 1,
@@ -386,6 +397,19 @@
     ],
     "reasons": [
       "Element's background color could not be determined due to a background gradient"
+    ]
+  },
+  {
+    "screen": "storage-error-alert",
+    "rule": "color-contrast",
+    "nodes": 2,
+    "targets": [
+      ".horizon > span",
+      ".welcome-body"
+    ],
+    "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
+      "Element's background color could not be determined due to a pseudo element"
     ]
   }
 ]

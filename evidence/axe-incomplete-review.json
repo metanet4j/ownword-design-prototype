@@ -804,6 +804,114 @@
         44
       ],
       "pass": true
+    },
+    {
+      "target": "welcome body (light)",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 7.59,
+      "worstBackground": [
+        248,
+        248,
+        248
+      ],
+      "pass": true
+    },
+    {
+      "target": "welcome body (dark)",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 19,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 7.85,
+      "worstBackground": [
+        27,
+        27,
+        27
+      ],
+      "pass": true
+    },
+    {
+      "target": "horizon caption (light)",
+      "color": [
+        80,
+        80,
+        80
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 7.59,
+      "worstBackground": [
+        248,
+        248,
+        248
+      ],
+      "pass": true
+    },
+    {
+      "target": "horizon caption (dark)",
+      "color": [
+        175,
+        175,
+        175
+      ],
+      "fontSize": 15,
+      "fontWeight": 400,
+      "required": 4.5,
+      "worstRatio": 7.85,
+      "worstBackground": [
+        27,
+        27,
+        27
+      ],
+      "pass": true
+    },
+    {
+      "target": "processing portrait initials (light)",
+      "color": [
+        16,
+        40,
+        140
+      ],
+      "fontSize": 39,
+      "fontWeight": 400,
+      "required": 3.0,
+      "worstRatio": 12.32,
+      "worstBackground": [
+        255,
+        255,
+        255
+      ],
+      "pass": true
+    },
+    {
+      "target": "processing portrait initials (dark)",
+      "color": [
+        181,
+        213,
+        253
+      ],
+      "fontSize": 39,
+      "fontWeight": 400,
+      "required": 3.0,
+      "worstRatio": 9.24,
+      "worstBackground": [
+        44,
+        44,
+        44
+      ],
+      "pass": true
     }
   ],
   "worst": {

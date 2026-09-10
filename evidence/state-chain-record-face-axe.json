@@ -1,0 +1,117 @@
+{
+  "axeVersion": "4.12.1",
+  "counts": {
+    "inapplicable": 48,
+    "incomplete": 1,
+    "passes": 41,
+    "violations": 0
+  },
+  "incomplete": [
+    {
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodeCount": 14,
+      "nodes": [
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span class=\"wordmark-small\"><img class=\"brand-mark\" src=\"brand/ownword-mark.svg\" width=\"32\" height=\"32\" alt=\"\" aria-hidden=\"true\">ownword</span>",
+          "target": [
+            ".plate-back > .plate-top > .wordmark-small"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span class=\"eyebrow\">Chain record</span>",
+          "target": [
+            ".plate-back > .plate-top > .eyebrow"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<h2>Identity publication</h2>",
+          "target": [
+            ".chain-heading > h2"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<p>Maya Chen</p>",
+          "target": [
+            ".chain-heading > p"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<dt>Block height</dt>",
+          "target": [
+            "div:nth-child(1) > dt"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<dd data-chain=\"block\">Awaiting block</dd>",
+          "target": [
+            "dd[data-chain=\"block\"]"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<dt>Confirmation</dt>",
+          "target": [
+            "div:nth-child(2) > dt"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<dd data-chain=\"confirmation\">Awaiting block confirmation</dd>",
+          "target": [
+            "dd[data-chain=\"confirmation\"]"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<span class=\"eyebrow\">Publication TxID</span>",
+          "target": [
+            ".plate-back > .identifier > .identifier-top > .eyebrow"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+          "html": "<code title=\"7e3a91c4b8602fd59a6c4381de0752fb9014c8e6a3d5720b19f84e6c2a5037dd\">7e3a91c4b8602fd59a6c4381de0752fb9014c8e6a3d5720b19f84e6c2a5037dd</code>",
+          "target": [
+            ".plate-back > .identifier > .identifier-value > code"
+          ]
+        }
+      ],
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ]
+    }
+  ],
+  "lifecycle": {
+    "effectiveLaunch": {
+      "browserLaunched": true,
+      "engine": "chrome",
+      "launchHash": 1274995755638644409
+    },
+    "launched": false,
+    "relaunchedBrowser": false,
+    "restartedBackground": false,
+    "restoreStatus": "not_configured",
+    "reused": true,
+    "saveStatus": "not_attempted"
+  },
+  "url": "http://127.0.0.1:4312/own-word-prototype-s2-astra-001/index.html#main",
+  "violations": []
+}

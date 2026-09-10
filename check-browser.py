@@ -128,11 +128,15 @@ def pref(locale='en', theme='light'):
     click_selector('.preferences > button')
     settle()
 
-def audit_state(label):
-    """Audit a transient UI state (open dialog, exposed card face).
+def audit_state(label, when=None):
+    """Audit a transient UI state (dialog, exposed card face, busy screen).
 
     Page-level axe runs with these surfaces hidden, so they need their own pass.
+    `when` guards short-lived states: it must hold before and after the audit, so
+    evidence can never be mislabelled with a state that already moved on.
     """
+    if when:
+        assert js(when), f'{label}: state not present before audit'
     settle()
     a11y = call('a11y', json_result=True)
     (EVIDENCE / f'state-{label}-axe.json').write_text(json.dumps(a11y, ensure_ascii=False, indent=2), encoding='utf-8')
@@ -146,6 +150,8 @@ def audit_state(label):
             'targets': sorted({target for node in nodes for target in (node.get('target') or [])}),
             'reasons': sorted({(node.get('failureSummary') or '').split('Fix any of the following:')[-1].strip() for node in nodes if node.get('failureSummary')}),
         })
+    if when:
+        assert js(when), f'{label}: state left before the audit finished'
     results.append(f'{label} axe 0 violations')
     print(f'PASS {label} axe 0 violations ({len(a11y.get("incomplete", []))} incomplete recorded)', flush=True)
 
@@ -239,10 +245,12 @@ def scenario(value):
     call('select', '.scenario-panel select', value)
     click_selector('.panel-title button')
 
-def connect(value='new'):
+def connect(value='new', audit=None):
     scenario(value)
     click_action('connect')
     click_action('approve')
+    if audit:
+        audit_state(audit, when='document.querySelector("main").dataset.busy === "resolving"')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
 try:
@@ -312,7 +320,7 @@ try:
     wait_page('identity')
     expect('!!document.querySelector(".identity-page .person-row h2")', 'Published identity opens My Identity')
     click_action('disconnect')
-    connect('new')
+    connect('new', audit='identity-resolving')
     expect('!!document.querySelector(".wallet-connected .s2d-status") && document.querySelector(".wallet-connected .s2d-status").textContent.trim().length > 0', 'Connection shows Connected status')
     click_action('review')
     expect('document.querySelector("#profile-name").getAttribute("aria-invalid") === "true"', 'Invalid required name blocks Review')
@@ -350,6 +358,7 @@ try:
     wait_until('document.querySelector("[data-error]")?.dataset.error === "createFailed" && document.querySelector("main").dataset.screenLabel === "review"', 'Creation failure retains review and retry', diagnostic='(document.querySelector("[data-error]")||{}).dataset.error')
     click_action('submit-operation'); click_action('approve')
     wait_until('document.querySelector("main").dataset.busy === "create"', 'Creation processing visible', diagnostic='document.querySelector("main").dataset.busy')
+    audit_state('processing-create', when='document.querySelector("main").dataset.busy === "create"')
     wait_page('ready')
     inspect('ready', True)
     click_action('go-identity'); wait_page('identity')
@@ -424,6 +433,7 @@ try:
     js('Object.defineProperty(Storage.prototype,"setItem",{configurable:true,value:()=>{throw new Error("quota")}});true')
     pref('en', 'light')
     wait_until('!!document.querySelector("[data-storage-error]") && document.querySelector("[data-storage-error]").textContent.trim().length > 0', 'Unwritable storage is announced instead of failing silently', diagnostic='!!document.querySelector("[data-storage-error]")')
+    audit_state('storage-error-alert', when='!!document.querySelector("[data-storage-error]")')
     js('delete Storage.prototype.setItem;true')
     pref()
     scenario('missing'); click_action('connect')

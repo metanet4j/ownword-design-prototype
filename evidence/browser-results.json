@@ -1,5 +1,5 @@
 {
-  "passed": 437,
+  "passed": 440,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
@@ -117,6 +117,7 @@
     "resolve-error zh/dark axe 0 violations",
     "resolve-error 1440px no page overflow",
     "Published identity opens My Identity",
+    "identity-resolving axe 0 violations",
     "Connection shows Connected status",
     "Invalid required name blocks Review",
     "Name maximum 100 enforced",
@@ -222,6 +223,7 @@
     "Cancelled creation preserves values",
     "Creation failure retains review and retry",
     "Creation processing visible",
+    "processing-create axe 0 violations",
     "ready en/light 320px no page overflow",
     "ready en/light 320px controls fit",
     "ready en/light 390px no page overflow",
@@ -437,6 +439,7 @@
     "Locale and theme preserve profile and BAP ID",
     "Preferences persist after refresh",
     "Unwritable storage is announced instead of failing silently",
+    "storage-error-alert axe 0 violations",
     "Unavailable wallet explains recovery"
   ],
   "axeIncomplete": [
@@ -625,6 +628,17 @@
       "nodes": 1,
       "targets": [
         ".compact > .portrait > span[role=\"img\"][aria-label=\"Maya Chen\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "processing-create",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        "span[role=\"img\"]"
       ],
       "reasons": [
         "Element's background color could not be determined due to a background gradient"
@@ -827,6 +841,19 @@
       ],
       "reasons": [
         "Element's background color could not be determined due to a background gradient"
+      ]
+    },
+    {
+      "screen": "storage-error-alert",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".horizon > span",
+        ".welcome-body"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
       ]
     }
   ]
