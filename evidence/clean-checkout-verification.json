@@ -1,14 +1,14 @@
 {
-  "method": "git archive HEAD 解压到 /tmp/astra-clean11（无工作区残留），用独立端口 4323 服务，依次运行全部检查脚本",
-  "commit": "15ad3548ac2c97d04b8f584210060d422b99a388",
-  "trackedFiles": 1158,
-  "server": "python3 -m http.server 4323 --bind 127.0.0.1 --directory /tmp/astra-clean11",
+  "method": "git archive HEAD 解压到 /tmp/astra-clean12（无工作区残留），用独立端口 4324 服务，依次运行全部检查脚本",
+  "commit": "bc2580ae46ba9d4f4186999505946ac9ad63301a",
+  "trackedFiles": 1172,
+  "server": "python3 -m http.server 4324 --bind 127.0.0.1 --directory /tmp/astra-clean12",
   "results": {
-    "check-model.cjs": "69 model assertions passed",
+    "check-model.cjs": "74 model assertions passed",
     "check-copy.cjs": "4 copy contract checks passed (155 keys)",
     "check-tokens.py": "66/66 referenced tokens resolve",
     "check-offline.py": "4 offline startup checks passed (all external domains blocked)",
-    "check-browser.py": "440 browser checks passed; 32 axe incomplete recorded; axe 0 violations (32 page + 7 transient-state audits)"
+    "check-browser.py": "443 browser checks passed; 32 axe incomplete recorded; axe 0 violations (32 page + 7 transient-state audits)"
   },
-  "conclusion": "干净检出五脚本与工作区结果一致（含 7 个瞬时状态的 axe 审计）"
+  "conclusion": "干净检出五脚本与工作区结果一致（含 dogfood 三项修复）"
 }
