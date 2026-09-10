@@ -1,8 +1,8 @@
 {
-  "method": "git archive HEAD 解压到 /tmp/astra-clean8（无工作区残留），用独立端口 4320 服务，依次运行全部检查脚本",
-  "commit": "0d83481cbc7eb9218c8653afe2ebafa179be741a",
+  "method": "git archive HEAD 解压到 /tmp/astra-clean9（无工作区残留），用独立端口 4321 服务，依次运行全部检查脚本",
+  "commit": "fe35dbf4a774f2b990d8392257b30664a6bdda43",
   "trackedFiles": 1154,
-  "server": "python3 -m http.server 4320 --bind 127.0.0.1 --directory /tmp/astra-clean8",
+  "server": "python3 -m http.server 4321 --bind 127.0.0.1 --directory /tmp/astra-clean9",
   "results": {
     "check-model.cjs": "69 model assertions passed",
     "check-copy.cjs": "4 copy contract checks passed (155 keys)",
@@ -10,5 +10,5 @@
     "check-offline.py": "4 offline startup checks passed (all external domains blocked)",
     "check-browser.py": "436 browser checks passed; 29 axe incomplete recorded; axe 0 violations (32 page + 3 dialog audits)"
   },
-  "conclusion": "干净检出五脚本与工作区结果一致；本轮同时修掉两处测试稳定性问题（坐标点击未等过渡结束、深浅布局签名被自动消失提示干扰）"
+  "conclusion": "干净检出五脚本与工作区结果一致（含 7 条产品长正文精简后的版本）"
 }
