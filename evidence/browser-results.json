@@ -1,9 +1,13 @@
 {
-  "passed": 430,
+  "passed": 436,
   "checks": [
     "First visit English and Light",
     "Exactly seven sky lines",
     "Keyboard plays sky lines",
+    "Pointer movement lights the sky lines near the cursor",
+    "Sky light is one masked overlay, not per-line paint",
+    "Sky light adds no per-line animations",
+    "Leaving the sky clears the light",
     "Skip link becomes visible when focused",
     "5 keyboard stops show a visible focus ring",
     "Skip link moves focus into the main landmark",
@@ -316,6 +320,8 @@
     "Icon buttons expose accessible names",
     "Status states carry text, not colour alone",
     "Reduced motion emulation active",
+    "Reduced motion stops the pointer light from tracking",
+    "Reduced motion shows a static centred light instead",
     "Reduced motion stops automatic 3D rotation",
     "Reduced motion shortens decorative animation",
     "public en/light 320px no page overflow",
@@ -436,11 +442,10 @@
     {
       "screen": "welcome en/light",
       "rule": "color-contrast",
-      "nodes": 4,
+      "nodes": 3,
       "targets": [
         ".eyebrow",
         ".horizon > span",
-        ".welcome-body",
         ".welcome-intro"
       ],
       "reasons": [

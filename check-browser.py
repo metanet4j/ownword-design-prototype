@@ -61,6 +61,9 @@ def click_selector(selector):
     scroll_to(selector)
     call('click', selector)
 
+def dome_center():
+    return js('(()=>{const r=document.querySelector(".dome").getBoundingClientRect();return [Math.round(r.x + r.width / 2), Math.round(r.y + r.height / 2)]})()')
+
 def click_action(name):
     """Click by stable data-action hook instead of user-visible copy.
 
@@ -242,6 +245,14 @@ try:
     expect('document.querySelectorAll(".vault-line").length === 7', 'Exactly seven sky lines')
     call('focus', '.dome'); call('press', 'Enter')
     expect('document.querySelector(".vault").dataset.pulse === "true"', 'Keyboard plays sky lines')
+    call('set', 'viewport', 1440, 1000); settle()
+    center = dome_center()
+    call('mouse', 'move', center[0], center[1]); time.sleep(0.4)
+    expect('document.querySelector(".dome").dataset.lit === "true" && /px$/.test(document.querySelector(".dome").style.getPropertyValue("--light-x"))', 'Pointer movement lights the sky lines near the cursor')
+    expect('getComputedStyle(document.querySelector(".vault-light")).maskImage.includes("radial-gradient") && getComputedStyle(document.querySelector(".vault-light")).opacity === "1"', 'Sky light is one masked overlay, not per-line paint')
+    expect('Array.from(document.querySelectorAll(".light-line")).every(e=>getComputedStyle(e).animationName === "none")', 'Sky light adds no per-line animations')
+    call('mouse', 'move', 1400, 985); time.sleep(0.5)
+    expect('document.querySelector(".dome").dataset.lit === "false"', 'Leaving the sky clears the light')
     call('focus', '.skip-link')
     expect('getComputedStyle(document.querySelector(".skip-link")).top === "12px"', 'Skip link becomes visible when focused')
     stops = set()
@@ -344,6 +355,12 @@ try:
     call('set', 'viewport', 1440, 1000); settle()
     call('set', 'media', 'light', 'reduced-motion')
     expect('matchMedia("(prefers-reduced-motion: reduce)").matches', 'Reduced motion emulation active')
+    call('mouse', 'move', 1400, 985); time.sleep(0.4)
+    center = dome_center()
+    call('mouse', 'move', center[0], center[1]); time.sleep(0.4)
+    expect('document.querySelector(".dome").dataset.lit === "false"', 'Reduced motion stops the pointer light from tracking')
+    call('focus', '.dome'); call('press', 'Enter'); time.sleep(0.3)
+    expect('document.querySelector(".dome").dataset.lit === "true" && document.querySelector(".dome").style.getPropertyValue("--light-x") === ""', 'Reduced motion shows a static centred light instead')
     click_action('public'); wait_page('public')
     expect('!document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Reduced motion stops automatic 3D rotation')
     expect('getComputedStyle(document.querySelector(".identity-sculpture")).animationDuration === "1e-05s"', 'Reduced motion shortens decorative animation')

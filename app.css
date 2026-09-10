@@ -30,7 +30,12 @@ button { touch-action: manipulation; }
 .dome:focus-visible { outline-offset: -8px; }
 .sky-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 48% 85% at 50% 10%, color-mix(in srgb, var(--s2-blue-300) 62%, transparent), transparent 90%); opacity: .62; }
 .vault { position: absolute; inset: 0; overflow: hidden; }
-.vault-line { position: absolute; width: calc(70% + var(--line) * 11%); height: calc(450px + var(--line) * 48px); top: calc(24px + var(--line) * 13px); left: 50%; transform: translateX(-50%); border: 1px solid color-mix(in srgb, var(--s2-blue-700) 17%, transparent); border-radius: 50%; mask-image: linear-gradient(to bottom, black, transparent 45%); }
+.vault-line, .light-line { position: absolute; width: calc(70% + var(--line) * 11%); height: calc(450px + var(--line) * 48px); top: calc(24px + var(--line) * 13px); left: 50%; transform: translateX(-50%); border-radius: 50%; mask-image: linear-gradient(to bottom, black, transparent 45%); }
+.vault-line { border: 1px solid color-mix(in srgb, var(--s2-blue-700) 17%, transparent); }
+.light-line { border: 1px solid color-mix(in srgb, var(--s2-blue-600) 88%, transparent); }
+.vault-light { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 300ms ease-out; mask-image: radial-gradient(circle 170px at var(--light-x, 50%) var(--light-y, 50%), rgb(0 0 0) 0%, rgb(0 0 0 / .35) 45%, transparent 72%); -webkit-mask-image: radial-gradient(circle 170px at var(--light-x, 50%) var(--light-y, 50%), rgb(0 0 0) 0%, rgb(0 0 0 / .35) 45%, transparent 72%); }
+.dome[data-lit="true"] .vault-light { opacity: 1; }
+.dome[data-lit="true"] .sky-glow { opacity: .78; }
 .vault[data-pulse="true"] .vault-line { animation: resonance 2.4s cubic-bezier(.2,.65,.2,1) both; animation-delay: calc(var(--line) * 65ms); }
 @keyframes resonance { 0% { translate: 0 0; opacity: .8; } 30% { translate: 0 -14px; border-color: var(--s2-blue-600); opacity: 1; } 100% { translate: 0 0; opacity: 1; } }
 main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--s2-spacing-700) var(--s2-spacing-700); flex: 1; }

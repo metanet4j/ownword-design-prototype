@@ -52,9 +52,24 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 | 5.9 切换浅色 | 8 屏 `en light and dark layouts match`（动画定格到 t=0 后逐元素比对矩形，深浅主题布局零位移） |
 | 5.9 状态可理解 | 浏览器 `Status states carry text, not colour alone` |
 | 5.10 320px 视口 | 各屏 `320/390/768/960px no page overflow`、`controls fit`、`no element overflows its container`、`320px touch targets`、`320px BAP ID in first viewport`、`Dialog primary actions stay inside a 320px viewport` |
-| 5.10 键盘导航 | 各屏 axe 审计 0 violations；`5 keyboard stops show a visible focus ring`、`Skip link becomes visible when focused`、`Skip link moves focus into the main landmark`、`Wallet dialog moves focus inside`、`Closing the dialog returns focus to its trigger`、`Keyboard plays sky lines`、`Icon buttons expose accessible names`、`Reduced motion stops automatic 3D rotation` |
+| 5.10 键盘导航 | 各屏 axe 审计 0 violations；`Keyboard plays sky lines`、`Sky light adds no per-line animations`、`5 keyboard stops show a visible focus ring`、`Skip link becomes visible when focused`、`Skip link moves focus into the main landmark`、`Wallet dialog moves focus inside`、`Closing the dialog returns focus to its trigger`、`Keyboard plays sky lines`、`Icon buttons expose accessible names`、`Reduced motion stops automatic 3D rotation` |
 
 第 9 节裁决对应：头像本地选择预览（`Choose image` 与格式错误反馈）、默认 Light（`First visit English and Light`）、断开仅当前会话（`Disconnect` 流程）、无分享 URL（Public Identity 无分享入口）、无 Key Rotation（无该入口）。
+
+## 穹顶交互契约（批 2-b）
+
+| 输入 | 行为 |
+| --- | --- |
+| 指针移动（鼠标、触控笔） | 光斑跟随指针，只有靠近指针的弧线段提亮，不做整波律动 |
+| 点击或轻触空白天幕 | 七条弧线依次律动一次 |
+| 键盘 Enter / Space | 同整波律动 |
+| 指针离开天空区域，或进入弹窗、偏好面板、演示面板、顶栏、页脚 | 光斑 300ms 淡出 |
+| 触摸 | 不跟随（避免与滚动冲突） |
+| `prefers-reduced-motion` | 不跟随、不律动；键盘交互时给静态居中提亮 |
+
+实现：新增 `.vault-light` 覆盖层（7 条 `.light-line` 与 `.vault-line` 共用同一几何规则），用 `mask-image: radial-gradient(circle 170px at var(--light-x) var(--light-y), …)` 把高光限制在指针附近。JS 每帧只写两个 CSS 自定义属性，**不为每条线创建动画**——断言 `Sky light adds no per-line animations` 守住这条设计约束（这是本条与已回退版本 `element.animate()` 做法的关键差异）。
+
+断言：`Pointer movement lights the sky lines near the cursor`、`Sky light is one masked overlay, not per-line paint`、`Sky light adds no per-line animations`、`Leaving the sky clears the light`、`Reduced motion stops the pointer light from tracking`、`Reduced motion shows a static centred light instead`。
 
 ## 扩展 · 链上记录（超出 PRD v0.1）
 
@@ -184,7 +199,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：69 条状态断言、430 项浏览器检查通过。35 份 axe 审计（32 份页面 + 3 份弹窗）0 violations；29 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：69 条状态断言、436 项浏览器检查通过。35 份 axe 审计（32 份页面 + 3 份弹窗）0 violations；29 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

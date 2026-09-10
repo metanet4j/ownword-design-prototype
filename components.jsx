@@ -29,11 +29,39 @@ function Portrait({profile, large = false}) {
 }
 function Dome({label}) {
   const [pulse, setPulse] = React.useState(0);
+  const [lit, setLit] = React.useState(false);
+  const dome = React.useRef(null);
+  const frame = React.useRef(0);
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   React.useEffect(() => {const play = () => setPulse(p => p + 1); window.addEventListener('ownword-vault', play); return () => window.removeEventListener('ownword-vault', play);}, []);
-  return <button className="dome" aria-label={label} onPointerDown={() => setPulse(p => p + 1)} onClick={e => {if (e.detail === 0) setPulse(p => p + 1);}}>
+  React.useEffect(() => {
+    const leave = () => {cancelAnimationFrame(frame.current); setLit(false);};
+    const move = e => {
+      // Touch and reduced-motion users get the static state, never a moving light.
+      if (reduced() || e.pointerType === 'touch') return leave();
+      if (e.target.closest && e.target.closest('dialog, .preferences, .scenario-panel, .account-panel, .topbar, .footer')) return leave();
+      const rect = dome.current.getBoundingClientRect();
+      const x = e.clientX - rect.left, y = e.clientY - rect.top;
+      if (x < 0 || y < 0 || x > rect.width || y > rect.height) return leave();
+      cancelAnimationFrame(frame.current);
+      // One CSS custom property pair per frame; the glyph work stays on the compositor.
+      frame.current = requestAnimationFrame(() => {
+        dome.current.style.setProperty('--light-x', `${x}px`);
+        dome.current.style.setProperty('--light-y', `${y}px`);
+        setLit(true);
+      });
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerleave', leave);
+    return () => {window.removeEventListener('pointermove', move); window.removeEventListener('pointerleave', leave); cancelAnimationFrame(frame.current);};
+  }, []);
+  return <button ref={dome} className="dome" aria-label={label} data-lit={lit ? 'true' : 'false'} onPointerDown={() => setPulse(p => p + 1)} onClick={e => {if (e.detail === 0) {setPulse(p => p + 1); if (reduced()) {dome.current.style.removeProperty('--light-x'); dome.current.style.removeProperty('--light-y'); setLit(true);}}}}>
     <span className="sky-glow" aria-hidden="true"></span>
     <span className="vault" key={pulse} data-pulse={pulse > 0} aria-hidden="true">
       {Array.from({length: 7}, (_, i) => <span key={i} className="vault-line" style={{'--line': i}}></span>)}
+    </span>
+    <span className="vault-light" aria-hidden="true">
+      {Array.from({length: 7}, (_, i) => <span key={i} className="light-line" style={{'--line': i}}></span>)}
     </span>
   </button>;
 }

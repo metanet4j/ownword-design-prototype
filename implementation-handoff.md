@@ -88,7 +88,11 @@
 
 `signWithBAP` **不是**身份发布的签名入口——它是 `@1sat/actions` 的 `inscribe.execute(ctx, {...})` 上的一个可选字段，用于内容 Inscription 的 BAP 签名。身份发布、资料更新、Key Rotation 分别由 `publishIdentity`、`updateProfile`、`rotateIdentity` 完成，签名在这些动作内部处理。本文早期版本把 `signWithBAP` 列为身份签名替换点是错的，已按 `reference/yours-wallet-main/yours-wallet-main/docs/provider-api.md` 更正。
 
-## 3.1 小屏弹窗（实测）
+## 3.1 穹顶指针光（批 2-b）
+
+`components.jsx` 的 `Dome` 维护 `--light-x/--light-y` 两个 CSS 自定义属性与 `data-lit`；高光由一个 `.vault-light` 覆盖层承载，用 radial-gradient 遮罩限制在指针附近，弧线本身不逐条动画。生产如需保留该效果，直接沿用这两个属性与遮罩规则即可，无需改动状态层；如需替换为品牌化动效，删除 `.vault-light` 与对应 effect 不影响任何产品状态。
+
+## 3.2 小屏弹窗（实测）
 
 320×800 下钱包确认弹窗内容高于视口，弹窗内部可滚动（`max-height` + `overflow-y:auto`）。主操作（Cancel / Approve）在首屏可见，原型专用的「模拟失败 / 切换账户 / 断开」一行需滚动。生产实现需保证主操作在 320px 首屏可见，次级操作允许滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖这一点。
 
