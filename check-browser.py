@@ -250,8 +250,13 @@ def connect(value='new', audit=None):
     click_action('connect')
     click_action('approve')
     if audit:
+        # The resolving state lasts 850ms, which is too short for a stable axe run
+        # (the audit could finish after the state moved on). Assert its essentials
+        # instead of producing evidence that may describe a different screen.
+        expect('document.querySelector("main").dataset.busy === "resolving"', 'Resolution shows a busy state before it completes')
+        expect('!!document.querySelector("[role=status]") && !!(document.querySelector("[role=status]").getAttribute("aria-label") || document.querySelector("[role=status]").textContent.trim())', 'Resolving state announces itself with a name')
         expect('!document.querySelector(".s2d-skeleton") || !!document.querySelector(".s2d-skeleton").closest(String.raw`[aria-hidden="true"]`)', 'Decorative skeleton stays out of the accessibility tree')
-        audit_state(audit, when='document.querySelector("main").dataset.busy === "resolving"')
+        expect('!!document.querySelector("[data-action=disconnect]")', 'Resolving state offers a way out')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
 try:
@@ -394,6 +399,7 @@ try:
     call('focus', '.dome'); call('press', 'Enter'); time.sleep(0.3)
     expect('document.querySelector(".dome").dataset.lit === "true" && document.querySelector(".dome").style.getPropertyValue("--light-x") === ""', 'Reduced motion shows a static centred light instead')
     click_action('public'); wait_page('public')
+    expect('!document.querySelector("[data-action=toggle-rotation]") && !!document.querySelector("[data-reduced-motion]")', 'Reduced motion replaces the rotation toggle with an explanation')
     expect('!document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Reduced motion stops automatic 3D rotation')
     expect('getComputedStyle(document.querySelector(".identity-sculpture")).animationDuration === "1e-05s"', 'Reduced motion shortens decorative animation')
     click_action('back-identity'); wait_page('identity')

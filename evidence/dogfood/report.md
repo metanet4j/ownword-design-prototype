@@ -15,10 +15,10 @@
 | Critical | 0 |
 | High | 0 |
 | Medium | 3 |
-| Low | 5 |
-| **Total** | **8** |
+| Low | 6 |
+| **Total** | **9** |
 
-已修：ISSUE-002、ISSUE-003、ISSUE-004、ISSUE-006、ISSUE-007、ISSUE-008（见各条 Status）。保留记录：ISSUE-001（超出 v0.1 范围）、ISSUE-005（已在实现交接 3.2 记录为可接受行为）。
+已修：ISSUE-002、ISSUE-003、ISSUE-004、ISSUE-006、ISSUE-007、ISSUE-008、ISSUE-009（见各条 Status）。保留记录：ISSUE-001（超出 v0.1 范围）、ISSUE-005（已在实现交接 3.2 记录为可接受行为）。
 
 ## Issues
 
@@ -185,3 +185,26 @@
 **Actual**：弹窗内容（身份摘要 + BAP ID + 模拟说明）把操作行推到 711px。
 
 **修复**：新增 `@media (max-height: 640px)` —— 弹窗内操作行改为 `position: sticky; bottom: 0` 常驻滚动视口底部，并在矮屏隐藏原型专用的「Simulated wallet confirmation」说明行。修复后实测 Cancel/Approve 位于 459–503（视口 568 内）。新增 2 条断言：`Wallet dialog keeps its actions inside a 320x568 viewport`、`Dialog primary actions stay inside a 320x568 viewport`。
+
+### ISSUE-009: 减少动效模式下「旋转身份」控件报告了一个不会发生的状态
+
+| Field | Value |
+|-------|-------|
+| **Severity** | low |
+| **Category** | accessibility / ux |
+| **URL** | `#public` |
+| **Status** | **已修** |
+| **Repro Video** | N/A |
+
+**Repro steps**
+
+1. 用 `prefers-reduced-motion: reduce` 打开公开身份页
+2. 点「Rotate identity」→ 控件变为 `aria-pressed="true"`、文案变「Pause rotation」
+3. 实测：`document.getAnimations()` 运行中动画数为 **0**，卡片 `transform` 不变 —— 什么都没有在旋转
+
+**Expected**：控件不应报告不会发生的状态。
+**Actual**：读屏用户听到「Pause rotation, pressed」，但画面完全静止；等于控件说谎。
+
+**修复**：减少动效下**不渲染**旋转开关，改为显示说明文案「Reduced motion follows your device preference.」（复用此前未使用的 `reducedMotion` 词条），并强制 `rotating=false`；媒体查询变化时实时同步（切回正常动效后控件恢复）。新增断言 `Reduced motion replaces the rotation toggle with an explanation`。
+
+**同轮验证通过**：减少动效下提示 6 秒自动消失、复制反馈 6 秒自动清除、运行中动画数 0、控制台无错误。

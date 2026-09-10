@@ -1,5 +1,5 @@
 {
-  "passed": 448,
+  "passed": 451,
   "checks": [
     "First paint leaves focus at the document start",
     "First Tab reaches the skip link instead of landing inside main",
@@ -120,8 +120,10 @@
     "resolve-error zh/dark axe 0 violations",
     "resolve-error 1440px no page overflow",
     "Published identity opens My Identity",
+    "Resolution shows a busy state before it completes",
+    "Resolving state announces itself with a name",
     "Decorative skeleton stays out of the accessibility tree",
-    "identity-resolving axe 0 violations",
+    "Resolving state offers a way out",
     "Connection shows Connected status",
     "Invalid required name blocks Review",
     "Name maximum 100 enforced",
@@ -331,6 +333,7 @@
     "Reduced motion emulation active",
     "Reduced motion stops the pointer light from tracking",
     "Reduced motion shows a static centred light instead",
+    "Reduced motion replaces the rotation toggle with an explanation",
     "Reduced motion stops automatic 3D rotation",
     "Reduced motion shortens decorative animation",
     "public en/light 320px no page overflow",

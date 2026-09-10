@@ -58,7 +58,7 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 
 ## 探索式测试（dogfood，2026-09-10）
 
-按 `agent-browser` 的 dogfood 技能跑了一轮探索式测试（不预设断言，主动找问题），报告与截图见 [`evidence/dogfood/report.md`](evidence/dogfood/report.md)。共 8 项发现：3 medium、5 low，无 critical/high（ISSUE-006/007 来自键盘全程探索，ISSUE-008 来自 320×568 矮屏专项）。其中 6 项已修并补断言：
+按 `agent-browser` 的 dogfood 技能跑了一轮探索式测试（不预设断言，主动找问题），报告与截图见 [`evidence/dogfood/report.md`](evidence/dogfood/report.md)。共 9 项发现：3 medium、6 low，无 critical/high（ISSUE-006/007 来自键盘全程探索，ISSUE-008 来自 320×568 矮屏专项，ISSUE-009 来自减少动效专项）。其中 7 项已修并补断言：
 
 | 发现 | 级别 | 处置 |
 | --- | --- | --- |
@@ -70,6 +70,7 @@ PRD v0.1 第 5 节、8.8 节与第 9 节裁决共 31 条场景；第 5.7 节 3 �
 | 首屏抢焦点：第一次 Tab 落在 `main` 中段，跳过 skip link 与顶栏 | medium | 已修：`firstPaint` ref 仅首屏跳过焦点搬移；新增断言「首屏焦点在文档起点」「第一次 Tab 到达 skip link」 |
 | 翻面后新露出的 TxID 复制按钮在 Tab 顺序中位于翻面按钮之前 | low | 已修：显式翻面按钮用 rAF 把焦点移入背面；滑块跨 90° 时不搬焦点（有意取舍） |
 | 320×568 矮屏下创建确认弹窗主操作在首屏外（320×800 断言覆盖不到） | medium | 已修：`@media (max-height: 640px)` 操作行 `position: sticky` 常驻视口底部 + 隐藏原型专用模拟说明；新增 2 条 320×568 断言 |
+| 减少动效下「旋转身份」控件报告不会发生的状态 | low | 已修：不渲染旋转开关，改显示说明文案并强制停止旋转；新增 1 条断言 |
 
 **证据说明**：本环境无头浏览器无法录制 WebM（`agent-browser record` 报 `No frames captured`），故报告以分步截图替代 repro 视频，报告内已注明。
 
@@ -214,7 +215,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 - 偏好面板：点外点击、Escape（焦点回归触发按钮）、Tab 移出三种方式均可关闭；补 `aria-controls`。
 - 确认类提示 6 秒后自动消失，悬停或聚焦时暂停；`Failed` 类错误常驻不消失（`role="status"` 需要足够阅读时间）。
 - 320×800 实测：钱包确认弹窗内容高于视口、弹窗内可滚动，**主操作 Cancel/Approve 首屏可见**，原型专用的模拟行需滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖。
-- **瞬时状态审计（批 3-b）**：axe 原先只覆盖页面状态；弹窗打开、卡背面露出、解析中、处理中、存储告警这些状态从未审计。新增 `audit_state()`，对钱包确认、创建确认（320px）、放弃修改三个弹窗，公开身份卡背面，以及身份解析中、创建处理中、存储不可写告警三个瞬时状态各做一次审计（`audit_state(label, when=…)` 会在审计前后各校验一次状态，避免证据被标成已经过去的状态）。这 7 次审计 violations 全为 0。其中**卡背面首次审计即抓到一个真实违规**——背面标题用 `<h3>`，而正面 `aria-hidden` 后页面只剩 h1 → 触发 `heading-order`（Heading levels should only increase by one）。改为 `<h2>` 后复测 0 violations。另新增断言「弹窗具备可访问名称」（`aria-labelledby` 指向非空标题）。证据 `evidence/state-*-axe.json`；新增 incomplete 已并入逐条对比度复核（共 48 组，全部达标，最差仍是 6.37:1）。另外 `identity-resolving` 状态 0 violations 且没有任何 incomplete。
+- **瞬时状态审计（批 3-b）**：axe 原先只覆盖页面状态；弹窗打开、卡背面露出、解析中、处理中、存储告警这些状态从未审计。新增 `audit_state()`，对钱包确认、创建确认（320px）、放弃修改三个弹窗，公开身份卡背面，以及创建处理中、存储不可写告警两个瞬时状态各做一次审计（`audit_state(label, when=…)` 会在审计前后各校验一次状态，避免证据被标成已经过去的状态）。这 7 次审计 violations 全为 0。其中**卡背面首次审计即抓到一个真实违规**——背面标题用 `<h3>`，而正面 `aria-hidden` 后页面只剩 h1 → 触发 `heading-order`（Heading levels should only increase by one）。改为 `<h2>` 后复测 0 violations。另新增断言「弹窗具备可访问名称」（`aria-labelledby` 指向非空标题）。证据 `evidence/state-*-axe.json`；新增 incomplete 已并入逐条对比度复核（共 48 组，全部达标，最差仍是 6.37:1）。`identity-resolving` **不做 axe 审计**：该状态仅持续 850ms，axe 常在状态结束后才返回（实测出现过"审计完成时状态已离开"），因此改为 3 条针对性断言（busy 状态、`role=status` 具备可访问名、装饰骨架 `aria-hidden`、提供断开出口），避免产出描述错误屏幕的证据。
 - **交互缺陷（批 3-a 中修复）**：双面卡在 180° 时，装饰层 `.plate-depth` 与背面重叠，遮挡背面「复制发布交易 TxID」按钮的点击点（`elementFromPoint` 命中 `.plate-depth`）。给 `.plate-depth` 与不可见的那一面加 `pointer-events: none` 后按钮可点。这是真实鼠标可用性缺陷，不是测试问题。
 - **链上记录（批 3-a，超出 PRD v0.1 的扩展）**：公开身份卡改为双面——正面身份，背面「链上记录」显示区块高度、确认状态与发布 TxID（有值才显示）。翻面由「查看链上记录 / 查看身份」按钮或视角滑块跨过 90° 触发；同一时刻只有一面在可访问树里（另一面 `inert` + `aria-hidden`）。数据是显示用 fixture（`model.js` 的 `transactions`），新建身份为 pending、已发布身份为 confirmed；核心认知第 12 节第 3 项状态映射未关闭，因此只显示 pending/confirmed 两态，不显示 SEEN/ACCEPTED/MINED 等枚举名。
 - **容器溢出量测（批 2-a）**：新增 `CONTAINER_OVERFLOW` 探针——文本与控件不得超出父元素内容盒，每屏每组合（8 屏 × 4 组合）各一条断言，共 32 条。首轮量测命中 4 处，全部位于公开身份卡内且随旋转角度变化（角度 90° 起投影超出、180° 达 51px），判定为 3D 变换投影伪影而非布局缺陷；探针排除 `.identity-object` 子树（该卡由视口溢出断言覆盖），复测 0 处。量测记录 `evidence/layout-measurements.json`。
@@ -234,7 +235,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：74 条状态断言、448 项浏览器检查通过。39 份 axe 审计（32 份页面 + 7 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：74 条状态断言、451 项浏览器检查通过。38 份 axe 审计（32 份页面 + 6 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

@@ -121,6 +121,16 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'cop
 function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotating, angle, setAngle}) {
   const drag = React.useRef(null);
   const stage = React.useRef(null);
+  const [reducedMotion, setReducedMotion] = React.useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
+  React.useEffect(() => {
+    const query = matchMedia('(prefers-reduced-motion: reduce)');
+    const sync = () => setReducedMotion(query.matches);
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
+  }, []);
+  // Auto-rotation is suppressed by the stylesheet too; keep the control honest by
+  // removing it and saying why, instead of reporting a state that never happens.
+  React.useEffect(() => {if (reducedMotion) setRotating(false);}, [reducedMotion, setRotating]);
   const normalized = ((angle % 360) + 360) % 360;
   // The back face is only exposed while the card is turned past 90 degrees;
   // auto-rotation keeps the front in the accessibility tree.
@@ -155,7 +165,8 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
       // otherwise forward-Tab sends keyboard users around the whole page.
       if (next) requestAnimationFrame(() => stage.current?.querySelector('.plate-back [data-action="copy-tx"]')?.focus());
     }}>{t(back ? 'showFront' : 'showRecord')}</Button></div>
-    <div className="rotation-controls"><Button data-action="toggle-rotation" onClick={() => setRotating(!rotating)} aria-pressed={rotating}>{t(rotating ? 'pauseRotation' : 'rotate')}</Button><Button variant="quiet" data-action="reset-view" onClick={() => {setRotating(false); setAngle(0);}}>{t('resetView')}</Button></div>
+    <div className="rotation-controls">{!reducedMotion && <Button data-action="toggle-rotation" onClick={() => setRotating(!rotating)} aria-pressed={rotating}>{t(rotating ? 'pauseRotation' : 'rotate')}</Button>}<Button variant="quiet" data-action="reset-view" onClick={() => {setRotating(false); setAngle(0);}}>{t('resetView')}</Button></div>
+    {reducedMotion && <p className="hint" data-reduced-motion="true">{t('reducedMotion')}</p>}
     <label className="rotation-label">{t('angle')}<input aria-label={t('angle')} type="range" min="-180" max="180" value={angle} onChange={e => {setRotating(false); setAngle(+e.target.value);}} /></label>
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
   </div>;
