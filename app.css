@@ -170,9 +170,6 @@ main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; paddi
 .plate-foot { margin-top: var(--s2-spacing-400); font-size: var(--s2-font-size-50); color: var(--s2-gray-700); }
 .plate-foot span:last-child { letter-spacing: .15em; }
 .object-shadow { margin: 0 auto var(--s2-spacing-200); width: 70%; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 16%, transparent); filter: blur(12px); }
-.rotation-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--s2-spacing-100); }
-.rotation-label { display: flex; justify-content: center; align-items: center; gap: var(--s2-spacing-200); margin-top: var(--s2-spacing-100); font-size: var(--s2-font-size-75); color: var(--s2-gray-700); }
-.rotation-label input { width: 120px; min-height: 44px; accent-color: var(--s2-blue-900); }
 .public-copy { max-width: 500px; margin-inline: auto; }
 .public-copy .identifier { padding: var(--s2-spacing-200) 0; border: 0; }
 .public-back { display: flex; justify-content: center; margin-top: var(--s2-spacing-200); }
@@ -304,7 +301,6 @@ main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; paddi
 .chain-facts dd { margin: 0; font-size: var(--s2-font-size-200); font-weight: 600; }
 .plate-back .identifier { margin-top: auto; }
 .plate-back .plate-foot { margin-top: var(--s2-spacing-300); }
-.card-actions { display: flex; justify-content: center; margin-top: var(--s2-spacing-400); }
 @media (max-width: 480px) {
   .chain-facts { grid-template-columns: minmax(0, 1fr); }
 }

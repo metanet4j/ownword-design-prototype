@@ -11,11 +11,11 @@
 
 ## 实现
 
-`copy.js` 集中保存中英双语词典（155 键），术语权威是核心认知第 2 节；`check-copy.cjs` 校验两语言键集一致、无空串、无第 2.3 节禁区用词、无重复长句。界面状态通过 `data-*` 属性暴露（`data-screen-label`、`data-notice`、`data-error`、`data-busy`、`data-incomplete`、`data-copy-feedback`、`data-field-error`、`data-modal-title`、`data-action`），断言因此不依赖文案。
+`copy.js` 集中保存中英双语词典（148 键），术语权威是核心认知第 2 节；`check-copy.cjs` 校验两语言键集一致、无空串、无第 2.3 节禁区用词、无重复长句。界面状态通过 `data-*` 属性暴露（`data-screen-label`、`data-notice`、`data-error`、`data-busy`、`data-incomplete`、`data-copy-feedback`、`data-field-error`、`data-modal-title`、`data-action`），断言因此不依赖文案。
 
 `index.html` 按 Baoyu Design 导入结果加载 S2 的全部 CSS 依赖及组件 bundle。React、ReactDOM 与 Babel 从 `vendor/` 本地加载（同版本原文件，`integrity` 保留作校验，来源与哈希见 [vendor/README.md](vendor/README.md)），因此启动不依赖 CDN。`components.jsx` 消费其 Button、TextField、TextArea，`app.jsx` 另用 StatusLight、Skeleton。组件源是本地视觉样件；适配层为其返回元素添加受控输入、ARIA、事件及表单提交。弹窗使用浏览器原生 dialog 管理焦点和 Escape，不修改源设计系统。
 
-`app.css` 以 S2 的字体、颜色、语义表面、圆角与间距令牌构成视觉。穹顶由七条 CSS 椭圆线组成，点击空白处、触摸及键盘均可触发依次律动。铁灰地平线无刻度。Public Identity 使用有厚度的 CSS 3D 身份板，支持旋转、拖动、滑块与重置；尊重减少动态效果偏好。
+`app.css` 以 S2 的字体、颜色、语义表面、圆角与间距令牌构成视觉。穹顶由七条 CSS 椭圆线组成，点击空白处、触摸及键盘均可触发依次律动。铁灰地平线无刻度。Public Identity 使用有厚度的 CSS 3D 身份板，自动旋转并可用指针拖动改变视角；不提供视角控件（2026-09-11 按用户要求移除），尊重减少动态效果偏好。
 
 `model.js` 保存原型状态迁移。异步操作携带会话序号；账户切换或断开时清除上下文并使旧回调失效。`app.jsx` 管理计时器和界面状态。头像仅使用本地 blob URL 预览，不定义或伪造上传端点。示例名称、BAP ID 与交易结果均为模拟数据。
 
@@ -99,14 +99,17 @@ PRD v0.1 没有该界面。它落实的是核心认知第 11.8 条「交易已�
 | 模型 `existingRecord.transaction.blockHeight === 912684` | 已发布身份为 confirmed |
 | 模型 `DISCONNECT` / `SWITCH` 后 `transaction === null` | 记录不跨会话 |
 | 模型 `RESULT(save)` 保留原记录 | 更新资料不重置发布记录 |
+| 浏览器 `Public Identity rotates` | 自动旋转 |
+| 浏览器 `Dragging the card turns it past 90 degrees and stops the rotation` | 拖拽控制视角（2026-09-11 取代已移除的角度滑块） |
 | 浏览器 `Turning past 90 degrees exposes the chain record face` | 翻面可见 |
+| 浏览器 `Dragging the card back returns the identity face` | 拖回正面（2026-09-11 取代已移除的翻面按钮） |
 | 浏览器 `Only one card face stays in the accessibility tree` | 双面 a11y |
 | 浏览器 `Chain record shows block height and confirmation state` | 两态文案存在 |
 | 浏览器 `Publication TxID copy works` | 复制完整 TxID |
 
 ## 文案长度审计（2026-09-09）
 
-`check-copy.cjs` 额外输出长度排名到 `evidence/copy-length.json`（信息性，不作门禁）。155 条键里：
+`check-copy.cjs` 额外输出长度排名到 `evidence/copy-length.json`（信息性，不作门禁）。148 条键里：
 
 - 英文超过 100 字符的只有 2 条：`simulatorHint`（115，演示面板专用，生产删除）、`connectBody`（104，钱包确认正文）。
 - 超过 80 字符的共 8 条，集中在错误与空状态正文（`connectFailedBody`、`completeBody`、`discardBody`、`resolveFailedBody`、`processingBody`、`welcomeBody`）。
@@ -188,7 +191,9 @@ OWNWORD_PORT=4312 python3 check-offline.py
 
 干净检出复现（2026-09-09）：`git archive HEAD` 解压到临时目录、用独立端口服务后，四个脚本结果与工作区一致（59 / 66-of-66 / 4 / 382）。记录见 `evidence/clean-checkout-verification.json`——已提交的树不依赖未跟踪文件、浏览器缓存或工作区外资源。
 
-浏览器检查使用宿主环境的独立 agent-browser 会话。`evidence/browser-results.json` 记录逐项结果；`evidence/*-axe.json` 是各页面审计；`evidence/*-320.png` 和 `*-desktop.png` 为截图。控制台日志使用 `[Ownword prototype]` 前缀，不记录填写内容；输出保存到 `evidence/browser-console.txt`。HTTP 访问日志在启动服务的终端；交付时保存本次记录到 `evidence/http-access.log`。不连接数据库、后端、真实 Wallet 或 Indexer，因此不存在数据库连接串或真实交易证据。
+浏览器检查使用宿主环境的独立 agent-browser 会话。`evidence/browser-results.json` 记录逐项结果；`evidence/*-axe.json` 是各页面审计；`evidence/*-320.png` 和 `*-desktop.png` 为截图（`--full`，整页高度随内容变化）。控制台日志使用 `[Ownword prototype]` 前缀，不记录填写内容；输出保存到 `evidence/browser-console.txt`。HTTP 访问日志在启动服务的终端；交付时保存本次记录到 `evidence/http-access.log`。不连接数据库、后端、真实 Wallet 或 Indexer，因此不存在数据库连接串或真实交易证据。
+
+截图可比性（2026-09-11 复跑时发现）：中文页面的字体来源取决于 Adobe Typekit 是否可达——可达时 6 个 `adobe-clean-spectrum-*` 字面加载，320px 中文首页整页高 831px；阻断外部域时为 875px。本次复跑的 320px 中文截图因此与 09-10 提交的版本逐字节不同（同环境独立复测得 320×831，与 `evidence/welcome-zh-light-320.png` 一致），而英文页面以及本次改动无关的截图保持逐字节相同。差异源于字体环境，不是本次改动引起；中文页面的 `color-contrast` incomplete 因此多出 `.welcome-intro` 一个节点，`evidence/axe-incomplete-review.json` 已覆盖该节点（浅色 13.7:1、深色 12.44:1）。
 
 HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会话对照表明：页面初始请求零错误，8 个样式文件正常加载；运行审计才出现向项目根目录错误解析的 CSS `@import` 请求。前后网络记录为 `evidence/network-before-audit.json`、`network-after-audit.json`。据此归因为审计工具的路径解析，不是页面样式加载失败；没有复制一套重复 CSS 来掩盖探测错误。
 
@@ -217,7 +222,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 - 320×800 实测：钱包确认弹窗内容高于视口、弹窗内可滚动，**主操作 Cancel/Approve 首屏可见**，原型专用的模拟行需滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖。
 - **瞬时状态审计（批 3-b）**：axe 原先只覆盖页面状态；弹窗打开、卡背面露出、解析中、处理中、存储告警这些状态从未审计。新增 `audit_state()`，对钱包确认、创建确认（320px）、放弃修改三个弹窗，公开身份卡背面，以及创建处理中、存储不可写告警两个瞬时状态各做一次审计（`audit_state(label, when=…)` 会在审计前后各校验一次状态，避免证据被标成已经过去的状态）。这 7 次审计 violations 全为 0。其中**卡背面首次审计即抓到一个真实违规**——背面标题用 `<h3>`，而正面 `aria-hidden` 后页面只剩 h1 → 触发 `heading-order`（Heading levels should only increase by one）。改为 `<h2>` 后复测 0 violations。另新增断言「弹窗具备可访问名称」（`aria-labelledby` 指向非空标题）。证据 `evidence/state-*-axe.json`；新增 incomplete 已并入逐条对比度复核（共 48 组，全部达标，最差仍是 6.37:1）。`identity-resolving` **不做 axe 审计**：该状态仅持续 850ms，axe 常在状态结束后才返回（实测出现过"审计完成时状态已离开"），因此改为 3 条针对性断言（busy 状态、`role=status` 具备可访问名、装饰骨架 `aria-hidden`、提供断开出口），避免产出描述错误屏幕的证据。
 - **交互缺陷（批 3-a 中修复）**：双面卡在 180° 时，装饰层 `.plate-depth` 与背面重叠，遮挡背面「复制发布交易 TxID」按钮的点击点（`elementFromPoint` 命中 `.plate-depth`）。给 `.plate-depth` 与不可见的那一面加 `pointer-events: none` 后按钮可点。这是真实鼠标可用性缺陷，不是测试问题。
-- **链上记录（批 3-a，超出 PRD v0.1 的扩展）**：公开身份卡改为双面——正面身份，背面「链上记录」显示区块高度、确认状态与发布 TxID（有值才显示）。翻面由「查看链上记录 / 查看身份」按钮或视角滑块跨过 90° 触发；同一时刻只有一面在可访问树里（另一面 `inert` + `aria-hidden`）。数据是显示用 fixture（`model.js` 的 `transactions`），新建身份为 pending、已发布身份为 confirmed；核心认知第 12 节第 3 项状态映射未关闭，因此只显示 pending/confirmed 两态，不显示 SEEN/ACCEPTED/MINED 等枚举名。
+- **链上记录（批 3-a，超出 PRD v0.1 的扩展）**：公开身份卡改为双面——正面身份，背面「链上记录」显示区块高度、确认状态与发布 TxID（有值才显示）。翻面由指针拖动卡片跨过 90° 触发（自动旋转期间露出背面，但不进入可访问树）；同一时刻只有一面在可访问树里（另一面 `inert` + `aria-hidden`）。2026-09-11 按用户要求移除卡片旁的视角控件（查看链上记录 / 暂停旋转 / 重置视角 / 查看角度），交互断言同步改为拖拽驱动。数据是显示用 fixture（`model.js` 的 `transactions`），新建身份为 pending、已发布身份为 confirmed；核心认知第 12 节第 3 项状态映射未关闭，因此只显示 pending/confirmed 两态，不显示 SEEN/ACCEPTED/MINED 等枚举名。
 - **容器溢出量测（批 2-a）**：新增 `CONTAINER_OVERFLOW` 探针——文本与控件不得超出父元素内容盒，每屏每组合（8 屏 × 4 组合）各一条断言，共 32 条。首轮量测命中 4 处，全部位于公开身份卡内且随旋转角度变化（角度 90° 起投影超出、180° 达 51px），判定为 3D 变换投影伪影而非布局缺陷；探针排除 `.identity-object` 子树（该卡由视口溢出断言覆盖），复测 0 处。量测记录 `evidence/layout-measurements.json`。
 - 测试脚本加固：点击前先 `scrollIntoView`（`behavior:"instant"`，避免 `scroll-behavior: smooth` 造成坐标漂移）；布局签名改用绝对坐标（与滚动无关）。
 
@@ -235,7 +240,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：74 条状态断言、451 项浏览器检查通过。38 份 axe 审计（32 份页面 + 6 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+最终结果：74 条状态断言、450 项浏览器检查通过。38 份 axe 审计（32 份页面 + 6 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`，人工复核见 `evidence/axe-incomplete-review.json`（新增的 `.welcome-intro` 两个节点在表中已覆盖，13.7:1）。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

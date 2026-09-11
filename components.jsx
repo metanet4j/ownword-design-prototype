@@ -120,7 +120,6 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'cop
 }
 function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotating, angle, setAngle}) {
   const drag = React.useRef(null);
-  const stage = React.useRef(null);
   const [reducedMotion, setReducedMotion] = React.useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   React.useEffect(() => {
     const query = matchMedia('(prefers-reduced-motion: reduce)');
@@ -135,7 +134,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
   // The back face is only exposed while the card is turned past 90 degrees;
   // auto-rotation keeps the front in the accessibility tree.
   const back = normalized > 90 && normalized < 270;
-  return <div className="identity-stage" ref={stage}>
+  return <div className="identity-stage">
     <div className="identity-object" onPointerDown={e => {if (e.target.closest('button')) return; drag.current = {x: e.clientX, angle}; setRotating(false); e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e => {if (drag.current) setAngle(drag.current.angle + (e.clientX - drag.current.x) * .35);}} onPointerUp={() => {drag.current = null;}} onPointerCancel={() => {drag.current = null;}}>
       <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} data-face={back ? 'back' : 'front'} style={{'--angle': `${angle}deg`}}>
         <div className="plate-depth" aria-hidden="true"></div>
@@ -158,16 +157,6 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
       </div>
     </div>
     <div className="object-shadow" aria-hidden="true"></div>
-    <div className="card-actions"><Button data-action="toggle-face" onClick={() => {
-      const next = !back;
-      setRotating(false); setAngle(next ? 180 : 0);
-      // The revealed face sits earlier in the DOM, so move focus into it;
-      // otherwise forward-Tab sends keyboard users around the whole page.
-      if (next) requestAnimationFrame(() => stage.current?.querySelector('.plate-back [data-action="copy-tx"]')?.focus());
-    }}>{t(back ? 'showFront' : 'showRecord')}</Button></div>
-    <div className="rotation-controls">{!reducedMotion && <Button data-action="toggle-rotation" onClick={() => setRotating(!rotating)} aria-pressed={rotating}>{t(rotating ? 'pauseRotation' : 'rotate')}</Button>}<Button variant="quiet" data-action="reset-view" onClick={() => {setRotating(false); setAngle(0);}}>{t('resetView')}</Button></div>
-    {reducedMotion && <p className="hint" data-reduced-motion="true">{t('reducedMotion')}</p>}
-    <label className="rotation-label">{t('angle')}<input aria-label={t('angle')} type="range" min="-180" max="180" value={angle} onChange={e => {setRotating(false); setAngle(+e.target.value);}} /></label>
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
   </div>;
 }

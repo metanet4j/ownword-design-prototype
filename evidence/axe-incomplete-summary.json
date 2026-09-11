@@ -30,22 +30,26 @@
   {
     "screen": "welcome zh/light",
     "rule": "color-contrast",
-    "nodes": 1,
+    "nodes": 2,
     "targets": [
-      ".horizon > span"
+      ".horizon > span",
+      ".welcome-intro"
     ],
     "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
       "Element's background color could not be determined due to a pseudo element"
     ]
   },
   {
     "screen": "welcome zh/dark",
     "rule": "color-contrast",
-    "nodes": 1,
+    "nodes": 2,
     "targets": [
-      ".horizon > span"
+      ".horizon > span",
+      ".welcome-intro"
     ],
     "reasons": [
+      "Element's background color could not be determined because it partially overlaps other elements",
       "Element's background color could not be determined due to a pseudo element"
     ]
   },
@@ -247,7 +251,7 @@
   {
     "screen": "public en/light",
     "rule": "color-contrast",
-    "nodes": 10,
+    "nodes": 11,
     "targets": [
       ".bio",
       ".plate-front > .plate-foot > span:nth-child(1)",
@@ -267,7 +271,7 @@
   {
     "screen": "public en/dark",
     "rule": "color-contrast",
-    "nodes": 10,
+    "nodes": 11,
     "targets": [
       ".bio",
       ".plate-front > .plate-foot > span:nth-child(1)",
@@ -327,7 +331,7 @@
   {
     "screen": "chain-record-face",
     "rule": "color-contrast",
-    "nodes": 14,
+    "nodes": 13,
     "targets": [
       ".chain-heading > h2",
       ".chain-heading > p",

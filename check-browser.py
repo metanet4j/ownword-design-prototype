@@ -77,6 +77,25 @@ def click_action(name):
     settle()
     call('click', f'[data-action="{name}"]')
 
+def drag_card(dx, steps=8):
+    """Turn the 3D card by dragging it, the way a visitor does.
+
+    The card turns 0.35 degrees per horizontal pixel, so +320px crosses the
+    90-degree mark and exposes the chain record. Pointer capture keeps the
+    handler receiving moves after the cursor leaves the card box.
+    """
+    js('document.querySelector(".identity-object").scrollIntoView({block: "center", behavior: "instant"})')
+    time.sleep(0.05)
+    settle()
+    center = js('(()=>{const r=document.querySelector(".identity-object").getBoundingClientRect();return [Math.round(r.x + r.width / 2), Math.round(r.y + r.height / 2)]})()')
+    call('mouse', 'move', center[0], center[1])
+    call('mouse', 'down')
+    for step in range(1, steps + 1):
+        call('mouse', 'move', center[0] + round(dx * step / steps), center[1])
+        time.sleep(0.04)
+    call('mouse', 'up')
+    time.sleep(0.3)
+
 def state(attribute):
     return f'document.querySelector("main").dataset.{attribute}'
 
@@ -399,7 +418,7 @@ try:
     call('focus', '.dome'); call('press', 'Enter'); time.sleep(0.3)
     expect('document.querySelector(".dome").dataset.lit === "true" && document.querySelector(".dome").style.getPropertyValue("--light-x") === ""', 'Reduced motion shows a static centred light instead')
     click_action('public'); wait_page('public')
-    expect('!document.querySelector("[data-action=toggle-rotation]") && !!document.querySelector("[data-reduced-motion]")', 'Reduced motion replaces the rotation toggle with an explanation')
+    expect('!document.querySelector(".rotation-controls, .rotation-label, .card-actions")', 'The 3D card ships without viewer controls')
     expect('!document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Reduced motion stops automatic 3D rotation')
     expect('getComputedStyle(document.querySelector(".identity-sculpture")).animationDuration === "1e-05s"', 'Reduced motion shortens decorative animation')
     click_action('back-identity'); wait_page('identity')
@@ -407,21 +426,16 @@ try:
     click_action('public'); wait_page('public')
     inspect('public', True)
     expect('document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Public Identity rotates')
-    click_action('toggle-rotation')
-    call('focus', '.rotation-label input'); call('press', 'End')
-    expect('document.querySelector(".identity-sculpture").style.getPropertyValue("--angle") === "180deg"', '3D viewing angle controllable')
+    drag_card(320)
+    expect('parseFloat(document.querySelector(".identity-sculpture").style.getPropertyValue("--angle")) > 90 && !document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Dragging the card turns it past 90 degrees and stops the rotation')
     expect('document.querySelector(".identity-sculpture").dataset.face === "back" && !document.querySelector(".plate-back").hasAttribute("inert")', 'Turning past 90 degrees exposes the chain record face')
     audit_state('chain-record-face')
     expect('document.querySelector(".plate-front").hasAttribute("inert") && document.querySelector(".plate-front").getAttribute("aria-hidden") === "true"', 'Only one card face stays in the accessibility tree')
     expect('!!document.querySelector(".plate-back [data-chain=block]").textContent.trim() && !!document.querySelector(".plate-back [data-chain=confirmation]").textContent.trim()', 'Chain record shows block height and confirmation state')
     click_action('copy-tx')
     wait_until('document.querySelector("[data-copy-target=tx]")?.dataset.copyFeedback === "copied"', 'Publication TxID copy works', diagnostic='(document.querySelector("[data-copy-target=tx]")||{}).dataset.copyFeedback')
-    click_action('toggle-face')
-    expect('document.querySelector(".identity-sculpture").dataset.face === "front"', 'Flip control returns to the identity face')
-    click_action('toggle-face'); time.sleep(0.3)
-    expect('document.querySelector(".identity-sculpture").dataset.face === "back" && document.activeElement.dataset.action === "copy-tx"', 'Flip control reveals the chain record and moves focus into it')
-    click_action('toggle-face')
-    click_action('reset-view')
+    drag_card(-320)
+    expect('document.querySelector(".identity-sculpture").dataset.face === "front" && !document.querySelector(".plate-front").hasAttribute("inert")', 'Dragging the card back returns the identity face')
     click_action('back-identity'); click_action('edit')
     call('fill', '#profile-name', 'Maya Revised')
     click_action('back')
