@@ -446,6 +446,16 @@ try:
     click_action('review'); click_action('submit-operation'); click_action('cancel')
     wait_page('edit')
     expect('document.querySelector("#profile-name").value === "Maya Revised" && document.querySelector("[data-notice]")?.dataset.notice === "saveCancelled"', 'Save cancellation retains editing values on form')
+    # The responsive matrix varies width only, so a wide-but-short window (a
+    # 1220x555 desktop window, or a 320x568 phone) is checked here: the form
+    # actions must stay on screen instead of hiding below the fold.
+    call('set', 'viewport', 1220, 555); settle()
+    expect('document.documentElement.scrollWidth <= innerWidth', 'Short desktop window 1220x555 no page overflow')
+    expect('["[data-action=back]", "[data-action=review]"].every(s=>{const r=document.querySelector(s).getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight})', 'Short desktop window keeps the form actions in view')
+    call('set', 'viewport', 320, 568); settle()
+    expect('document.documentElement.scrollWidth <= innerWidth', 'Short phone window 320x568 no page overflow')
+    expect('["[data-action=back]", "[data-action=review]"].every(s=>{const r=document.querySelector(s).getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight})', 'Short phone window keeps the form actions in view')
+    call('set', 'viewport', 1440, 1000); settle()
     inspect('edit', True)
     click_action('review'); click_action('submit-operation'); click_action('approve')
     wait_page('identity')

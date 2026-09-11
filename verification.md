@@ -200,7 +200,7 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 ## 术语与设计系统一致性
 
 - **术语**：按核心认知第 2.3 节扫描原型文案与结构，禁区用词命中数为 0（`注册`、`登录`、`sign up`、`log in`、`register`、`Verified`、`BAP NFT`、`Create BAP NFT`、`Broadcast`、`Push`）；唯一 `Submit` 命中是表单事件处理器名 `onSubmit`，不是用户文案。Publish 用词统一为 `Published` / `Publishing`。记录见 `evidence/term-scan.txt`。
-- **设计系统**：`check-tokens.py` 提取原型自身 CSS 中全部 `var(--s2*)` 引用，与 `_ds/react-spectrum-s2` 下 7 个 CSS 文件定义的 2509 个令牌比对，66 个引用全部解析，无未定义令牌。记录见 `evidence/token-resolution.json`。
+- **设计系统**：`check-tokens.py` 提取原型自身 CSS 中全部 `var(--s2*)` 引用，与 `_ds/react-spectrum-s2` 下 7 个 CSS 文件定义的 2509 个令牌比对，65 个引用全部解析，无未定义令牌。记录见 `evidence/token-resolution.json`。
 - **axe incomplete 复核**：32 项 incomplete 均为 `color-contrast`，原因是文本位于装饰层、渐变或伪元素之上，axe 无法判定背景。逐项复核方式：取实测计算样式（颜色、字号、字重）与元素实际背景（页面表面或身份卡渐变的三个端点色），按 WCAG 2.1 计算最差对比度。48 组组合全部达标，最差 6.37:1（`.eyebrow` 深色，要求 4.5:1）。记录见 `evidence/axe-incomplete-review.json`。
 
 ## 同步评估与边界
@@ -240,7 +240,22 @@ HTTP 日志中的 6 个错误路径来自执行 axe 后新增的 XHR。独立会
 
 已发现并修复（实现层）：320px Review 页 BAP ID 所在 Grid 的固有最小宽度导致 Copy 按钮溢出；设置 `minmax(0, 1fr)` 后复测。头像回退标识补上 img 语义；Save 取消返回编辑表单并保留值；离开未发布 Setup 后清除会话。
 
-最终结果：74 条状态断言、450 项浏览器检查通过。38 份 axe 审计（32 份页面 + 6 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`，人工复核见 `evidence/axe-incomplete-review.json`（新增的 `.welcome-intro` 两个节点在表中已覆盖，13.7:1）。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
+## 版面宽度与矮窗口（2026-09-11）
+
+用户报告 1220×555（截图 2439×1110 物理像素 ÷ DPR 2）的窗口下「界面太宽、太高」。量测确认原因是两个固定预算叠加，而不是渲染异常：
+
+| 现象 | 原因 | 改动 |
+| --- | --- | --- |
+| 太宽 | `main` 的 `max-width: 1280px` 大于窗口 1220 → 上限不生效，内容整宽铺开，左右只剩 48px 内边距；双栏 gap 96px | `main` 收窄到 **1120px**（宽窗口两侧留白），`.workbench` gap 96 → **64px** |
+| 太高 | topbar 100px + 通知条 87px + 表单卡 682px = 整页 1042px，而窗口仅 555px 高；页面级版式没有任何矮窗口断点（唯一的 `max-height: 640px` 只管弹窗） | 在 `@media (max-height: 640px)` 内压缩页面：topbar 100 → 64px、间距降档、`.page-heading h1` 降到 32px、表单 padding/gap 收紧、bio 文本域 112 → 72px、头像 76 → 56px；表单操作行 sticky 到视口底 |
+
+实测（编辑页 + `Saving cancelled` 通知条）：1220×555 整页高度 1042 → **771px**，操作行由「低于首屏 249px」变为 **486–555 可见**；320×568 因卡片自身内容盒限制了 sticky 行程，改用 `position: fixed` 的底部操作条（并给 `main` 留 104px 滚动余量），操作行 499–568 可见，无横向溢出。
+
+新增 4 条断言（响应式矩阵原本只变宽度、高度恒为 800，这类窗口从未被覆盖）：`Short desktop window 1220x555 no page overflow`、`Short desktop window keeps the form actions in view`、`Short phone window 320x568 no page overflow`、`Short phone window keeps the form actions in view`。
+
+范围说明：390×844 这类常规手机高度不做压缩（页面正常滚动），压缩只在高度 < 640px 时生效。
+
+最终结果：74 条状态断言、454 项浏览器检查通过。38 份 axe 审计（32 份页面 + 6 份瞬时状态）0 violations；32 项 incomplete 全为 `color-contrast`（文本位于装饰层、渐变、伪元素或弹窗背景之上，axe 无法判定背景），逐条记录于 `evidence/axe-incomplete-summary.json`，人工复核见 `evidence/axe-incomplete-review.json`（新增的 `.welcome-intro` 两个节点在表中已覆盖，13.7:1）。运行错误列表为空（`evidence/browser-errors.txt` 为空）。桌面以及 320px 的 Welcome、Setup、Review、Ready、My Identity、Public Identity、Edit Profile、Resolution error 均完成双语/双主题检查。头像、焦点约束、Processing 期间切换账户、减少动态效果与指针律动的补查见 `evidence/edge-checks.json`。人工截图复核后另缩小移动端头像首字母，避免圆形边缘裁切。
 
 已复核事实来源、版本范围、验收映射、异常恢复与后端同步边界。没有原型范围内的阻塞待确认项。提交见任务记录。
 

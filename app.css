@@ -38,7 +38,7 @@ button { touch-action: manipulation; }
 .dome[data-lit="true"] .sky-glow { opacity: .78; }
 .vault[data-pulse="true"] .vault-line { animation: resonance 2.4s cubic-bezier(.2,.65,.2,1) both; animation-delay: calc(var(--line) * 65ms); }
 @keyframes resonance { 0% { translate: 0 0; opacity: .8; } 30% { translate: 0 -14px; border-color: var(--s2-blue-600); opacity: 1; } 100% { translate: 0 0; opacity: 1; } }
-main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--s2-spacing-700) var(--s2-spacing-700); flex: 1; }
+main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 var(--s2-spacing-700) var(--s2-spacing-700); flex: 1; }
 .welcome { position: relative; padding-top: 112px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .eyebrow { font-size: var(--s2-font-size-75); font-weight: 650; text-transform: uppercase; letter-spacing: .15em; color: var(--s2-gray-700); }
 .welcome h1 { display: flex; flex-direction: column; gap: var(--s2-spacing-75); margin-top: var(--s2-spacing-500); font-family: var(--s2d-font-serif), "Songti SC", "SimSun", serif; font-size: clamp(45px, 5.8vw, 82px); font-weight: 500; letter-spacing: -.055em; line-height: 1.12; color: var(--s2-gray-900); }
@@ -67,7 +67,7 @@ main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; paddi
 .flow-steps li span { font-family: var(--s2d-font-mono); font-size: var(--s2-font-size-75); color: var(--s2-gray-700); }
 .flow-steps li[aria-current] { color: var(--s2-blue-1100); font-weight: 700; }
 .flow-steps li[aria-current] span { color: var(--s2-blue-1100); }
-.workbench { display: grid; grid-template-columns: .9fr 1fr; gap: var(--s2-spacing-1000); padding-top: var(--s2-spacing-400); }
+.workbench { display: grid; grid-template-columns: .9fr 1fr; gap: var(--s2-spacing-800); padding-top: var(--s2-spacing-400); }
 .workbench > aside { padding-top: var(--s2-spacing-400); }
 .aside-identity { display: grid; gap: var(--s2-spacing-200); margin-top: var(--s2-spacing-700); padding-top: var(--s2-spacing-400); border-top: 1px solid var(--s2d-border); max-width: 380px; }
 .aside-identity code { font-family: var(--s2d-font-mono); font-size: var(--s2-font-size-100); overflow-wrap: anywhere; }
@@ -282,6 +282,30 @@ main { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; paddi
      scrollport so short phones (320x568) do not require hunting inside it. */
   .modal .action-row { position: sticky; bottom: 0; z-index: 2; background: var(--s2d-layer-raised); margin-bottom: calc(-1 * var(--s2-spacing-500)); padding-block: var(--s2-spacing-200) var(--s2-spacing-500); }
   .modal .simulation-label { display: none; }
+  /* Short windows (a 1220x555 desktop window, or 320x568 phones) get a
+     compressed page: thinner chrome, tighter blocks, and form actions pinned
+     to the scrollport, so the primary action stays on screen without hunting. */
+  .topbar { min-height: 64px; padding-block: var(--s2-spacing-200); }
+  .notice { margin-top: 0; padding: var(--s2-spacing-200) var(--s2-spacing-300); }
+  .welcome { padding-top: 48px; }
+  .welcome h1 { margin-top: var(--s2-spacing-400); }
+  .workbench { padding-top: var(--s2-spacing-200); gap: var(--s2-spacing-500); }
+  .workbench > aside { padding-top: var(--s2-spacing-100); }
+  .page-heading h1 { font-size: var(--s2-font-size-800); }
+  .page-heading .eyebrow { margin-bottom: var(--s2-spacing-200); }
+  .page-heading > p:last-child { margin-top: var(--s2-spacing-200); }
+  .aside-identity { margin-top: var(--s2-spacing-400); padding-top: var(--s2-spacing-200); }
+  .profile-form, .review-profile { padding: var(--s2-spacing-300); gap: var(--s2-spacing-200); }
+  .workbench .portrait, .avatar-field .portrait { width: 56px; height: 56px; }
+  .field-wrap .s2d-field textarea { min-height: 72px; }
+  .form-footer { position: sticky; bottom: 0; z-index: 2; background: var(--s2d-layer-raised); margin-bottom: calc(-1 * var(--s2-spacing-300)); padding-block: var(--s2-spacing-200); }
+}
+@media (max-height: 640px) and (max-width: 650px) {
+  /* A phone-height window cannot keep a sticky footer inside the card: the
+     form's own content box caps how far it can travel. Pin the actions to the
+     viewport instead and reserve scroll room so no field hides beneath them. */
+  .form-footer { position: fixed; left: 0; right: 0; bottom: 0; margin-bottom: 0; z-index: 3; padding: var(--s2-spacing-200) var(--s2-spacing-500); background: var(--s2d-layer-raised); border-top: 1px solid var(--s2d-border); }
+  main { padding-bottom: 104px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .brand-loading .brand-mark, .brand-loading::before { animation: none; }

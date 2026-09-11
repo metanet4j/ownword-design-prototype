@@ -1,5 +1,5 @@
 {
-  "passed": 450,
+  "passed": 454,
   "checks": [
     "First paint leaves focus at the document start",
     "First Tab reaches the skip link instead of landing inside main",
@@ -394,6 +394,10 @@
     "discard-changes axe 0 violations",
     "Keep editing preserves draft",
     "Save cancellation retains editing values on form",
+    "Short desktop window 1220x555 no page overflow",
+    "Short desktop window keeps the form actions in view",
+    "Short phone window 320x568 no page overflow",
+    "Short phone window keeps the form actions in view",
     "edit en/light 320px no page overflow",
     "edit en/light 320px controls fit",
     "edit en/light 390px no page overflow",

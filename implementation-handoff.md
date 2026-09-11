@@ -13,10 +13,10 @@
 | `components.jsx` | S2 组件适配层：为设计系统返回的元素补受控输入、ARIA、事件与表单提交 |
 | `app.css` | 视觉：穹顶、地平线、语义表面、3D 身份板 |
 | `_ds/react-spectrum-s2/` | 设计系统（只读，不修改） |
-| `check-model.cjs` | 59 项状态断言 |
-| `check-browser.py` | 360 项浏览器断言（双语、双主题、四宽度、axe） |
+| `check-model.cjs` | 状态断言（几何、能力、标识、校验、状态机、术语、视图） |
+| `check-browser.py` | 浏览器断言（双语、双主题、四宽度矩阵 + 短窗口、axe 审计；当前条数以 `verification.md` 为准） |
 | `check-offline.py` | 4 项离线启动断言（阻断外部域） |
-| `check-tokens.py` | 设计系统令牌解析检查（66 个引用对 2509 个令牌） |
+| `check-tokens.py` | 设计系统令牌解析检查（原型 CSS 全部 `var(--s2*)` 引用对 2509 个令牌） |
 | `check-copy.cjs` | 双语词典契约检查 |
 | `brand.html`、`brand-explorations.html` | 品牌图标规范与方向探索页，供设计参考；不是产品页面，生产不迁移 |
 
