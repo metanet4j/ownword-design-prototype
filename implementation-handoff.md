@@ -2,13 +2,15 @@
 
 本文只记录「原型 → 生产实现」的替换契约与状态机契约。业务事实以[核心认知](../../_task/system-design/spec/核心认知.md)为唯一来源；范围与验收以[产品设计 v0.1](../../_task/system-design/spec/prd/v0.1/设计文档v0.1.md)为准；逐条验收映射与证据见[verification.md](verification.md)。本文不重复定义上述任何规则。
 
+原型本身用于产品评审，不要求转换为生产构建或替换正式组件。场景控制与钱包授权演示的当前操作方式见[原型演练](原型演练_20260916-1604.md)。
+
 ## 1. 原型构成
 
 | 文件 | 职责 |
 | --- | --- |
 | `index.html` | 加载顺序：S2 令牌与组件 CSS → `vendor/` 的 React/ReactDOM/Babel → `model.js` → `components.jsx` → `app.jsx` |
 | `model.js` | 纯函数状态机：`initial()`、`validate()`、`reducer()`。无 DOM、无计时器 |
-| `copy.js` | 双语词典（142 键），术语权威是核心认知第 2 节；`check-copy.cjs` 校验键对齐、空串与禁区词 |
+| `copy.js` | 双语词典，术语权威是核心认知第 2 节；`check-copy.cjs` 校验键对齐、空串与禁区词，当前键数见 `evidence/copy-contract.json` |
 | `app.jsx` | 界面与副作用：计时器、剪贴板、头像本地预览、偏好持久化、导航保护 |
 | `components.jsx` | S2 组件适配层：为设计系统返回的元素补受控输入、ARIA、事件与表单提交 |
 | `app.css` | 视觉：穹顶、地平线、语义表面、3D 身份板 |
@@ -94,7 +96,7 @@
 
 ## 3.2 小屏弹窗（实测）
 
-320×800 下钱包确认弹窗内容高于视口，弹窗内部可滚动（`max-height` + `overflow-y:auto`）。主操作（Cancel / Approve）在首屏可见，原型专用的「模拟失败 / 切换账户 / 断开」一行需滚动。生产实现需保证主操作在 320px 首屏可见，次级操作允许滚动；断言 `Dialog primary actions stay inside a 320px viewport` 覆盖这一点。
+钱包确认弹窗保留关闭、取消和批准；场景控制集中到原型设置。弹窗内部允许滚动，320×568 下关闭、取消和批准保持可见，关闭按钮不换行。中英×浅深验证见原型演练专项证据。
 
 ## 4. 不得丢失的可观察行为
 

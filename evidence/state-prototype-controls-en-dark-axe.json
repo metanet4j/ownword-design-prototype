@@ -1,9 +1,9 @@
 {
   "axeVersion": "4.12.1",
   "counts": {
-    "inapplicable": 53,
+    "inapplicable": 49,
     "incomplete": 1,
-    "passes": 36,
+    "passes": 40,
     "violations": 0
   },
   "incomplete": [
@@ -12,15 +12,8 @@
       "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
       "id": "color-contrast",
       "impact": "serious",
-      "nodeCount": 2,
+      "nodeCount": 1,
       "nodes": [
-        {
-          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
-          "html": "<p class=\"eyebrow\">Your identity starts with you.</p>",
-          "target": [
-            ".eyebrow"
-          ]
-        },
         {
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
           "html": "<span>A foundation for your voice</span>",

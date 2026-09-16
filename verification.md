@@ -11,7 +11,9 @@
 
 ## 实现
 
-`copy.js` 集中保存中英双语词典（148 键），术语权威是核心认知第 2 节；`check-copy.cjs` 校验两语言键集一致、无空串、无第 2.3 节禁区用词、无重复长句。界面状态通过 `data-*` 属性暴露（`data-screen-label`、`data-notice`、`data-error`、`data-busy`、`data-incomplete`、`data-copy-feedback`、`data-field-error`、`data-modal-title`、`data-action`），断言因此不依赖文案。
+当前场景控制入口、钱包授权边界和专项验证见[原型演练](原型演练_20260916-1604.md)。专项证据为 `evidence/prototype-controls-results.json`；下文全量 BDD 结果是原有基线，本次未全量重跑，不作为当前全部页面已重新验收的声明。
+
+`copy.js` 集中保存中英双语词典，当前键数见 `evidence/copy-contract.json`。术语权威是核心认知第 2 节；`check-copy.cjs` 校验两语言键集一致、无空串、无第 2.3 节禁区用词、无重复长句。界面状态通过 `data-*` 属性暴露（`data-screen-label`、`data-notice`、`data-error`、`data-busy`、`data-incomplete`、`data-copy-feedback`、`data-field-error`、`data-modal-title`、`data-action`），断言因此不依赖文案。
 
 `index.html` 按 Baoyu Design 导入结果加载 S2 的全部 CSS 依赖及组件 bundle。React、ReactDOM 与 Babel 从 `vendor/` 本地加载（同版本原文件，`integrity` 保留作校验，来源与哈希见 [vendor/README.md](vendor/README.md)），因此启动不依赖 CDN。`components.jsx` 消费其 Button、TextField、TextArea，`app.jsx` 另用 StatusLight、Skeleton。组件源是本地视觉样件；适配层为其返回元素添加受控输入、ARIA、事件及表单提交。弹窗使用浏览器原生 dialog 管理焦点和 Escape，不修改源设计系统。
 

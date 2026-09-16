@@ -1,9 +1,9 @@
 {
   "axeVersion": "4.12.1",
   "counts": {
-    "inapplicable": 53,
+    "inapplicable": 49,
     "incomplete": 1,
-    "passes": 36,
+    "passes": 40,
     "violations": 0
   },
   "incomplete": [

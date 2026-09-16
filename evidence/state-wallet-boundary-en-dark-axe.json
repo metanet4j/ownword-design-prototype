@@ -1,0 +1,25 @@
+{
+  "axeVersion": "4.12.1",
+  "counts": {
+    "inapplicable": 73,
+    "incomplete": 0,
+    "passes": 16,
+    "violations": 0
+  },
+  "incomplete": [],
+  "lifecycle": {
+    "effectiveLaunch": {
+      "browserLaunched": true,
+      "engine": "chrome",
+      "launchHash": 1983588522094562066
+    },
+    "launched": false,
+    "relaunchedBrowser": false,
+    "restartedBackground": false,
+    "restoreStatus": "not_configured",
+    "reused": true,
+    "saveStatus": "not_attempted"
+  },
+  "url": "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/index.html",
+  "violations": []
+}

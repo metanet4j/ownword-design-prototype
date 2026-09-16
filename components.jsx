@@ -87,7 +87,7 @@ function useDismissable(open, onClose, ref) {
     };
   }, [open, onClose, ref]);
 }
-function Modal({title, titleKey, children, onCancel, closeLabel}) {
+function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNWORD'}) {
   const dialog = React.useRef(null);
   React.useEffect(() => {
     const previous = document.activeElement;
@@ -95,7 +95,7 @@ function Modal({title, titleKey, children, onCancel, closeLabel}) {
     return () => {if (previous?.isConnected) previous.focus();};
   }, []);
   return <dialog ref={dialog} className="modal" data-modal-title={titleKey || ""} aria-labelledby="dialog-title" onCancel={e => {e.preventDefault(); onCancel();}}>
-    <div className="modal-top"><span className="eyebrow">OWNWORD</span><Button variant="quiet" onClick={onCancel} aria-label={title + ' — ' + closeLabel}>{closeLabel}</Button></div>
+    <div className="modal-top"><span className="eyebrow">{context}</span><Button variant="quiet" onClick={onCancel} aria-label={title + ' — ' + closeLabel}>{closeLabel}</Button></div>
     <h2 id="dialog-title">{title}</h2>{children}
   </dialog>;
 }
@@ -152,7 +152,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
             <div><dt>{t('confirmation')}</dt><dd data-chain="confirmation">{t(transaction && transaction.blockHeight ? 'confirmed' : 'pendingConfirmation')}</dd></div>
           </dl>
           {transaction ? <Identifier id={transaction.txid} label={t('publicationTx')} copyLabel="copyTx" target="tx" t={t} failCopy={failCopy} /> : <p className="hint">{t('recordUnavailable')}</p>}
-          <div className="plate-foot"><span>{t('sampleRecord')}</span><span>BSV</span></div>
+          <div className="plate-foot"><span>BSV</span></div>
         </article>
       </div>
     </div>

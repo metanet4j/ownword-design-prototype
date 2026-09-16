@@ -176,13 +176,12 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .modal { color: var(--s2d-text); width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); padding: var(--s2-spacing-500); background: var(--s2d-layer-raised); box-shadow: 0 24px 96px color-mix(in srgb, var(--s2-black) 24%, transparent); }
 .modal::backdrop { background: color-mix(in srgb, var(--s2-black) 32%, transparent); backdrop-filter: blur(6px); }
 .modal-top { display: flex; justify-content: space-between; align-items: center; gap: var(--s2-spacing-100); margin-bottom: var(--s2-spacing-400); }
+.modal-top > .s2d-button { flex-shrink: 0; white-space: nowrap; }
 .modal h2 { font-size: var(--s2-font-size-800); line-height: 1.2; font-weight: 600; letter-spacing: -.03em; }
 .modal > p { margin: var(--s2-spacing-300) 0 var(--s2-spacing-400); line-height: 1.7; color: var(--s2-gray-700); }
 .modal .compact { margin: var(--s2-spacing-400) 0; }
 .modal .compact > div { display: grid; gap: var(--s2-spacing-100); }
 .modal .compact .portrait { width: 48px; height: 48px; }
-.simulation-label { border-top: 1px solid var(--s2d-border); margin: var(--s2-spacing-400) 0; padding-top: var(--s2-spacing-300); font-size: var(--s2-font-size-75); color: var(--s2-gray-700); display: grid; gap: var(--s2-spacing-100); }
-.simulation-label > span { text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
 .scenario-panel { position: fixed; z-index: 8; right: var(--s2-spacing-400); bottom: var(--s2-spacing-400); width: 365px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 32px); overflow-y: auto; padding: var(--s2-spacing-400); border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); background: var(--s2d-layer-raised); box-shadow: 0 16px 64px color-mix(in srgb, var(--s2-black) 18%, transparent); display: grid; gap: var(--s2-spacing-300); }
 .panel-title { display: flex; justify-content: space-between; gap: var(--s2-spacing-100); align-items: center; }
 .panel-title h2 { font-size: var(--s2-font-size-400); }
@@ -279,7 +278,6 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   /* The confirmation actions are the point of the dialog: pin them to the
      scrollport so short phones (320x568) do not require hunting inside it. */
   .modal .action-row { position: sticky; bottom: 0; z-index: 2; background: var(--s2d-layer-raised); margin-bottom: calc(-1 * var(--s2-spacing-500)); padding-block: var(--s2-spacing-200) var(--s2-spacing-500); }
-  .modal .simulation-label { display: none; }
   /* Short windows (a 1220x555 desktop window, or 320x568 phones) get a
      compressed page: thinner chrome, tighter blocks, and form actions pinned
      to the scrollport, so the primary action stays on screen without hunting. */

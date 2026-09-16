@@ -9,9 +9,10 @@
     walletNote: 'Yours Wallet', independent: 'Your identity starts with you.', footer: 'Your wallet. Your identity. Your words.', prototype: 'Interactive prototype', scenarios: 'Explore scenarios', close: 'Close',
     scenario: 'Wallet identity', new: 'New identity', existing: 'Published identity', incomplete: 'Incomplete profile', resolveFail: 'Resolution fails', missing: 'Wallet unavailable',
     simulatorNote: 'Demo only. No wallet connection, signature or transaction is sent.', simulatorHint: 'Choose an identity scenario, then connect or resolve again.',
+    sampleDataNote: 'Identity and chain records are sample data. Authorization dialogs represent the external wallet.', walletAuthorization: 'Yours Wallet · External authorization',
     nextResult: 'Next operation result', resultSuccess: 'Success', nextResultHint: 'Applies once after approving a connection, creation or update. Cancelling keeps this setting.',
     accountEvent: 'Next account event', none: 'No event', 'switch-confirm': 'Switch during authorization', 'switch-process': 'Switch during processing', 'disconnect-confirm': 'Disconnect during authorization', 'disconnect-process': 'Disconnect during processing',
-    accountEventHint: 'Triggers once when creating or updating a profile: 1.2 seconds into authorization, or 0.6 seconds into processing.',
+    accountEventHint: 'Runs once on create or update: after 1.2s in authorization, or 0.6s in processing.',
     resolveAgain: 'Resolve again', failClipboard: 'Simulate copy failure', reset: 'Reset session',
     connectTitle: 'Connect Yours Wallet', connectBody: 'Let this app see your wallet identity. Publishing needs a separate confirmation.', approve: 'Approve', cancel: 'Cancel', simulateFailure: 'Simulate failure',
     connectCancelled: 'Connection cancelled', connectFailed: 'Connection failed', connectFailedBody: 'Your identity is unchanged. Check your wallet and try again.',
@@ -22,7 +23,7 @@
     type: 'Type', Person: 'Person', Organization: 'Organization', bio: 'Bio', optional: 'Optional', review: 'Review', back: 'Back', profile: 'Profile', editProfile: 'Edit Profile', editHeading: 'A little more you.', editBody: 'Update how you appear. Your BAP ID stays the same.',
     reviewHeading: 'This is your identity.', reviewBody: 'Review the details before confirming in your wallet.', create: 'Create Identity', createImpact: 'Your identity and profile will become public.', saveImpact: 'Your updated profile will become public. Your BAP ID will not change.', localId: 'Locally computed · not yet published', published: 'Published', controlStatement: 'Your wallet controls this identity.',
     copy: 'Copy', copied: 'Copied', copyFailed: "Couldn't copy", copyBap: 'Copy full BAP ID', noBio: 'No bio yet.',
-    createTitle: 'Confirm identity creation', saveTitle: 'Confirm profile update', simulatedWallet: 'Simulated wallet confirmation', currentIdentity: 'Current identity',
+    createTitle: 'Confirm identity creation', saveTitle: 'Confirm profile update', currentIdentity: 'Current identity',
     creating: 'Creating identity...', saving: 'Saving...', processingBody: 'Waiting for the wallet. Disconnecting or switching account cancels this operation.',
     createCancelled: 'Creation cancelled', saveCancelled: 'Saving cancelled', retained: 'Your editing values are kept. Review them and try again when ready.',
     createFailed: "Couldn't create identity", saveFailed: "Couldn't save profile", operationFailedBody: 'The operation did not complete. Your values are kept. Try again.',
@@ -30,10 +31,10 @@
     identityIntro: 'A constant in a changing world.', identityBody: 'Your public identity, under your control.', owner: 'Controlled by your connected wallet', profileDetails: 'Profile details', account: 'Wallet account',
     publicIntro: 'Your identity, in the open.', publicBody: 'A public view of the identity you control.', backIdentity: 'Back to My Identity', ownedByYou: 'Identity, owned by you.',
     save: 'Save Changes', discardTitle: 'Discard unsaved changes?', discardBody: 'Changes are not saved. Keep editing, or discard them to leave.', keepEditing: 'Keep editing', discard: 'Discard changes',
-    accountChanged: 'Account changed. Pending operations were cancelled.', identityUnchanged: 'Your identity is unchanged.', current: 'Current', preferenceHint: 'Language and appearance stay on this device.', demoAccount: 'Demo account', demoData: 'Sample identity · prototype data',
+    accountChanged: 'Account changed. Pending operations were cancelled.', identityUnchanged: 'Your identity is unchanged.', current: 'Current', preferenceHint: 'Language and appearance stay on this device.',
     setupStep: 'Profile', reviewStep: 'Review', confirmStep: 'Confirm', doneStep: 'Ready', copyFailureOn: 'Copy failure simulation is on', privatePreview: 'Public view preview',
     walletStatus: 'Wallet status', persistFailed: 'Preferences could not be saved on this device.',
-    chainRecord: 'Chain record', identityPublication: 'Identity publication', blockHeight: 'Block height', confirmation: 'Confirmation', confirmed: 'Confirmed', pendingConfirmation: 'Awaiting block confirmation', pendingBlock: 'Awaiting block', publicationTx: 'Publication TxID', copyTx: 'Copy publication TxID', recordUnavailable: 'Transaction record unavailable', sampleRecord: 'Sample record · prototype data'
+    chainRecord: 'Chain record', identityPublication: 'Identity publication', blockHeight: 'Block height', confirmation: 'Confirmation', confirmed: 'Confirmed', pendingConfirmation: 'Awaiting block confirmation', pendingBlock: 'Awaiting block', publicationTx: 'Publication TxID', copyTx: 'Copy publication TxID', recordUnavailable: 'Transaction record unavailable'
   },
   zh: {
     connect: '连接钱包', connected: '已连接', notConnected: '未连接', connecting: '正在连接', disconnect: '断开连接', accountSwitch: '切换账户', wallet: '钱包',
@@ -43,9 +44,10 @@
     walletNote: 'Yours Wallet', independent: '身份，由你开始。', footer: '你的钱包。你的身份。你的话语。', prototype: '交互原型', scenarios: '演练场景', close: '关闭',
     scenario: '钱包身份场景', new: '新身份', existing: '已发布身份', incomplete: '资料不完整', resolveFail: '解析失败', missing: '钱包不可用',
     simulatorNote: '仅作演示。不会连接钱包、签名或发送交易。', simulatorHint: '选择身份场景后，连接钱包或重新解析。',
+    sampleDataNote: '身份与链上记录均为示例数据。授权弹窗代表外部钱包界面。', walletAuthorization: 'Yours Wallet · 外部钱包授权',
     nextResult: '下一次操作结果', resultSuccess: '成功', nextResultHint: '批准连接、创建或更新后生效一次；取消授权会保留此设置。',
     accountEvent: '下一次账户变化', none: '不触发', 'switch-confirm': '授权时切换账户', 'switch-process': '处理中切换账户', 'disconnect-confirm': '授权时断开连接', 'disconnect-process': '处理中断开连接',
-    accountEventHint: '创建或更新资料时触发一次：授权窗口打开 1.2 秒后，或处理开始 0.6 秒后。',
+    accountEventHint: '创建身份或更新资料时触发一次：授权开始 1.2 秒后，或处理开始 0.6 秒后。',
     resolveAgain: '重新解析', failClipboard: '模拟复制失败', reset: '重置会话',
     connectTitle: '连接 Yours Wallet', connectBody: '允许应用查看钱包身份；发布时另行确认。', approve: '批准', cancel: '取消', simulateFailure: '模拟失败',
     connectCancelled: '连接已取消', connectFailed: '连接失败', connectFailedBody: '身份未改变。请检查钱包后重试。',
@@ -56,7 +58,7 @@
     type: '类型', Person: '个人', Organization: '组织', bio: '简介', optional: '可选', review: '预览确认', back: '返回', profile: '资料', editProfile: '编辑资料', editHeading: '更真实地表达你。', editBody: '更新展示资料，BAP ID 保持不变。',
     reviewHeading: '这就是你的身份。', reviewBody: '核对资料后，在钱包中确认。', create: '创建身份', createImpact: '你的身份和资料将公开发布。', saveImpact: '更新后的资料将公开发布，BAP ID 保持不变。', localId: '已本地计算 · 尚未发布', published: '已发布', controlStatement: '你的钱包掌控此身份。',
     copy: '复制', copied: '已复制', copyFailed: '无法复制', copyBap: '复制完整 BAP ID', noBio: '尚未填写简介。',
-    createTitle: '确认创建身份', saveTitle: '确认更新资料', simulatedWallet: '钱包确认模拟', currentIdentity: '当前身份',
+    createTitle: '确认创建身份', saveTitle: '确认更新资料', currentIdentity: '当前身份',
     creating: '正在创建身份…', saving: '正在保存…', processingBody: '正在等待钱包返回。断开或切换账户会取消此操作。',
     createCancelled: '创建已取消', saveCancelled: '保存已取消', retained: '已保留填写内容。核对后可重新尝试。',
     createFailed: '无法创建身份', saveFailed: '无法保存资料', operationFailedBody: '操作未完成，已保留填写内容。请重试。',
@@ -64,10 +66,10 @@
     identityIntro: '变化之中，自有坐标。', identityBody: '你的公开身份，由你掌控。', owner: '由当前连接的钱包控制', profileDetails: '资料详情', account: '钱包账户',
     publicIntro: '让世界看到你。', publicBody: '查看你所掌控身份的公开展示。', backIdentity: '返回我的身份', ownedByYou: '身份，属于你。',
     save: '保存修改', discardTitle: '放弃未保存的修改？', discardBody: '修改未保存。继续编辑，或放弃后离开。', keepEditing: '继续编辑', discard: '放弃修改',
-    accountChanged: '账户已切换，进行中的操作已取消。', identityUnchanged: '身份未改变。', current: '当前', preferenceHint: '语言与主题偏好保存在此设备。', demoAccount: '演示账户', demoData: '示例身份 · 原型数据',
+    accountChanged: '账户已切换，进行中的操作已取消。', identityUnchanged: '身份未改变。', current: '当前', preferenceHint: '语言与主题偏好保存在此设备。',
     setupStep: '资料', reviewStep: '核对', confirmStep: '确认', doneStep: '就绪', copyFailureOn: '已开启复制失败模拟', privatePreview: '公开展示预览',
     walletStatus: '钱包状态', persistFailed: '无法在此设备保存偏好。',
-    chainRecord: '链上记录', identityPublication: '身份发布记录', blockHeight: '区块高度', confirmation: '确认状态', confirmed: '已确认', pendingConfirmation: '等待区块确认', pendingBlock: '等待入块', publicationTx: '发布交易 TxID', copyTx: '复制发布交易 TxID', recordUnavailable: '暂无交易记录', sampleRecord: '示例记录 · 原型数据'
+    chainRecord: '链上记录', identityPublication: '身份发布记录', blockHeight: '区块高度', confirmation: '确认状态', confirmed: '已确认', pendingConfirmation: '等待区块确认', pendingBlock: '等待入块', publicationTx: '发布交易 TxID', copyTx: '复制发布交易 TxID', recordUnavailable: '暂无交易记录'
   }
   };
   const api = {en: words.en, zh: words.zh, locales: ['en', 'zh'], keys: Object.keys(words.en)};
