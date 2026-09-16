@@ -29,6 +29,7 @@ incomplete_audit = []
 CONTROLS_ONLY = '--controls-only' in sys.argv
 FEEDBACK_ONLY = '--feedback-only' in sys.argv
 CHAIN_ONLY = '--chain-only' in sys.argv
+HEADER_ONLY = '--header-only' in sys.argv
 
 def call(*args, json_result=False):
     command = [CLI, '--session', SESSION, *map(str, args)]
@@ -289,6 +290,49 @@ def connect(value='new', audit=None):
         expect('!!document.querySelector("[data-action=disconnect]")', 'Resolving state offers a way out')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
+def check_narrow_header():
+    # 复用真实操作入口；只测页头，不改业务状态或注入样式。
+    geometry = []
+    for locale in ('en', 'zh'):
+        for theme in ('light', 'dark'):
+            pref(locale, theme)
+            call('set', 'viewport', 320, 568)
+            expect('document.querySelector(".topbar").getBoundingClientRect().height <= 72', f'{locale}/{theme} welcome header stays one row')
+            connect('existing')
+            for width in (320, 390, 650, 768, 1440):
+                call('set', 'viewport', width, 568 if width <= 650 else 1000)
+                js('scrollTo({top:0,behavior:"instant"})'); settle()
+                measurement = js('(()=>{const h=document.querySelector(".topbar").getBoundingClientRect();const buttons=[...document.querySelectorAll(".brand,.topnav > button,.preference-anchor > button")].map(e=>({text:e.textContent,...e.getBoundingClientRect().toJSON()}));return {width:innerWidth,height:h.height,buttons}})()')
+                geometry.append({'locale': locale, 'theme': theme, **measurement})
+                assert measurement['height'] <= (120 if width <= 650 else 100), measurement
+                assert all(b['height'] >= 44 and b['width'] >= 44 and b['left'] >= 0 and b['right'] <= width for b in measurement['buttons']), measurement
+                buttons = measurement['buttons']
+                assert all(a['right'] <= b['left'] or b['right'] <= a['left'] or a['bottom'] <= b['top'] or b['bottom'] <= a['top'] for i, a in enumerate(buttons) for b in buttons[i + 1:]), measurement
+                expect('document.documentElement.scrollWidth <= innerWidth', f'{locale}/{theme} {width}px header fits without overlap and keeps 44px targets')
+            call('set', 'viewport', 320, 568)
+            js('scrollTo({top:0,behavior:"instant"})'); settle()
+            call('screenshot', str(EVIDENCE / f'narrow-header-{locale}-{theme}.png'))
+            js('scrollTo({top:document.documentElement.scrollHeight,behavior:"instant"})')
+            expect('Math.abs(document.querySelector(".topbar").getBoundingClientRect().top)<1', f'{locale}/{theme} compact header remains sticky')
+            call('focus', '.preference-anchor > button'); call('press', 'Enter')
+            expect('!!document.querySelector(".preferences") && document.querySelector(".preferences").getBoundingClientRect().right <= innerWidth && document.querySelector(".preferences").getBoundingClientRect().bottom <= innerHeight', f'{locale}/{theme} preferences open by keyboard and fit screen')
+            call('press', 'Escape')
+            expect('!document.querySelector(".preferences")', f'{locale}/{theme} Escape closes preferences')
+            js('scrollTo({top:0,behavior:"instant"})'); settle()
+            audit = call('a11y', '--selector', '.topbar', json_result=True)
+            (EVIDENCE / f'narrow-header-{locale}-{theme}-axe.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2), encoding='utf-8')
+            assert not audit['violations'], audit
+            incomplete_audit.extend(audit.get('incomplete', []))
+            click_action('public'); wait_page('public')
+            call('focus', '.topnav > button:not([data-action])'); call('press', 'Enter'); wait_page('identity')
+            expect('document.querySelector(".topnav [aria-current=page]") !== null', f'{locale}/{theme} identity navigation remains usable')
+            click_action('disconnect'); wait_page('welcome')
+    (EVIDENCE / 'narrow-header-geometry.json').write_text(json.dumps(geometry, ensure_ascii=False, indent=2), encoding='utf-8')
+    errors = call('errors')
+    (EVIDENCE / 'narrow-header-errors.txt').write_text(errors, encoding='utf-8')
+    assert not errors.strip(), errors
+    print(f'{len(results)} narrow header checks passed', flush=True)
+
 def check_chain_disclosure():
     connect('existing')
     click_action('public'); wait_page('public')
@@ -493,6 +537,9 @@ try:
         sys.exit(0)
     if CHAIN_ONLY:
         check_chain_disclosure()
+        sys.exit(0)
+    if HEADER_ONLY:
+        check_narrow_header()
         sys.exit(0)
     expect('document.activeElement === document.body', 'First paint leaves focus at the document start')
     call('press', 'Tab')
@@ -710,6 +757,6 @@ try:
         print(f'{len(layout_findings)} container-overflow findings recorded', flush=True)
     print(f'{len(results)} browser checks passed; {len(incomplete_audit)} axe incomplete recorded', flush=True)
 finally:
-    result_file = 'chain-disclosure-results.json' if CHAIN_ONLY else 'header-feedback-results.json' if FEEDBACK_ONLY else 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
+    result_file = 'narrow-header-results.json' if HEADER_ONLY else 'chain-disclosure-results.json' if CHAIN_ONLY else 'header-feedback-results.json' if FEEDBACK_ONLY else 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
     (EVIDENCE / result_file).write_text(json.dumps({'passed': len(results), 'checks': results, 'axeIncomplete': incomplete_audit}, ensure_ascii=False, indent=2), encoding='utf-8')
     call('close')

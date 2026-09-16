@@ -216,10 +216,10 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .welcome { padding-top: 88px; }
 }
 @media (max-width: 650px) {
-  .topbar { padding: var(--s2-spacing-300); min-height: 84px; gap: var(--s2-spacing-100); flex-wrap: wrap; }
+  .topbar { padding: var(--s2-spacing-200) var(--s2-spacing-300); min-height: 64px; gap: var(--s2-spacing-100); flex-wrap: wrap; }
   .brand { font-size: var(--s2-font-size-700); }
   .topnav { gap: var(--s2-spacing-75); flex-wrap: wrap; justify-content: flex-end; }
-  .topnav .s2d-button { font-size: var(--s2-font-size-75); padding-inline: var(--s2-spacing-200); }
+  .topnav .s2d-button { font-size: var(--s2-font-size-75); padding-inline: var(--s2-spacing-100); white-space: nowrap; }
   main { padding: 0 var(--s2-spacing-300) var(--s2-spacing-500); }
   .dome { height: 280px; top: 84px; }
   .vault-line { width: calc(100% + var(--line) * 20%); height: calc(260px + var(--line) * 36px); }

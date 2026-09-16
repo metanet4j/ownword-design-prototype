@@ -1,0 +1,1042 @@
+[
+  {
+    "locale": "en",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 107.734375,
+        "text": "My Identity",
+        "top": 64,
+        "width": 91.734375,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 111.734375,
+        "right": 203,
+        "text": "EN/Light",
+        "top": 64,
+        "width": 91.265625,
+        "x": 111.734375,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 207,
+        "right": 297.21875,
+        "text": "Disconnect",
+        "top": 64,
+        "width": 90.21875,
+        "x": 207,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 320
+  },
+  {
+    "locale": "en",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 107.734375,
+        "text": "My Identity",
+        "top": 64,
+        "width": 91.734375,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 111.734375,
+        "right": 203,
+        "text": "EN/Light",
+        "top": 64,
+        "width": 91.265625,
+        "x": 111.734375,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 207,
+        "right": 297.21875,
+        "text": "Disconnect",
+        "top": 64,
+        "width": 90.21875,
+        "x": 207,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 390
+  },
+  {
+    "locale": "en",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 352.78125,
+        "right": 444.515625,
+        "text": "My Identity",
+        "top": 12,
+        "width": 91.734375,
+        "x": 352.78125,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 448.515625,
+        "right": 539.78125,
+        "text": "EN/Light",
+        "top": 12,
+        "width": 91.265625,
+        "x": 448.515625,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 543.78125,
+        "right": 634,
+        "text": "Disconnect",
+        "top": 12,
+        "width": 90.21875,
+        "x": 543.78125,
+        "y": 12
+      }
+    ],
+    "height": 68,
+    "width": 650
+  },
+  {
+    "locale": "en",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 24,
+        "right": 204.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 24,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 375.9375,
+        "right": 490.890625,
+        "text": "My Identity",
+        "top": 28,
+        "width": 114.953125,
+        "x": 375.9375,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 502.890625,
+        "right": 618.46875,
+        "text": "EN/Light",
+        "top": 28,
+        "width": 115.578125,
+        "x": 502.890625,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 630.46875,
+        "right": 744,
+        "text": "Disconnect",
+        "top": 28,
+        "width": 113.53125,
+        "x": 630.46875,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 768
+  },
+  {
+    "locale": "en",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 48,
+        "right": 228.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 48,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1023.9375,
+        "right": 1138.890625,
+        "text": "My Identity",
+        "top": 28,
+        "width": 114.953125,
+        "x": 1023.9375,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1150.890625,
+        "right": 1266.46875,
+        "text": "EN/Light",
+        "top": 28,
+        "width": 115.578125,
+        "x": 1150.890625,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1278.46875,
+        "right": 1392,
+        "text": "Disconnect",
+        "top": 28,
+        "width": 113.53125,
+        "x": 1278.46875,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 1440
+  },
+  {
+    "locale": "en",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 107.734375,
+        "text": "My Identity",
+        "top": 64,
+        "width": 91.734375,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 111.734375,
+        "right": 201.3125,
+        "text": "EN/Dark",
+        "top": 64,
+        "width": 89.578125,
+        "x": 111.734375,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 205.3125,
+        "right": 295.53125,
+        "text": "Disconnect",
+        "top": 64,
+        "width": 90.21875,
+        "x": 205.3125,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 320
+  },
+  {
+    "locale": "en",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 107.734375,
+        "text": "My Identity",
+        "top": 64,
+        "width": 91.734375,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 111.734375,
+        "right": 201.3125,
+        "text": "EN/Dark",
+        "top": 64,
+        "width": 89.578125,
+        "x": 111.734375,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 205.3125,
+        "right": 295.53125,
+        "text": "Disconnect",
+        "top": 64,
+        "width": 90.21875,
+        "x": 205.3125,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 390
+  },
+  {
+    "locale": "en",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 354.46875,
+        "right": 446.203125,
+        "text": "My Identity",
+        "top": 12,
+        "width": 91.734375,
+        "x": 354.46875,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 450.203125,
+        "right": 539.78125,
+        "text": "EN/Dark",
+        "top": 12,
+        "width": 89.578125,
+        "x": 450.203125,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 543.78125,
+        "right": 634,
+        "text": "Disconnect",
+        "top": 12,
+        "width": 90.21875,
+        "x": 543.78125,
+        "y": 12
+      }
+    ],
+    "height": 68,
+    "width": 650
+  },
+  {
+    "locale": "en",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 24,
+        "right": 204.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 24,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 377.515625,
+        "right": 492.46875,
+        "text": "My Identity",
+        "top": 28,
+        "width": 114.953125,
+        "x": 377.515625,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 504.46875,
+        "right": 618.46875,
+        "text": "EN/Dark",
+        "top": 28,
+        "width": 114,
+        "x": 504.46875,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 630.46875,
+        "right": 744,
+        "text": "Disconnect",
+        "top": 28,
+        "width": 113.53125,
+        "x": 630.46875,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 768
+  },
+  {
+    "locale": "en",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 48,
+        "right": 228.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 48,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1025.515625,
+        "right": 1140.46875,
+        "text": "My Identity",
+        "top": 28,
+        "width": 114.953125,
+        "x": 1025.515625,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1152.46875,
+        "right": 1266.46875,
+        "text": "EN/Dark",
+        "top": 28,
+        "width": 114,
+        "x": 1152.46875,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1278.46875,
+        "right": 1392,
+        "text": "Disconnect",
+        "top": 28,
+        "width": 113.53125,
+        "x": 1278.46875,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 1440
+  },
+  {
+    "locale": "zh",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 96.015625,
+        "text": "我的身份",
+        "top": 64,
+        "width": 80.015625,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 100.015625,
+        "right": 201.3125,
+        "text": "中文/浅色",
+        "top": 64,
+        "width": 101.296875,
+        "x": 100.015625,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 205.3125,
+        "right": 285.328125,
+        "text": "断开连接",
+        "top": 64,
+        "width": 80.015625,
+        "x": 205.3125,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 320
+  },
+  {
+    "locale": "zh",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 96.015625,
+        "text": "我的身份",
+        "top": 64,
+        "width": 80.015625,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 100.015625,
+        "right": 201.3125,
+        "text": "中文/浅色",
+        "top": 64,
+        "width": 101.296875,
+        "x": 100.015625,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 205.3125,
+        "right": 285.328125,
+        "text": "断开连接",
+        "top": 64,
+        "width": 80.015625,
+        "x": 205.3125,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 390
+  },
+  {
+    "locale": "zh",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 364.671875,
+        "right": 444.6875,
+        "text": "我的身份",
+        "top": 12,
+        "width": 80.015625,
+        "x": 364.671875,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 448.6875,
+        "right": 549.984375,
+        "text": "中文/浅色",
+        "top": 12,
+        "width": 101.296875,
+        "x": 448.6875,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 553.984375,
+        "right": 634,
+        "text": "断开连接",
+        "top": 12,
+        "width": 80.015625,
+        "x": 553.984375,
+        "y": 12
+      }
+    ],
+    "height": 68,
+    "width": 650
+  },
+  {
+    "locale": "zh",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 24,
+        "right": 204.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 24,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 387.078125,
+        "right": 491.078125,
+        "text": "我的身份",
+        "top": 28,
+        "width": 104,
+        "x": 387.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 503.078125,
+        "right": 628,
+        "text": "中文/浅色",
+        "top": 28,
+        "width": 124.921875,
+        "x": 503.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 640,
+        "right": 744,
+        "text": "断开连接",
+        "top": 28,
+        "width": 104,
+        "x": 640,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 768
+  },
+  {
+    "locale": "zh",
+    "theme": "light",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 48,
+        "right": 228.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 48,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1035.078125,
+        "right": 1139.078125,
+        "text": "我的身份",
+        "top": 28,
+        "width": 104,
+        "x": 1035.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1151.078125,
+        "right": 1276,
+        "text": "中文/浅色",
+        "top": 28,
+        "width": 124.921875,
+        "x": 1151.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1288,
+        "right": 1392,
+        "text": "断开连接",
+        "top": 28,
+        "width": 104,
+        "x": 1288,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 1440
+  },
+  {
+    "locale": "zh",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 96.015625,
+        "text": "我的身份",
+        "top": 64,
+        "width": 80.015625,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 100.015625,
+        "right": 201.3125,
+        "text": "中文/深色",
+        "top": 64,
+        "width": 101.296875,
+        "x": 100.015625,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 205.3125,
+        "right": 285.328125,
+        "text": "断开连接",
+        "top": 64,
+        "width": 80.015625,
+        "x": 205.3125,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 320
+  },
+  {
+    "locale": "zh",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 16,
+        "right": 96.015625,
+        "text": "我的身份",
+        "top": 64,
+        "width": 80.015625,
+        "x": 16,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 100.015625,
+        "right": 201.3125,
+        "text": "中文/深色",
+        "top": 64,
+        "width": 101.296875,
+        "x": 100.015625,
+        "y": 64
+      },
+      {
+        "bottom": 108,
+        "height": 44,
+        "left": 205.3125,
+        "right": 285.328125,
+        "text": "断开连接",
+        "top": 64,
+        "width": 80.015625,
+        "x": 205.3125,
+        "y": 64
+      }
+    ],
+    "height": 120,
+    "width": 390
+  },
+  {
+    "locale": "zh",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 16,
+        "right": 178.640625,
+        "text": "ownword",
+        "top": 12,
+        "width": 162.640625,
+        "x": 16,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 364.671875,
+        "right": 444.6875,
+        "text": "我的身份",
+        "top": 12,
+        "width": 80.015625,
+        "x": 364.671875,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 448.6875,
+        "right": 549.984375,
+        "text": "中文/深色",
+        "top": 12,
+        "width": 101.296875,
+        "x": 448.6875,
+        "y": 12
+      },
+      {
+        "bottom": 56,
+        "height": 44,
+        "left": 553.984375,
+        "right": 634,
+        "text": "断开连接",
+        "top": 12,
+        "width": 80.015625,
+        "x": 553.984375,
+        "y": 12
+      }
+    ],
+    "height": 68,
+    "width": 650
+  },
+  {
+    "locale": "zh",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 24,
+        "right": 204.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 24,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 387.078125,
+        "right": 491.078125,
+        "text": "我的身份",
+        "top": 28,
+        "width": 104,
+        "x": 387.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 503.078125,
+        "right": 628,
+        "text": "中文/深色",
+        "top": 28,
+        "width": 124.921875,
+        "x": 503.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 640,
+        "right": 744,
+        "text": "断开连接",
+        "top": 28,
+        "width": 104,
+        "x": 640,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 768
+  },
+  {
+    "locale": "zh",
+    "theme": "dark",
+    "buttons": [
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 48,
+        "right": 228.6875,
+        "text": "ownword",
+        "top": 28,
+        "width": 180.6875,
+        "x": 48,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1035.078125,
+        "right": 1139.078125,
+        "text": "我的身份",
+        "top": 28,
+        "width": 104,
+        "x": 1035.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1151.078125,
+        "right": 1276,
+        "text": "中文/深色",
+        "top": 28,
+        "width": 124.921875,
+        "x": 1151.078125,
+        "y": 28
+      },
+      {
+        "bottom": 72,
+        "height": 44,
+        "left": 1288,
+        "right": 1392,
+        "text": "断开连接",
+        "top": 28,
+        "width": 104,
+        "x": 1288,
+        "y": 28
+      }
+    ],
+    "height": 100,
+    "width": 1440
+  }
+]
