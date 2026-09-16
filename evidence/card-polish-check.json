@@ -1,0 +1,8 @@
+{
+  "scope": "3D 卡片侧边与阴影的最小验证，非全量回归",
+  "desktop": {"viewport": [1440, 1000], "locale": "en", "theme": "light", "autoRotation": "identity-turn running", "drag320px": {"face": "back", "rotating": false}, "screenshot": "card-polish-desktop.png"},
+  "mobile": {"viewport": [320, 568], "locale": "en", "theme": "dark", "scrollWidth": 320, "cardBounds": {"left": 30.21, "right": 293.00, "bottom": 769.72}, "copyTop": 814.61, "screenshot": "card-polish-mobile.png"},
+  "screenshotAngle": "截图时将旋转动画暂停在 0ms，仅影响验证浏览器",
+  "runtimeErrors": [],
+  "notRun": ["全量 BDD", "整套专项回归", "其他屏宽、语言和主题组合"]
+}

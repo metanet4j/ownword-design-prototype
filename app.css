@@ -159,9 +159,9 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .identity-sculpture { position: relative; max-width: 530px; margin-inline: auto; transform-style: preserve-3d; transform: rotateX(6deg) rotateY(var(--angle)); transition: transform 150ms ease-out; }
 .identity-sculpture.rotating { animation: identity-turn 16s ease-in-out infinite; }
 @keyframes identity-turn { 0%,100% { transform: rotateX(5deg) rotateY(-18deg); } 50% { transform: rotateX(-3deg) rotateY(20deg); } }
-.identity-plate { position: relative; backface-visibility: hidden; min-height: 330px; border-radius: var(--s2d-radius-xl); background: linear-gradient(125deg, var(--s2-gray-25), var(--s2-blue-100) 50%, var(--s2-gray-100)); border: 1px solid var(--s2-gray-400); padding: var(--s2-spacing-500); box-shadow: inset 0 1px 0 var(--s2-gray-25), 0 16px 40px color-mix(in srgb, var(--s2-black) 9%, transparent); transform: translateZ(6px); }
+.identity-plate { position: relative; backface-visibility: hidden; min-height: 330px; border-radius: var(--s2d-radius-xl); background: linear-gradient(125deg, var(--s2-gray-25), var(--s2-blue-100) 50%, var(--s2-gray-100)); border: 1px solid var(--s2-gray-400); padding: var(--s2-spacing-500); box-shadow: inset 0 1px 0 var(--s2-gray-25), 0 12px 32px color-mix(in srgb, var(--s2-black) 6%, transparent); transform: translateZ(6px); }
 .identity-plate::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 18%, color-mix(in srgb, var(--s2-white) 38%, transparent) 28%, transparent 38%, transparent 70%, color-mix(in srgb, var(--s2-white) 22%, transparent) 85%, transparent); pointer-events: none; }
-.plate-depth { pointer-events: none; position: absolute; inset: 3px -2px -4px 2px; transform: translateZ(-4px); border-radius: var(--s2d-radius-xl); background: var(--s2-gray-500); box-shadow: 4px 6px 0 var(--s2-gray-400); }
+.plate-depth { pointer-events: none; position: absolute; inset: 1px -1px -1px 1px; transform: translateZ(-2px); border-radius: var(--s2d-radius-xl); background: var(--s2-gray-500); box-shadow: 1px 2px 0 var(--s2-gray-400); }
 .plate-top, .plate-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s2-spacing-200); }
 .wordmark-small { display: inline-flex; align-items: center; gap: var(--s2-spacing-100); flex-shrink: 0; font-size: var(--s2-font-size-500); font-weight: 750; letter-spacing: -.07em; }
 .wordmark-small .brand-mark { width: 24px; height: 24px; }
@@ -178,7 +178,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .plate-id code { font-family: var(--s2d-font-mono); font-size: var(--s2-font-size-100); overflow-wrap: anywhere; }
 .plate-foot { margin-top: var(--s2-spacing-400); font-size: var(--s2-font-size-50); color: var(--s2-gray-700); }
 .plate-foot span:last-child { letter-spacing: .15em; }
-.object-shadow { margin: 0 auto var(--s2-spacing-200); width: 70%; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 16%, transparent); filter: blur(12px); }
+.object-shadow { margin: 0 auto var(--s2-spacing-200); width: 70%; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 10%, transparent); filter: blur(16px); }
 .public-copy { max-width: 500px; margin-inline: auto; }
 .public-copy .identifier { padding: var(--s2-spacing-200) 0; border: 0; }
 .chain-disclosure, .profile-disclosure { max-width: 500px; margin: var(--s2-spacing-300) auto 0; border-top: 1px solid var(--s2d-border); padding-block: var(--s2-spacing-50); }
