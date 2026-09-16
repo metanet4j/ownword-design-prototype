@@ -1,0 +1,86 @@
+{
+  "passed": 29,
+  "checks": [
+    "en/light header stays at viewport top after scrolling",
+    "en/light global error appears at bottom",
+    "en/light error toast fits viewport",
+    "header-feedback-en-light axe 0 violations",
+    "en/light dismiss retains retry",
+    "en/dark header stays at viewport top after scrolling",
+    "en/dark global error appears at bottom",
+    "en/dark error toast fits viewport",
+    "header-feedback-en-dark axe 0 violations",
+    "en/dark dismiss retains retry",
+    "zh/light header stays at viewport top after scrolling",
+    "zh/light global error appears at bottom",
+    "zh/light error toast fits viewport",
+    "header-feedback-zh-light axe 0 violations",
+    "zh/light dismiss retains retry",
+    "zh/dark header stays at viewport top after scrolling",
+    "zh/dark global error appears at bottom",
+    "zh/dark error toast fits viewport",
+    "header-feedback-zh-dark axe 0 violations",
+    "zh/dark dismiss retains retry",
+    "Hover pauses error expiry",
+    "Error disappears automatically after leaving",
+    "Automatic dismissal retains connection retry",
+    "Field validation stays inline",
+    "Toast does not cover short-screen form actions",
+    "Header remains sticky on long forms",
+    "Keyboard focus pauses error expiry",
+    "Keyboard dismissal preserves draft",
+    "Retry still succeeds after error toast closes"
+  ],
+  "axeIncomplete": [
+    {
+      "screen": "header-feedback-en-light",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".horizon > span",
+        "button[aria-controls=\"preferences-panel\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "header-feedback-en-dark",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".eyebrow",
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "header-feedback-zh-light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "header-feedback-zh-dark",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".horizon > span",
+        "button[aria-controls=\"preferences-panel\"]"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    }
+  ]
+}

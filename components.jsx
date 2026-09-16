@@ -99,6 +99,29 @@ function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNW
     <h2 id="dialog-title">{title}</h2>{children}
   </dialog>;
 }
+function Toast({message, body, error, notice, storageError, t, onRetry, onDismiss}) {
+  const [visible, setVisible] = React.useState(true);
+  const [hovered, setHovered] = React.useState(false);
+  const [focused, setFocused] = React.useState(false);
+  const dismissRef = React.useRef(onDismiss);
+  dismissRef.current = onDismiss;
+  const dismiss = () => {setVisible(false); dismissRef.current?.();};
+  const paused = hovered || focused;
+  React.useEffect(() => {
+    if (paused || !visible) return;
+    const timer = setTimeout(dismiss, 6000);
+    return () => clearTimeout(timer);
+  }, [paused, visible]);
+  if (!visible) return null;
+  return <div className={`toast ${error ? 'error-block' : 'notice'}`} role={error ? 'alert' : 'status'}
+    data-error={error && !storageError ? message : undefined} data-notice={notice}
+    data-storage-error={storageError || undefined} data-paused={paused ? 'true' : 'false'}
+    onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+    onFocusCapture={() => setFocused(true)} onBlurCapture={e => {if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);}}>
+    <div className="toast-copy"><strong>{t(message)}</strong>{body && <p>{t(body)}</p>}</div>
+    <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button variant="quiet" data-action="dismiss-toast" onClick={dismiss}>{t('close')}</Button></div>
+  </div>;
+}
 function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap'}) {
   const [feedback, setFeedback] = React.useState('');
   const feedbackTimer = React.useRef(0);
@@ -160,4 +183,4 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
   </div>;
 }
-Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Identifier, IdentityCard, useDismissable});
+Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Toast, Identifier, IdentityCard, useDismissable});

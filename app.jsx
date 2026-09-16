@@ -17,7 +17,6 @@ function App() {
   const [rotating, setRotating] = React.useState(false);
   const [angle, setAngle] = React.useState(-10);
   const [storageError, setStorageError] = React.useState(false);
-  const [noticePaused, setNoticePaused] = React.useState(false);
   const prefsRef = React.useRef(null);
   const firstPaint = React.useRef(true);
   const pendingResult = React.useRef(false);
@@ -30,13 +29,6 @@ function App() {
   const formPage = state.page === 'setup' || state.page === 'edit';
   const editing = state.page === 'edit';
   const dirty = JSON.stringify(state.profile) !== JSON.stringify(state.draft);
-  React.useEffect(() => {
-    if (!state.notice || state.notice.includes('Failed') || noticePaused) return undefined;
-    // Confirmations fade after 6s: long enough for role="status" to be read.
-    const epoch = state.epoch, notice = state.notice;
-    const timer = setTimeout(() => dispatch({type: 'CLEAR_NOTICE', notice, epoch}), 6000);
-    return () => clearTimeout(timer);
-  }, [state.notice, state.epoch, noticePaused]);
   useDismissable(prefs, () => setPrefs(false), prefsRef);
   React.useEffect(() => {
     document.documentElement.dataset.colorScheme = theme;
@@ -126,6 +118,12 @@ function App() {
   function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
   const profileDisplay = state.page === 'identity' || state.page === 'public' ? state.profile : state.draft;
+  const toastError = state.page !== 'resolve-error' ? state.error : '';
+  const toastMessage = toastError || (storageError ? 'persistFailed' : state.notice);
+  const toastBody = toastError ? (toastError === 'connectFailed' ? 'connectFailedBody' : 'operationFailedBody')
+    : state.notice.includes('Cancelled') && !storageError ? (state.notice === 'connectCancelled' ? 'identityUnchanged' : 'retained') : '';
+  const retryError = toastError ? () => dispatch(toastError === 'connectFailed'
+    ? {type: 'CONNECT'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
   return <div className={`app page-${state.page}`} onPointerDown={e => {if (!e.target.closest('button, input, textarea, select, a, .identity-object')) window.dispatchEvent(new Event('ownword-vault'));}}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
@@ -140,15 +138,12 @@ function App() {
     </header>
     <Dome label={t('domeLabel')} />
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
-      {state.notice && <div className="notice" role="status" data-notice={state.notice} data-paused={noticePaused ? "true" : "false"} onMouseEnter={() => setNoticePaused(true)} onMouseLeave={() => setNoticePaused(false)} onFocusCapture={() => setNoticePaused(true)} onBlurCapture={() => setNoticePaused(false)}><span className="notice-mark" aria-hidden="true"></span><div><strong>{t(state.notice)}</strong>{state.notice.includes('Cancelled') && <p>{state.notice === 'connectCancelled' ? t('identityUnchanged') : t('retained')}</p>}</div></div>}
-      {storageError && <p role="alert" data-storage-error="true">{t('persistFailed')}</p>}
       {state.page === 'welcome' && <section className="welcome">
         <p className="eyebrow">{t('independent')}</p>
         <h1 tabIndex="-1"><span>{t('headlineOne')}</span><em>{t('headlineTwo')}</em></h1>
         <p className="welcome-intro">{t('welcomeIntro')}</p>
         <p className="welcome-body">{t('welcomeBody')}</p>
-        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t('connect')}<span className="button-arrow" aria-hidden="true"></span></Button><p>{t('walletNote')}</p></div>
-        {state.error && <div className="error-block" role="alert" data-error={state.error}><strong>{t(state.error)}</strong><p>{t('connectFailedBody')}</p><Button onClick={() => dispatch({type: 'CONNECT'})}>{t('retry')}</Button></div>}
+        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t(state.error === 'connectFailed' ? 'retry' : 'connect')}<span className="button-arrow" aria-hidden="true"></span></Button><p>{t('walletNote')}</p></div>
         <div className="horizon"><span>{t('horizonCaption')}</span></div>
         <p className="welcome-note">{t('welcomeNote')}</p>
       </section>}
@@ -175,7 +170,6 @@ function App() {
       {state.page === 'review' && <section className="workbench review-layout">
         <aside>{heading('reviewHeading', 'reviewBody', 'review')}<p className="impact">{t(state.published ? 'saveImpact' : 'createImpact')}</p><p className="hint">{t('controlStatement')}</p></aside>
         <div className="review-profile"><div className="person-row"><Portrait profile={state.draft} /><div><span className="profile-type">{t(state.draft.type)}</span><h2>{state.draft.name}</h2></div></div><p className="bio">{state.draft.bio || t('noBio')}</p><Identifier id={bapId} t={t} failCopy={failCopy} /><p className="hint">{t(state.published ? 'published' : 'localId')}</p>
-          {state.error && <div className="error-block" role="alert" data-error={state.error}><strong>{t(state.error)}</strong><p>{t('operationFailedBody')}</p></div>}
           {state.busy ? <div className="processing" role="status"><LoadingMark small /><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p></div> : <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" data-action="submit-operation" data-operation={state.published ? 'save' : 'create'} onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
         </div>
       </section>}
@@ -188,6 +182,10 @@ function App() {
       </section>}
       {state.page === 'public' && <section className="public-page">{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /><div className="public-back"><Button variant="quiet" data-action="back-identity" onClick={() => navigate('identity')}>{t('backIdentity')}</Button></div></section>}
     </main>
+    {toastMessage && <Toast key={toastMessage + ':' + state.epoch} message={toastMessage} body={toastBody} error={!!(toastError || storageError)} notice={!toastError && !storageError ? state.notice : undefined} storageError={!toastError && storageError} t={t} onRetry={retryError} onDismiss={() => {
+      if (storageError && !toastError) setStorageError(false);
+      if (!toastError && !storageError) dispatch({type: 'CLEAR_NOTICE', notice: state.notice, epoch: state.epoch});
+    }} />}
     <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight label={t('connected')} /></span>}<Button variant="quiet" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
     {lab && <section className="scenario-panel" aria-label={t('scenarios')}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><p>{t('sampleDataNote')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
       <label>{t('nextResult')}<select data-scenario="result" value={nextResult} onChange={e => setNextResult(e.target.value)}><option value="success">{t('resultSuccess')}</option><option value="failure">{t('simulateFailure')}</option></select></label>

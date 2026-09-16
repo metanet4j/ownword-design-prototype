@@ -27,6 +27,7 @@ URL = os.environ.get('OWNWORD_URL') or (
 results = []
 incomplete_audit = []
 CONTROLS_ONLY = '--controls-only' in sys.argv
+FEEDBACK_ONLY = '--feedback-only' in sys.argv
 
 def call(*args, json_result=False):
     command = [CLI, '--session', SESSION, *map(str, args)]
@@ -287,6 +288,53 @@ def connect(value='new', audit=None):
         expect('!!document.querySelector("[data-action=disconnect]")', 'Resolving state offers a way out')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
+def check_header_feedback():
+    for locale, theme, width, height in [('en', 'light', 1220, 420), ('en', 'dark', 320, 568), ('zh', 'light', 320, 568), ('zh', 'dark', 1220, 555)]:
+        call('set', 'viewport', width, height)
+        pref(locale, theme)
+        js('scrollTo({top:document.documentElement.scrollHeight,behavior:"instant"})')
+        expect('Math.abs(document.querySelector(".topbar").getBoundingClientRect().top)<1', f'{locale}/{theme} header stays at viewport top after scrolling')
+        configure_control('result', 'failure')
+        click_action('connect'); click_action('approve')
+        call('wait', '[data-error=connectFailed]')
+        call('hover', '.toast')
+        expect('!document.querySelector("main [role=alert]") && document.querySelector(".toast").getBoundingClientRect().bottom <= innerHeight && innerHeight-document.querySelector(".toast").getBoundingClientRect().bottom < 40', f'{locale}/{theme} global error appears at bottom')
+        expect('document.documentElement.scrollWidth <= innerWidth && document.querySelector(".toast").scrollWidth <= document.querySelector(".toast").clientWidth', f'{locale}/{theme} error toast fits viewport')
+        audit_state(f'header-feedback-{locale}-{theme}')
+        call('screenshot', str(EVIDENCE / f'header-feedback-{locale}-{theme}.png'))
+        click_action('dismiss-toast')
+        expect('!document.querySelector(".toast") && document.querySelector("[data-action=connect]").textContent.includes(OwnwordCopy[document.documentElement.lang === "zh-CN" ? "zh" : "en"].retry)', f'{locale}/{theme} dismiss retains retry')
+    pref()
+    configure_control('result', 'failure')
+    click_action('connect'); click_action('approve')
+    call('hover', '.toast'); time.sleep(6.3)
+    expect('document.querySelector(".toast")?.dataset.paused === "true"', 'Hover pauses error expiry')
+    call('mouse', 'move', 5, 5)
+    wait_until('!document.querySelector(".toast")', 'Error disappears automatically after leaving', timeout=8)
+    expect('document.querySelector("[data-action=connect]").textContent.includes("Try Again")', 'Automatic dismissal retains connection retry')
+    connect('new')
+    call('set', 'viewport', 320, 568)
+    click_action('review')
+    expect('document.querySelector("#profile-name").getAttribute("aria-invalid") === "true" && !document.querySelector(".toast")', 'Field validation stays inline')
+    call('fill', '#profile-name', 'Header and Toast')
+    click_action('review')
+    configure_control('result', 'failure')
+    click_action('submit-operation'); click_action('approve')
+    call('wait', '[data-error=createFailed]')
+    call('focus', '[data-action=dismiss-toast]')
+    expect('document.querySelector(".toast").getBoundingClientRect().bottom <= document.querySelector(".form-footer").getBoundingClientRect().top', 'Toast does not cover short-screen form actions')
+    expect('Math.abs(document.querySelector(".topbar").getBoundingClientRect().top)<1', 'Header remains sticky on long forms')
+    time.sleep(6.3)
+    expect('document.querySelector(".toast")?.dataset.paused === "true"', 'Keyboard focus pauses error expiry')
+    call('press', 'Enter')
+    expect('!document.querySelector(".toast") && document.querySelector(".review-profile h2").textContent === "Header and Toast"', 'Keyboard dismissal preserves draft')
+    click_action('submit-operation'); click_action('approve'); wait_page('ready')
+    expect('document.querySelector("main").dataset.screenLabel === "ready"', 'Retry still succeeds after error toast closes')
+    errors = call('errors')
+    (EVIDENCE / 'header-feedback-errors.txt').write_text(errors, encoding='utf-8')
+    assert not errors.strip(), errors
+    print(f'{len(results)} header and feedback checks passed', flush=True)
+
 def check_prototype_controls():
     # 演练控制通过真实点击配置，验证产品页面与故障结果均可使用。
     for locale in ('en', 'zh'):
@@ -379,6 +427,9 @@ try:
     call('wait', '--fn', 'document.querySelector("main").dataset.screenLabel === "welcome" && !!document.querySelector(".welcome h1")')
     if CONTROLS_ONLY:
         check_prototype_controls()
+        sys.exit(0)
+    if FEEDBACK_ONLY:
+        check_header_feedback()
         sys.exit(0)
     expect('document.activeElement === document.body', 'First paint leaves focus at the document start')
     call('press', 'Tab')
@@ -596,6 +647,6 @@ try:
         print(f'{len(layout_findings)} container-overflow findings recorded', flush=True)
     print(f'{len(results)} browser checks passed; {len(incomplete_audit)} axe incomplete recorded', flush=True)
 finally:
-    result_file = 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
+    result_file = 'header-feedback-results.json' if FEEDBACK_ONLY else 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
     (EVIDENCE / result_file).write_text(json.dumps({'passed': len(results), 'checks': results, 'axeIncomplete': incomplete_audit}, ensure_ascii=False, indent=2), encoding='utf-8')
     call('close')

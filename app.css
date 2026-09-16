@@ -1,7 +1,7 @@
 /* Layout and expressive surfaces derive from imported Spectrum 2 tokens.
    The seven curves and 3D plate are product compositions, not DS replacements. */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 160px; }
 body.s2 { margin: 0; --s2d-control-height: 44px; background: var(--s2-gray-50); font-size: var(--s2-font-size-200); }
 body, button, input, textarea, select { font-family: var(--s2d-font-family), "PingFang SC", "Microsoft YaHei", sans-serif; }
 button, a, input, textarea, select, summary { -webkit-tap-highlight-color: transparent; }
@@ -12,7 +12,7 @@ h1, h2, h3, p { margin: 0; }
 h1, h2, p { overflow-wrap: anywhere; text-wrap: pretty; }
 button { touch-action: manipulation; }
 .app { position: relative; isolation: isolate; min-height: 100dvh; display: flex; flex-direction: column; overflow: clip; }
-.topbar { position: relative; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: var(--s2-spacing-400); margin: 0 auto; width: 100%; max-width: 1600px; min-height: 100px; padding: var(--s2-spacing-400) var(--s2-spacing-700); }
+.topbar { position: sticky; top: 0; z-index: 5; flex-shrink: 0; background: var(--s2-gray-50); display: flex; align-items: center; justify-content: space-between; gap: var(--s2-spacing-400); margin: 0 auto; width: 100%; max-width: 1600px; min-height: 100px; padding: var(--s2-spacing-400) var(--s2-spacing-700); }
 .brand { display: flex; align-items: center; gap: var(--s2-spacing-100); padding: 0; min-height: 44px; background: transparent; border: 0; color: var(--s2-gray-900); font: 750 var(--s2-font-size-800)/1 var(--s2d-font-family); letter-spacing: -.065em; cursor: pointer; }
 .brand-mark { display: block; flex-shrink: 0; width: 32px; height: 32px; object-fit: contain; }
 .topnav { display: flex; align-items: center; gap: var(--s2-spacing-200); }
@@ -113,7 +113,13 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .error-block { display: grid; gap: var(--s2-spacing-200); padding: var(--s2-spacing-400); border: 1px solid var(--s2-negative-color-900); border-radius: var(--s2d-radius); text-align: left; background: var(--s2d-layer-raised); }
 .error-block > strong { color: var(--s2-negative-color-1100); }
 .error-block p { color: var(--s2-gray-800); font-size: var(--s2-font-size-100); line-height: 1.7; }
-.welcome .error-block { max-width: 470px; margin-top: var(--s2-spacing-400); }
+.toast { position: fixed; z-index: 6; inset-inline: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: auto; max-width: 640px; margin: 0 auto; display: flex; align-items: center; gap: var(--s2-spacing-300); padding: var(--s2-spacing-300); box-shadow: 0 8px 32px color-mix(in srgb, var(--s2-black) 16%, transparent); }
+.toast-copy { flex: 1; min-width: 0; }
+.toast.error-block strong { color: var(--s2-negative-color-1100); }
+.toast-actions { display: flex; flex-shrink: 0; gap: var(--s2-spacing-100); }
+.toast-actions .s2d-button { white-space: nowrap; }
+.app:has(.form-footer) .toast { bottom: calc(88px + env(safe-area-inset-bottom)); }
+@media (max-width: 650px) { .toast { flex-wrap: wrap; } .toast-copy { flex-basis: 100%; } .toast-actions { margin-left: auto; } }
 .center-state { min-height: 610px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s2-spacing-500); text-align: center; }
 .center-state .page-heading > p:last-child { margin-inline: auto; }
 .center-state .identifier { max-width: 530px; text-align: left; }
@@ -297,6 +303,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .form-footer { position: sticky; bottom: 0; z-index: 2; background: var(--s2d-layer-raised); margin-bottom: calc(-1 * var(--s2-spacing-300)); padding-block: var(--s2-spacing-200); }
 }
 @media (max-height: 640px) and (max-width: 650px) {
+  .app:has(.form-footer) .footer { padding-bottom: calc(104px + env(safe-area-inset-bottom)); }
   /* A phone-height window cannot keep a sticky footer inside the card: the
      form's own content box caps how far it can travel. Pin the actions to the
      viewport instead and reserve scroll room so no field hides beneath them. */
