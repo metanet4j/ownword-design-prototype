@@ -1,0 +1,30 @@
+{
+  "passed": 24,
+  "checks": [
+    "Chain record starts collapsed with no hidden focus targets",
+    "Enter opens chain record",
+    "Expanded record shows current confirmed transaction",
+    "Card and disclosure show the same block height",
+    "Opening disclosure preserves card animation",
+    "Keyboard reaches transaction copy without dragging",
+    "Keyboard copies publication transaction",
+    "Space collapses record and keeps trigger focused",
+    "Clipboard contains complete 64-character TxID",
+    "en/light chain record fits 320px",
+    "en/light chain record fits 1440px",
+    "en/light chain disclosure axe clean",
+    "en/dark chain record fits 320px",
+    "en/dark chain record fits 1440px",
+    "en/dark chain disclosure axe clean",
+    "zh/light chain record fits 320px",
+    "zh/light chain record fits 1440px",
+    "zh/light chain disclosure axe clean",
+    "zh/dark chain record fits 320px",
+    "zh/dark chain record fits 1440px",
+    "zh/dark chain disclosure axe clean",
+    "Copy failure preserves full transaction identifier",
+    "Dragging still reveals the same chain record",
+    "New identity displays pending confirmation without a block height"
+  ],
+  "axeIncomplete": []
+}

@@ -141,8 +141,18 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'cop
     <div className="identifier-value"><code title={id}>{id}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
   </div>;
 }
+function ChainRecord({transaction, t, failCopy, target = 'tx'}) {
+  return <>
+    <dl className="chain-facts">
+      <div><dt>{t('blockHeight')}</dt><dd data-chain="block">{transaction && transaction.blockHeight ? transaction.blockHeight.toLocaleString('en-US') : t('pendingBlock')}</dd></div>
+      <div><dt>{t('confirmation')}</dt><dd data-chain="confirmation">{t(transaction && transaction.blockHeight ? 'confirmed' : 'pendingConfirmation')}</dd></div>
+    </dl>
+    {transaction ? <Identifier id={transaction.txid} label={t('publicationTx')} copyLabel="copyTx" target={target} t={t} failCopy={failCopy} /> : <p className="hint">{t('recordUnavailable')}</p>}
+  </>;
+}
 function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotating, angle, setAngle}) {
   const drag = React.useRef(null);
+  const [recordOpen, setRecordOpen] = React.useState(false);
   const [reducedMotion, setReducedMotion] = React.useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   React.useEffect(() => {
     const query = matchMedia('(prefers-reduced-motion: reduce)');
@@ -170,17 +180,19 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
         <article className="identity-plate plate-back" aria-hidden={!back} inert={!back ? '' : undefined}>
           <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('chainRecord')}</span></div>
           <div className="chain-heading"><h2>{t('identityPublication')}</h2><p>{profile.name}</p></div>
-          <dl className="chain-facts">
-            <div><dt>{t('blockHeight')}</dt><dd data-chain="block">{transaction && transaction.blockHeight ? transaction.blockHeight.toLocaleString('en-US') : t('pendingBlock')}</dd></div>
-            <div><dt>{t('confirmation')}</dt><dd data-chain="confirmation">{t(transaction && transaction.blockHeight ? 'confirmed' : 'pendingConfirmation')}</dd></div>
-          </dl>
-          {transaction ? <Identifier id={transaction.txid} label={t('publicationTx')} copyLabel="copyTx" target="tx" t={t} failCopy={failCopy} /> : <p className="hint">{t('recordUnavailable')}</p>}
+          <ChainRecord transaction={transaction} t={t} failCopy={failCopy} />
           <div className="plate-foot"><span>BSV</span></div>
         </article>
       </div>
     </div>
     <div className="object-shadow" aria-hidden="true"></div>
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
+    <div className="chain-disclosure">
+      <Button variant="quiet" data-action="toggle-chain-record" aria-expanded={recordOpen} aria-controls="chain-record-details" onClick={() => setRecordOpen(value => !value)}>{t(recordOpen ? 'hideChainRecord' : 'viewChainRecord')}</Button>
+      <div id="chain-record-details" hidden={!recordOpen}>
+        {recordOpen && <ChainRecord transaction={transaction} t={t} failCopy={failCopy} target="tx-details" />}
+      </div>
+    </div>
   </div>;
 }
 Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Toast, Identifier, IdentityCard, useDismissable});

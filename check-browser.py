@@ -28,6 +28,7 @@ results = []
 incomplete_audit = []
 CONTROLS_ONLY = '--controls-only' in sys.argv
 FEEDBACK_ONLY = '--feedback-only' in sys.argv
+CHAIN_ONLY = '--chain-only' in sys.argv
 
 def call(*args, json_result=False):
     command = [CLI, '--session', SESSION, *map(str, args)]
@@ -288,6 +289,65 @@ def connect(value='new', audit=None):
         expect('!!document.querySelector("[data-action=disconnect]")', 'Resolving state offers a way out')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
+def check_chain_disclosure():
+    connect('existing')
+    click_action('public'); wait_page('public')
+    expect('document.querySelector("[data-action=toggle-chain-record]").getAttribute("aria-expanded") === "false" && !document.querySelector("#chain-record-details button")', 'Chain record starts collapsed with no hidden focus targets')
+    call('focus', '[data-action=toggle-chain-record]'); call('press', 'Enter')
+    expect('document.querySelector("[data-action=toggle-chain-record]").getAttribute("aria-expanded") === "true" && !document.querySelector("#chain-record-details").hidden', 'Enter opens chain record')
+    expect('document.querySelector("#chain-record-details [data-chain=confirmation]").textContent === "Confirmed" && document.querySelector("#chain-record-details code").textContent === OwnwordModel.transactions[0].txid', 'Expanded record shows current confirmed transaction')
+    expect('document.querySelector("#chain-record-details [data-chain=block]").textContent === document.querySelector(".plate-back [data-chain=block]").textContent', 'Card and disclosure show the same block height')
+    expect('document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Opening disclosure preserves card animation')
+    call('press', 'Tab')
+    expect('document.activeElement.dataset.action === "copy-tx-details"', 'Keyboard reaches transaction copy without dragging')
+    call('press', 'Enter')
+    wait_until('document.querySelector("[data-copy-target=tx-details]").dataset.copyFeedback === "copied"', 'Keyboard copies publication transaction')
+    call('press', 'Shift+Tab'); call('press', 'Space')
+    expect('document.activeElement.dataset.action === "toggle-chain-record" && document.querySelector("#chain-record-details").hidden && !document.querySelector("#chain-record-details button")', 'Space collapses record and keeps trigger focused')
+    click_action('back-identity'); click_action('edit')
+    call('fill', '#profile-name', ''); call('focus', '#profile-name'); call('clipboard', 'paste')
+    expect('document.querySelector("#profile-name").value === OwnwordModel.transactions[0].txid', 'Clipboard contains complete 64-character TxID')
+    click_action('disconnect'); connect('existing'); click_action('public')
+    click_action('toggle-chain-record')
+    for locale in ('en', 'zh'):
+        for theme in ('light', 'dark'):
+            pref(locale, theme)
+            for width in (320, 1440):
+                call('set', 'viewport', width, 800)
+                settle()
+                expect('document.documentElement.scrollWidth <= innerWidth && document.querySelector(".chain-disclosure").scrollWidth <= document.querySelector(".chain-disclosure").clientWidth', f'{locale}/{theme} chain record fits {width}px')
+            call('set', 'viewport', 320, 568)
+            scroll_to('.chain-disclosure')
+            settle()
+            audit = call('a11y', '--selector', '.chain-disclosure', json_result=True)
+            (EVIDENCE / f'chain-disclosure-{locale}-{theme}-axe.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2), encoding='utf-8')
+            assert not audit['violations'] and not audit.get('incomplete'), audit
+            results.append(f'{locale}/{theme} chain disclosure axe clean')
+            call('screenshot', str(EVIDENCE / f'chain-disclosure-{locale}-{theme}.png'))
+    pref(); call('set', 'viewport', 1440, 1000)
+    click_selector('.footer-controls > button')
+    call('check', '.scenario-panel input[type=checkbox]')
+    click_selector('.panel-title button')
+    click_action('copy-tx-details')
+    expect('document.querySelector("[data-copy-target=tx-details]").dataset.copyFeedback === "copyFailed" && document.querySelector("#chain-record-details code").textContent === OwnwordModel.transactions[0].txid', 'Copy failure preserves full transaction identifier')
+    click_selector('.footer-controls > button')
+    call('uncheck', '.scenario-panel input[type=checkbox]')
+    click_selector('.panel-title button')
+    drag_card(320)
+    expect('document.querySelector(".identity-sculpture").dataset.face === "back" && document.querySelector(".plate-back code").textContent === document.querySelector("#chain-record-details code").textContent', 'Dragging still reveals the same chain record')
+    click_action('disconnect'); connect('new')
+    call('fill', '#profile-name', 'Pending Record'); click_action('review')
+    click_action('submit-operation'); click_action('approve'); wait_page('ready')
+    click_action('go-identity'); click_action('public'); click_action('toggle-chain-record')
+    expect('document.querySelector("#chain-record-details [data-chain=confirmation]").textContent === "Awaiting block confirmation" && document.querySelector("#chain-record-details [data-chain=block]").textContent === "Awaiting block"', 'New identity displays pending confirmation without a block height')
+    js('scrollTo({top:0,behavior:"instant"})')
+    settle()
+    call('screenshot', '--full', str(EVIDENCE / 'chain-disclosure-pending-desktop.png'))
+    errors = call('errors')
+    (EVIDENCE / 'chain-disclosure-errors.txt').write_text(errors, encoding='utf-8')
+    assert not errors.strip(), errors
+    print(f'{len(results)} chain disclosure checks passed', flush=True)
+
 def check_header_feedback():
     for locale, theme, width, height in [('en', 'light', 1220, 420), ('en', 'dark', 320, 568), ('zh', 'light', 320, 568), ('zh', 'dark', 1220, 555)]:
         call('set', 'viewport', width, height)
@@ -430,6 +490,9 @@ try:
         sys.exit(0)
     if FEEDBACK_ONLY:
         check_header_feedback()
+        sys.exit(0)
+    if CHAIN_ONLY:
+        check_chain_disclosure()
         sys.exit(0)
     expect('document.activeElement === document.body', 'First paint leaves focus at the document start')
     call('press', 'Tab')
@@ -647,6 +710,6 @@ try:
         print(f'{len(layout_findings)} container-overflow findings recorded', flush=True)
     print(f'{len(results)} browser checks passed; {len(incomplete_audit)} axe incomplete recorded', flush=True)
 finally:
-    result_file = 'header-feedback-results.json' if FEEDBACK_ONLY else 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
+    result_file = 'chain-disclosure-results.json' if CHAIN_ONLY else 'header-feedback-results.json' if FEEDBACK_ONLY else 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
     (EVIDENCE / result_file).write_text(json.dumps({'passed': len(results), 'checks': results, 'axeIncomplete': incomplete_audit}, ensure_ascii=False, indent=2), encoding='utf-8')
     call('close')
