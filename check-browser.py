@@ -30,6 +30,7 @@ CONTROLS_ONLY = '--controls-only' in sys.argv
 FEEDBACK_ONLY = '--feedback-only' in sys.argv
 CHAIN_ONLY = '--chain-only' in sys.argv
 HEADER_ONLY = '--header-only' in sys.argv
+CONTENT_ONLY = '--content-only' in sys.argv
 
 def call(*args, json_result=False):
     command = [CLI, '--session', SESSION, *map(str, args)]
@@ -290,6 +291,69 @@ def connect(value='new', audit=None):
         expect('!!document.querySelector("[data-action=disconnect]")', 'Resolving state offers a way out')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
+def check_long_content():
+    samples = [
+        ('latin-url', 'W' * 100, 'https://example.com/'.ljust(1000, 'w')),
+        ('cjk-lines', '长名字' * 33 + '名', ('简介含换行与表情🙂\n' * 100)),
+    ]
+    measurements = []
+    for sample, name, bio in samples:
+        connect('existing'); click_action('edit'); wait_page('edit')
+        call('fill', '#profile-name', name + 'X'); call('fill', '#profile-bio', bio + 'X')
+        click_action('review')
+        expect('document.querySelector("#profile-name-error")?.dataset.fieldError === "nameLong" && document.querySelector("#profile-bio-error")?.dataset.fieldError === "bioLong"', f'{sample} over-limit values stay blocked')
+        call('fill', '#profile-name', name); call('fill', '#profile-bio', bio)
+        expect('document.querySelector(".character-count").textContent.trim() === "1000 / 1000"', f'{sample} counter preserves grapheme limit')
+        click_action('review'); wait_page('review'); click_action('back'); wait_page('edit')
+        for page in ('edit', 'review', 'identity', 'public'):
+            if page == 'review':
+                click_action('review'); wait_page('review')
+            elif page == 'identity':
+                click_action('submit-operation'); click_action('approve'); wait_page('identity')
+            elif page == 'public':
+                click_action('public'); wait_page('public')
+                expect('document.querySelector("#public-profile-details").hidden', f'{sample} full profile starts collapsed')
+                call('focus', '[data-action=toggle-full-profile]'); call('press', 'Enter')
+                expect('!document.querySelector("#public-profile-details").hidden && document.querySelector("[data-action=toggle-full-profile]").getAttribute("aria-expanded") === "true"', f'{sample} Enter opens full profile')
+            for locale, theme in [('en', 'light'), ('en', 'dark'), ('zh', 'light'), ('zh', 'dark')]:
+                pref(locale, theme)
+                for width in (320, 768, 1440):
+                    call('set', 'viewport', width, 800)
+                    js('scrollTo({top:0,behavior:"instant"})'); settle()
+                    findings = js(CONTAINER_OVERFLOW)
+                    text_overflow = js('Array.from(document.querySelectorAll(".person-row h2,.bio,.plate-person,.chain-heading")).filter(e=>e.scrollWidth>e.clientWidth+1).map(e=>({class:e.className,width:e.clientWidth,scrollWidth:e.scrollWidth}))')
+                    if page == 'public':
+                        # 测量动画两端的真实投影，不能仅用 scrollWidth（外层会裁切）。
+                        projection = js('(()=>{const animation=document.querySelector(".identity-sculpture").getAnimations()[0];const out=[];for(const time of [0,8000]){if(animation){animation.pause();animation.currentTime=time;}const card=document.querySelector(".plate-front").getBoundingClientRect();const copy=document.querySelector(".public-copy").getBoundingClientRect();out.push({left:card.left,right:card.right,bottom:card.bottom,copyTop:copy.top,height:card.height});}if(animation)animation.play();return out})()')
+                        assert all(r['left'] >= 0 and r['right'] <= width and r['bottom'] <= r['copyTop'] for r in projection), projection
+                    measurements.append({'sample': sample, 'page': page, 'locale': locale, 'theme': theme, 'width': width, 'findings': findings, 'textOverflow': text_overflow})
+                    if width == 320 and theme == 'light':
+                        call('screenshot', '--full', str(EVIDENCE / f'long-content-{sample}-{page}-{locale}.png'))
+                    assert not findings and not text_overflow, measurements[-1]
+                    expect('document.documentElement.scrollWidth <= innerWidth', f'{sample} {page} {locale}/{theme} {width}px content fits')
+                if page == 'edit':
+                    expect(f'document.querySelector("#profile-name").value === {json.dumps(name)} && document.querySelector("#profile-bio").value === {json.dumps(bio)}', f'{sample} {locale}/{theme} editing preserves full values')
+                else:
+                    selector = '#public-profile-details' if page == 'public' else '.person-row'
+                    bio_selector = '#public-profile-details .bio' if page == 'public' else '.bio'
+                    expect(f'document.querySelector("{selector} h2").textContent === {json.dumps(name)} && document.querySelector("{bio_selector}").textContent === {json.dumps(bio)}', f'{sample} {page} {locale}/{theme} display preserves full values')
+                if page == 'public':
+                    call('set', 'viewport', 320, 568)
+                    call('focus', '[data-action=toggle-full-profile]'); call('press', 'Space')
+                    expect('document.querySelector("#public-profile-details").hidden && document.activeElement.dataset.action === "toggle-full-profile"', f'{sample} {locale}/{theme} Space collapses full profile and keeps focus')
+                    call('press', 'Enter'); scroll_to('.profile-disclosure'); settle()
+                    audit = call('a11y', '--selector', '.profile-disclosure', json_result=True)
+                    (EVIDENCE / f'long-content-{sample}-{locale}-{theme}-axe.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2), encoding='utf-8')
+                    assert not audit['violations'] and not audit.get('incomplete'), audit
+        click_action('back-identity'); click_action('edit')
+        expect(f'document.querySelector("#profile-name").value === {json.dumps(name)} && document.querySelector("#profile-bio").value === {json.dumps(bio)}', f'{sample} saved values round-trip without truncation')
+        click_action('disconnect'); wait_page('welcome')
+    (EVIDENCE / 'long-content-layout.json').write_text(json.dumps(measurements, ensure_ascii=False, indent=2), encoding='utf-8')
+    errors = call('errors')
+    (EVIDENCE / 'long-content-errors.txt').write_text(errors, encoding='utf-8')
+    assert not errors.strip(), errors
+    print(f'{len(results)} long content checks passed', flush=True)
+
 def check_narrow_header():
     # 复用真实操作入口；只测页头，不改业务状态或注入样式。
     geometry = []
@@ -541,6 +605,9 @@ try:
     if HEADER_ONLY:
         check_narrow_header()
         sys.exit(0)
+    if CONTENT_ONLY:
+        check_long_content()
+        sys.exit(0)
     expect('document.activeElement === document.body', 'First paint leaves focus at the document start')
     call('press', 'Tab')
     expect('document.activeElement.classList.contains("skip-link")', 'First Tab reaches the skip link instead of landing inside main')
@@ -757,6 +824,6 @@ try:
         print(f'{len(layout_findings)} container-overflow findings recorded', flush=True)
     print(f'{len(results)} browser checks passed; {len(incomplete_audit)} axe incomplete recorded', flush=True)
 finally:
-    result_file = 'narrow-header-results.json' if HEADER_ONLY else 'chain-disclosure-results.json' if CHAIN_ONLY else 'header-feedback-results.json' if FEEDBACK_ONLY else 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
+    result_file = 'long-content-results.json' if CONTENT_ONLY else 'narrow-header-results.json' if HEADER_ONLY else 'chain-disclosure-results.json' if CHAIN_ONLY else 'header-feedback-results.json' if FEEDBACK_ONLY else 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
     (EVIDENCE / result_file).write_text(json.dumps({'passed': len(results), 'checks': results, 'axeIncomplete': incomplete_audit}, ensure_ascii=False, indent=2), encoding='utf-8')
     call('close')

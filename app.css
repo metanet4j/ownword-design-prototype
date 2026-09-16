@@ -170,6 +170,9 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .plate-person .portrait { position: absolute; top: 0; right: 0; width: 76px; height: 76px; }
 .plate-person h2 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-900); font-weight: 500; letter-spacing: -.04em; margin-top: var(--s2-spacing-100); }
 .plate-person .bio { font-size: var(--s2-font-size-100); margin-top: var(--s2-spacing-200); color: var(--s2-gray-700); }
+/* 卡面只展示摘要；完整资料由下方折叠区承载，避免长文本拉伸 3D 投影。 */
+.plate-person h2, .plate-person .bio, .chain-heading > p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.plate-person .bio { -webkit-line-clamp: 4; }
 .plate-id { display: grid; gap: var(--s2-spacing-100); margin-top: var(--s2-spacing-400); padding-top: var(--s2-spacing-300); border-top: 1px solid var(--s2-gray-400); }
 .plate-id > span { font-size: var(--s2-font-size-75); letter-spacing: .14em; }
 .plate-id code { font-family: var(--s2d-font-mono); font-size: var(--s2-font-size-100); overflow-wrap: anywhere; }
@@ -178,8 +181,10 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .object-shadow { margin: 0 auto var(--s2-spacing-200); width: 70%; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 16%, transparent); filter: blur(12px); }
 .public-copy { max-width: 500px; margin-inline: auto; }
 .public-copy .identifier { padding: var(--s2-spacing-200) 0; border: 0; }
-.chain-disclosure { max-width: 500px; margin: var(--s2-spacing-300) auto 0; border-top: 1px solid var(--s2d-border); padding-top: var(--s2-spacing-200); }
-.chain-disclosure > .s2d-button { width: 100%; }
+.chain-disclosure, .profile-disclosure { max-width: 500px; margin: var(--s2-spacing-300) auto 0; border-top: 1px solid var(--s2d-border); padding-top: var(--s2-spacing-200); }
+.chain-disclosure > .s2d-button, .profile-disclosure > .s2d-button { width: 100%; }
+#public-profile-details > h2 { margin-top: var(--s2-spacing-300); font-size: var(--s2-font-size-400); }
+#public-profile-details > .bio { margin-top: var(--s2-spacing-200); }
 .chain-disclosure .chain-facts { margin-top: var(--s2-spacing-300); }
 .chain-disclosure .identifier { margin-top: var(--s2-spacing-300); }
 .public-back { display: flex; justify-content: center; margin-top: var(--s2-spacing-200); }

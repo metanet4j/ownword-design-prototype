@@ -3,6 +3,7 @@
   const words = {
   en: {
     viewChainRecord: 'View chain record', hideChainRecord: 'Hide chain record',
+    viewFullProfile: 'View full profile', hideFullProfile: 'Hide full profile',
     connect: 'Connect Wallet', connected: 'Connected', notConnected: 'Not connected', connecting: 'Connecting', disconnect: 'Disconnect', accountSwitch: 'Switch account', wallet: 'Wallet',
     myIdentity: 'My Identity', publicIdentity: 'Public Identity', preferences: 'Preferences', theme: 'Theme', light: 'Light', dark: 'Dark', language: 'Language',
     headlineOne: 'Own your identity.', headlineTwo: 'Own your words.', welcomeIntro: 'A place to stand. A voice that belongs to you.', welcomeBody: 'Start with your wallet. Your identity and your words stay yours.',
@@ -39,6 +40,7 @@
   },
   zh: {
     viewChainRecord: '查看链上记录', hideChainRecord: '收起链上记录',
+    viewFullProfile: '查看完整资料', hideFullProfile: '收起完整资料',
     connect: '连接钱包', connected: '已连接', notConnected: '未连接', connecting: '正在连接', disconnect: '断开连接', accountSwitch: '切换账户', wallet: '钱包',
     myIdentity: '我的身份', publicIdentity: '公开身份', preferences: '偏好设置', theme: '主题', light: '浅色', dark: '深色', language: '语言',
     headlineOne: '拥有你的身份。', headlineTwo: '拥有你的话语。', welcomeIntro: '立于自己的坐标，发出自己的声音。', welcomeBody: '从钱包开始。身份与话语，都由你掌控。',

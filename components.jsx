@@ -153,6 +153,7 @@ function ChainRecord({transaction, t, failCopy, target = 'tx'}) {
 function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotating, angle, setAngle}) {
   const drag = React.useRef(null);
   const [recordOpen, setRecordOpen] = React.useState(false);
+  const [profileOpen, setProfileOpen] = React.useState(false);
   const [reducedMotion, setReducedMotion] = React.useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   React.useEffect(() => {
     const query = matchMedia('(prefers-reduced-motion: reduce)');
@@ -187,6 +188,12 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     </div>
     <div className="object-shadow" aria-hidden="true"></div>
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
+    <div className="profile-disclosure">
+      <Button variant="quiet" data-action="toggle-full-profile" aria-expanded={profileOpen} aria-controls="public-profile-details" onClick={() => setProfileOpen(value => !value)}>{t(profileOpen ? 'hideFullProfile' : 'viewFullProfile')}</Button>
+      <div id="public-profile-details" hidden={!profileOpen}>
+        {profileOpen && <><h2>{profile.name}</h2><p className="bio">{profile.bio || t('noBio')}</p></>}
+      </div>
+    </div>
     <div className="chain-disclosure">
       <Button variant="quiet" data-action="toggle-chain-record" aria-expanded={recordOpen} aria-controls="chain-record-details" onClick={() => setRecordOpen(value => !value)}>{t(recordOpen ? 'hideChainRecord' : 'viewChainRecord')}</Button>
       <div id="chain-record-details" hidden={!recordOpen}>
