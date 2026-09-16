@@ -181,11 +181,16 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .object-shadow { margin: 0 auto var(--s2-spacing-200); width: 70%; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 16%, transparent); filter: blur(12px); }
 .public-copy { max-width: 500px; margin-inline: auto; }
 .public-copy .identifier { padding: var(--s2-spacing-200) 0; border: 0; }
-.chain-disclosure, .profile-disclosure { max-width: 500px; margin: var(--s2-spacing-300) auto 0; border-top: 1px solid var(--s2d-border); padding-top: var(--s2-spacing-200); }
-.chain-disclosure > .s2d-button, .profile-disclosure > .s2d-button { width: 100%; }
-#public-profile-details > h2 { margin-top: var(--s2-spacing-300); font-size: var(--s2-font-size-400); }
+.chain-disclosure, .profile-disclosure { max-width: 500px; margin: var(--s2-spacing-300) auto 0; border-top: 1px solid var(--s2d-border); padding-block: var(--s2-spacing-50); }
+.profile-disclosure + .chain-disclosure { margin-top: 0; border-bottom: 1px solid var(--s2d-border); }
+.chain-disclosure > .s2d-button, .profile-disclosure > .s2d-button { width: 100%; min-height: 44px; justify-content: space-between; gap: var(--s2-spacing-200); padding-inline: var(--s2-spacing-100); text-align: start; }
+/* 使用 S2 箭头素材；方向直接跟随现有展开状态，不增加交互逻辑。 */
+.chain-disclosure > .s2d-button::after, .profile-disclosure > .s2d-button::after { content: ''; flex: 0 0 20px; height: 20px; background: currentColor; mask: url('_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_ChevronDown_20_N.svg') center / contain no-repeat; }
+.chain-disclosure > .s2d-button[aria-expanded="true"]::after, .profile-disclosure > .s2d-button[aria-expanded="true"]::after { transform: rotate(180deg); }
+#public-profile-details:not([hidden]), #chain-record-details:not([hidden]) { padding: 0 var(--s2-spacing-100) var(--s2-spacing-200); }
+#public-profile-details > h2 { margin-top: var(--s2-spacing-100); font-size: var(--s2-font-size-400); }
 #public-profile-details > .bio { margin-top: var(--s2-spacing-200); }
-.chain-disclosure .chain-facts { margin-top: var(--s2-spacing-300); }
+.chain-disclosure .chain-facts { margin-top: var(--s2-spacing-100); }
 .chain-disclosure .identifier { margin-top: var(--s2-spacing-300); }
 .public-back { display: flex; justify-content: center; margin-top: var(--s2-spacing-200); }
 .modal { color: var(--s2d-text); width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); padding: var(--s2-spacing-500); background: var(--s2d-layer-raised); box-shadow: 0 24px 96px color-mix(in srgb, var(--s2-black) 24%, transparent); }

@@ -1,0 +1,9 @@
+{
+  "scope": "公开卡下方两个折叠入口的最小验证，非全量回归",
+  "desktop": {"viewport": [1440, 1000], "locale": "en", "theme": "light", "clickExpandCollapse": true, "arrowFollowsExpanded": true, "screenshot": "info-polish-desktop.png"},
+  "mobile": {"viewport": [320, 568], "locale": "zh", "theme": "dark", "enterSpaceExpandCollapse": true, "buttonHeight": 44, "buttonBounds": [16, 304], "scrollWidth": 320, "arrowFollowsExpanded": true},
+  "mobileScreenshot": {"locale": "en", "theme": "light", "profileExpanded": true, "chainExpanded": false, "screenshot": "info-polish-mobile.png"},
+  "runtimeErrors": [],
+  "tokens": {"references": 66, "unresolved": 0},
+  "notRun": ["全量 BDD", "整套专项回归", "全部语言、主题与屏宽组合"]
+}
