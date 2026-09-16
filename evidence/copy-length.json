@@ -6,11 +6,18 @@
   "longCount": 1,
   "longest": [
     {
-      "key": "simulatorHint",
-      "en": "Choose a scenario, then connect or resolve again. Wallet confirmations let you approve, cancel or simulate failure.",
-      "zh": "选择场景后连接或重新解析。钱包确认窗口支持批准、取消和模拟失败。",
-      "enLength": 115,
-      "zhLength": 32
+      "key": "accountEventHint",
+      "en": "Triggers once when creating or updating a profile: 1.2 seconds into authorization, or 0.6 seconds into processing.",
+      "zh": "创建或更新资料时触发一次：授权窗口打开 1.2 秒后，或处理开始 0.6 秒后。",
+      "enLength": 114,
+      "zhLength": 40
+    },
+    {
+      "key": "nextResultHint",
+      "en": "Applies once after approving a connection, creation or update. Cancelling keeps this setting.",
+      "zh": "批准连接、创建或更新后生效一次；取消授权会保留此设置。",
+      "enLength": 93,
+      "zhLength": 27
     },
     {
       "key": "processingBody",
@@ -97,6 +104,13 @@
       "zhLength": 15
     },
     {
+      "key": "simulatorHint",
+      "en": "Choose an identity scenario, then connect or resolve again.",
+      "zh": "选择身份场景后，连接钱包或重新解析。",
+      "enLength": 59,
+      "zhLength": 18
+    },
+    {
       "key": "resolveFailedBody",
       "en": "Try again, or disconnect and switch to another account.",
       "zh": "可重试，或断开后切换其他账户。",
@@ -130,29 +144,15 @@
       "zh": "更新展示资料，BAP ID 保持不变。",
       "enLength": 50,
       "zhLength": 19
-    },
-    {
-      "key": "welcomeIntro",
-      "en": "A place to stand. A voice that belongs to you.",
-      "zh": "立于自己的坐标，发出自己的声音。",
-      "enLength": 46,
-      "zhLength": 16
-    },
-    {
-      "key": "setupBody",
-      "en": "Choose how your identity appears to the world.",
-      "zh": "选择你向世界展示自己的方式。",
-      "enLength": 46,
-      "zhLength": 14
     }
   ],
   "long": [
     {
-      "key": "simulatorHint",
-      "en": "Choose a scenario, then connect or resolve again. Wallet confirmations let you approve, cancel or simulate failure.",
-      "zh": "选择场景后连接或重新解析。钱包确认窗口支持批准、取消和模拟失败。",
-      "enLength": 115,
-      "zhLength": 32
+      "key": "accountEventHint",
+      "en": "Triggers once when creating or updating a profile: 1.2 seconds into authorization, or 0.6 seconds into processing.",
+      "zh": "创建或更新资料时触发一次：授权窗口打开 1.2 秒后，或处理开始 0.6 秒后。",
+      "enLength": 114,
+      "zhLength": 40
     }
   ]
 }

@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import time
 import tempfile
 
@@ -25,6 +26,7 @@ URL = os.environ.get('OWNWORD_URL') or (
     f'http://127.0.0.1:{PORT}/own-word-prototype-s2-astra-001/index.html')
 results = []
 incomplete_audit = []
+CONTROLS_ONLY = '--controls-only' in sys.argv
 
 def call(*args, json_result=False):
     command = [CLI, '--session', SESSION, *map(str, args)]
@@ -260,8 +262,15 @@ def inspect(label, matrix=False):
 
 def scenario(value):
     click_selector('.footer-controls > button')
-    scroll_to('.scenario-panel select')
-    call('select', '.scenario-panel select', value)
+    scroll_to('[data-scenario=identity]')
+    call('select', '[data-scenario=identity]', value)
+    click_selector('.panel-title button')
+
+def configure_control(control, value):
+    click_selector('.footer-controls > button')
+    selector = f'[data-scenario="{control}"]'
+    scroll_to(selector)
+    call('select', selector, value)
     click_selector('.panel-title button')
 
 def connect(value='new', audit=None):
@@ -278,11 +287,88 @@ def connect(value='new', audit=None):
         expect('!!document.querySelector("[data-action=disconnect]")', 'Resolving state offers a way out')
     wait_page('identity' if value == 'existing' else 'resolve-error' if value == 'resolveFail' else 'setup')
 
+def check_prototype_controls():
+    # 演练控制通过真实点击配置，验证产品页面与故障结果均可使用。
+    for locale in ('en', 'zh'):
+        for theme in ('light', 'dark'):
+            pref(locale, theme)
+            call('set', 'viewport', 320, 568)
+            click_selector('.footer-controls > button')
+            expect('document.querySelectorAll(".scenario-panel select").length === 3', f'{locale}/{theme} all scenario selectors available')
+            expect('document.documentElement.scrollWidth <= innerWidth && document.querySelector(".scenario-panel").scrollWidth <= document.querySelector(".scenario-panel").clientWidth', f'{locale}/{theme} panel has no horizontal overflow')
+            audit_state(f'prototype-controls-{locale}-{theme}')
+            call('screenshot', str(EVIDENCE / f'prototype-controls-{locale}-{theme}.png'))
+            click_selector('.panel-title button')
+    call('set', 'viewport', 1440, 1000)
+    pref()
+    configure_control('result', 'failure')
+    click_action('connect')
+    expect('!document.querySelector(".modal-scenarios") && document.querySelectorAll("dialog [data-action]").length === 2', 'Wallet dialog contains only product decision actions')
+    click_action('cancel')
+    click_action('connect'); click_action('approve')
+    wait_until('document.querySelector("[data-error]")?.dataset.error === "connectFailed"', 'Cancelled authorization preserves next failure')
+    connect('new')
+    expect('!document.querySelector(".wallet-connected button")', 'Footer contains no simulated account switch')
+    call('fill', '#profile-name', 'Controls Review')
+    click_action('review')
+    configure_control('result', 'failure')
+    click_action('submit-operation'); click_action('approve')
+    wait_until('document.querySelector("[data-error]")?.dataset.error === "createFailed"', 'Configured creation failure preserves review')
+    expect('document.querySelector(".review-profile h2").textContent === "Controls Review"', 'Creation failure preserves draft')
+    click_action('submit-operation'); click_action('approve'); wait_page('ready')
+    click_action('go-identity'); click_action('edit')
+    call('fill', '#profile-name', 'Updated Controls')
+    click_action('review')
+    configure_control('result', 'failure')
+    click_action('submit-operation'); click_action('approve')
+    wait_until('document.querySelector("[data-error]")?.dataset.error === "saveFailed"', 'Configured profile update can fail')
+    click_action('submit-operation'); click_action('approve'); wait_page('identity')
+    expect('document.querySelector(".person-row h2").textContent === "Updated Controls"', 'Failure is consumed once and retry succeeds')
+    for event in ('switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'):
+        click_action('edit'); call('fill', '#profile-name', 'Discard This Account Draft')
+        click_action('review')
+        configure_control('account-event', event)
+        click_action('submit-operation')
+        if event.endswith('process'):
+            click_action('approve')
+        if event.startswith('switch'):
+            call('wait', '--fn', 'document.querySelector(".person-row h2")?.textContent === "North Studio"')
+            expect('!document.body.innerText.includes("Discard This Account Draft")', f'{event} clears old identity and draft')
+            time.sleep(1.7)
+            expect('document.querySelector(".person-row h2")?.textContent === "North Studio"', f'{event} ignores stale operation result')
+            click_action('disconnect')
+        else:
+            wait_page('welcome')
+            time.sleep(1.7)
+            expect('document.querySelector("main").dataset.screenLabel === "welcome" && !document.querySelector("[data-action=disconnect]")', f'{event} stays disconnected after old operation settles')
+        connect('existing')
+        click_selector('.footer-controls > button')
+        expect('document.querySelector("[data-scenario=account-event]").value === "none"', f'{event} is consumed once')
+        click_action('simulate-switch')
+        call('wait', '--fn', 'document.querySelector(".person-row h2")?.textContent === "North Studio"')
+        click_action('simulate-disconnect'); wait_page('welcome')
+        click_selector('.panel-title button')
+        connect('existing')
+    configure_control('result', 'failure')
+    configure_control('account-event', 'switch-process')
+    click_selector('.footer-controls > button')
+    click_action('reset-session'); wait_page('welcome')
+    expect('document.querySelector("[data-scenario=result]").value === "success" && document.querySelector("[data-scenario=account-event]").value === "none"', 'Reset clears pending scenario settings')
+    click_selector('.panel-title button')
+    expect('!document.querySelector("[data-scenario], [data-action=simulate-switch], [data-action=simulate-disconnect]")', 'Closing prototype settings removes all scenario controls')
+    errors = call('errors')
+    (EVIDENCE / 'prototype-controls-errors.txt').write_text(errors, encoding='utf-8')
+    assert not errors.strip(), errors
+    print(f'{len(results)} prototype control checks passed', flush=True)
+
 try:
     call('open', URL)
     js('localStorage.removeItem("ownword-astra-locale");localStorage.removeItem("ownword-astra-theme");true')
     call('reload')
     call('wait', '--fn', 'document.querySelector("main").dataset.screenLabel === "welcome" && !!document.querySelector(".welcome h1")')
+    if CONTROLS_ONLY:
+        check_prototype_controls()
+        sys.exit(0)
     expect('document.activeElement === document.body', 'First paint leaves focus at the document start')
     call('press', 'Tab')
     expect('document.activeElement.classList.contains("skip-link")', 'First Tab reaches the skip link instead of landing inside main')
@@ -341,7 +427,8 @@ try:
     call('mouse', 'move', 700, 950)
     time.sleep(6.5)
     expect('!document.querySelector("[data-notice]")', 'Confirmation clears after six seconds')
-    click_action('connect'); click_action('simulate-failure')
+    configure_control('result', 'failure')
+    click_action('connect'); click_action('approve')
     expect('document.querySelector("[data-error]")?.dataset.error === "connectFailed" && !!document.querySelector("[data-error] button")', 'Connection failure provides retry')
     connect('resolveFail')
     expect('document.querySelector("main").dataset.screenLabel === "resolve-error" && !!document.querySelector("[data-action=retry]") && !!document.querySelector("[data-action=disconnect]") && document.querySelector("main").textContent.trim().length > 0', 'Resolution failure explains and offers retry or disconnect')
@@ -392,7 +479,8 @@ try:
     call('press', 'Escape')
     expect('document.querySelector("[data-notice]")?.dataset.notice === "createCancelled"', 'Escape cancels wallet creation')
     expect('document.querySelector(".review-profile h2").textContent === "Maya Chen"', 'Cancelled creation preserves values')
-    click_action('submit-operation'); click_action('simulate-failure')
+    configure_control('result', 'failure')
+    click_action('submit-operation'); click_action('approve')
     wait_until('document.querySelector("[data-error]")?.dataset.error === "createFailed" && document.querySelector("main").dataset.screenLabel === "review"', 'Creation failure retains review and retry', diagnostic='(document.querySelector("[data-error]")||{}).dataset.error')
     click_action('submit-operation'); click_action('approve')
     wait_until('document.querySelector("main").dataset.busy === "create"', 'Creation processing visible', diagnostic='document.querySelector("main").dataset.busy')
@@ -462,8 +550,9 @@ try:
     expect('document.querySelector(".person-row h2").textContent === "Maya Revised"', 'Save updates My Identity')
     expect('document.querySelector(".identifier code").textContent === OwnwordModel.ids[0]', 'Profile update keeps BAP ID')
     click_action('edit'); call('fill', '#profile-name', 'Do not save this')
-    click_action('review'); click_action('submit-operation')
-    click_selector('.modal-scenarios button:nth-child(2)')
+    click_action('review')
+    configure_control('account-event', 'switch-confirm')
+    click_action('submit-operation')
     wait_page('identity')
     expect('document.querySelector(".person-row h2").textContent === "North Studio" && !document.body.innerText.includes("Do not save this")', 'Account switch cancels confirmation and clears old identity')
     click_action('disconnect'); connect('incomplete')
@@ -496,5 +585,6 @@ try:
         print(f'{len(layout_findings)} container-overflow findings recorded', flush=True)
     print(f'{len(results)} browser checks passed; {len(incomplete_audit)} axe incomplete recorded', flush=True)
 finally:
-    (EVIDENCE / 'browser-results.json').write_text(json.dumps({'passed': len(results), 'checks': results, 'axeIncomplete': incomplete_audit}, ensure_ascii=False, indent=2), encoding='utf-8')
+    result_file = 'prototype-controls-results.json' if CONTROLS_ONLY else 'browser-results.json'
+    (EVIDENCE / result_file).write_text(json.dumps({'passed': len(results), 'checks': results, 'axeIncomplete': incomplete_audit}, ensure_ascii=False, indent=2), encoding='utf-8')
     call('close')

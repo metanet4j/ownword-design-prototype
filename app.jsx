@@ -8,6 +8,8 @@ function App() {
   const [theme, setTheme] = React.useState(() => pref('theme', 'light') === 'dark' ? 'dark' : 'light');
   const [scenario, setScenario] = React.useState('new');
   const [lab, setLab] = React.useState(false);
+  const [nextResult, setNextResult] = React.useState('success');
+  const [accountEvent, setAccountEvent] = React.useState('none');
   const [prefs, setPrefs] = React.useState(false);
   const [errors, setErrors] = React.useState({});
   const [imageError, setImageError] = React.useState('');
@@ -71,14 +73,38 @@ function App() {
   function resolveAgain() {operationScenario.current = scenario === 'missing' ? 'new' : scenario; dispatch({type: 'RETRY_RESOLVE'});}
   function switchAccount() {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}
   function disconnect() {setPrefs(false); dispatch({type: 'DISCONNECT'});}
+  // 演练配置只决定下一次操作，不进入产品状态或签名输入。
   function confirmConnection() {
     operationScenario.current = scenario;
-    dispatch({type: 'CONNECTED'});
+    const failed = nextResult === 'failure' || scenario === 'missing';
+    setNextResult('success');
+    dispatch({type: failed ? 'CONNECT_FAILED' : 'CONNECTED'});
   }
-  function approveOperation(fail = false) {
-    pendingResult.current = fail;
+  function approveOperation() {
+    pendingResult.current = nextResult === 'failure';
+    setNextResult('success');
     dispatch({type: 'PROCESS', operation: state.modal});
   }
+  function resetSession() {
+    setNextResult('success'); setAccountEvent('none'); setFailCopy(false);
+    disconnect();
+  }
+  React.useEffect(() => {
+    if (!state.wallet || accountEvent === 'none') return;
+    const [action, phase] = accountEvent.split('-');
+    const active = phase === 'confirm'
+      ? ['create', 'save'].includes(state.modal)
+      : ['create', 'save'].includes(state.busy);
+    if (!active) return;
+    const epoch = state.epoch;
+    const timer = setTimeout(() => {
+      if (currentState.current.epoch !== epoch) return;
+      setAccountEvent('none');
+      console.info('[Ownword prototype] account event', {action, phase, epoch});
+      if (action === 'switch') switchAccount(); else disconnect();
+    }, phase === 'confirm' ? 1200 : 600);
+    return () => clearTimeout(timer);
+  }, [accountEvent, state.wallet, state.modal, state.busy, state.epoch]);
   function checkForm() {
     const found = validate(state.draft); setErrors(found);
     if (Object.values(found).some(Boolean)) {setTimeout(() => document.querySelector('[aria-invalid="true"]')?.focus(), 0); return;}
@@ -150,7 +176,7 @@ function App() {
         <aside>{heading('reviewHeading', 'reviewBody', 'review')}<p className="impact">{t(state.published ? 'saveImpact' : 'createImpact')}</p><p className="hint">{t('controlStatement')}</p></aside>
         <div className="review-profile"><div className="person-row"><Portrait profile={state.draft} /><div><span className="profile-type">{t(state.draft.type)}</span><h2>{state.draft.name}</h2></div></div><p className="bio">{state.draft.bio || t('noBio')}</p><Identifier id={bapId} t={t} failCopy={failCopy} /><p className="hint">{t(state.published ? 'published' : 'localId')}</p>
           {state.error && <div className="error-block" role="alert" data-error={state.error}><strong>{t(state.error)}</strong><p>{t('operationFailedBody')}</p></div>}
-          {state.busy ? <div className="processing" role="status"><LoadingMark small /><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p><Button onClick={switchAccount}>{t('accountSwitch')}</Button></div> : <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" data-action="submit-operation" data-operation={state.published ? 'save' : 'create'} onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
+          {state.busy ? <div className="processing" role="status"><LoadingMark small /><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p></div> : <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" data-action="submit-operation" data-operation={state.published ? 'save' : 'create'} onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
         </div>
       </section>}
       {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}
@@ -162,15 +188,19 @@ function App() {
       </section>}
       {state.page === 'public' && <section className="public-page">{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /><div className="public-back"><Button variant="quiet" data-action="back-identity" onClick={() => navigate('identity')}>{t('backIdentity')}</Button></div></section>}
     </main>
-    <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight label={t('connected')} /><Button variant="quiet" onClick={switchAccount}>{t('accountSwitch')}</Button></span>}<Button variant="quiet" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
-    {lab && <section className="scenario-panel" aria-label={t('scenarios')}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><label>{t('scenario')}<select value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p><label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <Button onClick={resolveAgain}>{t('resolveAgain')}</Button>}<Button onClick={disconnect}>{t('reset')}</Button></div></section>}
+    <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight label={t('connected')} /></span>}<Button variant="quiet" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
+    {lab && <section className="scenario-panel" aria-label={t('scenarios')}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
+      <label>{t('nextResult')}<select data-scenario="result" value={nextResult} onChange={e => setNextResult(e.target.value)}><option value="success">{t('resultSuccess')}</option><option value="failure">{t('simulateFailure')}</option></select></label>
+      <p className="hint">{t('nextResultHint')}</p>
+      <label>{t('accountEvent')}<select data-scenario="account-event" value={accountEvent} onChange={e => setAccountEvent(e.target.value)}>{['none', 'switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'].map(value => <option key={value} value={value}>{t(value)}</option>)}</select></label>
+      <p className="hint">{t('accountEventHint')}</p>
+      <label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <><Button onClick={resolveAgain}>{t('resolveAgain')}</Button><Button data-action="simulate-switch" onClick={switchAccount}>{t('accountSwitch')}</Button><Button data-action="simulate-disconnect" onClick={disconnect}>{t('disconnect')}</Button></>}<Button data-action="reset-session" onClick={resetSession}>{t('reset')}</Button></div></section>}
     {state.modal && <Modal closeLabel={t('close')} titleKey={state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle'} title={t(state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle')} onCancel={() => dispatch({type: state.modal === 'discard' ? 'STAY' : 'CANCEL'})}>
       {state.modal === 'discard' ? <><p>{t('discardBody')}</p><div className="action-row"><Button data-action="keep-editing" onClick={() => dispatch({type: 'STAY'})}>{t('keepEditing')}</Button><Button variant="negative" data-action="discard" onClick={() => dispatch({type: 'DISCARD'})}>{t('discard')}</Button></div></> : <>
         <p>{t(state.modal === 'connect' ? scenario === 'missing' ? 'missingBody' : 'connectBody' : state.modal === 'create' ? 'createImpact' : 'saveImpact')}</p>
         {state.modal !== 'connect' && <><div className="person-row compact"><Portrait profile={state.draft} /><div><span className="eyebrow">{t('currentIdentity')}</span><strong>{state.draft.name}</strong></div></div><Identifier id={bapId} t={t} failCopy={failCopy} /><p className="hint">{t('controlStatement')}</p></>}
         <div className="simulation-label"><span>{t('simulatedWallet')}</span><p>{t('simulatorNote')}</p></div>
-        <div className="action-row"><Button data-action="cancel" onClick={() => dispatch({type: 'CANCEL'})}>{t('cancel')}</Button><Button variant="accent" data-action="approve" onClick={() => state.modal === 'connect' ? (scenario === 'missing' ? dispatch({type: 'CONNECT_FAILED'}) : confirmConnection()) : approveOperation()}>{t(scenario === 'missing' && state.modal === 'connect' ? 'retry' : 'approve')}</Button></div>
-        <div className="modal-scenarios"><Button variant="quiet" data-action="simulate-failure" onClick={() => state.modal === 'connect' ? dispatch({type: 'CONNECT_FAILED'}) : approveOperation(true)}>{t('simulateFailure')}</Button>{state.wallet && <><Button variant="quiet" onClick={switchAccount}>{t('accountSwitch')}</Button><Button variant="quiet" onClick={disconnect}>{t('disconnect')}</Button></>}</div>
+        <div className="action-row"><Button data-action="cancel" onClick={() => dispatch({type: 'CANCEL'})}>{t('cancel')}</Button><Button variant="accent" data-action="approve" onClick={() => state.modal === 'connect' ? confirmConnection() : approveOperation()}>{t(scenario === 'missing' && state.modal === 'connect' ? 'retry' : 'approve')}</Button></div>
       </>}
     </Modal>}
   </div>;

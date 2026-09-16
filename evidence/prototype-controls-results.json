@@ -1,0 +1,86 @@
+{
+  "passed": 31,
+  "checks": [
+    "en/light all scenario selectors available",
+    "en/light panel has no horizontal overflow",
+    "prototype-controls-en-light axe 0 violations",
+    "en/dark all scenario selectors available",
+    "en/dark panel has no horizontal overflow",
+    "prototype-controls-en-dark axe 0 violations",
+    "zh/light all scenario selectors available",
+    "zh/light panel has no horizontal overflow",
+    "prototype-controls-zh-light axe 0 violations",
+    "zh/dark all scenario selectors available",
+    "zh/dark panel has no horizontal overflow",
+    "prototype-controls-zh-dark axe 0 violations",
+    "Wallet dialog contains only product decision actions",
+    "Cancelled authorization preserves next failure",
+    "Footer contains no simulated account switch",
+    "Configured creation failure preserves review",
+    "Creation failure preserves draft",
+    "Configured profile update can fail",
+    "Failure is consumed once and retry succeeds",
+    "switch-confirm clears old identity and draft",
+    "switch-confirm ignores stale operation result",
+    "switch-confirm is consumed once",
+    "switch-process clears old identity and draft",
+    "switch-process ignores stale operation result",
+    "switch-process is consumed once",
+    "disconnect-confirm stays disconnected after old operation settles",
+    "disconnect-confirm is consumed once",
+    "disconnect-process stays disconnected after old operation settles",
+    "disconnect-process is consumed once",
+    "Reset clears pending scenario settings",
+    "Closing prototype settings removes all scenario controls"
+  ],
+  "axeIncomplete": [
+    {
+      "screen": "prototype-controls-en-light",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".eyebrow",
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "prototype-controls-en-dark",
+      "rule": "color-contrast",
+      "nodes": 2,
+      "targets": [
+        ".eyebrow",
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined because it partially overlaps other elements",
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "prototype-controls-zh-light",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    },
+    {
+      "screen": "prototype-controls-zh-dark",
+      "rule": "color-contrast",
+      "nodes": 1,
+      "targets": [
+        ".horizon > span"
+      ],
+      "reasons": [
+        "Element's background color could not be determined due to a pseudo element"
+      ]
+    }
+  ]
+}
