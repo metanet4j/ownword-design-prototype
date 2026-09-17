@@ -2,8 +2,8 @@
 (function (root) {
   const identity = typeof module !== 'undefined' ? require('./model.js') : root.OwnwordModel;
   const defaultScenarios = {list: 'normal'};
-  const title = text => (/^#\s+(.+)$/m.exec(text)?.[1] || '').replace(/[*_`]/g, '').trim();
-  const summary = text => text.replace(/^#.*$/gm, '').replace(/[*_`>\[\]#]/g, '').replace(/\s+/g, ' ').trim();
+  const title = text => root.OwnwordEditorTools?.metadata ? root.OwnwordEditorTools.metadata(text).title : (/^#\s+(.+)$/m.exec(text)?.[1] || '').replace(/[*_`]/g, '').trim();
+  const summary = text => root.OwnwordEditorTools?.metadata ? root.OwnwordEditorTools.metadata(text).summary : text.replace(/^#.*$/gm, '').replace(/[*_`>\[\]#]/g, '').replace(/\s+/g, ' ').trim();
   const newId = () => 'draft-' + (root.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
   function draft(authorBapId, content = '') {return {id: newId(), authorBapId, content, updatedAt: new Date().toISOString()};}
   function seed() {

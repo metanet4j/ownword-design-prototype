@@ -15,7 +15,7 @@ EVIDENCE = ROOT / 'evidence'
 EVIDENCE.mkdir(exist_ok=True)
 
 DS = ROOT / '_ds' / 'react-spectrum-s2'
-OWN_CSS = ['app.css', 'brand.css', 'brand-explorations.css']
+OWN_CSS = ['app.css', 'content.css', 'brand.css', 'brand-explorations.css']
 REFERENCE = re.compile(r'var\(\s*(--s2[a-z0-9-]*)\s*[,)]')
 DEFINITION = re.compile(r'(--s2[a-z0-9-]*)\s*:')
 

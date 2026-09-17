@@ -67,3 +67,4 @@ export function createEditor(parent, value, options) {
   parent.ownwordEditor = api;
   return api;
 }
+export {renderMarkdown, metadata} from './markdown-tools.mjs';

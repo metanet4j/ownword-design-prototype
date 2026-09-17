@@ -1,0 +1,16 @@
+{
+  "feature": "C03",
+  "normal": "支持语法共用渲染、正确派生标题，桌面源码滚动至末段时预览跟随到末段。",
+  "boundary": "HTML 与图片源码仅显示为文字，危险链接不执行；320px 表格在容器内横向滚动，工具栏不溢出。切换中文深色保持原始正文。",
+  "checks": [
+    "node check-markdown.mjs",
+    "67 个 S2 token 引用全部可解析",
+    "浏览器错误为空"
+  ],
+  "screenshotsReviewed": [
+    "desktop.png",
+    "mobile-table.png",
+    "mobile-dark-zh.png"
+  ],
+  "limits": "Review 与最终详情页接入同一正文组件分别在 C06、C08 验收。"
+}

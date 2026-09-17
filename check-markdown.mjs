@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {renderMarkdown} from './markdown-tools.mjs';
+const source = '# 中文标题\r\n\r\n**Bold** and *italic* with ~~old~~.\r\n\r\n- [x] Ready\r\n\r\n| A | B |\r\n| - | - |\r\n| 1 | 2 |\r\n\r\n![secret](https://example.com/image.png)\r\n\r\n<script>globalThis.injected = true</script>\r\n\r\n[x](javascript:alert(1))\r\n\r\n```js\r\nconst text = "<safe>"\r\n```';
+const result = renderMarkdown(source);
+assert.equal(result.title, '中文标题');
+assert.ok(result.html.includes('<table') && result.html.includes('<strong>Bold</strong>') && result.html.includes('disabled'));
+assert.ok(result.html.includes('&#x3C;script>') && result.html.includes('![secret]'));
+assert.ok(!/<script|<img|href="javascript:/i.test(result.html));
+assert.ok(result.html.includes('data-line=') && result.unsupported);
+assert.equal(renderMarkdown('```\n# fake\n```\n\n# Real').title, 'Real');
+assert.equal(source.includes('\r\n'), true);
+console.log('C03 Markdown structure, title and unsafe-content boundaries passed');

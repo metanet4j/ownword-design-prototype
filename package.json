@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "esbuild editor-tools.js --bundle --format=iife --global-name=OwnwordEditorTools --target=es2020 --outfile=vendor/editor-tools.js --minify",
-    "check": "node check-model.cjs && node check-content.cjs"
+    "check": "node check-model.cjs && node check-content.cjs && node check-markdown.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "6.11.1",
@@ -13,7 +13,13 @@
     "@codemirror/search": "6.7.2",
     "@codemirror/state": "6.7.5",
     "@codemirror/view": "6.43.12",
-    "@lezer/highlight": "1.2.3"
+    "@lezer/highlight": "1.2.3",
+    "rehype-sanitize": "6.0.0",
+    "rehype-stringify": "10.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "remark-rehype": "11.1.2",
+    "unified": "11.0.5"
   },
   "devDependencies": {
     "esbuild": "0.28.2"

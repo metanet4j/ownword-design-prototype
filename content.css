@@ -93,3 +93,30 @@
  .editor-host, .editor-preview-scroll { height: 52dvh; min-height: 300px; }
  .editor-preview-scroll { padding: var(--s2-spacing-300); }
 }
+.editor-preview-scroll, .markdown-body { position: relative; }
+.markdown-body { color: var(--s2-gray-900); font-size: var(--s2-font-size-200); line-height: 1.9; overflow-wrap: anywhere; }
+.markdown-body > :first-child { margin-top: 0; }
+.markdown-body > * { margin-block: 0 var(--s2-spacing-400); }
+.markdown-body h1 { font: 500 var(--s2-font-size-900)/1.25 var(--s2d-font-serif), "Songti SC", serif; letter-spacing: -.025em; margin-block: var(--s2-spacing-500) var(--s2-spacing-400); }
+.markdown-body h1:lang(zh) { letter-spacing: 0; }
+.markdown-body h2 { font-size: var(--s2-font-size-600); font-weight: 600; line-height: 1.4; margin-block: var(--s2-spacing-500) var(--s2-spacing-200); }
+.markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 { font-size: var(--s2-font-size-400); line-height: 1.5; margin-block: var(--s2-spacing-400) var(--s2-spacing-200); }
+.markdown-body p { white-space: normal; }
+.markdown-body ul, .markdown-body ol { padding-left: var(--s2-spacing-400); }
+.markdown-body li { margin-block: var(--s2-spacing-100); }
+.markdown-body li > p { margin-block: var(--s2-spacing-100); }
+.markdown-body li.task-list-item { list-style: none; }
+.markdown-body input[type="checkbox"] { accent-color: var(--s2d-accent); margin-right: var(--s2-spacing-100); }
+.markdown-body blockquote { margin-inline: 0; padding: var(--s2-spacing-100) var(--s2-spacing-300); border-left: 3px solid var(--s2d-accent); color: var(--s2-gray-800); font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-400); }
+.markdown-body a { color: var(--s2d-accent); text-decoration: underline; text-underline-offset: 3px; }
+.markdown-body a[aria-disabled] { color: inherit; text-decoration: none; }
+.markdown-body code { font-family: var(--s2d-font-mono); font-size: .87em; background: var(--s2-gray-100); padding: var(--s2-spacing-50) var(--s2-spacing-75); border-radius: var(--s2d-radius); }
+.markdown-body pre { max-width: 100%; overflow: auto; padding: var(--s2-spacing-300); background: var(--s2-gray-75); border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius); line-height: 1.7; }
+.markdown-body pre code { font-size: var(--s2-font-size-100); padding: 0; background: none; border-radius: 0; white-space: pre; }
+.markdown-body table { display: block; max-width: 100%; width: max-content; overflow-x: auto; border-collapse: collapse; font-size: var(--s2-font-size-100); }
+.markdown-body td, .markdown-body th { padding: var(--s2-spacing-200); border: 1px solid var(--s2d-border); min-width: 120px; text-align: left; }
+.markdown-body th { background: var(--s2-gray-75); font-weight: 600; }
+.markdown-body hr { border: 0; border-top: 1px solid var(--s2d-border); margin-block: var(--s2-spacing-500); }
+.content-syntax-note { color: var(--s2-gray-700); font-size: var(--s2-font-size-75); line-height: 1.6; padding-top: var(--s2-spacing-300); border-top: 1px solid var(--s2d-border); }
+@media(max-width:700px) { .markdown-body { font-size: var(--s2-font-size-100); } .markdown-body h1 { font-size: var(--s2-font-size-700); } .markdown-body h2 { font-size: var(--s2-font-size-400); } }
+@media(max-width:700px) { .editor-tools > [data-format="link"] { display: none; } .editor-heading-picker select { max-width: 100px; } }
