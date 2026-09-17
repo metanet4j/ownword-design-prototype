@@ -1,0 +1,22 @@
+{
+  "feature": "R04",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "编辑区焦点装饰；沿用 S2 中性色",
+  "checks": [
+    "可视化聚焦无整圈蓝框，底部细灰线提示焦点。",
+    "源码编辑移除整圈 outline，共用底部焦点线。",
+    "Tab 可进入两种编辑器，焦点可辨识；切换前后原文一致。",
+    "浅色可视化、深色源码截图已审阅，无横向溢出。",
+    "CSS 和编辑器资源版本更新，普通刷新加载新样式。"
+  ],
+  "evidence": [
+    "browser-check.json",
+    "visual-focused-light.png",
+    "source-focused-dark.png",
+    "browser-errors.txt",
+    "browser-console.txt"
+  ],
+  "logs": "浏览器运行错误为空；服务日志 ../.runtime/preview.log。",
+  "validation": "npm run build 与 ../init.sh 通过；本次未重复完整功能回归。"
+}

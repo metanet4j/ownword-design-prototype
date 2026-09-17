@@ -226,7 +226,7 @@
 .visual-editor-host { height: clamp(340px, 56vh, 640px); overflow: auto; background: var(--s2-gray-25); }
 .visual-editor-host .milkdown { min-height: 100%; }
 .visual-surface { min-height: clamp(340px, 56vh, 640px); padding: var(--s2-spacing-400); outline: none; white-space: pre-wrap; }
-.visual-surface:focus-visible { box-shadow: inset 0 0 0 2px var(--s2d-accent); }
+.visual-editor-host:focus-within, .editor-host:focus-within { box-shadow: inset 0 -2px var(--s2-gray-600); }
 .visual-surface p { white-space: pre-wrap; }
 .visual-surface li[data-item-type="task"] { list-style: none; display: flex; gap: var(--s2-spacing-100); align-items: baseline; }
 .visual-surface li[data-item-type="task"] > div { min-width: 0; flex: 1; }
