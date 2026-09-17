@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "build": "esbuild editor-tools.js --bundle --format=iife --global-name=OwnwordEditorTools --target=es2020 --outfile=vendor/editor-tools.js --minify",
+    "build": "esbuild editor-tools.js --bundle --format=iife --global-name=OwnwordEditorTools --target=es2020 --supported:template-literal=false --outfile=vendor/editor-tools.js --minify",
     "check": "node check-model.cjs && node check-content.cjs && node check-markdown.mjs"
   },
   "dependencies": {
