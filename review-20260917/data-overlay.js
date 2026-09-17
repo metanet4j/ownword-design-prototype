@@ -1817,4 +1817,3 @@
   DataOverlay.geom = { linearOf: linearOf, ownLinear: ownLinear, mulLin: mulLin, quadOffset: quadOffset, radiusOf: radiusOf, cornerRad: cornerRad };
   window.DataOverlay = DataOverlay;
 })();
-
