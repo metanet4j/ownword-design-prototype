@@ -1,0 +1,38 @@
+{
+  "feature": "R01",
+  "baseline": "68b6d4c",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "findings": [
+    {
+      "id": "P0-01",
+      "title": "多标签页静默覆盖已保存数据",
+      "status": "fixed",
+      "commit": "36eeacb"
+    },
+    {
+      "id": "P1-01",
+      "title": "存储重试丢失未保存正文",
+      "status": "fixed",
+      "commit": "66f1dfd"
+    },
+    {
+      "id": "P1-02",
+      "title": "恢复查询成功后结果页缺失",
+      "status": "fixed",
+      "commit": "a2cbce6"
+    }
+  ],
+  "report": "P0审查与修复v0.2.0-20260917-235527.md",
+  "browser": "宿主 Chromium / agent-browser",
+  "harness": "harness-check.txt",
+  "runtimeErrors": 0,
+  "screenshotsReviewed": [
+    "second-tab-protected.png",
+    "second-tab-protected-mobile.png",
+    "recovered-draft.png",
+    "query-result-missing-before.png",
+    "query-result-after.png"
+  ],
+  "scope": "定向验证，未执行全量浏览器回归；真实签名及链上集成不在范围"
+}
