@@ -189,3 +189,15 @@
 .version-list h2 { font:500 var(--s2-font-size-500)/1.5 var(--s2d-font-serif),"Songti SC",serif; margin-block:var(--s2-spacing-100); overflow-wrap:anywhere; }
 .version-list time { font-size:var(--s2-font-size-75); color:var(--s2-gray-700); }
 .version-list .s2d-button { flex-shrink:0; white-space:nowrap; }
+.content-proof { border-block:1px solid var(--s2d-border); margin-top:var(--s2-spacing-200); }
+.content-proof > summary { cursor:pointer; padding-block:var(--s2-spacing-300); font-size:var(--s2-font-size-200); font-weight:500; }
+.proof-body { padding-bottom:var(--s2-spacing-300); }
+.proof-sample-note, .reader-local-note { font-size:var(--s2-font-size-75); color:var(--s2-gray-700); line-height:1.8; }
+.reader-local-note { margin-top:var(--s2-spacing-300); }
+.proof-facts { display:grid; gap:var(--s2-spacing-300); margin-block:var(--s2-spacing-400); }
+.proof-facts > div { display:grid; grid-template-columns:minmax(130px,1fr) 2fr; gap:var(--s2-spacing-200); font-size:var(--s2-font-size-100); line-height:1.6; }
+.proof-facts dt { color:var(--s2-gray-700); }
+.proof-facts dd { margin:0; }
+[data-proof-state="failed"] { color:var(--s2d-negative); }
+[data-proof-state="valid"] { color:var(--s2-positive-color-900); }
+@media(max-width:700px) { .proof-facts > div { grid-template-columns:1fr; gap:var(--s2-spacing-50); } }

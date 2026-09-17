@@ -1,0 +1,22 @@
+{
+  "feature": "C10",
+  "status": "passed",
+  "acceptance": {
+    "C10-A": "签名有效样例与待确认分开显示；完整 64 字符 TxID 可复制，无真实区块浏览器假链接",
+    "C10-B": "未验证/不匹配分别显示；模型校验被改动的正文、作者和交易均不显示有效",
+    "X01": "完整语法样例贯穿预览、Review 与阅读，HTML 完全一致；中英/主题切换不改写正文或作者",
+    "X02": "320px Review/阅读无页面横向溢出；授权弹窗键盘焦点保留在弹窗内",
+    "C04-B": "存储失败时仍可导出最新原文，实际下载字节一致"
+  },
+  "sourceBytes": 2184,
+  "reviewed": [
+    "desktop-proof-valid.png",
+    "mobile-proof-failed.png",
+    "desktop-editor-final.png"
+  ],
+  "errors": "empty",
+  "limitations": [
+    "浏览器为 Chromium；未做 OS 输入法、Safari 与实体手机测试",
+    "真实签名、交易、索引和费用不在原型范围"
+  ]
+}

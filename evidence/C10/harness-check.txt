@@ -1,0 +1,65 @@
+环境通过：prototype/v0.2.0-content，PRD v0.2.0，11 项任务
+92 model assertions passed
+C01 route and author fixtures passed
+C04 durable draft and author separation passed
+C05 UTF-8, BOM, CRLF and invalid import boundaries passed
+C06 empty / UTF-8 byte limit / optional title review gates passed
+C07 publication journal, reload, durable acceptance and duplicate protection passed
+C09 immutable versions, unchanged revision gate and draft reuse passed
+C10 proof sample states and tampered text / author / transaction guards passed
+C03 Markdown structure, title and unsafe-content boundaries passed
+4 copy contract checks passed (340 keys)
+9 strings exceed the length thresholds (en > 100 or zh > 40 chars)
+  166/47  readerMissingBody: This link may point to content created in another browser. Demo public…
+  148/38  reviewImpact: Your text and author identity will be public. Published words cannot b…
+  138/39  readerLocalScope: Demo publication: built-in samples are shareable. New demo content can…
+  125/39  publishUnknownBody: This operation may have been received. Check its result before publish…
+  117/33  publishStorage: The publication record could not be saved. Your draft and operation ar…
+  115/35  publishStorageBefore: The operation could not be saved, so signing has not started. Your dra…
+  108/30  draftReadFailed: Saved drafts could not be read. Existing storage has not been replaced…
+  101/34  contentGateBody: Connect your wallet and prepare your identity to open your drafts. Pub…
+  101/30  reviewExpired: Review this draft again before signing. The text or identity has chang…
+7 design-system CSS files define 2509 tokens
+prototype CSS references 68 tokens; unresolved: 0
+all referenced tokens resolve
+全部 JSX 源码语法检查通过
+Harness validation for /home/haodev/ownword/_task/prototype-worktree/ownword-v0.2.0
+Overall: 100/100
+Bottleneck: none — all subsystems at full score
+
+instructions: 5/5 (5/5)
+  PASS Agent instruction file exists
+  PASS Startup workflow documented
+  PASS Definition of done documented
+  PASS Verification commands discoverable
+  PASS State artifacts routed from instructions
+
+state: 5/5 (5/5)
+  PASS Feature tracker exists
+  PASS Feature tracker is valid and has feature fields
+  PASS Progress log exists
+  PASS Progress log supports restart
+  PASS Handoff captures blockers/files/next step
+
+verification: 5/5 (5/5)
+  PASS Verification entrypoint exists
+  PASS Verification fails fast
+  PASS Test command documented
+  PASS Static/build check documented
+  PASS Verification evidence is recorded
+
+scope: 5/5 (5/5)
+  PASS One-feature-at-a-time rule exists
+  PASS Feature dependencies are tracked
+  PASS Feature status is explicit
+  PASS Scope boundary documented
+  PASS Completion gate limits scope closure
+
+lifecycle: 5/5 (5/5)
+  PASS Startup script exists
+  PASS End-of-session procedure exists
+  PASS Session handoff template exists
+  PASS Session restart markers exist
+  PASS Clean restart path documented
+
+检查通过。运行 ./init.sh --serve 启动预览；下一步见 session-handoff.md。

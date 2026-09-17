@@ -3,14 +3,105 @@
     "en": 100,
     "zh": 40
   },
-  "longCount": 0,
+  "longCount": 9,
   "longest": [
+    {
+      "key": "readerMissingBody",
+      "en": "This link may point to content created in another browser. Demo publications are stored only in the browser that created them. You can read a built-in sample instead.",
+      "zh": "此链接可能来自另一浏览器。新发布的演示内容只保存在发布时使用的浏览器中，你也可以阅读内置样例。",
+      "enLength": 166,
+      "zhLength": 47
+    },
+    {
+      "key": "reviewImpact",
+      "en": "Your text and author identity will be public. Published words cannot be overwritten. Changes create a new version; earlier versions remain readable.",
+      "zh": "正文和作者身份将公开。发布后不能覆盖原文；修改会追加新版本，旧版本仍可阅读。",
+      "enLength": 148,
+      "zhLength": 38
+    },
+    {
+      "key": "readerLocalScope",
+      "en": "Demo publication: built-in samples are shareable. New demo content can be reopened in this browser; it is not retrieved from a live chain.",
+      "zh": "演示内容：内置样例可分享；新发布的内容可在当前浏览器重开，未连接真实链上查询。",
+      "enLength": 138,
+      "zhLength": 39
+    },
+    {
+      "key": "publishUnknownBody",
+      "en": "This operation may have been received. Check its result before publishing again; the original text and identity are retained.",
+      "zh": "本次操作可能已被接收。请先查询结果，再决定是否重新发布；原始正文与作者已保留。",
+      "enLength": 125,
+      "zhLength": 39
+    },
+    {
+      "key": "publishStorage",
+      "en": "The publication record could not be saved. Your draft and operation are kept. Restore storage, then check the result.",
+      "zh": "发布记录暂时无法保存，草稿与操作快照仍保留。请恢复存储后查询结果。",
+      "enLength": 117,
+      "zhLength": 33
+    },
+    {
+      "key": "publishStorageBefore",
+      "en": "The operation could not be saved, so signing has not started. Your draft is kept. Restore storage and review again.",
+      "zh": "本次操作暂时无法保存，尚未开始签名，草稿已保留。请恢复存储后重新检查。",
+      "enLength": 115,
+      "zhLength": 35
+    },
+    {
+      "key": "draftReadFailed",
+      "en": "Saved drafts could not be read. Existing storage has not been replaced. Try again when storage is available.",
+      "zh": "无法读取已保存的草稿，原有存储未被覆盖。请在存储恢复后重试。",
+      "enLength": 108,
+      "zhLength": 30
+    },
+    {
+      "key": "contentGateBody",
+      "en": "Connect your wallet and prepare your identity to open your drafts. Public writing is always readable.",
+      "zh": "连接钱包并准备好身份后，即可打开草稿。公开文章无需连接钱包即可阅读。",
+      "enLength": 101,
+      "zhLength": 34
+    },
+    {
+      "key": "reviewExpired",
+      "en": "Review this draft again before signing. The text or identity has changed, or this review has expired.",
+      "zh": "正文或身份已变化，或本次确认已失效。请回到草稿重新检查发布。",
+      "enLength": 101,
+      "zhLength": 30
+    },
+    {
+      "key": "draftSaveFailedBody",
+      "en": "Your latest words are still on this page. Storage is unavailable. Keep this page open and try again.",
+      "zh": "最新正文仍保留在页面中。暂时无法写入存储，请保持页面打开并重试。",
+      "enLength": 100,
+      "zhLength": 32
+    },
+    {
+      "key": "proofSimulation",
+      "en": "Sample evidence for this prototype. No cryptographic verification or live chain query is performed.",
+      "zh": "以下为原型证据样例，未执行真实密码学验证或链上查询。",
+      "enLength": 99,
+      "zhLength": 26
+    },
+    {
+      "key": "editorTooLong",
+      "en": "This draft exceeds the prototype limit of 100 KiB. Shorten it before reviewing. Your text is kept.",
+      "zh": "正文超过原型的 100 KiB 上限，请缩短后检查发布。全文已保留。",
+      "enLength": 98,
+      "zhLength": 34
+    },
     {
       "key": "sampleDataNote",
       "en": "Identity and chain records are sample data. Authorization dialogs represent the external wallet.",
       "zh": "身份与链上记录均为示例数据。授权弹窗代表外部钱包界面。",
       "enLength": 96,
       "zhLength": 27
+    },
+    {
+      "key": "importReplaceBody",
+      "en": "The imported Markdown will replace the current text. Export a copy first if you want to keep it.",
+      "zh": "导入的 Markdown 将替换当前正文。如需保留，请先导出一份副本。",
+      "enLength": 96,
+      "zhLength": 35
     },
     {
       "key": "nextResultHint",
@@ -20,131 +111,104 @@
       "zhLength": 27
     },
     {
+      "key": "markdownUnsupported",
+      "en": "This text includes syntax outside the supported set. It is shown as text; no media is loaded.",
+      "zh": "正文包含暂不支持的语法，已按文字展示，不加载媒体。",
+      "enLength": 93,
+      "zhLength": 25
+    },
+    {
+      "key": "draftDeleteBody",
+      "en": "This removes only the local draft from this browser. Published versions remain unchanged.",
+      "zh": "此操作仅移除当前浏览器中的草稿，不影响已发布版本。",
+      "enLength": 89,
+      "zhLength": 25
+    },
+    {
+      "key": "publishDraftKept",
+      "en": "Your words are still in your draft. Review the text and identity before trying again.",
+      "zh": "正文仍保留在草稿中。再次发布前，请重新检查正文与作者。",
+      "enLength": 85,
+      "zhLength": 27
+    },
+    {
+      "key": "publishNotReceived",
+      "en": "The query confirms this publication was not received. Review again before retrying.",
+      "zh": "查询结果明确未接收。请重新检查正文后再发布。",
+      "enLength": 83,
+      "zhLength": 22
+    },
+    {
       "key": "accountEventHint",
       "en": "Runs once on create or update: after 1.2s in authorization, or 0.6s in processing.",
       "zh": "创建身份或更新资料时触发一次：授权开始 1.2 秒后，或处理开始 0.6 秒后。",
       "enLength": 82,
       "zhLength": 40
+    }
+  ],
+  "long": [
+    {
+      "key": "readerMissingBody",
+      "en": "This link may point to content created in another browser. Demo publications are stored only in the browser that created them. You can read a built-in sample instead.",
+      "zh": "此链接可能来自另一浏览器。新发布的演示内容只保存在发布时使用的浏览器中，你也可以阅读内置样例。",
+      "enLength": 166,
+      "zhLength": 47
     },
     {
-      "key": "processingBody",
-      "en": "Waiting for the wallet. Disconnecting or switching account cancels this operation.",
-      "zh": "正在等待钱包返回。断开或切换账户会取消此操作。",
-      "enLength": 82,
-      "zhLength": 23
+      "key": "reviewImpact",
+      "en": "Your text and author identity will be public. Published words cannot be overwritten. Changes create a new version; earlier versions remain readable.",
+      "zh": "正文和作者身份将公开。发布后不能覆盖原文；修改会追加新版本，旧版本仍可阅读。",
+      "enLength": 148,
+      "zhLength": 38
     },
     {
-      "key": "connectBody",
-      "en": "Let this app see your wallet identity. Publishing needs a separate confirmation.",
-      "zh": "允许应用查看钱包身份；发布时另行确认。",
-      "enLength": 80,
-      "zhLength": 19
+      "key": "readerLocalScope",
+      "en": "Demo publication: built-in samples are shareable. New demo content can be reopened in this browser; it is not retrieved from a live chain.",
+      "zh": "演示内容：内置样例可分享；新发布的内容可在当前浏览器重开，未连接真实链上查询。",
+      "enLength": 138,
+      "zhLength": 39
     },
     {
-      "key": "saveImpact",
-      "en": "Your updated profile will become public. Your BAP ID will not change.",
-      "zh": "更新后的资料将公开发布，BAP ID 保持不变。",
-      "enLength": 69,
-      "zhLength": 24
+      "key": "publishUnknownBody",
+      "en": "This operation may have been received. Check its result before publishing again; the original text and identity are retained.",
+      "zh": "本次操作可能已被接收。请先查询结果，再决定是否重新发布；原始正文与作者已保留。",
+      "enLength": 125,
+      "zhLength": 39
     },
     {
-      "key": "simulatorNote",
-      "en": "Demo only. No wallet connection, signature or transaction is sent.",
-      "zh": "仅作演示。不会连接钱包、签名或发送交易。",
-      "enLength": 66,
-      "zhLength": 20
+      "key": "publishStorage",
+      "en": "The publication record could not be saved. Your draft and operation are kept. Restore storage, then check the result.",
+      "zh": "发布记录暂时无法保存，草稿与操作快照仍保留。请恢复存储后查询结果。",
+      "enLength": 117,
+      "zhLength": 33
     },
     {
-      "key": "missingBody",
-      "en": "No supported wallet was found. Open Yours Wallet, then try again.",
-      "zh": "未发现支持的钱包。请打开 Yours Wallet 后重试。",
-      "enLength": 65,
+      "key": "publishStorageBefore",
+      "en": "The operation could not be saved, so signing has not started. Your draft is kept. Restore storage and review again.",
+      "zh": "本次操作暂时无法保存，尚未开始签名，草稿已保留。请恢复存储后重新检查。",
+      "enLength": 115,
+      "zhLength": 35
+    },
+    {
+      "key": "draftReadFailed",
+      "en": "Saved drafts could not be read. Existing storage has not been replaced. Try again when storage is available.",
+      "zh": "无法读取已保存的草稿，原有存储未被覆盖。请在存储恢复后重试。",
+      "enLength": 108,
       "zhLength": 30
     },
     {
-      "key": "welcomeBody",
-      "en": "Start with your wallet. Your identity and your words stay yours.",
-      "zh": "从钱包开始。身份与话语，都由你掌控。",
-      "enLength": 64,
-      "zhLength": 18
+      "key": "contentGateBody",
+      "en": "Connect your wallet and prepare your identity to open your drafts. Public writing is always readable.",
+      "zh": "连接钱包并准备好身份后，即可打开草稿。公开文章无需连接钱包即可阅读。",
+      "enLength": 101,
+      "zhLength": 34
     },
     {
-      "key": "operationFailedBody",
-      "en": "The operation did not complete. Your values are kept. Try again.",
-      "zh": "操作未完成，已保留填写内容。请重试。",
-      "enLength": 64,
-      "zhLength": 18
-    },
-    {
-      "key": "completeBody",
-      "en": "Already published. Add the missing profile details to continue.",
-      "zh": "身份已发布。补全资料后继续。",
-      "enLength": 63,
-      "zhLength": 14
-    },
-    {
-      "key": "readyBody",
-      "en": "You now have a place to stand. Your wallet remains in control.",
-      "zh": "现在，你有了自己的坐标。钱包始终由你掌控。",
-      "enLength": 62,
-      "zhLength": 21
-    },
-    {
-      "key": "discardBody",
-      "en": "Changes are not saved. Keep editing, or discard them to leave.",
-      "zh": "修改未保存。继续编辑，或放弃后离开。",
-      "enLength": 62,
-      "zhLength": 18
-    },
-    {
-      "key": "connectFailedBody",
-      "en": "Your identity is unchanged. Check your wallet and try again.",
-      "zh": "身份未改变。请检查钱包后重试。",
-      "enLength": 60,
-      "zhLength": 15
-    },
-    {
-      "key": "simulatorHint",
-      "en": "Choose an identity scenario, then connect or resolve again.",
-      "zh": "选择身份场景后，连接钱包或重新解析。",
-      "enLength": 59,
-      "zhLength": 18
-    },
-    {
-      "key": "resolveFailedBody",
-      "en": "Try again, or disconnect and switch to another account.",
-      "zh": "可重试，或断开后切换其他账户。",
-      "enLength": 55,
-      "zhLength": 15
-    },
-    {
-      "key": "resolvingBody",
-      "en": "Checking whether your wallet has a published identity.",
-      "zh": "正在查询当前钱包是否已有公开身份。",
-      "enLength": 54,
-      "zhLength": 17
-    },
-    {
-      "key": "reviewBody",
-      "en": "Review the details before confirming in your wallet.",
-      "zh": "核对资料后，在钱包中确认。",
-      "enLength": 52,
-      "zhLength": 13
-    },
-    {
-      "key": "accountChanged",
-      "en": "Account changed. Pending operations were cancelled.",
-      "zh": "账户已切换，进行中的操作已取消。",
-      "enLength": 51,
-      "zhLength": 16
-    },
-    {
-      "key": "editBody",
-      "en": "Update how you appear. Your BAP ID stays the same.",
-      "zh": "更新展示资料，BAP ID 保持不变。",
-      "enLength": 50,
-      "zhLength": 19
+      "key": "reviewExpired",
+      "en": "Review this draft again before signing. The text or identity has changed, or this review has expired.",
+      "zh": "正文或身份已变化，或本次确认已失效。请回到草稿重新检查发布。",
+      "enLength": 101,
+      "zhLength": 30
     }
-  ],
-  "long": []
+  ]
 }

@@ -1,7 +1,7 @@
 /* 仅供高保真原型使用；全局事实见核心认知，版本行为见 PRD v0.2.0。 */
 (function (root) {
   const identity = typeof module !== 'undefined' ? require('./model.js') : root.OwnwordModel;
-  const defaultScenarios = {list:'normal', storage:'normal', publish:'success', query:'accepted', confirmation:'pending', account:'none'};
+  const defaultScenarios = {list:'normal', storage:'normal', publish:'success', query:'accepted', confirmation:'pending', account:'none', proof:'record', proofConfirmation:'record'};
   const title = text => root.OwnwordEditorTools?.metadata ? root.OwnwordEditorTools.metadata(text).title : (/^#\s+(.+)$/m.exec(text)?.[1] || '').replace(/[*_`]/g, '').trim();
   const summary = text => root.OwnwordEditorTools?.metadata ? root.OwnwordEditorTools.metadata(text).summary : text.replace(/^#.*$/gm, '').replace(/[*_`>\[\]#]/g, '').replace(/\s+/g, ' ').trim();
   const newId = () => 'draft-' + (root.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
@@ -64,6 +64,14 @@
     if (bytes.byteLength > 102400) throw new Error('importSize');
     try {return new TextDecoder('utf-8', {fatal:true}).decode(bytes);} catch {throw new Error('importEncoding');}
   }
+  function proofResult(record,scenario='record',operations=[]) {
+    const source=record.operationId ? operations.find(op=>op.id===record.operationId) : seed().records.find(r=>r.id===record.id);
+    if (!source) return 'unverified';
+    if (record.content!==source.content || record.authorBapId!==source.authorBapId || record.txid!==source.txid) return 'failed';
+    if (record.operationId && (source.signature!=='sample' || source.phase!=='published')) return 'unverified';
+    const result=scenario==='record' ? record.proof : scenario;
+    return ['valid','failed'].includes(result) ? result : 'unverified';
+  }
   function versions(records,record) {return records.filter(r=>r.rootContentId===record.rootContentId).sort((a,b)=>b.revisionNo-a.revisionNo);}
   function revisionDraft(records,drafts,record,author) {
     if (record.authorBapId!==author || versions(records,record)[0]?.id!==record.id) throw new Error('reviewOutdated');
@@ -80,6 +88,6 @@
     if (!match) return {page: 'content', id: ''};
     try {return {page: match[1], id: decodeURIComponent(match[2] || '')};} catch {return {page: 'read', id: 'invalid'};}
   }
-  const api = {versions, revisionDraft, publicationKey, unresolved, saveJournal, newOperation, acceptPublication, reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
+  const api = {proofResult, versions, revisionDraft, publicationKey, unresolved, saveJournal, newOperation, acceptPublication, reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
   if (typeof module !== 'undefined') module.exports = api; else root.OwnwordContentModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);

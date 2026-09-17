@@ -1,10 +1,10 @@
 {
   "passed": 4,
   "checks": [
-    "163 keys defined in both languages",
+    "340 keys defined in both languages",
     "no empty strings",
     "10 forbidden terms absent from both languages",
     "no duplicated long sentences"
   ],
-  "keys": 163
+  "keys": 340
 }

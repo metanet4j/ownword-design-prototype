@@ -53,3 +53,11 @@ assert.equal(revResult.records[0].revisionNo,2);assert.equal(revResult.records[0
 assert.equal(M.reviewError(revision,revResult.records),'reviewOutdated');
 assert.throws(()=>M.revisionDraft(revResult.records,[],original,authorA));
 console.log('C09 immutable versions, unchanged revision gate and draft reuse passed');
+assert.equal(M.proofResult(original),'valid');
+assert.equal(M.proofResult(original,'unverified'),'unverified');
+assert.equal(M.proofResult(original,'failed'),'failed');
+assert.equal(M.proofResult({...original,content:original.content+' altered'},'valid'),'failed');
+assert.equal(M.proofResult({...original,authorBapId:authorB},'valid'),'failed');
+assert.equal(M.proofResult({...original,txid:'00'.repeat(32)},'valid'),'failed');
+assert.equal(M.proofResult({...original,id:'unknown'},'valid'),'unverified');
+console.log('C10 proof sample states and tampered text / author / transaction guards passed');
