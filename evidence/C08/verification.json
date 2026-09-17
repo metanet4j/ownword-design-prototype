@@ -1,0 +1,15 @@
+{
+  "feature": "C08",
+  "status": "passed",
+  "acceptance": [
+    "C08-A: 公开样例阅读、复制反馈、实际导出源文比对、本机已发布内容刷新重开",
+    "C08-B: 访客直接阅读，未知标识展示原因和样例入口"
+  ],
+  "reviewed": [
+    "desktop-reader.png",
+    "mobile-reader.png",
+    "mobile-missing.png"
+  ],
+  "width": 320,
+  "errors": "empty"
+}

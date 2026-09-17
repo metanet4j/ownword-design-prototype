@@ -1,6 +1,6 @@
 function MarkdownBody({source, t}) {
   const result = React.useMemo(() => OwnwordEditorTools.renderMarkdown(source), [source]);
-  return <><div className="markdown-body" dangerouslySetInnerHTML={{__html: result.html}}></div>{result.unsupported && <p className="content-syntax-note">{t('markdownUnsupported')}</p>}</>;
+  return <><div className="markdown-body" ref={node=>node?.querySelector("h1")?.setAttribute("tabindex","-1")} dangerouslySetInnerHTML={{__html: result.html}}></div>{result.unsupported && <p className="content-syntax-note">{t('markdownUnsupported')}</p>}</>;
 }
 function ContentEditor({draft, onChange, t, locale, actions, savedState}) {
   const host = React.useRef(null), editor = React.useRef(null), menuRef = React.useRef(null), latestChange = React.useRef(onChange);
