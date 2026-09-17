@@ -162,10 +162,11 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .identity-stage { position: relative; max-width: 680px; margin: var(--s2-spacing-400) auto 0; }
 .identity-object { perspective: 1600px; padding: 30px 40px; touch-action: pan-y; cursor: grab; }
 .identity-object:active { cursor: grabbing; }
-.identity-sculpture { position: relative; max-width: 530px; margin-inline: auto; transform-style: preserve-3d; transform: rotateX(6deg) rotateY(var(--angle)); transition: transform 150ms ease-out; }
+/* 双面共享网格尺寸，背面内容也参与撑高，避免溢出到卡片下方。 */
+.identity-sculpture { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); max-width: 530px; margin-inline: auto; transform-style: preserve-3d; transform: rotateX(6deg) rotateY(var(--angle)); transition: transform 150ms ease-out; }
 .identity-sculpture.rotating { animation: identity-turn 16s ease-in-out infinite; }
 @keyframes identity-turn { 0%,100% { transform: rotateX(5deg) rotateY(-18deg); } 50% { transform: rotateX(-3deg) rotateY(20deg); } }
-.identity-plate { position: relative; backface-visibility: hidden; min-height: 330px; border-radius: var(--s2d-radius-xl); background: linear-gradient(125deg, var(--s2-gray-25), var(--s2-blue-100) 50%, var(--s2-gray-100)); border: 1px solid var(--s2-gray-400); padding: var(--s2-spacing-500); box-shadow: inset 0 1px 0 var(--s2-gray-25), 0 12px 32px color-mix(in srgb, var(--s2-black) 6%, transparent); transform: translateZ(6px); }
+.identity-plate { position: relative; grid-area: 1 / 1; min-width: 0; backface-visibility: hidden; min-height: 330px; border-radius: var(--s2d-radius-xl); background: linear-gradient(125deg, var(--s2-gray-25), var(--s2-blue-100) 50%, var(--s2-gray-100)); border: 1px solid var(--s2-gray-400); padding: var(--s2-spacing-500); box-shadow: inset 0 1px 0 var(--s2-gray-25), 0 12px 32px color-mix(in srgb, var(--s2-black) 6%, transparent); transform: translateZ(6px); }
 .identity-plate::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 18%, color-mix(in srgb, var(--s2-white) 38%, transparent) 28%, transparent 38%, transparent 70%, color-mix(in srgb, var(--s2-white) 22%, transparent) 85%, transparent); pointer-events: none; }
 .plate-depth { pointer-events: none; position: absolute; inset: 1px -1px -1px 1px; transform: translateZ(-2px); border-radius: var(--s2d-radius-xl); background: var(--s2-gray-500); box-shadow: 1px 2px 0 var(--s2-gray-400); }
 .plate-top, .plate-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s2-spacing-200); }
@@ -340,7 +341,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 
 .identity-sculpture[data-face="front"] .plate-back,
 .identity-sculpture[data-face="back"] .plate-front { pointer-events: none; }
-.plate-back { position: absolute; inset: 0; transform: rotateY(180deg); display: flex; flex-direction: column; gap: var(--s2-spacing-300); }
+.plate-back { transform: rotateY(180deg) translateZ(6px); display: flex; flex-direction: column; gap: var(--s2-spacing-300); }
 .chain-heading { margin-top: var(--s2-spacing-500); }
 .chain-heading h2 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-700); font-weight: 500; letter-spacing: -.03em; }
 .chain-heading > p { margin-top: var(--s2-spacing-100); color: var(--s2-gray-700); font-size: var(--s2-font-size-100); }

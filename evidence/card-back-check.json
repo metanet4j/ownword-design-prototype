@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-09-17T12:42:00+08:00",
+  "scope": "公开身份卡背面遮挡及关联高度溢出；仅三处 CSS 规则，不改内容或交互逻辑",
+  "rootCause": "背面原位于 z=0，灰色厚度层位于 z=-2；翻转后装饰层更靠近观察者并遮挡背面。背面绝对定位，未参与卡片高度计算。",
+  "fix": "背面 rotateY(180deg) translateZ(6px)，实际 z=-6；正反面叠放在同一 Grid 单元格，共享内容决定的高度。",
+  "beforeHeightFix": {
+    "desktop": {"clientHeight": 446, "scrollHeight": 478},
+    "mobileEnglish": {"clientHeight": 429, "scrollHeight": 580, "backFootBottom": 923.99, "copyTop": 814.61}
+  },
+  "method": "宿主环境 agent-browser 实际鼠标翻转；等待 transform 到达最终角度后截图并人工查看，不以 data-face 或 DOM 文本存在代替视觉验证",
+  "desktop": {
+    "viewport": [1440, 1000],
+    "locale": "en",
+    "theme": "light",
+    "angle": 180.05,
+    "face": "back",
+    "layerZ": {"front": 6, "depth": -2, "back": -6},
+    "clientHeight": 510,
+    "scrollHeight": 510,
+    "backBottom": 828.51,
+    "backFootBottom": 794.50,
+    "copyTop": 879.22,
+    "scrollWidth": 1440,
+    "copyFeedback": "Copied，截图可见",
+    "screenshot": "card-back-desktop.png",
+    "visualReview": "通过：名称、区块高度、确认状态、交易 ID 和 BSV 均位于卡面内，灰色装饰层不遮挡内容"
+  },
+  "mobile": {
+    "viewport": [320, 568],
+    "locale": "zh-CN",
+    "theme": "dark",
+    "face": "back",
+    "clientHeight": 547,
+    "scrollHeight": 547,
+    "backBounds": {"left": 20.98, "right": 299.01, "top": 299.05, "bottom": 847.28},
+    "backFootBottom": 829.70,
+    "copyTop": 892.38,
+    "scrollWidth": 320,
+    "copyFeedback": "copied",
+    "copyButtonHeight": 44,
+    "screenshot": "card-back-mobile.png",
+    "visualReview": "通过：背面可读、可滚动查看全部内容，不覆盖下方 BAP ID 复制区"
+  },
+  "returnToFront": {
+    "viewport": [1440, 1000],
+    "locale": "zh-CN",
+    "theme": "dark",
+    "face": "front",
+    "clientHeight": 510,
+    "scrollHeight": 510,
+    "frontBottom": 843.26,
+    "copyTop": 891.25,
+    "scrollWidth": 1440,
+    "visualReview": "实际拖回正面，临时截图复核通过，正面内容与下方复制区无重叠"
+  },
+  "pageRuntimeErrors": [],
+  "staticCheck": "git diff --check 通过",
+  "limitations": ["剪贴板读取权限被浏览器拒绝，只验证按钮可点击及应用 copied 反馈，未核对系统剪贴板值", "CSS 在验证浏览器通过查询参数重载，未注入替代样式", "未跑全量回归或穷举语言、主题、屏宽与长内容组合"]
+}
