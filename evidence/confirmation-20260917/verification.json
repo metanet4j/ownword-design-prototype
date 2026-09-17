@@ -1,0 +1,94 @@
+{
+  "date": "2026-09-17",
+  "scope": "评审第 1、2 项：确认页阅读起点与完整 BAP ID",
+  "tool": "宿主环境 agent-browser，session astra-review12-20260917",
+  "before": {
+    "viewport": [
+      390,
+      844
+    ],
+    "scrollY": 231,
+    "headingTop": 31.25,
+    "headingBottom": 75.4375,
+    "headerBottom": 120,
+    "idClientWidth": 236,
+    "idScrollWidth": 348,
+    "whiteSpace": "nowrap"
+  },
+  "normal": {
+    "viewport": [
+      390,
+      844
+    ],
+    "language": "zh",
+    "theme": "light",
+    "profile": "Maya Chen；简介“记录想法，分享设计与日常。”",
+    "editScrollY": 369,
+    "reviewScrollY": 0,
+    "headingTop": 262.25,
+    "headerBottom": 120,
+    "stepsTop": 120,
+    "headingFocused": true,
+    "idClientWidth": 236,
+    "idScrollWidth": 236,
+    "idHeight": 49.28125,
+    "whiteSpace": "normal",
+    "horizontalOverflow": false,
+    "copyFeedback": "copied",
+    "backPreservesDraft": true,
+    "desktop": {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "headingTop": 307.390625,
+      "headerBottom": 100,
+      "horizontalOverflow": false
+    }
+  },
+  "boundary": {
+    "viewport": [
+      320,
+      568
+    ],
+    "language": "zh",
+    "theme": "dark",
+    "profile": "长中文姓名、多行简介及连续长链接",
+    "editScrollY": 756,
+    "reviewScrollY": 0,
+    "headingTop": 270.25,
+    "headerBottom": 120,
+    "stepsTop": 120,
+    "headingFocused": true,
+    "idClientWidth": 166,
+    "idScrollWidth": 166,
+    "idHeight": 73.921875,
+    "copyTargetHeight": 44,
+    "horizontalOverflow": false,
+    "profileTextPreserved": true,
+    "copyFeedback": "copied",
+    "cancelAuthorization": "返回编辑页，草稿保留，scrollY=0，焦点为H1",
+    "save": "重新预览、授权后模拟保存成功，返回身份页，scrollY=0，焦点为H1"
+  },
+  "checks": {
+    "screenshotsVisuallyReviewed": true,
+    "browserErrors": [],
+    "console": "console.txt，含页面及模拟操作日志；React/Babel 开发提示保留",
+    "cssTokens": "66 references resolved",
+    "resources": "app.css 和 app.jsx 使用 v=20260917-review"
+  },
+  "reproduce": [
+    "中文浅色，390×844；连接内置已发布身份。",
+    "编辑简介后滚动至页面最底部，点击预览确认；核对 scrollY=0、标题焦点、步骤位于页头下方。",
+    "确认页 BAP ID 完整换行，复制反馈成功；返回编辑，检查草稿。",
+    "320×568 中文深色，输入长姓名、多行与长链接简介；从页底再次预览，检查全文、标识、横向溢出。",
+    "取消钱包授权应返回编辑页；再次预览并授权模拟保存，身份页显示已保存资料。"
+  ],
+  "notRun": [
+    "全量 check-browser.py",
+    "全部屏宽、语言、主题组合",
+    "真实钱包或链上服务",
+    "读取系统剪贴板内容"
+  ],
+  "status": "实现与本轮局部验证完成，等待用户视觉复核"
+}

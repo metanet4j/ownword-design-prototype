@@ -44,7 +44,7 @@
   </style>
 </head>
 <body class="s2">
-  <!-- 评审第 4、5、6 项已应用到产品原型，等待用户视觉复核。 -->
+  <!-- 评审第 1、2、4、5、6 项已应用到产品原型，等待用户视觉复核。 -->
   <div class="layout">
     <aside>
       <div class="brand"><img src="../brand/ownword-small.svg" alt="">ownword</div>
@@ -52,7 +52,7 @@
       <h1>把注意力还给身份与操作。</h1>
       <p>目标：让用户更快完成身份设置，更轻松地阅读和使用公开身份卡。</p>
       <nav aria-label="评审目录">
-        <a href="#confirmation">01 确认页 · 两项优先修复</a>
+        <a href="#confirmation">01 确认页 · 已调整</a>
         <a href="#form">02 表单 · 首屏比例</a>
         <a href="#card">03 身份卡 · 已调整</a>
         <a href="#identity">04 身份页 · 已调整</a>
@@ -60,22 +60,22 @@
       </nav>
       <p><a href="../index.html">打开当前原型</a></p>
       <div id="actions"></div>
-      <p class="scope">6 项建议，第 4、5、6 项已落实，等待视觉复核。标注可切换“交互优先”“视觉打磨”“保留优势”。手机默认收起标注，正文保留完整建议。</p>
+      <p class="scope">6 项建议，第 1、2、4、5、6 项已落实，等待视觉复核。标注可切换“交互优先”“视觉打磨”“保留优势”。手机默认收起标注，正文保留完整建议。</p>
       <p class="scope">初次实查：1440×1000 桌面与 390×844 手机主流程。第 4、5、6 项实施补验包含 320px 中文深色长资料；未验证真实触屏、真实钱包或全量回归。</p>
     </aside>
     <main>
       <div class="lead"><strong>先修阅读与操作，再磨比例。</strong><p>穹顶、地平线和 3D 身份卡已有辨识度。本轮收紧页面铺垫、卡片留白与信息分组。以下均来自本次实际页面截图；审美方向仍需视觉复核。</p></div>
       <data-overlay src="./feedback-views.js" controls="on">
         <article id="confirmation">
-          <p class="priority">优先修复 · 01 / 02</p>
-          <h2>确认页：标题被遮挡，标识被截断。</h2>
+          <p class="priority">01 / 02 已落实 · 待视觉复核</p>
+          <h2>确认页：从顶部核对，标识完整可读。</h2>
           <div class="caption">
-            <p><strong>01 步骤切换要留下明确的阅读起点。</strong>从手机编辑页底部进入确认页后，标题位于屏幕 y≈31–75px，被高 120px 的吸顶页头完全遮住。建议在步骤切换时，让标题落在页头下方，并保留标题焦点。</p>
-            <p><strong>02 核对时显示完整 BAP ID。</strong>当前确认卡将 BAP ID 单行省略，复制按钮仍在。建议允许标识换行，复制按钮保持独立，便于直接核对。完整标识要求引用核心认知第 6.3 节。</p>
+            <p><strong>01 已修复切页后的阅读起点。</strong>进入新页面时立即回到顶部，再聚焦标题。从手机编辑页底部进入确认页，步骤与标题均位于吸顶页头下方；返回编辑仍保留草稿。</p>
+            <p><strong>02 已完整展示 BAP ID。</strong>确认卡允许标识换行，复制按钮独立保留。390px 手机显示两行，320px 窄屏显示三行，无省略或横向溢出。完整标识要求引用核心认知第 6.3 节。</p>
           </div>
-          <div class="shot"><img src="confirm-mobile.png" width="390" height="844" alt="手机确认页：顶部仅见吸顶页头，标题被盖住；卡内 BAP ID 显示省略号。"><span class="anchor" data-metric-id="confirm-heading" style="left:4%;top:3.7%;width:92%;height:10.5%"></span><span class="anchor" data-metric-id="confirm-id" style="left:8%;top:53%;width:84%;height:10%"></span></div>
-          <a class="original" href="confirm-mobile.png" target="_blank" rel="noopener">查看原图 · 390×844</a>
-          <details><summary>复现步骤与完成标准</summary><ol><li>中文浅色，390×844。连接模拟钱包并创建身份，进入“我的身份”。</li><li>打开“编辑资料”，修改简介，滚动至页底，点击“预览确认”。</li><li>确认页标题虽获得焦点，但 y≈31–75px，处于吸顶页头 0–120px 内。<a href="edit-before-confirm.png" target="_blank" rel="noopener">编辑页底部截图</a>。</li></ol><p>完成标准：进入确认页时，步骤和标题可见；BAP ID 完整可读、可复制；页面无横向溢出。</p></details>
+          <div class="shot"><img src="../evidence/confirmation-20260917/mobile.png" width="390" height="844" alt="当前手机确认页：步骤与标题完整可见，BAP ID 分两行完整显示，复制按钮位于右侧。"><span class="anchor" data-metric-id="confirm-heading" style="left:4%;top:14.2%;width:92%;height:27%"></span><span class="anchor" data-metric-id="confirm-id" style="left:8%;top:81%;width:84%;height:10%"></span></div>
+          <a class="original" href="../evidence/confirmation-20260917/mobile.png" target="_blank" rel="noopener">查看原图 · 390×844</a>
+          <details><summary>验证步骤与结果</summary><ol><li>390×844 中文浅色，连接内置已发布身份，编辑简介。</li><li>滚动至编辑页底部，点击“预览确认”：页面回到顶部，步骤与标题可见，标题获得焦点。</li><li>复制完整 BAP ID，返回编辑检查草稿；320px 中文深色长资料重复核对，取消授权后返回编辑，再次预览并模拟保存成功。</li></ol><p><a href="../evidence/confirmation-20260917/boundary-full.png" target="_blank" rel="noopener">窄屏长资料截图</a> · <a href="../evidence/confirmation-20260917/verification.json">验证记录</a>。未执行全量回归或真实钱包验证。</p></details>
         </article>
         <article id="form">
           <p class="priority">视觉打磨 · 03</p>
@@ -109,7 +109,7 @@
           <p class="caption">钱包弹窗明确标注“外部钱包授权”，并说明发布时另行确认。这种操作边界应保留。<a href="wallet-desktop.png" target="_blank" rel="noopener">查看授权弹窗</a>。</p>
         </article>
       </data-overlay>
-      <footer>第 4、5、6 项已应用到产品页面，等待视觉复核；第 1–3 项待处理。各项实现证据分别记录于相应截图目录。第 4、5 项局部验证通过，浏览器错误检查无输出，未执行全量回归。业务依据：核心认知第 6.3、10.5 节；视觉依据：项目绑定的 React Spectrum S2。</footer>
+      <footer>第 1、2、4、5、6 项已应用到产品页面，等待视觉复核；第 3 项待处理。各项实现证据分别记录于相应截图目录。第 1、2 项局部验证通过，浏览器错误检查无输出，未执行全量回归。业务依据：核心认知第 6.3、10.5 节；视觉依据：项目绑定的 React Spectrum S2。</footer>
     </main>
   </div>
   <script src="../vendor/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>

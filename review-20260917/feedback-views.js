@@ -1,7 +1,7 @@
 window.__overlays = {views: [
   {id: 'interaction', label: '交互优先', finding: '先保证用户能看见当前步骤、完整标识和卡片操作。', dim: 1, elements: [
-    {id: 'confirm-heading', callout: {head: '01 标题被页头盖住', body: '标题 y≈31–75px，吸顶页头高 120px。切换步骤时让标题落在页头下方。', dx: 390, dy: -40}},
-    {id: 'confirm-id', callout: {head: '02 核对需要完整标识', body: 'BAP ID 单行截断。允许换行，复制操作独立放置。', dx: 390, dy: -40}},
+    {id: 'confirm-heading', callout: {head: '01 已修复阅读起点', body: '切页回到顶部并聚焦标题。步骤、标题位于页头下方，返回编辑保留草稿。', dx: 390, dy: -40}},
+    {id: 'confirm-id', callout: {head: '02 标识已完整展示', body: 'BAP ID 自动换行，复制按钮独立保留。390px 手机两行完整显示。', dx: 390, dy: -40}},
     {id: 'card-affordance', callout: {head: '05 已加入翻面入口', body: '按钮固定在卡片上方，支持点击、Enter 与空格；保留拖动。等待视觉复核。', dx: 390, dy: -40}}
   ]},
   {id: 'visual', label: '视觉打磨', finding: '保留穹顶与地平线，收紧任务页面的铺垫与空白。', dim: 1, elements: [

@@ -47,10 +47,13 @@ function App() {
   React.useEffect(() => {
     console.info('[Ownword prototype]', {page: state.page, wallet: state.wallet ? 'connected' : 'disconnected', operation: state.busy || state.modal || 'none', account: state.account, notice: state.notice, error: state.error, epoch: state.epoch});
     setErrors({}); setImageError('');
-    // Route changes move focus to the new heading; the first paint must not, or
-    // Tab would start inside main and skip the skip-link and topbar controls.
+    // 页面切换回到顶部并聚焦标题，避免沿用上一页的滚动位置。
+    // 首次加载保留默认焦点，让 Tab 从跳转链接和页头开始。
     if (firstPaint.current) {firstPaint.current = false; return;}
-    if (!state.modal) document.querySelector('main h1')?.focus({preventScroll: true});
+    if (!state.modal) {
+      window.scrollTo({top: 0, behavior: 'instant'});
+      document.querySelector('main h1')?.focus({preventScroll: true});
+    }
   }, [state.page, state.epoch]);
   React.useEffect(() => {
     const block = e => {if (dirty && (formPage || state.page === 'review')) {e.preventDefault(); e.returnValue = '';}};
