@@ -1,6 +1,6 @@
 const words = window.OwnwordCopy;
 function App() {
-  const {initial, reducer, validate, countGraphemes, ids} = OwnwordModel;
+  const {initial, reducer, validate, hasProfileChanges, countGraphemes, ids} = OwnwordModel;
   const {useDismissable} = window;
   const [state, dispatch] = React.useReducer(reducer, undefined, initial);
   const pref = (key, fallback) => {try {return localStorage.getItem(`ownword-astra-${key}`) || fallback;} catch {return fallback;}};
@@ -28,7 +28,8 @@ function App() {
   const bapId = ids[state.account];
   const formPage = state.page === 'setup' || state.page === 'edit';
   const editing = state.page === 'edit';
-  const dirty = JSON.stringify(state.profile) !== JSON.stringify(state.draft);
+  const dirty = hasProfileChanges(state);
+  const noChanges = state.published && !dirty;
   const errors = validationShown ? validate(state.draft) : {};
   useDismissable(prefs, () => setPrefs(false), prefsRef);
   React.useEffect(() => {
@@ -102,6 +103,7 @@ function App() {
     return () => clearTimeout(timer);
   }, [accountEvent, state.wallet, state.modal, state.busy, state.epoch]);
   function checkForm() {
+    if (noChanges) return;
     const found = validate(state.draft); setValidationShown(true);
     if (Object.values(found).some(Boolean)) {setTimeout(() => document.querySelector('[aria-invalid="true"]')?.focus(), 0); return;}
     dispatch({type: 'REVIEW'});
@@ -168,13 +170,13 @@ function App() {
           <fieldset className="type-choice"><legend>{t('type')} *</legend><div className="choice-row">{['Person', 'Organization'].map(type => <Button key={type} aria-pressed={state.draft.type === type} onClick={() => dispatch({type: 'DRAFT', field: 'type', value: type})}>{t(type)}</Button>)}</div>{errors.type && <p className="field-error" data-field-error={errors.type}>{t(errors.type)}</p>}</fieldset>
           <Field id="profile-bio" label={`${t('bio')} · ${t('optional')}`} multiline value={state.draft.bio} onChange={value => dispatch({type: 'DRAFT', field: 'bio', value})} error={errors.bio ? t(errors.bio) : ''} errorKey={errors.bio || ''} />
           <p className="character-count">{countGraphemes(state.draft.bio)} / 1000</p>
-          <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => navigate(state.published ? 'identity' : 'welcome')}>{t('back')}</Button><Button variant="accent" data-action="review" type="submit">{t(editing ? 'review' : 'review')}</Button></div>
+          <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => navigate(state.published ? 'identity' : 'welcome')}>{t('back')}</Button><Button variant="accent" data-action="review" type="submit" disabled={noChanges}>{t(noChanges ? 'noChanges' : 'review')}</Button></div>
         </form>
       </section>}
       {state.page === 'review' && <section className="workbench review-layout">
         <aside>{heading('reviewHeading', 'reviewBody', 'review')}<p className="impact">{t(state.published ? 'saveImpact' : 'createImpact')}</p><p className="hint">{t('controlStatement')}</p></aside>
         <div className="review-profile"><div className="person-row"><Portrait profile={state.draft} /><div><span className="profile-type">{t(state.draft.type)}</span><h2>{state.draft.name}</h2></div></div><p className="bio">{state.draft.bio || t('noBio')}</p><Identifier id={bapId} t={t} failCopy={failCopy} /><p className="hint">{t(state.published ? 'published' : 'localId')}</p>
-          {state.busy ? <div className="processing" role="status"><LoadingMark small /><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p></div> : <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" data-action="submit-operation" data-operation={state.published ? 'save' : 'create'} onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
+          {state.busy ? <div className="processing" role="status"><LoadingMark small /><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p></div> : <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" data-action="submit-operation" disabled={noChanges} data-operation={state.published ? 'save' : 'create'} onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
         </div>
       </section>}
       {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}

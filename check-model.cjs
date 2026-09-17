@@ -25,6 +25,17 @@ eq(step(processing, {type: 'RESULT', operation: 'create', fail: true}).published
 let ready = step(processing, {type: 'RESULT', operation: 'create', epoch: processing.epoch});
 eq(ready.page, 'ready'); eq(ready.profile.name, 'Horizon'); eq(ready.published, true);
 let editing = step(connect('existing'), {type: 'EDIT'});
+// 原值与改回原值均不进入保存；每种资料字段的实际修改都可继续。
+eq(step(editing, {type: 'REVIEW'}), editing);
+eq(step(editing, {type: 'AUTHORIZE', operation: 'save'}), editing);
+for (const [field, value] of Object.entries({name: 'Changed', bio: 'New bio', type: 'Organization', image: 'blob:avatar'})) {
+  const changed = step(editing, {type: 'DRAFT', field, value});
+  eq(step(changed, {type: 'REVIEW'}).page, 'review');
+  eq(step(changed, {type: 'AUTHORIZE', operation: 'save'}).modal, 'save');
+  const reverted = step(changed, {type: 'DRAFT', field, value: editing.profile[field]});
+  eq(step(reverted, {type: 'REVIEW'}), reverted);
+  eq(step(reverted, {type: 'AUTHORIZE', operation: 'save'}), reverted);
+}
 editing = step(editing, {type: 'DRAFT', field: 'name', value: 'Changed'});
 editing = step(step(editing, {type: 'REVIEW'}), {type: 'AUTHORIZE', operation: 'save'});
 const cancelled = step(editing, {type: 'CANCEL'});

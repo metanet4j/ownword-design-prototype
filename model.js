@@ -27,6 +27,7 @@
   function validate(p) {
     return {name: !p.name.trim() ? 'required' : countGraphemes(p.name) > 100 ? 'nameLong' : '', bio: countGraphemes(p.bio) > 1000 ? 'bioLong' : '', type: !['Person', 'Organization'].includes(p.type) ? 'typeRequired' : ''};
   }
+  const hasProfileChanges = s => Object.keys(emptyProfile()).some(field => s.profile[field] !== s.draft[field]);
   function reducer(s, a) {
     if (a.epoch !== undefined && a.epoch !== s.epoch) return s;
     switch (a.type) {
@@ -40,9 +41,9 @@
       }
       case 'RETRY_RESOLVE': return {...s, page: 'resolving', busy: 'resolving', error: '', epoch: s.epoch + 1};
       case 'DRAFT': return {...s, draft: {...s.draft, [a.field]: a.value}, notice: '', error: ''};
-      case 'REVIEW': return {...s, page: 'review', notice: '', error: ''};
+      case 'REVIEW': return s.published && !hasProfileChanges(s) ? s : {...s, page: 'review', notice: '', error: ''};
       case 'EDIT': return {...s, page: 'edit', draft: {...s.profile}, notice: '', error: ''};
-      case 'AUTHORIZE': return {...s, modal: a.operation, error: '', notice: ''};
+      case 'AUTHORIZE': return a.operation === 'save' && !hasProfileChanges(s) ? s : {...s, modal: a.operation, error: '', notice: ''};
       case 'CANCEL': return {...s, modal: null, busy: '', page: s.modal === 'save' ? (s.incomplete ? 'setup' : 'edit') : s.page, notice: s.modal === 'connect' ? 'connectCancelled' : s.modal === 'create' ? 'createCancelled' : 'saveCancelled'};
       case 'CONNECT_FAILED': return {...s, modal: null, error: 'connectFailed'};
       case 'PROCESS': return {...s, modal: null, busy: a.operation, epoch: s.epoch + 1};
@@ -57,7 +58,7 @@
       default: return s;
     }
   }
-  const api = {ids, fixtures, transactions, emptyProfile, initial, countGraphemes, validate, reducer};
+  const api = {ids, fixtures, transactions, emptyProfile, initial, countGraphemes, validate, hasProfileChanges, reducer};
   if (typeof module !== 'undefined') module.exports = api;
   else root.OwnwordModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);
