@@ -104,6 +104,8 @@
   Object.assign(words.zh, {"writerTitle-checking": "正在打开内容工作区", "writerBody-checking": "正在检查当前编辑页面。", "writerTitle-busy": "内容工作区已在另一页打开", "writerBody-busy": "请在原页面继续编辑，或关闭原页面后在此重试，避免草稿和发布记录相互覆盖。", "writerTitle-unavailable": "当前页面可供阅读", "writerBody-unavailable": "编辑需要浏览器支持页面协作。请使用新版浏览器，通过 localhost 或 HTTPS 打开原型后重试。"});
   Object.assign(words.en, {"draftRecovered": "Recovered draft", "draftRecoveredBody": "Your unsaved words are in recovered drafts. Open each draft to check that it saves."});
   Object.assign(words.zh, {"draftRecovered": "恢复草稿", "draftRecoveredBody": "未保存文字已保留在恢复草稿中。请打开草稿，确认保存状态。"});
+  Object.assign(words.en, {"readerContents": "On this page", "readerTocExpand": "Expand", "readerTocCollapse": "Collapse"});
+  Object.assign(words.zh, {"readerContents": "本文目录", "readerTocExpand": "展开", "readerTocCollapse": "收起"});
   const api = {en: words.en, zh: words.zh, locales: ['en', 'zh'], keys: Object.keys(words.en)};
   if (typeof module !== 'undefined') module.exports = api;
   else root.OwnwordCopy = api;

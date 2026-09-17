@@ -1,0 +1,19 @@
+{
+  "ids": [
+    "reader-heading-1",
+    "reader-heading-2",
+    "reader-heading-3",
+    "reader-heading-4",
+    "reader-heading-5",
+    "reader-heading-6"
+  ],
+  "labels": [
+    "开始 创作",
+    "保留 Markdown 原文",
+    "重复章节",
+    "重复章节",
+    "六级标题与跳级结构",
+    "让长标题在手机端自然换行，保持章节名称完整可读并且不撑开阅读页面"
+  ],
+  "overflow": false
+}

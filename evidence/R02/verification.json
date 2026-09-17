@@ -1,0 +1,25 @@
+{
+  "feature": "R02",
+  "request": "Markdown 内容详情没有目录",
+  "implementation": "content-reader.jsx 从实际正文标题生成目录，content.css 沿用 S2 布局与样式；不修改正文源数据。",
+  "reference": "reference/xLog-dev/src/components/site/PostToc.tsx",
+  "checks": {
+    "headings": "headings.json：重复标题锚点唯一，行内格式显示为文字，代码块标题不进入目录",
+    "desktop": "desktop-check.json、desktop-jump.json：定位、当前章节、路由保持",
+    "mobile": "mobile-check.json、narrow-check.json、mobile-position.json：390/320px 可折叠，跳转后收起，目标不被遮挡",
+    "keyboard": "keyboard.json：Enter 跳转并转移焦点",
+    "scroll": "scroll-current.json：手动滚动更新当前位置",
+    "empty": "no-sections.json：仅有文章标题时不显示空目录",
+    "harness": "harness-check.txt",
+    "runtime": "browser-errors.txt、browser-console.txt"
+  },
+  "screenshots": [
+    "toc-desktop.png",
+    "toc-desktop-current.png",
+    "toc-mobile-expanded.png",
+    "toc-mobile-jump.png"
+  ],
+  "runnableCheck": "在带章节的阅读页执行 agent-browser --session content-r02 eval --stdin < evidence/R02/check-toc.js",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "定向浏览器验证，未执行全量回归；沿用模拟发布边界。"
+}

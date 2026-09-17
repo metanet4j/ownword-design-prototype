@@ -201,3 +201,22 @@
 [data-proof-state="failed"] { color:var(--s2d-negative); }
 [data-proof-state="valid"] { color:var(--s2-positive-color-900); }
 @media(max-width:700px) { .proof-facts > div { grid-template-columns:1fr; gap:var(--s2-spacing-50); } }
+
+.reader-layout { min-width:0; }
+.reader-toc { position:sticky; z-index:2; align-self:start; background:var(--s2-gray-50); border-bottom:1px solid var(--s2d-border); }
+.reader-toc-toggle { width:100%; justify-content:space-between; border-radius:0; padding-inline:0; }
+.reader-toc-toggle > span { color:var(--s2-gray-700); font-size:var(--s2-font-size-75); }
+.reader-toc ol { list-style:none; margin:0; padding:var(--s2-spacing-100) 0; max-height:45dvh; overflow-y:auto; overscroll-behavior:contain; }
+.reader-toc-item { width:100%; height:auto; min-height:44px; white-space:normal; overflow-wrap:anywhere; justify-content:flex-start; text-align:start; border:0; border-inline-start:2px solid transparent; border-radius:0; padding-block:var(--s2-spacing-100); color:var(--s2-gray-700); font-size:var(--s2-font-size-100); font-weight:400; line-height:1.5; }
+.reader-toc-item[aria-current="location"] { color:var(--s2d-accent); border-inline-start-color:var(--s2d-accent); background:var(--s2-gray-75); font-weight:600; }
+.reader-paper :is(h1,h2,h3,h4,h5,h6):focus-visible { outline:2px solid var(--s2d-focus); outline-offset:4px; }
+@media(min-width:1200px) {
+ .content-reader.has-toc { max-width:1120px; }
+ .content-reader.has-toc > :not(.reader-layout) { max-width:calc(100% - 252px); }
+ .has-toc .reader-layout { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:var(--s2-spacing-400); }
+ .has-toc .reader-paper { grid-column:1; grid-row:1; min-width:0; margin-inline:0; width:100%; }
+ .reader-toc { grid-column:2; grid-row:1; border-bottom:0; margin-top:var(--s2-spacing-500); }
+ .reader-toc h2 { font-family:var(--s2d-font-family); font-size:var(--s2-font-size-100); font-weight:600; margin:0 0 var(--s2-spacing-200); }
+ .reader-toc ol { max-height:calc(100dvh - 200px); border-inline-start:1px solid var(--s2d-border); }
+}
+@media print { .reader-toc { display:none; } .has-toc .reader-layout { display:block; } .content-reader.has-toc > :not(.reader-layout) { max-width:none; } }
