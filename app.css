@@ -270,6 +270,16 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .flow-steps { gap: var(--s2-spacing-300); justify-content: space-between; margin-bottom: var(--s2-spacing-300); padding: var(--s2-spacing-300) 0; }
   .flow-steps li { flex-direction: column; gap: var(--s2-spacing-75); font-size: var(--s2-font-size-75); }
   .profile-form, .review-profile { padding: var(--s2-spacing-300); gap: var(--s2-spacing-400); }
+  [data-screen-label="setup"] .flow-steps { margin-bottom: var(--s2-spacing-200); padding-block: var(--s2-spacing-200); }
+  [data-screen-label="setup"] .workbench { gap: var(--s2-spacing-300); padding-top: 0; }
+  [data-screen-label="setup"] .workbench > aside { padding-top: 0; }
+  [data-screen-label="setup"] .page-heading h1 { font-size: var(--s2-font-size-500); }
+  [data-screen-label="setup"] .page-heading .eyebrow { margin-bottom: var(--s2-spacing-75); }
+  [data-screen-label="setup"] .page-heading > p:last-child { margin-top: var(--s2-spacing-100); }
+  [data-screen-label="setup"] .aside-identity { gap: var(--s2-spacing-75); margin-top: var(--s2-spacing-200); }
+  [data-screen-label="setup"] .avatar-field > div:last-child { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2-spacing-75) var(--s2-spacing-200); }
+  [data-screen-label="setup"] .avatar-field .action-row { margin-top: 0; }
+  [data-screen-label="setup"] .avatar-field .hint { flex-basis: 100%; margin-top: 0; }
   .avatar-field { gap: var(--s2-spacing-300); }
   .avatar-field .portrait { width: 52px; height: 52px; }
   .avatar-field .s2d-button { font-size: var(--s2-font-size-75); }

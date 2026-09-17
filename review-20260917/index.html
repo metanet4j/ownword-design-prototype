@@ -44,7 +44,7 @@
   </style>
 </head>
 <body class="s2">
-  <!-- 评审第 1、2、4、5、6 项已应用到产品原型，等待用户视觉复核。 -->
+  <!-- 评审 6 项建议已应用到产品原型，等待用户视觉复核。 -->
   <div class="layout">
     <aside>
       <div class="brand"><img src="../brand/ownword-small.svg" alt="">ownword</div>
@@ -53,14 +53,14 @@
       <p>目标：让用户更快完成身份设置，更轻松地阅读和使用公开身份卡。</p>
       <nav aria-label="评审目录">
         <a href="#confirmation">01 确认页 · 已调整</a>
-        <a href="#form">02 表单 · 首屏比例</a>
+        <a href="#form">02 表单 · 已调整</a>
         <a href="#card">03 身份卡 · 已调整</a>
         <a href="#identity">04 身份页 · 已调整</a>
         <a href="#keep">05 保留的视觉优势</a>
       </nav>
       <p><a href="../index.html">打开当前原型</a></p>
       <div id="actions"></div>
-      <p class="scope">6 项建议，第 1、2、4、5、6 项已落实，等待视觉复核。标注可切换“交互优先”“视觉打磨”“保留优势”。手机默认收起标注，正文保留完整建议。</p>
+      <p class="scope">6 项建议均已落实，等待视觉复核。标注可切换“交互优先”“视觉打磨”“保留优势”。手机默认收起标注，正文保留完整建议。</p>
       <p class="scope">初次实查：1440×1000 桌面与 390×844 手机主流程。第 4、5、6 项实施补验包含 320px 中文深色长资料；未验证真实触屏、真实钱包或全量回归。</p>
     </aside>
     <main>
@@ -78,12 +78,12 @@
           <details><summary>验证步骤与结果</summary><ol><li>390×844 中文浅色，连接内置已发布身份，编辑简介。</li><li>滚动至编辑页底部，点击“预览确认”：页面回到顶部，步骤与标题可见，标题获得焦点。</li><li>复制完整 BAP ID，返回编辑检查草稿；320px 中文深色长资料重复核对，取消授权后返回编辑，再次预览并模拟保存成功。</li></ol><p><a href="../evidence/confirmation-20260917/boundary-full.png" target="_blank" rel="noopener">窄屏长资料截图</a> · <a href="../evidence/confirmation-20260917/verification.json">验证记录</a>。未执行全量回归或真实钱包验证。</p></details>
         </article>
         <article id="form">
-          <p class="priority">视觉打磨 · 03</p>
-          <h2>手机表单：让输入更早出现。</h2>
-          <p class="caption">390×844 的创建页中，名称输入框从约 y=636px 开始。步骤、标题、说明、身份信息和头像消耗了大部分首屏。建议压缩标题区与身份摘要的纵向间距，缩小头像组占高，保留字段之间的呼吸感。BAP ID 继续可见。</p>
-          <div class="shot"><img src="create-mobile.png" width="390" height="844" alt="手机创建页：多个说明区之后才出现名称输入框，简介与提交按钮在首屏外。"><span class="anchor" data-metric-id="form-intro" style="left:4%;top:18%;width:92%;height:33%"></span><span class="anchor" data-metric-id="form-first-input" style="left:8%;top:53%;width:84%;height:29%"></span></div>
-          <a class="original" href="create-mobile.png" target="_blank" rel="noopener">查看原图 · 390×844</a>
-          <p class="caption">完成标准：在这组屏宽下，名称和类型更早进入首屏，说明仍清楚。不要为了缩短页面压小触控目标。</p>
+          <p class="priority">03 已落实 · 待视觉复核</p>
+          <h2>手机表单：更早开始填写。</h2>
+          <p class="caption">收紧步骤、标题与身份摘要间距；头像标签和选图按钮并排，空间不足时自然换行。390×844 的名称输入框由约 y=635px 上移至 514px，类型区由约 714px 上移至 593px，简介输入也进入首屏。BAP ID 完整可读，按钮保持 44px 高，字段间距保留。</p>
+          <div class="shot"><img src="../evidence/setup-layout-20260917/mobile.png" width="390" height="844" alt="当前手机创建页：标题和身份摘要更紧凑，头像标签与选图按钮并排，名称、类型及简介输入更早出现。"><span class="anchor" data-metric-id="form-intro" style="left:4%;top:17%;width:92%;height:25%"></span><span class="anchor" data-metric-id="form-first-input" style="left:8%;top:55%;width:84%;height:26%"></span></div>
+          <a class="original" href="../evidence/setup-layout-20260917/mobile.png" target="_blank" rel="noopener">查看原图 · 390×844</a>
+          <p class="caption">已验证必填提示、预览返回及模拟创建；320px 英文深色下图片操作可换行，无横向溢出，滚动后可操作输入区。短屏仍需滚动。<a href="../evidence/setup-layout-20260917/boundary-input.png" target="_blank" rel="noopener">窄屏输入截图</a> · <a href="../evidence/setup-layout-20260917/verification.json">验证记录</a>。未执行全量回归或真实手机键盘验证。</p>
         </article>
         <article id="card">
           <p class="priority">04 / 05 已落实 · 待视觉复核</p>
@@ -109,7 +109,7 @@
           <p class="caption">钱包弹窗明确标注“外部钱包授权”，并说明发布时另行确认。这种操作边界应保留。<a href="wallet-desktop.png" target="_blank" rel="noopener">查看授权弹窗</a>。</p>
         </article>
       </data-overlay>
-      <footer>第 1、2、4、5、6 项已应用到产品页面，等待视觉复核；第 3 项待处理。各项实现证据分别记录于相应截图目录。第 1、2 项局部验证通过，浏览器错误检查无输出，未执行全量回归。业务依据：核心认知第 6.3、10.5 节；视觉依据：项目绑定的 React Spectrum S2。</footer>
+      <footer>6 项建议已应用到产品页面，等待视觉复核。各项实现证据分别记录于相应截图目录。第 3 项局部验证通过，浏览器错误检查无输出，未执行全量回归。业务依据：核心认知第 6.3、10.5 节；视觉依据：项目绑定的 React Spectrum S2。</footer>
     </main>
   </div>
   <script src="../vendor/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>

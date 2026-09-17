@@ -1,0 +1,27 @@
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "create", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "ready", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "create", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "ready", wallet: "connected", operation: "none", account: 0, notice: "", ...}

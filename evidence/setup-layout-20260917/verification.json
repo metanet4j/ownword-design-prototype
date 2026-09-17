@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-17",
+  "scope": "评审第 3 项：手机创建页首屏比例",
+  "tool": "宿主 agent-browser，session astra-setup3-20260917",
+  "change": "只在 max-width:650px 的 setup 页面收紧步骤、标题、身份摘要与头像排列；字段间距和现有按钮尺寸保留。",
+  "normal": {
+    "viewport": [
+      390,
+      844
+    ],
+    "language": "zh",
+    "theme": "light",
+    "before": {
+      "nameTop": 634.90625,
+      "typeTop": 713.5,
+      "avatarHeight": 113.140625
+    },
+    "after": {
+      "nameTop": 514.171875,
+      "typeTop": 592.765625,
+      "typeBottom": 669.40625,
+      "avatarHeight": 73.5,
+      "idClientWidth": 358,
+      "idScrollWidth": 358,
+      "buttonHeights": [
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "horizontalOverflow": false
+    },
+    "validation": "空名称提示“请输入名称。”，aria-invalid=true，焦点移至profile-name",
+    "back": "预览后鼠标返回，名称和简介保留",
+    "creation": "模拟授权后进入 ready"
+  },
+  "boundary": {
+    "viewport": [
+      320,
+      568
+    ],
+    "language": "en",
+    "theme": "dark",
+    "name": "North Studio",
+    "type": "Organization",
+    "idComplete": true,
+    "horizontalOverflow": false,
+    "avatar": "上传本轮截图作为本地测试图片，选图与移除按钮换行且保持44px，移除成功",
+    "keyboardBackPreservesDraft": true,
+    "inputAfterScroll": {
+      "top": 336.546875,
+      "bottom": 391.140625,
+      "headerBottom": 120,
+      "actionsTop": 499
+    },
+    "creation": "模拟授权后进入 ready",
+    "note": "短屏仍需滚动至输入区；截图中的操作栏固定在视口底部。"
+  },
+  "checks": {
+    "screenshotsVisuallyReviewed": true,
+    "browserErrors": [],
+    "console": "console.txt；保留 React/Babel 开发提示",
+    "cssTokens": "66 references resolved",
+    "resourceVersion": "app.css?v=20260917-setup"
+  },
+  "automationNote": "首轮自动点击未成功返回，后续等待控件滚动定位后，鼠标与键盘返回均通过；没有修改业务状态逻辑。",
+  "reproduce": [
+    "390×844 中文浅色，连接新身份场景，核对名称、类型、完整标识与按钮尺寸。",
+    "提交空名称，确认错误提示和焦点；填入名称简介，预览后返回，检查草稿，再完成模拟创建。",
+    "320×568 英文深色，切换组织类型，选择并移除本地图片；滚动后检查字段位于页头和固定操作栏之间。",
+    "预览后用键盘返回，检查草稿，再完成模拟创建。"
+  ],
+  "notRun": [
+    "全量回归",
+    "全部语言/主题/屏宽组合",
+    "真实手机键盘与触屏",
+    "真实钱包或链上服务"
+  ],
+  "status": "实现与局部验证完成，等待用户视觉复核"
+}

@@ -5,7 +5,7 @@ window.__overlays = {views: [
     {id: 'card-affordance', callout: {head: '05 已加入翻面入口', body: '按钮固定在卡片上方，支持点击、Enter 与空格；保留拖动。等待视觉复核。', dx: 390, dy: -40}}
   ]},
   {id: 'visual', label: '视觉打磨', finding: '保留穹顶与地平线，收紧任务页面的铺垫与空白。', dim: 1, elements: [
-    {id: 'form-intro', callout: {head: '03 铺垫占据首屏', body: '名称输入框从约 y=636px 开始。压缩标题、身份摘要和头像组的高度。', dx: 390, dy: -40}},
+    {id: 'form-intro', callout: {head: '03 输入区已提前', body: '名称从约635px上移至514px，类型和简介更早出现；完整标识与44px按钮保留。', dx: 390, dy: -40}},
     {id: 'card-proportion', callout: {head: '04 已收紧卡片比例', body: '示例卡片由约 549px 降至 376px，复制入口进入首屏。等待视觉复核。', dx: 390, dy: -40}},
     {id: 'identity-heading', callout: {head: '06 已收紧身份层次', body: '小标题标明页面，姓名成为视觉重点，发布状态靠近姓名。等待视觉复核。', place: 'below'}},
     {id: 'identity-details', callout: {head: '06 简介自然衔接', body: '简介放在主信息和操作下方；短内容紧凑，长内容完整换行。', place: 'below'}}
