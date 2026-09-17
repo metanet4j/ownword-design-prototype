@@ -120,3 +120,16 @@
 .content-syntax-note { color: var(--s2-gray-700); font-size: var(--s2-font-size-75); line-height: 1.6; padding-top: var(--s2-spacing-300); border-top: 1px solid var(--s2d-border); }
 @media(max-width:700px) { .markdown-body { font-size: var(--s2-font-size-100); } .markdown-body h1 { font-size: var(--s2-font-size-700); } .markdown-body h2 { font-size: var(--s2-font-size-400); } }
 @media(max-width:700px) { .editor-tools > [data-format="link"] { display: none; } .editor-heading-picker select { max-width: 100px; } }
+.draft-save-state { display: inline-flex; align-items: center; gap: var(--s2-spacing-100); font-size: var(--s2-font-size-75); color: var(--s2-gray-700); }
+.draft-save-state::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--s2-gray-500); }
+.draft-save-state.saved::before { background: var(--s2-positive-color-900); }
+.draft-save-state.error { color: var(--s2d-negative); }
+.draft-save-state.error::before { background: currentColor; }
+.draft-error { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2-spacing-200); padding: var(--s2-spacing-300); border: 1px solid var(--s2d-negative); border-radius: var(--s2d-radius); margin-block: var(--s2-spacing-300); font-size: var(--s2-font-size-100); line-height: 1.7; }
+.draft-error p { flex: 1; min-width: 180px; }
+.draft-message { padding-block: var(--s2-spacing-200); color: var(--s2-gray-700); font-size: var(--s2-font-size-100); }
+.content-list li { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; }
+.draft-options { position: relative; }
+.draft-options-menu { position: absolute; z-index: 3; right: 0; top: 100%; padding: var(--s2-spacing-200); background: var(--s2d-layer-raised); border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius); }
+.draft-dialog-title { display: block; margin-block: var(--s2-spacing-300); }
+@media(max-width:700px) { .content-list li { grid-template-columns: minmax(0,1fr); } .draft-options { justify-self: end; margin-top: calc(-1 * var(--s2-spacing-300)); } .content-row-meta { max-width: 70px; } }

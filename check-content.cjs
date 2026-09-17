@@ -5,3 +5,13 @@ assert.deepEqual(M.parseRoute('#/write/draft-first'), {page: 'write', id: 'draft
 assert.equal(M.title('# My first words\n\nText'), 'My first words');
 assert.equal(M.seed().drafts.filter(d => d.authorBapId === require('./model.js').ids[1]).length, 0);
 console.log('C01 route and author fixtures passed');
+const values = new Map();
+const storage = {getItem:key => values.get(key) ?? null, setItem:(key,value) => values.set(key,value)};
+const [authorA,authorB] = require('./model.js').ids;
+const itemA = M.draft(authorA, '# Saved 中文'); const itemB = M.draft(authorB, '# Private B');
+M.saveDrafts(storage,authorA,[itemA,itemB]);
+assert.deepEqual(JSON.parse(values.get(M.draftKey(authorA))),[itemA]);
+assert.equal(M.load(storage).drafts.find(d=>d.id===itemA.id).content,'# Saved 中文');
+assert.equal(M.load(storage).drafts.some(d=>d.id===itemB.id),false);
+assert.throws(()=>M.saveDrafts({setItem(){throw new Error('quota');}},authorA,[itemA]));
+console.log('C04 durable draft and author separation passed');

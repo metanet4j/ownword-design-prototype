@@ -77,8 +77,8 @@ function App() {
     else dispatch({type: 'GO', page});
   }
   function resolveAgain() {operationScenario.current = scenario === 'missing' ? 'new' : scenario; dispatch({type: 'RETRY_RESOLVE'});}
-  function switchAccount() {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}
-  function disconnect() {setPrefs(false); dispatch({type: 'DISCONNECT'});}
+  function switchAccount(forced = false) {const perform = () => {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}; if (forced === true) perform(); else contentRef.current?.leave(perform);}
+  function disconnect(forced = false) {const perform = () => {setPrefs(false); dispatch({type: 'DISCONNECT'});}; if (forced === true) perform(); else contentRef.current?.leave(perform);}
   // 演练配置只决定下一次操作，不进入产品状态或签名输入。
   function confirmConnection() {
     operationScenario.current = scenario;
@@ -107,7 +107,7 @@ function App() {
       if (currentState.current.epoch !== epoch) return;
       setAccountEvent('none');
       console.info('[Ownword prototype] account event', {action, phase, epoch});
-      if (action === 'switch') switchAccount(); else disconnect();
+      if (action === 'switch') switchAccount(true); else disconnect(true);
     }, phase === 'confirm' ? 1200 : 600);
     return () => clearTimeout(timer);
   }, [accountEvent, state.wallet, state.modal, state.busy, state.epoch]);
@@ -216,7 +216,7 @@ function App() {
       <label>{t('accountEvent')}<select data-scenario="account-event" value={accountEvent} onChange={e => setAccountEvent(e.target.value)}>{['none', 'switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'].map(value => <option key={value} value={value}>{t(value)}</option>)}</select></label>
       <p className="hint">{t('accountEventHint')}</p>
       <ContentSettings settings={contentSettings} setSettings={setContentSettings} t={t} />
-      <label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <><Button onClick={resolveAgain}>{t('resolveAgain')}</Button><Button data-action="simulate-switch" onClick={switchAccount}>{t('accountSwitch')}</Button><Button data-action="simulate-disconnect" onClick={disconnect}>{t('disconnect')}</Button></>}<Button data-action="reset-session" onClick={resetSession}>{t('reset')}</Button></div></section>}
+      <label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <><Button onClick={resolveAgain}>{t('resolveAgain')}</Button><Button data-action="simulate-switch" onClick={() => switchAccount(true)}>{t('accountSwitch')}</Button><Button data-action="simulate-disconnect" onClick={() => disconnect(true)}>{t('disconnect')}</Button></>}<Button data-action="reset-session" onClick={resetSession}>{t('reset')}</Button></div></section>}
     {state.modal && <Modal context={state.modal === 'discard' || (state.modal === 'connect' && scenario === 'missing') ? 'OWNWORD' : t('walletAuthorization')} closeLabel={t('close')} titleKey={state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle'} title={t(state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle')} onCancel={() => dispatch({type: state.modal === 'discard' ? 'STAY' : 'CANCEL'})}>
       {state.modal === 'discard' ? <><p>{t('discardBody')}</p><div className="action-row"><Button data-action="keep-editing" onClick={() => dispatch({type: 'STAY'})}>{t('keepEditing')}</Button><Button variant="negative" data-action="discard" onClick={() => dispatch({type: 'DISCARD'})}>{t('discard')}</Button></div></> : <>
         <p>{t(state.modal === 'connect' ? scenario === 'missing' ? 'missingBody' : 'connectBody' : state.modal === 'create' ? 'createImpact' : 'saveImpact')}</p>
