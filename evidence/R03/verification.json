@@ -1,0 +1,52 @@
+{
+  "feature": "R03",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "仅文字内容高保真原型；可视化编辑与源码切换",
+  "acceptance": [
+    "C02-A",
+    "C02-B",
+    "C02-C",
+    "C02-D",
+    "C05-A",
+    "C06-A",
+    "X01",
+    "X02"
+  ],
+  "dependency": {
+    "name": "@milkdown/kit",
+    "version": "7.22.1",
+    "delivery": "锁文件固定版本，esbuild 构建本地 vendor/editor-tools.js",
+    "source": "https://milkdown.dev/docs/guide/using-milkdown-kit"
+  },
+  "automatedBrowser": "check-visual.js；结果 browser-check.json。独立测试会话内替换正文进行验证，结束恢复测试前正文。",
+  "checks": [
+    "粗体、斜体、删除线、行内代码、标题、引用、有序/无序列表、代码块、表格和任务框通过；撤销恢复原始 Markdown 标记。",
+    "真实键盘连续输入中文；回车继续正文；任务框鼠标与键盘 Space 可操作。",
+    "链接弹窗拒绝 javascript:，取消不改正文，HTTP 链接正确序列化。",
+    "实际上传含 BOM、20 处 CRLF 的中文 .md；切换三种模式及中英、浅深偏好后导出，除 BOM 移除外 599 字节完全一致。",
+    "媒体、HTML 和脚注原文保留，提供源码编辑入口，无媒体 DOM 和脚本执行。",
+    "320px 无页面横向溢出；手机切换预览再返回保留光标与编辑区域滚动位置。",
+    "可视化事务后立即点击检查发布，最新正文和 Maya Chen 作者快照正确，持久化内容相同。",
+    "约 800ms 自动保存后刷新并重新连接身份，最新正文和任务状态恢复。",
+    "空白新草稿支持 # 标题快捷输入；切换到另一草稿后只有一个编辑器，正文对应当前草稿。"
+  ],
+  "screenshots": [
+    "desktop-visual.png",
+    "desktop-dark.png",
+    "mobile-visual.png",
+    "mobile-320.png"
+  ],
+  "screenshotReview": "已查看桌面浅深色及 390/320px 截图；正文、工具栏、模式入口可见。",
+  "logs": {
+    "browserErrors": "browser-errors.txt 为空",
+    "browserConsole": "browser-console.txt；仅既有 React/Babel 提示与原型运行日志",
+    "server": "../.runtime/preview.log"
+  },
+  "limitations": [
+    "未执行操作系统级中文输入法组合测试、Safari 或实体手机验证。",
+    "身份签名和链上发布沿用模拟流程，本次验证截至最新正文的发布确认。",
+    "未重复全量旧版浏览器回归；用户视觉复核未完成。"
+  ],
+  "harness": "../init.sh 通过：JSX、身份/内容模型、Markdown、363 项双语文案与 68 个 S2 token；运行记录 ../.runtime/r03-final-check.txt。"
+}

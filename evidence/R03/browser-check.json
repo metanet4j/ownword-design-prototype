@@ -1,0 +1,11 @@
+{
+  "blocks": true,
+  "boldUndoExact": true,
+  "heading": true,
+  "inlineFormats": true,
+  "noOp": true,
+  "noOverflow": true,
+  "table": true,
+  "taskCheckbox": true,
+  "unsupportedPreserved": true
+}

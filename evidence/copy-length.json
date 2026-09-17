@@ -3,7 +3,7 @@
     "en": 100,
     "zh": 40
   },
-  "longCount": 11,
+  "longCount": 12,
   "longest": [
     {
       "key": "readerMissingBody",
@@ -62,6 +62,13 @@
       "zhLength": 35
     },
     {
+      "key": "editorVisualHint",
+      "en": "Edit directly in the text. Visual changes update Markdown formatting; use Source to preserve its exact syntax.",
+      "zh": "直接编辑正文。可视化修改会更新 Markdown 排版；需要保留原始写法时使用源码。",
+      "enLength": 110,
+      "zhLength": 42
+    },
+    {
       "key": "draftReadFailed",
       "en": "Saved drafts could not be read. Existing storage has not been replaced. Try again when storage is available.",
       "zh": "无法读取已保存的草稿，原有存储未被覆盖。请在存储恢复后重试。",
@@ -118,6 +125,13 @@
       "zhLength": 35
     },
     {
+      "key": "editorVisualUnsupported",
+      "en": "This text contains syntax that needs to be preserved. Continue in Source to edit the full text.",
+      "zh": "此内容包含需保留的原始语法，请在源码模式编辑全文。",
+      "enLength": 95,
+      "zhLength": 25
+    },
+    {
       "key": "nextResultHint",
       "en": "Applies once after approving a connection, creation or update. Cancelling keeps this setting.",
       "zh": "批准连接、创建或更新后生效一次；取消授权会保留此设置。",
@@ -130,20 +144,6 @@
       "zh": "正文包含暂不支持的语法，已按文字展示，不加载媒体。",
       "enLength": 93,
       "zhLength": 25
-    },
-    {
-      "key": "draftDeleteBody",
-      "en": "This removes only the local draft from this browser. Published versions remain unchanged.",
-      "zh": "此操作仅移除当前浏览器中的草稿，不影响已发布版本。",
-      "enLength": 89,
-      "zhLength": 25
-    },
-    {
-      "key": "publishDraftKept",
-      "en": "Your words are still in your draft. Review the text and identity before trying again.",
-      "zh": "正文仍保留在草稿中。再次发布前，请重新检查正文与作者。",
-      "enLength": 85,
-      "zhLength": 27
     }
   ],
   "long": [
@@ -202,6 +202,13 @@
       "zh": "本次操作暂时无法保存，尚未开始签名，草稿已保留。请恢复存储后重新检查。",
       "enLength": 115,
       "zhLength": 35
+    },
+    {
+      "key": "editorVisualHint",
+      "en": "Edit directly in the text. Visual changes update Markdown formatting; use Source to preserve its exact syntax.",
+      "zh": "直接编辑正文。可视化修改会更新 Markdown 排版；需要保留原始写法时使用源码。",
+      "enLength": 110,
+      "zhLength": 42
     },
     {
       "key": "draftReadFailed",

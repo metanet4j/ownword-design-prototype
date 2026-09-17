@@ -68,3 +68,4 @@ export function createEditor(parent, value, options) {
   return api;
 }
 export {renderMarkdown, metadata} from './markdown-tools.mjs';
+export {createVisualEditor} from './visual-editor.js';
