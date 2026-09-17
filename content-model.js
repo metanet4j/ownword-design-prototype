@@ -39,11 +39,16 @@
     if (bytes.byteLength > 102400) throw new Error('importSize');
     try {return new TextDecoder('utf-8', {fatal:true}).decode(bytes);} catch {throw new Error('importEncoding');}
   }
+  function reviewError(item) {
+    if (!item?.content.trim()) return 'reviewEmpty';
+    if (new TextEncoder().encode(item.content).length > 102400) return 'editorTooLong';
+    return '';
+  }
   function parseRoute(hash) {
     const match = /^#\/(content|write|review|publish|read|history)(?:\/([^/?#]+))?$/.exec(hash);
     if (!match) return {page: 'content', id: ''};
     try {return {page: match[1], id: decodeURIComponent(match[2] || '')};} catch {return {page: 'read', id: 'invalid'};}
   }
-  const api = {decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
+  const api = {reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
   if (typeof module !== 'undefined') module.exports = api; else root.OwnwordContentModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);

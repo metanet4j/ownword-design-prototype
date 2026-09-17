@@ -22,3 +22,8 @@ assert.throws(()=>M.decodeMarkdown(new Uint8Array([255]),'bad.md'),/importEncodi
 assert.throws(()=>M.decodeMarkdown(encoded,'bad.txt'),/importType/);
 assert.throws(()=>M.decodeMarkdown(new Uint8Array(102401),'big.md'),/importSize/);
 console.log('C05 UTF-8, BOM, CRLF and invalid import boundaries passed');
+
+assert.equal(M.reviewError({content:' \n\t'}),'reviewEmpty');
+assert.equal(M.reviewError({content:'中'.repeat(34134)}),'editorTooLong');
+assert.equal(M.reviewError({content:'没有标题的正文'}),'');
+console.log('C06 empty / UTF-8 byte limit / optional title review gates passed');

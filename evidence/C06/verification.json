@@ -1,0 +1,15 @@
+{
+  "feature": "C06",
+  "status": "passed",
+  "acceptance": [
+    "C06-A: 编辑后立即检查使用最新正文，完整作者 BAP ID 可见",
+    "C06-B: 空白正文阻止 Review；超 UTF-8 字节上限由模型检查；回到编辑修改清除旧快照"
+  ],
+  "reviewed": [
+    "desktop-review.png",
+    "mobile-review.png"
+  ],
+  "width": 320,
+  "errors": "empty",
+  "pendingCoverage": "Review 的中英/主题保持与最终完整链路在 C10 定向检查"
+}

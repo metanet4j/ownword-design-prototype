@@ -1,4 +1,4 @@
-const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, identity, locale, t, settings, setSettings, onConnect, onIdentity}, ref) {
+const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, identity, locale, t, settings, setSettings, onConnect, onIdentity, failCopy}, ref) {
   const M = window.OwnwordContentModel;
   const [data, reactSetData] = React.useState(() => M.load());
   const dataRef = React.useRef(data);
@@ -12,6 +12,8 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const [saveState, setSaveState] = React.useState(data.readFailure ? 'error' : 'saved');
   const [dialog, setDialog] = React.useState(null);
   const [menu, setMenu] = React.useState(null);
+  const [review, setReview] = React.useState(null);
+  const [reviewIssue, setReviewIssue] = React.useState('');
   const upload = React.useRef(null);
   const [fileError, setFileError] = React.useState('');
   const [message, setMessage] = React.useState('');
@@ -60,7 +62,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   React.useEffect(() => {
     const author = identity?.bapId;
     if (previousAuthor.current && previousAuthor.current !== author) {
-      setDialog(null); setMenu(null);
+      setDialog(null); setMenu(null); setReview(null);
       if (!['read','history'].includes(routeRef.current.page)) {lastHash.current = '#/content'; history.replaceState(null, '', '#/content'); setRoute({page:'content', id:''});}
     }
     previousAuthor.current = author;
@@ -83,8 +85,17 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   }
   function edit(value) {
     if (!current) return;
+    setReview(null); setReviewIssue('');
     setData(d => ({...d, drafts:d.drafts.map(item => item.id === current.id ? {...item, content:value, updatedAt:new Date().toISOString()} : item)}));
   }
+  function checkPublication() {
+    const item=currentDraft(), issue=M.reviewError(item); setReviewIssue(issue);
+    if (issue || !item || !identityRef.current) return;
+    if (!persist(item.authorBapId)) return;
+    setReview({draftId:item.id,content:item.content,authorBapId:item.authorBapId,author:{...identityRef.current.profile}});
+    go('review',item.id);
+  }
+  const reviewValid = review && current && review.draftId===current.id && review.authorBapId===identity?.bapId && review.content===current.content && !M.reviewError(current);
   async function importFile(event) {
     const file=event.target.files[0], item=currentDraft(); event.target.value='';
     if (!file || !item) return;
@@ -122,7 +133,8 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const saveIndicator = <span className={'draft-save-state ' + saveState} role="status" data-save-state={saveState}>{t('draft-' + saveState)}</span>;
   function renderScreen() {
     if (!ready && !['read','history'].includes(route.page)) return <section className="content-gate" data-content-screen="gate"><p className="eyebrow">{t('contentEyebrow')}</p><h1 tabIndex="-1">{t('contentGateTitle')}</h1><p>{t('contentGateBody')}</p><div className="action-row"><Button variant="accent" data-action="content-connect" onClick={onConnect}>{t('connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={() => go('read','first-words')}>{t('contentReadSample')}</Button></div></section>;
-    if (route.page === 'write') return <section data-content-screen="write"><Button variant="quiet" data-action="content-back" onClick={() => go('content')}>{t('contentBack')}</Button>{current ? <><ContentEditor draft={current} t={t} locale={locale} onChange={edit} savedState={saveIndicator} actions={<><Button data-action="markdown-import" onClick={()=>upload.current.click()}>{t("markdownImport")}</Button><Button data-action="markdown-export" onClick={()=>exportFile(current)}>{t("markdownExport")}</Button></>} /><input type="file" accept=".md" hidden ref={upload} data-action="markdown-file" onChange={importFile} />{fileError && <p role="alert" className="field-error">{t(fileError)}</p>}{saveState === 'error' && <div className="draft-error" role="alert"><p>{t('draftSaveFailedBody')}</p><Button onClick={() => persist(current.authorBapId)}>{t('retry')}</Button></div>}</> : <h1 tabIndex="-1">{t('contentMissing')}</h1>}</section>;
+    if (route.page === 'write') return <section data-content-screen="write"><Button variant="quiet" data-action="content-back" onClick={() => go('content')}>{t('contentBack')}</Button>{current ? <><ContentEditor draft={current} t={t} locale={locale} onChange={edit} savedState={saveIndicator} actions={<><Button data-action="markdown-import" onClick={()=>upload.current.click()}>{t("markdownImport")}</Button><Button data-action="markdown-export" onClick={()=>exportFile(current)}>{t("markdownExport")}</Button><Button variant="accent" data-action="content-review" onClick={checkPublication}>{t("contentReview")}</Button></>} /><input type="file" accept=".md" hidden ref={upload} data-action="markdown-file" onChange={importFile} />{reviewIssue && <p className="field-error" role="alert" data-review-error={reviewIssue}>{t(reviewIssue)}</p>}{fileError && <p role="alert" className="field-error">{t(fileError)}</p>}{saveState === 'error' && <div className="draft-error" role="alert"><p>{t('draftSaveFailedBody')}</p><Button onClick={() => persist(current.authorBapId)}>{t('retry')}</Button></div>}</> : <h1 tabIndex="-1">{t('contentMissing')}</h1>}</section>;
+    if (route.page === 'review') return <section className="content-review" data-content-screen="review"><div className="page-heading"><p className="eyebrow">{t('reviewEyebrow')}</p><h1 tabIndex="-1">{t('contentReview')}</h1><p>{t(reviewValid ? 'reviewIntro' : 'reviewExpired')}</p></div>{reviewValid ? <><div className="review-author"><Portrait profile={review.author} /><div><span className="eyebrow">{t('contentWritingAs')}</span><strong>{review.author.name}</strong></div></div><Identifier id={review.authorBapId} t={t} failCopy={failCopy} /><article className="review-paper"><MarkdownBody source={review.content} t={t} /></article><aside className="publish-impact"><strong>{t('reviewImpactTitle')}</strong><p>{t('reviewImpact')}</p></aside><div className="review-footer"><Button data-action="review-edit" onClick={()=>go('write',current.id)}>{t('reviewEdit')}</Button><Button variant="accent" data-action="content-publish" onClick={()=>go('publish',current.id)}>{t('contentSignPublish')}</Button></div></> : <Button data-action="review-edit" onClick={()=>go(current ? 'write' : 'content',current?.id)}>{t('reviewEdit')}</Button>}</section>;
     if (route.page === 'read') return <section className="content-reading" data-content-screen="read"><Button variant="quiet" onClick={() => go('content')}>{t('contentBack')}</Button><h1 tabIndex="-1">{record ? itemTitle(record) : t('contentMissing')}</h1>{record && <MarkdownBody source={record.content} t={t} />}</section>;
     const items = settings.list === 'empty' ? [] : data[filter].filter(item => item.authorBapId === identity.bapId).sort((a,b) => (b.updatedAt || b.publishedAt).localeCompare(a.updatedAt || a.publishedAt));
     return <section className="content-workspace" data-content-screen="content">
