@@ -113,7 +113,7 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
     return () => clearTimeout(timer);
   }, [paused, visible]);
   if (!visible) return null;
-  return <div className={`toast ${error ? 'error-block' : 'notice'}`} role={error ? 'alert' : 'status'}
+  return <div className={`toast ${error ? 'error-block' : 'notice'} ${!error && !onRetry ? 'toast-compact' : ''}`} role={error ? 'alert' : 'status'}
     data-error={error && !storageError ? message : undefined} data-notice={notice}
     data-storage-error={storageError || undefined} data-paused={paused ? 'true' : 'false'}
     onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}

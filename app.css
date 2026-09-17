@@ -128,6 +128,8 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .toast-actions .s2d-button { white-space: nowrap; }
 .app:has(.form-footer) .toast { bottom: calc(88px + env(safe-area-inset-bottom)); }
 @media (max-width: 650px) { .toast { flex-wrap: wrap; } .toast-copy { flex-basis: 100%; } .toast-actions { margin-left: auto; } }
+.toast.toast-compact { flex-wrap: nowrap; gap: var(--s2-spacing-200); padding: var(--s2-spacing-200); }
+.toast-compact .toast-copy { flex-basis: auto; }
 .center-state { min-height: 610px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s2-spacing-500); text-align: center; }
 .center-state .page-heading > p:last-child { margin-inline: auto; }
 .center-state .identifier { max-width: 530px; text-align: left; }
