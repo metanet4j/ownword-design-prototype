@@ -144,3 +144,6 @@
 .publish-impact p { margin-top:var(--s2-spacing-100); color:var(--s2-gray-700); }
 .review-footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--s2-spacing-200); margin-top:var(--s2-spacing-400); }
 @media(max-width:700px) { .editor-actions .draft-save-state { width:100%; } .editor-actions { justify-content:flex-start; } }
+.page-content .identifier-value { align-items:flex-start; }
+.page-content .identifier-value code { white-space:normal; overflow:visible; text-overflow:clip; overflow-wrap:anywhere; min-width:0; }
+.review-author .portrait span { font-size:var(--s2-font-size-200); }
