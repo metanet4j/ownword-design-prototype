@@ -174,7 +174,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     setAngle(angle + ((target - normalized + 540) % 360) - 180);
   }
   return <div className="identity-stage">
-    <div className="card-controls"><Button variant="quiet" data-action="flip-card" aria-controls="identity-card-object" onClick={flipCard}>{t(back ? 'flipToFront' : 'flipToBack')}</Button></div>
+    <div className="card-controls"><Button data-action="flip-card" aria-controls="identity-card-object" onClick={flipCard}>{t(back ? 'flipToFront' : 'flipToBack')}</Button></div>
     <div id="identity-card-object" className="identity-object" onPointerDown={e => {if (e.target.closest('button')) return; drag.current = {x: e.clientX, angle}; setRotating(false); e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e => {if (drag.current) setAngle(drag.current.angle + (e.clientX - drag.current.x) * .35);}} onPointerUp={() => {drag.current = null;}} onPointerCancel={() => {drag.current = null;}}>
       <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} data-face={back ? 'back' : 'front'} style={{'--angle': `${angle}deg`}}>
         <div className="plate-depth" aria-hidden="true"></div>

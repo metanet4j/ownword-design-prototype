@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-17",
+  "scope": "翻面入口可发现性与当前资源加载",
+  "observation": "宿主服务和实际浏览器均存在翻面按钮，原样式为 quiet 无边框文字；无法确认用户浏览器是否加载旧资源。",
+  "change": "使用既有 S2 secondary 按钮，应用 CSS、文案和 JSX 引用添加资源版本。",
+  "verification": {
+    "tool": "宿主 agent-browser",
+    "normal": "1440×1000 中文浅色，示例公开身份",
+    "boundary": "320×568 中文浅色，按钮位于 x=228,y=269.375，76×44px，无横向溢出",
+    "refresh": "普通 reload 后实际网络资源包含 app.css、copy.js、components.jsx、app.jsx 的 v=20260917-flip 请求",
+    "buttonBorder": "2px",
+    "clickFlipsToBack": true,
+    "enterReturnsToFront": true,
+    "focusRemainsOnButton": true,
+    "browserErrors": [],
+    "screenshotsReviewed": [
+      "desktop.png",
+      "mobile.png",
+      "review-mobile.png"
+    ]
+  },
+  "notRun": [
+    "全量回归",
+    "真实钱包",
+    "用户浏览器缓存检查"
+  ],
+  "status": "等待用户视觉复核"
+}
