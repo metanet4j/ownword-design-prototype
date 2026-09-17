@@ -1,0 +1,10 @@
+{
+  "feature": "C02",
+  "normal": "输入 Hello 中文，选区加粗得到 **Hello 中文**，撤销恢复原文；查找面板可打开。",
+  "boundary": "长文在 390px 编辑/预览往返后正文、选区、滚动位置保持；无页面横向溢出。",
+  "screenshots": [
+    "desktop.png",
+    "mobile.png"
+  ],
+  "limitations": "中文文本输入已验证，真实操作系统输入法与触屏仍需人工体验；Markdown 正文排版由 C03 完成。"
+}

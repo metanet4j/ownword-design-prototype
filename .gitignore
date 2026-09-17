@@ -3,3 +3,4 @@ __pycache__/
 !evidence/http-access.log
 *-debug.png
 server.*.log
+node_modules/

@@ -1,0 +1,21 @@
+{
+  "name": "ownword-content-prototype",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "build": "esbuild editor-tools.js --bundle --format=iife --global-name=OwnwordEditorTools --target=es2020 --outfile=vendor/editor-tools.js --minify",
+    "check": "node check-model.cjs && node check-content.cjs"
+  },
+  "dependencies": {
+    "@codemirror/commands": "6.11.1",
+    "@codemirror/lang-markdown": "6.5.2",
+    "@codemirror/language": "6.12.4",
+    "@codemirror/search": "6.7.2",
+    "@codemirror/state": "6.7.5",
+    "@codemirror/view": "6.43.12",
+    "@lezer/highlight": "1.2.3"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}
