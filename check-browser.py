@@ -485,6 +485,7 @@ def check_header_feedback():
     click_action('review')
     expect('document.querySelector("#profile-name").getAttribute("aria-invalid") === "true" && !document.querySelector(".toast")', 'Field validation stays inline')
     call('fill', '#profile-name', 'Header and Toast')
+    expect('!document.querySelector("[aria-invalid=true]") && !document.querySelector("[data-field-error]")', 'Correcting a field clears its stale error before submitting again')
     click_action('review')
     configure_control('result', 'failure')
     click_action('submit-operation'); click_action('approve')

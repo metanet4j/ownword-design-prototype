@@ -11,7 +11,7 @@ function App() {
   const [nextResult, setNextResult] = React.useState('success');
   const [accountEvent, setAccountEvent] = React.useState('none');
   const [prefs, setPrefs] = React.useState(false);
-  const [errors, setErrors] = React.useState({});
+  const [validationShown, setValidationShown] = React.useState(false);
   const [imageError, setImageError] = React.useState('');
   const [failCopy, setFailCopy] = React.useState(false);
   const [rotating, setRotating] = React.useState(false);
@@ -29,6 +29,7 @@ function App() {
   const formPage = state.page === 'setup' || state.page === 'edit';
   const editing = state.page === 'edit';
   const dirty = JSON.stringify(state.profile) !== JSON.stringify(state.draft);
+  const errors = validationShown ? validate(state.draft) : {};
   useDismissable(prefs, () => setPrefs(false), prefsRef);
   React.useEffect(() => {
     document.documentElement.dataset.colorScheme = theme;
@@ -46,7 +47,7 @@ function App() {
   }, [state.busy, state.epoch]);
   React.useEffect(() => {
     console.info('[Ownword prototype]', {page: state.page, wallet: state.wallet ? 'connected' : 'disconnected', operation: state.busy || state.modal || 'none', account: state.account, notice: state.notice, error: state.error, epoch: state.epoch});
-    setErrors({}); setImageError('');
+    setValidationShown(false); setImageError('');
     // 页面切换回到顶部并聚焦标题，避免沿用上一页的滚动位置。
     // 首次加载保留默认焦点，让 Tab 从跳转链接和页头开始。
     if (firstPaint.current) {firstPaint.current = false; return;}
@@ -101,7 +102,7 @@ function App() {
     return () => clearTimeout(timer);
   }, [accountEvent, state.wallet, state.modal, state.busy, state.epoch]);
   function checkForm() {
-    const found = validate(state.draft); setErrors(found);
+    const found = validate(state.draft); setValidationShown(true);
     if (Object.values(found).some(Boolean)) {setTimeout(() => document.querySelector('[aria-invalid="true"]')?.focus(), 0); return;}
     dispatch({type: 'REVIEW'});
   }
