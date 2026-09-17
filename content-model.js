@@ -59,6 +59,12 @@
   function saveDrafts(storage, author, drafts) {
     storage.setItem(draftKey(author), JSON.stringify(drafts.filter(d => d.authorBapId === author)));
   }
+  function recoverDrafts(loaded, drafts, saved) {
+    if (loaded.readFailure) throw new Error('Draft storage unavailable');
+    const recovered=drafts.filter(d=>saved.get(d.id)!==d.content && !loaded.drafts.some(x=>x.id===d.id && x.authorBapId===d.authorBapId && x.content===d.content));
+    // 保留磁盘原稿；内存中的未保存正文使用新 ID，避免与发布操作或原稿冲突。
+    return {...loaded,drafts:[...recovered.map(d=>({...d,id:newId(),recoveredFrom:d.id})),...loaded.drafts]};
+  }
   function decodeMarkdown(bytes, filename) {
     if (!/\.md$/i.test(filename)) throw new Error('importType');
     if (bytes.byteLength > 102400) throw new Error('importSize');
@@ -88,6 +94,6 @@
     if (!match) return {page: 'content', id: ''};
     try {return {page: match[1], id: decodeURIComponent(match[2] || '')};} catch {return {page: 'read', id: 'invalid'};}
   }
-  const api = {proofResult, versions, revisionDraft, publicationKey, unresolved, saveJournal, newOperation, acceptPublication, reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
+  const api = {recoverDrafts, proofResult, versions, revisionDraft, publicationKey, unresolved, saveJournal, newOperation, acceptPublication, reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
   if (typeof module !== 'undefined') module.exports = api; else root.OwnwordContentModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);
