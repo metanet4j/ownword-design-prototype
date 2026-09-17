@@ -1,0 +1,9 @@
+{
+  "scope": "页面标题排版的最小验证，中文浅色模式",
+  "before320": {"editLines": ["更真实地表", "达你。"], "fontSize": 39, "lineHeight": 43.68},
+  "after320": {"editLines": ["更真实地表达你。"], "identityLines": ["变化之中，", "自有坐标。"], "fontSize": 34, "lineHeight": 44.2, "scrollWidth": 320},
+  "screenshotsReviewed": {"type-polish-desktop.png": [1440, 1000], "type-polish-mobile.png": [320, 568]},
+  "previewCache": "浏览器缓存旧 CSS；验证时给样式链接添加临时版本参数后确认字号，未修改页面文件链接。",
+  "runtimeErrors": [],
+  "notRun": ["全量 BDD", "整套专项回归", "英文与深色模式回归", "其他页面与屏宽组合"]
+}
