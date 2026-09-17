@@ -12,6 +12,8 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const [saveState, setSaveState] = React.useState(data.readFailure ? 'error' : 'saved');
   const [dialog, setDialog] = React.useState(null);
   const [menu, setMenu] = React.useState(null);
+  const upload = React.useRef(null);
+  const [fileError, setFileError] = React.useState('');
   const [message, setMessage] = React.useState('');
   const menuRef = React.useRef(null), previousAuthor = React.useRef(identity?.bapId);
   useDismissable(!!menu, () => setMenu(null), menuRef);
@@ -83,6 +85,20 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     if (!current) return;
     setData(d => ({...d, drafts:d.drafts.map(item => item.id === current.id ? {...item, content:value, updatedAt:new Date().toISOString()} : item)}));
   }
+  async function importFile(event) {
+    const file=event.target.files[0], item=currentDraft(); event.target.value='';
+    if (!file || !item) return;
+    try {
+      const source=M.decodeMarkdown(await file.arrayBuffer(),file.name);
+      if (currentDraft()?.id !== item.id || identityRef.current?.bapId !== item.authorBapId) return;
+      setFileError('');
+      requestLeave(() => {if (currentDraft()?.content) setDialog({type:'replace',source,itemId:item.id}); else edit(source);});
+    } catch(error) {setFileError(['importType','importSize','importEncoding'].includes(error.message) ? error.message : 'importReadError');}
+  }
+  function exportFile(item) {
+    const url=URL.createObjectURL(new Blob([item.content],{type:'text/markdown;charset=utf-8'}));
+    const link=document.createElement('a'); link.href=url; link.download=(M.title(item.content) || 'untitled').replace(/[\\/:*?"<>|]/g,'-').slice(0,80)+'.md'; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
   function saveAndLeave() {
     const item = dataRef.current.drafts.find(d => d.id === dialog.itemId);
     if (item && persist(item.authorBapId)) {const action = dialog.action; setDialog(null); action();}
@@ -106,7 +122,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const saveIndicator = <span className={'draft-save-state ' + saveState} role="status" data-save-state={saveState}>{t('draft-' + saveState)}</span>;
   function renderScreen() {
     if (!ready && !['read','history'].includes(route.page)) return <section className="content-gate" data-content-screen="gate"><p className="eyebrow">{t('contentEyebrow')}</p><h1 tabIndex="-1">{t('contentGateTitle')}</h1><p>{t('contentGateBody')}</p><div className="action-row"><Button variant="accent" data-action="content-connect" onClick={onConnect}>{t('connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={() => go('read','first-words')}>{t('contentReadSample')}</Button></div></section>;
-    if (route.page === 'write') return <section data-content-screen="write"><Button variant="quiet" data-action="content-back" onClick={() => go('content')}>{t('contentBack')}</Button>{current ? <><ContentEditor draft={current} t={t} locale={locale} onChange={edit} savedState={saveIndicator} />{saveState === 'error' && <div className="draft-error" role="alert"><p>{t('draftSaveFailedBody')}</p><Button onClick={() => persist(current.authorBapId)}>{t('retry')}</Button></div>}</> : <h1 tabIndex="-1">{t('contentMissing')}</h1>}</section>;
+    if (route.page === 'write') return <section data-content-screen="write"><Button variant="quiet" data-action="content-back" onClick={() => go('content')}>{t('contentBack')}</Button>{current ? <><ContentEditor draft={current} t={t} locale={locale} onChange={edit} savedState={saveIndicator} actions={<><Button data-action="markdown-import" onClick={()=>upload.current.click()}>{t("markdownImport")}</Button><Button data-action="markdown-export" onClick={()=>exportFile(current)}>{t("markdownExport")}</Button></>} /><input type="file" accept=".md" hidden ref={upload} data-action="markdown-file" onChange={importFile} />{fileError && <p role="alert" className="field-error">{t(fileError)}</p>}{saveState === 'error' && <div className="draft-error" role="alert"><p>{t('draftSaveFailedBody')}</p><Button onClick={() => persist(current.authorBapId)}>{t('retry')}</Button></div>}</> : <h1 tabIndex="-1">{t('contentMissing')}</h1>}</section>;
     if (route.page === 'read') return <section className="content-reading" data-content-screen="read"><Button variant="quiet" onClick={() => go('content')}>{t('contentBack')}</Button><h1 tabIndex="-1">{record ? itemTitle(record) : t('contentMissing')}</h1>{record && <MarkdownBody source={record.content} t={t} />}</section>;
     const items = settings.list === 'empty' ? [] : data[filter].filter(item => item.authorBapId === identity.bapId).sort((a,b) => (b.updatedAt || b.publishedAt).localeCompare(a.updatedAt || a.publishedAt));
     return <section className="content-workspace" data-content-screen="content">
@@ -123,7 +139,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     </section>;
   }
   if (!active) return null;
-  return <>{renderScreen()}{dialog && <Modal title={t(dialog.type==='delete' ? 'draftDeleteTitle' : 'draftLeaveTitle')} titleKey={dialog.type==='delete' ? 'draft-delete' : 'draft-leave'} closeLabel={t('close')} onCancel={()=>setDialog(null)}>
+  return <>{renderScreen()}{dialog?.type==='replace' ? <Modal title={t('importReplaceTitle')} titleKey="import-replace" closeLabel={t('close')} onCancel={()=>setDialog(null)}><p>{t('importReplaceBody')}</p><div className="action-row"><Button data-action="import-cancel" onClick={()=>setDialog(null)}>{t('cancel')}</Button><Button variant="accent" data-action="import-confirm" onClick={()=>{if(currentDraft()?.id===dialog.itemId) edit(dialog.source);setDialog(null);}}>{t('importReplace')}</Button></div></Modal> : dialog && <Modal title={t(dialog.type==='delete' ? 'draftDeleteTitle' : 'draftLeaveTitle')} titleKey={dialog.type==='delete' ? 'draft-delete' : 'draft-leave'} closeLabel={t('close')} onCancel={()=>setDialog(null)}>
     <p>{t(dialog.type==='delete' ? 'draftDeleteBody' : 'draftLeaveBody')}</p>
     {dialog.type==='delete' && <strong className="draft-dialog-title">{itemTitle(data.drafts.find(d=>d.id===dialog.itemId) || {content:''})}</strong>}
     {saveState==='error' && <p className="field-error" role="alert">{t('draftSaveFailedBody')}</p>}

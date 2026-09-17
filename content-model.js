@@ -34,11 +34,16 @@
   function saveDrafts(storage, author, drafts) {
     storage.setItem(draftKey(author), JSON.stringify(drafts.filter(d => d.authorBapId === author)));
   }
+  function decodeMarkdown(bytes, filename) {
+    if (!/\.md$/i.test(filename)) throw new Error('importType');
+    if (bytes.byteLength > 102400) throw new Error('importSize');
+    try {return new TextDecoder('utf-8', {fatal:true}).decode(bytes);} catch {throw new Error('importEncoding');}
+  }
   function parseRoute(hash) {
     const match = /^#\/(content|write|review|publish|read|history)(?:\/([^/?#]+))?$/.exec(hash);
     if (!match) return {page: 'content', id: ''};
     try {return {page: match[1], id: decodeURIComponent(match[2] || '')};} catch {return {page: 'read', id: 'invalid'};}
   }
-  const api = {load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
+  const api = {decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
   if (typeof module !== 'undefined') module.exports = api; else root.OwnwordContentModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);

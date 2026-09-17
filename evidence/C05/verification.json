@@ -1,0 +1,13 @@
+{
+  "feature": "C05",
+  "status": "passed",
+  "acceptance": [
+    "C05-A: UTF-8 中文 + BOM + CRLF 实际上传和下载，除 BOM 外逐字节一致",
+    "C05-B: 取消替换、无效编码不覆盖；类型与 100 KiB 边界由 check-content.cjs 验证"
+  ],
+  "bytes": 49,
+  "reviewed": [
+    "mobile-import.png"
+  ],
+  "errors": "empty"
+}

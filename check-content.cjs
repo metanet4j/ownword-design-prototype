@@ -15,3 +15,10 @@ assert.equal(M.load(storage).drafts.find(d=>d.id===itemA.id).content,'# Saved �
 assert.equal(M.load(storage).drafts.some(d=>d.id===itemB.id),false);
 assert.throws(()=>M.saveDrafts({setItem(){throw new Error('quota');}},authorA,[itemA]));
 console.log('C04 durable draft and author separation passed');
+
+const encoded = new TextEncoder().encode('\ufeff# 中文\r\n\r\n原文。\r\n');
+assert.equal(M.decodeMarkdown(encoded,'sample.md'),'# 中文\r\n\r\n原文。\r\n');
+assert.throws(()=>M.decodeMarkdown(new Uint8Array([255]),'bad.md'),/importEncoding/);
+assert.throws(()=>M.decodeMarkdown(encoded,'bad.txt'),/importType/);
+assert.throws(()=>M.decodeMarkdown(new Uint8Array(102401),'big.md'),/importSize/);
+console.log('C05 UTF-8, BOM, CRLF and invalid import boundaries passed');
