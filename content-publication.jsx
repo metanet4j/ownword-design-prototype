@@ -1,9 +1,10 @@
 /* 本地演示状态：不生成密码学签名，不连接钱包，不发送交易。 */
-function useContentPublication({dataRef,setData,identityRef,identity,settings,onAccountEvent}) {
+function useContentPublication({dataRef,setData,identityRef,identity,settings,onAccountEvent,writer}) {
   const M=OwnwordContentModel, settingsRef=React.useRef(settings); settingsRef.current=settings;
-  const active=dataRef.current.operations.find(op=>op.authorBapId===identity?.bapId && M.unresolved(op));
-  const write = data => {if (settingsRef.current.storage==='failure' || dataRef.current.readFailure) throw new Error('Publication storage unavailable'); M.saveJournal(localStorage,data);};
+  const active=writer.state==='ready' && dataRef.current.operations.find(op=>op.authorBapId===identity?.bapId && M.unresolved(op));
+  const write = data => {if (!writer.canWrite.current || settingsRef.current.storage==='failure' || dataRef.current.readFailure) throw new Error('Publication storage unavailable'); M.saveJournal(localStorage,data);};
   function update(op) {
+    if (!writer.canWrite.current) return false;
     const data=dataRef.current, next={...data,operations:[op,...data.operations.filter(x=>x.id!==op.id)]};
     let stored=true;
     try {write(next);} catch {stored=false;}
@@ -11,6 +12,7 @@ function useContentPublication({dataRef,setData,identityRef,identity,settings,on
     return stored;
   }
   function start(review) {
+    if (!writer.canWrite.current) return;
     const existing=dataRef.current.operations.find(op=>op.draftId===review.draftId && M.unresolved(op));
     if (existing) return existing;
     const op=M.newOperation(review,settingsRef.current.publish);
@@ -29,7 +31,7 @@ function useContentPublication({dataRef,setData,identityRef,identity,settings,on
   }
   function complete(op) {
     try {
-      if (settingsRef.current.storage==='failure' || dataRef.current.readFailure) throw new Error('Publication storage unavailable');
+      if (!writer.canWrite.current || settingsRef.current.storage==='failure' || dataRef.current.readFailure) throw new Error('Publication storage unavailable');
       const next=M.acceptPublication(localStorage,dataRef.current,op,settingsRef.current.confirmation);
       setData(next);
       try {M.saveDrafts(localStorage,op.authorBapId,next.drafts);} catch {console.warn('[Ownword publication] draft cleanup deferred',op.id);}
@@ -59,11 +61,12 @@ function useContentPublication({dataRef,setData,identityRef,identity,settings,on
     return ()=>clearTimeout(timer);
   },[active?.id,active?.phase,identity?.bapId]);
   React.useEffect(()=>{
+    if (!writer.canWrite.current) return;
     for (const op of dataRef.current.operations) {
       if (op.authorBapId===identity?.bapId || !['authorize','signing','broadcasting'].includes(op.phase)) continue;
       update({...op,phase:op.phase==='broadcasting' ? 'unknown' : 'cancelled',issue:''});
     }
-  },[identity?.bapId]);
+  },[identity?.bapId,writer.state]);
   React.useEffect(()=>{
     const [phase,action]=settings.account.split('-');
     if (!active || phase!==active.phase || !action) return;

@@ -3,7 +3,7 @@
     "en": 100,
     "zh": 40
   },
-  "longCount": 9,
+  "longCount": 11,
   "longest": [
     {
       "key": "readerMissingBody",
@@ -25,6 +25,20 @@
       "zh": "演示内容：内置样例可分享；新发布的内容可在当前浏览器重开，未连接真实链上查询。",
       "enLength": 138,
       "zhLength": 39
+    },
+    {
+      "key": "writerBody-unavailable",
+      "en": "Editing needs a browser that supports coordinating tabs. Open this prototype on localhost or HTTPS in a current browser, then retry.",
+      "zh": "编辑需要浏览器支持页面协作。请使用新版浏览器，通过 localhost 或 HTTPS 打开原型后重试。",
+      "enLength": 132,
+      "zhLength": 52
+    },
+    {
+      "key": "writerBody-busy",
+      "en": "Continue editing there, or close that tab and retry here. This keeps your drafts and publication records from replacing each other.",
+      "zh": "请在原页面继续编辑，或关闭原页面后在此重试，避免草稿和发布记录相互覆盖。",
+      "enLength": 131,
+      "zhLength": 36
     },
     {
       "key": "publishUnknownBody",
@@ -130,20 +144,6 @@
       "zh": "正文仍保留在草稿中。再次发布前，请重新检查正文与作者。",
       "enLength": 85,
       "zhLength": 27
-    },
-    {
-      "key": "publishNotReceived",
-      "en": "The query confirms this publication was not received. Review again before retrying.",
-      "zh": "查询结果明确未接收。请重新检查正文后再发布。",
-      "enLength": 83,
-      "zhLength": 22
-    },
-    {
-      "key": "accountEventHint",
-      "en": "Runs once on create or update: after 1.2s in authorization, or 0.6s in processing.",
-      "zh": "创建身份或更新资料时触发一次：授权开始 1.2 秒后，或处理开始 0.6 秒后。",
-      "enLength": 82,
-      "zhLength": 40
     }
   ],
   "long": [
@@ -167,6 +167,20 @@
       "zh": "演示内容：内置样例可分享；新发布的内容可在当前浏览器重开，未连接真实链上查询。",
       "enLength": 138,
       "zhLength": 39
+    },
+    {
+      "key": "writerBody-unavailable",
+      "en": "Editing needs a browser that supports coordinating tabs. Open this prototype on localhost or HTTPS in a current browser, then retry.",
+      "zh": "编辑需要浏览器支持页面协作。请使用新版浏览器，通过 localhost 或 HTTPS 打开原型后重试。",
+      "enLength": 132,
+      "zhLength": 52
+    },
+    {
+      "key": "writerBody-busy",
+      "en": "Continue editing there, or close that tab and retry here. This keeps your drafts and publication records from replacing each other.",
+      "zh": "请在原页面继续编辑，或关闭原页面后在此重试，避免草稿和发布记录相互覆盖。",
+      "enLength": 131,
+      "zhLength": 36
     },
     {
       "key": "publishUnknownBody",

@@ -6,7 +6,6 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const [route, setRoute] = React.useState(() => M.parseRoute(location.hash));
   const routeRef = React.useRef(route), identityRef = React.useRef(identity), lastHash = React.useRef(location.hash);
   routeRef.current = route; identityRef.current = identity;
-  const publication=useContentPublication({dataRef,setData,identityRef,identity,settings,onAccountEvent});
   const saved = React.useRef(new Map(data.drafts.map(d => [d.id, d.content])));
   const [filter, setFilter] = React.useState('drafts');
   const [loading, setLoading] = React.useState(true);
@@ -18,14 +17,20 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const upload = React.useRef(null);
   const [fileError, setFileError] = React.useState('');
   const [message, setMessage] = React.useState('');
+  const writer = useContentWriter(() => {
+    const loaded=M.load(); setData(loaded);
+    saved.current=new Map(loaded.drafts.map(d=>[d.id,d.content]));
+    setSaveState(loaded.readFailure ? 'error' : 'saved'); setReview(null);
+  });
+  const publication=useContentPublication({dataRef,setData,identityRef,identity,settings,onAccountEvent,writer});
   const menuRef = React.useRef(null), previousAuthor = React.useRef(identity?.bapId);
   useDismissable(!!menu, () => setMenu(null), menuRef);
-  const ready = !!identity;
+  const ready = !!identity && writer.state==='ready';
   const currentDraft = () => dataRef.current.drafts.find(d => d.id === routeRef.current.id && d.authorBapId === identityRef.current?.bapId);
   const dirty = item => item && saved.current.get(item.id) !== item.content;
   function persist(author, drafts = dataRef.current.drafts) {
     try {
-      if (settings.storage === 'failure' || dataRef.current.readFailure) throw new Error('Draft storage unavailable');
+      if (!writer.canWrite.current || settings.storage === 'failure' || dataRef.current.readFailure) throw new Error('Draft storage unavailable');
       M.saveDrafts(localStorage, author, drafts);
       drafts.filter(d => d.authorBapId === author).forEach(d => saved.current.set(d.id, d.content));
       setSaveState('saved'); setMessage('');
@@ -70,12 +75,12 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   }, [identity?.bapId]);
   const current = data.drafts.find(d => d.id === route.id && d.authorBapId === identity?.bapId);
   React.useEffect(() => {
-    if (!current) return;
+    if (!current || !ready) return;
     if (!dirty(current)) {setSaveState(data.readFailure ? 'error' : 'saved'); return;}
     setSaveState('saving');
     const timer = setTimeout(() => persist(current.authorBapId), 800);
     return () => clearTimeout(timer);
-  }, [current?.id, current?.content, settings.storage, identity?.bapId]);
+  }, [current?.id, current?.content, settings.storage, identity?.bapId, ready]);
   React.useEffect(() => {
     const block = event => {if (dataRef.current.drafts.some(d => dirty(d))) {event.preventDefault(); event.returnValue = '';}};
     window.addEventListener('beforeunload', block); return () => window.removeEventListener('beforeunload', block);
@@ -85,12 +90,12 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     requestLeave(() => {const item = M.draft(identity.bapId); setData(d => ({...d, drafts:[item, ...d.drafts]})); persist(identity.bapId); location.hash = '/write/' + item.id;});
   }
   function edit(value) {
-    if (!current) return;
+    if (!current || !writer.canWrite.current) return;
     setReview(null); setReviewIssue('');
     setData(d => ({...d, drafts:d.drafts.map(item => item.id === current.id ? {...item, content:value, updatedAt:new Date().toISOString()} : item)}));
   }
   function createRevision(record) {
-    if (!identityRef.current) return;
+    if (!identityRef.current || !writer.canWrite.current) return;
     try {
       const item=M.revisionDraft(dataRef.current.records,dataRef.current.drafts,record,identityRef.current.bapId);
       if (!dataRef.current.drafts.some(d=>d.id===item.id)) {setData(d=>({...d,drafts:[item,...d.drafts]}));persist(item.authorBapId);}
@@ -145,11 +150,12 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const itemTitle = item => M.title(item.content) || t('contentUntitled');
   const saveIndicator = <span className={'draft-save-state ' + saveState} role="status" data-save-state={saveState}>{t('draft-' + saveState)}</span>;
   function renderScreen() {
-    if (!ready && !['read','history'].includes(route.page)) return <section className="content-gate" data-content-screen="gate"><p className="eyebrow">{t('contentEyebrow')}</p><h1 tabIndex="-1">{t('contentGateTitle')}</h1><p>{t('contentGateBody')}</p><div className="action-row"><Button variant="accent" data-action="content-connect" onClick={onConnect}>{t('connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={() => go('read','first-words')}>{t('contentReadSample')}</Button></div></section>;
+    if (!identity && !['read','history'].includes(route.page)) return <section className="content-gate" data-content-screen="gate"><p className="eyebrow">{t('contentEyebrow')}</p><h1 tabIndex="-1">{t('contentGateTitle')}</h1><p>{t('contentGateBody')}</p><div className="action-row"><Button variant="accent" data-action="content-connect" onClick={onConnect}>{t('connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={() => go('read','first-words')}>{t('contentReadSample')}</Button></div></section>;
+    if (!ready && !['read','history'].includes(route.page)) return <section className="content-gate" data-content-screen="writer-gate" data-writer-state={writer.state}><p className="eyebrow">{t('contentEyebrow')}</p><h1 tabIndex="-1">{t('writerTitle-'+writer.state)}</h1><p role="status">{t('writerBody-'+writer.state)}</p><div className="action-row">{writer.state!=='checking' && <Button variant="accent" data-action="writer-retry" onClick={writer.retry}>{t('retry')}</Button>}<Button variant="quiet" onClick={()=>go('read','first-words')}>{t('contentReadSample')}</Button></div></section>;
     if (route.page==='publish' || (['write','review'].includes(route.page) && M.unresolved(operation))) return <ContentPublication operation={operation && {...operation,confirmation:data.records.find(r=>r.id===operation.recordId)?.confirmation}} t={t} locale={locale} failCopy={failCopy} onApprove={publication.approve} onCancel={id=>{publication.cancel(id);setReview(null);setMessage('publishCancelled');go('write',route.id);}} onQuery={publication.query} onEdit={()=>{setReview(null);go(current ? 'write' : 'content',current?.id);}} onRead={id=>go('read',id)} onBack={()=>go('content')} />;
     if (route.page === 'write') return <section data-content-screen="write"><Button variant="quiet" data-action="content-back" onClick={() => go('content')}>{t('contentBack')}</Button>{current ? <>{message && <p className="draft-message" role="status">{t(message)}</p>}<ContentEditor draft={current} t={t} locale={locale} onChange={edit} savedState={saveIndicator} actions={<><Button data-action="markdown-import" onClick={()=>upload.current.click()}>{t("markdownImport")}</Button><Button data-action="markdown-export" onClick={()=>exportFile(current)}>{t("markdownExport")}</Button><Button variant="accent" data-action="content-review" onClick={checkPublication}>{t("contentReview")}</Button></>} /><input type="file" accept=".md" hidden ref={upload} data-action="markdown-file" onChange={importFile} />{reviewIssue && <p className="field-error" role="alert" data-review-error={reviewIssue}>{t(reviewIssue)}</p>}{fileError && <p role="alert" className="field-error">{t(fileError)}</p>}{saveState === 'error' && <div className="draft-error" role="alert"><p>{t('draftSaveFailedBody')}</p><Button onClick={() => persist(current.authorBapId)}>{t('retry')}</Button></div>}</> : <h1 tabIndex="-1">{t('contentMissing')}</h1>}</section>;
     if (route.page === 'review') return <section className="content-review" data-content-screen="review"><div className="page-heading"><p className="eyebrow">{t('reviewEyebrow')}</p><h1 tabIndex="-1">{t('contentReview')}</h1><p>{t(reviewValid ? 'reviewIntro' : 'reviewExpired')}</p></div>{reviewValid ? <><div className="review-author"><Portrait profile={review.author} /><div><span className="eyebrow">{t('contentWritingAs')}</span><strong>{review.author.name}</strong></div></div><Identifier id={review.authorBapId} t={t} failCopy={failCopy} /><article className="review-paper"><MarkdownBody source={review.content} t={t} /></article><aside className="publish-impact"><strong>{t('reviewImpactTitle')}</strong><p>{t('reviewImpact')}</p></aside><div className="review-footer"><Button data-action="review-edit" onClick={()=>go('write',current.id)}>{t('reviewEdit')}</Button><Button variant="accent" data-action="content-publish" onClick={()=>{if(reviewValid){publication.start(review);go('publish',current.id);}}}>{t('contentSignPublish')}</Button></div></> : <Button data-action="review-edit" onClick={()=>go(current ? 'write' : 'content',current?.id)}>{t('reviewEdit')}</Button>}</section>;
-    if (route.page === 'read') return <ContentReader record={record} t={t} locale={locale} identity={identity} go={go} onExport={exportFile} failCopy={failCopy} settings={settings} operations={data.operations} records={data.records} drafts={data.drafts} onRevision={createRevision} />;
+    if (route.page === 'read') return <ContentReader record={record} t={t} locale={locale} identity={ready ? identity : null} go={go} onExport={exportFile} failCopy={failCopy} settings={settings} operations={data.operations} records={data.records} drafts={data.drafts} onRevision={createRevision} />;
     if (route.page==='history') return <ContentHistory record={record} records={data.records} go={go} t={t} locale={locale} />;
     const latestRecords=data.records.filter(r=>M.versions(data.records,r)[0]?.id===r.id);
     const visible={drafts:data.drafts,records:latestRecords};
@@ -175,5 +181,25 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     <div className="action-row"><Button data-action="draft-stay" onClick={()=>setDialog(null)}>{t(dialog.type==='delete' ? 'cancel' : 'keepEditing')}</Button>{dialog.type==='delete' ? <Button variant="negative" data-action="draft-confirm-delete" onClick={deleteDraft}>{t('draftDelete')}</Button> : <><Button variant="accent" data-action="draft-save-leave" onClick={saveAndLeave}>{t('draftSaveLeave')}</Button><Button variant="quiet" data-action="draft-discard-leave" onClick={discardAndLeave}>{t('draftDiscardLeave')}</Button></>}</div>
   </Modal>}</>;
 });
+function useContentWriter(onAcquired) {
+  const [state,setState]=React.useState('checking'), [attempt,retry]=React.useReducer(n=>n+1,0);
+  const canWrite=React.useRef(false), acquired=React.useRef(onAcquired); acquired.current=onAcquired;
+  React.useEffect(()=>{
+    let disposed=false, release;
+    const unavailable=()=>{if(!disposed){canWrite.current=false;setState('unavailable');}};
+    canWrite.current=false; setState('checking');
+    if (!navigator.locks) {unavailable();return;}
+    // 页面持锁期间独占草稿和发布日志；关闭后由浏览器释放，接手前重新加载。
+    navigator.locks.request('ownword-v020-content-writer',{ifAvailable:true},lock=>{
+      if(disposed) return;
+      if(!lock){setState('busy');return;}
+      acquired.current(); canWrite.current=true; setState('ready');
+      console.info('[Ownword content] writer acquired');
+      return new Promise(resolve=>{release=resolve;});
+    }).catch(unavailable);
+    return ()=>{disposed=true;canWrite.current=false;release?.();};
+  },[attempt]);
+  return {state,canWrite,retry};
+}
 function ContentSettings({settings,setSettings,t}) {return <fieldset className="content-settings"><legend>{t('contentScenarios')}</legend><label>{t('contentListScenario')}<select data-scenario="content-list" value={settings.list} onChange={e=>setSettings(s=>({...s,list:e.target.value}))}>{['normal','empty','failure'].map(value=><option value={value} key={value}>{t('contentScenario-'+value)}</option>)}</select></label><label>{t('draftStorageScenario')}<select data-scenario="content-storage" value={settings.storage} onChange={e=>setSettings(s=>({...s,storage:e.target.value}))}><option value="normal">{t('contentScenario-normal')}</option><option value="failure">{t('draftStorageFailure')}</option></select></label>{[['publish',['success','sign-failed','broadcast-failed','unknown']],['query',['accepted','unknown','not-received']],['confirmation',['pending','confirmed']],['account',['none','authorize-switch','authorize-disconnect','broadcasting-switch','broadcasting-disconnect']],['proof',['record','valid','unverified','failed']],['proofConfirmation',['record','pending','confirmed']]].map(([key,values])=><label key={key}>{t('scenario-'+key)}<select data-scenario={'content-'+key} value={settings[key]} onChange={e=>setSettings(s=>({...s,[key]:e.target.value}))}>{values.map(value=><option key={value} value={value}>{t(({'authorize-switch':'switch-confirm','authorize-disconnect':'disconnect-confirm'})[value] || 'scenario-'+value)}</option>)}</select></label>)}</fieldset>;}
 Object.assign(window,{ContentWorkspace,ContentSettings});
