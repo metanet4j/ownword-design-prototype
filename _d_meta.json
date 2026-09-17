@@ -64,8 +64,21 @@
           }
         }
       ]
+    },
+    "Ownword v0.2.0 — Content": {
+      "versions": [
+        {
+          "path": "index.html",
+          "status": "needs-review",
+          "createdAt": "2026-09-17T13:35:00Z",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
     }
   },
-  "title": "Ownword — Dome and Horizon",
-  "prompt": "design-astra-001: PRD v0.1 React Spectrum S2，七线穹顶、无刻度地平与旋转 Public Identity，全新交互原型。"
+  "title": "Ownword v0.2.0 — Content",
+  "prompt": "PRD v0.2.0：文字内容高保真原型，xLog 式 Markdown 写作、模拟身份签名与发布、版本阅读；继承 React Spectrum S2。"
 }

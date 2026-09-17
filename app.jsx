@@ -6,7 +6,9 @@ function App() {
   const pref = (key, fallback) => {try {return localStorage.getItem(`ownword-astra-${key}`) || fallback;} catch {return fallback;}};
   const [locale, setLocale] = React.useState(() => pref('locale', 'en') === 'zh' ? 'zh' : 'en');
   const [theme, setTheme] = React.useState(() => pref('theme', 'light') === 'dark' ? 'dark' : 'light');
-  const [scenario, setScenario] = React.useState('new');
+  const [scenario, setScenario] = React.useState('existing');
+  const contentRef = React.useRef(null);
+  const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [lab, setLab] = React.useState(false);
   const [nextResult, setNextResult] = React.useState('success');
   const [accountEvent, setAccountEvent] = React.useState('none');
@@ -61,7 +63,14 @@ function App() {
     const block = e => {if (dirty && (formPage || state.page === 'review')) {e.preventDefault(); e.returnValue = '';}};
     window.addEventListener('beforeunload', block); return () => window.removeEventListener('beforeunload', block);
   }, [dirty, formPage, state.page]);
+  React.useEffect(() => {
+    const activate = () => {if (/^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});};
+    activate(); window.addEventListener('hashchange', activate);
+    return () => window.removeEventListener('hashchange', activate);
+  }, []);
+  React.useEffect(() => {if (!state.busy && /^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});}, [state.busy, state.wallet, state.published]);
   function navigate(page) {
+    if (state.page === 'content') {contentRef.current?.leave(() => {history.pushState(null, '', location.pathname + location.search); dispatch({type: 'GO', page});}); return;}
     setPrefs(false);
     if ((formPage || state.page === 'review') && dirty) dispatch({type: 'DISCARD_ASK', page});
     else if (page === 'welcome' && state.wallet) disconnect();
@@ -135,7 +144,8 @@ function App() {
     <header className="topbar">
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
       <nav aria-label={t('myIdentity')} className="topnav">
-        {state.wallet && state.published && <Button variant="quiet" aria-current={state.page === 'identity' ? 'page' : undefined} onClick={() => navigate('identity')}>{t('myIdentity')}</Button>}
+        {state.wallet && state.published && <Button variant="quiet" data-action="nav-content" aria-current={state.page === 'content' ? 'page' : undefined} onClick={() => contentRef.current?.go('content')}>{t('myContent')}</Button>}
+        {state.wallet && state.published && <Button variant="quiet" data-action="nav-identity" aria-current={state.page === 'identity' ? 'page' : undefined} onClick={() => navigate('identity')}>{t('myIdentity')}</Button>}
         <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs} aria-controls="preferences-panel">{locale === 'en' ? 'EN' : '中文'}<span className="pref-separator" aria-hidden="true">/</span>{t(theme)}</Button>
           {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
         </div>
@@ -144,6 +154,7 @@ function App() {
     </header>
     <Dome label={t('domeLabel')} />
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
+      <ContentWorkspace ref={contentRef} active={state.page === 'content'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
       {state.page === 'welcome' && <section className="welcome">
         <p className="eyebrow">{t('independent')}</p>
         <h1 tabIndex="-1"><span>{t('headlineOne')}</span><em>{t('headlineTwo')}</em></h1>
@@ -190,7 +201,7 @@ function App() {
           </div>
           <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio || t('noBio')}</p></section>
         </div>
-        <div className="flat-horizon" aria-hidden="true"></div>
+        <div className="content-entry"><Button variant="accent" data-action="identity-content" onClick={() => contentRef.current?.go('content')}>{t('myContent')}</Button><p className="hint">{t('contentIntro')}</p></div><div className="flat-horizon" aria-hidden="true"></div>
       </section>}
       {state.page === 'public' && <section className="public-page">{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /><div className="public-back"><Button variant="quiet" data-action="back-identity" onClick={() => navigate('identity')}>{t('backIdentity')}</Button></div></section>}
     </main>
@@ -198,12 +209,13 @@ function App() {
       if (storageError && !toastError) setStorageError(false);
       if (!toastError && !storageError) dispatch({type: 'CLEAR_NOTICE', notice: state.notice, epoch: state.epoch});
     }} />}
-    <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight label={t('connected')} /></span>}<Button variant="quiet" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
+    <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight label={t('connected')} /></span>}<Button variant="quiet" data-action="prototype-settings" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
     {lab && <section className="scenario-panel" aria-label={t('scenarios')}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><p>{t('sampleDataNote')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
       <label>{t('nextResult')}<select data-scenario="result" value={nextResult} onChange={e => setNextResult(e.target.value)}><option value="success">{t('resultSuccess')}</option><option value="failure">{t('simulateFailure')}</option></select></label>
       <p className="hint">{t('nextResultHint')}</p>
       <label>{t('accountEvent')}<select data-scenario="account-event" value={accountEvent} onChange={e => setAccountEvent(e.target.value)}>{['none', 'switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'].map(value => <option key={value} value={value}>{t(value)}</option>)}</select></label>
       <p className="hint">{t('accountEventHint')}</p>
+      <ContentSettings settings={contentSettings} setSettings={setContentSettings} t={t} />
       <label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <><Button onClick={resolveAgain}>{t('resolveAgain')}</Button><Button data-action="simulate-switch" onClick={switchAccount}>{t('accountSwitch')}</Button><Button data-action="simulate-disconnect" onClick={disconnect}>{t('disconnect')}</Button></>}<Button data-action="reset-session" onClick={resetSession}>{t('reset')}</Button></div></section>}
     {state.modal && <Modal context={state.modal === 'discard' || (state.modal === 'connect' && scenario === 'missing') ? 'OWNWORD' : t('walletAuthorization')} closeLabel={t('close')} titleKey={state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle'} title={t(state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle')} onCancel={() => dispatch({type: state.modal === 'discard' ? 'STAY' : 'CANCEL'})}>
       {state.modal === 'discard' ? <><p>{t('discardBody')}</p><div className="action-row"><Button data-action="keep-editing" onClick={() => dispatch({type: 'STAY'})}>{t('keepEditing')}</Button><Button variant="negative" data-action="discard" onClick={() => dispatch({type: 'DISCARD'})}>{t('discard')}</Button></div></> : <>

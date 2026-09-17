@@ -1,0 +1,17 @@
+{
+  "feature": "C01",
+  "normal": "连接现有身份，从我的身份进入内容工作台；草稿 1 条、已发布 2 条，筛选可切换，新建及打开入口可用。",
+  "boundaries": "空内容、加载失败与重试、断开后的私有内容门槛通过。320px 页面无横向溢出。",
+  "screenshotsReviewed": [
+    "desktop.png",
+    "mobile-empty.png",
+    "mobile-failure.png",
+    "mobile-gate.png"
+  ],
+  "checks": [
+    "node check-model.cjs：92 条通过",
+    "node check-content.cjs：路由及作者样例通过",
+    "浏览器 errors 为空"
+  ],
+  "limits": "编辑和阅读仅为 C01 基础入口，后续 C02/C03/C08 完成完整体验。"
+}
