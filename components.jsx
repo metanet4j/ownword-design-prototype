@@ -176,7 +176,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
   return <div className="identity-stage">
     <div className="card-controls"><Button data-action="flip-card" aria-controls="identity-card-object" onClick={flipCard}>{t(back ? 'flipToFront' : 'flipToBack')}</Button></div>
     <div id="identity-card-object" className="identity-object" onPointerDown={e => {if (e.target.closest('button')) return; drag.current = {x: e.clientX, angle}; setRotating(false); e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e => {if (drag.current) setAngle(drag.current.angle + (e.clientX - drag.current.x) * .35);}} onPointerUp={() => {drag.current = null;}} onPointerCancel={() => {drag.current = null;}}>
-      <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} data-face={back ? 'back' : 'front'} style={{'--angle': `${angle}deg`}}>
+      <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} data-face={back ? 'back' : 'front'} style={{'--angle': `${angle}deg`}} onAnimationEnd={e => {if (e.target === e.currentTarget && e.animationName === 'identity-turn') setRotating(false);}}>
         <div className="plate-depth" aria-hidden="true"></div>
         <article className="identity-plate plate-front" aria-hidden={back} inert={back ? '' : undefined}>
           <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('publicIdentity')}</span></div>

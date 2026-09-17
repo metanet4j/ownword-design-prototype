@@ -175,8 +175,8 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .identity-object:active { cursor: grabbing; }
 /* 双面共享网格尺寸，背面内容也参与撑高，避免溢出到卡片下方。 */
 .identity-sculpture { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); max-width: 530px; margin-inline: auto; transform-style: preserve-3d; transform: rotateX(6deg) rotateY(var(--angle)); transition: transform 150ms ease-out; }
-.identity-sculpture.rotating { animation: identity-turn 16s ease-in-out infinite; }
-@keyframes identity-turn { 0%,100% { transform: rotateX(5deg) rotateY(-18deg); } 50% { transform: rotateX(-3deg) rotateY(20deg); } }
+.identity-sculpture.rotating { animation: identity-turn 2.4s ease-in-out; }
+@keyframes identity-turn { 0%,100% { transform: rotateX(6deg) rotateY(var(--angle)); } 50% { transform: rotateX(3deg) rotateY(6deg); } }
 .identity-plate { position: relative; grid-area: 1 / 1; min-width: 0; backface-visibility: hidden; min-height: 330px; border-radius: var(--s2d-radius-xl); background: linear-gradient(125deg, var(--s2-gray-25), var(--s2-blue-100) 50%, var(--s2-gray-100)); border: 1px solid var(--s2-gray-400); padding: var(--s2-spacing-400); box-shadow: inset 0 1px 0 var(--s2-gray-25), 0 12px 32px color-mix(in srgb, var(--s2-black) 6%, transparent); transform: translateZ(6px); }
 .identity-plate::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 18%, color-mix(in srgb, var(--s2-white) 38%, transparent) 28%, transparent 38%, transparent 70%, color-mix(in srgb, var(--s2-white) 22%, transparent) 85%, transparent); pointer-events: none; }
 .plate-depth { pointer-events: none; position: absolute; inset: 1px -1px -1px 1px; transform: translateZ(-2px); border-radius: var(--s2d-radius-xl); background: var(--s2-gray-500); box-shadow: 1px 2px 0 var(--s2-gray-400); }

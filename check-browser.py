@@ -113,7 +113,7 @@ def settle(limit=80):
 
     Buttons animate color/background/border over 150ms; sampling axe mid
     transition reports blended colors and invents contrast violations. Infinite
-    animations (sky-line pulse, 3D rotation) are ignored on purpose.
+    animations are ignored on purpose; the single card introduction settles.
     """
     expression = ('document.getAnimations().every(a=>a.playState!=="running"'
                   '||(a.effect&&a.effect.getTiming().iterations===Infinity))')
@@ -405,7 +405,7 @@ def check_chain_disclosure():
     expect('document.querySelector("[data-action=toggle-chain-record]").getAttribute("aria-expanded") === "true" && !document.querySelector("#chain-record-details").hidden', 'Enter opens chain record')
     expect('document.querySelector("#chain-record-details [data-chain=confirmation]").textContent === "Confirmed" && document.querySelector("#chain-record-details code").textContent === OwnwordModel.transactions[0].txid', 'Expanded record shows current confirmed transaction')
     expect('document.querySelector("#chain-record-details [data-chain=block]").textContent === document.querySelector(".plate-back [data-chain=block]").textContent', 'Card and disclosure show the same block height')
-    expect('document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Opening disclosure preserves card animation')
+    expect('document.querySelector(".identity-sculpture").dataset.face === "front" && document.querySelector(".identity-sculpture").style.getPropertyValue("--angle") === "-10deg"', 'Opening disclosure preserves the card orientation')
     call('press', 'Tab')
     expect('document.activeElement.dataset.action === "copy-tx-details"', 'Keyboard reaches transaction copy without dragging')
     call('press', 'Enter')
@@ -758,7 +758,7 @@ try:
     call('set', 'media', 'light')
     click_action('public'); wait_page('public')
     inspect('public', True)
-    expect('document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Public Identity rotates')
+    wait_until('!document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Public Identity settles after its single introduction')
     drag_card(320)
     expect('parseFloat(document.querySelector(".identity-sculpture").style.getPropertyValue("--angle")) > 90 && !document.querySelector(".identity-sculpture").classList.contains("rotating")', 'Dragging the card turns it past 90 degrees and stops the rotation')
     expect('document.querySelector(".identity-sculpture").dataset.face === "back" && !document.querySelector(".plate-back").hasAttribute("inert")', 'Turning past 90 degrees exposes the chain record face')

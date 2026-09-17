@@ -17,7 +17,7 @@
 
 `index.html` 按 Baoyu Design 导入结果加载 S2 的全部 CSS 依赖及组件 bundle。React、ReactDOM 与 Babel 从 `vendor/` 本地加载（同版本原文件，`integrity` 保留作校验，来源与哈希见 [vendor/README.md](vendor/README.md)），因此启动不依赖 CDN。`components.jsx` 消费其 Button、TextField、TextArea，`app.jsx` 另用 StatusLight、Skeleton。组件源是本地视觉样件；适配层为其返回元素添加受控输入、ARIA、事件及表单提交。弹窗使用浏览器原生 dialog 管理焦点和 Escape，不修改源设计系统。
 
-`app.css` 以 S2 的字体、颜色、语义表面、圆角与间距令牌构成视觉。穹顶由七条 CSS 椭圆线组成，点击空白处、触摸及键盘均可触发依次律动。铁灰地平线无刻度。Public Identity 使用有厚度的 CSS 3D 身份板，自动旋转并可用指针拖动改变视角；不提供视角控件（2026-09-11 按用户要求移除），尊重减少动态效果偏好。
+`app.css` 以 S2 的字体、颜色、语义表面、圆角与间距令牌构成视觉。穹顶由七条 CSS 椭圆线组成，点击空白处、触摸及键盘均可触发依次律动。铁灰地平线无刻度。Public Identity 使用有厚度的 CSS 3D 身份板，进入页面时轻动一次，2.4 秒后静止。支持指针拖动和“翻面／翻回正面”按钮；减少动态效果时跳过轻动，手动翻面仍可用。
 
 `model.js` 保存原型状态迁移。异步操作携带会话序号；账户切换或断开时清除上下文并使旧回调失效。`app.jsx` 管理计时器和界面状态。头像仅使用本地 blob URL 预览，不定义或伪造上传端点。示例名称、BAP ID 与交易结果均为模拟数据。
 
@@ -101,7 +101,7 @@ PRD v0.1 没有该界面。它落实的是核心认知第 11.8 条「交易已�
 | 模型 `existingRecord.transaction.blockHeight === 912684` | 已发布身份为 confirmed |
 | 模型 `DISCONNECT` / `SWITCH` 后 `transaction === null` | 记录不跨会话 |
 | 模型 `RESULT(save)` 保留原记录 | 更新资料不重置发布记录 |
-| 浏览器 `Public Identity rotates` | 自动旋转 |
+| 浏览器 `Public Identity settles after its single introduction` | 单次轻动后静止 |
 | 浏览器 `Dragging the card turns it past 90 degrees and stops the rotation` | 拖拽控制视角（2026-09-11 取代已移除的角度滑块） |
 | 浏览器 `Turning past 90 degrees exposes the chain record face` | 翻面可见 |
 | 浏览器 `Dragging the card back returns the identity face` | 拖回正面（2026-09-11 取代已移除的翻面按钮） |
