@@ -48,13 +48,6 @@
       "zhLength": 24
     },
     {
-      "key": "retained",
-      "en": "Your editing values are kept. Review them and try again when ready.",
-      "zh": "已保留填写内容。核对后可重新尝试。",
-      "enLength": 67,
-      "zhLength": 17
-    },
-    {
       "key": "simulatorNote",
       "en": "Demo only. No wallet connection, signature or transaction is sent.",
       "zh": "仅作演示。不会连接钱包、签名或发送交易。",
@@ -144,6 +137,13 @@
       "zh": "账户已切换，进行中的操作已取消。",
       "enLength": 51,
       "zhLength": 16
+    },
+    {
+      "key": "editBody",
+      "en": "Update how you appear. Your BAP ID stays the same.",
+      "zh": "更新展示资料，BAP ID 保持不变。",
+      "enLength": 50,
+      "zhLength": 19
     }
   ],
   "long": []

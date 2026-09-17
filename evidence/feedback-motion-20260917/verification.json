@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-09-17T12:10:11.868616+00:00",
+  "status": "implemented-awaiting-user-review",
+  "url": "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/",
+  "scope": "本轮四项优化；390×844 中文浅色正常场景、320×568 中文深色提示与浅色减少动态效果边界。",
+  "checks": [
+    {
+      "item": "即时纠错",
+      "result": "通过",
+      "steps": [
+        "新身份提交空名称，出现必填错误并聚焦名称",
+        "填写林舟，不再次提交，错误与 aria-invalid 即时清除",
+        "名称 101→100 字、简介 1001→1000 字，超限错误即时出现并清除",
+        "预览并完成模拟创建"
+      ],
+      "screenshot": "validation-fixed-390.png"
+    },
+    {
+      "item": "无改动保存拦截",
+      "result": "通过",
+      "steps": [
+        "已发布身份进入编辑，按钮显示暂无修改且禁用",
+        "form.requestSubmit 仍停留编辑页",
+        "修改名称后可预览，恢复 Maya Chen 后再次禁用",
+        "真实改为林舟后预览、授权，资料保存成功"
+      ],
+      "screenshot": "unchanged-edit-390.png"
+    },
+    {
+      "item": "短屏取消提示",
+      "result": "通过",
+      "beforeHeight": 163.922,
+      "afterGeometry": {
+        "close": {
+          "bottom": 462.359375,
+          "height": 44,
+          "left": 215,
+          "right": 291,
+          "top": 418.359375,
+          "width": 76,
+          "x": 215,
+          "y": 418.359375
+        },
+        "footer": {
+          "bottom": 568,
+          "height": 69,
+          "left": 0,
+          "right": 320,
+          "top": 499,
+          "width": 320,
+          "x": 0,
+          "y": 499
+        },
+        "toast": {
+          "bottom": 480,
+          "height": 79.28125,
+          "left": 16,
+          "right": 304,
+          "top": 400.71875,
+          "width": 288,
+          "x": 16,
+          "y": 400.71875
+        }
+      },
+      "steps": [
+        "320×568 中文深色，新身份预览后取消创建",
+        "键盘聚焦关闭按钮，提示高约79px、按钮高44px，未覆盖底部操作，无横向溢出",
+        "Enter 关闭提示后草稿林舟保留"
+      ],
+      "screenshot": "toast-320-dark.png"
+    },
+    {
+      "item": "单次卡片轻动",
+      "result": "通过",
+      "motion": {
+        "angle": "-10deg",
+        "intro": {
+          "duration": "2.4s",
+          "iterations": "1",
+          "running": true
+        },
+        "settled": true,
+        "stable": true
+      },
+      "interruption": {
+        "angle": "-180deg",
+        "manualInterruption": true,
+        "stillBackAfterIntroDeadline": true,
+        "wasRunning": true
+      },
+      "steps": [
+        "公开卡轻动2.4秒一次；结束后旋转类移除、无动画，后续变换不再变化",
+        "Enter 翻面、Space 翻回；另一面 inert，焦点保留",
+        "鼠标拖动335→40px，可翻到背面",
+        "动画中手动翻面立即停止轻动，超过原动画时长后仍保持手动角度",
+        "320px 减少动态效果不播放轻动；键盘仍能翻面、翻回，无横向溢出"
+      ],
+      "screenshots": [
+        "public-front-390.png",
+        "public-back-390.png",
+        "public-reduced-320.png"
+      ]
+    }
+  ],
+  "automatedChecks": {
+    "node check-model.cjs": "92 assertions passed",
+    "node check-copy.cjs": "4 contract checks; 163 keys per locale; 0 over-length strings",
+    "python3 check-tokens.py": "66 references resolved",
+    "git diff --check": "passed",
+    "browserRuntimeErrors": 0
+  },
+  "visualReview": "代理已查看本轮六张修复后截图；用户视觉复核待完成。",
+  "notRun": [
+    "全量浏览器回归",
+    "全部语言、主题、屏宽组合",
+    "真实手机软键盘与触屏",
+    "真实钱包与网络服务"
+  ],
+  "notes": [
+    "校验与动效断言已同步到 check-browser.py，本轮通过宿主 agent-browser 定向操作验证，未执行整份脚本。",
+    "自动化曾误点被场景面板遮挡的开关，改点面板关闭按钮后继续；一次 shell heredoc 缺失已修正并重新验证。截图等待卡片过渡结束后重拍。"
+  ]
+}
