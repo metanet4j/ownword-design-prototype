@@ -1,0 +1,120 @@
+{
+  "date": "2026-09-17",
+  "scope": "评审第 4、5 项：公开身份卡比例、复制区距离、可见翻面按钮。",
+  "tool": "宿主环境 agent-browser，session astra-card45-20260917",
+  "url": "http://127.0.0.1:4311/own-word-prototype-s2-astra-001/",
+  "normal": {
+    "profile": "Maya Chen；内置 existing 模拟场景",
+    "desktop": {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "language": "en",
+      "theme": "light",
+      "cardHeight": 396,
+      "horizontalOverflow": false,
+      "screenshots": [
+        "desktop-front.png",
+        "desktop-back.png"
+      ]
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "theme": "light",
+      "beforeCardHeight": 549,
+      "afterCardHeight": 376,
+      "englishCopyBottom": 834.1875,
+      "chineseCopyBottom": 793.578125,
+      "flipTargetHeight": 44,
+      "frontClientHeight": 374,
+      "frontScrollHeight": 374,
+      "backClientHeight": 374,
+      "backScrollHeight": 374,
+      "horizontalOverflow": false,
+      "screenshots": [
+        "before-mobile.png",
+        "mobile-en.png",
+        "mobile-zh.png",
+        "mobile-back.png"
+      ]
+    }
+  },
+  "boundary": {
+    "viewport": [
+      320,
+      568
+    ],
+    "language": "zh",
+    "theme": "dark",
+    "profile": "通过编辑和模拟保存写入长姓名、五行简介与连续长链接",
+    "cardHeight": 482,
+    "frontClientHeight": 480,
+    "frontScrollHeight": 480,
+    "backClientHeight": 480,
+    "backScrollHeight": 480,
+    "horizontalOverflow": false,
+    "fullProfileTextPreserved": true,
+    "fullProfileWhiteSpace": "pre-wrap",
+    "expandedHorizontalOverflow": false,
+    "screenshots": [
+      "long-front.png",
+      "long-back.png"
+    ]
+  },
+  "interactions": {
+    "buttonFrontAndBack": true,
+    "keyboardEnterAndSpace": true,
+    "focusRemainsOnFlip": true,
+    "inactiveFaceInert": true,
+    "desktopPointerDrag": {
+      "from": [
+        500,
+        500
+      ],
+      "to": [
+        820,
+        500
+      ],
+      "angleBefore": -720,
+      "angleAfter": -608,
+      "resultFace": "back",
+      "autoRotationStopped": true,
+      "buttonRestoresFront": true
+    },
+    "reducedMotion": {
+      "command": "set media light reduced-motion",
+      "matchMedia": true,
+      "autoRotationStopped": true,
+      "manualFlipWorks": true
+    },
+    "bapCopyFeedback": "copied",
+    "txidCopyFeedback": "copied",
+    "fullProfileExpandCollapse": true,
+    "chainRecordExpandCollapse": true
+  },
+  "checks": {
+    "screenshotsVisuallyReviewed": true,
+    "browserErrors": [],
+    "copyContract": "passed: 162 keys per locale",
+    "cssTokens": "passed: 66 references resolved"
+  },
+  "reproduce": [
+    "连接模拟钱包，场景选已发布身份；进入公开身份。",
+    "以 1440×1000 英文浅色、390×844 手机查看默认资料；点击翻面、复制 BAP ID 与 TxID。",
+    "鼠标拖动卡片后，点击翻面恢复正面。",
+    "通过编辑和模拟保存写入多行长资料，切到 320×568 中文深色；查看正反面、展开完整资料与链上记录。",
+    "用 set media light reduced-motion 启用减少动态效果，确认 matchMedia 返回 true；聚焦翻面按钮，按 Enter 和 Space，核对焦点及 inactive face 的 inert 属性。"
+  ],
+  "notRun": [
+    "全量 check-browser.py 回归",
+    "真实触屏手势",
+    "真实钱包和链上服务",
+    "系统剪贴板内容读取",
+    "全部语言、主题、屏宽组合"
+  ],
+  "status": "实现与本轮局部验证完成；等待用户视觉复核。"
+}

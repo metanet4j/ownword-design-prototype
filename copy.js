@@ -2,6 +2,7 @@
 (function (root) {
   const words = {
   en: {
+    flipToBack: 'Flip card', flipToFront: 'Back to front',
     viewChainRecord: 'View chain record', hideChainRecord: 'Hide chain record',
     viewFullProfile: 'View full profile', hideFullProfile: 'Hide full profile',
     connect: 'Connect Wallet', connected: 'Connected', notConnected: 'Not connected', connecting: 'Connecting', disconnect: 'Disconnect', accountSwitch: 'Switch account', wallet: 'Wallet',
@@ -39,6 +40,7 @@
     chainRecord: 'Chain record', identityPublication: 'Identity publication', blockHeight: 'Block height', confirmation: 'Confirmation', confirmed: 'Confirmed', pendingConfirmation: 'Awaiting block confirmation', pendingBlock: 'Awaiting block', publicationTx: 'Publication TxID', copyTx: 'Copy publication TxID', recordUnavailable: 'Transaction record unavailable'
   },
   zh: {
+    flipToBack: '翻面', flipToFront: '翻回正面',
     viewChainRecord: '查看链上记录', hideChainRecord: '收起链上记录',
     viewFullProfile: '查看完整资料', hideFullProfile: '收起完整资料',
     connect: '连接钱包', connected: '已连接', notConnected: '未连接', connecting: '正在连接', disconnect: '断开连接', accountSwitch: '切换账户', wallet: '钱包',

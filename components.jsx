@@ -161,15 +161,21 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     query.addEventListener('change', sync);
     return () => query.removeEventListener('change', sync);
   }, []);
-  // Auto-rotation is suppressed by the stylesheet too; keep the control honest by
-  // removing it and saying why, instead of reporting a state that never happens.
+  // 减少动态效果时停止自动摆动，手动翻面仍可用。
   React.useEffect(() => {if (reducedMotion) setRotating(false);}, [reducedMotion, setRotating]);
   const normalized = ((angle % 360) + 360) % 360;
   // The back face is only exposed while the card is turned past 90 degrees;
   // auto-rotation keeps the front in the accessibility tree.
   const back = normalized > 90 && normalized < 270;
+  function flipCard() {
+    setRotating(false);
+    // 按最短路径转向另一面，避免拖动多圈后点击按钮时整圈回转。
+    const target = back ? 0 : 180;
+    setAngle(angle + ((target - normalized + 540) % 360) - 180);
+  }
   return <div className="identity-stage">
-    <div className="identity-object" onPointerDown={e => {if (e.target.closest('button')) return; drag.current = {x: e.clientX, angle}; setRotating(false); e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e => {if (drag.current) setAngle(drag.current.angle + (e.clientX - drag.current.x) * .35);}} onPointerUp={() => {drag.current = null;}} onPointerCancel={() => {drag.current = null;}}>
+    <div className="card-controls"><Button variant="quiet" data-action="flip-card" aria-controls="identity-card-object" onClick={flipCard}>{t(back ? 'flipToFront' : 'flipToBack')}</Button></div>
+    <div id="identity-card-object" className="identity-object" onPointerDown={e => {if (e.target.closest('button')) return; drag.current = {x: e.clientX, angle}; setRotating(false); e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e => {if (drag.current) setAngle(drag.current.angle + (e.clientX - drag.current.x) * .35);}} onPointerUp={() => {drag.current = null;}} onPointerCancel={() => {drag.current = null;}}>
       <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} data-face={back ? 'back' : 'front'} style={{'--angle': `${angle}deg`}}>
         <div className="plate-depth" aria-hidden="true"></div>
         <article className="identity-plate plate-front" aria-hidden={back} inert={back ? '' : undefined}>

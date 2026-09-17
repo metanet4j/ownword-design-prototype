@@ -165,34 +165,36 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .public-page .page-heading .eyebrow { margin-bottom: var(--s2-spacing-200); }
 .public-page .page-heading > p:last-child { margin-inline: auto; margin-top: var(--s2-spacing-200); }
 .identity-stage { position: relative; max-width: 680px; margin: var(--s2-spacing-400) auto 0; }
-.identity-object { perspective: 1600px; padding: 30px 40px; touch-action: pan-y; cursor: grab; }
+.card-controls { max-width: 500px; margin-inline: auto; display: flex; justify-content: flex-end; }
+.card-controls .s2d-button { min-height: 44px; }
+.identity-object { perspective: 1600px; padding: var(--s2-spacing-200) var(--s2-spacing-400); touch-action: pan-y; cursor: grab; }
 .identity-object:active { cursor: grabbing; }
 /* 双面共享网格尺寸，背面内容也参与撑高，避免溢出到卡片下方。 */
 .identity-sculpture { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); max-width: 530px; margin-inline: auto; transform-style: preserve-3d; transform: rotateX(6deg) rotateY(var(--angle)); transition: transform 150ms ease-out; }
 .identity-sculpture.rotating { animation: identity-turn 16s ease-in-out infinite; }
 @keyframes identity-turn { 0%,100% { transform: rotateX(5deg) rotateY(-18deg); } 50% { transform: rotateX(-3deg) rotateY(20deg); } }
-.identity-plate { position: relative; grid-area: 1 / 1; min-width: 0; backface-visibility: hidden; min-height: 330px; border-radius: var(--s2d-radius-xl); background: linear-gradient(125deg, var(--s2-gray-25), var(--s2-blue-100) 50%, var(--s2-gray-100)); border: 1px solid var(--s2-gray-400); padding: var(--s2-spacing-500); box-shadow: inset 0 1px 0 var(--s2-gray-25), 0 12px 32px color-mix(in srgb, var(--s2-black) 6%, transparent); transform: translateZ(6px); }
+.identity-plate { position: relative; grid-area: 1 / 1; min-width: 0; backface-visibility: hidden; min-height: 330px; border-radius: var(--s2d-radius-xl); background: linear-gradient(125deg, var(--s2-gray-25), var(--s2-blue-100) 50%, var(--s2-gray-100)); border: 1px solid var(--s2-gray-400); padding: var(--s2-spacing-400); box-shadow: inset 0 1px 0 var(--s2-gray-25), 0 12px 32px color-mix(in srgb, var(--s2-black) 6%, transparent); transform: translateZ(6px); }
 .identity-plate::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 18%, color-mix(in srgb, var(--s2-white) 38%, transparent) 28%, transparent 38%, transparent 70%, color-mix(in srgb, var(--s2-white) 22%, transparent) 85%, transparent); pointer-events: none; }
 .plate-depth { pointer-events: none; position: absolute; inset: 1px -1px -1px 1px; transform: translateZ(-2px); border-radius: var(--s2d-radius-xl); background: var(--s2-gray-500); box-shadow: 1px 2px 0 var(--s2-gray-400); }
 .plate-top, .plate-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s2-spacing-200); }
 .wordmark-small { display: inline-flex; align-items: center; gap: var(--s2-spacing-100); flex-shrink: 0; font-size: var(--s2-font-size-500); font-weight: 750; letter-spacing: -.07em; }
 .wordmark-small .brand-mark { width: 24px; height: 24px; }
 .plate-top .eyebrow { font-size: var(--s2-font-size-50); }
-.plate-person { position: relative; min-height: 143px; margin-top: var(--s2-spacing-500); padding-right: 104px; }
+.plate-person { position: relative; margin-top: var(--s2-spacing-300); padding-right: 104px; }
 .plate-person .portrait { position: absolute; top: 0; right: 0; width: 76px; height: 76px; }
 .plate-person h2 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-900); font-weight: 500; letter-spacing: -.04em; margin-top: var(--s2-spacing-100); }
 .plate-person .bio { font-size: var(--s2-font-size-100); margin-top: var(--s2-spacing-200); color: var(--s2-gray-700); }
 /* 卡面只展示摘要；完整资料由下方折叠区承载，避免长文本拉伸 3D 投影。 */
 .plate-person h2, .plate-person .bio, .chain-heading > p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .plate-person .bio { -webkit-line-clamp: 4; }
-.plate-id { display: grid; gap: var(--s2-spacing-100); margin-top: var(--s2-spacing-400); padding-top: var(--s2-spacing-300); border-top: 1px solid var(--s2-gray-400); }
+.plate-id { display: grid; gap: var(--s2-spacing-100); margin-top: var(--s2-spacing-300); padding-top: var(--s2-spacing-200); border-top: 1px solid var(--s2-gray-400); }
 .plate-id > span { font-size: var(--s2-font-size-75); letter-spacing: .14em; }
 .plate-id code { font-family: var(--s2d-font-mono); font-size: var(--s2-font-size-100); overflow-wrap: anywhere; }
-.plate-foot { margin-top: var(--s2-spacing-400); font-size: var(--s2-font-size-50); color: var(--s2-gray-700); }
+.plate-foot { margin-top: var(--s2-spacing-300); font-size: var(--s2-font-size-50); color: var(--s2-gray-700); }
 .plate-foot span:last-child { letter-spacing: .15em; }
-.object-shadow { margin: 0 auto var(--s2-spacing-200); width: 70%; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 10%, transparent); filter: blur(16px); }
+.object-shadow { margin: 0 auto; width: 70%; height: var(--s2-spacing-50); border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 10%, transparent); filter: blur(16px); }
 .public-copy { max-width: 500px; margin-inline: auto; }
-.public-copy .identifier { padding: var(--s2-spacing-200) 0; border: 0; }
+.public-copy .identifier { padding: var(--s2-spacing-50) 0; border: 0; }
 .chain-disclosure, .profile-disclosure { max-width: 500px; margin: var(--s2-spacing-300) auto 0; border-top: 1px solid var(--s2d-border); padding-block: var(--s2-spacing-50); }
 .profile-disclosure + .chain-disclosure { margin-top: 0; border-bottom: 1px solid var(--s2d-border); }
 .chain-disclosure > .s2d-button, .profile-disclosure > .s2d-button { width: 100%; min-height: 44px; justify-content: space-between; gap: var(--s2-spacing-200); padding-inline: var(--s2-spacing-100); text-align: start; }
@@ -285,9 +287,9 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .flat-horizon { margin-top: var(--s2-spacing-500); }
   .public-page { padding-top: var(--s2-spacing-300); }
   .identity-stage { margin-top: var(--s2-spacing-200); }
-  .identity-object { padding: 25px 8px; }
+  .identity-object { padding: var(--s2-spacing-200) var(--s2-spacing-100); }
   .identity-plate { padding: var(--s2-spacing-300); min-height: 300px; }
-  .plate-person { padding-right: 0; margin-top: var(--s2-spacing-400); min-height: 145px; }
+  .plate-person { padding-right: 0; }
   .plate-person .portrait { width: 42px; height: 42px; top: -4px; }
   .plate-person .portrait span { font-size: var(--s2-font-size-500); }
   .plate-person h2 { font-size: var(--s2-font-size-700); padding-right: 44px; }
@@ -343,16 +345,17 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 
 .identity-sculpture[data-face="front"] .plate-back,
 .identity-sculpture[data-face="back"] .plate-front { pointer-events: none; }
-.plate-back { transform: rotateY(180deg) translateZ(6px); display: flex; flex-direction: column; gap: var(--s2-spacing-300); }
-.chain-heading { margin-top: var(--s2-spacing-500); }
-.chain-heading h2 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-700); font-weight: 500; letter-spacing: -.03em; }
+.plate-back { transform: rotateY(180deg) translateZ(6px); display: flex; flex-direction: column; gap: var(--s2-spacing-200); }
+.chain-heading h2 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--s2-font-size-500); font-weight: 500; letter-spacing: -.03em; }
 .chain-heading > p { margin-top: var(--s2-spacing-100); color: var(--s2-gray-700); font-size: var(--s2-font-size-100); }
 .chain-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s2-spacing-300); margin: 0; padding-top: var(--s2-spacing-300); border-top: 1px solid var(--s2-gray-400); }
 .chain-facts > div { display: grid; gap: var(--s2-spacing-100); }
 .chain-facts dt { font-size: var(--s2-font-size-50); letter-spacing: .14em; color: var(--s2-gray-700); }
 .chain-facts dd { margin: 0; font-size: var(--s2-font-size-200); font-weight: 600; }
-.plate-back .identifier { margin-top: auto; }
-.plate-back .plate-foot { margin-top: var(--s2-spacing-300); }
+.plate-back .identifier { margin-top: 0; padding-block: var(--s2-spacing-200); }
+.plate-back .plate-foot { margin-top: 0; }
+.plate-back .chain-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: var(--s2-spacing-200); }
+.plate-back .chain-facts dt { letter-spacing: 0; overflow-wrap: anywhere; }
 @media (max-width: 480px) {
   .chain-facts { grid-template-columns: minmax(0, 1fr); }
 }
