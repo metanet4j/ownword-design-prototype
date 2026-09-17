@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-color-scheme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ownword · 视觉与交互评审 · 2026-09-17</title>
+  <link rel="icon" href="../brand/ownword-small.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../_ds/react-spectrum-s2/styles.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--s2d-surface-base); color: var(--s2d-content-neutral); font: 16px/1.75 var(--s2d-font-family); }
+    a { color: var(--s2d-action-accent); text-underline-offset: 4px; }
+    h1,h2,h3,p,figure { margin: 0; }
+    h1 { font-size: 32px; line-height: 1.4; margin: 12px 0 20px; }
+    h2 { font-size: 24px; line-height: 1.5; }
+    h3 { font-size: 18px; margin: 20px 0 8px; }
+    p + p { margin-top: 12px; }
+    .layout { max-width: 1480px; margin: auto; padding: 40px 32px; display: grid; grid-template-columns: 260px minmax(0,1fr); gap: 40px; }
+    aside { align-self: start; position: sticky; top: 32px; }
+    .eyebrow { font-size: 14px; color: var(--s2d-content-subdued); }
+    .brand { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    .brand img { width: 24px; height: 24px; }
+    nav { display: grid; gap: 12px; margin: 24px 0; }
+    .scope { font-size: 14px; color: var(--s2d-content-subdued); margin-top: 24px; }
+    #actions { margin-top: 20px; }
+    main { min-width: 0; }
+    .lead { padding: 24px 0 32px; border-bottom: 1px solid var(--s2d-border); margin-bottom: 24px; }
+    .lead strong { font-size: 22px; }
+    data-overlay { --font-ui: var(--s2d-font-family); --text-primary: var(--s2d-content-neutral); display: block; }
+    article { padding: 28px 0 64px; border-bottom: 1px solid var(--s2d-border); scroll-margin-top: 24px; }
+    .caption { max-width: 760px; margin: 12px 0 24px; }
+    .priority { font-weight: 700; color: var(--s2d-action-accent); font-size: 14px; margin-bottom: 8px; }
+    .shot { position: relative; width: min(390px,100%); margin-top: 24px; }
+    .shot.wide { width: min(720px,100%); }
+    .shot img { display: block; width: 100%; height: auto; border-radius: var(--s2d-radius-medium); }
+    .anchor { position: absolute; border-radius: var(--s2d-radius-small); }
+    .original { display: inline-block; margin-top: 16px; font-size: 14px; }
+    details { margin-top: 20px; max-width: 760px; }
+    summary { cursor: pointer; font-weight: 600; }
+    ol,ul { padding-left: 24px; }
+    .wide-space { padding-bottom: 160px; }
+    footer { margin-top: 32px; font-size: 14px; color: var(--s2d-content-subdued); }
+    @media(max-width:1000px) { .layout { grid-template-columns: minmax(0,1fr); gap: 16px; padding: 24px 16px; } aside { position: static; } nav { grid-template-columns: repeat(2,minmax(0,1fr)); } .wide-space { padding-bottom: 48px; } }
+  </style>
+</head>
+<body class="s2">
+  <!-- 本页仅评审现有截图；建议尚未应用到产品原型。 -->
+  <div class="layout">
+    <aside>
+      <div class="brand"><img src="../brand/ownword-small.svg" alt="">ownword</div>
+      <p class="eyebrow">视觉与交互评审 · 2026-09-17</p>
+      <h1>把注意力还给身份与操作。</h1>
+      <p>目标：让用户更快完成身份设置，更轻松地阅读和使用公开身份卡。</p>
+      <nav aria-label="评审目录">
+        <a href="#confirmation">01 确认页 · 两项优先修复</a>
+        <a href="#form">02 表单 · 首屏比例</a>
+        <a href="#card">03 身份卡 · 比例与翻面</a>
+        <a href="#identity">04 身份页 · 内容层次</a>
+        <a href="#keep">05 保留的视觉优势</a>
+      </nav>
+      <p><a href="../index.html">打开当前原型</a></p>
+      <div id="actions"></div>
+      <p class="scope">6 项建议。标注可切换“交互优先”“视觉打磨”“保留优势”。手机默认收起标注，正文保留完整建议。</p>
+      <p class="scope">实查：1440×1000 桌面与 390×844 手机；首页中英浅色，中文浅色连接、创建、确认、身份页、公开身份与编辑。未验证深色、真实触屏、真实钱包或全量回归。</p>
+    </aside>
+    <main>
+      <div class="lead"><strong>先修阅读与操作，再磨比例。</strong><p>穹顶、地平线和 3D 身份卡已有辨识度。本轮收紧页面铺垫、卡片留白与信息分组。以下均来自本次实际页面截图；审美方向仍需视觉复核。</p></div>
+      <data-overlay src="./feedback-views.js" controls="on">
+        <article id="confirmation">
+          <p class="priority">优先修复 · 01 / 02</p>
+          <h2>确认页：标题被遮挡，标识被截断。</h2>
+          <div class="caption">
+            <p><strong>01 步骤切换要留下明确的阅读起点。</strong>从手机编辑页底部进入确认页后，标题位于屏幕 y≈31–75px，被高 120px 的吸顶页头完全遮住。建议在步骤切换时，让标题落在页头下方，并保留标题焦点。</p>
+            <p><strong>02 核对时显示完整 BAP ID。</strong>当前确认卡将 BAP ID 单行省略，复制按钮仍在。建议允许标识换行，复制按钮保持独立，便于直接核对。完整标识要求引用核心认知第 6.3 节。</p>
+          </div>
+          <div class="shot"><img src="confirm-mobile.png" width="390" height="844" alt="手机确认页：顶部仅见吸顶页头，标题被盖住；卡内 BAP ID 显示省略号。"><span class="anchor" data-metric-id="confirm-heading" style="left:4%;top:3.7%;width:92%;height:10.5%"></span><span class="anchor" data-metric-id="confirm-id" style="left:8%;top:53%;width:84%;height:10%"></span></div>
+          <a class="original" href="confirm-mobile.png" target="_blank" rel="noopener">查看原图 · 390×844</a>
+          <details><summary>复现步骤与完成标准</summary><ol><li>中文浅色，390×844。连接模拟钱包并创建身份，进入“我的身份”。</li><li>打开“编辑资料”，修改简介，滚动至页底，点击“预览确认”。</li><li>确认页标题虽获得焦点，但 y≈31–75px，处于吸顶页头 0–120px 内。<a href="edit-before-confirm.png" target="_blank" rel="noopener">编辑页底部截图</a>。</li></ol><p>完成标准：进入确认页时，步骤和标题可见；BAP ID 完整可读、可复制；页面无横向溢出。</p></details>
+        </article>
+        <article id="form">
+          <p class="priority">视觉打磨 · 03</p>
+          <h2>手机表单：让输入更早出现。</h2>
+          <p class="caption">390×844 的创建页中，名称输入框从约 y=636px 开始。步骤、标题、说明、身份信息和头像消耗了大部分首屏。建议压缩标题区与身份摘要的纵向间距，缩小头像组占高，保留字段之间的呼吸感。BAP ID 继续可见。</p>
+          <div class="shot"><img src="create-mobile.png" width="390" height="844" alt="手机创建页：多个说明区之后才出现名称输入框，简介与提交按钮在首屏外。"><span class="anchor" data-metric-id="form-intro" style="left:4%;top:18%;width:92%;height:33%"></span><span class="anchor" data-metric-id="form-first-input" style="left:8%;top:53%;width:84%;height:29%"></span></div>
+          <a class="original" href="create-mobile.png" target="_blank" rel="noopener">查看原图 · 390×844</a>
+          <p class="caption">完成标准：在这组屏宽下，名称和类型更早进入首屏，说明仍清楚。不要为了缩短页面压小触控目标。</p>
+        </article>
+        <article id="card">
+          <p class="priority">视觉与交互 · 04 / 05</p>
+          <h2>身份卡：轻一点，也更容易操作。</h2>
+          <div class="caption"><p><strong>04 调整卡片的纵向比例。</strong>短简介场景下，卡片底部仍有较大留白；390×844 首屏内看不到卡外复制入口。建议收紧短内容卡片的高度和上下间距，让复制入口更接近卡片。前后两面仍需完整容纳内容。</p><p><strong>05 给翻面一个看得见的入口。</strong>卡片有 3D 外观，但首屏缺少明确的翻面提示。建议在卡边加入轻量的“翻面”操作，保留拖动；按键和触屏用户都能发现背面。“查看链上记录”折叠入口继续保留。</p></div>
+          <div class="shot"><img src="card-mobile.png" width="390" height="844" alt="手机公开身份卡：卡面较高、底部留白较大，首屏没有明显翻面提示或卡外复制按钮。"><span class="anchor" data-metric-id="card-proportion" style="left:9%;top:69%;width:84%;height:29%"></span><span class="anchor" data-metric-id="card-affordance" style="left:9%;top:34%;width:84%;height:12%"></span></div>
+          <a class="original" href="card-mobile.png" target="_blank" rel="noopener">查看原图 · 390×844</a>
+          <p class="caption">完成标准：默认短资料下卡片和复制入口能一起被发现；首次访问即可找到翻面操作；长资料与背面内容不溢出。本轮未重新验证真实手指拖动。</p>
+        </article>
+        <article id="identity" class="wide-space">
+          <p class="priority">视觉打磨 · 06</p>
+          <h2>身份页：以人物与标识组织信息。</h2>
+          <p class="caption">“变化之中，自有坐标。”的字号和空间占比高于身份内容；右侧只有一句简介，却占据整列，“已发布”状态落在较远的底部。建议缩短任务页标题区，将名称、BAP ID 和发布状态组成清晰的信息组；简介紧随其后。短资料下减少空列，长资料再自然展开。</p>
+          <div class="shot wide"><img src="profile-desktop.png" width="1440" height="1000" alt="桌面身份页：大标题在顶部，身份与 BAP ID 在左，简短简介和发布状态分散在右。"><span class="anchor" data-metric-id="identity-heading" style="left:14%;top:16%;width:58%;height:18%"></span><span class="anchor" data-metric-id="identity-details" style="left:60%;top:38%;width:27%;height:33%"></span><span class="anchor" data-metric-id="identity-bap" style="left:14%;top:52%;width:42%;height:11%"></span></div>
+          <a class="original" href="profile-desktop.png" target="_blank" rel="noopener">查看原图 · 1440×1000</a>
+        </article>
+        <article id="keep" class="wide-space">
+          <p class="priority">保留优势</p>
+          <h2>品牌气质已经成立。</h2>
+          <p class="caption">首页的七线穹顶、地平线与单一蓝色主按钮，形成了克制的视觉秩序。建议保留首页的表达空间；业务操作页使用更紧凑的层次。身份页的 BAP ID 和复制操作，也应继续作为核心内容。</p>
+          <div class="shot wide"><img src="home-desktop.png" width="1440" height="1000" alt="中文首页：七线穹顶、两行标题、蓝色连接钱包按钮与地平线。"><span class="anchor" data-metric-id="home-dome" style="left:15%;top:10%;width:70%;height:12%"></span><span class="anchor" data-metric-id="home-action" style="left:41%;top:60%;width:18%;height:10%"></span></div>
+          <a class="original" href="home-desktop.png" target="_blank" rel="noopener">查看原图 · 1440×1000</a>
+          <p class="caption">钱包弹窗明确标注“外部钱包授权”，并说明发布时另行确认。这种操作边界应保留。<a href="wallet-desktop.png" target="_blank" rel="noopener">查看授权弹窗</a>。</p>
+        </article>
+      </data-overlay>
+      <footer>本轮未修改产品页面。浏览器错误检查未输出运行异常；未执行全量回归。截图为本轮证据，未使用历史通过记录。业务依据：核心认知第 6.3、10.5 节；视觉依据：项目绑定的 React Spectrum S2。</footer>
+    </main>
+  </div>
+  <script src="../vendor/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="../vendor/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="../_ds/react-spectrum-s2/_ds_bundle.js"></script>
+  <script src="data-overlay.js"></script>
+  <script>
+    const reviewOverlay = document.querySelector('data-overlay');
+    function ReviewControls() {
+      const [visible, setVisible] = React.useState(innerWidth > 1000);
+      React.useEffect(() => {
+        if (visible) reviewOverlay.setAttribute('src', './feedback-views.js');
+        else { reviewOverlay.removeAttribute('src'); reviewOverlay.setViews([]); }
+        reviewOverlay.setAttribute('controls', visible ? 'on' : 'off');
+      }, [visible]);
+      return React.createElement(window.ReactSpectrumS2_ad4872.ActionButton, {label: visible ? '隐藏标注' : '显示标注', onPress: () => setVisible(!visible)});
+    }
+    ReactDOM.createRoot(document.getElementById('actions')).render(React.createElement(ReviewControls));
+  </script>
+</body>
+</html>

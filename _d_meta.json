@@ -11,7 +11,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-09-17T04:44:10.090Z",
+  "updatedAt": "2026-09-17T10:01:41.688Z",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -48,6 +48,19 @@
           "viewport": {
             "width": 1440,
             "height": 1180
+          }
+        }
+      ]
+    },
+    "视觉与交互评审 · 2026-09-17": {
+      "versions": [
+        {
+          "path": "review-20260917/index.html",
+          "createdAt": "2026-09-17T09:59:04.135Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
           }
         }
       ]

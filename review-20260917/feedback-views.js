@@ -1,0 +1,18 @@
+window.__overlays = {views: [
+  {id: 'interaction', label: '交互优先', finding: '先保证用户能看见当前步骤、完整标识和卡片操作。', dim: 1, elements: [
+    {id: 'confirm-heading', callout: {head: '01 标题被页头盖住', body: '标题 y≈31–75px，吸顶页头高 120px。切换步骤时让标题落在页头下方。', dx: 390, dy: -40}},
+    {id: 'confirm-id', callout: {head: '02 核对需要完整标识', body: 'BAP ID 单行截断。允许换行，复制操作独立放置。', dx: 390, dy: -40}},
+    {id: 'card-affordance', callout: {head: '05 翻面入口不明显', body: '卡片的 3D 外观不足以说明操作。增加轻量翻面按钮，保留拖动与链上记录入口。', dx: 390, dy: -40}}
+  ]},
+  {id: 'visual', label: '视觉打磨', finding: '保留穹顶与地平线，收紧任务页面的铺垫与空白。', dim: 1, elements: [
+    {id: 'form-intro', callout: {head: '03 铺垫占据首屏', body: '名称输入框从约 y=636px 开始。压缩标题、身份摘要和头像组的高度。', dx: 390, dy: -40}},
+    {id: 'card-proportion', callout: {head: '04 卡片偏高', body: '短资料下底部留白较大，卡外复制入口在首屏外。收紧高度，让卡片和操作靠近。', dx: 390, dy: -40}},
+    {id: 'identity-heading', callout: {head: '06 让身份成为主角', body: '任务页的大标题压过真实身份内容。缩短标题区，优先名称、BAP ID 与发布状态。', place: 'below'}},
+    {id: 'identity-details', callout: {head: '06 收拢简介与状态', body: '一句简介占据整列，发布状态离主体较远。按信息关系重新分组。', place: 'below'}}
+  ]},
+  {id: 'keep', label: '保留优势', finding: '品牌语言、单一主操作与身份标识已有清晰基础。', dim: 1, elements: [
+    {id: 'identity-bap', callout: {head: '标识明确', body: '桌面 BAP ID 完整展示，复制操作清楚。优化布局时保留。', place: 'below'}},
+    {id: 'home-dome', callout: {head: '保留品牌结构', body: '七线穹顶和地平线形成辨识度，适合继续作为视觉主线。', place: 'below'}},
+    {id: 'home-action', callout: {head: '保留单一主操作', body: '蓝色连接钱包按钮容易发现；首页不需要增加竞争入口。', place: 'below'}}
+  ]}
+]};
