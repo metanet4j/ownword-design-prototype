@@ -44,7 +44,7 @@
   </style>
 </head>
 <body class="s2">
-  <!-- 本页仅评审现有截图；建议尚未应用到产品原型。 -->
+  <!-- 评审第 6 项已应用到产品原型，等待用户视觉复核。 -->
   <div class="layout">
     <aside>
       <div class="brand"><img src="../brand/ownword-small.svg" alt="">ownword</div>
@@ -55,12 +55,12 @@
         <a href="#confirmation">01 确认页 · 两项优先修复</a>
         <a href="#form">02 表单 · 首屏比例</a>
         <a href="#card">03 身份卡 · 比例与翻面</a>
-        <a href="#identity">04 身份页 · 内容层次</a>
+        <a href="#identity">04 身份页 · 已调整</a>
         <a href="#keep">05 保留的视觉优势</a>
       </nav>
       <p><a href="../index.html">打开当前原型</a></p>
       <div id="actions"></div>
-      <p class="scope">6 项建议。标注可切换“交互优先”“视觉打磨”“保留优势”。手机默认收起标注，正文保留完整建议。</p>
+      <p class="scope">6 项建议，第 6 项已落实，等待视觉复核。标注可切换“交互优先”“视觉打磨”“保留优势”。手机默认收起标注，正文保留完整建议。</p>
       <p class="scope">实查：1440×1000 桌面与 390×844 手机；首页中英浅色，中文浅色连接、创建、确认、身份页、公开身份与编辑。未验证深色、真实触屏、真实钱包或全量回归。</p>
     </aside>
     <main>
@@ -94,11 +94,11 @@
           <p class="caption">完成标准：默认短资料下卡片和复制入口能一起被发现；首次访问即可找到翻面操作；长资料与背面内容不溢出。本轮未重新验证真实手指拖动。</p>
         </article>
         <article id="identity" class="wide-space">
-          <p class="priority">视觉打磨 · 06</p>
-          <h2>身份页：以人物与标识组织信息。</h2>
-          <p class="caption">“变化之中，自有坐标。”的字号和空间占比高于身份内容；右侧只有一句简介，却占据整列，“已发布”状态落在较远的底部。建议缩短任务页标题区，将名称、BAP ID 和发布状态组成清晰的信息组；简介紧随其后。短资料下减少空列，长资料再自然展开。</p>
-          <div class="shot wide"><img src="profile-desktop.png" width="1440" height="1000" alt="桌面身份页：大标题在顶部，身份与 BAP ID 在左，简短简介和发布状态分散在右。"><span class="anchor" data-metric-id="identity-heading" style="left:14%;top:16%;width:58%;height:18%"></span><span class="anchor" data-metric-id="identity-details" style="left:60%;top:38%;width:27%;height:33%"></span><span class="anchor" data-metric-id="identity-bap" style="left:14%;top:52%;width:42%;height:11%"></span></div>
-          <a class="original" href="profile-desktop.png" target="_blank" rel="noopener">查看原图 · 1440×1000</a>
+          <p class="priority">06 已落实 · 待视觉复核</p>
+          <h2>身份页：姓名与标识集中呈现。</h2>
+          <p class="caption">页面标题改为小字号“我的身份”，姓名成为视觉重点；发布状态靠近姓名。BAP ID、编辑与公开身份操作、简介按单列排列，长简介自然撑高。桌面英文浅色与 320px 中文深色长简介已验证，等待用户视觉复核。</p>
+          <div class="shot wide"><img src="../evidence/identity-layout-20260917/desktop.png" width="1440" height="1000" alt="当前桌面身份页：小标题，姓名旁显示发布状态，BAP ID、操作与简介按单列排列。"><span class="anchor" data-metric-id="identity-heading" style="left:23.6%;top:13%;width:52.8%;height:22%"></span><span class="anchor" data-metric-id="identity-details" style="left:23.6%;top:56.7%;width:52.8%;height:13.5%"></span><span class="anchor" data-metric-id="identity-bap" style="left:23.6%;top:37%;width:52.8%;height:11%"></span></div>
+          <a class="original" href="../evidence/identity-layout-20260917/desktop.png" target="_blank" rel="noopener">查看原图 · 1440×1000</a>
         </article>
         <article id="keep" class="wide-space">
           <p class="priority">保留优势</p>
@@ -109,7 +109,7 @@
           <p class="caption">钱包弹窗明确标注“外部钱包授权”，并说明发布时另行确认。这种操作边界应保留。<a href="wallet-desktop.png" target="_blank" rel="noopener">查看授权弹窗</a>。</p>
         </article>
       </data-overlay>
-      <footer>本轮未修改产品页面。浏览器错误检查未输出运行异常；未执行全量回归。截图为本轮证据，未使用历史通过记录。业务依据：核心认知第 6.3、10.5 节；视觉依据：项目绑定的 React Spectrum S2。</footer>
+      <footer>第 6 项已应用到产品页面，其余建议待处理。第 6 项验证包含桌面英文浅色、手机中文深色长简介、复制反馈与导航；浏览器错误检查无输出，未执行全量回归。截图为本轮证据，未使用历史通过记录。业务依据：核心认知第 6.3、10.5 节；视觉依据：项目绑定的 React Spectrum S2。</footer>
     </main>
   </div>
   <script src="../vendor/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>

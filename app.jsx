@@ -175,9 +175,15 @@ function App() {
       </section>}
       {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}
       {state.page === 'identity' && <section className="identity-page">
-        {heading('identityIntro', 'identityBody', 'myIdentity')}
-        <div className="identity-layout"><div className="identity-primary"><div className="person-row"><Portrait profile={state.profile} large /><div><span className="profile-type">{t(state.profile.type)}</span><h2>{state.profile.name || t('complete')}</h2><p className="hint">{t('owner')}</p></div></div><Identifier id={bapId} t={t} failCopy={failCopy} /><div className="action-row"><Button variant="accent" data-action="edit" onClick={() => dispatch({type: 'EDIT'})}>{t('editProfile')}</Button><Button data-action="public" onClick={() => {setAngle(-10); setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches); navigate('public');}}>{t('publicIdentity')}</Button></div></div>
-        <aside className="profile-detail"><span className="eyebrow">{t('profileDetails')}</span><h3>{t('bio')}</h3><p className="bio">{state.profile.bio || t('noBio')}</p><div className="detail-bottom"><S2.StatusLight label={t('published')} /></div></aside></div>
+        {heading('myIdentity', 'identityBody')}
+        <div className="identity-layout">
+          <div className="identity-primary">
+            <div className="person-row"><Portrait profile={state.profile} large /><div className="identity-person"><div className="identity-meta"><span className="profile-type">{t(state.profile.type)}</span><S2.StatusLight label={t('published')} /></div><h2>{state.profile.name || t('complete')}</h2><p className="hint">{t('owner')}</p></div></div>
+            <Identifier id={bapId} t={t} failCopy={failCopy} />
+            <div className="action-row"><Button variant="accent" data-action="edit" onClick={() => dispatch({type: 'EDIT'})}>{t('editProfile')}</Button><Button data-action="public" onClick={() => {setAngle(-10); setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches); navigate('public');}}>{t('publicIdentity')}</Button></div>
+          </div>
+          <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio || t('noBio')}</p></section>
+        </div>
         <div className="flat-horizon" aria-hidden="true"></div>
       </section>}
       {state.page === 'public' && <section className="public-page">{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /><div className="public-back"><Button variant="quiet" data-action="back-identity" onClick={() => navigate('identity')}>{t('backIdentity')}</Button></div></section>}

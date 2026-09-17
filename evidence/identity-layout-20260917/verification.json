@@ -1,0 +1,61 @@
+{
+  "scope": "视觉评审第 6 项：我的身份页层次与布局",
+  "browser": "宿主 agent-browser，独立会话 astra-item6-20260917",
+  "normal": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "locale": "en",
+    "theme": "light",
+    "scenario": "Published identity / Maya Chen",
+    "screenshot": "desktop.png",
+    "visualReview": "姓名、状态、BAP ID 和简介按单列组织；完整桌面标识可见。",
+    "copyFeedback": "copied",
+    "publicIdentityNavigation": "进入公开身份并正常返回"
+  },
+  "boundary": {
+    "viewport": [
+      320,
+      568
+    ],
+    "locale": "zh",
+    "theme": "dark",
+    "scenario": "通过编辑与模拟保存写入多行简介及连续长链接",
+    "screenshots": [
+      "mobile.png",
+      "mobile-full.png"
+    ],
+    "headingFontSize": 24,
+    "nameFontSize": 34,
+    "bioPreserved": true,
+    "bioOverflowWrap": "anywhere",
+    "noHorizontalOverflow": true,
+    "bapVisibleInFirstViewport": true,
+    "actionsVisibleInFirstViewport": true,
+    "buttonHeights": [
+      44,
+      44,
+      44
+    ],
+    "copyFeedback": "copied",
+    "visualReview": "已等待 scrollY=0 且保存提示消失后截图；全文换行、页面结构和按钮已复核。"
+  },
+  "checks": {
+    "runtimeErrors": "agent-browser errors 无输出",
+    "tokens": "66 个引用全部解析",
+    "diffWhitespace": "通过"
+  },
+  "notVerified": [
+    "全量回归",
+    "真实钱包",
+    "系统剪贴板读取",
+    "全部语言、主题和屏宽组合"
+  ],
+  "reproduce": [
+    "打开原型；交互原型设置选择 Published identity，连接钱包并批准。",
+    "检查身份页与复制反馈、公开身份导航。",
+    "切换中文深色，视口设为 320×568；编辑简介，加入多行和连续长链接，预览并批准模拟保存。",
+    "回到身份页，等待保存提示消失并滚动到顶部；检查首屏 BAP ID、操作按钮、全文与横向溢出。"
+  ]
+}

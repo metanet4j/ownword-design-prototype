@@ -7,8 +7,8 @@ window.__overlays = {views: [
   {id: 'visual', label: '视觉打磨', finding: '保留穹顶与地平线，收紧任务页面的铺垫与空白。', dim: 1, elements: [
     {id: 'form-intro', callout: {head: '03 铺垫占据首屏', body: '名称输入框从约 y=636px 开始。压缩标题、身份摘要和头像组的高度。', dx: 390, dy: -40}},
     {id: 'card-proportion', callout: {head: '04 卡片偏高', body: '短资料下底部留白较大，卡外复制入口在首屏外。收紧高度，让卡片和操作靠近。', dx: 390, dy: -40}},
-    {id: 'identity-heading', callout: {head: '06 让身份成为主角', body: '任务页的大标题压过真实身份内容。缩短标题区，优先名称、BAP ID 与发布状态。', place: 'below'}},
-    {id: 'identity-details', callout: {head: '06 收拢简介与状态', body: '一句简介占据整列，发布状态离主体较远。按信息关系重新分组。', place: 'below'}}
+    {id: 'identity-heading', callout: {head: '06 已收紧身份层次', body: '小标题标明页面，姓名成为视觉重点，发布状态靠近姓名。等待视觉复核。', place: 'below'}},
+    {id: 'identity-details', callout: {head: '06 简介自然衔接', body: '简介放在主信息和操作下方；短内容紧凑，长内容完整换行。', place: 'below'}}
   ]},
   {id: 'keep', label: '保留优势', finding: '品牌语言、单一主操作与身份标识已有清晰基础。', dim: 1, elements: [
     {id: 'identity-bap', callout: {head: '标识明确', body: '桌面 BAP ID 完整展示，复制操作清楚。优化布局时保留。', place: 'below'}},
