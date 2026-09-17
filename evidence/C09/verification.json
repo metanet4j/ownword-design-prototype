@@ -1,0 +1,13 @@
+{
+  "feature": "C09",
+  "status": "passed",
+  "acceptance": [
+    "C09-A: v1 修订发布为 v2，旧链接不含新增正文，历史与最新可往返；重复创建复用同一草稿",
+    "C09-B: 无修改、撤销改回原文阻止检查；重新修改可发布"
+  ],
+  "reviewed": [
+    "mobile-history.png",
+    "desktop-historical.png"
+  ],
+  "errors": "empty"
+}

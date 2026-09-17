@@ -1,0 +1,42 @@
+{
+  "body": "Your words deserve a home\n\nA thought begins in a quiet place. A notebook. A margin. A line you return to.\n\nPublishing should keep that sense of ownership intact.\n\nStart with the author\n\nAn identity gives a piece of writing a clear origin. A signature makes that intention visible.\n\nA permanent record can still leave room for a changing mind.\n\nNew ideas become new versions. The earlier words remain part of the story. 新增第二版的想法。",
+  "id": "content-op-b681fb34-fecd-4cfc-9877-0f3be4ae0476",
+  "records": [
+    {
+      "author": {
+        "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+        "image": "",
+        "name": "Maya Chen",
+        "type": "Person"
+      },
+      "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "confirmation": "pending",
+      "content": "# Your words deserve a home\n\nA thought begins in a quiet place. A notebook. A margin. A line you return to.\n\nPublishing should keep that sense of ownership intact.\n\n## Start with the author\n\nAn identity gives a piece of writing a clear origin. A signature makes that intention visible.\n\n> A permanent record can still leave room for a changing mind.\n\nNew ideas become new versions. The earlier words remain part of the story. 新增第二版的想法。",
+      "id": "content-op-b681fb34-fecd-4cfc-9877-0f3be4ae0476",
+      "operationId": "op-b681fb34-fecd-4cfc-9877-0f3be4ae0476",
+      "previousContentId": "first-words",
+      "proof": "valid",
+      "publishedAt": "2026-09-17T14:59:47.141Z",
+      "revisionNo": 2,
+      "rootContentId": "first-words",
+      "txid": "632a75227629c29cf1154a63b20ce8eedfb8eaebb4d1dfc2f05ca6e6e80fb287"
+    },
+    {
+      "author": {
+        "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+        "image": "",
+        "name": "Maya Chen",
+        "type": "Person"
+      },
+      "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "confirmation": "confirmed",
+      "content": "# Your words deserve a home\n\nA thought begins in a quiet place. A notebook. A margin. A line you return to.\n\nPublishing should keep that sense of ownership intact.\n\n## Start with the author\n\nAn identity gives a piece of writing a clear origin. A signature makes that intention visible.\n\n> A permanent record can still leave room for a changing mind.\n\nNew ideas become new versions. The earlier words remain part of the story.",
+      "id": "first-words",
+      "proof": "valid",
+      "publishedAt": "2026-09-16T09:00:00Z",
+      "revisionNo": 1,
+      "rootContentId": "first-words",
+      "txid": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ]
+}

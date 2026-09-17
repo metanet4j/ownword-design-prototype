@@ -48,7 +48,9 @@
   function newOperation(review,outcome) {return {...review,id:newId().replace('draft-','op-'),phase:'authorize',outcome,createdAt:new Date().toISOString()};}
   function acceptPublication(storage,data,op,confirmation) {
     const existing=data.records.find(r=>r.operationId===op.id);
-    const record=existing || {id:'content-'+op.id,rootContentId:'content-'+op.id,revisionNo:1,content:op.content,authorBapId:op.authorBapId,author:op.author,txid:op.txid,operationId:op.id,publishedAt:new Date().toISOString(),confirmation,proof:'valid'};
+    const parent=data.records.find(r=>r.id===op.baseContentId);
+    if (op.baseContentId && (!parent || parent.authorBapId!==op.authorBapId)) throw new Error('reviewOutdated');
+    const record=existing || {id:'content-'+op.id,rootContentId:parent?.rootContentId || 'content-'+op.id,previousContentId:parent?.id,revisionNo:parent ? parent.revisionNo+1 : 1,content:op.content,authorBapId:op.authorBapId,author:op.author,txid:op.txid,operationId:op.id,publishedAt:new Date().toISOString(),confirmation,proof:'valid'};
     const result={...data,records:existing ? data.records : [record,...data.records],operations:data.operations.map(x=>x.id===op.id ? {...op,phase:'published',recordId:record.id,issue:''} : x)};
     // 先原子写入发布记录和操作结果，再清理草稿。写入失败由调用方保留草稿。
     saveJournal(storage,result);
@@ -62,9 +64,15 @@
     if (bytes.byteLength > 102400) throw new Error('importSize');
     try {return new TextDecoder('utf-8', {fatal:true}).decode(bytes);} catch {throw new Error('importEncoding');}
   }
-  function reviewError(item) {
+  function versions(records,record) {return records.filter(r=>r.rootContentId===record.rootContentId).sort((a,b)=>b.revisionNo-a.revisionNo);}
+  function revisionDraft(records,drafts,record,author) {
+    if (record.authorBapId!==author || versions(records,record)[0]?.id!==record.id) throw new Error('reviewOutdated');
+    return drafts.find(d=>d.baseContentId===record.id && d.authorBapId===author) || {...draft(author,record.content),baseContentId:record.id};
+  }
+  function reviewError(item,records=[]) {
     if (!item?.content.trim()) return 'reviewEmpty';
     if (new TextEncoder().encode(item.content).length > 102400) return 'editorTooLong';
+    if (item.baseContentId) {const base=records.find(r=>r.id===item.baseContentId);if(!base || versions(records,base)[0]?.id!==base.id)return 'reviewOutdated';if(item.content===base.content)return 'revisionUnchanged';}
     return '';
   }
   function parseRoute(hash) {
@@ -72,6 +80,6 @@
     if (!match) return {page: 'content', id: ''};
     try {return {page: match[1], id: decodeURIComponent(match[2] || '')};} catch {return {page: 'read', id: 'invalid'};}
   }
-  const api = {publicationKey, unresolved, saveJournal, newOperation, acceptPublication, reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
+  const api = {versions, revisionDraft, publicationKey, unresolved, saveJournal, newOperation, acceptPublication, reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
   if (typeof module !== 'undefined') module.exports = api; else root.OwnwordContentModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);
