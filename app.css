@@ -95,6 +95,11 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .hint { color: var(--s2-gray-700); font-size: var(--s2-font-size-75); line-height: 1.7; }
 .avatar-field .hint { margin-top: var(--s2-spacing-100); }
 .form-footer { border-top: 1px solid var(--s2d-border); padding-top: var(--s2-spacing-400); display: flex; justify-content: space-between; gap: var(--s2-spacing-100); }
+[data-screen-label="edit"] .aside-identity { gap: var(--s2-spacing-100); }
+[data-screen-label="edit"] .aside-identity code { font-size: var(--s2-font-size-75); color: var(--s2-gray-700); }
+[data-screen-label="edit"] .avatar-field { padding-bottom: var(--s2-spacing-300); border-bottom: 1px solid var(--s2d-border); }
+[data-screen-label="edit"] .field-wrap + .type-choice,
+[data-screen-label="edit"] .type-choice + .field-wrap { margin-top: var(--s2-spacing-100); }
 .action-row, .choice-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2-spacing-200); }
 .review-profile { padding: var(--s2-spacing-500); border-radius: var(--s2d-radius-xl); background: var(--s2d-layer-raised); border: 1px solid var(--s2d-border); display: grid; gap: var(--s2-spacing-400); min-width: 0; }
 .profile-type { color: var(--s2-gray-700); font-size: var(--s2-font-size-75); text-transform: uppercase; letter-spacing: .14em; }
@@ -314,6 +319,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .page-heading > p:last-child { margin-top: var(--s2-spacing-200); }
   .aside-identity { margin-top: var(--s2-spacing-400); padding-top: var(--s2-spacing-200); }
   .profile-form, .review-profile { padding: var(--s2-spacing-300); gap: var(--s2-spacing-200); }
+  [data-screen-label="edit"] .profile-form { gap: var(--s2-spacing-400); }
   .workbench .portrait, .avatar-field .portrait { width: 56px; height: 56px; }
   .field-wrap .s2d-field textarea { min-height: 72px; }
   .form-footer { position: sticky; bottom: 0; z-index: 2; background: var(--s2d-layer-raised); margin-bottom: calc(-1 * var(--s2-spacing-300)); padding-block: var(--s2-spacing-200); }

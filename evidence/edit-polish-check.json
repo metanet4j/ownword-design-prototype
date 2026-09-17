@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-09-17T12:25:00+08:00",
+  "scope": "编辑页视觉节奏；仅 CSS，保留业务流程、文案、创建与确认页样式",
+  "method": "宿主环境 agent-browser；一个正常场景、一个短屏校验边界；两张截图人工复核",
+  "desktop": {
+    "viewport": [1440, 1000],
+    "locale": "zh-CN",
+    "theme": "light",
+    "normalFlow": "existing 场景连接后进入编辑，将名称改为 Maya Chen · 设计，点击预览确认，确认页显示新名称，返回编辑正常",
+    "avatarDividerPx": 1,
+    "formGapPx": 24,
+    "bioToCounterGapPx": 8,
+    "ctaHeightPx": 44,
+    "horizontalOverflow": false,
+    "screenshot": "edit-polish-desktop.png",
+    "visualReview": "通过：头像与字段分组清晰，身份标识降为辅助字号，表单与主按钮无重叠"
+  },
+  "mobile": {
+    "viewport": [320, 568],
+    "locale": "zh-CN",
+    "theme": "light",
+    "boundaryFlow": "返回编辑，用 Control+A / Backspace 清空名称，点击预览确认，留在编辑页并显示请输入名称。",
+    "invalidName": true,
+    "errorBoundsY": [242.25, 266.89],
+    "headerBottomPx": 120,
+    "footerTopPx": 499,
+    "ctaBoundsY": [511, 555],
+    "ctaHeightPx": 44,
+    "footerPosition": "fixed",
+    "formGapPx": 24,
+    "bioToCounterGapPx": 8,
+    "counterBottomAfterScrollPx": 469.52,
+    "horizontalOverflow": false,
+    "screenshot": "edit-polish-mobile.png",
+    "visualReview": "通过：字段错误清晰，固定操作条保留；简介与字数提示可滚动到操作条上方"
+  },
+  "pageRuntimeErrors": [],
+  "toolNote": "首次 fill 空字符串未使草稿清空，后续探针因已进入确认页取不到字段；改用真实键盘操作后完成校验，不作为页面运行错误。",
+  "staticCheck": "git diff --check 通过",
+  "notRun": ["全量回归", "整套专项脚本", "英文与深色组合", "创建页与其他页面组合", "头像上传功能"]
+}
