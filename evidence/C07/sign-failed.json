@@ -1,0 +1,148 @@
+{
+  "journal": {
+    "operations": [
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "content": "# 取消与失败保留正文",
+        "createdAt": "2026-09-17T14:48:47.645Z",
+        "draftId": "draft-0b1e441c-f34f-4587-9427-d914c1c917c7",
+        "id": "op-22dacead-855b-4b17-a9b7-658c12be883c",
+        "issue": "publishSignFailed",
+        "outcome": "sign-failed",
+        "phase": "failed"
+      },
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "content": "# 取消与失败保留正文",
+        "createdAt": "2026-09-17T14:48:47.088Z",
+        "draftId": "draft-0b1e441c-f34f-4587-9427-d914c1c917c7",
+        "id": "op-e67ba395-a642-4308-9cc3-d6c165950e01",
+        "outcome": "success",
+        "phase": "cancelled"
+      },
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "content": "# 待核实的发布",
+        "createdAt": "2026-09-17T14:47:29.792Z",
+        "draftId": "draft-45edf279-56f1-44d5-9f5c-ed478873581b",
+        "id": "op-e296acb1-aac4-4692-9968-9d82acda45ba",
+        "issue": "",
+        "outcome": "unknown",
+        "phase": "published",
+        "recordId": "content-op-e296acb1-aac4-4692-9968-9d82acda45ba",
+        "signature": "sample",
+        "txid": "f50ec25a0e043af0ea4055f012fa9cac4648d5d037d50ce2b82a2e8e4b302731"
+      },
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "content": "# 中文发布确认",
+        "createdAt": "2026-09-17T14:46:29.125Z",
+        "draftId": "draft-first",
+        "id": "op-11636a50-c599-448d-8a1a-ea9c0f41f32b",
+        "issue": "",
+        "outcome": "success",
+        "phase": "published",
+        "recordId": "content-op-11636a50-c599-448d-8a1a-ea9c0f41f32b",
+        "signature": "sample",
+        "txid": "652d6875085150ae15ab2c88789719a9597279fd2833f0f0cccdc13b19071fd0"
+      }
+    ],
+    "records": [
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "confirmation": "pending",
+        "content": "# 待核实的发布",
+        "id": "content-op-e296acb1-aac4-4692-9968-9d82acda45ba",
+        "operationId": "op-e296acb1-aac4-4692-9968-9d82acda45ba",
+        "proof": "valid",
+        "publishedAt": "2026-09-17T14:47:35.709Z",
+        "revisionNo": 1,
+        "rootContentId": "content-op-e296acb1-aac4-4692-9968-9d82acda45ba",
+        "txid": "f50ec25a0e043af0ea4055f012fa9cac4648d5d037d50ce2b82a2e8e4b302731"
+      },
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "confirmation": "pending",
+        "content": "# 中文发布确认",
+        "id": "content-op-11636a50-c599-448d-8a1a-ea9c0f41f32b",
+        "operationId": "op-11636a50-c599-448d-8a1a-ea9c0f41f32b",
+        "proof": "valid",
+        "publishedAt": "2026-09-17T14:46:32.196Z",
+        "revisionNo": 1,
+        "rootContentId": "content-op-11636a50-c599-448d-8a1a-ea9c0f41f32b",
+        "txid": "652d6875085150ae15ab2c88789719a9597279fd2833f0f0cccdc13b19071fd0"
+      },
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "confirmation": "confirmed",
+        "content": "# Your words deserve a home\n\nA thought begins in a quiet place. A notebook. A margin. A line you return to.\n\nPublishing should keep that sense of ownership intact.\n\n## Start with the author\n\nAn identity gives a piece of writing a clear origin. A signature makes that intention visible.\n\n> A permanent record can still leave room for a changing mind.\n\nNew ideas become new versions. The earlier words remain part of the story.",
+        "id": "first-words",
+        "proof": "valid",
+        "publishedAt": "2026-09-16T09:00:00Z",
+        "revisionNo": 1,
+        "rootContentId": "first-words",
+        "txid": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+      },
+      {
+        "author": {
+          "bio": "Thinking in systems. Writing with intention.\nBuilding a more human internet.",
+          "image": "",
+          "name": "Maya Chen",
+          "type": "Person"
+        },
+        "authorBapId": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+        "confirmation": "pending",
+        "content": "# Notes on an open notebook\n\nSmall observations, written with care.\n\n1. Write something worth keeping.\n2. Read it once more.\n3. Let the words travel with their author.",
+        "id": "open-notebook",
+        "proof": "valid",
+        "publishedAt": "2026-09-15T10:00:00Z",
+        "revisionNo": 1,
+        "rootContentId": "open-notebook",
+        "txid": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2"
+      }
+    ]
+  },
+  "text": "你的文字，你的身份\n\n发布未完成\n\n取消与失败保留正文\n\n1\n身份签名\n\n授权当前身份与本次正文。\n\n2\n链上发布\n\n签名完成后继续发布，发布结果单独确认。\n\n身份签名失败，尚未提交发布。\n\n正文仍保留在草稿中。再次发布前，请重新检查正文与作者。\n\n返回草稿重新检查\n我的内容"
+}

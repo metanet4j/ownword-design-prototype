@@ -1,0 +1,19 @@
+{
+  "feature": "C07",
+  "status": "passed",
+  "acceptance": {
+    "C07-A": "正常签名→发布→本地记录成功，确认状态分开；重复记录由模型幂等断言覆盖",
+    "C07-B": "取消与签名失败保留正文、不新增版本",
+    "C07-C": "发布拒绝保留草稿，可重新 Review",
+    "C07-D": "未知结果先查询；未知保持、已接收恢复、明确未接收开放重新检查",
+    "C07-E": "授权切换使旧操作 cancelled；发布切换为 unknown，新身份不接收成功",
+    "C07-F": "未知操作刷新后恢复；模型覆盖广播中刷新及签名失效；存储失败保留草稿，恢复后仅新增一版"
+  },
+  "reviewed": [
+    "mobile-authorize.png",
+    "mobile-published.png",
+    "desktop-storage-failure.png"
+  ],
+  "scope": "全部是本地模拟，无真实签名、交易、费用或索引服务",
+  "errors": "empty"
+}

@@ -1,7 +1,7 @@
 /* 仅供高保真原型使用；全局事实见核心认知，版本行为见 PRD v0.2.0。 */
 (function (root) {
   const identity = typeof module !== 'undefined' ? require('./model.js') : root.OwnwordModel;
-  const defaultScenarios = {list: 'normal', storage: 'normal'};
+  const defaultScenarios = {list:'normal', storage:'normal', publish:'success', query:'accepted', confirmation:'pending', account:'none'};
   const title = text => root.OwnwordEditorTools?.metadata ? root.OwnwordEditorTools.metadata(text).title : (/^#\s+(.+)$/m.exec(text)?.[1] || '').replace(/[*_`]/g, '').trim();
   const summary = text => root.OwnwordEditorTools?.metadata ? root.OwnwordEditorTools.metadata(text).summary : text.replace(/^#.*$/gm, '').replace(/[*_`>\[\]#]/g, '').replace(/\s+/g, ' ').trim();
   const newId = () => 'draft-' + (root.crypto?.randomUUID?.() || Math.random().toString(36).slice(2));
@@ -29,7 +29,30 @@
         data.drafts = [...data.drafts.filter(d => d.authorBapId !== author), ...items];
       } catch {data.readFailure = true;}
     }
+    try {
+      const raw=storage.getItem(publicationKey);
+      if (raw) {
+        const journal=JSON.parse(raw);
+        if (!Array.isArray(journal.records) || !Array.isArray(journal.operations)) throw new Error('Invalid publication journal');
+        data.records=journal.records;
+        data.operations=journal.operations.map(op=>({...op,phase:['authorize','signing'].includes(op.phase) ? 'cancelled' : op.phase==='broadcasting' ? 'unknown' : op.phase}));
+        const published=new Set(data.operations.filter(op=>op.phase==='published').map(op=>op.draftId));
+        data.drafts=data.drafts.filter(d=>!published.has(d.id));
+      }
+    } catch {data.readFailure=true;}
     return data;
+  }
+  const publicationKey='ownword-v020-publications';
+  const unresolved = op => op && ['authorize','signing','broadcasting','unknown'].includes(op.phase);
+  function saveJournal(storage,data) {storage.setItem(publicationKey,JSON.stringify({records:data.records,operations:data.operations}));}
+  function newOperation(review,outcome) {return {...review,id:newId().replace('draft-','op-'),phase:'authorize',outcome,createdAt:new Date().toISOString()};}
+  function acceptPublication(storage,data,op,confirmation) {
+    const existing=data.records.find(r=>r.operationId===op.id);
+    const record=existing || {id:'content-'+op.id,rootContentId:'content-'+op.id,revisionNo:1,content:op.content,authorBapId:op.authorBapId,author:op.author,txid:op.txid,operationId:op.id,publishedAt:new Date().toISOString(),confirmation,proof:'valid'};
+    const result={...data,records:existing ? data.records : [record,...data.records],operations:data.operations.map(x=>x.id===op.id ? {...op,phase:'published',recordId:record.id,issue:''} : x)};
+    // 先原子写入发布记录和操作结果，再清理草稿。写入失败由调用方保留草稿。
+    saveJournal(storage,result);
+    return {...result,drafts:data.drafts.filter(d=>d.id!==op.draftId)};
   }
   function saveDrafts(storage, author, drafts) {
     storage.setItem(draftKey(author), JSON.stringify(drafts.filter(d => d.authorBapId === author)));
@@ -49,6 +72,6 @@
     if (!match) return {page: 'content', id: ''};
     try {return {page: match[1], id: decodeURIComponent(match[2] || '')};} catch {return {page: 'read', id: 'invalid'};}
   }
-  const api = {reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
+  const api = {publicationKey, unresolved, saveJournal, newOperation, acceptPublication, reviewError, decodeMarkdown, load, saveDrafts, draftKey, defaultScenarios, title, summary, newId, draft, seed, parseRoute};
   if (typeof module !== 'undefined') module.exports = api; else root.OwnwordContentModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);

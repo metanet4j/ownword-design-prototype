@@ -154,7 +154,7 @@ function App() {
     </header>
     <Dome label={t('domeLabel')} />
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
-      <ContentWorkspace failCopy={failCopy} ref={contentRef} active={state.page === 'content'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
+      <ContentWorkspace onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
       {state.page === 'welcome' && <section className="welcome">
         <p className="eyebrow">{t('independent')}</p>
         <h1 tabIndex="-1"><span>{t('headlineOne')}</span><em>{t('headlineTwo')}</em></h1>
