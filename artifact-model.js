@@ -70,6 +70,22 @@
     return asset;
   }
   const previewSafe=content=>content?.kind==='brand'||(content?.kind==='upload'&&['image/png','image/jpeg'].includes(content.type));
-  const api={previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  function numberState(asset){
+    if(asset.numberCheck==='reorg')return 'reorg';
+    if(asset.numberCheck!=='verified')return 'unverified';
+    if(asset.number===null||asset.number===undefined)return asset.confirmations>0?'resolving':'pending';
+    return asset.confirmations>=6?'stable':'assigned';
+  }
+  function numberObservation(asset,scenario,now=new Date().toISOString()){
+    if(scenario==='error')return {...asset,numberCheck:'unverified',checkedAt:now};
+    if(scenario==='reorg')return {...asset,numberCheck:'reorg',previousNumber:asset.number,checkedAt:now};
+    const base={...asset,numberCheck:'verified',observedAt:now,checkedAt:now};
+    if(scenario==='pending')return {...base,number:null,confirmations:0};
+    if(scenario==='resolving')return {...base,number:null,confirmations:3};
+    if(scenario==='changed')return {...base,previousNumber:asset.number||asset.previousNumber,number:'166',confirmations:2};
+    if(scenario==='five'||scenario==='six')return {...base,number:asset.number??'620000',confirmations:scenario==='five'?5:6};
+    return base;
+  }
+  const api={numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);

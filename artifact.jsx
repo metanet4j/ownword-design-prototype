@@ -1,12 +1,13 @@
 function useArtifactStore() {
   const [data,setData]=React.useState(()=>OwnwordArtifactModel.recover(OwnwordArtifactModel.load()));
-  const [settings,setSettings]=React.useState({list:'all',preview:'record',storage:'normal',outcome:'success',binding:'success',query:'accepted',account:'none'});
+  const [settings,setSettings]=React.useState({list:'all',number:'record',preview:'record',storage:'normal',outcome:'success',binding:'success',query:'accepted',account:'none'});
   const settingsRef=React.useRef(settings);settingsRef.current=settings;
   const dataRef=React.useRef(data);dataRef.current=data;
   const writer=useContentWriter(()=>{const latest=OwnwordArtifactModel.recover(OwnwordArtifactModel.load());dataRef.current=latest;setData(latest);},'ownword-v030-artifact-writer');
   function persist(next){if(!writer.canWrite.current||settingsRef.current.storage==='failure'||dataRef.current.readFailure)throw Error('artifactSaveFailed');const value={...next,revision:dataRef.current.revision+1};OwnwordArtifactModel.save(value);dataRef.current=value;setData(value);return value;}
   React.useEffect(()=>{const sync=e=>{if(e.key===OwnwordArtifactModel.KEY&&!writer.canWrite.current){const latest=OwnwordArtifactModel.recover(OwnwordArtifactModel.load());dataRef.current=latest;setData(latest);}};window.addEventListener('storage',sync);return()=>window.removeEventListener('storage',sync);},[]);
-  return {data,dataRef,setData,settings,settingsRef,setSettings,writer,persist};
+  function refreshNumber(id){const next={...dataRef.current,assets:dataRef.current.assets.map(a=>a.id===id?OwnwordArtifactModel.numberObservation(a,settingsRef.current.number):a)};persist(next);}
+  return {refreshNumber,data,dataRef,setData,settings,settingsRef,setSettings,writer,persist};
 }
 const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,identity,connected,locale,t,store,onConnect,onIdentity,failCopy,onAccountEvent},ref) {
   const M=OwnwordArtifactModel,{settings,setSettings}=store;
@@ -43,7 +44,7 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   if(route.page==='artifact-action')return <ArtifactActionReview review={actionReview?.bapId===identity?.bapId?actionReview:null} data={data} t={t} failCopy={failCopy} onSign={()=>start(actionReview)} onBack={()=>go('artifacts')} issue={operations.message}/>;
   if(['artifact-create','artifact-review'].includes(route.page))return <ArtifactComposer key={identity.bapId} identity={identity} store={store} t={t} failCopy={failCopy} go={go} reviewPage={route.page==='artifact-review'} setLeaveHandler={fn=>{leaveHandler.current=fn;}} operationIssue={operations.message} onReview={draft=>start({kind:'create',bapId:identity.bapId,draft:M.cleanDraft(draft)})}/>;
   if(route.page==='identity-view')return <ArtifactPublicIdentity bapId={route.id} t={t} failCopy={failCopy} onBack={()=>go('artifacts')}/>;
-  if(route.page==='artifact')return <ArtifactDetail asset={asset} data={data} identity={identity} t={t} failCopy={failCopy} go={go} onBack={()=>identity?go('artifacts'):onConnect()} />;
+  if(route.page==='artifact')return <ArtifactDetail asset={asset} data={data} identity={identity} t={t} failCopy={failCopy} go={go} onBack={()=>identity?go('artifacts'):onConnect()} onRefresh={()=>store.refreshNumber(asset.id)} />;
   if(route.page!=='artifacts')return <section className="artifact-page" data-artifact-screen={route.page}>{header('artifactCreate','artifactCreateBody')}<Button onClick={()=>go('artifacts')}>{t('artifactBack')}</Button></section>;
   const owned=settings.list==='empty'?[]:data.assets.filter(a=>a.owner===M.ownerFor(identity.bapId)||data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId));
   const assets=owned.filter(a=>filter==='all'||(filter==='usable'?!M.eligible(a,identity.bapId):data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId&&b.state==='history')||!!M.eligible(a,identity.bapId)));

@@ -444,3 +444,54 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactShare": "复制 Artifact 链接",
   "artifactRefreshPreview": "重试预览"
 });
+
+Object.assign(window.OwnwordCopy.en,{
+  "artifactScenario-number": "Next number refresh",
+  "artifactScenario-pending": "Not in a block",
+  "artifactScenario-resolving": "Confirmed, number resolving",
+  "artifactScenario-five": "5 confirmations",
+  "artifactScenario-six": "6 confirmations",
+  "artifactScenario-reorg": "Reorganization detected",
+  "artifactScenario-changed": "Re-resolved as #166 · 2 confirmations",
+  "artifactScenario-error": "Query unavailable",
+  "artifactNumber-pending": "Inscription Number pending confirmation",
+  "artifactNumber-resolving": "Resolving inscription number",
+  "artifactNumber-assigned": "Not yet stable",
+  "artifactNumber-stable": "Stable",
+  "artifactNumber-reorg": "Number being verified after reorganization",
+  "artifactNumber-unverified": "Number status not verified",
+  "artifactLastNumber": "Last observed number · historical only",
+  "artifactNumberChanged": "Number changed; check before sharing",
+  "artifactInscriptionConfirmations": "Inscription transaction confirmations",
+  "artifactLastObserved": "Last successful observation",
+  "artifactRefreshNumber": "Refresh status",
+  "artifactRefreshed": "Status query completed · sample facts",
+  "artifactCopyNumber": "Copy inscription number"
+});
+
+Object.assign(window.OwnwordCopy.zh,{
+  "artifactScenario-number": "下次编号刷新",
+  "artifactScenario-pending": "尚未入块",
+  "artifactScenario-resolving": "已确认，编号解析中",
+  "artifactScenario-five": "5 个确认",
+  "artifactScenario-six": "6 个确认",
+  "artifactScenario-reorg": "检测到重组",
+  "artifactScenario-changed": "重新解析为 #166 · 2 个确认",
+  "artifactScenario-error": "查询暂不可用",
+  "artifactNumber-pending": "Inscription Number 待确认",
+  "artifactNumber-resolving": "编号解析中",
+  "artifactNumber-assigned": "尚未稳定",
+  "artifactNumber-stable": "稳定",
+  "artifactNumber-reorg": "重组后编号重新核实中",
+  "artifactNumber-unverified": "编号状态待核实",
+  "artifactLastNumber": "上次编号，仅作历史信息",
+  "artifactNumberChanged": "编号已变化，分享前请核对",
+  "artifactInscriptionConfirmations": "铭文交易确认数",
+  "artifactLastObserved": "最近一次成功观测",
+  "artifactRefreshNumber": "刷新状态",
+  "artifactRefreshed": "状态查询已完成 · 样例事实",
+  "artifactCopyNumber": "复制铭文编号"
+});
+
+Object.assign(window.OwnwordCopy.en,{artifactCachedConfirmations:"Last observed inscription confirmations · not currently verified"});
+Object.assign(window.OwnwordCopy.zh,{artifactCachedConfirmations:"上次观测的铭文确认数 · 当前待核实"});

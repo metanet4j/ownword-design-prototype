@@ -33,6 +33,14 @@ check('A04 safe preview and independent proof roles',()=>{
   assert.equal(a.transactions[0].keyEpoch,'historical-key-at-creation');
   assert.equal(M.binding(d,d.assets[1].id),undefined);
 });
+check('A05 confirmation boundary, resolving, reorg and stale evidence',()=>{
+ const a=M.seed().assets[0],five=M.numberObservation(a,'five'),six=M.numberObservation(five,'six');
+ assert.equal(M.numberState(five),'assigned');assert.equal(M.numberState(six),'stable');assert.equal(six.number,five.number);assert.deepEqual(six.transactions,a.transactions);
+ assert.equal(M.numberState(M.numberObservation(a,'pending')),'pending');assert.equal(M.numberState(M.numberObservation(a,'resolving')),'resolving');
+ const reorg=M.numberObservation(six,'reorg'),changed=M.numberObservation(reorg,'changed');assert.equal(M.numberState(reorg),'reorg');assert.equal(changed.id,a.id);assert.equal(changed.number,'166');assert.equal(M.numberState(changed),'assigned');
+ const failed=M.numberObservation(six,'error');assert.equal(M.numberState(failed),'unverified');assert.equal(failed.observedAt,six.observedAt);
+ assert.equal(M.numberState({...six,transactions:[{kind:'transfer',confirmations:0}]}),'stable');
+});
 const Babel=require('./vendor/babel.min.js');
 for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.jsx'))){try{Babel.transform(fs.readFileSync(f,'utf8'),{presets:['react'],filename:f});}catch(e){console.error(e.message);process.exit(1);}}
 const cssFiles=fs.readdirSync('_ds/react-spectrum-s2',{recursive:true}).filter(f=>f.endsWith('.css')).map(f=>path.join('_ds/react-spectrum-s2',f));

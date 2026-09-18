@@ -1,0 +1,24 @@
+{
+  "feature": "A05",
+  "status": "implemented-and-verified",
+  "acceptance": {
+    "A05-A": "浏览器 five→six，#165 从尚未稳定变稳定。",
+    "A05-B": "浏览器 pending 与 resolving 分开显示，无假编号。",
+    "A05-C": "浏览器 stable→reorg→changed，ID 不变、编号改为 #166、2 个确认；重组期间无数字复制。",
+    "A05-D": "查询错误显示待核实并保留上次观测时间；模型覆盖转移零确认不改变铭文稳定状态。"
+  },
+  "checks": [
+    "A05-check.txt",
+    "A05-errors.json"
+  ],
+  "screenshots": [
+    "A05-five.png",
+    "A05-six.png",
+    "A05-reorg.png",
+    "A05-changed.png",
+    "A05-error.png",
+    "A05-pending.png",
+    "A05-resolving.png"
+  ],
+  "review": "已审阅六确认、重组及编号变化截图；无浏览器错误。"
+}
