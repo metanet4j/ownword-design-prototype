@@ -32,7 +32,7 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   };window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
   React.useEffect(()=>{setLoading(true);const timer=setTimeout(()=>setLoading(false),250);return()=>clearTimeout(timer);},[active,identity?.bapId,settings.list]);
   React.useEffect(()=>{if(active){window.scrollTo({top:0,behavior:'instant'});document.querySelector('[data-artifact-screen] h1')?.focus({preventScroll:true});}},[active,route.page,route.id]);
-  function prepare(kind,assetId){const asset=store.dataRef.current.assets.find(a=>a.id===assetId);if(!asset||!identity)return;setActionReview({kind,bapId:identity.bapId,assetId,outpoint:asset.outpoint,bindingVersion:M.bindingVersion(store.dataRef.current,identity.bapId)});go('artifact-action');}
+  function prepare(kind,assetId){const asset=store.dataRef.current.assets.find(a=>a.id===assetId);if(!asset||!identity)return;setActionReview({kind,bapId:identity.bapId,assetId,assetSnapshot:JSON.parse(JSON.stringify(asset)),outpoint:asset.outpoint,bindingVersion:M.bindingVersion(store.dataRef.current,identity.bapId)});go('artifact-action');}
   function start(review){const op=operations.start(review);if(op)go('artifact-operation',op.id);}
   if(!active)return null;
   const header=(title,body)=><div className="page-heading"><p className="eyebrow">IDENTITY ARTIFACT</p><h1 tabIndex="-1">{t(title)}</h1><p>{t(body)}</p></div>;
@@ -40,6 +40,7 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   if(!identity&&!['artifact','find','identity-view'].includes(route.page))return gate;
   const asset=data.assets.find(a=>a.id===route.id);
   if(identity&&['artifact-create','artifact-review','artifact-select','artifact-transfer'].includes(route.page)&&store.writer.state!=='ready')return <section className="artifact-page" data-artifact-screen="writer-gate"><h1 tabIndex="-1">{t('writerTitle-'+store.writer.state)}</h1><p>{t('writerBody-'+store.writer.state)}</p><Button onClick={store.writer.retry}>{t('retry')}</Button></section>;
+  if(route.page==='artifact-select')return <ArtifactSelector data={data} identity={identity} t={t} onSelect={id=>prepare('bind',id)} onOpen={id=>go('artifact',id)} onBack={()=>go('artifacts')}/>;
   if(route.page==='artifact-operation'){const op=data.operations.find(o=>o.id===route.id&&o.bapId===identity?.bapId);return <ArtifactOperation op={op} data={data} t={t} failCopy={failCopy} operations={operations} onBind={id=>prepare('bind',id)} onReview={op=>op.kind==='create'?go('artifact-create'):prepare(op.kind,op.assetId)} onOpen={id=>go('artifact',id)} onBack={()=>go('artifacts')}/>;}
   if(route.page==='artifact-action')return <ArtifactActionReview review={actionReview?.bapId===identity?.bapId?actionReview:null} data={data} t={t} failCopy={failCopy} onSign={()=>start(actionReview)} onBack={()=>go('artifacts')} issue={operations.message}/>;
   if(['artifact-create','artifact-review'].includes(route.page))return <ArtifactComposer key={identity.bapId} identity={identity} store={store} t={t} failCopy={failCopy} go={go} reviewPage={route.page==='artifact-review'} setLeaveHandler={fn=>{leaveHandler.current=fn;}} operationIssue={operations.message} onReview={draft=>start({kind:'create',bapId:identity.bapId,draft:M.cleanDraft(draft)})}/>;

@@ -13,7 +13,16 @@
   const ownerFor=bapId=>addresses[identities.indexOf(bapId)];
   const signerFor=bapId=>['1CounterpartyXXXXXXXXXXXXXXXUWLpVr','1dice8EMZmqKvrGE4Qc9bUFf9PX3xaYDp'][identities.indexOf(bapId)];
   const current=(data,bapId)=>data.bindings.find(b=>b.bapId===bapId&&b.state==='current');
-  const binding=(data,id)=>data.bindings.find(b=>b.assetId===id&&b.state==='current'&&b.validity==='valid');
+  function bindingState(data,b) {
+    if(!b||b.state!=='current')return 'none';
+    const asset=data.assets.find(a=>a.id===b.assetId);if(!asset||!asset.originValid)return 'origin-invalid';
+    if(asset.ownershipCheck!=='verified'||b.validity==='unverified')return 'unverified';
+    if(asset.owner!==ownerFor(b.bapId))return 'not-owned';
+    const competing=data.bindings.filter(x=>x.state==='current'&&(x.bapId===b.bapId||data.assets.find(a=>a.id===x.assetId)?.origin===asset.origin));
+    if(competing.length!==1||b.validity==='duplicate')return 'duplicate';
+    return b.validity==='valid'?'valid':'unverified';
+  }
+  const binding=(data,id)=>data.bindings.find(b=>b.assetId===id&&bindingState(data,b)==='valid');
   function eligible(asset,bapId) {return !asset.originValid?'origin-invalid':asset.ownershipCheck!=='verified'?'unverified':asset.owner!==ownerFor(bapId)?'not-owned':'';}
   function parseRoute(hash) {const [page,id]=hash.replace(/^#\//,'').split('/');try{return {page:['artifacts','artifact','artifact-create','artifact-select','artifact-review','artifact-operation','artifact-transfer','artifact-action','find','identity-view'].includes(page)?page:'artifacts',id:decodeURIComponent(id||'')};}catch{return {page:'artifact',id:'invalid'};}}
   function validateDraft(draft) {const length=[...draft.name.trim()].length;return length<1||length>100?'artifactNameError':'';}
@@ -25,7 +34,7 @@
   }
   const pending=op=>['authorize','signing','validating','submitting','unknown'].includes(op.phase);
   const cleanDraft=d=>({name:d.name.trim(),content:Object.fromEntries(Object.entries(d.content).filter(([k])=>k!=='blob'))});
-  const bindingVersion=(data,bapId)=>JSON.stringify(data.bindings.filter(b=>b.bapId===bapId&&b.state==='current'));
+  const bindingVersion=(data,bapId)=>JSON.stringify(data.bindings.filter(b=>b.state==='current'));
   function recover(data){return {...data,operations:data.operations.map(op=>({...op,phase:op.phase==='submitting'?'unknown':['authorize','signing','validating'].includes(op.phase)?'cancelled':op.phase}))};}
   function conflict(data,bapId,assetId){return data.operations.find(op=>pending(op)&&(op.bapId===bapId||(assetId&&op.assetId===assetId)));}
   function reviewIssue(data,review) {
@@ -57,7 +66,7 @@
       if(!next.assets.some(a=>a.id===assetId))next.assets.unshift({id:assetId,origin:assetId,outpoint:assetId,name:op.review.draft.name,mapName:op.review.draft.name,number:null,ordinal:null,confirmations:0,numberCheck:'verified',observedAt:new Date().toISOString(),owner:ownerFor(op.bapId),creator:op.bapId,content:op.review.draft.content,originValid:true,ownershipCheck:'verified',transactions:[record]});
     }else if(op.kind==='bind'){
       const asset=next.assets.find(a=>a.id===assetId);if(!asset||eligible(asset,op.bapId))throw Error('artifactReviewExpired');
-      next.bindings=next.bindings.map(b=>(b.bapId===op.bapId||b.assetId===assetId)&&b.state==='current'?{...b,state:'history'}:b);
+      next.bindings=next.bindings.map(b=>(b.bapId===op.bapId||next.assets.find(a=>a.id===b.assetId)?.origin===asset.origin)&&b.state==='current'?{...b,state:'history'}:b);
       next.bindings.unshift({id:op.id,assetId,bapId:op.bapId,state:'current',validity:'valid',txid:op.txid});
       next.assets=next.assets.map(a=>a.id===assetId?{...a,transactions:[...a.transactions,record]}:a);
     }
@@ -86,6 +95,12 @@
     if(scenario==='five'||scenario==='six')return {...base,number:asset.number??'620000',confirmations:scenario==='five'?5:6};
     return base;
   }
-  const api={numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  function factScenario(data,id,scenario){
+    const asset=data.assets.find(a=>a.id===id);if(!asset)return data;
+    if(scenario==='concurrent')return {...data,bindings:data.bindings.map(b=>b.state==='current'?{...b,observedRevision:(b.observedRevision||0)+1}:b)};
+    const changes=scenario==='unknown'?{ownershipCheck:'unverified'}:scenario==='origin'?{originValid:false}:scenario==='owner'?{owner:addresses[asset.owner===addresses[0]?1:0],ownershipCheck:'verified'}:scenario==='outpoint'?{outpoint:tx(800000+data.revision)+'_1'}:{ownershipCheck:'verified',originValid:true};
+    return {...data,assets:data.assets.map(a=>a.id===id?{...a,...changes}:a)};
+  }
+  const api={bindingState,factScenario,numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);

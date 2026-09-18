@@ -1,0 +1,20 @@
+{
+  "feature": "A06",
+  "status": "implemented-and-verified",
+  "acceptance": {
+    "A06-A": "浏览器从 165 切换到 2048；独立签名成功后唯一 Current 变更，旧关联保留历史。",
+    "A06-B": "选择器 Current 禁用；模型验证未知资格与 Origin 唯一性；浏览器 Review 后应用关联变更，提交被拒，原 Current 不变。",
+    "X05": "选择器与 begin 共同阻止未决操作冲突；沿用 A03 持久化日志。"
+  },
+  "checks": [
+    "A06-check.txt",
+    "A06-state.json",
+    "A06-errors.json"
+  ],
+  "screenshots": [
+    "A06-selector.png",
+    "A06-switched.png",
+    "A06-stale-review.png"
+  ],
+  "review": "正常与过期 Review 截图已审阅；无浏览器错误。"
+}

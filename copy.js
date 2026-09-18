@@ -495,3 +495,39 @@ Object.assign(window.OwnwordCopy.zh,{
 
 Object.assign(window.OwnwordCopy.en,{artifactCachedConfirmations:"Last observed inscription confirmations · not currently verified"});
 Object.assign(window.OwnwordCopy.zh,{artifactCachedConfirmations:"上次观测的铭文确认数 · 当前待核实"});
+
+Object.assign(window.OwnwordCopy.en,{
+  "artifactSetCurrent": "Review & Set Current",
+  "artifactSelectBody": "Choose an Artifact you control. Your current association changes only after the new association succeeds.",
+  "artifactSelect-held": "Held by this wallet",
+  "artifactSelect-associated": "Association history",
+  "artifactScenarioTarget": "Target Artifact",
+  "artifactScenarioFacts": "Ownership & association facts",
+  "artifactFact-normal": "Verified facts",
+  "artifactFact-unknown": "Temporarily unable to verify",
+  "artifactFact-owner": "Ownership changes to another wallet",
+  "artifactFact-origin": "Origin invalid",
+  "artifactFact-outpoint": "Current output changes",
+  "artifactFact-concurrent": "Association changes after Review",
+  "artifactApplyFacts": "Apply sample facts",
+  "artifactScenarioApplied": "Sample facts applied",
+  "artifactEligibility-duplicate": "Association uniqueness needs resolution."
+});
+
+Object.assign(window.OwnwordCopy.zh,{
+  "artifactSetCurrent": "检查并设为 Current",
+  "artifactSelectBody": "选择当前钱包可控制的 Artifact。新关联成功后，才替换原 Current。",
+  "artifactSelect-held": "当前钱包持有",
+  "artifactSelect-associated": "关联历史",
+  "artifactScenarioTarget": "目标 Artifact",
+  "artifactScenarioFacts": "所有权与关联事实",
+  "artifactFact-normal": "已核实事实",
+  "artifactFact-unknown": "暂时无法核实",
+  "artifactFact-owner": "控制权变为另一钱包",
+  "artifactFact-origin": "Origin 失效",
+  "artifactFact-outpoint": "当前输出变化",
+  "artifactFact-concurrent": "Review 后关联变化",
+  "artifactApplyFacts": "应用样例事实",
+  "artifactScenarioApplied": "已应用样例事实",
+  "artifactEligibility-duplicate": "关联不满足唯一性。"
+});

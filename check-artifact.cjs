@@ -41,6 +41,14 @@ check('A05 confirmation boundary, resolving, reorg and stale evidence',()=>{
  const failed=M.numberObservation(six,'error');assert.equal(M.numberState(failed),'unverified');assert.equal(failed.observedAt,six.observedAt);
  assert.equal(M.numberState({...six,transactions:[{kind:'transfer',confirmations:0}]}),'stable');
 });
+check('A06 Current uniqueness, eligibility and stale Review',()=>{
+ let d=M.seed(),bap=M.identities[0],a=d.assets[1],review={kind:'bind',bapId:bap,assetId:a.id,outpoint:a.outpoint,bindingVersion:M.bindingVersion(d,bap)};
+ assert.equal(M.reviewIssue(M.factScenario(d,a.id,'concurrent'),review),'artifactReviewExpired');
+ assert.equal(M.reviewIssue(M.factScenario(d,a.id,'unknown'),review),'artifactEligibility-unverified');
+ const first=d.assets[0];assert.equal(M.reviewIssue(d,{...review,assetId:first.id,outpoint:first.outpoint}),'artifactAlreadyCurrent');
+ d=M.begin(d,review,'switch');d=M.accept(d,{...d.operations[0],signature:'valid',signerBapId:bap});assert.equal(M.current(d,bap).assetId,a.id);assert.equal(M.binding(d,first.id),undefined);assert.equal(d.bindings.filter(x=>x.state==='current'&&x.bapId===bap).length,1);
+ const alias={...a,id:'alias'};d.assets.push(alias);d.bindings.push({id:'duplicate',assetId:alias.id,bapId:M.identities[1],state:'current',validity:'valid'});assert.equal(M.binding(d,a.id),undefined);
+});
 const Babel=require('./vendor/babel.min.js');
 for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.jsx'))){try{Babel.transform(fs.readFileSync(f,'utf8'),{presets:['react'],filename:f});}catch(e){console.error(e.message);process.exit(1);}}
 const cssFiles=fs.readdirSync('_ds/react-spectrum-s2',{recursive:true}).filter(f=>f.endsWith('.css')).map(f=>path.join('_ds/react-spectrum-s2',f));
