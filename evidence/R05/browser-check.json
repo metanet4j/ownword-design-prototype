@@ -1,0 +1,35 @@
+{
+  "setup": {
+    "errorColor": "rgb(156, 33, 19)",
+    "errorFocus": true,
+    "mobileNoOverflow": true,
+    "nameFocusLine": "rgb(113, 113, 113) 0px -1px 0px 0px inset",
+    "nameOutline": "none",
+    "setupNameFocus": true
+  },
+  "edit": {
+    "editTextareaDark": true,
+    "existingValuePreserved": true,
+    "outline": "none",
+    "shadow": "rgb(138, 138, 138) 0px -1px 0px 0px inset"
+  },
+  "link": {
+    "linkFieldsUnified": true
+  },
+  "search": {
+    "focused": "search",
+    "searchAndReplaceUnified": true,
+    "searchWorks": true
+  },
+  "select": {
+    "focusLine": "rgb(138, 138, 138) 0px -1px 0px 0px inset",
+    "keyboardFocusVisible": true,
+    "scenarioSelectsUnified": 11
+  },
+  "responsive": {
+    "link320NoOverflow": true,
+    "search320NoOverflow": true,
+    "toolbarMoreSingleLine": true,
+    "linkFormGap": "24px"
+  }
+}

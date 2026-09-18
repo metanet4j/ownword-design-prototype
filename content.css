@@ -34,7 +34,7 @@
 .content-gate { max-width: 660px; margin: var(--s2-spacing-700) auto; display: grid; gap: var(--s2-spacing-400); }
 .content-reading { max-width: 72ch; margin: auto; }
 .content-plain { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.8; }
-.content-settings { margin: var(--s2-spacing-200) 0; padding: var(--s2-spacing-200) 0; border: 0; border-top: 1px solid var(--s2d-border); }
+.content-settings { display: grid; gap: var(--s2-spacing-300); min-width: 0; margin: var(--s2-spacing-200) 0; padding: var(--s2-spacing-200) 0; border: 0; border-top: 1px solid var(--s2d-border); }
 .content-settings legend { font-weight: 600; padding-right: var(--s2-spacing-200); }
 @media (max-width: 700px) {
  .page-content .topbar { flex-wrap: wrap; gap: var(--s2-spacing-100); }
@@ -66,7 +66,7 @@
 .editor-controls { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s2-spacing-200); border-block: 1px solid var(--s2d-border); padding: var(--s2-spacing-100) 0; }
 .editor-tools, .editor-modes { display: flex; align-items: center; gap: var(--s2-spacing-50); }
 .editor-tools button { min-width: 44px; }
-.editor-heading-picker select { min-height: 44px; max-width: 110px; border: 0; color: var(--s2-gray-900); background: transparent; padding-inline: var(--s2-spacing-100); font-size: var(--s2-font-size-100); }
+.app .editor-heading-picker select { width: auto; max-width: 110px; }
 .editor-more { position: relative; }
 .editor-menu { position: absolute; z-index: 4; top: 100%; left: 0; min-width: 220px; max-height: 380px; overflow: auto; padding: var(--s2-spacing-200); display: grid; background: var(--s2d-layer-raised); border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); box-shadow: 0 8px 24px color-mix(in srgb, var(--s2-black) 12%, transparent); }
 .editor-menu button { justify-content: flex-start; }
@@ -238,3 +238,11 @@
 .visual-fallback { min-height: 300px; padding: var(--s2-spacing-400); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: var(--s2-spacing-300); }
 .visual-fallback p { color: var(--s2-gray-700); line-height: 1.7; max-width: 560px; }
 @media(max-width:700px) { .visual-editor-host, .visual-surface { min-height: 300px; height: 52dvh; } .visual-surface { height: auto; padding: var(--s2-spacing-300); } }
+
+.editor-host .cm-panel button { min-height: 44px; padding: var(--s2-spacing-100) var(--s2-spacing-200); border: 1px solid var(--s2d-border-strong); border-radius: var(--s2d-radius); background: var(--s2-gray-75); color: var(--s2-gray-900); font: 500 var(--s2-font-size-75)/1.4 var(--s2d-font-family); }
+.editor-host .cm-panel button:hover { background: var(--s2-gray-100); }
+.editor-host .cm-panel button:disabled { color: var(--s2-gray-600); cursor: not-allowed; }
+@media(max-width:700px) {
+  .app .editor-heading-picker select { max-width: 100px; padding-inline: var(--s2-spacing-100); }
+  .editor-tools > .s2d-button, .editor-more > .s2d-button { padding-inline: var(--s2-spacing-100); white-space: nowrap; }
+}

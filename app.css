@@ -84,9 +84,23 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .portrait img { width: 100%; height: 100%; object-fit: cover; }
 .field-label, .type-choice legend { font-size: var(--s2-font-size-100); font-weight: 650; color: var(--s2-gray-800); }
 .field-wrap .s2d-field { width: 100%; gap: var(--s2-spacing-100); font-size: var(--s2-font-size-100); color: var(--s2-gray-800); }
-.field-wrap .s2d-field input, .field-wrap .s2d-field textarea { border: 2px solid var(--s2d-border-strong); border-radius: var(--s2d-radius); font-size: var(--s2-font-size-200); padding: var(--s2-spacing-200); }
+/* 表单、弹窗、搜索和下拉框共用轻量输入样式。 */
+.app :is(.field-wrap input, .field-wrap textarea, select, .cm-textfield) {
+  width: 100%; min-width: 0; min-height: var(--s2d-control-height);
+  padding: var(--s2-spacing-200) var(--s2-spacing-300);
+  border: 0; border-bottom: 1px solid var(--s2-gray-400);
+  border-radius: var(--s2d-radius) var(--s2d-radius) 0 0;
+  background: var(--s2-gray-75); color: var(--s2-gray-900);
+  font: 400 var(--s2-font-size-100)/1.5 var(--s2d-font-family);
+  outline: none; box-shadow: none;
+}
+.app :is(.field-wrap input, .field-wrap textarea, select, .cm-textfield):hover:where(:not(:disabled)) { border-bottom-color: var(--s2-gray-500); }
+.app :is(.field-wrap input, .field-wrap textarea, select, .cm-textfield):focus { border-bottom-color: var(--s2-gray-600); box-shadow: inset 0 -1px var(--s2-gray-600); background: var(--s2-gray-25); }
+.app :is(.field-wrap input, .field-wrap textarea, select, .cm-textfield):disabled { cursor: not-allowed; color: var(--s2-gray-600); background: var(--s2-gray-100); border-bottom-color: var(--s2-gray-300); box-shadow: none; }
+.app .field-wrap :is(input, textarea)[aria-invalid="true"] { border-bottom-color: var(--s2-negative-color-1100); }
+.app .field-wrap :is(input, textarea)[aria-invalid="true"]:focus { box-shadow: inset 0 -1px var(--s2-negative-color-1100); }
+.app input:is([type="checkbox"], [type="radio"]):focus-visible { outline-color: var(--s2-gray-600); }
 .field-wrap .s2d-field textarea { min-height: 112px; line-height: 1.7; }
-.field-wrap [aria-invalid="true"] { border-color: var(--s2d-negative) !important; }
 .field-error { font-size: var(--s2-font-size-100); color: var(--s2-negative-color-1100); margin-top: var(--s2-spacing-100); }
 .type-choice { border: 0; padding: 0; margin: 0; }
 .type-choice legend { margin-bottom: var(--s2-spacing-100); }
@@ -216,6 +230,8 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .modal-top { display: flex; justify-content: space-between; align-items: center; gap: var(--s2-spacing-100); margin-bottom: var(--s2-spacing-400); }
 .modal-top > .s2d-button { flex-shrink: 0; white-space: nowrap; }
 .modal h2 { font-size: var(--s2-font-size-800); line-height: 1.2; font-weight: 600; letter-spacing: -.03em; }
+.modal form { display: grid; gap: var(--s2-spacing-400); margin-top: var(--s2-spacing-400); }
+.modal form .action-row { justify-content: flex-end; }
 .modal > p { margin: var(--s2-spacing-300) 0 var(--s2-spacing-400); line-height: 1.7; color: var(--s2-gray-700); }
 .modal .compact { margin: var(--s2-spacing-400) 0; }
 .modal .compact > div { display: grid; gap: var(--s2-spacing-100); }
@@ -225,7 +241,6 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .panel-title h2 { font-size: var(--s2-font-size-400); }
 .scenario-panel > p { font-size: var(--s2-font-size-100); line-height: 1.65; color: var(--s2-gray-700); }
 .scenario-panel label { display: grid; gap: var(--s2-spacing-100); font-size: var(--s2-font-size-100); }
-.scenario-panel select { min-height: 44px; width: 100%; border: 2px solid var(--s2d-border-strong); border-radius: var(--s2d-radius); padding: var(--s2-spacing-100); color: var(--s2d-text); background: var(--s2d-background); }
 .scenario-panel .check-row { display: flex; align-items: center; gap: var(--s2-spacing-100); min-height: 44px; }
 .check-row input { width: 20px; height: 20px; accent-color: var(--s2-blue-900); }
 [lang="zh-CN"] .welcome h1 { font-size: clamp(38px, 5.5vw, 73px); line-height: 1.35; letter-spacing: -.025em; }

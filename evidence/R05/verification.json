@@ -1,0 +1,37 @@
+{
+  "feature": "R05",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "当前 v0.2.0 原型全部可见输入控件；沿用 React Spectrum S2。",
+  "coverage": {
+    "identity": "创建、补全与编辑共用 Field 的名称和简介；浏览器实际检查创建和编辑。",
+    "link": "链接文字和地址弹窗。",
+    "editor": "查找、替换与标题下拉框；CodeMirror cm-textfield 统一覆盖跳转行输入。",
+    "settings": "身份与内容场景下拉框。"
+  },
+  "checks": [
+    "共用浅底、细底线、圆角和间距，聚焦为中性灰线，移除输入控件蓝色包围框。",
+    "真实键盘 Tab 聚焦可见；空名称提交后红色底线、文字和 aria-invalid 保持一致。",
+    "编辑页已有名称和简介保留；源码搜索 words 正确选中匹配文字。",
+    "链接字段使用 24px 间距；320px 弹窗、搜索、工具栏无横向溢出，更多按钮保持单行。",
+    "390px 创建表单错误提示可见；深色搜索按钮已修复对比不足。"
+  ],
+  "evidence": "browser-check.json；浏览器运行错误为空，日志 browser-console.txt。",
+  "screenshots": [
+    "setup-light.png",
+    "setup-mobile-error.png",
+    "edit-dark.png",
+    "link-dark.png",
+    "link-mobile.png",
+    "search-dark.png",
+    "search-mobile.png",
+    "settings-dark.png"
+  ],
+  "screenshotReview": "全部受影响截图已查看，未发现控件重叠或不清晰的焦点/错误提示。",
+  "harness": "../init.sh 通过；运行记录 ../.runtime/r05-final-check.txt，服务日志 ../.runtime/preview.log。",
+  "limits": [
+    "本轮为共享样式与布局调整，未重复完整功能回归。",
+    "未操作系统文件选择器；隐藏上传控件保留原有浏览器行为。",
+    "签名和发布仍为高保真模拟流程；用户视觉复核未完成。"
+  ]
+}
