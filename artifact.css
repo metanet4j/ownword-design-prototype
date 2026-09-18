@@ -11,9 +11,10 @@
 .artifact-card {border:1px solid var(--s2d-border);border-radius:var(--s2d-radius-xl);overflow:hidden;background:var(--s2d-layer-raised);}
 .artifact-card-content {display:grid;gap:var(--s2-spacing-300);padding:var(--s2-spacing-400);}.artifact-card-content h2{font-size:var(--s2-font-size-400);font-weight:500;}.artifact-card-content>.s2d-button{justify-self:start;}
 .artifact-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--s2-spacing-200);}
-.artifact-art{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1.25;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(155deg,var(--s2-blue-100),var(--s2-gray-50) 75%);color:var(--s2-blue-1100);gap:var(--s2-spacing-500);}
-.artifact-art img{width:48px;height:48px;}.artifact-art p{font-size:var(--s2-font-size-75);letter-spacing:.12em;text-transform:uppercase;}.artifact-art.large{aspect-ratio:1;min-width:0;border-radius:var(--s2d-radius-xl);}.artifact-art.large img{width:80px;height:80px;}
-.artifact-vault{position:absolute;inset:0;z-index:-1;}.artifact-vault span{position:absolute;left:50%;top:calc(15% + var(--curve)*5%);width:calc(65% + var(--curve)*18%);height:100%;transform:translateX(-50%);border:1px solid color-mix(in srgb,var(--s2-blue-600) 35%,transparent);border-radius:50%;}
+.artifact-art{position:relative;overflow:hidden;aspect-ratio:1.25;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--s2-gray-75);gap:var(--s2-spacing-300);}
+.artifact-art p{font-size:var(--s2-font-size-75);}.artifact-art.large{aspect-ratio:1;min-width:0;border-radius:var(--s2d-radius-xl);}
+.artifact-art.artifact-default{aspect-ratio:auto;align-items:flex-start;padding:var(--s2-spacing-300) var(--s2-spacing-400);background:var(--s2d-layer-raised);color:var(--s2d-text-muted);border:1px solid var(--s2d-border);border-radius:var(--s2d-radius);}
+.artifact-default p{margin:0;}
 .artifact-number{display:grid;gap:var(--s2-spacing-200);}.artifact-number>strong{font-family:var(--s2d-font-serif);font-size:clamp(48px,6vw,88px);font-weight:500;letter-spacing:-.05em;line-height:1.05;overflow-wrap:anywhere;}.artifact-number.compact>strong{font-size:var(--s2-font-size-1000);}.artifact-number .s2d-statuslight{font-size:var(--s2-font-size-75);}
 .artifact-current{font-size:var(--s2-font-size-75);color:var(--s2-blue-1100);border:1px solid var(--s2-blue-400);border-radius:var(--s2d-radius-xl);padding:var(--s2-spacing-75) var(--s2-spacing-100);}
 .artifact-summary{display:flex;justify-content:space-between;align-items:center;gap:var(--s2-spacing-400);padding:var(--s2-spacing-500) 0;border-top:1px solid var(--s2d-border);margin-top:var(--s2-spacing-600);}
@@ -52,3 +53,10 @@
 @media(max-width:600px){.artifact-find-result{grid-template-columns:1fr;}.artifact-search-form{align-items:stretch;flex-direction:column;}.artifact-search-form>.s2d-button{align-self:flex-start;}.artifact-find>.hint{margin-top:0;}.artifact-find-result>.artifact-art{max-width:360px;width:100%;}}
 
 .artifact-number:not([data-number-status="stable"]) .s2d-status i,.artifact-operation-steps:not([data-signature="valid"])>div:first-child .s2d-status i,.artifact-operation-steps:not([data-phase="accepted"])>div:last-child .s2d-status i{background:var(--s2-gray-600);}.artifact-number .s2d-status{font-size:var(--s2-font-size-75);}.artifact-number-observation{display:grid;gap:var(--s2-spacing-200);}.artifact-number-observation>.s2d-button{justify-self:start;}
+
+.artifact-detail-grid.artifact-detail-default{grid-template-columns:1fr;max-width:780px;}
+.artifact-facts>.artifact-default{margin-top:var(--s2-spacing-300);}
+.artifact-card.s2d-card:has(>.artifact-default){display:flex;flex-direction:column;}
+.artifact-card>.artifact-default{order:1;border-width:1px 0 0;border-radius:0;margin-top:auto;}
+.artifact-compose-grid:has(>.artifact-default),.artifact-compose-grid:has(>.artifact-preview>.artifact-default),.artifact-find-result:has(>.artifact-default){grid-template-columns:1fr;}
+.artifact-find-result>.artifact-default{order:1;max-width:none;}

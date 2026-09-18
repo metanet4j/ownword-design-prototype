@@ -2,7 +2,7 @@ function ArtifactArt({asset,large=false,t}) {
   const image=useArtifactImage(asset.content);
   if(!OwnwordArtifactModel.previewSafe(asset.content))return <div className={'artifact-art artifact-placeholder '+(large?'large':'')}><p>{t('artifactSafePlaceholder')}</p><code>{asset.content?.type||'application/octet-stream'}</code></div>;
   if(asset.content.kind==='upload')return <div className={'artifact-art artifact-image '+(large?'large':'')}>{image.src?<img src={image.src} alt={asset.name}/>:<p role="status">{t(image.failed?'artifactPreviewFailed':'artifactLoading')}</p>}</div>;
-  return <div className={'artifact-art '+(large?'large':'')}><div className="artifact-vault" aria-hidden="true">{[0,1,2,3,4,5,6].map(n=><span key={n} style={{'--curve':n}} />)}</div><img src="brand/ownword-mark.svg" alt="" /><p>{t('artifactArtCaption')}</p></div>;
+  return <div className="artifact-art artifact-default"><p>{t('artifactBuiltIn')}</p></div>;
 }
 function NumberStatus({asset,t,compact=false}) {
   const state=OwnwordArtifactModel.numberState(asset),known=['assigned','stable'].includes(state);

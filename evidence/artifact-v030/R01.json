@@ -1,0 +1,25 @@
+{
+  "feature": "R01",
+  "status": "implemented-and-verified",
+  "scope": "移除默认穹顶图案、Logo 大图和装饰口号；默认内容改为信息条，详情与列表突出数字 ID。上传图片保留完整预览。",
+  "verification": {
+    "A04-A": "419×617 手机详情中 #165 与关联身份可读；默认内容位于操作之后的铭文内容区，信息条高 51.39px。",
+    "A04-C": "默认内容不再绘制 SVG 或装饰元素；320×740 实际上传 PNG 解码成功，使用 object-fit: contain。原有不支持内容分支未改变。",
+    "X02": "419px 详情与 320px 上传页无横向溢出；检查 1440×1000 列表与默认内容 Review 截图。"
+  },
+  "checks": [
+    "node check-artifact.cjs：10 组模型检查、JSX 语法及 S2 token 检查通过。",
+    "harness init.ps1：11 项登记、33 条 BDD、既有模型检查与结构检查通过；输出在 harness evidence/R01-init.txt。",
+    "R01-upload-check.json",
+    "R01-errors.json"
+  ],
+  "screenshots": [
+    "R01-mobile-detail.png",
+    "R01-mobile-detail-full.png",
+    "R01-desktop-list.png",
+    "R01-default-review.png",
+    "R01-mobile-upload.png"
+  ],
+  "browserErrors": 0,
+  "limitations": "仅验证本次外观调整及受影响的上传预览；未重新运行全部浏览器 BDD。默认与上传均为模拟原型内容，无真实链上操作。"
+}
