@@ -1,0 +1,16 @@
+{
+  "feature": "A01",
+  "result": "passed",
+  "scenarios": {
+    "A01-A": "模拟连接后查看身份摘要和工作台；Current、数字编号、BAP ID 分层可见。",
+    "A01-B": "场景切换 empty 与 error，分别出现创建入口与重试；主导航保留。",
+    "A01-C": "断开后访问创建固定入口展示连接门禁；样例详情只读且显示关联 BAP ID。"
+  },
+  "screenshots": [
+    "A01-desktop.png",
+    "A01-gate.png"
+  ],
+  "screenshotReview": "已查看，无主要内容遮挡。",
+  "runtimeErrors": [],
+  "limit": "后续创建、Proof、编号交互等按对应功能继续完善。"
+}

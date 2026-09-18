@@ -8,6 +8,8 @@ function App() {
   const [theme, setTheme] = React.useState(() => pref('theme', 'light') === 'dark' ? 'dark' : 'light');
   const [scenario, setScenario] = React.useState('existing');
   const contentRef = React.useRef(null);
+  const artifactRef = React.useRef(null);
+  const artifactStore = useArtifactStore();
   const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [lab, setLab] = React.useState(false);
   const [nextResult, setNextResult] = React.useState('success');
@@ -69,7 +71,14 @@ function App() {
     return () => window.removeEventListener('hashchange', activate);
   }, []);
   React.useEffect(() => {if (!state.busy && /^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});}, [state.busy, state.wallet, state.published]);
+  React.useEffect(() => {
+    const activate = () => {if (/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash)) dispatch({type:'GO',page:'artifacts'});};
+    activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);
+  }, []);
+  React.useEffect(()=>{if(!state.busy&&/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))dispatch({type:'GO',page:'artifacts'});},[state.busy,state.wallet,state.published]);
+  function openArtifacts(page='artifacts',id='') {const action=()=>artifactRef.current?.go(page,id);if(state.page==='content')contentRef.current?.leave(action);else action();}
   function navigate(page) {
+    if(state.page==='artifacts'){artifactRef.current?.leave(()=>{history.pushState(null,'',location.pathname+location.search);dispatch({type:'GO',page});});return;}
     if (state.page === 'content') {contentRef.current?.leave(() => {history.pushState(null, '', location.pathname + location.search); dispatch({type: 'GO', page});}); return;}
     setPrefs(false);
     if ((formPage || state.page === 'review') && dirty) dispatch({type: 'DISCARD_ASK', page});
@@ -77,8 +86,8 @@ function App() {
     else dispatch({type: 'GO', page});
   }
   function resolveAgain() {operationScenario.current = scenario === 'missing' ? 'new' : scenario; dispatch({type: 'RETRY_RESOLVE'});}
-  function switchAccount(forced = false) {const perform = () => {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}; if (forced === true) perform(); else contentRef.current?.leave(perform);}
-  function disconnect(forced = false) {const perform = () => {setPrefs(false); dispatch({type: 'DISCONNECT'});}; if (forced === true) perform(); else contentRef.current?.leave(perform);}
+  function switchAccount(forced = false) {const perform = () => {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
+  function disconnect(forced = false) {const perform = () => {setPrefs(false); dispatch({type: 'DISCONNECT'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
   // 演练配置只决定下一次操作，不进入产品状态或签名输入。
   function confirmConnection() {
     operationScenario.current = scenario;
@@ -144,7 +153,7 @@ function App() {
     <header className="topbar">
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
       <nav aria-label={t('myIdentity')} className="topnav">
-        {state.wallet && state.published && <Button variant="quiet" data-action="nav-content" aria-current={state.page === 'content' ? 'page' : undefined} onClick={() => contentRef.current?.go('content')}>{t('myContent')}</Button>}
+        {state.wallet && state.published && <Button variant="quiet" data-action="nav-content" aria-current={state.page === 'content' ? 'page' : undefined} onClick={() => state.page==='artifacts'?artifactRef.current?.leave(()=>contentRef.current?.go('content')):contentRef.current?.go('content')}>{t('myContent')}</Button>}
         {state.wallet && state.published && <Button variant="quiet" data-action="nav-identity" aria-current={state.page === 'identity' ? 'page' : undefined} onClick={() => navigate('identity')}>{t('myIdentity')}</Button>}
         <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs} aria-controls="preferences-panel">{locale === 'en' ? 'EN' : '中文'}<span className="pref-separator" aria-hidden="true">/</span>{t(theme)}</Button>
           {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
@@ -154,6 +163,7 @@ function App() {
     </header>
     <Dome label={t('domeLabel')} />
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
+      <ArtifactWorkspace connected={state.wallet} ref={artifactRef} active={state.page==='artifacts'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile}:null} locale={locale} t={t} store={artifactStore} onConnect={()=>dispatch({type:'CONNECT'})} onIdentity={()=>navigate(state.wallet?(state.published&&!state.incomplete?'identity':'setup'):'welcome')} failCopy={failCopy}/>
       <ContentWorkspace onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
       {state.page === 'welcome' && <section className="welcome">
         <p className="eyebrow">{t('independent')}</p>
@@ -201,7 +211,7 @@ function App() {
           </div>
           <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio || t('noBio')}</p></section>
         </div>
-        <div className="content-entry"><Button variant="accent" data-action="identity-content" onClick={() => contentRef.current?.go('content')}>{t('myContent')}</Button><p className="hint">{t('contentIntro')}</p></div><div className="flat-horizon" aria-hidden="true"></div>
+        <ArtifactSummary data={artifactStore.settings.list==='empty'?{...artifactStore.data,assets:[],bindings:[]}:artifactStore.data} bapId={bapId} t={t} onManage={()=>openArtifacts()} onOpen={id=>openArtifacts('artifact',id)} /><div className="content-entry"><Button variant="accent" data-action="identity-content" onClick={() => state.page==='artifacts'?artifactRef.current?.leave(()=>contentRef.current?.go('content')):contentRef.current?.go('content')}>{t('myContent')}</Button><p className="hint">{t('contentIntro')}</p></div><div className="flat-horizon" aria-hidden="true"></div>
       </section>}
       {state.page === 'public' && <section className="public-page">{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /><div className="public-back"><Button variant="quiet" data-action="back-identity" onClick={() => navigate('identity')}>{t('backIdentity')}</Button></div></section>}
     </main>
@@ -215,6 +225,7 @@ function App() {
       <p className="hint">{t('nextResultHint')}</p>
       <label>{t('accountEvent')}<select data-scenario="account-event" value={accountEvent} onChange={e => setAccountEvent(e.target.value)}>{['none', 'switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'].map(value => <option key={value} value={value}>{t(value)}</option>)}</select></label>
       <p className="hint">{t('accountEventHint')}</p>
+      <ArtifactSettings settings={artifactStore.settings} setSettings={artifactStore.setSettings} t={t}/>
       <ContentSettings settings={contentSettings} setSettings={setContentSettings} t={t} />
       <label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <><Button onClick={resolveAgain}>{t('resolveAgain')}</Button><Button data-action="simulate-switch" onClick={() => switchAccount(true)}>{t('accountSwitch')}</Button><Button data-action="simulate-disconnect" onClick={() => disconnect(true)}>{t('disconnect')}</Button></>}<Button data-action="reset-session" onClick={resetSession}>{t('reset')}</Button></div></section>}
     {state.modal && <Modal context={state.modal === 'discard' || (state.modal === 'connect' && scenario === 'missing') ? 'OWNWORD' : t('walletAuthorization')} closeLabel={t('close')} titleKey={state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle'} title={t(state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle')} onCancel={() => dispatch({type: state.modal === 'discard' ? 'STAY' : 'CANCEL'})}>

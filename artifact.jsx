@@ -1,0 +1,30 @@
+function useArtifactStore() {
+  const [data,setData]=React.useState(()=>OwnwordArtifactModel.load());
+  const [settings,setSettings]=React.useState({list:'all'});
+  const dataRef=React.useRef(data);dataRef.current=data;
+  return {data,dataRef,setData,settings,setSettings};
+}
+const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,identity,connected,locale,t,store,onConnect,onIdentity,failCopy},ref) {
+  const M=OwnwordArtifactModel,{data,settings,setSettings}=store;
+  const [route,setRoute]=React.useState(()=>M.parseRoute(location.hash));
+  const [filter,setFilter]=React.useState('all');
+  const [loading,setLoading]=React.useState(true);
+  const go=(page,id='')=>{location.hash='/'+page+(id?'/'+encodeURIComponent(id):'');};
+  React.useImperativeHandle(ref,()=>({go,leave:action=>action()}));
+  React.useEffect(()=>{const change=()=>{if(/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))setRoute(M.parseRoute(location.hash));};window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
+  React.useEffect(()=>{setLoading(true);const timer=setTimeout(()=>setLoading(false),250);return()=>clearTimeout(timer);},[active,identity?.bapId,settings.list]);
+  React.useEffect(()=>{if(active){window.scrollTo({top:0,behavior:'instant'});document.querySelector('[data-artifact-screen] h1')?.focus({preventScroll:true});}},[active,route.page,route.id]);
+  if(!active)return null;
+  const header=(title,body)=><div className="page-heading"><p className="eyebrow">IDENTITY ARTIFACT</p><h1 tabIndex="-1">{t(title)}</h1><p>{t(body)}</p></div>;
+  const gate=<section className="artifact-page" data-artifact-screen="gate">{header('artifactGate','artifactGateBody')}<div className="action-row"><Button variant="accent" onClick={connected?onIdentity:onConnect}>{t(connected?'complete':'connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={()=>go('artifact',M.seed().assets[0].id)}>{t('artifactSample')}</Button></div></section>;
+  if(!identity&&!['artifact','find','identity-view'].includes(route.page))return gate;
+  const asset=data.assets.find(a=>a.id===route.id);
+  if(route.page==='artifact')return <section className="artifact-page" data-artifact-screen="detail">{asset?<><div className="artifact-detail-grid"><div className="artifact-detail-main"><NumberStatus asset={asset} t={t}/><h1 tabIndex="-1">{asset.name}</h1><p>{t(M.binding(data,asset.id)?'artifactAssociated':'artifactNoBinding')}</p>{M.binding(data,asset.id)&&<code>{M.binding(data,asset.id).bapId}</code>}</div><ArtifactArt asset={asset} t={t} large/></div><Identifier id={asset.id} label="Inscription ID" copyLabel="artifactCopyId" target="inscription" t={t} failCopy={failCopy}/></>:header('artifactNotFound','artifactLocalScope')}<Button onClick={()=>identity?go('artifacts'):onConnect()}>{t(identity?'artifactBack':'connect')}</Button></section>;
+  if(route.page!=='artifacts')return <section className="artifact-page" data-artifact-screen={route.page}>{header('artifactCreate','artifactCreateBody')}<Button onClick={()=>go('artifacts')}>{t('artifactBack')}</Button></section>;
+  const owned=settings.list==='empty'?[]:data.assets.filter(a=>a.owner===M.ownerFor(identity.bapId)||data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId));
+  const assets=owned.filter(a=>filter==='all'||(filter==='usable'?!M.eligible(a,identity.bapId):data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId&&b.state==='history')||!!M.eligible(a,identity.bapId)));
+  return <section className="artifact-page" data-artifact-screen="list"><div className="artifact-heading">{header('myArtifacts','artifactIntro')}<div className="action-row"><Button onClick={()=>go('artifact-select')}>{t('artifactSelect')}</Button><Button variant="accent" data-action="artifact-create" onClick={()=>go('artifact-create')}>{t('artifactCreate')}</Button></div></div><div className="artifact-author"><Portrait profile={identity.profile}/><div><p className="eyebrow">{t('currentIdentity')}</p><strong>{identity.profile.name}</strong><code>{identity.bapId}</code></div></div>
+    <div className="artifact-filters" aria-label={t('artifactFilter')}>{['all','usable','history'].map(f=><Button key={f} variant="quiet" aria-pressed={filter===f} onClick={()=>setFilter(f)}>{t('artifactFilter-'+f)}</Button>)}</div>
+    {loading?<div role="status" className="artifact-loading"><S2.Skeleton/><p>{t('artifactLoading')}</p></div>:settings.list==='error'||data.readFailure?<div className="artifact-empty" role="alert"><h2>{t('artifactLoadError')}</h2><p>{t('artifactLoadErrorBody')}</p><Button onClick={()=>setSettings(s=>({...s,list:'all'}))}>{t('retry')}</Button></div>:assets.length?React.cloneElement(S2.CardView(),{className:'s2d-card-view artifact-grid'},assets.map(a=><ArtifactCard key={a.id} asset={a} data={data} bapId={identity.bapId} t={t} onOpen={id=>go('artifact',id)}/>)):<div className="artifact-empty"><BrandMark/><h2>{t('artifactEmpty')}</h2><p>{t('artifactOptionalBody')}</p><Button variant="accent" onClick={()=>go('artifact-create')}>{t('artifactCreate')}</Button></div>}<Button variant="quiet" onClick={onIdentity}>{t('backIdentity')}</Button></section>;
+});
+Object.assign(window,{useArtifactStore,ArtifactWorkspace});
