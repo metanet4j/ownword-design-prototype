@@ -41,7 +41,9 @@ try {
   ab find role button click --name 'Back to My Artifacts'
   ab find role button click --name 'View Artifact · A place to stand'
   ab find role button click --name 'Transfer Artifact'
+  ab find role button click --name 'Address requirements'
   ab find role button click --name 'Use recipient example 1BitcoinEaterAddressDontSendf59kuE'
+  ab press Escape
   ab find role button click --name 'Check latest output & Review'
   ab find role button click --name 'Back' --exact
   ab wait '[data-artifact-screen="transfer"]'

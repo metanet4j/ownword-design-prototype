@@ -412,3 +412,9 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .modal .identifier-value{flex-wrap:nowrap;}
   .modal .identifier-value code{flex:1;white-space:normal;overflow-wrap:anywhere;}
 }
+
+/* Shared contextual explanations: pointer, keyboard and touch. */
+.context-help{position:relative;justify-self:start;max-width:100%;}
+.context-help-trigger.s2d-button{min-height:44px;padding-inline:0;color:var(--s2d-text-muted);font-size:var(--s2-font-size-100);text-decoration:underline;text-underline-offset:4px;}
+.context-help-panel.s2d-overlay{position:fixed;z-index:30;width:min(360px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 32px);overflow:auto;padding:var(--s2-spacing-300);display:grid;gap:var(--s2-spacing-200);font-size:var(--s2-font-size-100);line-height:1.65;overflow-wrap:anywhere;}
+.context-help-panel p{margin:0;}

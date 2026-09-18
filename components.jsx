@@ -107,6 +107,28 @@ function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNW
     {actions&&<div className="modal-footer">{actions}</div>}
   </dialog>;
 }
+function ContextHelp({label,children}) {
+  const [mode,setMode]=React.useState('closed'),[position,setPosition]=React.useState({left:16,top:16});
+  const wrapper=React.useRef(null),panel=React.useRef(null),suppressFocus=React.useRef(false),leaveTimer=React.useRef(0),hoverTimer=React.useRef(0),id=React.useId(),open=mode!=='closed';
+  function close(){clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);suppressFocus.current=true;setMode('closed');}
+  React.useEffect(()=>()=>{clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);},[]);
+  useDismissable(open,close,wrapper);
+  React.useLayoutEffect(()=>{
+    if(!open)return;
+    const button=wrapper.current.querySelector('button').getBoundingClientRect(),box=panel.current.getBoundingClientRect();
+    const below=button.bottom+8,top=below+box.height<=innerHeight-16?below:button.top-box.height-8;
+    setPosition({left:Math.max(16,Math.min(button.left,innerWidth-box.width-16)),top:Math.max(16,top)});
+    const dismiss=e=>{if(!panel.current?.contains(e.target))close();};
+    const escape=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close();wrapper.current.querySelector('button').focus({preventScroll:true});}};
+    window.addEventListener('resize',close);document.addEventListener('scroll',dismiss,true);document.addEventListener('keydown',escape,true);
+    return()=>{window.removeEventListener('resize',close);document.removeEventListener('scroll',dismiss,true);document.removeEventListener('keydown',escape,true);};
+  },[open]);
+  return <div className="context-help" ref={wrapper} onPointerEnter={e=>{clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);if(e.pointerType==='mouse'){suppressFocus.current=false;hoverTimer.current=setTimeout(()=>setMode(v=>v==='closed'?'preview':v),300);}}} onPointerLeave={()=>{clearTimeout(hoverTimer.current);if(mode==='preview'&&!wrapper.current.contains(document.activeElement))leaveTimer.current=setTimeout(()=>setMode('closed'),180);}} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget)){suppressFocus.current=false;setMode('closed');}}}>
+    <Button variant="quiet" className="s2d-button s2d-button-quiet context-help-trigger" aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}>{label}</Button>
+    {open&&React.cloneElement(S2.ContextualHelpPopover(),{ref:panel,id,role:'region','aria-label':label,className:'s2d-overlay context-help-panel',style:position},children)}
+  </div>;
+}
+window.ContextHelp=ContextHelp;
 function Toast({message, body, error, notice, storageError, t, onRetry, onDismiss}) {
   const [visible, setVisible] = React.useState(true);
   const [hovered, setHovered] = React.useState(false);
@@ -220,6 +242,6 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
 Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Toast, Identifier, IdentityCard, useDismissable});
 
 function IdentitySignatureProof({bapId,signer,signature='unverified',keyEpoch,t,failCopy}) {
-  return <div className="identity-signature-proof" data-identity-signature={signature}><p className="hint">{t('artifactSignatureScope')}</p><p>{t('artifactProof-'+signature)}</p><Identifier id={bapId} label={t('artifactOperationIdentity')} t={t} failCopy={failCopy}/>{signer&&<Identifier id={signer} label={t('artifactSigner')} copyLabel="artifactCopyFull" target="signer" t={t} failCopy={failCopy}/>}<p className="hint">{t(keyEpoch==='historical-key-at-creation'?'artifactHistoricalKey':'artifactEffectiveKey')}</p></div>;
+  return <div className="identity-signature-proof" data-identity-signature={signature}><p>{t('artifactProof-'+signature)}</p><Identifier id={bapId} label={t('artifactOperationIdentity')} t={t} failCopy={failCopy}/>{signer&&<Identifier id={signer} label={t('artifactSigner')} copyLabel="artifactCopyFull" target="signer" t={t} failCopy={failCopy}/>}<p className="hint">{t(keyEpoch==='historical-key-at-creation'?'artifactHistoricalKey':'artifactEffectiveKey')}</p></div>;
 }
 window.IdentitySignatureProof=IdentitySignatureProof;

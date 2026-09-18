@@ -1,0 +1,97 @@
+CHECK: open
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/#/artifacts
+CHECK: wait
+✓ Done
+CHECK: find
+✓ Done
+CHECK: find
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: find
+✓ Done
+CHECK: click
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: eval
+null
+CHECK: hover
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: hover
+✓ Done
+CHECK: eval
+null
+CHECK: hover
+✓ Done
+CHECK: wait
+true
+CHECK: focus
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: press
+✓ Done
+CHECK: eval
+null
+CHECK: click
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: click
+✓ Done
+CHECK: eval
+null
+CHECK: set
+✓ Done
+CHECK: click
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: eval
+null
+CHECK: press
+✓ Done
+CHECK: click
+✓ Done
+CHECK: eval
+null
+CHECK: scroll
+✓ Done
+CHECK: click
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: find
+✓ Done
+CHECK: press
+✓ Done
+CHECK: eval
+null
+CHECK: press
+✓ Done
+CHECK: wait
+✓ Done
+CHECK: find
+✓ Done
+CHECK: find
+✓ Done
+CHECK: find
+✓ Done
+CHECK: find
+✓ Done
+CHECK: find
+✓ Done
+CHECK: press
+✓ Done
+CHECK: click
+✓ Done
+CHECK: find
+✓ Done
+CHECK: eval
+null
+PASS: plain-number review, hover, keyboard, click, narrow-screen bounds, disclosure, nested dialog Escape and transfer return.
+✓ Browser closed

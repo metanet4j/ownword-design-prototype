@@ -136,3 +136,12 @@
   .artifact-association .identifier-value{align-items:center;}
   .artifact-number-observation .hint{font-size:var(--s2-font-size-75);}
 }
+
+/* Digital IDs use plain numerals; secondary context stays on demand. */
+.artifact-number>strong,.artifact-number-identifier code{font-family:var(--s2d-font-family);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.025em;}
+.artifact-number.long-number>strong,.artifact-number.long-number code{font-family:var(--s2d-font-family);}
+.artifact-review-copy>h2{font-family:var(--s2d-font-family);font-size:var(--s2-font-size-400);font-weight:500;}
+.artifact-replacement{display:flex;flex-wrap:wrap;gap:var(--s2-spacing-200);font-size:var(--s2-font-size-100);color:var(--s2d-text-muted);}
+.artifact-replacement strong{font-weight:600;color:var(--s2d-text);}
+.artifact-review-details{padding-top:0;}
+.artifact-review-details>summary{font-size:var(--s2-font-size-200);}

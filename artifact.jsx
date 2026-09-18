@@ -39,7 +39,7 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   function prepare(kind,assetId){const asset=store.dataRef.current.assets.find(a=>a.id===assetId);if(!asset||!identity)return;setActionReview({kind,returnTo:{page:route.page,id:route.id},bapId:identity.bapId,assetId,assetSnapshot:JSON.parse(JSON.stringify(asset)),outpoint:asset.outpoint,bindingVersion:M.bindingVersion(store.dataRef.current,identity.bapId)});go('artifact-action');}
   function start(review){const op=operations.start(review);if(op)go('artifact-operation',op.id);}
   if(!active)return null;
-  const header=(title,body)=><div className="page-heading"><p className="eyebrow">IDENTITY ARTIFACT</p><h1 tabIndex="-1">{t(title)}</h1><p>{t(body)}</p></div>;
+  const header=(title,body)=><div className="page-heading"><h1 tabIndex="-1">{t(title)}</h1><p>{t(body)}</p></div>;
   const gate=<section className="artifact-page" data-artifact-screen="gate">{header('artifactGate','artifactGateBody')}<div className="action-row"><Button variant="accent" onClick={connected?onIdentity:onConnect}>{t(connected?'complete':'connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={()=>go('artifact',M.seed().assets[0].id)}>{t('artifactSample')}</Button></div></section>;
   if(!identity&&!['artifact','find','identity-view'].includes(route.page))return gate;
   const asset=data.assets.find(a=>a.id===route.id);

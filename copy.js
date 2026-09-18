@@ -90,16 +90,16 @@
   Object.assign(words.zh, {"markdownImport": "导入 .md", "markdownExport": "导出 .md", "importType": "请选择 Markdown（.md）文件，当前正文未改变。", "importSize": "文件超过 100 KiB，当前正文未改变。", "importEncoding": "文件不是有效的 UTF-8 编码，当前正文未改变。", "importReadError": "文件读取失败，请重试。", "importReplaceTitle": "替换当前草稿？", "importReplaceBody": "导入的 Markdown 将替换当前正文。如需保留，请先导出一份副本。", "importReplace": "替换正文"});
   Object.assign(words.en, {"contentReview": "Review publication", "reviewEyebrow": "Before your words go public", "reviewIntro": "Read it once more. This exact text will carry your identity.", "reviewExpired": "Review this draft again before signing. The text or identity has changed, or this review has expired.", "reviewEmpty": "Write something before publishing.", "reviewImpactTitle": "A public, lasting record", "reviewImpact": "Your text and author identity will be public. Published words cannot be overwritten. Changes create a new version; earlier versions remain readable.", "reviewEdit": "Back to editing", "contentSignPublish": "Sign and publish"});
   Object.assign(words.zh, {"contentReview": "检查发布", "reviewEyebrow": "发布之前", "reviewIntro": "再读一遍。这份正文将以你的身份签名发布。", "reviewExpired": "正文或身份已变化，或本次确认已失效。请回到草稿重新检查发布。", "reviewEmpty": "正文为空，请先写下一些内容。", "reviewImpactTitle": "公开且保留的记录", "reviewImpact": "正文和作者身份将公开。发布后不能覆盖原文；修改会追加新版本，旧版本仍可阅读。", "reviewEdit": "返回修改", "contentSignPublish": "签名并发布"});
-  Object.assign(words.en, {"publishEyebrow": "Your words, your identity", "publish-authorize": "Ready for your signature", "publish-signing": "Signing your words", "publish-broadcasting": "Publishing your words", "publish-published": "Your words are published", "publish-unknown": "Publication needs checking", "publish-failed": "Publication did not complete", "publish-cancelled": "Signature cancelled", "publishCancelled": "Signature cancelled. Your draft is kept.", "publishSignatureStep": "Identity signature", "publishChainStep": "Publish on chain", "publishSigned": "Signature step complete", "publishSignDescription": "Authorize this identity and this exact text.", "publishChainDescription": "A signature is complete only for this step; publication has its own result.", "publishAccepted": "Accepted and recorded", "publishProcessing": "Keep this page open while this step completes.", "publishStorage": "The publication record could not be saved. Your draft and operation are kept. Restore storage, then check the result.", "publishNotReceived": "The query confirms this publication was not received. Review again before retrying.", "publishStillUnknown": "The result is still unknown. Check again later.", "publishSignFailed": "Identity signing failed. No publication was submitted.", "publishBroadcastFailed": "Publication was rejected after signing. Your draft is kept.", "publishUnknownBody": "This operation may have been received. Check its result before publishing again; the original text and identity are retained.", "publishDraftKept": "Your words are still in your draft. Review the text and identity before trying again.", "publishSampleRecord": "Publication record · sample", "publishSampleTx": "Sample TxID", "publishSimulation": "Prototype simulation: no real signature, transaction or fee is created.", "publishQuery": "Check result", "publishReviewAgain": "Return to draft and review", "publishAuthorizeTitle": "Authorize identity signing", "publishSampleWallet": "Simulated wallet", "publishAuthorizeBody": "Sign the Markdown you just reviewed with the following identity, then publish it.", "publishAuthorize": "Authorize signing", "scenario-publish": "Publication outcome", "scenario-query": "Unknown-result query", "scenario-confirmation": "Chain confirmation", "scenario-account": "Account change during publication", "scenario-success": "Success", "scenario-sign-failed": "Signature failure", "scenario-broadcast-failed": "Publication rejected", "scenario-unknown": "Result unknown", "scenario-accepted": "Accepted", "scenario-not-received": "Definitely not received", "scenario-pending": "Pending confirmation", "scenario-confirmed": "Confirmed", "scenario-none": "No change", "scenario-broadcasting-switch": "Switch during publication", "scenario-broadcasting-disconnect": "Disconnect during publication"});
-  Object.assign(words.zh, {"publishEyebrow": "你的文字，你的身份", "publish-authorize": "等待身份签名授权", "publish-signing": "正在签名", "publish-broadcasting": "正在发布", "publish-published": "内容已发布", "publish-unknown": "结果待核实", "publish-failed": "发布未完成", "publish-cancelled": "签名已取消", "publishCancelled": "签名已取消，草稿已保留。", "publishSignatureStep": "身份签名", "publishChainStep": "链上发布", "publishSigned": "签名步骤已完成", "publishSignDescription": "授权当前身份与本次正文。", "publishChainDescription": "签名完成后继续发布，发布结果单独确认。", "publishAccepted": "已接收并保存发布记录", "publishProcessing": "正在处理，请稍候。", "publishStorage": "发布记录暂时无法保存，草稿与操作快照仍保留。请恢复存储后查询结果。", "publishNotReceived": "查询结果明确未接收。请重新检查正文后再发布。", "publishStillUnknown": "结果仍待核实，请稍后再次查询。", "publishSignFailed": "身份签名失败，尚未提交发布。", "publishBroadcastFailed": "签名完成，但发布被拒绝，草稿已保留。", "publishUnknownBody": "本次操作可能已被接收。请先查询结果，再决定是否重新发布；原始正文与作者已保留。", "publishDraftKept": "正文仍保留在草稿中。再次发布前，请重新检查正文与作者。", "publishSampleRecord": "发布记录 · 样例", "publishSampleTx": "样例 TxID", "publishSimulation": "原型演示：使用签名与交易样例，不发送真实交易，也不产生费用。", "publishQuery": "查询结果", "publishReviewAgain": "返回草稿重新检查", "publishAuthorizeTitle": "授权身份签名", "publishSampleWallet": "模拟钱包", "publishAuthorizeBody": "使用以下身份为刚才确认的 Markdown 正文签名，随后发布。", "publishAuthorize": "授权签名", "scenario-publish": "发布结果", "scenario-query": "待核实查询", "scenario-confirmation": "链上确认", "scenario-account": "发布时账户变化", "scenario-success": "成功", "scenario-sign-failed": "签名失败", "scenario-broadcast-failed": "发布拒绝", "scenario-unknown": "结果待核实", "scenario-accepted": "已接收", "scenario-not-received": "明确未接收", "scenario-pending": "确认中", "scenario-confirmed": "已确认", "scenario-none": "不触发", "scenario-broadcasting-switch": "发布中切换账户", "scenario-broadcasting-disconnect": "发布中断开连接"});
+  Object.assign(words.en, {"publishEyebrow": "Your words, your identity", "publish-authorize": "Ready for your signature", "publish-signing": "Signing your words", "publish-broadcasting": "Publishing your words", "publish-published": "Your words are published", "publish-unknown": "Publication needs checking", "publish-failed": "Publication did not complete", "publish-cancelled": "Signature cancelled", "publishCancelled": "Signature cancelled. Your draft is kept.", "publishSignatureStep": "Identity signature", "publishChainStep": "Publish on chain", "publishSigned": "Signature step complete", "publishSignDescription": "Authorize this identity and this exact text.", "publishChainDescription": "A signature is complete only for this step; publication has its own result.", "publishAccepted": "Accepted and recorded", "publishProcessing": "Keep this page open while this step completes.", "publishStorage": "The publication record could not be saved. Your draft and operation are kept. Restore storage, then check the result.", "publishNotReceived": "The query confirms this publication was not received. Review again before retrying.", "publishStillUnknown": "The result is still unknown. Check again later.", "publishSignFailed": "Identity signing failed. No publication was submitted.", "publishBroadcastFailed": "Publication was rejected after signing. Your draft is kept.", "publishUnknownBody": "This operation may have been received. Check its result before publishing again; the original text and identity are retained.", "publishDraftKept": "Your words are still in your draft. Review the text and identity before trying again.", "publishSampleRecord": "Publication record", "publishSampleTx": "TxID", "publishSimulation": "Prototype simulation: no real signature, transaction or fee is created.", "publishQuery": "Check result", "publishReviewAgain": "Return to draft and review", "publishAuthorizeTitle": "Authorize identity signing", "publishSampleWallet": "Yours Wallet", "publishAuthorizeBody": "Sign the Markdown you just reviewed with the following identity, then publish it.", "publishAuthorize": "Authorize signing", "scenario-publish": "Publication outcome", "scenario-query": "Unknown-result query", "scenario-confirmation": "Chain confirmation", "scenario-account": "Account change during publication", "scenario-success": "Success", "scenario-sign-failed": "Signature failure", "scenario-broadcast-failed": "Publication rejected", "scenario-unknown": "Result unknown", "scenario-accepted": "Accepted", "scenario-not-received": "Definitely not received", "scenario-pending": "Pending confirmation", "scenario-confirmed": "Confirmed", "scenario-none": "No change", "scenario-broadcasting-switch": "Switch during publication", "scenario-broadcasting-disconnect": "Disconnect during publication"});
+  Object.assign(words.zh, {"publishEyebrow": "你的文字，你的身份", "publish-authorize": "等待身份签名授权", "publish-signing": "正在签名", "publish-broadcasting": "正在发布", "publish-published": "内容已发布", "publish-unknown": "结果待核实", "publish-failed": "发布未完成", "publish-cancelled": "签名已取消", "publishCancelled": "签名已取消，草稿已保留。", "publishSignatureStep": "身份签名", "publishChainStep": "链上发布", "publishSigned": "签名步骤已完成", "publishSignDescription": "授权当前身份与本次正文。", "publishChainDescription": "签名完成后继续发布，发布结果单独确认。", "publishAccepted": "已接收并保存发布记录", "publishProcessing": "正在处理，请稍候。", "publishStorage": "发布记录暂时无法保存，草稿与操作快照仍保留。请恢复存储后查询结果。", "publishNotReceived": "查询结果明确未接收。请重新检查正文后再发布。", "publishStillUnknown": "结果仍待核实，请稍后再次查询。", "publishSignFailed": "身份签名失败，尚未提交发布。", "publishBroadcastFailed": "签名完成，但发布被拒绝，草稿已保留。", "publishUnknownBody": "本次操作可能已被接收。请先查询结果，再决定是否重新发布；原始正文与作者已保留。", "publishDraftKept": "正文仍保留在草稿中。再次发布前，请重新检查正文与作者。", "publishSampleRecord": "发布记录", "publishSampleTx": "TxID", "publishSimulation": "原型演示：使用签名与交易样例，不发送真实交易，也不产生费用。", "publishQuery": "查询结果", "publishReviewAgain": "返回草稿重新检查", "publishAuthorizeTitle": "授权身份签名", "publishSampleWallet": "模拟钱包", "publishAuthorizeBody": "使用以下身份为刚才确认的 Markdown 正文签名，随后发布。", "publishAuthorize": "授权签名", "scenario-publish": "发布结果", "scenario-query": "待核实查询", "scenario-confirmation": "链上确认", "scenario-account": "发布时账户变化", "scenario-success": "成功", "scenario-sign-failed": "签名失败", "scenario-broadcast-failed": "发布拒绝", "scenario-unknown": "结果待核实", "scenario-accepted": "已接收", "scenario-not-received": "明确未接收", "scenario-pending": "确认中", "scenario-confirmed": "已确认", "scenario-none": "不触发", "scenario-broadcasting-switch": "发布中切换账户", "scenario-broadcasting-disconnect": "发布中断开连接"});
   Object.assign(words.en, {"publishStorageBefore": "The operation could not be saved, so signing has not started. Your draft is kept. Restore storage and review again."});
   Object.assign(words.zh, {"publishStorageBefore": "本次操作暂时无法保存，尚未开始签名，草稿已保留。请恢复存储后重新检查。"});
   Object.assign(words.en, {"readerPublic": "Public reading", "readerMissing": "This demo content was not found", "readerMissingBody": "This link may point to content created in another browser. Demo publications are stored only in the browser that created them. You can read a built-in sample instead.", "readerCopyLink": "Copy link", "readerVersion": "Version", "readerLocalScope": "Demo publication: built-in samples are shareable. New demo content can be reopened in this browser; it is not retrieved from a live chain."});
   Object.assign(words.zh, {"readerPublic": "公开阅读", "readerMissing": "未找到此演示内容", "readerMissingBody": "此链接可能来自另一浏览器。新发布的演示内容只保存在发布时使用的浏览器中，你也可以阅读内置样例。", "readerCopyLink": "复制链接", "readerVersion": "版本", "readerLocalScope": "演示内容：内置样例可分享；新发布的内容可在当前浏览器重开，未连接真实链上查询。"});
   Object.assign(words.en, {"versionHistory": "Version history", "versionHistorical": "Reading an earlier version", "versionLatest": "Read latest version", "versionCurrent": "Latest", "revisionContinue": "Continue revision", "revisionCreate": "Create revision", "revisionUnchanged": "There are no changes yet. Edit the text before reviewing this revision.", "reviewOutdated": "A newer version exists. Open the latest version to start a revision.", "historyBack": "Back to reading", "versionHistoryBody": "Each publication keeps its own words. Earlier versions remain readable."});
   Object.assign(words.zh, {"versionHistory": "版本历史", "versionHistorical": "正在阅读历史版本", "versionLatest": "查看最新版本", "versionCurrent": "最新", "revisionContinue": "继续修订", "revisionCreate": "创建修订", "revisionUnchanged": "暂无修改。请修改正文后再检查发布。", "reviewOutdated": "已有更新版本，请查看最新版本后创建修订。", "historyBack": "返回阅读", "versionHistoryBody": "每次发布保留独立正文，旧版本仍可阅读。"});
-  Object.assign(words.en, {"proofSummary": "Signature and chain record", "proofSimulation": "Sample evidence for this prototype. No cryptographic verification or live chain query is performed.", "proofSignature": "Content signature", "proof-valid": "Valid · sample", "proof-unverified": "Not verified", "proof-failed": "Verification failed", "proofConfirmation": "Chain confirmation", "proofSource": "Query sample source", "proofLocalSource": "Publication simulated in this browser", "proofFixtureSource": "Built-in public sample", "proofFailedBody": "The signature sample does not match. Do not treat this text as verified.", "proofUnverifiedBody": "No verified signature result is available for this sample.", "scenario-proof": "Proof signature sample", "scenario-proofConfirmation": "Proof confirmation sample", "scenario-record": "Use this record", "scenario-valid": "Valid sample", "scenario-unverified": "Not verified", "scenario-failed": "Signature mismatch"});
-  Object.assign(words.zh, {"proofSummary": "签名与链上记录", "proofSimulation": "以下为原型证据样例，未执行真实密码学验证或链上查询。", "proofSignature": "内容签名", "proof-valid": "有效 · 样例", "proof-unverified": "未验证", "proof-failed": "验证失败", "proofConfirmation": "链上确认", "proofSource": "查询样例来源", "proofLocalSource": "当前浏览器的发布演示", "proofFixtureSource": "内置公开样例", "proofFailedBody": "签名样例不匹配，不能将此正文视为已验证。", "proofUnverifiedBody": "当前样例暂无已验证的签名结果。", "scenario-proof": "Proof 签名样例", "scenario-proofConfirmation": "Proof 确认样例", "scenario-record": "沿用当前记录", "scenario-valid": "有效样例", "scenario-unverified": "未验证", "scenario-failed": "签名不匹配"});
+  Object.assign(words.en, {"proofSummary": "Signature and chain record", "proofSimulation": "Sample evidence for this prototype. No cryptographic verification or live chain query is performed.", "proofSignature": "Content signature", "proof-valid": "Valid", "proof-unverified": "Not verified", "proof-failed": "Verification failed", "proofConfirmation": "Chain confirmation", "proofSource": "Query sample source", "proofLocalSource": "Publication simulated in this browser", "proofFixtureSource": "Built-in public sample", "proofFailedBody": "The signature does not match. This text could not be verified.", "proofUnverifiedBody": "No verified signature result is available.", "scenario-proof": "Proof signature sample", "scenario-proofConfirmation": "Proof confirmation sample", "scenario-record": "Use this record", "scenario-valid": "Valid sample", "scenario-unverified": "Not verified", "scenario-failed": "Signature mismatch"});
+  Object.assign(words.zh, {"proofSummary": "签名与链上记录", "proofSimulation": "以下为原型证据样例，未执行真实密码学验证或链上查询。", "proofSignature": "内容签名", "proof-valid": "有效", "proof-unverified": "未验证", "proof-failed": "验证失败", "proofConfirmation": "链上确认", "proofSource": "查询样例来源", "proofLocalSource": "当前浏览器的发布演示", "proofFixtureSource": "内置公开样例", "proofFailedBody": "签名不匹配，此正文未通过验证。", "proofUnverifiedBody": "当前暂无已验证的签名结果。", "scenario-proof": "Proof 签名样例", "scenario-proofConfirmation": "Proof 确认样例", "scenario-record": "沿用当前记录", "scenario-valid": "有效样例", "scenario-unverified": "未验证", "scenario-failed": "签名不匹配"});
   Object.assign(words.en, {"writerTitle-checking": "Opening your workspace", "writerBody-checking": "Checking which page is editing your content.", "writerTitle-busy": "Your workspace is open in another tab", "writerBody-busy": "Continue editing there, or close that tab and retry here. This keeps your drafts and publication records from replacing each other.", "writerTitle-unavailable": "This page is available for reading", "writerBody-unavailable": "Editing needs a browser that supports coordinating tabs. Open this prototype on localhost or HTTPS in a current browser, then retry."});
   Object.assign(words.zh, {"writerTitle-checking": "正在打开内容工作区", "writerBody-checking": "正在检查当前编辑页面。", "writerTitle-busy": "内容工作区已在另一页打开", "writerBody-busy": "请在原页面继续编辑，或关闭原页面后在此重试，避免草稿和发布记录相互覆盖。", "writerTitle-unavailable": "当前页面可供阅读", "writerBody-unavailable": "编辑需要浏览器支持页面协作。请使用新版浏览器，通过 localhost 或 HTTPS 打开原型后重试。"});
   Object.assign(words.en, {"draftRecovered": "Recovered draft", "draftRecoveredBody": "Your unsaved words are in recovered drafts. Open each draft to check that it saves."});
@@ -198,7 +198,7 @@ Object.assign(window.OwnwordCopy.en, {
   "artifactReviewBody": "Confirm the content and the identity behind this transaction.",
   "artifactDefaultBinding": "After creation, we will ask you to associate this Artifact with your current identity.",
   "artifactOldCurrent": "Your previous Current will become a historical association:",
-  "artifactNoFees": "Simulated wallet and chain data. No transaction or fee is created.",
+  "artifactNoFees": "Yours Wallet and chain data. No transaction or fee is created.",
   "artifactEdit": "Back to edit",
   "artifactSignCreate": "Sign & Create Artifact",
   "artifactContent": "Content",
@@ -279,9 +279,9 @@ Object.assign(window.OwnwordCopy.en, {
   "artifactPhase-failed": "Operation failed",
   "artifactPhase-cancelled": "Operation cancelled",
   "artifactIdentitySignature": "Identity signature",
-  "artifactSignatureValid": "Identity signature valid · simulated",
+  "artifactSignatureValid": "Identity signature valid",
   "artifactSignatureScope": "Signed by the BAP identity key effective at this transaction. This is a sample verification, not a real identity check.",
-  "artifactAccepted": "Accepted by the network · simulated",
+  "artifactAccepted": "Accepted by the network",
   "artifactNetwork": "Network acceptance",
   "artifactConfirmationSeparate": "Confirmation and inscription number are tracked separately.",
   "artifactUnknownBody": "The outcome is unknown. Query this operation; do not submit it or a conflicting action again.",
@@ -340,9 +340,9 @@ Object.assign(window.OwnwordCopy.zh, {
   "artifactPhase-failed": "操作失败",
   "artifactPhase-cancelled": "操作已取消",
   "artifactIdentitySignature": "身份签名",
-  "artifactSignatureValid": "身份签名有效 · 模拟",
+  "artifactSignatureValid": "身份签名有效",
   "artifactSignatureScope": "使用交易发生时有效的 BAP 身份签名密钥。这里是模拟验证，不是现实身份认证。",
-  "artifactAccepted": "网络已接收 · 模拟",
+  "artifactAccepted": "网络已接收",
   "artifactNetwork": "网络接收结果",
   "artifactConfirmationSeparate": "链上确认与铭文编号分别追踪。",
   "artifactUnknownBody": "操作结果未知。请查询此操作，不要重复提交或执行冲突操作。",
@@ -379,15 +379,15 @@ Object.assign(window.OwnwordCopy.en,{
   "artifactSafePlaceholder": "Preview unavailable for this content type.",
   "artifactPreviewFailed": "This image could not be loaded. Known identifiers remain available.",
   "artifactContent": "Inscribed content",
-  "artifactMetadata": "Current metadata · sample MAP",
+  "artifactMetadata": "Current metadata · MAP",
   "artifactCreator": "Creator · BAP ID",
   "artifactOwner": "Current owner · address",
   "artifactSigner": "Transaction signer · address",
   "artifactOperationIdentity": "Operation identity · BAP ID",
   "artifactCopyFull": "Copy full value",
-  "artifactProof-valid": "Identity signature valid · simulated",
+  "artifactProof-valid": "Identity signature valid",
   "artifactProof-unverified": "Identity signature not verified",
-  "artifactProof-invalid": "Identity signature invalid · simulated",
+  "artifactProof-invalid": "Identity signature invalid",
   "artifactHistoricalKey": "Historical signature: verified with the identity key effective when this transaction was signed. Later key rotation does not invalidate it.",
   "artifactEffectiveKey": "Key used: the BAP identity signing key effective at signing.",
   "artifactDataSource": "Source: deterministic local sample; no live chain verification.",
@@ -413,15 +413,15 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactSafePlaceholder": "此内容类型不提供预览。",
   "artifactPreviewFailed": "图片加载失败，已知标识仍可查看。",
   "artifactContent": "铭文内容",
-  "artifactMetadata": "当前元数据 · MAP 样例",
+  "artifactMetadata": "当前元数据 · MAP",
   "artifactCreator": "创建者 · BAP ID",
   "artifactOwner": "当前持有人 · 地址",
   "artifactSigner": "交易签名者 · 地址",
   "artifactOperationIdentity": "操作身份 · BAP ID",
   "artifactCopyFull": "复制完整值",
-  "artifactProof-valid": "身份签名有效 · 模拟",
+  "artifactProof-valid": "身份签名有效",
   "artifactProof-unverified": "身份签名未验证",
-  "artifactProof-invalid": "身份签名无效 · 模拟",
+  "artifactProof-invalid": "身份签名无效",
   "artifactHistoricalKey": "历史签名：按签名发生时有效的身份密钥验证。后续密钥轮换不使历史签名失效。",
   "artifactEffectiveKey": "使用签名发生时有效的 BAP 身份签名密钥。",
   "artifactDataSource": "来源：本地确定性样例，未进行真实链上验证。",
@@ -463,7 +463,7 @@ Object.assign(window.OwnwordCopy.en,{
   "artifactInscriptionConfirmations": "Inscription transaction confirmations",
   "artifactLastObserved": "Last successful observation",
   "artifactRefreshNumber": "Refresh status",
-  "artifactRefreshed": "Status query completed · sample facts",
+  "artifactRefreshed": "Status updated",
   "artifactCopyNumber": "Copy inscription number"
 });
 
@@ -487,7 +487,7 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactInscriptionConfirmations": "铭文交易确认数",
   "artifactLastObserved": "最近一次成功观测",
   "artifactRefreshNumber": "刷新状态",
-  "artifactRefreshed": "状态查询已完成 · 样例事实",
+  "artifactRefreshed": "状态已更新",
   "artifactCopyNumber": "复制铭文编号"
 });
 
@@ -577,7 +577,7 @@ Object.assign(window.OwnwordCopy.en,{
   "artifactTransferIntro": "Send this Artifact to a wallet address. BAP Identity, content and relationships do not transfer with it.",
   "artifactRecipient": "Recipient address",
   "artifactRecipientSample": "Use recipient example",
-  "artifactAddressHint": "Prototype: use one of the two displayed sample addresses on BSV Mainnet. No funds or real assets move.",
+  "artifactAddressHint": "Use a BSV Mainnet address. BAP IDs and inscription numbers are not recipient addresses.",
   "artifactAddressInvalid": "Enter a BSV Mainnet sample address, not a BAP ID or inscription number.",
   "artifactSampleAddressOnly": "This prototype supports only the displayed sample addresses.",
   "artifactWrongNetwork": "This sample is configured for BSV Mainnet.",
@@ -600,7 +600,7 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactTransferIntro": "将此 Artifact 转给钱包地址。BAP Identity、内容和关系不随资产转移。",
   "artifactRecipient": "接收地址",
   "artifactRecipientSample": "使用收款地址样例",
-  "artifactAddressHint": "原型仅接受展示的两个 BSV 主网地址样例，不移动真实资金或资产。",
+  "artifactAddressHint": "请使用 BSV 主网地址。BAP ID 和铭文编号不能作为接收地址。",
   "artifactAddressInvalid": "请输入 BSV 主网样例地址，不能使用 BAP ID 或铭文编号。",
   "artifactSampleAddressOnly": "本原型只支持展示的样例地址。",
   "artifactWrongNetwork": "当前样例仅配置 BSV 主网。",
@@ -668,11 +668,18 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactResetImagesFailed": "Artifact 记录已重置，但图片清理失败，请重试完成清理。"
 });
 
-Object.assign(window.OwnwordCopy.en,{artifactSignatureScope:"Each transaction requires a signature from the BAP identity key effective at that transaction. All verification here is simulated."});
-Object.assign(window.OwnwordCopy.zh,{artifactSignatureScope:"每笔交易均须使用当时有效的 BAP 身份签名密钥。本页面的验证均为模拟。"});
+Object.assign(window.OwnwordCopy.en,{artifactSignatureScope:"Each transaction requires a signature from the BAP identity key effective at that transaction. "});
+Object.assign(window.OwnwordCopy.zh,{artifactSignatureScope:"每笔交易均须使用当时有效的 BAP 身份签名密钥。"});
 
 Object.assign(window.OwnwordCopy.en,{navigationMenu:'Menu',navigationLabel:'Main navigation',artifactCurrent:'Current',artifactAssociatedTitle:'Associated identity',artifactSelectEyebrow:'Current digital ID',artifactLocale:'en-US'});
 Object.assign(window.OwnwordCopy.zh,{navigationMenu:'菜单',navigationLabel:'主导航',artifactCurrent:'当前使用',artifactAssociatedTitle:'关联身份',artifactSelectEyebrow:'当前数字 ID',artifactLocale:'zh-CN'});
 
 Object.assign(window.OwnwordCopy.en,{artifactTransferPendingTitle:'Transfer received',artifactTransferVerifiedTitle:'Transfer verified'});
 Object.assign(window.OwnwordCopy.zh,{artifactTransferPendingTitle:'转移已接收',artifactTransferVerifiedTitle:'转移已核实'});
+
+Object.assign(window.OwnwordCopy.en,{
+  artifactAssociationHelp:'About this association',artifactActionHelp:'What changes?',artifactSignatureHelp:'About the signature',artifactConfirmationHelp:'About confirmations',artifactTransactionDetails:'Transaction details',artifactReplacing:'Replaces digital ID',artifactTransferConsequence:'You will transfer control of this Artifact to the recipient.',artifactRemoveConsequence:'This digital ID will no longer point to your identity.',artifactCreationHelp:'About creating an Artifact',artifactAddressHelp:'Address requirements',artifactTransferHelp:'About this transfer'
+});
+Object.assign(window.OwnwordCopy.zh,{
+  artifactAssociationHelp:'关联说明',artifactActionHelp:'操作说明',artifactSignatureHelp:'签名说明',artifactConfirmationHelp:'确认说明',artifactTransactionDetails:'交易详情',artifactReplacing:'替换当前数字 ID',artifactTransferConsequence:'转移后，此 Artifact 将由接收方控制。',artifactRemoveConsequence:'移除后，此数字 ID 将不再指向你的身份。',artifactCreationHelp:'创建说明',artifactAddressHelp:'地址要求',artifactTransferHelp:'转移说明'
+});

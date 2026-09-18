@@ -1,0 +1,71 @@
+{
+  "feature": "R03",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "report": "说明收敛审查-20260919-071512.md",
+  "categories": 5,
+  "viewports": [
+    "320x568",
+    "575x792",
+    "1440x1000"
+  ],
+  "themes": [
+    "en/light",
+    "zh/dark"
+  ],
+  "regression": "regression-check.txt",
+  "regressionScript": "check-context-help.ps1",
+  "checks": [
+    "hover and pointer transfer",
+    "keyboard focus and Escape",
+    "click pin and dismiss",
+    "narrow viewport bounds",
+    "transaction detail disclosure",
+    "nested authorization Escape",
+    "transfer review return",
+    "plain-number display and raw clipboard",
+    "hash-prefixed lookup and long decimal strings"
+  ],
+  "accessibility": [
+    {
+      "file": "bind-a11y.json",
+      "counts": {
+        "inapplicable": 52,
+        "incomplete": 0,
+        "passes": 37,
+        "violations": 0
+      }
+    },
+    {
+      "file": "create-review-a11y.json",
+      "counts": {
+        "inapplicable": 53,
+        "incomplete": 0,
+        "passes": 36,
+        "violations": 0
+      }
+    }
+  ],
+  "screenshots": [
+    "before-bind-575.png",
+    "after-bind-575.png",
+    "after-bind-320.png",
+    "help-hover-575.png",
+    "help-click-320.png",
+    "list-desktop.png",
+    "create-575.png",
+    "create-review-575.png",
+    "long-number-320.png",
+    "content-proof.png"
+  ],
+  "errorFiles": [
+    "errors.json",
+    "regression-errors.json"
+  ],
+  "startupCheck": "../evidence/R03-init.txt（相对原型根目录）",
+  "limitations": [
+    "本轮是呈现及帮助交互回归，不代表全量 BDD 重跑。",
+    "移动端为 Chromium 视口模拟，未验证真机 Safari。",
+    "签名、交易及链上数据仍为模拟，说明移至演示面板。"
+  ]
+}

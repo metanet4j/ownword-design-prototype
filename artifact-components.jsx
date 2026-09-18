@@ -9,12 +9,12 @@ function artifactTime(value,t) {
   return Number.isNaN(date.getTime())?value:new Intl.DateTimeFormat(t('artifactLocale'),{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}).format(date);
 }
 function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false}) {
-  const state=OwnwordArtifactModel.numberState(asset),known=['assigned','stable'].includes(state),number=known?'#'+asset.number:'—';
+  const state=OwnwordArtifactModel.numberState(asset),known=['assigned','stable'].includes(state),number=known?asset.number:'—';
   return <div className={'artifact-number '+(compact?'compact':'')+(number.length>8?' long-number':'')} data-number-status={state}>
     {known&&copyable?<Identifier className="artifact-number-identifier" id={asset.number} displayValue={number} label={t('digitalId')} copyLabel="artifactCopyNumber" target="number" t={t} failCopy={failCopy}/>:<><p className="eyebrow">{t('digitalId')}</p><strong>{number}</strong></>}
     <div className="artifact-number-state"><S2.StatusLight label={t('artifactNumber-'+state)}/>{known&&state==='assigned'&&<span className="hint">{asset.confirmations}/6 {t('artifactConfirmations')}</span>}</div>
     {!compact&&['reorg','unverified'].includes(state)&&<p className="hint">{t('artifactLastNumber')}: {asset.number??t('artifactUnknownOrdinal')} · <time dateTime={asset.observedAt}>{artifactTime(asset.observedAt,t)}</time></p>}
-    {!compact&&asset.previousNumber&&known&&asset.previousNumber!==asset.number&&<p role="status">{t('artifactNumberChanged')}: #{asset.previousNumber} → #{asset.number}</p>}
+    {!compact&&asset.previousNumber&&known&&asset.previousNumber!==asset.number&&<p role="status">{t('artifactNumberChanged')}: {asset.previousNumber} → {asset.number}</p>}
   </div>;
 }
 function ArtifactSummary({data,bapId,t,onManage,onOpen}) {
@@ -36,7 +36,7 @@ Object.assign(window,{ArtifactArt,NumberStatus,ArtifactSummary,ArtifactCard,Arti
 function ArtifactSelector({data,identity,t,onSelect,onOpen,onBack}) {
   const M=OwnwordArtifactModel,[filter,setFilter]=React.useState('held');
   const assets=data.assets.filter(a=>filter==='held'?a.owner===M.ownerFor(identity.bapId):data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId));
-  return <section className="artifact-page" data-artifact-screen="select"><div className="page-heading"><p className="eyebrow">{t('artifactSelectEyebrow')}</p><h1 tabIndex="-1">{t('artifactSelect')}</h1><p>{t('artifactSelectBody')}</p></div><div className="artifact-filters">{['held','associated'].map(f=><Button key={f} variant="quiet" aria-pressed={filter===f} onClick={()=>setFilter(f)}>{t('artifactSelect-'+f)}</Button>)}</div><div className="artifact-grid">{assets.map(a=>{const why=M.eligible(a,identity.bapId),current=M.binding(data,a.id)?.bapId===identity.bapId,busy=M.conflict(data,identity.bapId,a.id);return <ArtifactCard key={a.id} asset={a} data={data} bapId={identity.bapId} t={t} onOpen={onOpen}>
+  return <section className="artifact-page" data-artifact-screen="select"><div className="page-heading"><h1 tabIndex="-1">{t('artifactSelect')}</h1><ContextHelp label={t('artifactAssociationHelp')}><p>{t('artifactSelectBody')}</p></ContextHelp></div><div className="artifact-filters">{['held','associated'].map(f=><Button key={f} variant="quiet" aria-pressed={filter===f} onClick={()=>setFilter(f)}>{t('artifactSelect-'+f)}</Button>)}</div><div className="artifact-grid">{assets.map(a=>{const why=M.eligible(a,identity.bapId),current=M.binding(data,a.id)?.bapId===identity.bapId,busy=M.conflict(data,identity.bapId,a.id);return <ArtifactCard key={a.id} asset={a} data={data} bapId={identity.bapId} t={t} onOpen={onOpen}>
     {!current&&<Button variant="accent" disabled={!!why||!!busy} data-select-artifact={a.id} onClick={()=>onSelect(a.id)}>{t('artifactSetCurrent')}</Button>}{(why||busy)&&<p className="hint" role="status">{t(busy?'artifactUnresolved':'artifactEligibility-'+why)}</p>}
   </ArtifactCard>;})}</div>{!assets.length&&<p>{t('artifactEmpty')}</p>}<Button variant="quiet" onClick={onBack}>{t('artifactBack')}</Button></section>;
 }
