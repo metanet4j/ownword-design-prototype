@@ -1,0 +1,3 @@
+A01 current, ownership and fixed routes passed
+A02 name, formats and author-isolated storage passed
+Artifact JSX and S2 tokens passed; 2 model groups.

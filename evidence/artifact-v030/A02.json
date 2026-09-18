@@ -1,0 +1,17 @@
+{
+  "feature": "A02",
+  "result": "passed",
+  "scenarios": {
+    "A02-A": "上传有效 PNG、保存名称和图片，刷新重连后恢复同一文件；进入 Review 后完整预览。",
+    "A02-B": "绝对路径上传损坏 PNG 与 2 MiB + 1 字节文件均被拒绝，保留原文件；模拟保存失败后 Save and leave 留在当前弹窗；浏览器后退可明确放弃。",
+    "X03": "第二标签页被写锁拦截；可接手后重新读取此前已保存名称和图片。"
+  },
+  "model": "A02-check.txt",
+  "screenshots": [
+    "A02-review.png",
+    "A02-save-failure.png",
+    "A02-second-tab.png"
+  ],
+  "screenshotReview": "已查看，图片按原比例展示；离开弹窗及失败提示可见。",
+  "runtimeErrors": []
+}

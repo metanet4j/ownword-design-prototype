@@ -1,17 +1,30 @@
 function useArtifactStore() {
   const [data,setData]=React.useState(()=>OwnwordArtifactModel.load());
-  const [settings,setSettings]=React.useState({list:'all'});
+  const [settings,setSettings]=React.useState({list:'all',storage:'normal'});
+  const settingsRef=React.useRef(settings);settingsRef.current=settings;
   const dataRef=React.useRef(data);dataRef.current=data;
-  return {data,dataRef,setData,settings,setSettings};
+  const writer=useContentWriter(()=>{const latest=OwnwordArtifactModel.load();dataRef.current=latest;setData(latest);},'ownword-v030-artifact-writer');
+  function persist(next){if(!writer.canWrite.current||settingsRef.current.storage==='failure'||dataRef.current.readFailure)throw Error('artifactSaveFailed');const value={...next,revision:dataRef.current.revision+1};OwnwordArtifactModel.save(value);dataRef.current=value;setData(value);return value;}
+  React.useEffect(()=>{const sync=e=>{if(e.key===OwnwordArtifactModel.KEY&&!writer.canWrite.current){const latest=OwnwordArtifactModel.load();dataRef.current=latest;setData(latest);}};window.addEventListener('storage',sync);return()=>window.removeEventListener('storage',sync);},[]);
+  return {data,dataRef,setData,settings,settingsRef,setSettings,writer,persist};
 }
 const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,identity,connected,locale,t,store,onConnect,onIdentity,failCopy},ref) {
   const M=OwnwordArtifactModel,{data,settings,setSettings}=store;
   const [route,setRoute]=React.useState(()=>M.parseRoute(location.hash));
   const [filter,setFilter]=React.useState('all');
   const [loading,setLoading]=React.useState(true);
-  const go=(page,id='')=>{location.hash='/'+page+(id?'/'+encodeURIComponent(id):'');};
-  React.useImperativeHandle(ref,()=>({go,leave:action=>action()}));
-  React.useEffect(()=>{const change=()=>{if(/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))setRoute(M.parseRoute(location.hash));};window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
+  const leaveHandler=React.useRef(null),lastHash=React.useRef(location.hash),routeRef=React.useRef(route);routeRef.current=route;
+  const leave=action=>leaveHandler.current?leaveHandler.current(action):action();
+  const go=(page,id='')=>leave(()=>{location.hash='/'+page+(id?'/'+encodeURIComponent(id):'');});
+  React.useImperativeHandle(ref,()=>({go,leave}));
+  const allowHash=React.useRef(false);
+  React.useEffect(()=>{const change=event=>{
+    const incoming=location.hash,isArtifact=/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(incoming);
+    if(incoming==='#main')return;
+    if(!leaveHandler.current||allowHash.current){allowHash.current=false;if(isArtifact){lastHash.current=incoming;setRoute(M.parseRoute(incoming));}return;}
+    event.stopImmediatePropagation();history.replaceState(null,'',lastHash.current);
+    leave(()=>{history.replaceState(null,'',incoming);allowHash.current=true;window.dispatchEvent(new HashChangeEvent('hashchange'));});
+  };window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
   React.useEffect(()=>{setLoading(true);const timer=setTimeout(()=>setLoading(false),250);return()=>clearTimeout(timer);},[active,identity?.bapId,settings.list]);
   React.useEffect(()=>{if(active){window.scrollTo({top:0,behavior:'instant'});document.querySelector('[data-artifact-screen] h1')?.focus({preventScroll:true});}},[active,route.page,route.id]);
   if(!active)return null;
@@ -19,6 +32,8 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   const gate=<section className="artifact-page" data-artifact-screen="gate">{header('artifactGate','artifactGateBody')}<div className="action-row"><Button variant="accent" onClick={connected?onIdentity:onConnect}>{t(connected?'complete':'connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={()=>go('artifact',M.seed().assets[0].id)}>{t('artifactSample')}</Button></div></section>;
   if(!identity&&!['artifact','find','identity-view'].includes(route.page))return gate;
   const asset=data.assets.find(a=>a.id===route.id);
+  if(identity&&['artifact-create','artifact-review','artifact-select','artifact-transfer'].includes(route.page)&&store.writer.state!=='ready')return <section className="artifact-page" data-artifact-screen="writer-gate"><h1 tabIndex="-1">{t('writerTitle-'+store.writer.state)}</h1><p>{t('writerBody-'+store.writer.state)}</p><Button onClick={store.writer.retry}>{t('retry')}</Button></section>;
+  if(['artifact-create','artifact-review'].includes(route.page))return <ArtifactComposer key={identity.bapId} identity={identity} store={store} t={t} failCopy={failCopy} go={go} reviewPage={route.page==='artifact-review'} setLeaveHandler={fn=>{leaveHandler.current=fn;}}/>;
   if(route.page==='artifact')return <section className="artifact-page" data-artifact-screen="detail">{asset?<><div className="artifact-detail-grid"><div className="artifact-detail-main"><NumberStatus asset={asset} t={t}/><h1 tabIndex="-1">{asset.name}</h1><p>{t(M.binding(data,asset.id)?'artifactAssociated':'artifactNoBinding')}</p>{M.binding(data,asset.id)&&<code>{M.binding(data,asset.id).bapId}</code>}</div><ArtifactArt asset={asset} t={t} large/></div><Identifier id={asset.id} label="Inscription ID" copyLabel="artifactCopyId" target="inscription" t={t} failCopy={failCopy}/></>:header('artifactNotFound','artifactLocalScope')}<Button onClick={()=>identity?go('artifacts'):onConnect()}>{t(identity?'artifactBack':'connect')}</Button></section>;
   if(route.page!=='artifacts')return <section className="artifact-page" data-artifact-screen={route.page}>{header('artifactCreate','artifactCreateBody')}<Button onClick={()=>go('artifacts')}>{t('artifactBack')}</Button></section>;
   const owned=settings.list==='empty'?[]:data.assets.filter(a=>a.owner===M.ownerFor(identity.bapId)||data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId));

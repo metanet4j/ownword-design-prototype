@@ -15,6 +15,13 @@
   const binding=(data,id)=>data.bindings.find(b=>b.assetId===id&&b.state==='current'&&b.validity==='valid');
   function eligible(asset,bapId) {return !asset.originValid?'origin-invalid':asset.ownershipCheck!=='verified'?'unverified':asset.owner!==ownerFor(bapId)?'not-owned':'';}
   function parseRoute(hash) {const [page,id]=hash.replace(/^#\//,'').split('/');try{return {page:['artifacts','artifact','artifact-create','artifact-select','artifact-review','artifact-operation','artifact-transfer','find','identity-view'].includes(page)?page:'artifacts',id:decodeURIComponent(id||'')};}catch{return {page:'artifact',id:'invalid'};}}
-  const api={KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  function validateDraft(draft) {const length=[...draft.name.trim()].length;return length<1||length>100?'artifactNameError':'';}
+  function validImageHeader(bytes,type) {
+    if(type==='image/jpeg')return bytes[0]===255&&bytes[1]===216&&bytes[2]===255;
+    if(type!=='image/png'||[137,80,78,71,13,10,26,10].some((v,i)=>bytes[i]!==v))return false;
+    const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);let offset=8;
+    while(offset+12<=bytes.length){const size=view.getUint32(offset),kind=String.fromCharCode(...bytes.slice(offset+4,offset+8));if(kind==='acTL'||offset+12+size>bytes.length)return false;if(kind==='IEND')return true;offset+=size+12;}return false;
+  }
+  const api={validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);
