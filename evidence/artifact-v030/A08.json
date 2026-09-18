@@ -1,0 +1,20 @@
+{
+  "feature": "A08",
+  "status": "implemented-and-verified",
+  "acceptance": {
+    "A08-A": "浏览器确认控制权变化后 Review、签名移除；模型覆盖 Origin 和唯一性原因，资产及历史保留。替换复用已验收 A06 选择流程。",
+    "A08-B": "浏览器暂时无法核实横幅与重试恢复，不冒充永久失效；身份摘要仅有效关联显示当前数字 ID。",
+    "X05": "移除复用逐笔签名、未知结果恢复及冲突守卫；模型拒绝重复移除。"
+  },
+  "checks": [
+    "A08-check.txt",
+    "A08-state.json",
+    "A08-errors.json"
+  ],
+  "screenshots": [
+    "A08-unverified.png",
+    "A08-owner-changed.png",
+    "A08-removed.png"
+  ],
+  "review": "临时错误与移除结果截图已审阅；浏览器无错误。"
+}

@@ -45,3 +45,5 @@
 .artifact-select-item{min-width:0;}.artifact-select-action{display:grid;gap:var(--s2-spacing-200);padding:var(--s2-spacing-300);}.artifact-select-action>.s2d-button{justify-self:start;}
 
 .artifact-card.s2d-card{width:100%;max-width:none;}.artifact-select-item{display:flex;flex-direction:column;}.artifact-select-item .artifact-card{flex:1;}
+
+.artifact-association-notice{display:grid;gap:var(--s2-spacing-400);padding:var(--s2-spacing-500);border:1px solid var(--s2d-border);border-radius:var(--s2d-radius);background:var(--s2d-layer-raised);}.artifact-association-notice h2{font-size:var(--s2-font-size-500);margin-bottom:var(--s2-spacing-200);}.artifact-association-notice .hint{margin-top:var(--s2-spacing-200);}

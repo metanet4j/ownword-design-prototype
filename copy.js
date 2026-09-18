@@ -531,3 +531,45 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactScenarioApplied": "已应用样例事实",
   "artifactEligibility-duplicate": "关联不满足唯一性。"
 });
+
+Object.assign(window.OwnwordCopy.en,{
+  "artifactAssociationUnverified": "Association needs verification",
+  "artifactAssociationInvalid": "Current association is unavailable",
+  "artifactBinding-not-owned": "The current output is no longer controlled by this identity’s wallet.",
+  "artifactBinding-origin-invalid": "The Origin is no longer valid.",
+  "artifactBinding-duplicate": "This association does not meet the uniqueness rule.",
+  "artifactBinding-unverified": "Temporarily unable to verify ownership or association. This is not a confirmed loss of ownership.",
+  "artifactIdentityUnaffected": "Your BAP Identity, content and relationships remain unchanged.",
+  "artifactReplace": "Choose another Artifact",
+  "artifactRemove": "Remove association",
+  "artifactReview-remove": "Remove this association?",
+  "artifactImpact-remove": "This changes only the association. It does not destroy the NFT, delete your Identity or transfer the asset.",
+  "artifactSign-remove": "Sign & Remove association",
+  "artifactKind-remove": "Association removal transaction",
+  "artifactRemovalComplete": "Association removed. This identity no longer has a Current Artifact. The asset is preserved.",
+  "artifactScenario-ownership": "Next ownership verification",
+  "artifactScenario-verified": "Verified",
+  "artifactScenario-unavailable": "Service unavailable",
+  "artifactFact-duplicate": "Association is not unique"
+});
+
+Object.assign(window.OwnwordCopy.zh,{
+  "artifactAssociationUnverified": "关联待核实",
+  "artifactAssociationInvalid": "当前关联不可用",
+  "artifactBinding-not-owned": "当前输出已不受该身份的钱包控制。",
+  "artifactBinding-origin-invalid": "Origin 已失效。",
+  "artifactBinding-duplicate": "此关联不满足唯一性约束。",
+  "artifactBinding-unverified": "暂时无法核实所有权或关联，尚不能确定控制权已丢失。",
+  "artifactIdentityUnaffected": "BAP Identity、内容与关系保持不变。",
+  "artifactReplace": "选择其他 Artifact",
+  "artifactRemove": "移除关联",
+  "artifactReview-remove": "移除此关联？",
+  "artifactImpact-remove": "只改变关联，不销毁 NFT，不删除 Identity，也不转移资产。",
+  "artifactSign-remove": "签名并移除关联",
+  "artifactKind-remove": "移除关联交易",
+  "artifactRemovalComplete": "关联已移除，此身份已无 Current Artifact。资产仍保留。",
+  "artifactScenario-ownership": "下次所有权核实",
+  "artifactScenario-verified": "核实成功",
+  "artifactScenario-unavailable": "服务暂不可用",
+  "artifactFact-duplicate": "关联不满足唯一性"
+});

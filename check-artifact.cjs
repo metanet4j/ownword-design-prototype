@@ -49,6 +49,11 @@ check('A06 Current uniqueness, eligibility and stale Review',()=>{
  d=M.begin(d,review,'switch');d=M.accept(d,{...d.operations[0],signature:'valid',signerBapId:bap});assert.equal(M.current(d,bap).assetId,a.id);assert.equal(M.binding(d,first.id),undefined);assert.equal(d.bindings.filter(x=>x.state==='current'&&x.bapId===bap).length,1);
  const alias={...a,id:'alias'};d.assets.push(alias);d.bindings.push({id:'duplicate',assetId:alias.id,bapId:M.identities[1],state:'current',validity:'valid'});assert.equal(M.binding(d,a.id),undefined);
 });
+check('A08 invalid versus unverified association, safe removal',()=>{
+ const initial=M.seed(),a=initial.assets[0],bap=M.identities[0];
+ for(const [scenario,state] of [['owner','not-owned'],['origin','origin-invalid'],['unknown','unverified'],['duplicate','duplicate']]){const d=M.factScenario(initial,a.id,scenario);assert.equal(M.bindingState(d,M.current(d,bap)),state);assert.equal(M.binding(d,a.id),undefined);}
+ let d=M.factScenario(initial,a.id,'owner'),review={kind:'remove',assetId:a.id,bapId:bap,bindingVersion:M.bindingVersion(d,bap)};d=M.begin(d,review,'remove-one');assert.throws(()=>M.begin(d,review,'remove-duplicate'),/artifactUnresolved/);d=M.accept(d,{...d.operations[0],signature:'valid',signerBapId:bap});assert.equal(M.current(d,bap),undefined);assert.equal(d.assets.length,initial.assets.length);assert.equal(d.assets[0].id,a.id);assert.equal(d.bindings.find(b=>b.assetId===a.id).state,'history');
+});
 const Babel=require('./vendor/babel.min.js');
 for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.jsx'))){try{Babel.transform(fs.readFileSync(f,'utf8'),{presets:['react'],filename:f});}catch(e){console.error(e.message);process.exit(1);}}
 const cssFiles=fs.readdirSync('_ds/react-spectrum-s2',{recursive:true}).filter(f=>f.endsWith('.css')).map(f=>path.join('_ds/react-spectrum-s2',f));

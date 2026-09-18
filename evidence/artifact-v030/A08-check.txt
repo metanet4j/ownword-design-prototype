@@ -1,0 +1,8 @@
+A01 current, ownership and fixed routes passed
+A02 name, formats and author-isolated storage passed
+A03 identity signatures, durable intent, recovery and separate association passed
+A04 safe preview and independent proof roles passed
+A05 confirmation boundary, resolving, reorg and stale evidence passed
+A06 Current uniqueness, eligibility and stale Review passed
+A08 invalid versus unverified association, safe removal passed
+Artifact JSX and S2 tokens passed; 7 model groups.
