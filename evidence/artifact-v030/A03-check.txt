@@ -1,0 +1,4 @@
+A01 current, ownership and fixed routes passed
+A02 name, formats and author-isolated storage passed
+A03 identity signatures, durable intent, recovery and separate association passed
+Artifact JSX and S2 tokens passed; 3 model groups.

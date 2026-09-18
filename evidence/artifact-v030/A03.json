@@ -1,0 +1,25 @@
+{
+  "feature": "A03",
+  "status": "implemented-and-verified",
+  "acceptance": {
+    "A03-A": "浏览器创建与关联逐笔授权成功；各有 BAP 身份签名，新资产无预分配编号。",
+    "A03-B": "模型覆盖取消恢复、缺失/无效/错属/仅花费签名拒绝。",
+    "A03-C": "浏览器关联失败后重试，同一资产仅有一笔创建；见恢复数据。",
+    "A03-D": "浏览器未知结果刷新、连接原身份后只能查询，查询后恢复原创建。",
+    "A03-E": "模型验证账户不匹配及草稿快照改变失效；UI 清除账户变化的 Review。",
+    "X04": "创建、关联各自保存操作身份与签名；历史 Proof 在 A04 验证。",
+    "X05": "模型验证未知操作冲突和恢复；存储写入先于授权与提交。"
+  },
+  "checks": [
+    "A03-check.txt",
+    "A03-errors.json",
+    "A03-recovery-data.json"
+  ],
+  "screenshots": [
+    "A03-created.png",
+    "A03-associated.png",
+    "A03-recovered.png",
+    "A03-binding-failed.png"
+  ],
+  "review": "上述截图已审阅；浏览器 errors 为空。仅验证模拟行为。"
+}

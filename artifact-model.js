@@ -11,10 +11,11 @@
   function load(storage=root.localStorage) {try {const raw=storage.getItem(KEY);if(!raw)return seed();const d=JSON.parse(raw);if(d.version!==1||!Array.isArray(d.assets)||!Array.isArray(d.bindings)||!Array.isArray(d.operations)||!d.drafts)throw Error('schema');return d;} catch {return {...seed(),readFailure:true};}}
   function save(data,storage=root.localStorage) {if(data.readFailure)throw Error('read-failure');storage.setItem(KEY,JSON.stringify(data));return data;}
   const ownerFor=bapId=>addresses[identities.indexOf(bapId)];
+  const signerFor=bapId=>['1CounterpartyXXXXXXXXXXXXXXXUWLpVr','1dice8EMZmqKvrGE4Qc9bUFf9PX3xaYDp'][identities.indexOf(bapId)];
   const current=(data,bapId)=>data.bindings.find(b=>b.bapId===bapId&&b.state==='current');
   const binding=(data,id)=>data.bindings.find(b=>b.assetId===id&&b.state==='current'&&b.validity==='valid');
   function eligible(asset,bapId) {return !asset.originValid?'origin-invalid':asset.ownershipCheck!=='verified'?'unverified':asset.owner!==ownerFor(bapId)?'not-owned':'';}
-  function parseRoute(hash) {const [page,id]=hash.replace(/^#\//,'').split('/');try{return {page:['artifacts','artifact','artifact-create','artifact-select','artifact-review','artifact-operation','artifact-transfer','find','identity-view'].includes(page)?page:'artifacts',id:decodeURIComponent(id||'')};}catch{return {page:'artifact',id:'invalid'};}}
+  function parseRoute(hash) {const [page,id]=hash.replace(/^#\//,'').split('/');try{return {page:['artifacts','artifact','artifact-create','artifact-select','artifact-review','artifact-operation','artifact-transfer','artifact-action','find','identity-view'].includes(page)?page:'artifacts',id:decodeURIComponent(id||'')};}catch{return {page:'artifact',id:'invalid'};}}
   function validateDraft(draft) {const length=[...draft.name.trim()].length;return length<1||length>100?'artifactNameError':'';}
   function validImageHeader(bytes,type) {
     if(type==='image/jpeg')return bytes[0]===255&&bytes[1]===216&&bytes[2]===255;
@@ -22,6 +23,46 @@
     const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);let offset=8;
     while(offset+12<=bytes.length){const size=view.getUint32(offset),kind=String.fromCharCode(...bytes.slice(offset+4,offset+8));if(kind==='acTL'||offset+12+size>bytes.length)return false;if(kind==='IEND')return true;offset+=size+12;}return false;
   }
-  const api={validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  const pending=op=>['authorize','signing','validating','submitting','unknown'].includes(op.phase);
+  const cleanDraft=d=>({name:d.name.trim(),content:Object.fromEntries(Object.entries(d.content).filter(([k])=>k!=='blob'))});
+  const bindingVersion=(data,bapId)=>JSON.stringify(data.bindings.filter(b=>b.bapId===bapId&&b.state==='current'));
+  function recover(data){return {...data,operations:data.operations.map(op=>({...op,phase:op.phase==='submitting'?'unknown':['authorize','signing','validating'].includes(op.phase)?'cancelled':op.phase}))};}
+  function conflict(data,bapId,assetId){return data.operations.find(op=>pending(op)&&(op.bapId===bapId||(assetId&&op.assetId===assetId)));}
+  function reviewIssue(data,review) {
+    if(!identities.includes(review.bapId))return 'artifactReviewExpired';
+    if(conflict(data,review.bapId,review.assetId))return 'artifactUnresolved';
+    if(review.kind==='create')return validateDraft(review.draft)|| (JSON.stringify(cleanDraft(data.drafts[review.bapId]||{name:'',content:{}}))!==JSON.stringify(cleanDraft(review.draft))?'artifactReviewExpired':'');
+    const asset=data.assets.find(a=>a.id===review.assetId);
+    if(!asset)return 'artifactNotFound';
+    const why=eligible(asset,review.bapId);if(why)return 'artifactEligibility-'+why;
+    if(review.outpoint!==asset.outpoint||review.bindingVersion!==bindingVersion(data,review.bapId))return 'artifactReviewExpired';
+    if(review.kind==='bind'&&current(data,review.bapId)?.assetId===asset.id&&binding(data,asset.id)?.bapId===review.bapId)return 'artifactAlreadyCurrent';
+    return '';
+  }
+  function begin(data,review,id,outcome='success'){
+    const issue=reviewIssue(data,review);if(issue)throw Error(issue);
+    const op={id,kind:review.kind,bapId:review.bapId,assetId:review.assetId||null,review:JSON.parse(JSON.stringify(review)),phase:'authorize',outcome,txid:tx(100000+data.operations.length),createdAt:new Date().toISOString()};
+    return {...data,operations:[op,...data.operations]};
+  }
+  function replaceOperation(data,op){return {...data,operations:data.operations.map(x=>x.id===op.id?op:x)};}
+  function signatureResult(op,bapId){return op.bapId!==bapId?'artifactSignatureMismatch':['invalid','missing','mismatch','spend-only'].includes(op.outcome)?'artifactSignature-'+op.outcome:'';}
+  function accept(data,op){
+    if(data.operations.find(x=>x.id===op.id)?.phase==='accepted')return data;
+    if(op.signature!=='valid'||op.signerBapId!==op.bapId)throw Error('artifactSignatureMismatch');
+    let next={...data,assets:[...data.assets],bindings:[...data.bindings]};
+    const record={kind:op.kind,txid:op.txid,bapId:op.bapId,signer:op.signer,signature:'valid',keyEpoch:op.keyEpoch,confirmations:0};
+    let assetId=op.assetId;
+    if(op.kind==='create'){
+      assetId=op.txid+'_0';
+      if(!next.assets.some(a=>a.id===assetId))next.assets.unshift({id:assetId,origin:assetId,outpoint:assetId,name:op.review.draft.name,mapName:op.review.draft.name,number:null,ordinal:null,confirmations:0,numberCheck:'verified',observedAt:new Date().toISOString(),owner:ownerFor(op.bapId),creator:op.bapId,content:op.review.draft.content,originValid:true,ownershipCheck:'verified',transactions:[record]});
+    }else if(op.kind==='bind'){
+      const asset=next.assets.find(a=>a.id===assetId);if(!asset||eligible(asset,op.bapId))throw Error('artifactReviewExpired');
+      next.bindings=next.bindings.map(b=>(b.bapId===op.bapId||b.assetId===assetId)&&b.state==='current'?{...b,state:'history'}:b);
+      next.bindings.unshift({id:op.id,assetId,bapId:op.bapId,state:'current',validity:'valid',txid:op.txid});
+      next.assets=next.assets.map(a=>a.id===assetId?{...a,transactions:[...a.transactions,record]}:a);
+    }
+    return replaceOperation(next,{...op,assetId,phase:'accepted'});
+  }
+  const api={signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);
