@@ -141,8 +141,9 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'cop
     <div className="identifier-value"><code title={id}>{id}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
   </div>;
 }
-function ChainRecord({transaction, t, failCopy, target = 'tx'}) {
+function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {
   return <>
+    {transaction&&bapId&&<IdentitySignatureProof bapId={bapId} signer={OwnwordArtifactModel.signerFor(bapId)} signature="valid" keyEpoch="historical-key-at-creation" t={t} failCopy={failCopy}/>}
     <dl className="chain-facts">
       <div><dt>{t('blockHeight')}</dt><dd data-chain="block">{transaction && transaction.blockHeight ? transaction.blockHeight.toLocaleString('en-US') : t('pendingBlock')}</dd></div>
       <div><dt>{t('confirmation')}</dt><dd data-chain="confirmation">{t(transaction && transaction.blockHeight ? 'confirmed' : 'pendingConfirmation')}</dd></div>
@@ -187,7 +188,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
         <article className="identity-plate plate-back" aria-hidden={!back} inert={!back ? '' : undefined}>
           <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('chainRecord')}</span></div>
           <div className="chain-heading"><h2>{t('identityPublication')}</h2><p>{profile.name}</p></div>
-          <ChainRecord transaction={transaction} t={t} failCopy={failCopy} />
+          <ChainRecord bapId={id} transaction={transaction} t={t} failCopy={failCopy} />
           <div className="plate-foot"><span>BSV</span></div>
         </article>
       </div>
@@ -203,9 +204,14 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     <div className="chain-disclosure">
       <Button variant="quiet" data-action="toggle-chain-record" aria-expanded={recordOpen} aria-controls="chain-record-details" onClick={() => setRecordOpen(value => !value)}>{t(recordOpen ? 'hideChainRecord' : 'viewChainRecord')}</Button>
       <div id="chain-record-details" hidden={!recordOpen}>
-        {recordOpen && <ChainRecord transaction={transaction} t={t} failCopy={failCopy} target="tx-details" />}
+        {recordOpen && <ChainRecord bapId={id} transaction={transaction} t={t} failCopy={failCopy} target="tx-details" />}
       </div>
     </div>
   </div>;
 }
 Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Toast, Identifier, IdentityCard, useDismissable});
+
+function IdentitySignatureProof({bapId,signer,signature='unverified',keyEpoch,t,failCopy}) {
+  return <div className="identity-signature-proof" data-identity-signature={signature}><p className="hint">{t('artifactSignatureScope')}</p><p>{t('artifactProof-'+signature)}</p><Identifier id={bapId} label={t('artifactOperationIdentity')} t={t} failCopy={failCopy}/>{signer&&<Identifier id={signer} label={t('artifactSigner')} copyLabel="artifactCopyFull" target="signer" t={t} failCopy={failCopy}/>}<p className="hint">{t(keyEpoch==='historical-key-at-creation'?'artifactHistoricalKey':'artifactEffectiveKey')}</p></div>;
+}
+window.IdentitySignatureProof=IdentitySignatureProof;

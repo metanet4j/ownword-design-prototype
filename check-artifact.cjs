@@ -25,6 +25,14 @@ check('A03 identity signatures, durable intent, recovery and separate associatio
   const changed={...d,drafts:{[bap]:{...draft,name:'changed'}}};assert.equal(M.reviewIssue(changed,review),'artifactReviewExpired');
   assert.throws(()=>M.accept(d,{...op,id:'bad-signature',signature:'invalid'}),/artifactSignatureMismatch/);
 });
+check('A04 safe preview and independent proof roles',()=>{
+  const d=M.seed(),a=d.assets[0],b=M.binding(d,a.id);
+  assert.equal(new Set([a.creator,a.owner,a.transactions[0].signer,b.bapId]).size,4);
+  for(const mode of ['html','svg'])assert.equal(M.previewSafe(M.previewFixture(a,mode).content),false);
+  assert.equal(M.previewFixture(a,'metadata').mapName,'<script>alert(1)</script>');
+  assert.equal(a.transactions[0].keyEpoch,'historical-key-at-creation');
+  assert.equal(M.binding(d,d.assets[1].id),undefined);
+});
 const Babel=require('./vendor/babel.min.js');
 for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.jsx'))){try{Babel.transform(fs.readFileSync(f,'utf8'),{presets:['react'],filename:f});}catch(e){console.error(e.message);process.exit(1);}}
 const cssFiles=fs.readdirSync('_ds/react-spectrum-s2',{recursive:true}).filter(f=>f.endsWith('.css')).map(f=>path.join('_ds/react-spectrum-s2',f));

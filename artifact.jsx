@@ -1,6 +1,6 @@
 function useArtifactStore() {
   const [data,setData]=React.useState(()=>OwnwordArtifactModel.recover(OwnwordArtifactModel.load()));
-  const [settings,setSettings]=React.useState({list:'all',storage:'normal',outcome:'success',binding:'success',query:'accepted',account:'none'});
+  const [settings,setSettings]=React.useState({list:'all',preview:'record',storage:'normal',outcome:'success',binding:'success',query:'accepted',account:'none'});
   const settingsRef=React.useRef(settings);settingsRef.current=settings;
   const dataRef=React.useRef(data);dataRef.current=data;
   const writer=useContentWriter(()=>{const latest=OwnwordArtifactModel.recover(OwnwordArtifactModel.load());dataRef.current=latest;setData(latest);},'ownword-v030-artifact-writer');
@@ -9,7 +9,8 @@ function useArtifactStore() {
   return {data,dataRef,setData,settings,settingsRef,setSettings,writer,persist};
 }
 const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,identity,connected,locale,t,store,onConnect,onIdentity,failCopy,onAccountEvent},ref) {
-  const M=OwnwordArtifactModel,{data,settings,setSettings}=store;
+  const M=OwnwordArtifactModel,{settings,setSettings}=store;
+  const data={...store.data,assets:store.data.assets.map(a=>M.previewFixture(a,settings.preview))};
   const [route,setRoute]=React.useState(()=>M.parseRoute(location.hash));
   const operations=useArtifactOperations({store,identity,onAccountEvent});
   const [actionReview,setActionReview]=React.useState(null);
@@ -41,7 +42,8 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   if(route.page==='artifact-operation'){const op=data.operations.find(o=>o.id===route.id&&o.bapId===identity?.bapId);return <ArtifactOperation op={op} data={data} t={t} failCopy={failCopy} operations={operations} onBind={id=>prepare('bind',id)} onReview={op=>op.kind==='create'?go('artifact-create'):prepare(op.kind,op.assetId)} onOpen={id=>go('artifact',id)} onBack={()=>go('artifacts')}/>;}
   if(route.page==='artifact-action')return <ArtifactActionReview review={actionReview?.bapId===identity?.bapId?actionReview:null} data={data} t={t} failCopy={failCopy} onSign={()=>start(actionReview)} onBack={()=>go('artifacts')} issue={operations.message}/>;
   if(['artifact-create','artifact-review'].includes(route.page))return <ArtifactComposer key={identity.bapId} identity={identity} store={store} t={t} failCopy={failCopy} go={go} reviewPage={route.page==='artifact-review'} setLeaveHandler={fn=>{leaveHandler.current=fn;}} operationIssue={operations.message} onReview={draft=>start({kind:'create',bapId:identity.bapId,draft:M.cleanDraft(draft)})}/>;
-  if(route.page==='artifact')return <section className="artifact-page" data-artifact-screen="detail">{asset?<><div className="artifact-detail-grid"><div className="artifact-detail-main"><NumberStatus asset={asset} t={t}/><h1 tabIndex="-1">{asset.name}</h1><p>{t(M.binding(data,asset.id)?'artifactAssociated':'artifactNoBinding')}</p>{M.binding(data,asset.id)&&<code>{M.binding(data,asset.id).bapId}</code>}</div><ArtifactArt asset={asset} t={t} large/></div><Identifier id={asset.id} label="Inscription ID" copyLabel="artifactCopyId" target="inscription" t={t} failCopy={failCopy}/></>:header('artifactNotFound','artifactLocalScope')}<Button onClick={()=>identity?go('artifacts'):onConnect()}>{t(identity?'artifactBack':'connect')}</Button></section>;
+  if(route.page==='identity-view')return <ArtifactPublicIdentity bapId={route.id} t={t} failCopy={failCopy} onBack={()=>go('artifacts')}/>;
+  if(route.page==='artifact')return <ArtifactDetail asset={asset} data={data} identity={identity} t={t} failCopy={failCopy} go={go} onBack={()=>identity?go('artifacts'):onConnect()} />;
   if(route.page!=='artifacts')return <section className="artifact-page" data-artifact-screen={route.page}>{header('artifactCreate','artifactCreateBody')}<Button onClick={()=>go('artifacts')}>{t('artifactBack')}</Button></section>;
   const owned=settings.list==='empty'?[]:data.assets.filter(a=>a.owner===M.ownerFor(identity.bapId)||data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId));
   const assets=owned.filter(a=>filter==='all'||(filter==='usable'?!M.eligible(a,identity.bapId):data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId&&b.state==='history')||!!M.eligible(a,identity.bapId)));

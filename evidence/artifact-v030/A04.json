@@ -1,0 +1,22 @@
+{
+  "feature": "A04",
+  "status": "implemented-and-verified",
+  "acceptance": {
+    "A04-A": "默认 165 独立呈现四个角色；Proof 展开和完整 ID 复制在浏览器通过。",
+    "A04-B": "2048 无关联详情可读；损坏图片显示失败，Proof 标识仍可复制。",
+    "A04-C": "浏览器依次选择 HTML、SVG、损坏图片和含 HTML 元数据，无 iframe/object/script 注入。",
+    "X04": "历史创建签名按当时密钥表述；身份和内容 Review/Proof 复用同一签名说明。"
+  },
+  "checks": [
+    "A04-check.txt",
+    "A04-safe-data.json",
+    "A04-errors.json"
+  ],
+  "screenshots": [
+    "A04-proof.png",
+    "A04-safe-html.png",
+    "A04-metadata.png",
+    "A04-damaged.png"
+  ],
+  "review": "正常 Proof、HTML 和元数据截图已审阅；浏览器无未捕获错误。"
+}

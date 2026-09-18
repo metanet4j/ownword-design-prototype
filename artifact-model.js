@@ -5,7 +5,7 @@
   const addresses=['1BoatSLRHtKNngkdXEeobR76b53LETtpyT','1BitcoinEaterAddressDontSendf59kuE'];
   const tx=n=>n.toString(16).padStart(64,'0');
   function seed() {
-    const asset=(n,name,number,owner,extra={})=>({id:tx(n)+'_0',origin:tx(n)+'_0',outpoint:tx(n)+'_0',name,mapName:name,number,ordinal:String(100000+n),confirmations:12,numberCheck:'verified',observedAt:'2026-09-18T12:00:00Z',owner,creator:identities[1],content:{kind:'brand',type:'image/svg+xml'},originValid:true,ownershipCheck:'verified',transactions:[{kind:'create',txid:tx(n),bapId:identities[1],signer:addresses[1],signature:'valid',keyEpoch:'creation',confirmations:12}],...extra});
+    const asset=(n,name,number,owner,extra={})=>({id:tx(n)+'_0',origin:tx(n)+'_0',outpoint:tx(n)+'_0',name,mapName:name,number,ordinal:String(100000+n),confirmations:12,numberCheck:'verified',observedAt:'2026-09-18T12:00:00Z',owner,creator:identities[1],content:{kind:'brand',type:'image/svg+xml'},originValid:true,ownershipCheck:'verified',transactions:[{kind:'create',txid:tx(n),bapId:identities[1],signer:'1dice8EMZmqKvrGE4Qc9bUFf9PX3xaYDp',signature:'valid',keyEpoch:'historical-key-at-creation',confirmations:12}],...extra});
     return {version:1,revision:0,assets:[asset(165,'A place to stand','165',addresses[0]),asset(2048,'The quiet horizon','2048',addresses[0],{confirmations:5}),asset(3072,'Open sky','3072',addresses[1]),asset(4096,'An earlier chapter','4096',addresses[0])],bindings:[{id:'binding-165',assetId:tx(165)+'_0',bapId:identities[0],state:'current',validity:'valid'},{id:'binding-4096',assetId:tx(4096)+'_0',bapId:identities[0],state:'history',validity:'valid'},{id:'binding-3072',assetId:tx(3072)+'_0',bapId:identities[1],state:'current',validity:'valid'}],drafts:{},operations:[]};
   }
   function load(storage=root.localStorage) {try {const raw=storage.getItem(KEY);if(!raw)return seed();const d=JSON.parse(raw);if(d.version!==1||!Array.isArray(d.assets)||!Array.isArray(d.bindings)||!Array.isArray(d.operations)||!d.drafts)throw Error('schema');return d;} catch {return {...seed(),readFailure:true};}}
@@ -63,6 +63,13 @@
     }
     return replaceOperation(next,{...op,assetId,phase:'accepted'});
   }
-  const api={signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  function previewFixture(asset,mode) {
+    if(mode==='html'||mode==='svg')return {...asset,content:{kind:'external',type:mode==='html'?'text/html':'image/svg+xml',raw:'<script>window.unsafeArtifactExecuted=true</script>'}};
+    if(mode==='damaged')return {...asset,content:{kind:'upload',type:'image/png',blobId:'missing-preview-fixture'}};
+    if(mode==='metadata')return {...asset,name:'<img src=x onerror=alert(1)>',mapName:'<script>alert(1)</script>'};
+    return asset;
+  }
+  const previewSafe=content=>content?.kind==='brand'||(content?.kind==='upload'&&['image/png','image/jpeg'].includes(content.type));
+  const api={previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);
