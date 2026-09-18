@@ -16,6 +16,9 @@ function App() {
   const [nextResult, setNextResult] = React.useState('success');
   const [accountEvent, setAccountEvent] = React.useState('none');
   const [prefs, setPrefs] = React.useState(false);
+  const [menuOpen,setMenuOpen]=React.useState(false);
+  const navigationRef=React.useRef(null);
+  function closeNavigation(){setMenuOpen(false);setPrefs(false);}
   const [validationShown, setValidationShown] = React.useState(false);
   const [imageError, setImageError] = React.useState('');
   const [failCopy, setFailCopy] = React.useState(false);
@@ -37,6 +40,7 @@ function App() {
   const noChanges = state.published && !dirty;
   const errors = validationShown ? validate(state.draft) : {};
   useDismissable(prefs, () => setPrefs(false), prefsRef);
+  useDismissable(menuOpen,()=>setMenuOpen(false),navigationRef,'#navigation-toggle');
   React.useEffect(() => {
     document.documentElement.dataset.colorScheme = theme;
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en';
@@ -77,9 +81,10 @@ function App() {
     activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);
   }, []);
   React.useEffect(()=>{if(!state.busy&&/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))dispatch({type:'GO',page:'artifacts'});},[state.busy,state.wallet,state.published]);
-  function openArtifacts(page='artifacts',id='') {const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingArtifactNavigation.current=action;dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
+  function openArtifacts(page='artifacts',id='') {closeNavigation();const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingArtifactNavigation.current=action;dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
   React.useEffect(()=>{if(!state.modal&&pendingArtifactNavigation.current){const action=pendingArtifactNavigation.current;pendingArtifactNavigation.current=null;if(state.page==='artifacts')action();}},[state.modal,state.page]);
   function navigate(page) {
+    closeNavigation();
     if(state.page==='artifacts'){artifactRef.current?.leave(()=>{history.pushState(null,'',location.pathname+location.search);dispatch({type:'GO',page});});return;}
     if (state.page === 'content') {contentRef.current?.leave(() => {history.pushState(null, '', location.pathname + location.search); dispatch({type: 'GO', page});}); return;}
     setPrefs(false);
@@ -89,7 +94,7 @@ function App() {
   }
   function resolveAgain() {operationScenario.current = scenario === 'missing' ? 'new' : scenario; dispatch({type: 'RETRY_RESOLVE'});}
   function switchAccount(forced = false) {const perform = () => {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
-  function disconnect(forced = false) {const perform = () => {setPrefs(false); dispatch({type: 'DISCONNECT'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
+  function disconnect(forced = false) {closeNavigation();const perform = () => {setPrefs(false); dispatch({type: 'DISCONNECT'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
   // 演练配置只决定下一次操作，不进入产品状态或签名输入。
   function confirmConnection() {
     operationScenario.current = scenario;
@@ -152,10 +157,12 @@ function App() {
     ? {type: 'CONNECT'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
   return <div className={`app page-${state.page}`} onPointerDown={e => {if (!e.target.closest('button, input, textarea, select, a, .identity-object')) window.dispatchEvent(new Event('ownword-vault'));}}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
-    <header className="topbar">
+    <header className="topbar" ref={navigationRef}>
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
-      <nav aria-label={t('myIdentity')} className="topnav"><Button variant="quiet" data-action="nav-find" onClick={()=>openArtifacts('find')}>{t('artifactFind')}</Button>
-        {state.wallet && state.published && <Button variant="quiet" data-action="nav-content" aria-current={state.page === 'content' ? 'page' : undefined} onClick={() => state.page==='artifacts'?artifactRef.current?.leave(()=>contentRef.current?.go('content')):contentRef.current?.go('content')}>{t('myContent')}</Button>}
+      <Button variant="secondary" id="navigation-toggle" className="s2d-button mobile-nav-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}}>{t(menuOpen?'close':'navigationMenu')}</Button>
+      <nav id="primary-navigation" aria-label={t('navigationLabel')} className={'topnav'+(menuOpen?' is-open':'')}><Button variant="quiet" data-action="nav-find" aria-current={state.page==='artifacts'&&location.hash.startsWith('#/find')?'page':undefined} onClick={()=>openArtifacts('find')}>{t('artifactFind')}</Button>
+        {state.wallet&&state.published&&<Button variant="quiet" data-action="nav-artifacts" aria-current={state.page==='artifacts'&&!location.hash.startsWith('#/find')?'page':undefined} onClick={()=>openArtifacts()}>{t('myArtifacts')}</Button>}
+        {state.wallet && state.published && <Button variant="quiet" data-action="nav-content" aria-current={state.page === 'content' ? 'page' : undefined} onClick={() => {closeNavigation();state.page==='artifacts'?artifactRef.current?.leave(()=>contentRef.current?.go('content')):contentRef.current?.go('content');}}>{t('myContent')}</Button>}
         {state.wallet && state.published && <Button variant="quiet" data-action="nav-identity" aria-current={state.page === 'identity' ? 'page' : undefined} onClick={() => navigate('identity')}>{t('myIdentity')}</Button>}
         <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs} aria-controls="preferences-panel">{locale === 'en' ? 'EN' : '中文'}<span className="pref-separator" aria-hidden="true">/</span>{t(theme)}</Button>
           {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
@@ -163,7 +170,7 @@ function App() {
         {state.wallet && <Button data-action="disconnect" onClick={disconnect}>{t('disconnect')}</Button>}
       </nav>
     </header>
-    <Dome label={t('domeLabel')} />
+    {state.page!=='artifacts'&&<Dome label={t('domeLabel')} />}
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
       <ArtifactWorkspace onAccountEvent={action=>{if(action==='switch')switchAccount(true);else disconnect(true);}} connected={state.wallet} ref={artifactRef} active={state.page==='artifacts'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile}:null} locale={locale} t={t} store={artifactStore} onConnect={()=>dispatch({type:'CONNECT'})} onIdentity={()=>navigate(state.wallet?(state.published&&!state.incomplete?'identity':'setup'):'welcome')} failCopy={failCopy}/>
       <ContentWorkspace onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />

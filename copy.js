@@ -226,7 +226,7 @@ Object.assign(window.OwnwordCopy.zh, {
   "artifactReview": "检查 Artifact",
   "artifactReviewBody": "确认本次交易的内容与操作身份。",
   "artifactDefaultBinding": "创建完成后，将请求你授权把此 Artifact 关联到当前身份。",
-  "artifactOldCurrent": "成功关联后，原 Current 将保留为历史关联：",
+  "artifactOldCurrent": "成功关联后，原数字 ID 将保留为历史关联：",
   "artifactNoFees": "模拟钱包与链上数据，不产生真实交易或费用。",
   "artifactEdit": "返回修改",
   "artifactSignCreate": "签名并创建 Artifact",
@@ -314,7 +314,7 @@ Object.assign(window.OwnwordCopy.en, {
   "artifactEligibility-not-owned": "The current wallet does not control this output."
 });
 Object.assign(window.OwnwordCopy.zh, {
-  "artifactReviewExpired": "确认内容已过期，请读取最新信息并重新 Review。",
+  "artifactReviewExpired": "确认内容已过期，请读取最新信息后重新确认。",
   "artifactUnresolved": "此前操作的结果待核实，请先查询，不能再次提交。",
   "artifactJournalFailed": "操作记录保存失败，不提交新操作；若已提交，请查询原操作结果。",
   "artifactSignatureMismatch": "签名不属于操作 BAP ID，未提交交易。",
@@ -322,13 +322,13 @@ Object.assign(window.OwnwordCopy.zh, {
   "artifactSignature-missing": "缺少身份签名，未提交交易。",
   "artifactSignature-mismatch": "身份签名归属另一 BAP ID，未提交交易。",
   "artifactSignature-spend-only": "输入花费签名不能代替身份签名，未提交交易。",
-  "artifactRejected": "网络明确拒绝本次操作，请重新 Review 后再试。",
-  "artifactNotReceived": "已核实未接收，可以重新 Review 后执行。",
+  "artifactRejected": "网络明确拒绝本次操作，请重新检查后再试。",
+  "artifactNotReceived": "已核实未接收，可以重新检查后执行。",
   "artifactStillUnknown": "结果仍未知，请保留原操作记录并继续查询。",
   "artifactAlreadyCurrent": "这已是当前 Artifact，无需重复授权。",
   "artifactReview-bind": "关联到你的身份",
-  "artifactImpact-bind": "只有关联成功才更新 Current，原关联保留在历史中。",
-  "artifactSign-bind": "签名并设为 Current",
+  "artifactImpact-bind": "只有关联成功才替换当前数字 ID，原关联保留在历史中。",
+  "artifactSign-bind": "签名并设为当前数字 ID",
   "artifactKind-create": "创建交易",
   "artifactKind-bind": "关联交易",
   "artifactPhase-authorize": "等待钱包授权",
@@ -348,11 +348,11 @@ Object.assign(window.OwnwordCopy.zh, {
   "artifactUnknownBody": "操作结果未知。请查询此操作，不要重复提交或执行冲突操作。",
   "artifactDraftKept": "已保存草稿保留，未创建 Artifact。",
   "artifactAssetKept": "Artifact 保留，本次操作未改变其关联。",
-  "artifactCreatedUnbound": "Artifact 已创建，设为 Current 是独立步骤。",
-  "artifactBindingComplete": "此 Artifact 现为 Current，原关联已保留在历史中。",
+  "artifactCreatedUnbound": "Artifact 已创建，关联为当前数字 ID 是独立步骤。",
+  "artifactBindingComplete": "此 Artifact 已作为当前数字 ID，原关联已保留在历史中。",
   "artifactQueryOperation": "查询操作结果",
   "artifactContinueBinding": "继续检查关联",
-  "artifactReviewAgain": "重新 Review",
+  "artifactReviewAgain": "重新检查",
   "artifactAuthorize": "授权身份签名",
   "artifactScenario-outcome": "下一次创建 / 转移结果",
   "artifactScenario-binding": "下一次关联结果",
@@ -513,8 +513,8 @@ Object.assign(window.OwnwordCopy.en,{
 });
 
 Object.assign(window.OwnwordCopy.zh,{
-  "artifactSetCurrent": "检查并设为 Current",
-  "artifactSelectBody": "选择当前钱包可控制的 Artifact。新关联成功后，才替换原 Current。",
+  "artifactSetCurrent": "设为当前数字 ID",
+  "artifactSelectBody": "选择当前钱包可控制的 Artifact。新关联成功后，才替换当前数字 ID。",
   "artifactSelect-held": "当前钱包持有",
   "artifactSelect-associated": "关联历史",
   "artifactScenarioTarget": "目标 Artifact",
@@ -524,7 +524,7 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactFact-owner": "控制权变为另一钱包",
   "artifactFact-origin": "Origin 失效",
   "artifactFact-outpoint": "当前输出变化",
-  "artifactFact-concurrent": "Review 后关联变化",
+  "artifactFact-concurrent": "确认后关联变化",
   "artifactApplyFacts": "应用样例事实",
   "artifactScenarioApplied": "已应用样例事实",
   "artifactEligibility-duplicate": "关联不满足唯一性。"
@@ -565,7 +565,7 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactImpact-remove": "只改变关联，不销毁 NFT，不删除 Identity，也不转移资产。",
   "artifactSign-remove": "签名并移除关联",
   "artifactKind-remove": "移除关联交易",
-  "artifactRemovalComplete": "关联已移除，此身份已无 Current Artifact。资产仍保留。",
+  "artifactRemovalComplete": "关联已移除，此身份不再使用该数字 ID。资产仍保留。",
   "artifactScenario-ownership": "下次所有权核实",
   "artifactScenario-verified": "核实成功",
   "artifactScenario-unavailable": "服务暂不可用",
@@ -604,7 +604,7 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactAddressInvalid": "请输入 BSV 主网样例地址，不能使用 BAP ID 或铭文编号。",
   "artifactSampleAddressOnly": "本原型只支持展示的样例地址。",
   "artifactWrongNetwork": "当前样例仅配置 BSV 主网。",
-  "artifactReviewTransfer": "核查最新输出并 Review",
+  "artifactReviewTransfer": "检查转移",
   "artifactReview-transfer": "检查转移",
   "artifactImpact-transfer": "将 NFT 转给下方完整接收地址。接收后核实所有权与关联；Identity、内容和关系保留在原 BAP ID。",
   "artifactSign-transfer": "签名并转移 Artifact",
@@ -615,7 +615,7 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactTransferConfirmations": "转移交易确认数",
   "artifactLastOwner": "上次观测的持有人 · 当前待核实",
   "artifactTransferBlocked": "所有权核实前，不能再次转移或设置关联。",
-  "artifactLatestOutput": "进入 Review 前及签名前均核查当前输出。"
+  "artifactLatestOutput": "确认前和签名前，均核查资产是否仍可转移。"
 });
 
 Object.assign(window.OwnwordCopy.en,{
@@ -624,7 +624,7 @@ Object.assign(window.OwnwordCopy.en,{
   "artifactFindIntro": "Find an Artifact by its inscription number, then verify its associated identity. You can also enter a full BAP ID.",
   "artifactFindLabel": "Inscription Number or BAP ID",
   "artifactFindSubmit": "Find",
-  "artifactFindHint": "Try 165 or #165. Numbers are exact; OpNS names are not supported in this version.",
+  "artifactFindHint": "Enter the complete number, with or without #, or a full BAP ID.",
   "artifactFindInvalid": "Enter whole decimal digits, optionally preceded by one #, or a full BAP ID.",
   "artifactFindLeadingZero": "Remove leading zeros; for example, use 165 instead of 0165.",
   "artifactFind-asset": "Looking up the Artifact…",
@@ -647,9 +647,9 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactFind": "查找身份",
   "artifactFindTitle": "一个数字，找到一个身份。",
   "artifactFindIntro": "先按铭文编号定位 Artifact，再核实关联身份；也可以输入完整 BAP ID。",
-  "artifactFindLabel": "Inscription Number 或 BAP ID",
+  "artifactFindLabel": "数字 ID 或 BAP ID",
   "artifactFindSubmit": "查找",
-  "artifactFindHint": "可输入 165 或 #165。按完整数字精确匹配；本版暂不支持 OpNS 名称。",
+  "artifactFindHint": "请输入完整编号（可带 #），或完整 BAP ID。",
   "artifactFindInvalid": "请输入十进制整数，可带一个 # 前缀，或输入完整 BAP ID。",
   "artifactFindLeadingZero": "请去除前导零，例如使用 165 而不是 0165。",
   "artifactFind-asset": "正在查找资产…",
@@ -670,3 +670,9 @@ Object.assign(window.OwnwordCopy.zh,{
 
 Object.assign(window.OwnwordCopy.en,{artifactSignatureScope:"Each transaction requires a signature from the BAP identity key effective at that transaction. All verification here is simulated."});
 Object.assign(window.OwnwordCopy.zh,{artifactSignatureScope:"每笔交易均须使用当时有效的 BAP 身份签名密钥。本页面的验证均为模拟。"});
+
+Object.assign(window.OwnwordCopy.en,{navigationMenu:'Menu',navigationLabel:'Main navigation',artifactCurrent:'Current',artifactAssociatedTitle:'Associated identity',artifactSelectEyebrow:'Current digital ID',artifactLocale:'en-US'});
+Object.assign(window.OwnwordCopy.zh,{navigationMenu:'菜单',navigationLabel:'主导航',artifactCurrent:'当前使用',artifactAssociatedTitle:'关联身份',artifactSelectEyebrow:'当前数字 ID',artifactLocale:'zh-CN'});
+
+Object.assign(window.OwnwordCopy.en,{artifactTransferPendingTitle:'Transfer received',artifactTransferVerifiedTitle:'Transfer verified'});
+Object.assign(window.OwnwordCopy.zh,{artifactTransferPendingTitle:'转移已接收',artifactTransferVerifiedTitle:'转移已核实'});

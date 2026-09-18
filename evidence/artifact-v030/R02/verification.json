@@ -1,0 +1,171 @@
+{
+  "feature": "R02",
+  "date": "2026-09-19",
+  "implementationStatus": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "report": "体验审查-20260919-011800.md",
+  "issueCount": 10,
+  "unresolvedKnownIssues": 0,
+  "issues": [
+    {
+      "id": "Q01",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q02",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q03",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q04",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q05",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q06",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q07",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q08",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q09",
+      "status": "fixed-and-verified"
+    },
+    {
+      "id": "Q10",
+      "status": "fixed-and-verified"
+    }
+  ],
+  "viewports": [
+    "1440x1000",
+    "768x1024",
+    "390x844",
+    "320x568"
+  ],
+  "languageAndTheme": [
+    "en/light",
+    "zh/dark"
+  ],
+  "coreFlows": [
+    "创建与默认关联逐笔模拟授权，编号待确认",
+    "选择资产与 Current 切换",
+    "转移接收后独立核实所有权与关联",
+    "Origin 失效后移除关联",
+    "5→6 个确认与稳定后重组",
+    "结果未知刷新后查询恢复",
+    "大整数精确查询、无效输入、查询和列表失败重试",
+    "复制原始编号、复制失败反馈",
+    "上传图片完整预览、名称校验与草稿离开保护",
+    "共用导航、内容链接弹窗、身份页与键盘焦点"
+  ],
+  "automatedChecks": {
+    "regressionLog": "regression-check.txt",
+    "regressionScript": "check-artifact-review.ps1（原型根目录）",
+    "s2Tokens": "passed",
+    "startup": "../evidence/R02-init.txt（相对原型根目录）",
+    "modelGroups": 10,
+    "identityAssertions": 92,
+    "jsx": "passed",
+    "errors": [
+      "final-errors.json",
+      "regression-errors.json"
+    ]
+  },
+  "accessibility": [
+    {
+      "counts": {
+        "inapplicable": 52,
+        "incomplete": 0,
+        "passes": 37,
+        "violations": 0
+      },
+      "file": "final-detail-a11y.json"
+    },
+    {
+      "counts": {
+        "inapplicable": 52,
+        "incomplete": 0,
+        "passes": 37,
+        "violations": 0
+      },
+      "file": "final-detail-dark-a11y.json"
+    },
+    {
+      "counts": {
+        "inapplicable": 57,
+        "incomplete": 0,
+        "passes": 32,
+        "violations": 0
+      },
+      "file": "final-selector-a11y.json"
+    },
+    {
+      "counts": {
+        "inapplicable": 53,
+        "incomplete": 0,
+        "passes": 36,
+        "violations": 0
+      },
+      "file": "final-operation-a11y.json"
+    }
+  ],
+  "evidence": [
+    "after-list-desktop.png",
+    "after-detail-desktop.png",
+    "final-tablet-list.png",
+    "final-clean-mobile-list.png",
+    "final-iphone-detail.png",
+    "final-iphone-detail-dark-zh.png",
+    "final-iphone-selector.png",
+    "after-transfer-back.png",
+    "after-name-validation.json",
+    "after-create-mobile.png",
+    "after-review-mobile.png",
+    "final-created-pending.png",
+    "final-assigned-five.png",
+    "final-transfer-pending.png",
+    "final-six-confirmations.png",
+    "final-reorg.png",
+    "final-invalid-binding.png",
+    "final-removed-binding.png",
+    "final-safe-placeholder.png",
+    "final-unknown-operation.png",
+    "final-recovered-operation.png",
+    "final-list-error.png",
+    "final-long-number-mobile.png",
+    "final-long-number-check.json",
+    "final-invalid-lookup.png",
+    "final-upload-mobile.png",
+    "final-upload-review.png",
+    "final-dirty-guard.png",
+    "final-dialog-320x568.png",
+    "final-dialog-layout.json",
+    "final-reverse-tab.json",
+    "final-dirty-focus.json",
+    "final-iphone-metrics.json",
+    "final-copy-failure.json",
+    "final-content-link-dialog.png",
+    "final-identity-mobile.png",
+    "final-console.json"
+  ],
+  "limitations": [
+    "Chromium 视口和设备尺寸模拟；未验证真机 Safari、软键盘及真实触控，coarse pointer 为 false。",
+    "未重新执行全部 33 条浏览器 BDD，既有功能证据仍由任务清单引用。",
+    "全部链上操作、签名和数据为模拟，未接入生产 API。",
+    "录屏环境缺少 ffmpeg，Q04 使用连续步骤截图。",
+    "before-list-a11y.json 过滤标签未执行规则，不纳入通过结果。",
+    "Windows 首次启动浏览器与日志重定向分开执行，完整回归已通过。"
+  ]
+}

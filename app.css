@@ -232,7 +232,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .modal h2 { font-size: var(--s2-font-size-800); line-height: 1.2; font-weight: 600; letter-spacing: -.03em; }
 .modal form { display: grid; gap: var(--s2-spacing-400); margin-top: var(--s2-spacing-400); }
 .modal form .action-row { justify-content: flex-end; }
-.modal > p { margin: var(--s2-spacing-300) 0 var(--s2-spacing-400); line-height: 1.7; color: var(--s2-gray-700); }
+.modal-body > p { margin: var(--s2-spacing-300) 0 var(--s2-spacing-400); line-height: 1.7; color: var(--s2-gray-700); }
 .modal .compact { margin: var(--s2-spacing-400) 0; }
 .modal .compact > div { display: grid; gap: var(--s2-spacing-100); }
 .modal .compact .portrait { width: 48px; height: 48px; }
@@ -336,9 +336,6 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .preferences { position: fixed; right: 16px; top: 78px; width: min(296px, calc(100vw - 32px)); }
 }
 @media (max-height: 640px) {
-  /* The confirmation actions are the point of the dialog: pin them to the
-     scrollport so short phones (320x568) do not require hunting inside it. */
-  .modal .action-row { position: sticky; bottom: 0; z-index: 2; background: var(--s2d-layer-raised); margin-bottom: calc(-1 * var(--s2-spacing-500)); padding-block: var(--s2-spacing-200) var(--s2-spacing-500); }
   /* Short windows (a 1220x555 desktop window, or 320x568 phones) get a
      compressed page: thinner chrome, tighter blocks, and form actions pinned
      to the scrollport, so the primary action stays on screen without hunting. */
@@ -364,7 +361,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
      form's own content box caps how far it can travel. Pin the actions to the
      viewport instead and reserve scroll room so no field hides beneath them. */
   .form-footer { position: fixed; left: 0; right: 0; bottom: 0; margin-bottom: 0; z-index: 3; padding: var(--s2-spacing-200) var(--s2-spacing-500); background: var(--s2d-layer-raised); border-top: 1px solid var(--s2d-border); }
-  main { padding-bottom: 104px; }
+  .app:has(.form-footer) main { padding-bottom: 104px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .brand-loading .brand-mark, .brand-loading::before { animation: none; }
@@ -387,4 +384,31 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .plate-back .chain-facts dt { letter-spacing: 0; overflow-wrap: anywhere; }
 @media (max-width: 480px) {
   .chain-facts { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Responsive primary navigation: one header row until the menu is opened. */
+.mobile-nav-toggle{display:none;}
+.topnav .s2d-button[aria-current="page"]{color:var(--s2d-accent);background:var(--s2-blue-100);}
+@media(max-width:1050px){
+  .topbar{min-height:72px;flex-wrap:wrap;gap:var(--s2-spacing-200);padding:var(--s2-spacing-200) var(--s2-spacing-300);}
+  .mobile-nav-toggle{display:inline-flex;min-width:72px;min-height:44px;}
+  .topnav{display:none;width:100%;flex-basis:100%;}
+  .topnav.is-open{display:flex;flex-direction:column;align-items:stretch;gap:var(--s2-spacing-100);padding-block:var(--s2-spacing-200);border-top:1px solid var(--s2d-border);max-height:calc(100dvh - 100px);overflow-y:auto;}
+  .topnav .s2d-button{justify-content:flex-start;min-height:44px;font-size:var(--s2-font-size-100);padding-inline:var(--s2-spacing-300);}
+  .preference-anchor>.s2d-button{width:100%;}
+  .topnav .preferences{position:static;width:100%;box-shadow:none;margin-block:var(--s2-spacing-200);}
+  .topnav .preferences .s2d-button{justify-content:center;}
+}
+
+/* Keep confirmation controls outside the dialog's scrolling content. */
+.modal{padding:0;overflow:hidden;}
+.modal[open]{display:flex;flex-direction:column;}
+.modal-body{padding:var(--s2-spacing-400);overflow-y:auto;min-height:0;}
+.modal-footer{flex-shrink:0;padding:var(--s2-spacing-300) var(--s2-spacing-400);border-top:1px solid var(--s2d-border);}
+.modal-footer .action-row{margin:0;flex-wrap:wrap;}
+@media(max-width:650px){
+  .modal-body{padding:var(--s2-spacing-300);}
+  .modal-footer{padding:var(--s2-spacing-200) var(--s2-spacing-300);}
+  .modal .identifier-value{flex-wrap:nowrap;}
+  .modal .identifier-value code{flex:1;white-space:normal;overflow-wrap:anywhere;}
 }

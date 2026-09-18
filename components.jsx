@@ -12,12 +12,12 @@ function LoadingMark({small = false, label}) {
 function Button({children, onClick, variant = 'secondary', ...props}) {
   return React.cloneElement(S2.Button({children, onPress: onClick, variant, isDisabled: props.disabled}), props);
 }
-function Field({errorKey, id, label, value, onChange, multiline, error, required, maxLength}) {
+function Field({errorKey, id, label, value, onChange, multiline, error, required, maxLength, ...inputProps}) {
   const base = (multiline ? S2.TextArea : S2.TextField)({label, value: value || ' '});
   function wire(node) {
     if (!React.isValidElement(node)) return node;
     if (node.type === 'button') return null;
-    if (node.type === 'input' || node.type === 'textarea') return React.cloneElement(node, {id, value, defaultValue: undefined, required, maxLength, 'aria-invalid': !!error, 'aria-describedby': error ? `${id}-error` : undefined, onChange: e => onChange(e.target.value)});
+    if (node.type === 'input' || node.type === 'textarea') return React.cloneElement(node, {...inputProps, id, value, defaultValue: undefined, required, maxLength, 'aria-invalid': !!error, 'aria-describedby': error ? `${id}-error` : inputProps['aria-describedby'], onChange: e => onChange(e.target.value)});
     return React.cloneElement(node, {}, React.Children.map(node.props.children, wire));
   }
   return <div className="field-wrap">{wire(base)}{error && <p id={`${id}-error`} className="field-error" role="alert" data-field-error={errorKey || ""}>{error}</p>}</div>;
@@ -65,7 +65,7 @@ function Dome({label}) {
     </span>
   </button>;
 }
-function useDismissable(open, onClose, ref) {
+function useDismissable(open, onClose, ref, focusSelector='button') {
   React.useEffect(() => {
     if (!open) return undefined;
     // Escape and Tab-out are the keyboard equivalents of clicking away; the
@@ -74,7 +74,7 @@ function useDismissable(open, onClose, ref) {
     const key = e => {
       if (e.key !== 'Escape' || document.querySelector('dialog[open]')) return;
       onClose();
-      ref.current?.querySelector('button')?.focus();
+      ref.current?.querySelector(focusSelector)?.focus();
     };
     const focusin = e => {if (ref.current && e.target instanceof Node && !ref.current.contains(e.target)) onClose();};
     document.addEventListener('pointerdown', pointer);
@@ -85,18 +85,26 @@ function useDismissable(open, onClose, ref) {
       document.removeEventListener('keydown', key);
       document.removeEventListener('focusin', focusin);
     };
-  }, [open, onClose, ref]);
+  }, [open, onClose, ref, focusSelector]);
 }
 function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNWORD'}) {
   const dialog = React.useRef(null);
+  const parts=React.Children.toArray(children),actions=parts.findLast(child=>React.isValidElement(child)&&child.props.className==='action-row');
+  function containFocus(event) {
+    if(event.key!=='Tab')return;
+    const controls=[...dialog.current.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(node=>node.tabIndex>=0&&node.getClientRects().length);
+    const first=controls[0],last=controls[controls.length-1];
+    if(first&&((event.shiftKey&&document.activeElement===first)||(!event.shiftKey&&document.activeElement===last))){event.preventDefault();(event.shiftKey?last:first).focus();}
+  }
   React.useEffect(() => {
     const previous = document.activeElement;
     dialog.current.showModal();
-    return () => {queueMicrotask(()=>{const target=previous?.isConnected&&previous!==document.body&&previous.id!=='main'?previous:(document.querySelector('[data-artifact-screen] h1')||document.querySelector('#main h1')||document.getElementById('main'));target?.focus({preventScroll:true});});};
+    return () => {queueMicrotask(()=>{const target=previous?.isConnected&&previous.getClientRects().length&&!previous.disabled&&previous!==document.body&&previous.id!=='main'?previous:(document.querySelector('[data-artifact-screen] h1')||document.querySelector('#main h1')||document.getElementById('main'));target?.focus({preventScroll:true});});};
   }, []);
-  return <dialog ref={dialog} className="modal" data-modal-title={titleKey || ""} aria-labelledby="dialog-title" onCancel={e => {e.preventDefault(); onCancel();}}>
-    <div className="modal-top"><span className="eyebrow">{context}</span><Button variant="quiet" onClick={onCancel} aria-label={title + ' — ' + closeLabel}>{closeLabel}</Button></div>
-    <h2 id="dialog-title">{title}</h2>{children}
+  return <dialog ref={dialog} className="modal" data-modal-title={titleKey || ""} aria-labelledby="dialog-title" onKeyDown={containFocus} onCancel={e => {e.preventDefault(); onCancel();}}>
+    <div className="modal-body"><div className="modal-top"><span className="eyebrow">{context}</span><Button variant="quiet" onClick={onCancel} aria-label={title + ' — ' + closeLabel}>{closeLabel}</Button></div>
+    <h2 id="dialog-title">{title}</h2>{parts.filter(child=>child!==actions)}</div>
+    {actions&&<div className="modal-footer">{actions}</div>}
   </dialog>;
 }
 function Toast({message, body, error, notice, storageError, t, onRetry, onDismiss}) {
@@ -122,7 +130,7 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
     <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button variant="quiet" data-action="dismiss-toast" onClick={dismiss}>{t('close')}</Button></div>
   </div>;
 }
-function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap'}) {
+function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap', displayValue, className = ''}) {
   const [feedback, setFeedback] = React.useState('');
   const feedbackTimer = React.useRef(0);
   const announce = value => {
@@ -136,9 +144,9 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'cop
     try {if (failCopy) throw new Error('Simulated clipboard failure'); await navigator.clipboard.writeText(id); announce('copied');}
     catch {announce('copyFailed');}
   }
-  return <div className={'identifier'+(feedback==='copyFailed'?' copy-failed':'')}>
+  return <div className={'identifier '+className+(feedback==='copyFailed'?' copy-failed':'')}>
     <div className="identifier-top"><span className="eyebrow">{label}</span><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
-    <div className="identifier-value"><code title={id}>{id}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
+    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
   </div>;
 }
 function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {

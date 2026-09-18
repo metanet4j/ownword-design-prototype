@@ -37,8 +37,6 @@
 .content-settings { display: grid; gap: var(--s2-spacing-300); min-width: 0; margin: var(--s2-spacing-200) 0; padding: var(--s2-spacing-200) 0; border: 0; border-top: 1px solid var(--s2d-border); }
 .content-settings legend { font-weight: 600; padding-right: var(--s2-spacing-200); }
 @media (max-width: 700px) {
- .page-content .topbar { flex-wrap: wrap; gap: var(--s2-spacing-100); }
- .page-content .topnav { flex-wrap: wrap; justify-content: flex-end; }
  .page-content main { padding-inline: var(--s2-spacing-300); }
  .content-heading { flex-wrap: wrap; gap: var(--s2-spacing-300); margin-bottom: var(--s2-spacing-400); }
  .content-heading h1, .content-gate h1 { font-size: var(--s2-font-size-800); }
@@ -51,15 +49,6 @@
 .content-row.s2d-button { background: transparent; color: var(--s2-gray-900); }
 .content-row.s2d-button:hover { background: var(--s2-gray-75); }
 .content-entry { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2-spacing-300); margin-top: var(--s2-spacing-500); padding-top: var(--s2-spacing-400); border-top: 1px solid var(--s2d-border); }
-@media (max-width: 700px) {
- .page-content .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s2-spacing-100); }
- .page-content .topnav { display: contents; }
- .page-content .topnav > [data-action="nav-content"] { display: none; }
- .page-content .topbar .brand { grid-area: 1 / 1; justify-self: start; }
- .page-content .preference-anchor { grid-area: 1 / 2; justify-self: end; }
- .page-content [data-action="nav-identity"] { grid-area: 2 / 1; justify-self: start; }
- .page-content .topnav > [data-action="disconnect"] { grid-area: 2 / 2; justify-self: end; }
-}
 .editor-topline { display: flex; align-items: center; justify-content: space-between; gap: var(--s2-spacing-300); margin-block: var(--s2-spacing-300) var(--s2-spacing-500); }
 .editor-topline h1 { margin-top: var(--s2-spacing-100); font: 600 var(--s2-font-size-400)/1.5 var(--s2d-font-family); }
 .editor-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: var(--s2-spacing-200); }
