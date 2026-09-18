@@ -43,6 +43,7 @@
     if(review.kind==='create')return validateDraft(review.draft)|| (JSON.stringify(cleanDraft(data.drafts[review.bapId]||{name:'',content:{}}))!==JSON.stringify(cleanDraft(review.draft))?'artifactReviewExpired':'');
     const asset=data.assets.find(a=>a.id===review.assetId);
     if(!asset)return 'artifactNotFound';
+    if(review.kind==='transfer'){const addressIssue=recipientIssue(review.recipient,review.network);if(addressIssue)return addressIssue;}
     if(review.kind==='remove')return current(data,review.bapId)?.assetId!==asset.id||review.bindingVersion!==bindingVersion(data,review.bapId)?'artifactReviewExpired':'';
     const why=eligible(asset,review.bapId);if(why)return 'artifactEligibility-'+why;
     if(review.outpoint!==asset.outpoint||review.bindingVersion!==bindingVersion(data,review.bapId))return 'artifactReviewExpired';
@@ -65,6 +66,9 @@
     if(op.kind==='create'){
       assetId=op.txid+'_0';
       if(!next.assets.some(a=>a.id===assetId))next.assets.unshift({id:assetId,origin:assetId,outpoint:assetId,name:op.review.draft.name,mapName:op.review.draft.name,number:null,ordinal:null,confirmations:0,numberCheck:'verified',observedAt:new Date().toISOString(),owner:ownerFor(op.bapId),creator:op.bapId,content:op.review.draft.content,originValid:true,ownershipCheck:'verified',transactions:[record]});
+    }else if(op.kind==='transfer'){
+      const asset=next.assets.find(a=>a.id===assetId);if(!asset||eligible(asset,op.bapId)||asset.outpoint!==op.review.outpoint)throw Error('artifactReviewExpired');
+      next.assets=next.assets.map(a=>a.id===assetId?{...a,ownershipCheck:'unverified',transfer:{opId:op.id,txid:op.txid,recipient:op.review.recipient,previousOwner:a.owner,verification:'pending',confirmations:0},transactions:[...a.transactions,record]}:a);
     }else if(op.kind==='remove'){
       if(current(next,op.bapId)?.assetId!==assetId)throw Error('artifactReviewExpired');
       next.bindings=next.bindings.map(b=>b.bapId===op.bapId&&b.assetId===assetId&&b.state==='current'?{...b,state:'history',removedBy:op.txid}:b);
@@ -107,6 +111,18 @@
     const changes=scenario==='unknown'?{ownershipCheck:'unverified'}:scenario==='origin'?{originValid:false}:scenario==='owner'?{owner:addresses[asset.owner===addresses[0]?1:0],ownershipCheck:'verified'}:scenario==='outpoint'?{outpoint:tx(800000+data.revision)+'_1'}:{ownershipCheck:'verified',originValid:true};
     return {...data,assets:data.assets.map(a=>a.id===id?{...a,...changes}:a),bindings:scenario==='normal'?data.bindings.map(b=>b.assetId===id?{...b,validity:'valid'}:b):data.bindings};
   }
-  const api={bindingState,factScenario,numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  function recipientIssue(value,network='mainnet'){
+    if(network!=='mainnet')return 'artifactWrongNetwork';
+    if(!value||!/^1[1-9A-HJ-NP-Za-km-z]{25,34}$/.test(value))return 'artifactAddressInvalid';
+    return addresses.includes(value)?'':'artifactSampleAddressOnly';
+  }
+  function reconcileOwnership(data,id,verified){
+    const asset=data.assets.find(a=>a.id===id);if(!asset)return data;
+    if(!verified)return {...data,assets:data.assets.map(a=>a.id===id?{...a,ownershipCheck:'unverified'}:a)};
+    const transfer=asset.transfer?.verification==='pending'?asset.transfer:null;
+    const updated={...asset,ownershipCheck:'verified',...(transfer?{owner:transfer.recipient,outpoint:transfer.txid+'_0',transfer:{...transfer,verification:'verified'}}:{})};
+    return {...data,assets:data.assets.map(a=>a.id===id?updated:a),bindings:transfer?data.bindings.map(b=>b.assetId===id&&b.state==='current'&&updated.owner!==ownerFor(b.bapId)?{...b,state:'history',validity:'not-owned'}:b):data.bindings};
+  }
+  const api={recipientIssue,reconcileOwnership,bindingState,factScenario,numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);

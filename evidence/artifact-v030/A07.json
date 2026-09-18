@@ -1,0 +1,25 @@
+{
+  "feature": "A07",
+  "status": "implemented-and-verified",
+  "acceptance": {
+    "A07-A": "浏览器 4096 设置 Current 后转移；接收后保持原 owner、关联待核实，查询事实后更新 owner 并将原关联转入历史，无接收者自动 Binding。",
+    "A07-B": "浏览器拒绝 #165 地址与仅花费签名；模型验证网络、已变化 outpoint 和资格。只支持界面列出的主网样例收款地址。",
+    "A07-C": "浏览器提交中切换到 B，返回 A 查询原操作；断言同一资产仅一笔转移，操作 BAP ID 保持 A。",
+    "X05": "未知转移与关联冲突、提交前日志及刷新恢复复用共享守卫；模型与浏览器验证不重复提交。"
+  },
+  "checks": [
+    "A07-check.txt",
+    "A07-pending-data.json",
+    "A07-verified-data.json",
+    "A07-recovery-data.json",
+    "A07-errors.json"
+  ],
+  "screenshots": [
+    "A07-invalid-address.png",
+    "A07-spend-only.png",
+    "A07-accepted-pending.png",
+    "A07-verified.png",
+    "A07-unknown-returned.png"
+  ],
+  "review": "转移待核实与签名失败截图已审阅；无浏览器错误；无真实钱包或广播。"
+}

@@ -54,6 +54,15 @@ check('A08 invalid versus unverified association, safe removal',()=>{
  for(const [scenario,state] of [['owner','not-owned'],['origin','origin-invalid'],['unknown','unverified'],['duplicate','duplicate']]){const d=M.factScenario(initial,a.id,scenario);assert.equal(M.bindingState(d,M.current(d,bap)),state);assert.equal(M.binding(d,a.id),undefined);}
  let d=M.factScenario(initial,a.id,'owner'),review={kind:'remove',assetId:a.id,bapId:bap,bindingVersion:M.bindingVersion(d,bap)};d=M.begin(d,review,'remove-one');assert.throws(()=>M.begin(d,review,'remove-duplicate'),/artifactUnresolved/);d=M.accept(d,{...d.operations[0],signature:'valid',signerBapId:bap});assert.equal(M.current(d,bap),undefined);assert.equal(d.assets.length,initial.assets.length);assert.equal(d.assets[0].id,a.id);assert.equal(d.bindings.find(b=>b.assetId===a.id).state,'history');
 });
+check('A07 transfer freshness, signatures and separately verified ownership',()=>{
+ let d=M.seed(),a=d.assets[0],bap=M.identities[0],review={kind:'transfer',bapId:bap,assetId:a.id,outpoint:a.outpoint,bindingVersion:M.bindingVersion(d,bap),recipient:M.addresses[1],network:'mainnet'};
+ assert.equal(M.recipientIssue(M.addresses[1]),'');for(const invalid of ['#165',bap,'mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn',''])assert.ok(M.recipientIssue(invalid));assert.equal(M.recipientIssue(M.addresses[1],'testnet'),'artifactWrongNetwork');
+ assert.equal(M.reviewIssue(M.factScenario(d,a.id,'outpoint'),review),'artifactReviewExpired');
+ d=M.begin(d,review,'transfer-one');let op=d.operations[0];assert.equal(M.signatureResult({...op,outcome:'spend-only'},bap),'artifactSignature-spend-only');op={...op,signature:'valid',signerBapId:bap,phase:'submitting'};
+ const unknown=M.recover(M.replaceOperation(d,op));assert.equal(unknown.operations[0].bapId,bap);assert.throws(()=>M.begin(unknown,{...review,kind:'bind'},'conflicting-bind'),/artifactUnresolved/);
+ d=M.accept(d,op);assert.equal(d.assets[0].owner,a.owner);assert.equal(d.assets[0].transfer.verification,'pending');assert.equal(M.bindingState(d,M.current(d,bap)),'unverified');assert.ok(M.eligible(d.assets[0],bap));assert.equal(d.assets[0].confirmations,a.confirmations);
+ d=M.reconcileOwnership(d,a.id,false);assert.equal(d.assets[0].owner,a.owner);d=M.reconcileOwnership(d,a.id,true);assert.equal(d.assets[0].owner,M.addresses[1]);assert.equal(M.current(d,bap),undefined);assert.equal(M.binding(d,a.id),undefined);assert.equal(d.assets[0].transfer.confirmations,0);assert.equal(M.numberState(d.assets[0]),'stable');
+});
 const Babel=require('./vendor/babel.min.js');
 for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.jsx'))){try{Babel.transform(fs.readFileSync(f,'utf8'),{presets:['react'],filename:f});}catch(e){console.error(e.message);process.exit(1);}}
 const cssFiles=fs.readdirSync('_ds/react-spectrum-s2',{recursive:true}).filter(f=>f.endsWith('.css')).map(f=>path.join('_ds/react-spectrum-s2',f));

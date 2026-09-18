@@ -573,3 +573,49 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactScenario-unavailable": "服务暂不可用",
   "artifactFact-duplicate": "关联不满足唯一性"
 });
+
+Object.assign(window.OwnwordCopy.en,{
+  "artifactTransfer": "Transfer Artifact",
+  "artifactTransferIntro": "Send this Artifact to a wallet address. BAP Identity, content and relationships do not transfer with it.",
+  "artifactRecipient": "Recipient address",
+  "artifactRecipientSample": "Use recipient example",
+  "artifactAddressHint": "Prototype: use one of the two displayed sample addresses on BSV Mainnet. No funds or real assets move.",
+  "artifactAddressInvalid": "Enter a BSV Mainnet sample address, not a BAP ID or inscription number.",
+  "artifactSampleAddressOnly": "This prototype supports only the displayed sample addresses.",
+  "artifactWrongNetwork": "This sample is configured for BSV Mainnet.",
+  "artifactReviewTransfer": "Check latest output & Review",
+  "artifactReview-transfer": "Review this transfer",
+  "artifactImpact-transfer": "Transfer the NFT to the full recipient address below. Ownership and association will be checked after acceptance. Identity, content and relationships stay with the original BAP ID.",
+  "artifactSign-transfer": "Sign & Transfer Artifact",
+  "artifactKind-transfer": "Transfer transaction",
+  "artifactTransferPending": "Transaction accepted. Ownership and association are being verified.",
+  "artifactTransferVerified": "Ownership verified. The original association, if no longer valid, is preserved in history. No recipient identity was automatically associated.",
+  "artifactVerifyOwnership": "Verify ownership & association",
+  "artifactTransferConfirmations": "Transfer transaction confirmations",
+  "artifactLastOwner": "Last observed owner · verification pending",
+  "artifactTransferBlocked": "Ownership must be verified before another transfer or association.",
+  "artifactLatestOutput": "Current output will be checked before Review and again before signing."
+});
+
+Object.assign(window.OwnwordCopy.zh,{
+  "artifactTransfer": "转移 Artifact",
+  "artifactTransferIntro": "将此 Artifact 转给钱包地址。BAP Identity、内容和关系不随资产转移。",
+  "artifactRecipient": "接收地址",
+  "artifactRecipientSample": "使用收款地址样例",
+  "artifactAddressHint": "原型仅接受展示的两个 BSV 主网地址样例，不移动真实资金或资产。",
+  "artifactAddressInvalid": "请输入 BSV 主网样例地址，不能使用 BAP ID 或铭文编号。",
+  "artifactSampleAddressOnly": "本原型只支持展示的样例地址。",
+  "artifactWrongNetwork": "当前样例仅配置 BSV 主网。",
+  "artifactReviewTransfer": "核查最新输出并 Review",
+  "artifactReview-transfer": "检查转移",
+  "artifactImpact-transfer": "将 NFT 转给下方完整接收地址。接收后核实所有权与关联；Identity、内容和关系保留在原 BAP ID。",
+  "artifactSign-transfer": "签名并转移 Artifact",
+  "artifactKind-transfer": "转移交易",
+  "artifactTransferPending": "交易已接收，所有权与关联待核实。",
+  "artifactTransferVerified": "所有权已核实。原关联不再有效时已转入历史，未自动关联接收者身份。",
+  "artifactVerifyOwnership": "核实所有权与关联",
+  "artifactTransferConfirmations": "转移交易确认数",
+  "artifactLastOwner": "上次观测的持有人 · 当前待核实",
+  "artifactTransferBlocked": "所有权核实前，不能再次转移或设置关联。",
+  "artifactLatestOutput": "进入 Review 前及签名前均核查当前输出。"
+});
