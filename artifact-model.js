@@ -5,10 +5,10 @@
   const addresses=['1BoatSLRHtKNngkdXEeobR76b53LETtpyT','1BitcoinEaterAddressDontSendf59kuE'];
   const tx=n=>n.toString(16).padStart(64,'0');
   function seed() {
-    const asset=(n,name,number,owner,extra={})=>({id:tx(n)+'_0',origin:tx(n)+'_0',outpoint:tx(n)+'_0',name,mapName:name,number,ordinal:String(100000+n),confirmations:12,numberCheck:'verified',observedAt:'2026-09-18T12:00:00Z',owner,creator:identities[1],content:{kind:'brand',type:'image/svg+xml'},originValid:true,ownershipCheck:'verified',transactions:[{kind:'create',txid:tx(n),bapId:identities[1],signer:'1dice8EMZmqKvrGE4Qc9bUFf9PX3xaYDp',signature:'valid',keyEpoch:'historical-key-at-creation',confirmations:12}],...extra});
-    return {version:1,revision:0,assets:[asset(165,'A place to stand','165',addresses[0]),asset(2048,'The quiet horizon','2048',addresses[0],{confirmations:5}),asset(3072,'Open sky','3072',addresses[1]),asset(4096,'An earlier chapter','4096',addresses[0])],bindings:[{id:'binding-165',assetId:tx(165)+'_0',bapId:identities[0],state:'current',validity:'valid'},{id:'binding-4096',assetId:tx(4096)+'_0',bapId:identities[0],state:'history',validity:'valid'},{id:'binding-3072',assetId:tx(3072)+'_0',bapId:identities[1],state:'current',validity:'valid'}],drafts:{},operations:[]};
+    const asset=(n,name,number,owner,extra={})=>({id:tx(n)+'_0',origin:tx(n)+'_0',outpoint:tx(n)+'_0',name,mapName:name,number,ordinal:String(100000+n),confirmations:12,numberCheck:'verified',observedAt:'2026-09-18T12:00:00Z',owner,creator:identities[1],content:{kind:'brand',type:'image/svg+xml'},originValid:true,ownershipCheck:'verified',transactions:[{kind:'create',txid:tx(n),bapId:identities[1],signer:'1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',signature:'valid',keyEpoch:'historical-key-at-creation',confirmations:12}],...extra});
+    return {version:1,revision:0,assets:[asset(165,'A place to stand','165',addresses[0]),asset(2048,'The quiet horizon','2048',addresses[0],{confirmations:5}),asset(3072,'Open sky','3072',addresses[1]),asset(4096,'An earlier chapter','4096',addresses[0]),asset(9001,'Beyond safe integers','900719925474099312345',addresses[1])],bindings:[{id:'binding-165',assetId:tx(165)+'_0',bapId:identities[0],state:'current',validity:'valid'},{id:'binding-4096',assetId:tx(4096)+'_0',bapId:identities[0],state:'history',validity:'valid'},{id:'binding-3072',assetId:tx(3072)+'_0',bapId:identities[1],state:'current',validity:'valid'}],drafts:{},operations:[]};
   }
-  function load(storage=root.localStorage) {try {const raw=storage.getItem(KEY);if(!raw)return seed();const d=JSON.parse(raw);if(d.version!==1||!Array.isArray(d.assets)||!Array.isArray(d.bindings)||!Array.isArray(d.operations)||!d.drafts)throw Error('schema');return d;} catch {return {...seed(),readFailure:true};}}
+  function load(storage=root.localStorage) {try {const raw=storage.getItem(KEY);if(!raw)return seed();const d=JSON.parse(raw);if(d.version!==1||!Array.isArray(d.assets)||!Array.isArray(d.bindings)||!Array.isArray(d.operations)||!d.drafts)throw Error('schema');return d;} catch {const fallback=seed();return {...fallback,readFailure:true,assets:fallback.assets.map(a=>({...a,numberCheck:'unverified',ownershipCheck:'unverified'}))};}}
   function save(data,storage=root.localStorage) {if(data.readFailure)throw Error('read-failure');storage.setItem(KEY,JSON.stringify(data));return data;}
   const ownerFor=bapId=>addresses[identities.indexOf(bapId)];
   const signerFor=bapId=>['1CounterpartyXXXXXXXXXXXXXXXUWLpVr','1dice8EMZmqKvrGE4Qc9bUFf9PX3xaYDp'][identities.indexOf(bapId)];
@@ -123,6 +123,26 @@
     const updated={...asset,ownershipCheck:'verified',...(transfer?{owner:transfer.recipient,outpoint:transfer.txid+'_0',transfer:{...transfer,verification:'verified'}}:{})};
     return {...data,assets:data.assets.map(a=>a.id===id?updated:a),bindings:transfer?data.bindings.map(b=>b.assetId===id&&b.state==='current'&&updated.owner!==ownerFor(b.bapId)?{...b,state:'history',validity:'not-owned'}:b):data.bindings};
   }
-  const api={recipientIssue,reconcileOwnership,bindingState,factScenario,numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  function parseLookup(raw){
+    const text=raw.trim(),numeric=text.startsWith('#')?text.slice(1):text;
+    if(/^(0|[1-9][0-9]*)$/.test(numeric))return {kind:'number',value:numeric};
+    if(/^[+-]?[0-9]+(?:\.[0-9]+)?[eE][+-]?[0-9]+$/.test(numeric))return {kind:'invalid',issue:'artifactFindInvalid'};
+    if(!text.startsWith('#')&&/^[1-9A-HJ-NP-Za-km-z]{25,64}$/.test(text)&&/[A-Za-z]/.test(text))return {kind:'bap',value:text};
+    return {kind:'invalid',issue:/^0[0-9]+$/.test(numeric)?'artifactFindLeadingZero':'artifactFindInvalid'};
+  }
+  function lookup(data,parsed,scenario='normal'){
+    if(data.readFailure||scenario==='error')return {status:'error'};
+    if(parsed.kind==='invalid')return {status:'invalid',issue:parsed.issue};
+    if(parsed.kind==='bap')return identities.includes(parsed.value)?{status:'identity',bapId:parsed.value}:{status:'not-found'};
+    const matches=data.assets.filter(a=>a.number===parsed.value);
+    if(matches.length>1)return {status:'unverified'};
+    const asset=matches[0];
+    if(!asset)return data.assets.some(a=>a.previousNumber===parsed.value&&['reorg','unverified'].includes(numberState(a)))?{status:'unverified'}:{status:'not-found'};
+    if(['reorg','unverified'].includes(numberState(asset))||scenario==='reorg')return {status:'unverified',assetId:asset.id};
+    const b=binding(data,asset.id),candidate=data.bindings.find(x=>x.assetId===asset.id&&x.state==='current');
+    return {status:'found',assetId:asset.id,bapId:b?.bapId||null,associationState:bindingState(data,candidate)};
+  }
+  const historicalSignerFor=bapId=>['1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v','1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'][identities.indexOf(bapId)];
+  const api={historicalSignerFor,parseLookup,lookup,recipientIssue,reconcileOwnership,bindingState,factScenario,numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);

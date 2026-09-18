@@ -1,7 +1,7 @@
 const ArtifactImages={
   async access(mode,key,value) {
     const db=await new Promise((resolve,reject)=>{const req=indexedDB.open('ownword-artifact-v030-images',1);req.onupgradeneeded=()=>req.result.createObjectStore('images');req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});
-    try{return await new Promise((resolve,reject)=>{const tx=db.transaction('images',mode),store=tx.objectStore('images');const req=mode==='readonly'?store.get(key):store.put(value,key);tx.oncomplete=()=>resolve(req.result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}finally{db.close();}
+    try{return await new Promise((resolve,reject)=>{const tx=db.transaction('images',mode),store=tx.objectStore('images');const req=mode==='readonly'?store.get(key):key===null?store.clear():store.put(value,key);tx.oncomplete=()=>resolve(req.result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}finally{db.close();}
   },
   async validate(file) {
     if(file.size>2097152)throw Error('artifactImageSize');
@@ -15,7 +15,7 @@ const ArtifactImages={
 function useArtifactImage(content) {
   const [src,setSrc]=React.useState(''),[failed,setFailed]=React.useState(false);
   React.useEffect(()=>{let cancelled=false,url;setSrc('');setFailed(false);if(content?.kind!=='upload')return;
-    (async()=>{const blob=content.blob||await ArtifactImages.access('readonly',content.blobId);if(!blob)throw Error();await ArtifactImages.validate(blob);url=URL.createObjectURL(blob);if(!cancelled)setSrc(url);})().catch(()=>{if(!cancelled)setFailed(true);});
+    (async()=>{const blob=content.blob||await ArtifactImages.access('readonly',content.blobId);if(!blob)throw Error();await ArtifactImages.validate(blob);if(cancelled)return;url=URL.createObjectURL(blob);setSrc(url);})().catch(()=>{if(!cancelled)setFailed(true);});
     return()=>{cancelled=true;if(url)URL.revokeObjectURL(url);};
   },[content?.blobId,content?.blob]);
   return {src,failed};

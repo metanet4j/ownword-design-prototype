@@ -619,3 +619,56 @@ Object.assign(window.OwnwordCopy.zh,{
   "artifactTransferBlocked": "所有权核实前，不能再次转移或设置关联。",
   "artifactLatestOutput": "进入 Review 前及签名前均核查当前输出。"
 });
+
+Object.assign(window.OwnwordCopy.en,{
+  "artifactFind": "Find identity",
+  "artifactFindTitle": "A number. An identity.",
+  "artifactFindIntro": "Find an Artifact by its inscription number, then verify its associated identity. You can also enter a full BAP ID.",
+  "artifactFindLabel": "Inscription Number or BAP ID",
+  "artifactFindSubmit": "Find",
+  "artifactFindHint": "Try 165 or #165. Numbers are exact; OpNS names are not supported in this version.",
+  "artifactFindInvalid": "Enter whole decimal digits, optionally preceded by one #, or a full BAP ID.",
+  "artifactFindLeadingZero": "Remove leading zeros; for example, use 165 instead of 0165.",
+  "artifactFind-asset": "Looking up the Artifact…",
+  "artifactFind-binding": "Verifying its association…",
+  "artifactFind-not-found": "No matching identity or Artifact found.",
+  "artifactFind-error": "Lookup is temporarily unavailable. Your input is kept; try again.",
+  "artifactFind-unverified": "The number mapping needs verification. Retry after reorganization or indexing completes.",
+  "artifactFindSample": "Try a sample",
+  "artifactFind-unassociated": "Artifact found. No identity is currently associated.",
+  "artifactScenario-lookup": "Identity lookup result",
+  "artifactScenario-normal": "Normal",
+  "artifactReset": "Reset Artifact demo data",
+  "artifactResetBody": "Clear v0.3.0 Artifact drafts, uploaded images, local assets, associations and operation records in this browser, then restore sample Artifacts. Earlier identity and content storage will be kept.",
+  "artifactResetConfirm": "Clear & restore samples",
+  "artifactResetComplete": "Artifact sample data restored.",
+  "artifactResetImagesFailed": "Artifact records were reset, but image cleanup failed. Retry to finish cleanup."
+});
+
+Object.assign(window.OwnwordCopy.zh,{
+  "artifactFind": "查找身份",
+  "artifactFindTitle": "一个数字，找到一个身份。",
+  "artifactFindIntro": "先按铭文编号定位 Artifact，再核实关联身份；也可以输入完整 BAP ID。",
+  "artifactFindLabel": "Inscription Number 或 BAP ID",
+  "artifactFindSubmit": "查找",
+  "artifactFindHint": "可输入 165 或 #165。按完整数字精确匹配；本版暂不支持 OpNS 名称。",
+  "artifactFindInvalid": "请输入十进制整数，可带一个 # 前缀，或输入完整 BAP ID。",
+  "artifactFindLeadingZero": "请去除前导零，例如使用 165 而不是 0165。",
+  "artifactFind-asset": "正在查找资产…",
+  "artifactFind-binding": "正在核实关联…",
+  "artifactFind-not-found": "未找到匹配的身份或 Artifact。",
+  "artifactFind-error": "查找暂不可用。输入已保留，请重试。",
+  "artifactFind-unverified": "编号映射待核实，请在重组或索引解析完成后重试。",
+  "artifactFindSample": "试用样例",
+  "artifactFind-unassociated": "已找到 Artifact，当前没有关联身份。",
+  "artifactScenario-lookup": "身份查找结果",
+  "artifactScenario-normal": "正常",
+  "artifactReset": "重置 Artifact 演示数据",
+  "artifactResetBody": "清除此浏览器中的 v0.3.0 Artifact 草稿、上传图片、本地资产、关联及操作记录，恢复样例资产。旧版身份与内容存储会保留。",
+  "artifactResetConfirm": "清除并恢复样例",
+  "artifactResetComplete": "Artifact 样例数据已恢复。",
+  "artifactResetImagesFailed": "Artifact 记录已重置，但图片清理失败，请重试完成清理。"
+});
+
+Object.assign(window.OwnwordCopy.en,{artifactSignatureScope:"Each transaction requires a signature from the BAP identity key effective at that transaction. All verification here is simulated."});
+Object.assign(window.OwnwordCopy.zh,{artifactSignatureScope:"每笔交易均须使用当时有效的 BAP 身份签名密钥。本页面的验证均为模拟。"});

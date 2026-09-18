@@ -92,7 +92,7 @@ function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNW
   React.useEffect(() => {
     const previous = document.activeElement;
     dialog.current.showModal();
-    return () => {if (previous?.isConnected) previous.focus();};
+    return () => {queueMicrotask(()=>{const target=previous?.isConnected&&previous!==document.body&&previous.id!=='main'?previous:(document.querySelector('[data-artifact-screen] h1')||document.querySelector('#main h1')||document.getElementById('main'));target?.focus({preventScroll:true});});};
   }, []);
   return <dialog ref={dialog} className="modal" data-modal-title={titleKey || ""} aria-labelledby="dialog-title" onCancel={e => {e.preventDefault(); onCancel();}}>
     <div className="modal-top"><span className="eyebrow">{context}</span><Button variant="quiet" onClick={onCancel} aria-label={title + ' — ' + closeLabel}>{closeLabel}</Button></div>
@@ -136,14 +136,14 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'cop
     try {if (failCopy) throw new Error('Simulated clipboard failure'); await navigator.clipboard.writeText(id); announce('copied');}
     catch {announce('copyFailed');}
   }
-  return <div className="identifier">
+  return <div className={'identifier'+(feedback==='copyFailed'?' copy-failed':'')}>
     <div className="identifier-top"><span className="eyebrow">{label}</span><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
     <div className="identifier-value"><code title={id}>{id}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
   </div>;
 }
 function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {
   return <>
-    {transaction&&bapId&&<IdentitySignatureProof bapId={bapId} signer={OwnwordArtifactModel.signerFor(bapId)} signature="valid" keyEpoch="historical-key-at-creation" t={t} failCopy={failCopy}/>}
+    {transaction&&bapId&&<IdentitySignatureProof bapId={bapId} signer={transaction.blockHeight?OwnwordArtifactModel.historicalSignerFor(bapId):OwnwordArtifactModel.signerFor(bapId)} signature="valid" keyEpoch={transaction.blockHeight?'historical-key-at-creation':'effective-at-signing'} t={t} failCopy={failCopy}/>}
     <dl className="chain-facts">
       <div><dt>{t('blockHeight')}</dt><dd data-chain="block">{transaction && transaction.blockHeight ? transaction.blockHeight.toLocaleString('en-US') : t('pendingBlock')}</dd></div>
       <div><dt>{t('confirmation')}</dt><dd data-chain="confirmation">{t(transaction && transaction.blockHeight ? 'confirmed' : 'pendingConfirmation')}</dd></div>

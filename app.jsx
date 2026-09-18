@@ -9,6 +9,7 @@ function App() {
   const [scenario, setScenario] = React.useState('existing');
   const contentRef = React.useRef(null);
   const artifactRef = React.useRef(null);
+  const pendingArtifactNavigation=React.useRef(null);
   const artifactStore = useArtifactStore();
   const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [lab, setLab] = React.useState(false);
@@ -76,7 +77,8 @@ function App() {
     activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);
   }, []);
   React.useEffect(()=>{if(!state.busy&&/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))dispatch({type:'GO',page:'artifacts'});},[state.busy,state.wallet,state.published]);
-  function openArtifacts(page='artifacts',id='') {const action=()=>artifactRef.current?.go(page,id);if(state.page==='content')contentRef.current?.leave(action);else action();}
+  function openArtifacts(page='artifacts',id='') {const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingArtifactNavigation.current=action;dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
+  React.useEffect(()=>{if(!state.modal&&pendingArtifactNavigation.current){const action=pendingArtifactNavigation.current;pendingArtifactNavigation.current=null;if(state.page==='artifacts')action();}},[state.modal,state.page]);
   function navigate(page) {
     if(state.page==='artifacts'){artifactRef.current?.leave(()=>{history.pushState(null,'',location.pathname+location.search);dispatch({type:'GO',page});});return;}
     if (state.page === 'content') {contentRef.current?.leave(() => {history.pushState(null, '', location.pathname + location.search); dispatch({type: 'GO', page});}); return;}
@@ -152,7 +154,7 @@ function App() {
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
-      <nav aria-label={t('myIdentity')} className="topnav">
+      <nav aria-label={t('myIdentity')} className="topnav"><Button variant="quiet" data-action="nav-find" onClick={()=>openArtifacts('find')}>{t('artifactFind')}</Button>
         {state.wallet && state.published && <Button variant="quiet" data-action="nav-content" aria-current={state.page === 'content' ? 'page' : undefined} onClick={() => state.page==='artifacts'?artifactRef.current?.leave(()=>contentRef.current?.go('content')):contentRef.current?.go('content')}>{t('myContent')}</Button>}
         {state.wallet && state.published && <Button variant="quiet" data-action="nav-identity" aria-current={state.page === 'identity' ? 'page' : undefined} onClick={() => navigate('identity')}>{t('myIdentity')}</Button>}
         <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs} aria-controls="preferences-panel">{locale === 'en' ? 'EN' : '中文'}<span className="pref-separator" aria-hidden="true">/</span>{t(theme)}</Button>

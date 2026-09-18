@@ -11,7 +11,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-09-18T00:45:21.608Z",
+  "updatedAt": "2026-09-18T16:48:18.245Z",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -77,8 +77,21 @@
           }
         }
       ]
+    },
+    "Ownword v0.3.0 — Identity Artifact": {
+      "versions": [
+        {
+          "path": "index.html",
+          "createdAt": "2026-09-18T16:48:18.239Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
     }
   },
-  "title": "Ownword v0.2.0 — Content",
-  "prompt": "PRD v0.2.0：文字内容高保真原型，xLog 式 Markdown 写作、模拟身份签名与发布、版本阅读；继承 React Spectrum S2。"
+  "title": "Ownword v0.3.0 — Identity Artifact",
+  "prompt": "PRD v0.3.0：Identity Artifact、Inscription Number、逐笔身份签名、Current 关联、转移与精确查找的高保真模拟原型；沿用 React Spectrum S2。"
 }

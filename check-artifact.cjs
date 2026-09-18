@@ -63,6 +63,19 @@ check('A07 transfer freshness, signatures and separately verified ownership',()=
  d=M.accept(d,op);assert.equal(d.assets[0].owner,a.owner);assert.equal(d.assets[0].transfer.verification,'pending');assert.equal(M.bindingState(d,M.current(d,bap)),'unverified');assert.ok(M.eligible(d.assets[0],bap));assert.equal(d.assets[0].confirmations,a.confirmations);
  d=M.reconcileOwnership(d,a.id,false);assert.equal(d.assets[0].owner,a.owner);d=M.reconcileOwnership(d,a.id,true);assert.equal(d.assets[0].owner,M.addresses[1]);assert.equal(M.current(d,bap),undefined);assert.equal(M.binding(d,a.id),undefined);assert.equal(d.assets[0].transfer.confirmations,0);assert.equal(M.numberState(d.assets[0]),'stable');
 });
+check('A09 exact decimal strings and trustworthy identity lookup',()=>{
+ const d=M.seed(),a=M.lookup(d,M.parseLookup('165')),b=M.lookup(d,M.parseLookup(' #165 '));assert.deepEqual(a,b);assert.equal(a.bapId,M.identities[0]);
+ const huge='900719925474099312345';assert.equal(M.parseLookup(huge).value,huge);assert.equal(M.lookup(d,M.parseLookup(huge)).status,'found');assert.equal(M.lookup(d,M.parseLookup('2048')).bapId,null);
+ for(const v of ['-1','1.5','1e3','1111111111111111111111111e3','1,000','##165','0165','# 165',''])assert.equal(M.parseLookup(v).kind,'invalid',v);
+ assert.equal(M.lookup(d,M.parseLookup('999999')).status,'not-found');assert.equal(M.lookup(d,M.parseLookup('165'),'error').status,'error');assert.equal(M.lookup(d,M.parseLookup('165'),'reorg').status,'unverified');
+ const changed={...d,assets:d.assets.map((a,i)=>i===0?M.numberObservation(a,'changed'):a)};assert.equal(M.lookup(changed,M.parseLookup('165')).status,'not-found');assert.equal(M.lookup(changed,M.parseLookup('166')).assetId,d.assets[0].id);
+ assert.equal(M.lookup(d,M.parseLookup(M.identities[1])).bapId,M.identities[1]);assert.notEqual(d.assets[0].transactions[0].signer,M.signerFor(d.assets[0].creator));
+});
+check('A09 bilingual copy and recoverable unavailable storage',()=>{
+ const vm=require('node:vm'),context={window:{}};vm.runInNewContext(fs.readFileSync('copy.js','utf8'),context);const copy=context.window.OwnwordCopy;
+ for(const f of fs.readdirSync('.').filter(f=>/^artifact.*\.jsx$/.test(f)))for(const match of fs.readFileSync(f,'utf8').matchAll(/\bt\('([^']+)'\)/g)){if(match[1].endsWith('-'))continue;assert.ok(copy.en[match[1]],f+' missing EN '+match[1]);assert.ok(copy.zh[match[1]],f+' missing ZH '+match[1]);}
+ const bad=M.load({getItem:()=>'{broken'});assert.ok(bad.readFailure);assert.equal(M.binding(bad,bad.assets[0].id),undefined);assert.equal(M.numberState(bad.assets[0]),'unverified');
+});
 const Babel=require('./vendor/babel.min.js');
 for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.jsx'))){try{Babel.transform(fs.readFileSync(f,'utf8'),{presets:['react'],filename:f});}catch(e){console.error(e.message);process.exit(1);}}
 const cssFiles=fs.readdirSync('_ds/react-spectrum-s2',{recursive:true}).filter(f=>f.endsWith('.css')).map(f=>path.join('_ds/react-spectrum-s2',f));

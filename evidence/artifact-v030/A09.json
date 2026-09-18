@@ -1,0 +1,45 @@
+{
+  "feature": "A09",
+  "status": "implemented-and-verified",
+  "acceptance": {
+    "A09-A": "浏览器 165 与 #165 命中相同 Artifact 和 BAP ID；实际复制按钮成功。",
+    "A09-B": "浏览器 2048 和大整数样例无 Binding，不填充 creator 或 owner 为身份。",
+    "A09-C": "浏览器验证前导零、科学计数、未找到、查询故障、重组待核实；模型覆盖输入边界和旧编号失效。",
+    "A09-D": "浏览器显示完整 900719925474099312345，快速由 165 改查 2048 后断言结果仍为 2048。",
+    "X01": "同一创建 Review 切换中文与深色，DOM 中名称、图片和完整标识与切换前一致。",
+    "X02": "320px 中文深色 Review、授权和查找截图，布局宽度断言无溢出；Tab 留在 dialog，Escape 后焦点返回 H1。",
+    "X03": "第二标签页可查找，创建被 writer-gate 阻止；A02 覆盖接手后读取最新记录。",
+    "X04": "Artifact 各交易独立签名证据；已浏览既有身份和内容共用 Proof，历史签名按旧密钥示例表述。",
+    "X05": "存储失败时创建操作数保持 0、授权弹窗未出现；恢复后可授权并键盘取消。未知操作边界见 A03/A06/A07/A08。"
+  },
+  "checks": [
+    "A09-check.txt",
+    "A09-errors.json",
+    "A09-race.json",
+    "A09-review-invariance.json",
+    "A09-storage-guard.json",
+    "A09-dialog-focus.json",
+    "A09-focus-restored.json",
+    "A09-copy-fallback.json",
+    "A09-a11y.json"
+  ],
+  "screenshots": [
+    "A09-found.png",
+    "A09-large-number.png",
+    "A09-unassociated.png",
+    "A09-service-error.png",
+    "A09-unverified.png",
+    "A09-mobile-review.png",
+    "A09-mobile-authorization.png",
+    "A09-mobile-find.png",
+    "A09-readonly-find.png",
+    "A09-writer-gate.png",
+    "A09-content-proof.png",
+    "A09-identity-proof.png",
+    "A09-delivery-detail.png",
+    "A09-safe-html.png",
+    "A09-safe-metadata.png"
+  ],
+  "review": "桌面查找、超大编号、手机 Review/授权/查找与内容 Proof 截图已审阅。Axe 查找页 0 violations；有 2 个渐变/重叠背景的对比度节点无法自动判定，不代表完整无障碍认证。浏览器无未捕获错误。",
+  "limits": "全部交易和身份校验为样例；转移仅接受页面提供的 BSV 主网样例地址，未接真实钱包或 metanet4j。"
+}
