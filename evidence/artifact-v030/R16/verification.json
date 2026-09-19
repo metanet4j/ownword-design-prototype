@@ -1,0 +1,14 @@
+{
+  "feature": "R16",
+  "result": "passed",
+  "checks": [
+    "共用 Identifier 使用具体字段的中英文复制名称，并用 aria-labelledby 关联字段组",
+    "浏览器 Proof 中 Inscription ID、Ordinal Number、Origin、Current Outpoint、永久链接、TxID、签名地址名称可区分",
+    "点击 Copy full Origin 后出现 Copied；值仍完整",
+    "共用 UI 检查与自动无障碍扫描通过"
+  ],
+  "screenshots": [
+    "proof.png"
+  ],
+  "a11y": "a11y.json"
+}

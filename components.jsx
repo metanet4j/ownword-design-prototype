@@ -168,7 +168,7 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
 }
 function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = ''}) {
   const [feedback, setFeedback] = React.useState('');
-  const feedbackTimer = React.useRef(0);
+  const feedbackTimer = React.useRef(0), labelId=React.useId();
   const announce = value => {
     setFeedback(value);
     clearTimeout(feedbackTimer.current);
@@ -180,9 +180,9 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, 
     try {if (failCopy) throw new Error('Simulated clipboard failure'); await navigator.clipboard.writeText(id); announce('copied');}
     catch {announce('copyFailed');}
   }
-  return <div className={'identifier '+className+(feedback==='copyFailed'?' copy-failed':'')}>
-    <div className="identifier-top"><div className="field-label-row"><span className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
-    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
+  return <div role="group" aria-labelledby={labelId} className={'identifier '+className+(feedback==='copyFailed'?' copy-failed':'')}>
+    <div className="identifier-top"><div className="field-label-row"><span id={labelId} className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
+    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={copyLabel==='artifactCopyFull'?t('copyField').replace('{field}',label):t(copyLabel)}>{t('copy')}</Button></div>
   </div>;
 }
 function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {
