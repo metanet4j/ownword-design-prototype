@@ -8,11 +8,11 @@ function artifactTime(value,t) {
   const date=new Date(value);
   return Number.isNaN(date.getTime())?value:new Intl.DateTimeFormat(t('artifactLocale'),{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}).format(date);
 }
-function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false}) {
+function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false,children}) {
   const state=OwnwordArtifactModel.numberState(asset),known=['assigned','stable'].includes(state),number=known?asset.number:'—';
   return <div className={'artifact-number '+(compact?'compact':'')+(number.length>8?' long-number':'')} data-number-status={state}>
     {known&&copyable?<Identifier className="artifact-number-identifier" id={asset.number} displayValue={number} label={t('digitalId')} copyLabel="artifactCopyNumber" target="number" t={t} failCopy={failCopy}/>:<><p className="eyebrow">{t('digitalId')}</p><strong>{number}</strong></>}
-    <div className="artifact-number-state"><S2.StatusLight label={t('artifactNumber-'+state)}/>{known&&state==='assigned'&&<span className="hint">{asset.confirmations}/6 {t('artifactConfirmations')}</span>}</div>
+    <div className="artifact-number-state"><S2.StatusLight label={t('artifactNumber-'+state)}/>{known&&state==='assigned'&&<span className="hint">{asset.confirmations}/6 {t('artifactConfirmations')}</span>}{children}</div>
     {!compact&&['reorg','unverified'].includes(state)&&<p className="hint">{t('artifactLastNumber')}: {asset.number??t('artifactUnknownOrdinal')} · <time dateTime={asset.observedAt}>{artifactTime(asset.observedAt,t)}</time></p>}
     {!compact&&asset.previousNumber&&known&&asset.previousNumber!==asset.number&&<p role="status">{t('artifactNumberChanged')}: {asset.previousNumber} → {asset.number}</p>}
   </div>;
@@ -28,7 +28,7 @@ function ArtifactCard({asset,data,bapId,t,onOpen,children}) {
   const b=OwnwordArtifactModel.binding(data,asset.id),isCurrent=b?.bapId===bapId;
   return React.cloneElement(S2.Card(), {className:"s2d-card artifact-card","data-artifact-id":asset.id,"data-current":isCurrent}, <>
     {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} t={t}/>}
-    <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}</div><h2>{asset.name}</h2><p className="hint">{t(b?(isCurrent?'artifactYourCurrent':'artifactAssociated'):'artifactNoBinding')}</p><div className="artifact-card-actions"><Button variant={children?'quiet':'secondary'} onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>{children}</div></div>
+    <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}<div className="artifact-card-actions"><Button variant={children?'quiet':'secondary'} onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>{children}</div></div>
   </>);
 }
 function ArtifactSettings({settings,setSettings,store,t}) {
@@ -38,10 +38,10 @@ Object.assign(window,{ArtifactArt,NumberStatus,ArtifactSummary,ArtifactCard,Arti
 
 function ArtifactSelector({data,identity,t,onSelect,onOpen,onBack}) {
   const M=OwnwordArtifactModel,[filter,setFilter]=React.useState('held');
-  const assets=data.assets.filter(a=>filter==='held'?a.owner===M.ownerFor(identity.bapId):data.bindings.some(b=>b.assetId===a.id&&b.bapId===identity.bapId));
-  return <section className="artifact-page" data-artifact-screen="select"><div className="page-heading"><h1 tabIndex="-1">{t('artifactSelect')}</h1><ContextHelp label={t('artifactAssociationHelp')}><p>{t('artifactSelectBody')}</p></ContextHelp></div><div className="artifact-filters">{['held','associated'].map(f=><Button key={f} variant="quiet" aria-pressed={filter===f} onClick={()=>setFilter(f)}>{t('artifactSelect-'+f)}</Button>)}</div><div className="artifact-grid">{assets.map(a=>{const why=M.eligible(a,identity.bapId),current=M.binding(data,a.id)?.bapId===identity.bapId,busy=M.conflict(data,identity.bapId,a.id);return <ArtifactCard key={a.id} asset={a} data={data} bapId={identity.bapId} t={t} onOpen={onOpen}>
+  const assets=M.selectionAssets(data,identity.bapId,filter);
+  return <section className="artifact-page" data-artifact-screen="select"><ArtifactBack t={t} onClick={onBack}/><div className="page-heading title-with-help"><h1 tabIndex="-1">{t('artifactSelect')}</h1><ContextHelp label={t('artifactAssociationHelp')}><p>{t('artifactSelectBody')}</p></ContextHelp></div><div className="artifact-filters">{['held','history'].map(f=><Button key={f} variant="quiet" aria-pressed={filter===f} onClick={()=>setFilter(f)}>{t('artifactSelect-'+f)} <span className="content-count">{M.selectionAssets(data,identity.bapId,f).length}</span></Button>)}</div><div className="artifact-grid">{assets.map(a=>{const why=M.bindingEligibility(a,identity.bapId),current=M.binding(data,a.id)?.bapId===identity.bapId,busy=M.conflict(data,identity.bapId,a.id);return <ArtifactCard key={a.id} asset={a} data={data} bapId={identity.bapId} t={t} onOpen={onOpen}>
     {!current&&<Button variant="accent" disabled={!!why||!!busy} data-select-artifact={a.id} onClick={()=>onSelect(a.id)}>{t('artifactSetCurrent')}</Button>}{(why||busy)&&<p className="hint" role="status">{t(busy?'artifactUnresolved':'artifactEligibility-'+why)}</p>}
-  </ArtifactCard>;})}</div>{!assets.length&&<p>{t('artifactEmpty')}</p>}<Button variant="quiet" onClick={onBack}>{t('artifactBack')}</Button></section>;
+  </ArtifactCard>;})}</div>{!assets.length&&<p className="artifact-empty">{t(filter==='history'?'artifactHistoryEmpty':'artifactEmpty')}</p>}</section>;
 }
 function ArtifactFixtureControls({store,t}) {
   const assetId=store.settings.target||OwnwordArtifactModel.seed().assets[0].id,scenario=store.settings.facts||'normal',[message,setMessage]=React.useState('');

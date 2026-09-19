@@ -19,6 +19,8 @@ check('A03 identity signatures, durable intent, recovery and separate associatio
   d=M.replaceOperation(d,op);assert.equal(M.recover(d).operations[0].phase,'unknown');assert.throws(()=>M.begin(M.recover(d),review,'duplicate2'),/artifactUnresolved/);
   d=M.accept(d,op);const created=d.assets[0];assert.equal(created.number,null);assert.equal(created.confirmations,0);assert.notEqual(M.current(d,bap).assetId,created.id);assert.equal(M.accept(d,op).assets.length,d.assets.length);
   const bind={kind:'bind',bapId:bap,assetId:created.id,outpoint:created.outpoint,bindingVersion:M.bindingVersion(d,bap)};
+  assert.throws(()=>M.begin(d,bind,'before-number'),/number-pending/);
+  d={...d,assets:d.assets.map(a=>a.id===created.id?{...a,number:'100000',confirmations:1}:a)};
   const bound=M.begin(d,bind,'bind-one','reject');assert.equal(M.current(bound,bap).assetId,M.seed().assets[0].id);
   const failed=M.replaceOperation(bound,{...bound.operations[0],phase:'failed'});let retried=M.begin(failed,bind,'bind-retry');const bindingOp={...retried.operations[0],signature:'valid',signerBapId:bap,signer:M.signerFor(bap)};retried=M.accept(retried,bindingOp);
   assert.equal(retried.assets.length,d.assets.length);assert.equal(M.current(retried,bap).assetId,created.id);assert.equal(retried.bindings.filter(b=>b.state==='current'&&b.bapId===bap).length,1);
@@ -81,4 +83,7 @@ for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.jsx'))){try{Babel.tran
 const cssFiles=fs.readdirSync('_ds/react-spectrum-s2',{recursive:true}).filter(f=>f.endsWith('.css')).map(f=>path.join('_ds/react-spectrum-s2',f));
 const defined=new Set(cssFiles.flatMap(f=>[...fs.readFileSync(f,'utf8').matchAll(/(--s2[a-z0-9-]*)\s*:/g)].map(m=>m[1])));
 for(const m of fs.readFileSync('artifact.css','utf8').matchAll(/var\((--s2[a-z0-9-]*)/g))assert.ok(defined.has(m[1]),'Unknown S2 token '+m[1]);
+
+
+check('R05 pending binding gate and meaningful history selection',()=>{let d=M.seed(),bap=M.identities[0];const pending={...d.assets[1],id:'pending',number:null,confirmations:0};d.assets.unshift(pending);assert.equal(M.bindingEligibility(pending,bap),'number-pending');assert.equal(M.bindingEligibility(M.numberObservation(d.assets[2],'reorg'),bap),'number-pending');assert.equal(M.selectionAssets(d,bap).at(-1).id,'pending');assert.deepEqual(M.selectionAssets(d,bap,'history').map(a=>a.number),['4096']);assert.equal(M.bindingEligibility(d.assets[2],bap),'');});
 console.log('Artifact JSX and S2 tokens passed; '+checks.length+' model groups.');

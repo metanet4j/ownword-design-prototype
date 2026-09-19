@@ -1,5 +1,9 @@
 const S2 = window.ReactSpectrumS2_ad4872;
 
+function UiIcon({name,className=''}) {return <span className={'ui-icon '+className} aria-hidden="true" style={{maskImage:`url('_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_${name}_20_N.svg')`}}/>;}
+window.UiIcon=UiIcon;
+function ArtifactBack({onClick,t}) {return <Button variant="quiet" className="s2d-button s2d-button-quiet artifact-back" data-action="artifact-back" onClick={onClick}><UiIcon name="ChevronLeft"/>{t('artifactBack')}</Button>;}
+window.ArtifactBack=ArtifactBack;
 function BrandMark() {
   return <img className="brand-mark" src="brand/ownword-mark.svg" width="32" height="32" alt="" aria-hidden="true" />;
 }
@@ -74,7 +78,7 @@ function useDismissable(open, onClose, ref, focusSelector='button') {
     const key = e => {
       if (e.key !== 'Escape' || document.querySelector('dialog[open]')) return;
       onClose();
-      ref.current?.querySelector(focusSelector)?.focus();
+      (ref.current?.querySelector(focusSelector)||document.querySelector(focusSelector))?.focus();
     };
     const focusin = e => {if (ref.current && e.target instanceof Node && !ref.current.contains(e.target)) onClose();};
     document.addEventListener('pointerdown', pointer);
@@ -124,7 +128,7 @@ function ContextHelp({label,children}) {
     return()=>{window.removeEventListener('resize',close);document.removeEventListener('scroll',dismiss,true);document.removeEventListener('keydown',escape,true);};
   },[open]);
   return <div className="context-help" ref={wrapper} onPointerEnter={e=>{clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);if(e.pointerType==='mouse'){suppressFocus.current=false;hoverTimer.current=setTimeout(()=>setMode(v=>v==='closed'?'preview':v),300);}}} onPointerLeave={()=>{clearTimeout(hoverTimer.current);if(mode==='preview'&&!wrapper.current.contains(document.activeElement))leaveTimer.current=setTimeout(()=>setMode('closed'),180);}} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget)){suppressFocus.current=false;setMode('closed');}}}>
-    <Button variant="quiet" className="s2d-button s2d-button-quiet context-help-trigger" aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}>{label}</Button>
+    <Button variant="quiet" className="s2d-button s2d-button-quiet context-help-trigger" aria-label={label} aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}><UiIcon name="InfoCircle"/></Button>
     {open&&React.cloneElement(S2.ContextualHelpPopover(),{ref:panel,id,role:'region','aria-label':label,className:'s2d-overlay context-help-panel',style:position},children)}
   </div>;
 }
@@ -149,7 +153,7 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
     onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
     onFocusCapture={() => setFocused(true)} onBlurCapture={e => {if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);}}>
     <div className="toast-copy"><strong>{t(message)}</strong>{body && <p>{t(body)}</p>}</div>
-    <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button variant="quiet" data-action="dismiss-toast" onClick={dismiss}>{t('close')}</Button></div>
+    <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button variant="quiet" data-action="dismiss-toast" aria-label={t('close')} onClick={dismiss}><UiIcon name="Close"/></Button></div>
   </div>;
 }
 function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap', displayValue, className = ''}) {
@@ -218,7 +222,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
         <article className="identity-plate plate-back" aria-hidden={!back} inert={!back ? '' : undefined}>
           <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('chainRecord')}</span></div>
           <div className="chain-heading"><h2>{t('identityPublication')}</h2><p>{profile.name}</p></div>
-          <ChainRecord bapId={id} transaction={transaction} t={t} failCopy={failCopy} />
+          <div className="plate-chain-summary"><S2.StatusLight label={t(transaction?.blockHeight?'confirmed':'pendingConfirmation')}/><div><span>{t('blockHeight')}</span><strong>{transaction?.blockHeight?.toLocaleString('en-US')||t('pendingBlock')}</strong></div><div><span>{t('publicationTx')}</span><code>{transaction?.txid||t('recordUnavailable')}</code></div></div>
           <div className="plate-foot"><span>BSV</span></div>
         </article>
       </div>

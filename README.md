@@ -15,3 +15,5 @@ Identity Artifact 高保真模拟原型，沿用 React Spectrum S2。
 `./check-context-help.ps1` 验证帮助悬浮、键盘、点击、窄屏边界、授权弹窗内 Escape 和转移返回。Windows 首次运行先执行 `agent-browser --session v030-r03-check open http://127.0.0.1:4313/#/artifacts`，再运行脚本。模型与完整启动检查仍使用上一级目录的 `./init.ps1`。
 
 当前模块导航与离开保护可执行 `./check-workspace-navigation.ps1`。Windows 首次运行先单独执行 `agent-browser --session v030-r04-check open http://127.0.0.1:4313/`；脚本检查窄屏边界、方向键、Escape、点击外部，以及身份资料和 Artifact 草稿的跨模块保护。只使用独立会话的模拟数据，结束后关闭会话。
+
+最新批注修正、编号关联资格及多标签页验证见[R05 审查](evidence/artifact-v030/R05/批注体验审查-20260919-134718.md)。

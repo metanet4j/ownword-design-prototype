@@ -1,10 +1,10 @@
 const artifactDefaults=()=> ({list:'all',lookup:'normal',number:'record',ownership:'verified',preview:'record',storage:'normal',outcome:'success',binding:'success',query:'accepted',account:'none'});
-function useArtifactStore() {
+function useArtifactStore(enabled=true) {
   const [data,setData]=React.useState(()=>OwnwordArtifactModel.recover(OwnwordArtifactModel.load()));
   const [settings,setSettings]=React.useState(artifactDefaults);
   const settingsRef=React.useRef(settings);settingsRef.current=settings;
   const dataRef=React.useRef(data);dataRef.current=data;
-  const writer=useContentWriter(()=>{const latest=OwnwordArtifactModel.recover(OwnwordArtifactModel.load());dataRef.current=latest;setData(latest);},'ownword-v030-artifact-writer');
+  const writer=useContentWriter(()=>{const latest=OwnwordArtifactModel.recover(OwnwordArtifactModel.load());dataRef.current=latest;setData(latest);},'ownword-v030-artifact-writer',enabled||data.operations.some(op=>['signing','validating','submitting'].includes(op.phase)));
   function persist(next){if(!writer.canWrite.current||settingsRef.current.storage==='failure'||dataRef.current.readFailure)throw Error('artifactSaveFailed');const value={...next,revision:dataRef.current.revision+1};OwnwordArtifactModel.save(value);dataRef.current=value;setData(value);return value;}
   React.useEffect(()=>{const sync=e=>{if(e.key===OwnwordArtifactModel.KEY&&!writer.canWrite.current){const latest=OwnwordArtifactModel.recover(OwnwordArtifactModel.load());dataRef.current=latest;setData(latest);}};window.addEventListener('storage',sync);return()=>window.removeEventListener('storage',sync);},[]);
   function refreshNumber(id){const next={...dataRef.current,assets:dataRef.current.assets.map(a=>a.id===id?OwnwordArtifactModel.numberObservation(a,settingsRef.current.number):a)};persist(next);}
@@ -43,7 +43,7 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   const gate=<section className="artifact-page" data-artifact-screen="gate">{header('artifactGate','artifactGateBody')}<div className="action-row"><Button variant="accent" onClick={connected?onIdentity:onConnect}>{t(connected?'complete':'connect')}</Button><Button onClick={onIdentity}>{t('myIdentity')}</Button><Button variant="quiet" onClick={()=>go('artifact',M.seed().assets[0].id)}>{t('artifactSample')}</Button></div></section>;
   if(!identity&&!['artifact','find','identity-view'].includes(route.page))return gate;
   const asset=data.assets.find(a=>a.id===route.id);
-  if(identity&&['artifact-create','artifact-review','artifact-select','artifact-transfer'].includes(route.page)&&store.writer.state!=='ready')return <section className="artifact-page" data-artifact-screen="writer-gate"><h1 tabIndex="-1">{t('writerTitle-'+store.writer.state)}</h1><p>{t('writerBody-'+store.writer.state)}</p><Button onClick={store.writer.retry}>{t('retry')}</Button></section>;
+  if(identity&&['artifact-create','artifact-review','artifact-select','artifact-transfer','artifact-action','artifact-operation'].includes(route.page)&&store.writer.state!=='ready')return <section className="artifact-page" data-artifact-screen="writer-gate"><ArtifactBack t={t} onClick={()=>go('artifacts')}/><h1 tabIndex="-1">{t('artifactWriterTitle-'+store.writer.state)}</h1><p>{t('artifactWriterBody-'+store.writer.state)}</p><Button onClick={store.writer.retry}>{t('retry')}</Button></section>;
   if(route.page==='find')return <ArtifactFind store={store} t={t} failCopy={failCopy} go={go}/>;
   if(route.page==='artifact-transfer')return <ArtifactTransfer key={identity.bapId+route.id} asset={asset} initialRecipient={actionReview?.kind==='transfer'&&actionReview.assetId===route.id?actionReview.recipient:''} identity={identity} store={store} t={t} failCopy={failCopy} onReview={review=>{setActionReview({...review,returnTo:{page:'artifact-transfer',id:route.id}});go('artifact-action');}} onBack={()=>go('artifact',route.id)}/>;
   if(route.page==='artifact-select')return <ArtifactSelector data={data} identity={identity} t={t} onSelect={id=>prepare('bind',id)} onOpen={id=>go('artifact',id)} onBack={()=>go('artifacts')}/>;

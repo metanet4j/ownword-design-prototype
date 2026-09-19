@@ -21,7 +21,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     const loaded=M.load(); setData(loaded);
     saved.current=new Map(loaded.drafts.map(d=>[d.id,d.content]));
     setSaveState(loaded.readFailure ? 'error' : 'saved'); setReview(null);
-  });
+  },'ownword-v020-content-writer',(active&&!!identity)||data.operations.some(op=>['signing','broadcasting'].includes(op.phase)));
   const publication=useContentPublication({dataRef,setData,identityRef,identity,settings,onAccountEvent,writer});
   const menuRef = React.useRef(null), previousAuthor = React.useRef(identity?.bapId);
   useDismissable(!!menu, () => setMenu(null), menuRef);
@@ -192,25 +192,26 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     <div className="action-row"><Button data-action="draft-stay" onClick={()=>setDialog(null)}>{t(dialog.type==='delete' ? 'cancel' : 'keepEditing')}</Button>{dialog.type==='delete' ? <Button variant="negative" data-action="draft-confirm-delete" onClick={deleteDraft}>{t('draftDelete')}</Button> : <><Button variant="accent" data-action="draft-save-leave" onClick={saveAndLeave}>{t('draftSaveLeave')}</Button><Button variant="quiet" data-action="draft-discard-leave" onClick={discardAndLeave}>{t('draftDiscardLeave')}</Button></>}</div>
   </Modal>}</>;
 });
-function useContentWriter(onAcquired,lockName='ownword-v020-content-writer') {
-  const [state,setState]=React.useState('checking'), [attempt,retry]=React.useReducer(n=>n+1,0);
-  const canWrite=React.useRef(false), acquired=React.useRef(onAcquired); acquired.current=onAcquired;
+function useContentWriter(onAcquired,lockName='ownword-v020-content-writer',enabled=true) {
+  const [state,setState]=React.useState('checking'),[attempt,retry]=React.useReducer(n=>n+1,0);
+  const canWrite=React.useRef(false),acquired=React.useRef(onAcquired);acquired.current=onAcquired;
   React.useEffect(()=>{
-    let disposed=false, release;
-    const unavailable=()=>{if(!disposed){canWrite.current=false;setState('unavailable');}};
-    canWrite.current=false; setState('checking');
-    if (!navigator.locks) {unavailable();return;}
-    // 页面持锁期间独占草稿和发布日志；关闭后由浏览器释放，接手前重新加载。
+    let disposed=false,release;const controller=new AbortController();canWrite.current=false;
+    if(!enabled){setState('idle');return;}
+    setState('checking');
+    if(!navigator.locks){setState('unavailable');return;}
+    const hold=()=>{if(disposed)return;acquired.current();canWrite.current=true;setState('ready');console.info('[Ownword writer] acquired',lockName);return new Promise(resolve=>{release=resolve;});};
     navigator.locks.request(lockName,{ifAvailable:true},lock=>{
-      if(disposed) return;
-      if(!lock){setState('busy');return;}
-      acquired.current(); canWrite.current=true; setState('ready');
-      console.info('[Ownword writer] acquired',lockName);
-      return new Promise(resolve=>{release=resolve;});
-    }).catch(unavailable);
-    return ()=>{disposed=true;canWrite.current=false;release?.();};
-  },[attempt]);
+      if(disposed)return;
+      if(lock)return hold();
+      setState('busy');
+      // Queue safely; never steal a lock from another editor. Re-read on acquisition.
+      return navigator.locks.request(lockName,{signal:controller.signal},hold);
+    }).catch(error=>{if(!disposed&&error.name!=='AbortError'){canWrite.current=false;setState('unavailable');}});
+    return()=>{disposed=true;canWrite.current=false;controller.abort();release?.();console.info('[Ownword writer] released',lockName);};
+  },[attempt,lockName,enabled]);
   return {state,canWrite,retry};
 }
+
 function ContentSettings({settings,setSettings,t}) {return <fieldset className="content-settings"><legend>{t('contentScenarios')}</legend><label>{t('contentListScenario')}<select data-scenario="content-list" value={settings.list} onChange={e=>setSettings(s=>({...s,list:e.target.value}))}>{['normal','empty','failure'].map(value=><option value={value} key={value}>{t('contentScenario-'+value)}</option>)}</select></label><label>{t('draftStorageScenario')}<select data-scenario="content-storage" value={settings.storage} onChange={e=>setSettings(s=>({...s,storage:e.target.value}))}><option value="normal">{t('contentScenario-normal')}</option><option value="failure">{t('draftStorageFailure')}</option></select></label>{[['publish',['success','sign-failed','broadcast-failed','unknown']],['query',['accepted','unknown','not-received']],['confirmation',['pending','confirmed']],['account',['none','authorize-switch','authorize-disconnect','broadcasting-switch','broadcasting-disconnect']],['proof',['record','valid','unverified','failed']],['proofConfirmation',['record','pending','confirmed']]].map(([key,values])=><label key={key}>{t('scenario-'+key)}<select data-scenario={'content-'+key} value={settings[key]} onChange={e=>setSettings(s=>({...s,[key]:e.target.value}))}>{values.map(value=><option key={value} value={value}>{t(({'authorize-switch':'switch-confirm','authorize-disconnect':'disconnect-confirm'})[value] || 'scenario-'+value)}</option>)}</select></label>)}</fieldset>;}
 Object.assign(window,{ContentWorkspace,ContentSettings,useContentWriter});

@@ -10,13 +10,16 @@ function App() {
   const contentRef = React.useRef(null);
   const artifactRef = React.useRef(null);
   const pendingWorkspaceNavigation=React.useRef(null);
-  const artifactStore = useArtifactStore();
-  const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [lab, setLab] = React.useState(false);
+  const artifactStore = useArtifactStore(state.page==='artifacts'||lab);
+  const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [nextResult, setNextResult] = React.useState('success');
   const [accountEvent, setAccountEvent] = React.useState('none');
   const [prefs, setPrefs] = React.useState(false);
   const [menuOpen,setMenuOpen]=React.useState(false);
+  const labRef=React.useRef(null),labLeave=React.useRef(0);
+  useDismissable(lab,()=>setLab(false),labRef,'[data-action=prototype-settings]');
+  React.useEffect(()=>()=>clearTimeout(labLeave.current),[]);
   const navigationRef=React.useRef(null);
   function closeNavigation(){setMenuOpen(false);setPrefs(false);}
   const [validationShown, setValidationShown] = React.useState(false);
@@ -154,14 +157,14 @@ function App() {
   const toastError = state.page !== 'resolve-error' ? state.error : '';
   const toastMessage = toastError || (storageError ? 'persistFailed' : state.notice);
   const toastBody = toastError ? (toastError === 'connectFailed' ? 'connectFailedBody' : 'operationFailedBody')
-    : state.notice.includes('Cancelled') && !storageError ? (state.notice === 'connectCancelled' ? 'identityUnchanged' : 'retained') : '';
+    : '';
   const retryError = toastError ? () => dispatch(toastError === 'connectFailed'
     ? {type: 'CONNECT'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
   return <div className={`app page-${state.page}`} onPointerDown={e => {if (!e.target.closest('button, input, textarea, select, a, .identity-object')) window.dispatchEvent(new Event('ownword-vault'));}}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
-      <div className="workspace-switcher" ref={navigationRef}>
+      <div className="header-tools"><div className="workspace-switcher" ref={navigationRef}>
       <Button variant="quiet" id="navigation-toggle" className="s2d-button workspace-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={t('switchWorkspace')+' · '+t(currentModule)} onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}} onKeyDown={e=>{if(e.key==='ArrowDown'){e.preventDefault();setMenuOpen(true);requestAnimationFrame(()=>navigationRef.current?.querySelector('nav button')?.focus());}}}>{t(currentModule)}<span className="workspace-chevron" aria-hidden="true"/></Button>
       {menuOpen&&<nav id="primary-navigation" aria-label={t('navigationLabel')} className="topnav is-open" onKeyDown={e=>{if(e.target.closest('.preferences'))return;if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;const items=[...e.currentTarget.querySelectorAll('button')].filter(el=>el.getClientRects().length);const i=items.indexOf(document.activeElement);e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length]?.focus();}}>
         {state.wallet&&state.published&&<div className="workspace-destinations">
@@ -170,12 +173,13 @@ function App() {
           <Button variant="quiet" data-action="nav-content" aria-current={currentModule==='myContent'?'page':undefined} onClick={openContent}>{t('myContent')}<span>{t('contentNavDescription')}</span></Button>
         </div>}
         <Button variant="quiet" data-action="nav-find" aria-current={currentModule==='artifactFind'?'page':undefined} onClick={()=>openArtifacts('find')}>{t('artifactFind')}</Button>
-        <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs} aria-controls="preferences-panel">{t('appearanceLanguage')}<span className="workspace-preference-value">{locale==='en'?'EN':'中文'} / {t(theme)}</span></Button>
-          {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
-        </div>
         {state.wallet && <Button data-action="disconnect" onClick={disconnect}>{t('disconnectWallet')}</Button>}
       </nav>}
       </div>
+        <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" className="s2d-button header-preferences" onClick={()=>{setMenuOpen(false);setPrefs(!prefs);}} aria-label={t('appearanceLanguage')} aria-expanded={prefs} aria-controls="preferences-panel"><UiIcon name="Settings"/></Button>
+          {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
+        </div>
+    </div>
     </header>
     {state.page==='welcome'&&<Dome label={t('domeLabel')} />}
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
@@ -230,14 +234,14 @@ function App() {
           </section>
         </div>
       </section>}
-      {state.page === 'public' && <section className="public-page">{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /><div className="public-back"><Button variant="quiet" data-action="back-identity" onClick={() => navigate('identity')}>{t('backIdentity')}</Button></div></section>}
+      {state.page === 'public' && <section className="public-page"><Button variant="quiet" className="s2d-button artifact-back" data-action="back-identity" onClick={()=>navigate('identity')}><UiIcon name="ChevronLeft"/>{t('backIdentity')}</Button>{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /></section>}
     </main>
     {toastMessage && <Toast key={toastMessage + ':' + state.epoch} message={toastMessage} body={toastBody} error={!!(toastError || storageError)} notice={!toastError && !storageError ? state.notice : undefined} storageError={!toastError && storageError} t={t} onRetry={retryError} onDismiss={() => {
       if (storageError && !toastError) setStorageError(false);
       if (!toastError && !storageError) dispatch({type: 'CLEAR_NOTICE', notice: state.notice, epoch: state.epoch});
     }} />}
     <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight label={t('connected')} /></span>}<Button variant="quiet" data-action="prototype-settings" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
-    {lab && <section className="scenario-panel" aria-label={t('scenarios')}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><p>{t('sampleDataNote')}</p><p>{t('artifactNoFees')}</p><p>{t('proofSimulation')}</p><p>{t('readerLocalScope')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
+    {lab && <section ref={labRef} className="scenario-panel" aria-label={t('scenarios')} onPointerEnter={()=>clearTimeout(labLeave.current)} onPointerLeave={e=>{if(e.pointerType==='mouse'&&e.relatedTarget&&!document.querySelector('dialog[open]'))labLeave.current=setTimeout(()=>setLab(false),250);}}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><p>{t('sampleDataNote')}</p><p>{t('artifactNoFees')}</p><p>{t('proofSimulation')}</p><p>{t('readerLocalScope')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
       <label>{t('nextResult')}<select data-scenario="result" value={nextResult} onChange={e => setNextResult(e.target.value)}><option value="success">{t('resultSuccess')}</option><option value="failure">{t('simulateFailure')}</option></select></label>
       <p className="hint">{t('nextResultHint')}</p>
       <label>{t('accountEvent')}<select data-scenario="account-event" value={accountEvent} onChange={e => setAccountEvent(e.target.value)}>{['none', 'switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'].map(value => <option key={value} value={value}>{t(value)}</option>)}</select></label>

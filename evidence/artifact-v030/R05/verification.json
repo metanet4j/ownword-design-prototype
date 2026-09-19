@@ -1,0 +1,38 @@
+{
+  "feature": "R05",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "report": "批注体验审查-20260919-134718.md",
+  "browserSession": "v030-r05 (closed)",
+  "viewports": [
+    "1306x792",
+    "1306x1000",
+    "575x792",
+    "320x568"
+  ],
+  "normalAndBoundary": [
+    "create pending then blocked association",
+    "assigned 5-confirmation binding",
+    "history filter",
+    "unbound identity",
+    "multi-tab lock release and latest draft reload",
+    "content publication after navigation",
+    "icon help hover click Escape",
+    "scenario pointer dismissal",
+    "compact toast",
+    "public card front/back",
+    "reduced motion"
+  ],
+  "browserRuntimeErrors": 0,
+  "a11y": {
+    "violations": 0,
+    "mobileResultIncomplete": "one color-contrast item on back button; visually unobstructed, desktop check passes"
+  },
+  "pageResourceFailures": [],
+  "sourceChecks": "../../../../evidence/R05-init.txt",
+  "limits": [
+    "targeted browser verification, not all 33 BDD",
+    "no real wallet or production API",
+    "no device Safari"
+  ]
+}

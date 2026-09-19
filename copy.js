@@ -196,7 +196,7 @@ Object.assign(window.OwnwordCopy.zh, {
 Object.assign(window.OwnwordCopy.en, {
   "artifactReview": "Review your Artifact",
   "artifactReviewBody": "Confirm the content and the identity behind this transaction.",
-  "artifactDefaultBinding": "After creation, we will ask you to associate this Artifact with your current identity.",
+  "artifactDefaultBinding": "Once its number is assigned, you can authorize linking this Artifact to your current identity.",
   "artifactOldCurrent": "Your previous Current will become a historical association:",
   "artifactNoFees": "Yours Wallet and chain data. No transaction or fee is created.",
   "artifactEdit": "Back to edit",
@@ -225,7 +225,7 @@ Object.assign(window.OwnwordCopy.en, {
 Object.assign(window.OwnwordCopy.zh, {
   "artifactReview": "检查 Artifact",
   "artifactReviewBody": "确认本次交易的内容与操作身份。",
-  "artifactDefaultBinding": "创建完成后，将请求你授权把此 Artifact 关联到当前身份。",
+  "artifactDefaultBinding": "编号分配后，可授权将此 Artifact 关联到当前身份。",
   "artifactOldCurrent": "成功关联后，原数字 ID 将保留为历史关联：",
   "artifactNoFees": "模拟钱包与链上数据，不产生真实交易或费用。",
   "artifactEdit": "返回修改",
@@ -686,3 +686,28 @@ Object.assign(window.OwnwordCopy.zh,{
 
 Object.assign(window.OwnwordCopy.en,{draftManage:'Manage draft',startUsing:'Get started',switchWorkspace:'Switch workspace',identityNavDescription:'Profile and identifiers',artifactNavDescription:'Digital ID and assets',contentNavDescription:'Drafts and publications',appearanceLanguage:'Appearance & language',disconnectWallet:'Disconnect wallet',viewPublicIdentity:'View public profile',identityIdentifiers:'Identity identifiers',digitalIdNotSet:'Not linked',chooseDigitalId:'Set up a digital ID',reviewAssociation:'Review association'});
 Object.assign(window.OwnwordCopy.zh,{draftManage:'管理草稿',startUsing:'开始使用',switchWorkspace:'切换工作区',identityNavDescription:'资料与身份标识',artifactNavDescription:'数字 ID 与资产',contentNavDescription:'草稿与已发布内容',appearanceLanguage:'外观与语言',disconnectWallet:'断开钱包',viewPublicIdentity:'查看公开身份',identityIdentifiers:'身份标识',digitalIdNotSet:'尚未关联',chooseDigitalId:'设置数字 ID',reviewAssociation:'检查关联'});
+
+Object.assign(window.OwnwordCopy.en,{
+ 'artifactWriterTitle-checking':'Opening Artifact workspace','artifactWriterBody-checking':'Checking the editing session.',
+ 'artifactWriterTitle-busy':'Another tab is editing Artifacts','artifactWriterBody-busy':'Finish or leave the Artifact workspace in that tab. This page will resume automatically, keeping your drafts and transactions safe.',
+ 'artifactWriterTitle-unavailable':'Artifact editing is unavailable','artifactWriterBody-unavailable':'Open this prototype in a browser that supports coordinating tabs, then retry.',
+ 'artifactResult-create':'Artifact created','artifactResult-bind':'Digital ID updated','artifactResult-remove':'Association removed','artifactResult-transfer':'Transfer submitted',
+ artifactSigned:'Signed',artifactSubmitted:'Submitted to the network',artifactSubmissionMeaning:'The transaction was submitted to the network. This does not confirm inclusion in a block. The digital ID becomes stable after 6 confirmations of its inscription transaction; transfer confirmations are separate.',
+ artifactAwaitNumber:'Waiting for the inscription number. You can link this Artifact once its number is available.',artifactReadyToLink:'Your digital ID is ready to link.',
+ 'artifactEligibility-number-pending':'Wait for a verified inscription number before linking.',
+ 'artifactSelect-history':'Previously linked',artifactHistoryEmpty:'No previous associations.',artifactAssociationEmpty:'This Artifact does not currently identify a BAP identity.',
+ 'artifactNumber-pending':'Number pending','artifactNumber-resolving':'Resolving number',
+ 'writerBody-busy':'Finish or leave the content workspace in the other tab. This page will resume automatically.'
+});
+Object.assign(window.OwnwordCopy.zh,{
+ 'artifactWriterTitle-checking':'正在打开 Artifact 工作区','artifactWriterBody-checking':'正在检查编辑会话。',
+ 'artifactWriterTitle-busy':'另一页面正在操作 Artifact','artifactWriterBody-busy':'请在原页面完成操作或离开 Artifact 工作区。此页面会自动恢复，避免覆盖草稿和交易记录。',
+ 'artifactWriterTitle-unavailable':'暂时无法编辑 Artifact','artifactWriterBody-unavailable':'请使用支持页面协作的浏览器打开原型后重试。',
+ 'artifactResult-create':'Artifact 已创建','artifactResult-bind':'数字 ID 已更新','artifactResult-remove':'关联已移除','artifactResult-transfer':'转移已提交',
+ artifactSigned:'已签名',artifactSubmitted:'已提交到网络',artifactSubmissionMeaning:'交易已提交到网络，尚不代表已写入区块。数字 ID 在其铭文交易达到 6 个确认后稳定；转移交易的确认数单独计算。',
+ artifactAwaitNumber:'正在等待铭文编号，编号可用后即可关联为数字 ID。',artifactReadyToLink:'数字 ID 已可用，可以继续关联。',
+ 'artifactEligibility-number-pending':'编号确认后才可设为当前数字 ID。',
+ 'artifactSelect-history':'历史关联',artifactHistoryEmpty:'暂无历史关联。',artifactAssociationEmpty:'此 Artifact 当前不用于标识任何 BAP 身份。',
+ 'artifactNumber-pending':'编号待确认','artifactNumber-resolving':'编号解析中',
+ 'writerBody-busy':'请在另一页完成编辑或离开内容工作区，此页面会自动恢复。'
+});

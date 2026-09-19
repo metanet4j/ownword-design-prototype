@@ -24,6 +24,12 @@
   }
   const binding=(data,id)=>data.bindings.find(b=>b.assetId===id&&bindingState(data,b)==='valid');
   function eligible(asset,bapId) {return !asset.originValid?'origin-invalid':asset.ownershipCheck!=='verified'?'unverified':asset.owner!==ownerFor(bapId)?'not-owned':'';}
+  function bindingEligibility(asset,bapId) {return eligible(asset,bapId)||(['assigned','stable'].includes(numberState(asset))?'':'number-pending');}
+  function selectionAssets(data,bapId,filter='held') {
+    const rows=data.assets.filter(a=>filter==='history'?data.bindings.some(b=>b.assetId===a.id&&b.bapId===bapId&&b.state==='history'):a.owner===ownerFor(bapId));
+    const rank=a=>binding(data,a.id)?.bapId===bapId?0:bindingEligibility(a,bapId)?2:1;
+    return rows.sort((a,b)=>rank(a)-rank(b));
+  }
   function parseRoute(hash) {const [page,id]=hash.replace(/^#\//,'').split('/');try{return {page:['artifacts','artifact','artifact-create','artifact-select','artifact-review','artifact-operation','artifact-transfer','artifact-action','find','identity-view'].includes(page)?page:'artifacts',id:decodeURIComponent(id||'')};}catch{return {page:'artifact',id:'invalid'};}}
   function validateDraft(draft) {const length=[...draft.name.trim()].length;return length<1||length>100?'artifactNameError':'';}
   function validImageHeader(bytes,type) {
@@ -45,7 +51,7 @@
     if(!asset)return 'artifactNotFound';
     if(review.kind==='transfer'){const addressIssue=recipientIssue(review.recipient,review.network);if(addressIssue)return addressIssue;}
     if(review.kind==='remove')return current(data,review.bapId)?.assetId!==asset.id||review.bindingVersion!==bindingVersion(data,review.bapId)?'artifactReviewExpired':'';
-    const why=eligible(asset,review.bapId);if(why)return 'artifactEligibility-'+why;
+    const why=review.kind==='bind'?bindingEligibility(asset,review.bapId):eligible(asset,review.bapId);if(why)return 'artifactEligibility-'+why;
     if(review.outpoint!==asset.outpoint||review.bindingVersion!==bindingVersion(data,review.bapId))return 'artifactReviewExpired';
     if(review.kind==='bind'&&current(data,review.bapId)?.assetId===asset.id&&binding(data,asset.id)?.bapId===review.bapId)return 'artifactAlreadyCurrent';
     return '';
@@ -74,7 +80,7 @@
       next.bindings=next.bindings.map(b=>b.bapId===op.bapId&&b.assetId===assetId&&b.state==='current'?{...b,state:'history',removedBy:op.txid}:b);
       next.assets=next.assets.map(a=>a.id===assetId?{...a,transactions:[...a.transactions,record]}:a);
     }else if(op.kind==='bind'){
-      const asset=next.assets.find(a=>a.id===assetId);if(!asset||eligible(asset,op.bapId))throw Error('artifactReviewExpired');
+      const asset=next.assets.find(a=>a.id===assetId);if(!asset||bindingEligibility(asset,op.bapId))throw Error('artifactReviewExpired');
       next.bindings=next.bindings.map(b=>(b.bapId===op.bapId||next.assets.find(a=>a.id===b.assetId)?.origin===asset.origin)&&b.state==='current'?{...b,state:'history'}:b);
       next.bindings.unshift({id:op.id,assetId,bapId:op.bapId,state:'current',validity:'valid',txid:op.txid});
       next.assets=next.assets.map(a=>a.id===assetId?{...a,transactions:[...a.transactions,record]}:a);
@@ -143,6 +149,6 @@
     return {status:'found',assetId:asset.id,bapId:b?.bapId||null,associationState:bindingState(data,candidate)};
   }
   const historicalSignerFor=bapId=>['1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v','1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'][identities.indexOf(bapId)];
-  const api={historicalSignerFor,parseLookup,lookup,recipientIssue,reconcileOwnership,bindingState,factScenario,numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,parseRoute};
+  const api={historicalSignerFor,parseLookup,lookup,recipientIssue,reconcileOwnership,bindingState,factScenario,numberState,numberObservation,previewFixture,previewSafe,signerFor,pending,cleanDraft,bindingVersion,recover,conflict,reviewIssue,begin,replaceOperation,signatureResult,accept,validateDraft,validImageHeader,KEY,identities,addresses,tx,seed,load,save,ownerFor,current,binding,eligible,bindingEligibility,selectionAssets,parseRoute};
   if(typeof module!=='undefined')module.exports=api;else root.OwnwordArtifactModel=api;
 })(typeof window!=='undefined'?window:globalThis);
