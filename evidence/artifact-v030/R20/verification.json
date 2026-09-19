@@ -1,0 +1,14 @@
+{
+  "feature": "R20",
+  "result": "passed",
+  "checks": [
+    "按现有 package-lock 安装；未变更依赖版本；npm run build 和 npm run check 通过",
+    "回归覆盖相邻列表、嵌套列表、多段落、引用、表格、硬换行和行内强调；单词内部不插入空格",
+    "浏览器已发布列表摘要显示 Write something worth keeping. Read it once more.，分隔正常",
+    "浏览器运行错误为空"
+  ],
+  "screenshots": [
+    "summary.png"
+  ],
+  "build": "vendor/editor-tools.js 由源文件重新生成，未手改 bundle"
+}

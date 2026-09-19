@@ -10,3 +10,9 @@ assert.ok(result.html.includes('data-line=') && result.unsupported);
 assert.equal(renderMarkdown('```\n# fake\n```\n\n# Real').title, 'Real');
 assert.equal(source.includes('\r\n'), true);
 console.log('C03 Markdown structure, title and unsafe-content boundaries passed');
+
+assert.equal(renderMarkdown('# Title\n\n1. Keep your words.\n2. Make them count.').summary, 'Keep your words. Make them count.');
+assert.equal(renderMarkdown('- Parent\n  - Child\n\n    Second paragraph\n- Last').summary, 'Parent Child Second paragraph Last');
+assert.equal(renderMarkdown('> First\n>\n> Second\n\n| A | B |\n| - | - |\n| 1 | 2 |').summary, 'First Second A B 1 2');
+assert.equal(renderMarkdown('one**two**three and *four* five  \nsix').summary, 'onetwothree and four five six');
+console.log('R20 summaries separate blocks and hard breaks while preserving inline words');

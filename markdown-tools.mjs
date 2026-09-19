@@ -5,7 +5,8 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeSanitize from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
-const plain = node => node.type === 'image' ? node.alt || '' : node.children ? node.children.map(plain).join('') : node.value || '';
+const blockContainers = new Set(['root','list','listItem','blockquote','table','tableRow']);
+const plain = node => node.type === 'break' ? ' ' : node.type === 'image' ? node.alt || '' : node.children ? node.children.map(plain).join(blockContainers.has(node.type) ? ' ' : '') : node.value || '';
 const unsupported = node => ['image','imageReference','html','footnoteDefinition','footnoteReference'].includes(node.type) || (node.type === 'code' && ['mermaid','math','latex'].includes(node.lang));
 function textOnly() {
   return (tree, file) => {
