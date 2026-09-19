@@ -1,0 +1,20 @@
+{
+  "feature": "R17",
+  "result": "passed",
+  "checks": [
+    "使用绑定 S2.ActionMenu 和按钮、官方 ChevronDown 图标；移除 Heading 原生 select",
+    "鼠标选择、ArrowDown、End、Enter 执行、Escape 关闭及焦点恢复实测通过；Heading 2 正确生成 h2",
+    "320px 深浅色截图、JSX 和模型检查通过"
+  ],
+  "a11yCounts": {
+    "inapplicable": 53,
+    "incomplete": 1,
+    "passes": 36,
+    "violations": 0
+  },
+  "screenshots": [
+    "heading-menu.png",
+    "heading-dark.png"
+  ],
+  "source": "@react-spectrum/s2 1.6.0 src/ActionMenu.tsx 51：ActionButton + Menu；本地导入仅视觉封装，交互在 OwnWord 组件补充，不声明等同完整生产包。"
+}

@@ -90,7 +90,7 @@ function ContentEditor({draft, onChange, t, locale, actions, fileActions, savedS
     <div className="editor-topline"><div className="editor-title"><h1 tabIndex="-1">{OwnwordContentModel.title(draft.content) || t('contentUntitled')}</h1>{savedState}</div><div className="editor-actions"><div className="editor-files" ref={filesRef}><Button data-action="editor-files" aria-expanded={files} onClick={()=>setFiles(!files)}>{t('editorFiles')}<UiIcon name="ChevronDown"/></Button>{files&&<div className="editor-menu" role="group" aria-label={t('editorFiles')} onClick={()=>setFiles(false)}>{fileActions}</div>}</div>{actions}</div></div>
     <div className="editor-feedback" ref={feedbackRef} tabIndex="-1">{feedback}</div>
     <div className="editor-controls"><div className="editor-tools" role="group" aria-label={t('editorFormatting')}>
-      <label className="editor-heading-picker"><span className="sr-only">{t('editorHeading')}</span><select disabled={visualBlocked} aria-label={t('editorHeading')} value="" onChange={e => command(e.target.value)}><option value="" disabled>{t('editorHeading')}</option>{['h1','h2','h3'].map((v,i) => <option value={v} key={v}>{t('editorHeading')} {i+1}</option>)}</select></label>
+      <EditorHeadingMenu t={t} disabled={visualBlocked} onCommand={command}/>
       {['bold','italic','link'].map(key => <Button iconOnly key={key} variant="quiet" data-format={key} disabled={visualBlocked} aria-pressed={mode === 'visual' ? !!formats[key] : undefined} aria-label={t('editor-' + key)} onClick={() => command(key)}>{key === 'bold' ? <UiIcon name="TextBold"/> : key === 'italic' ? <UiIcon name="TextItalic"/> : <UiIcon name="Link"/>}</Button>)}
       <div className="editor-more" ref={menuRef}><Button variant="quiet" data-action="editor-more" disabled={visualBlocked} aria-expanded={more} onClick={() => setMore(!more)}>{t('editorMore')}</Button>{more && <div className="editor-menu" role="group" aria-label={t('editorMore')}>{[...(!wide ? ['link'] : []),'strike','quote','unordered','ordered','task','code','codeblock','table','rule','undo','redo','find'].map(key => <Button variant="quiet" key={key} data-format={key} onClick={() => command(key)}>{t('editor-' + key)}</Button>)}</div>}</div>
     </div><div className="editor-modes" role="group" aria-label={t('editorMode')}>{(wide ? ['visual','edit','split','preview'] : ['visual','edit','preview']).map(key => <Button key={key} variant="quiet" data-mode={key} aria-pressed={mode === key} onClick={() => setMode(key)}>{t('editor-' + key)}</Button>)}<ContextHelp label={t('editorModeHelp')}><p>{t('editorVisualHint')}</p></ContextHelp></div></div>
@@ -109,3 +109,22 @@ function ContentEditor({draft, onChange, t, locale, actions, fileActions, savedS
   </div>;
 }
 Object.assign(window, {ContentEditor, MarkdownBody});
+
+// Heading applies a command; compose the bound ActionMenu rather than a fake Picker.
+function EditorHeadingMenu({t,disabled,onCommand}) {
+  const [open,setOpen]=React.useState(false),host=React.useRef(null),initialIndex=React.useRef(0),id=React.useId();
+  useDismissable(open,()=>setOpen(false),host,'[data-action=editor-heading]');
+  React.useEffect(()=>{if(open)host.current.querySelectorAll('[role=menuitem]')[initialIndex.current]?.focus();},[open]);
+  React.useEffect(()=>{if(disabled)setOpen(false);},[disabled]);
+  function show(index=0){initialIndex.current=index;setOpen(true);}
+  function move(event,index){
+    const next=event.key==='ArrowDown'?(index+1)%3:event.key==='ArrowUp'?(index+2)%3:event.key==='Home'?0:event.key==='End'?2:null;
+    if(next===null)return;
+    event.preventDefault();host.current.querySelectorAll('[role=menuitem]')[next].focus();
+  }
+  const trigger=S2.ActionMenu({variant:'quiet',isDisabled:disabled});
+  return <div className="editor-heading-picker" ref={host}>
+    {React.cloneElement(trigger,{id,type:'button',disabled,'data-action':'editor-heading','aria-haspopup':'menu','aria-expanded':open,'aria-controls':open?id+'-menu':undefined,onClick:()=>open?setOpen(false):show(),onKeyDown:event=>{if(['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();show(event.key==='ArrowUp'?2:0);}}},<>{t('editorHeading')}<UiIcon name="ChevronDown"/></>)}
+    {open&&<div className="editor-menu" id={id+'-menu'} role="menu" aria-labelledby={id}>{['h1','h2','h3'].map((key,index)=><Button key={key} variant="quiet" role="menuitem" tabIndex={-1} onKeyDown={event=>move(event,index)} onClick={()=>{setOpen(false);onCommand(key);}}>{t('editorHeading')} {index+1}</Button>)}</div>}
+  </div>;
+}
