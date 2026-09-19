@@ -4,11 +4,13 @@
   "checks": [
     "Artifact 12 组模型、JSX、Token 检查通过；有效绑定判定保持严格",
     "320px 详情和选择器显示关联待核实、上次记录和时间，不出现空关联状态",
-    "点击重试后恢复有效关联；查询仍只接受有效 Binding"
+    "点击重试后恢复有效关联；查询仍只接受有效 Binding",
+    "中文最终复核：概览区域的可访问名称也显示“关联待核实”，不会仍被读作当前数字 ID；重试恢复"
   ],
   "screenshots": [
     "unverified-detail.png",
     "unverified-selector.png",
-    "recovered.png"
+    "recovered.png",
+    "unverified-zh.png"
   ]
 }
