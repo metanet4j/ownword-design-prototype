@@ -21,10 +21,12 @@ function Button({children, onClick, variant = 'secondary', className = '', iconO
   const layoutClasses = className.split(/\s+/).filter(name => name && !/^s2d-button(?:-|$)/.test(name));
   return React.cloneElement(base, {...props, className: [base.props.className, ...layoutClasses, iconOnly ? 'icon-button' : ''].filter(Boolean).join(' ')});
 }
-function Field({errorKey, id, label, value, onChange, multiline, error, required, maxLength, ...inputProps}) {
+function Field({errorKey, id, label, contextualHelp, value, onChange, multiline, error, required, maxLength, ...inputProps}) {
   const base = (multiline ? S2.TextArea : S2.TextField)({label, value: value || ' '});
   function wire(node) {
     if (!React.isValidElement(node)) return node;
+    // Keep contextual help beside the label, never inside a native label.
+    if (node.type === 'label') return <div className={node.props.className} onPointerDownCapture={e=>{if(!e.target.closest('button'))e.currentTarget.querySelector('input,textarea').dataset.pointerFocus='true';}} onBlurCapture={e=>{delete e.target.dataset.pointerFocus;}}><div className="field-label-row"><label htmlFor={id}>{label}</label>{contextualHelp}</div>{React.Children.map(React.Children.toArray(node.props.children).slice(1),wire)}</div>;
     if (node.type === 'button') return null;
     // The preview bundle adds a trailing action shell to every TextField.
     // A plain field has no such action; retain the field's own border instead.
@@ -164,7 +166,7 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
     <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button iconOnly variant="quiet" data-action="dismiss-toast" aria-label={t('close')} onClick={dismiss}><UiIcon name="Close"/></Button></div>
   </div>;
 }
-function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap', displayValue, className = ''}) {
+function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = ''}) {
   const [feedback, setFeedback] = React.useState('');
   const feedbackTimer = React.useRef(0);
   const announce = value => {
@@ -179,7 +181,7 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'cop
     catch {announce('copyFailed');}
   }
   return <div className={'identifier '+className+(feedback==='copyFailed'?' copy-failed':'')}>
-    <div className="identifier-top"><span className="eyebrow">{label}</span><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
+    <div className="identifier-top"><div className="field-label-row"><span className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
     <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={t(copyLabel)}>{t('copy')}</Button></div>
   </div>;
 }

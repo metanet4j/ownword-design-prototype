@@ -713,10 +713,10 @@ Object.assign(window.OwnwordCopy.zh,{
 });
 
 Object.assign(window.OwnwordCopy.en,{
- artifactCurrentId:'Current digital ID',artifactChooseFromWallet:'Choose an Artifact from your wallet to link a digital ID.',artifactNoOtherAssets:'No other Artifacts in this wallet.',artifactOwnership:'Ownership & display name',
+ artifactRecords:'Artifact details','artifactTab-content':'Content','artifactTab-ownership':'Ownership','artifactTab-proof':'Proof','artifactTab-history':'History',artifactCurrentId:'Current digital ID',artifactChooseFromWallet:'Choose an Artifact from your wallet to link a digital ID.',artifactNoOtherAssets:'No other Artifacts in this wallet.',artifactOwnership:'Ownership & display name',
  'artifactHistory-replaced':'Replaced as current digital ID','artifactHistory-removed':'Association removed','artifactHistory-transferred':'Association ended after transfer','artifactHistory-ended':'Association ended',artifactHistoryReplacement:'Replaced by',artifactHistoryTimeUnknown:'End time not recorded'
 });
 Object.assign(window.OwnwordCopy.zh,{
- artifactCurrentId:'当前数字 ID',artifactChooseFromWallet:'从钱包中选择 Artifact，关联你的数字 ID。',artifactNoOtherAssets:'钱包中没有其他 Artifact。',artifactOwnership:'持有与展示信息',
+ artifactRecords:'Artifact 详情','artifactTab-content':'内容','artifactTab-ownership':'持有','artifactTab-proof':'凭证','artifactTab-history':'历史',artifactCurrentId:'当前数字 ID',artifactChooseFromWallet:'从钱包中选择 Artifact，关联你的数字 ID。',artifactNoOtherAssets:'钱包中没有其他 Artifact。',artifactOwnership:'持有与展示信息',
  'artifactHistory-replaced':'已更换数字 ID','artifactHistory-removed':'已移除关联','artifactHistory-transferred':'转出后关联结束','artifactHistory-ended':'关联已结束',artifactHistoryReplacement:'更换为',artifactHistoryTimeUnknown:'未记录结束时间'
 });

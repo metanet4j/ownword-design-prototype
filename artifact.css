@@ -239,15 +239,10 @@
 .artifact-detail-overview .artifact-association{gap:var(--s2-spacing-200);}
 .artifact-association .artifact-detail-actions{margin-top:var(--s2-spacing-200);}
 .artifact-detail-actions{display:grid;justify-items:start;gap:var(--s2-spacing-200);}
-.artifact-records{display:grid;gap:0;}
-.artifact-records .artifact-proof:last-child{border-bottom:1px solid var(--s2d-border);}
-.artifact-records .artifact-proof>summary{display:flex;align-items:center;gap:var(--s2-spacing-200);min-height:56px;padding:var(--s2-spacing-200) 0;list-style:none;font-size:var(--s2-font-size-200);font-weight:600;}
-.artifact-records .artifact-proof>summary::-webkit-details-marker{display:none;}
-.artifact-records .artifact-proof>summary .ui-icon{transition:transform var(--s2d-duration-default);color:var(--s2d-text-muted);}
-.artifact-records .artifact-proof[open]>summary .ui-icon{transform:rotate(90deg);}
-.artifact-records .artifact-proof>summary:focus-visible{outline:2px solid var(--s2d-focus);outline-offset:2px;}
-.artifact-records .artifact-proof>summary .hint{margin-left:auto;font-weight:400;}
-.artifact-records .artifact-facts,.artifact-records .artifact-proof-body,.artifact-records .artifact-history-list{padding:0 0 var(--s2-spacing-400) var(--s2-spacing-400);}
+.artifact-records{display:grid;gap:var(--s2-spacing-300);}
+.artifact-record-panel{width:100%;min-width:0;padding:var(--s2-spacing-400);gap:var(--s2-spacing-200);}
+.artifact-record-panel>h2{font-size:var(--s2-font-size-300);font-weight:600;}
+.artifact-record-panel .artifact-proof-body{padding-top:0;}
 .artifact-records .artifact-facts dl{grid-template-columns:repeat(2,minmax(0,1fr));padding-block:var(--s2-spacing-200);}
 .artifact-records .artifact-facts .identifier{margin-block:var(--s2-spacing-200);}
 .artifact-records .artifact-detail-actions{margin-top:var(--s2-spacing-300);}
@@ -276,4 +271,3 @@
  .artifact-history-list>li{gap:var(--s2-spacing-200);}
  .artifact-history-marker{display:none;}
 }
-@media(prefers-reduced-motion:reduce){.artifact-records summary .ui-icon{transition:none;}}

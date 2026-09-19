@@ -1,0 +1,180 @@
+{
+  "feature": "R10",
+  "date": "2026-09-19",
+  "status": "implemented-and-verified",
+  "sources": {
+    "field": "reference/react-spectrum-main/react-spectrum-main/packages/@react-spectrum/s2/src/Field.tsx:201-224",
+    "facade": "_ds/react-spectrum-s2/_ds_bundle.js 与 components/components.css；Tabs 是固定 Design/Code 样例，焦点原引用不存在的 --s2-focus-ring-color 后退到 accent。",
+    "officialVersion": "@react-spectrum/s2 1.6.0",
+    "tabs": "reference/react-spectrum-main/react-spectrum-main/packages/@react-spectrum/s2/src/Tabs.tsx:350-430",
+    "focus": "reference/react-spectrum-main/react-spectrum-main/packages/@react-spectrum/s2/style/index.ts:78-93 与 style/spectrum-theme.ts:822"
+  },
+  "changes": [
+    "共用 Field 在鼠标点击时使用中性聚焦边框，键盘输入保留 S2 focus-indicator-color；不移除键盘焦点。",
+    "ContextualHelp 放到字段标签、操作标题或签名 BAP ID 旁；不把交互按钮嵌入原生 label；帮助正文不继承字段标签粗体。",
+    "详情使用绑定 Tabs 外观与 Card，补充方向键、Home/End、焦点顺序、面板隐藏和关联语义；四个标签保留全部内容及操作。",
+    "移除详情原折叠区失效 CSS；布局和缺失状态补在 OwnWord 适配层，未修改生成的 S2 文件。",
+    "入口资源版本更新，刷新加载一致的代码和文案。"
+  ],
+  "browser": {
+    "darkPointer": {
+      "border": "2px solid rgb(242, 242, 242)",
+      "outline": "none"
+    },
+    "error": {
+      "describedBy": "artifact-recipient-error",
+      "invalid": "true",
+      "text": "Enter a BSV Mainnet sample address, not a BAP ID or inscription number."
+    },
+    "finalTabs": {
+      "history": "关联历史已更换数字 IDAn earlier chapter · 更换为: A place to standMaya Chen2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD2026年9月17日 GMT+8 17:20",
+      "keyboardPanelFocus": true,
+      "pageOverflow": 0,
+      "panelsAreDivs": true,
+      "selected": "内容"
+    },
+    "helpEscape": {
+      "closed": true,
+      "focus": "地址要求"
+    },
+    "keyboard": {
+      "border": "2px solid rgb(19, 19, 19)",
+      "focused": true,
+      "outline": "rgb(75, 117, 255) solid 2px"
+    },
+    "mobileHelp": {
+      "atLabel": true,
+      "bottom": 629.75,
+      "fieldLabel": "接收地址",
+      "fontWeight": "400",
+      "left": 16,
+      "right": 304,
+      "top": 437.5625,
+      "viewport": {
+        "height": 760,
+        "width": 320
+      }
+    },
+    "mobileTabs": {
+      "pageOverflow": 0,
+      "scrollWidth": 288,
+      "width": 288
+    },
+    "pointer": {
+      "border": "2px solid rgb(19, 19, 19)",
+      "outline": "rgb(41, 41, 41) none 3px"
+    },
+    "refreshPreservesTab": true,
+    "review": {
+      "helpAtHeading": true,
+      "recipient": true
+    },
+    "tabs": [
+      {
+        "focused": true,
+        "linked": true,
+        "overflow": 0,
+        "selected": "Ownership",
+        "step": "ArrowRight",
+        "tabStops": 1,
+        "visiblePanels": 1
+      },
+      {
+        "focused": true,
+        "linked": true,
+        "overflow": 0,
+        "selected": "Proof",
+        "step": "ArrowRight to Proof",
+        "tabStops": 1,
+        "visiblePanels": 1
+      },
+      {
+        "focused": true,
+        "linked": true,
+        "overflow": 0,
+        "selected": "History",
+        "step": "End to History",
+        "tabStops": 1,
+        "visiblePanels": 1
+      },
+      {
+        "focused": true,
+        "linked": true,
+        "overflow": 0,
+        "selected": "Content",
+        "step": "Home to Content",
+        "tabStops": 1,
+        "visiblePanels": 1
+      },
+      {
+        "focused": true,
+        "linked": true,
+        "overflow": 0,
+        "selected": "History",
+        "step": "ArrowLeft wraps to History",
+        "tabStops": 1,
+        "visiblePanels": 1
+      },
+      {
+        "focused": false,
+        "linked": true,
+        "overflow": 0,
+        "selected": "Content",
+        "step": "320px Content",
+        "tabStops": 1,
+        "visiblePanels": 1
+      }
+    ]
+  },
+  "a11y": [
+    {
+      "counts": {
+        "inapplicable": 64,
+        "incomplete": 0,
+        "passes": 24,
+        "violations": 0
+      },
+      "file": "mobile-a11y.json"
+    },
+    {
+      "counts": {
+        "inapplicable": 64,
+        "incomplete": 0,
+        "passes": 24,
+        "violations": 0
+      },
+      "file": "transfer-a11y.json"
+    }
+  ],
+  "runtimeErrors": 0,
+  "startup": {
+    "log": "../evidence/R10-init.txt",
+    "exitCode": 0,
+    "command": "./init.ps1"
+  },
+  "screenshots": [
+    "after-detail-content.png",
+    "after-detail-proof.png",
+    "after-mobile-content.png",
+    "after-mobile-dark.png",
+    "after-mobile-help.png",
+    "after-mobile-ownership.png",
+    "after-mobile-transfer.png",
+    "after-transfer-error.png",
+    "after-transfer-keyboard.png",
+    "after-transfer-pointer.png",
+    "before-transfer.png"
+  ],
+  "verificationNotes": [
+    "正常路径：转移页点击地址输入、键盘进入、空地址错误、帮助中选择样例并进入转移确认；没有执行签名或广播。",
+    "边界：320px 英文四标签不溢出；中文深色字段、帮助与 Tab 面板；帮助 Escape 关闭且焦点返回。",
+    "方向键、Home/End、Tab 进入面板、仅一个活动标签和可见面板、刷新保留选择、历史内容与持有页转移入口均验证。",
+    "初次无障碍检查发现 article 不适合 tabpanel 角色，已改为面板容器内使用 Card，重跑两页扫描均 0 违规、0 incomplete。",
+    "日志中 /tokens、/components、/guidelines 的根路径 404 是已在 R08 验证的 agent-browser a11y 附加请求；不属于页面实际 CSS 导入。"
+  ],
+  "limits": [
+    "仅针对本轮受影响界面和相关边界检查，不是全站回归。",
+    "S2 生成消费副本仍是轻量原型封装，未宣称具备完整官方生产组件能力。",
+    "等待用户视觉复核。"
+  ]
+}

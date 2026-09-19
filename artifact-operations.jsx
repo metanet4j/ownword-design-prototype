@@ -49,7 +49,7 @@ function ArtifactActionReview({review,data,t,failCopy,onSign,onBack,issue}) {
   const previous=data.assets.find(a=>a.id===OwnwordArtifactModel.current(data,review?.bapId)?.assetId);
   if(!review||!asset)return <section className="artifact-page"><ArtifactBack t={t} onClick={onBack}/><h1 tabIndex="-1">{t('reviewExpired')}</h1></section>;
   return <section className="artifact-page" data-artifact-screen="action-review">
-    <div className="page-heading"><h1 tabIndex="-1">{t('artifactReview-'+review.kind)}</h1></div>
+    <div className="page-heading title-with-help"><h1 tabIndex="-1">{t('artifactReview-'+review.kind)}</h1><ContextHelp label={t(review.kind==='bind'?'artifactAssociationHelp':'artifactActionHelp')}><p>{t('artifactImpact-'+review.kind)}</p>{review.kind==='bind'&&previous&&previous.id!==asset.id&&<p>{t('artifactOldCurrent')} {previous.name}</p>}<p>{t('artifactSignatureScope')}</p></ContextHelp></div>
     <div className={'artifact-compose-grid'+(asset.content.kind==='brand'?' artifact-compose-default':'')}>
       {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} large t={t}/>}
       <div className="artifact-review-copy"><NumberStatus asset={asset} t={t}/><h2>{asset.name}</h2>
@@ -57,7 +57,7 @@ function ArtifactActionReview({review,data,t,failCopy,onSign,onBack,issue}) {
         <Identifier id={review.bapId} t={t} failCopy={failCopy}/>
         {review.kind==='bind'&&previous&&previous.id!==asset.id&&<div className="artifact-replacement"><span>{t('artifactReplacing')}</span><strong>{previous.number??previous.name}</strong></div>}
         {review.kind==='remove'&&<p>{t('artifactRemoveConsequence')}</p>}
-        <ContextHelp label={t(review.kind==='bind'?'artifactAssociationHelp':'artifactActionHelp')}><p>{t('artifactImpact-'+review.kind)}</p>{review.kind==='bind'&&previous&&previous.id!==asset.id&&<p>{t('artifactOldCurrent')} {previous.name}</p>}<p>{t('artifactSignatureScope')}</p></ContextHelp>
+
         <details className="artifact-proof artifact-review-details"><summary>{t('artifactTransactionDetails')}</summary><div className="artifact-proof-body"><Identifier id={asset.id} label="Inscription ID" copyLabel="artifactCopyFull" target="review-inscription" t={t} failCopy={failCopy}/>{review.kind==='transfer'&&<Identifier id={review.outpoint} label="Current Outpoint" copyLabel="artifactCopyFull" target="review-output" t={t} failCopy={failCopy}/>}</div></details>
         {issue&&<p className="field-error" role="alert">{t(issue)}</p>}<div className="action-row"><Button onClick={onBack}>{t('back')}</Button><Button variant="accent" data-action="artifact-action-sign" onClick={onSign}>{t('artifactSign-'+review.kind)}</Button></div>
       </div>
@@ -85,7 +85,7 @@ function ArtifactOperation({op,data,t,failCopy,operations,onBind,onReview,onOpen
       <div className="action-row operation-actions">{op.phase==='unknown'?<Button variant="accent" onClick={()=>operations.query(op.id)}>{t('artifactQueryOperation')}</Button>:accepted&&op.kind==='create'&&canBind?<Button variant="accent" onClick={()=>onBind(op.assetId)}>{t('artifactContinueBinding')}</Button>:['failed','cancelled'].includes(op.phase)?<Button variant="accent" onClick={()=>onReview(op)}>{t('artifactReviewAgain')}</Button>:null}{asset&&<Button variant={accepted&&!(op.kind==='create'&&canBind)?'accent':'secondary'} onClick={()=>onOpen(asset.id)}>{t('artifactView')}</Button>}</div>
       <details className="artifact-proof operation-record"><summary>{t('artifactTransactionDetails')}</summary><div className="artifact-proof-body"><Identifier id={op.bapId} t={t} failCopy={failCopy}/>{accepted&&<Identifier id={op.txid} label="Transaction ID" copyLabel="artifactCopyFull" target="operation-tx" t={t} failCopy={failCopy}/>}</div></details>
     </div>
-    {op.phase==='authorize'&&<Modal title={t('artifactAuthorize')} context={t('walletAuthorization')} closeLabel={t('cancel')} onCancel={()=>operations.cancel(op.id)}><p>{t('artifactKind-'+op.kind)}</p><Identifier id={op.bapId} t={t} failCopy={failCopy}/><ContextHelp label={t('artifactSignatureHelp')}><p>{t('artifactSignatureScope')}</p></ContextHelp><div className="action-row"><Button data-action="artifact-cancel" onClick={()=>operations.cancel(op.id)}>{t('cancel')}</Button><Button variant="accent" data-action="artifact-approve" onClick={()=>operations.approve(op.id)}>{t('approve')}</Button></div></Modal>}
+    {op.phase==='authorize'&&<Modal title={t('artifactAuthorize')} context={t('walletAuthorization')} closeLabel={t('cancel')} onCancel={()=>operations.cancel(op.id)}><p>{t('artifactKind-'+op.kind)}</p><Identifier id={op.bapId} t={t} failCopy={failCopy} contextualHelp={<ContextHelp label={t('artifactSignatureHelp')}><p>{t('artifactSignatureScope')}</p></ContextHelp>}/><div className="action-row"><Button data-action="artifact-cancel" onClick={()=>operations.cancel(op.id)}>{t('cancel')}</Button><Button variant="accent" data-action="artifact-approve" onClick={()=>operations.approve(op.id)}>{t('approve')}</Button></div></Modal>}
   </section>;
 }
 

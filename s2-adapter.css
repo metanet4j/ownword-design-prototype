@@ -1,11 +1,24 @@
 /* Prototype bridge for the pinned S2 bundle. No palette or component skin.
-   The bundle owns default buttons, fields, cards and focus rings.
+   The bundle owns default buttons, fields and cards.
    Keep only touch geometry, asset rendering and missing state support here. */
 .app :is(.s2d-button, .s2d-field input, .s2d-field textarea, select) {
   min-height: max(44px, var(--s2d-control-height));
 }
 .app .s2d-button { min-width: 44px; gap: var(--s2-spacing-100); }
 .app .icon-button { width: max(44px, var(--s2d-control-height)); flex-shrink: 0; padding: 0; }
+/* S2 Field.tsx: neutral focused border; style/index.ts: separate focus ring.
+   The facade references a missing focus-ring token and lacks pointer modality. */
+.app { --s2d-focus: var(--s2-focus-indicator-color); }
+.s2d-field :is(input, textarea):focus { border-color: var(--s2-gray-900); }
+.s2d-field :is(input, textarea)[data-pointer-focus="true"]:focus { outline: none; }
+.field-label-row { display: flex; align-items: center; gap: var(--s2-spacing-50); }
+.field-label-row label { cursor: text; }
+/* Wire the preview Tabs to S2's neutral 2px selection indicator (Tabs.tsx). */
+.app .s2d-tabs { min-width: 0; }
+.app .s2d-tabs > [role="tablist"] { gap: var(--s2-spacing-200); overflow-x: auto; padding: var(--s2-spacing-50); }
+.app .s2d-tabs [role="tab"] { min-height: 48px; flex-shrink: 0; border-bottom-width: 2px; font-size: var(--s2-font-size-100); cursor: pointer; }
+.app .s2d-tabs [role="tab"][aria-selected="true"] { border-color: var(--s2-gray-900); }
+.app [role="tabpanel"][hidden] { display: none; }
 .ui-icon {
   display: inline-block;
   width: var(--s2-workflow-icon-size-100);
@@ -18,7 +31,7 @@
 }
 /* Native controls retained where the preview bundle has no functional widget. */
 .app select { max-width: 100%; font: inherit; color: inherit; }
-:where(button:not(.s2d-button), a, select, summary, input:not(.s2d-field input)):focus-visible {
+:where(button:not(.s2d-button), a, select, summary, [role="tabpanel"], input:not(.s2d-field input)):focus-visible {
   outline: var(--s2-focus-indicator-thickness) solid var(--s2d-focus);
   outline-offset: var(--s2-focus-indicator-gap);
 }
