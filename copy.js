@@ -671,8 +671,8 @@ Object.assign(window.OwnwordCopy.zh,{
 Object.assign(window.OwnwordCopy.en,{artifactSignatureScope:"Each transaction requires a signature from the BAP identity key effective at that transaction. "});
 Object.assign(window.OwnwordCopy.zh,{artifactSignatureScope:"每笔交易均须使用当时有效的 BAP 身份签名密钥。"});
 
-Object.assign(window.OwnwordCopy.en,{navigationMenu:'Menu',navigationLabel:'Main navigation',artifactCurrent:'Current',artifactAssociatedTitle:'Associated identity',artifactSelectEyebrow:'Current digital ID',artifactLocale:'en-US'});
-Object.assign(window.OwnwordCopy.zh,{navigationMenu:'菜单',navigationLabel:'主导航',artifactCurrent:'当前使用',artifactAssociatedTitle:'关联身份',artifactSelectEyebrow:'当前数字 ID',artifactLocale:'zh-CN'});
+Object.assign(window.OwnwordCopy.en,{navigationLabel:'Main navigation',artifactCurrent:'Current',artifactAssociatedTitle:'Associated identity',artifactSelectEyebrow:'Current digital ID',artifactLocale:'en-US'});
+Object.assign(window.OwnwordCopy.zh,{navigationLabel:'主导航',artifactCurrent:'当前使用',artifactAssociatedTitle:'关联身份',artifactSelectEyebrow:'当前数字 ID',artifactLocale:'zh-CN'});
 
 Object.assign(window.OwnwordCopy.en,{artifactTransferPendingTitle:'Transfer received',artifactTransferVerifiedTitle:'Transfer verified'});
 Object.assign(window.OwnwordCopy.zh,{artifactTransferPendingTitle:'转移已接收',artifactTransferVerifiedTitle:'转移已核实'});
@@ -683,3 +683,6 @@ Object.assign(window.OwnwordCopy.en,{
 Object.assign(window.OwnwordCopy.zh,{
   artifactAssociationHelp:'关联说明',artifactActionHelp:'操作说明',artifactSignatureHelp:'签名说明',artifactConfirmationHelp:'确认说明',artifactTransactionDetails:'交易详情',artifactReplacing:'替换当前数字 ID',artifactTransferConsequence:'转移后，此 Artifact 将由接收方控制。',artifactRemoveConsequence:'移除后，此数字 ID 将不再指向你的身份。',artifactCreationHelp:'创建说明',artifactAddressHelp:'地址要求',artifactTransferHelp:'转移说明'
 });
+
+Object.assign(window.OwnwordCopy.en,{draftManage:'Manage draft',startUsing:'Get started',switchWorkspace:'Switch workspace',identityNavDescription:'Profile and identifiers',artifactNavDescription:'Digital ID and assets',contentNavDescription:'Drafts and publications',appearanceLanguage:'Appearance & language',disconnectWallet:'Disconnect wallet',viewPublicIdentity:'View public profile',identityIdentifiers:'Identity identifiers',digitalIdNotSet:'Not linked',chooseDigitalId:'Set up a digital ID',reviewAssociation:'Review association'});
+Object.assign(window.OwnwordCopy.zh,{draftManage:'管理草稿',startUsing:'开始使用',switchWorkspace:'切换工作区',identityNavDescription:'资料与身份标识',artifactNavDescription:'数字 ID 与资产',contentNavDescription:'草稿与已发布内容',appearanceLanguage:'外观与语言',disconnectWallet:'断开钱包',viewPublicIdentity:'查看公开身份',identityIdentifiers:'身份标识',digitalIdNotSet:'尚未关联',chooseDigitalId:'设置数字 ID',reviewAssociation:'检查关联'});

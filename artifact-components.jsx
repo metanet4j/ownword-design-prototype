@@ -19,7 +19,10 @@ function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false}) {
 }
 function ArtifactSummary({data,bapId,t,onManage,onOpen}) {
   const b=OwnwordArtifactModel.current(data,bapId),asset=data.assets.find(a=>a.id===b?.assetId),validity=OwnwordArtifactModel.bindingState(data,b);
-  return <section className="artifact-summary" aria-label={t('digitalId')}><div>{asset&&validity!=='valid'?<><p className="eyebrow">{t('digitalId')}</p><h3>{t(validity==='unverified'?'artifactAssociationUnverified':'artifactAssociationInvalid')}</h3><p className="hint">{t('artifactBinding-'+validity)}</p></>:asset?<NumberStatus asset={asset} t={t} compact/>:<><p className="eyebrow">{t('digitalId')}</p><h3>{t('artifactOptional')}</h3><p className="hint">{t('artifactOptionalBody')}</p></>}</div><div className="action-row">{asset&&<Button onClick={()=>onOpen(asset.id)}>{t('artifactView')}</Button>}<Button onClick={onManage}>{t('artifactManage')}</Button></div></section>;
+  return <section className="artifact-summary" aria-label={t('digitalId')}>
+    {asset&&validity==='valid'?<NumberStatus asset={asset} t={t} compact/>:<div className="artifact-summary-empty"><p className="eyebrow">{t('digitalId')}</p><p className="artifact-summary-state">{t(asset?(validity==='unverified'?'artifactAssociationUnverified':'artifactAssociationInvalid'):'digitalIdNotSet')}</p></div>}
+    <Button variant="quiet" onClick={()=>asset?onOpen(asset.id):onManage()}>{t(asset?(validity==='valid'?'artifactView':'reviewAssociation'):'chooseDigitalId')}<span className="workspace-chevron right" aria-hidden="true"/></Button>
+  </section>;
 }
 function ArtifactCard({asset,data,bapId,t,onOpen,children}) {
   const b=OwnwordArtifactModel.binding(data,asset.id),isCurrent=b?.bapId===bapId;

@@ -1,0 +1,61 @@
+{
+  "feature": "R04",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "report": "模块结构审查-20260919-080958.md",
+  "scope": [
+    "module navigation",
+    "identity composition",
+    "neutral borders",
+    "current and empty or invalid digital ID",
+    "profile and Artifact dirty navigation"
+  ],
+  "viewports": [
+    [
+      320,
+      568
+    ],
+    [
+      575,
+      792
+    ],
+    [
+      1440,
+      1000
+    ]
+  ],
+  "representativeThemes": [
+    "zh-dark",
+    "en-light"
+  ],
+  "automatedRegression": "regression-check.txt",
+  "a11y": {
+    "identityDesktop": {
+      "passes": 37,
+      "violations": 0,
+      "incomplete": 0
+    },
+    "identityMobile": {
+      "passes": 37,
+      "violations": 0,
+      "incomplete": 0
+    },
+    "navigationControls": {
+      "passes": 10,
+      "violations": 0,
+      "incomplete": 0
+    },
+    "pageWithNavigationOpen": {
+      "violations": 0,
+      "incomplete": 1,
+      "reason": "Contrast of covered background controls cannot be determined; inspected separately with navigation closed."
+    }
+  },
+  "browserErrors": 0,
+  "startupCheck": "../../../../evidence/R04-init.txt",
+  "limitations": [
+    "Not all browser BDD rerun",
+    "No real wallet or production APIs",
+    "No physical Safari or touch device validation"
+  ]
+}

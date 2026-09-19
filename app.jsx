@@ -9,7 +9,7 @@ function App() {
   const [scenario, setScenario] = React.useState('existing');
   const contentRef = React.useRef(null);
   const artifactRef = React.useRef(null);
-  const pendingArtifactNavigation=React.useRef(null);
+  const pendingWorkspaceNavigation=React.useRef(null);
   const artifactStore = useArtifactStore();
   const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [lab, setLab] = React.useState(false);
@@ -81,8 +81,9 @@ function App() {
     activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);
   }, []);
   React.useEffect(()=>{if(!state.busy&&/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))dispatch({type:'GO',page:'artifacts'});},[state.busy,state.wallet,state.published]);
-  function openArtifacts(page='artifacts',id='') {closeNavigation();const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingArtifactNavigation.current=action;dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
-  React.useEffect(()=>{if(!state.modal&&pendingArtifactNavigation.current){const action=pendingArtifactNavigation.current;pendingArtifactNavigation.current=null;if(state.page==='artifacts')action();}},[state.modal,state.page]);
+  function openArtifacts(page='artifacts',id='') {closeNavigation();const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'artifacts'};dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
+  React.useEffect(()=>{if(!state.modal&&pendingWorkspaceNavigation.current){const pending=pendingWorkspaceNavigation.current;pendingWorkspaceNavigation.current=null;if(state.page===pending.page)pending.action();}},[state.modal,state.page]);
+  function openContent(){closeNavigation();const action=()=>contentRef.current?.go('content');if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'content'};dispatch({type:'DISCARD_ASK',page:'content'});return;}if(state.page==='artifacts')artifactRef.current?.leave(action);else action();}
   function navigate(page) {
     closeNavigation();
     if(state.page==='artifacts'){artifactRef.current?.leave(()=>{history.pushState(null,'',location.pathname+location.search);dispatch({type:'GO',page});});return;}
@@ -147,6 +148,7 @@ function App() {
     } catch {URL.revokeObjectURL(url); setImageError('invalidImage');}
   }
   function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
+  const currentModule = state.page==='content'?'myContent':state.page==='artifacts'?(location.hash.startsWith('#/find')?'artifactFind':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
   const profileDisplay = state.page === 'identity' || state.page === 'public' ? state.profile : state.draft;
   const toastError = state.page !== 'resolve-error' ? state.error : '';
@@ -157,20 +159,25 @@ function App() {
     ? {type: 'CONNECT'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
   return <div className={`app page-${state.page}`} onPointerDown={e => {if (!e.target.closest('button, input, textarea, select, a, .identity-object')) window.dispatchEvent(new Event('ownword-vault'));}}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
-    <header className="topbar" ref={navigationRef}>
+    <header className="topbar">
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
-      <Button variant="secondary" id="navigation-toggle" className="s2d-button mobile-nav-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}}>{t(menuOpen?'close':'navigationMenu')}</Button>
-      <nav id="primary-navigation" aria-label={t('navigationLabel')} className={'topnav'+(menuOpen?' is-open':'')}><Button variant="quiet" data-action="nav-find" aria-current={state.page==='artifacts'&&location.hash.startsWith('#/find')?'page':undefined} onClick={()=>openArtifacts('find')}>{t('artifactFind')}</Button>
-        {state.wallet&&state.published&&<Button variant="quiet" data-action="nav-artifacts" aria-current={state.page==='artifacts'&&!location.hash.startsWith('#/find')?'page':undefined} onClick={()=>openArtifacts()}>{t('myArtifacts')}</Button>}
-        {state.wallet && state.published && <Button variant="quiet" data-action="nav-content" aria-current={state.page === 'content' ? 'page' : undefined} onClick={() => {closeNavigation();state.page==='artifacts'?artifactRef.current?.leave(()=>contentRef.current?.go('content')):contentRef.current?.go('content');}}>{t('myContent')}</Button>}
-        {state.wallet && state.published && <Button variant="quiet" data-action="nav-identity" aria-current={state.page === 'identity' ? 'page' : undefined} onClick={() => navigate('identity')}>{t('myIdentity')}</Button>}
-        <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs} aria-controls="preferences-panel">{locale === 'en' ? 'EN' : '中文'}<span className="pref-separator" aria-hidden="true">/</span>{t(theme)}</Button>
+      <div className="workspace-switcher" ref={navigationRef}>
+      <Button variant="quiet" id="navigation-toggle" className="s2d-button workspace-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={t('switchWorkspace')+' · '+t(currentModule)} onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}} onKeyDown={e=>{if(e.key==='ArrowDown'){e.preventDefault();setMenuOpen(true);requestAnimationFrame(()=>navigationRef.current?.querySelector('nav button')?.focus());}}}>{t(currentModule)}<span className="workspace-chevron" aria-hidden="true"/></Button>
+      {menuOpen&&<nav id="primary-navigation" aria-label={t('navigationLabel')} className="topnav is-open" onKeyDown={e=>{if(e.target.closest('.preferences'))return;if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;const items=[...e.currentTarget.querySelectorAll('button')].filter(el=>el.getClientRects().length);const i=items.indexOf(document.activeElement);e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length]?.focus();}}>
+        {state.wallet&&state.published&&<div className="workspace-destinations">
+          <Button variant="quiet" data-action="nav-identity" aria-current={currentModule==='myIdentity'?'page':undefined} onClick={()=>navigate('identity')}>{t('myIdentity')}<span>{t('identityNavDescription')}</span></Button>
+          <Button variant="quiet" data-action="nav-artifacts" aria-current={currentModule==='myArtifacts'?'page':undefined} onClick={()=>openArtifacts()}>{t('myArtifacts')}<span>{t('artifactNavDescription')}</span></Button>
+          <Button variant="quiet" data-action="nav-content" aria-current={currentModule==='myContent'?'page':undefined} onClick={openContent}>{t('myContent')}<span>{t('contentNavDescription')}</span></Button>
+        </div>}
+        <Button variant="quiet" data-action="nav-find" aria-current={currentModule==='artifactFind'?'page':undefined} onClick={()=>openArtifacts('find')}>{t('artifactFind')}</Button>
+        <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" onClick={() => setPrefs(!prefs)} aria-expanded={prefs} aria-controls="preferences-panel">{t('appearanceLanguage')}<span className="workspace-preference-value">{locale==='en'?'EN':'中文'} / {t(theme)}</span></Button>
           {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
         </div>
-        {state.wallet && <Button data-action="disconnect" onClick={disconnect}>{t('disconnect')}</Button>}
-      </nav>
+        {state.wallet && <Button data-action="disconnect" onClick={disconnect}>{t('disconnectWallet')}</Button>}
+      </nav>}
+      </div>
     </header>
-    {state.page!=='artifacts'&&<Dome label={t('domeLabel')} />}
+    {state.page==='welcome'&&<Dome label={t('domeLabel')} />}
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
       <ArtifactWorkspace onAccountEvent={action=>{if(action==='switch')switchAccount(true);else disconnect(true);}} connected={state.wallet} ref={artifactRef} active={state.page==='artifacts'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile}:null} locale={locale} t={t} store={artifactStore} onConnect={()=>dispatch({type:'CONNECT'})} onIdentity={()=>navigate(state.wallet?(state.published&&!state.incomplete?'identity':'setup'):'welcome')} failCopy={failCopy}/>
       <ContentWorkspace onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
@@ -211,16 +218,17 @@ function App() {
       </section>}
       {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}
       {state.page === 'identity' && <section className="identity-page">
-        {heading('myIdentity', 'identityBody')}
+        <div className="identity-heading"><h1 tabIndex="-1">{t('myIdentity')}</h1><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div>
         <div className="identity-layout">
-          <div className="identity-primary">
-            <div className="person-row"><Portrait profile={state.profile} large /><div className="identity-person"><div className="identity-meta"><span className="profile-type">{t(state.profile.type)}</span><S2.StatusLight label={t('published')} /></div><h2>{state.profile.name || t('complete')}</h2><p className="hint">{t('owner')}</p></div></div>
-            <Identifier id={bapId} t={t} failCopy={failCopy} />
-            <div className="action-row"><Button variant="accent" data-action="edit" onClick={() => dispatch({type: 'EDIT'})}>{t('editProfile')}</Button><Button data-action="public" onClick={() => {setAngle(-10); setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches); navigate('public');}}>{t('publicIdentity')}</Button></div>
-          </div>
-          <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio || t('noBio')}</p></section>
+          <section className="identity-profile" aria-label={t('profileDetails')}>
+            <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight label={t('published')}/></div></div></div><Button variant="quiet" data-action="public" onClick={()=>{setAngle(-10);setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches);navigate('public');}}>{t('viewPublicIdentity')}<span className="workspace-chevron right" aria-hidden="true"/></Button></div>
+            <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio||t('noBio')}</p></section>
+          </section>
+          <section className="identity-identifiers" aria-label={t('identityIdentifiers')}>
+            <Identifier id={bapId} t={t} failCopy={failCopy}/>
+            <ArtifactSummary data={artifactStore.settings.list==='empty'?{...artifactStore.data,assets:[],bindings:[]}:artifactStore.data} bapId={bapId} t={t} onManage={()=>openArtifacts()} onOpen={id=>openArtifacts('artifact',id)}/>
+          </section>
         </div>
-        <ArtifactSummary data={artifactStore.settings.list==='empty'?{...artifactStore.data,assets:[],bindings:[]}:artifactStore.data} bapId={bapId} t={t} onManage={()=>openArtifacts()} onOpen={id=>openArtifacts('artifact',id)} /><div className="content-entry"><Button variant="accent" data-action="identity-content" onClick={() => state.page==='artifacts'?artifactRef.current?.leave(()=>contentRef.current?.go('content')):contentRef.current?.go('content')}>{t('myContent')}</Button><p className="hint">{t('contentIntro')}</p></div><div className="flat-horizon" aria-hidden="true"></div>
       </section>}
       {state.page === 'public' && <section className="public-page">{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /><div className="public-back"><Button variant="quiet" data-action="back-identity" onClick={() => navigate('identity')}>{t('backIdentity')}</Button></div></section>}
     </main>

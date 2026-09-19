@@ -11,9 +11,9 @@ try {
   ab find role button click --name 'Connect Wallet'
   ab find role button click --name 'Approve'
   ab wait '.artifact-grid'
-  ab find role button click --name 'Menu' --exact
+  ab click '#navigation-toggle'
   ab press Escape
-  probe 'if(document.activeElement.id!=="navigation-toggle"||getComputedStyle(document.querySelector(".topnav")).display!=="none")throw Error("Menu focus was not restored")'
+  probe 'if(document.activeElement.id!=="navigation-toggle"||document.querySelector("#primary-navigation"))throw Error("Menu focus was not restored")'
   ab find role button click --name 'Create Artifact'
   ab find role textbox fill --name 'Artifact name *' ('A' * 101)
   ab find role button click --name 'Review creation'
@@ -21,7 +21,7 @@ try {
   probe 'if(document.querySelector("#artifact-name").getAttribute("aria-invalid")!=="true"||!document.querySelector(".field-error"))throw Error("Invalid edit hid the name error")'
   ab find role textbox fill --name 'Artifact name *' 'Review regression'
   probe 'if(document.querySelector(".field-error"))throw Error("Valid name kept the error")'
-  ab find role button click --name 'Menu' --exact
+  ab click '#navigation-toggle'
   ab click '[data-action="nav-content"]'
   ab wait 'dialog[open]'
   ab press Escape
