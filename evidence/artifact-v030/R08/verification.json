@@ -1,0 +1,85 @@
+{
+  "feature": "R08",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "修复已审查的六类 CSS 重复定义，并统一通用按钮、功能图标。",
+  "sources": {
+    "reactSpectrum": "@react-spectrum/s2@1.6.0",
+    "tokens": "@adobe/spectrum-tokens@14.15.0",
+    "officialFiles": [
+      "reference/react-spectrum-main/react-spectrum-main/packages/@react-spectrum/s2/src/ActionButton.tsx",
+      "reference/react-spectrum-main/react-spectrum-main/packages/@react-spectrum/s2/src/Field.tsx"
+    ],
+    "runtime": "_ds/react-spectrum-s2；保留原型消费副本，不修改生成资源。"
+  },
+  "fixes": [
+    "index.html 仅加载设计系统 styles.css，移除六条重复 link。浏览器 CSSOM 核实六项 import 均从正确路径加载。",
+    "删除下划线输入框及自定义 hover/focus 皮肤；移除普通 TextField 的无操作尾部容器，恢复设计系统完整边框。",
+    "恢复设计系统焦点色与按钮边框；44px 最小点击区域统一放入 s2-adapter.css，不再改写全局 S2 控件高度 Token。",
+    "按钮适配保留设计系统 variant 类，选择态复用已有 primary 视觉角色；图标按钮共用 ActionButton 与 iconOnly。",
+    "移除 Artifact 卡片圆角、阴影、背景覆盖，保留内容结构与响应式布局。合并已识别的页面间距、卡片内容、操作页宽度及长编号旧覆盖。",
+    "图标统一经 UiIcon 引用 S2 原始 SVG。欢迎箭头、成功勾号、编辑器粗体及斜体不再用 CSS 或字母手绘；下拉箭头原本已是 S2 资产，本轮统一封装。",
+    "修正 320px 下拉导航左侧裁切：修复后 x=16、right=304、width=288。"
+  ],
+  "verification": {
+    "startup": "根任务 evidence/R08-init.txt；启动检查、92 条身份断言、内容检查、12 组 Artifact 检查、JSX 和 Token 检查、R08 UI 检查通过。",
+    "unit": "node check-ui.cjs；真实导入 bundle + React 验证 variant 合并、选择态、disabled、事件、字段 aria-invalid/aria-describedby、图标资产和 CSS 入口。",
+    "browser": [
+      "1306px 浅色英文列表、320px 深色中文列表与表单截图已查看。",
+      "空名称经键盘删除后提交，完整 2px 错误边框与字段错误关联有效；输入有效名称进入 Review 并完成模拟创建。",
+      "新建 Artifact 未分配编号，列表关联按钮 disabled，排列在有编号资产之后。",
+      "详情刷新、帮助点击、Escape 关闭后 Tab 到刷新按钮，focus-visible=true 且 outline=solid；图标按钮均为 44×44。",
+      "编辑器粗体按钮可切换 aria-pressed=true，显示 S2 TextBold/TextItalic/Link 资产；320px 无横向溢出。",
+      "本次列表可见按钮均至少 44px；修正导航浮层裁切后两侧均在视口内。"
+    ],
+    "a11y": {
+      "a11y-form-error.json": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "a11y-form-mobile.json": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "a11y-list-dark.json": {
+        "inapplicable": 54,
+        "incomplete": 0,
+        "passes": 35,
+        "violations": 0
+      },
+      "a11y-list-light.json": {
+        "inapplicable": 54,
+        "incomplete": 0,
+        "passes": 35,
+        "violations": 0
+      },
+      "a11y-navigation-dark.json": {
+        "inapplicable": 50,
+        "incomplete": 1,
+        "passes": 39,
+        "violations": 0
+      }
+    },
+    "a11yLimit": "展开导航的扫描含被浮层遮挡背景元素的 incomplete，已查看截图；关闭浮层后的列表及错误表单扫描均为 0 违规、0 incomplete。深色主按钮实测黑字 / rgb(86,129,255)，对比度 5.98:1，三个采样点未遮挡。",
+    "runtimeErrors": 0,
+    "logReview": "全新浏览器正常加载与截图无本地资源 404。最小实验确认 agent-browser a11y 命令额外请求根路径 /tokens/*、/components/* 并产生 404；实际页面 CSSOM 的六个导入路径与规则均正确。该工具侧请求不作为页面资源失败。"
+  },
+  "remainingBoundaries": [
+    "s2-adapter.css 仅集中触控尺寸、SVG mask 呈现、原生控件焦点和轻量 bundle 缺失的错误/禁用及深色对比度适配；不新建调色盘或基础控件皮肤。",
+    "现有 bundle 仍不是官方生产组件。原生 select、功能封装及品牌图形仍存在；本轮不重建缺失的设计系统源工程，不宣称完整官方 S2 符合性。",
+    "未执行全部历史浏览器 BDD；未连接真实钱包或发送真实交易。"
+  ],
+  "screenshots": [
+    "detail-mobile-dark.png",
+    "editor-mobile-dark.png",
+    "form-desktop-error-light.png",
+    "form-mobile-error.png",
+    "list-desktop-light.png",
+    "list-mobile-dark.png",
+    "navigation-mobile-dark.png"
+  ]
+}

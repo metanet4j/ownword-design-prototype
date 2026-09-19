@@ -21,14 +21,14 @@ function ArtifactSummary({data,bapId,t,onManage,onOpen}) {
   const b=OwnwordArtifactModel.current(data,bapId),asset=data.assets.find(a=>a.id===b?.assetId),validity=OwnwordArtifactModel.bindingState(data,b);
   return <section className="artifact-summary" aria-label={t('digitalId')}>
     {asset&&validity==='valid'?<NumberStatus asset={asset} t={t} compact/>:<div className="artifact-summary-empty"><p className="eyebrow">{t('digitalId')}</p><p className="artifact-summary-state">{t(asset?(validity==='unverified'?'artifactAssociationUnverified':'artifactAssociationInvalid'):'digitalIdNotSet')}</p></div>}
-    <Button variant="quiet" onClick={()=>asset?onOpen(asset.id):onManage()}>{t(asset?(validity==='valid'?'artifactView':'reviewAssociation'):'chooseDigitalId')}<span className="workspace-chevron right" aria-hidden="true"/></Button>
+    <Button variant="quiet" onClick={()=>asset?onOpen(asset.id):onManage()}>{t(asset?(validity==='valid'?'artifactView':'reviewAssociation'):'chooseDigitalId')}<UiIcon name="ChevronRight"/></Button>
   </section>;
 }
 function ArtifactCard({asset,data,bapId,t,onOpen,children}) {
   const b=OwnwordArtifactModel.binding(data,asset.id),isCurrent=b?.bapId===bapId;
   return React.cloneElement(S2.Card(), {className:"s2d-card artifact-card","data-artifact-id":asset.id,"data-current":isCurrent}, <>
     {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} t={t}/>}
-    <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}{children&&<Button variant="quiet" className="s2d-button s2d-button-quiet artifact-card-open" onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}><UiIcon name="ChevronRight"/></Button>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}<div className="artifact-card-actions">{!children&&<Button onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>}{children}</div></div>
+    <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}{children&&<Button iconOnly variant="quiet" className="artifact-card-open" onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}><UiIcon name="ChevronRight"/></Button>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}<div className="artifact-card-actions">{!children&&<Button onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>}{children}</div></div>
   </>);
 }
 function ArtifactSettings({settings,setSettings,store,t}) {

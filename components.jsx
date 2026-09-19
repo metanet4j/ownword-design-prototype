@@ -13,14 +13,22 @@ function LoadingMark({small = false, label}) {
 
 // The imported S2 bundle is a cosmetic preview. Add behavior to its returned
 // elements without copying or modifying the design-system implementation.
-function Button({children, onClick, variant = 'secondary', ...props}) {
-  return React.cloneElement(S2.Button({children, onPress: onClick, variant, isDisabled: props.disabled}), props);
+function Button({children, onClick, variant = 'secondary', className = '', iconOnly = false, ...props}) {
+  const selected = props['aria-pressed'] === true || props['aria-current'] === 'page';
+  const Component = iconOnly ? S2.ActionButton : selected ? S2.ToggleButton : S2.Button;
+  const base = Component({children, onPress: onClick, variant: selected ? 'primary' : variant, isDisabled: props.disabled});
+  // Keep the bundle's variant classes when callers add layout classes.
+  const layoutClasses = className.split(/\s+/).filter(name => name && !/^s2d-button(?:-|$)/.test(name));
+  return React.cloneElement(base, {...props, className: [base.props.className, ...layoutClasses, iconOnly ? 'icon-button' : ''].filter(Boolean).join(' ')});
 }
 function Field({errorKey, id, label, value, onChange, multiline, error, required, maxLength, ...inputProps}) {
   const base = (multiline ? S2.TextArea : S2.TextField)({label, value: value || ' '});
   function wire(node) {
     if (!React.isValidElement(node)) return node;
     if (node.type === 'button') return null;
+    // The preview bundle adds a trailing action shell to every TextField.
+    // A plain field has no such action; retain the field's own border instead.
+    if (node.props.className === 's2d-field-shell') return <React.Fragment>{React.Children.map(node.props.children, wire)}</React.Fragment>;
     if (node.type === 'input' || node.type === 'textarea') return React.cloneElement(node, {...inputProps, id, value, defaultValue: undefined, required, maxLength, 'aria-invalid': !!error, 'aria-describedby': error ? `${id}-error` : inputProps['aria-describedby'], onChange: e => onChange(e.target.value)});
     return React.cloneElement(node, {}, React.Children.map(node.props.children, wire));
   }
@@ -128,7 +136,7 @@ function ContextHelp({label,children}) {
     return()=>{window.removeEventListener('resize',close);document.removeEventListener('scroll',dismiss,true);document.removeEventListener('keydown',escape,true);};
   },[open]);
   return <div className="context-help" ref={wrapper} onPointerEnter={e=>{clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);if(e.pointerType==='mouse'){suppressFocus.current=false;hoverTimer.current=setTimeout(()=>setMode(v=>v==='closed'?'preview':v),300);}}} onPointerLeave={()=>{clearTimeout(hoverTimer.current);if(mode==='preview'&&!wrapper.current.contains(document.activeElement))leaveTimer.current=setTimeout(()=>setMode('closed'),180);}} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget)){suppressFocus.current=false;setMode('closed');}}}>
-    <Button variant="quiet" className="s2d-button s2d-button-quiet context-help-trigger" aria-label={label} aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}><UiIcon name="InfoCircle"/></Button>
+    <Button iconOnly variant="quiet" className="context-help-trigger" aria-label={label} aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}><UiIcon name="InfoCircle"/></Button>
     {open&&React.cloneElement(S2.ContextualHelpPopover(),{ref:panel,id,role:'region','aria-label':label,className:'s2d-overlay context-help-panel',style:position},children)}
   </div>;
 }
@@ -153,7 +161,7 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
     onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
     onFocusCapture={() => setFocused(true)} onBlurCapture={e => {if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);}}>
     <div className="toast-copy"><strong>{t(message)}</strong>{body && <p>{t(body)}</p>}</div>
-    <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button variant="quiet" data-action="dismiss-toast" aria-label={t('close')} onClick={dismiss}><UiIcon name="Close"/></Button></div>
+    <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button iconOnly variant="quiet" data-action="dismiss-toast" aria-label={t('close')} onClick={dismiss}><UiIcon name="Close"/></Button></div>
   </div>;
 }
 function Identifier({id, t, failCopy = false, label = 'BAP ID', copyLabel = 'copyBap', target = 'bap', displayValue, className = ''}) {
@@ -230,13 +238,13 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     <div className="object-shadow" aria-hidden="true"></div>
     <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
     <div className="profile-disclosure">
-      <Button variant="quiet" data-action="toggle-full-profile" aria-expanded={profileOpen} aria-controls="public-profile-details" onClick={() => setProfileOpen(value => !value)}>{t(profileOpen ? 'hideFullProfile' : 'viewFullProfile')}</Button>
+      <Button variant="quiet" data-action="toggle-full-profile" aria-expanded={profileOpen} aria-controls="public-profile-details" onClick={() => setProfileOpen(value => !value)}>{t(profileOpen ? 'hideFullProfile' : 'viewFullProfile')}<UiIcon name="ChevronDown"/></Button>
       <div id="public-profile-details" hidden={!profileOpen}>
         {profileOpen && <><h2>{profile.name}</h2><p className="bio">{profile.bio || t('noBio')}</p></>}
       </div>
     </div>
     <div className="chain-disclosure">
-      <Button variant="quiet" data-action="toggle-chain-record" aria-expanded={recordOpen} aria-controls="chain-record-details" onClick={() => setRecordOpen(value => !value)}>{t(recordOpen ? 'hideChainRecord' : 'viewChainRecord')}</Button>
+      <Button variant="quiet" data-action="toggle-chain-record" aria-expanded={recordOpen} aria-controls="chain-record-details" onClick={() => setRecordOpen(value => !value)}>{t(recordOpen ? 'hideChainRecord' : 'viewChainRecord')}<UiIcon name="ChevronDown"/></Button>
       <div id="chain-record-details" hidden={!recordOpen}>
         {recordOpen && <ChainRecord bapId={id} transaction={transaction} t={t} failCopy={failCopy} target="tx-details" />}
       </div>

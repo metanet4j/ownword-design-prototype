@@ -165,7 +165,7 @@ function App() {
     <header className="topbar">
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
       <div className="header-tools"><div className="workspace-switcher" ref={navigationRef}>
-      <Button variant="quiet" id="navigation-toggle" className="s2d-button workspace-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={t('switchWorkspace')+' · '+t(currentModule)} onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}} onKeyDown={e=>{if(e.key==='ArrowDown'){e.preventDefault();setMenuOpen(true);requestAnimationFrame(()=>navigationRef.current?.querySelector('nav button')?.focus());}}}>{t(currentModule)}<span className="workspace-chevron" aria-hidden="true"/></Button>
+      <Button variant="quiet" id="navigation-toggle" className="s2d-button workspace-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={t('switchWorkspace')+' · '+t(currentModule)} onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}} onKeyDown={e=>{if(e.key==='ArrowDown'){e.preventDefault();setMenuOpen(true);requestAnimationFrame(()=>navigationRef.current?.querySelector('nav button')?.focus());}}}>{t(currentModule)}<UiIcon name="ChevronDown"/></Button>
       {menuOpen&&<nav id="primary-navigation" aria-label={t('navigationLabel')} className="topnav is-open" onKeyDown={e=>{if(e.target.closest('.preferences'))return;if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;const items=[...e.currentTarget.querySelectorAll('button')].filter(el=>el.getClientRects().length);const i=items.indexOf(document.activeElement);e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length]?.focus();}}>
         {state.wallet&&state.published&&<div className="workspace-destinations">
           <Button variant="quiet" data-action="nav-identity" aria-current={currentModule==='myIdentity'?'page':undefined} onClick={()=>navigate('identity')}>{t('myIdentity')}<span>{t('identityNavDescription')}</span></Button>
@@ -176,7 +176,7 @@ function App() {
         {state.wallet && <Button data-action="disconnect" onClick={disconnect}>{t('disconnectWallet')}</Button>}
       </nav>}
       </div>
-        <div className="preference-anchor" ref={prefsRef}>{React.cloneElement(S2.ActionButton({variant:'quiet',onPress:()=>{setMenuOpen(false);setPrefs(!prefs);}}),{className:'s2d-button s2d-button-quiet header-preferences','aria-label':t('appearanceLanguage'),'aria-expanded':prefs,'aria-controls':'preferences-panel',title:t('appearanceLanguage')},<UiIcon name="Contrast"/>)}
+        <div className="preference-anchor" ref={prefsRef}><Button iconOnly variant="quiet" className="header-preferences" aria-label={t('appearanceLanguage')} aria-expanded={prefs} aria-controls="preferences-panel" title={t('appearanceLanguage')} onClick={()=>{setMenuOpen(false);setPrefs(!prefs);}}><UiIcon name="Contrast"/></Button>
           {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
         </div>
     </div>
@@ -190,7 +190,7 @@ function App() {
         <h1 tabIndex="-1"><span>{t('headlineOne')}</span><em>{t('headlineTwo')}</em></h1>
         <p className="welcome-intro">{t('welcomeIntro')}</p>
         <p className="welcome-body">{t('welcomeBody')}</p>
-        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t(state.error === 'connectFailed' ? 'retry' : 'connect')}<span className="button-arrow" aria-hidden="true"></span></Button><p>{t('walletNote')}</p></div>
+        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t(state.error === 'connectFailed' ? 'retry' : 'connect')}<UiIcon name="ChevronRight"/></Button><p>{t('walletNote')}</p></div>
         <div className="horizon"><span>{t('horizonCaption')}</span></div>
         <p className="welcome-note">{t('welcomeNote')}</p>
       </section>}
@@ -220,12 +220,12 @@ function App() {
           {state.busy ? <div className="processing" role="status"><LoadingMark small /><strong>{t(state.busy === 'create' ? 'creating' : 'saving')}</strong><p>{t('processingBody')}</p></div> : <div className="form-footer"><Button variant="quiet" data-action="back" onClick={() => dispatch({type: 'GO', page: state.published && !state.incomplete ? 'edit' : 'setup'})}>{t('back')}</Button><Button variant="accent" data-action="submit-operation" disabled={noChanges} data-operation={state.published ? 'save' : 'create'} onClick={() => dispatch({type: 'AUTHORIZE', operation: state.published ? 'save' : 'create'})}>{t(state.error ? 'retry' : state.published ? 'save' : 'create')}</Button></div>}
         </div>
       </section>}
-      {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}
+      {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"><UiIcon name="Checkmark"/></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}
       {state.page === 'identity' && <section className="identity-page">
         <div className="identity-heading"><h1 tabIndex="-1">{t('myIdentity')}</h1><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div>
         <div className="identity-layout">
           <section className="identity-profile" aria-label={t('profileDetails')}>
-            <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight label={t('published')}/></div></div></div><Button variant="quiet" data-action="public" onClick={()=>{setAngle(-10);setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches);navigate('public');}}>{t('viewPublicIdentity')}<span className="workspace-chevron right" aria-hidden="true"/></Button></div>
+            <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight label={t('published')}/></div></div></div><Button variant="quiet" data-action="public" onClick={()=>{setAngle(-10);setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches);navigate('public');}}>{t('viewPublicIdentity')}<UiIcon name="ChevronRight"/></Button></div>
             <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio||t('noBio')}</p></section>
           </section>
           <section className="identity-identifiers" aria-label={t('identityIdentifiers')}>

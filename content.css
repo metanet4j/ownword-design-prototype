@@ -14,9 +14,7 @@
 .content-author strong { font-size: var(--s2-font-size-100); font-weight: 600; }
 .content-author code { margin-left: auto; overflow-wrap: anywhere; font-family: var(--s2d-font-mono); }
 .content-filters { display: flex; gap: var(--s2-spacing-300); border-bottom: 1px solid var(--s2d-border); margin-top: var(--s2-spacing-400); }
-.content-filters .s2d-button { border-radius: 0; padding-inline: var(--s2-spacing-100); padding-bottom: var(--s2-spacing-200); border: 0; border-bottom: 2px solid transparent; background: transparent; }
-.content-filters .s2d-button[aria-pressed="true"] { color: var(--s2d-accent); border-bottom-color: var(--s2-gray-800); }
-.content-count { font-size: var(--s2-font-size-75); color: var(--s2-gray-700); margin-left: var(--s2-spacing-100); }
+.content-count { font-size: var(--s2-font-size-75); color: inherit; margin-left: var(--s2-spacing-100); }
 .content-list { list-style: none; padding: 0; margin: 0; }
 .content-list li { border-bottom: 1px solid var(--s2d-border); }
 .content-row { width: 100%; border: 0; border-radius: 0; padding: var(--s2-spacing-500) var(--s2-spacing-200); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s2-spacing-500); text-align: left; height: auto; white-space: normal; }
