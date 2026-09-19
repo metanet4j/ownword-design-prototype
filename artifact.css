@@ -208,7 +208,7 @@
 .artifact-current-empty{display:flex;align-items:center;justify-content:space-between;gap:var(--s2-spacing-200);padding-block:var(--s2-spacing-300);}
 .artifact-current-empty h2{font-size:var(--s2-font-size-400);margin-bottom:var(--s2-spacing-100);}
 .artifact-filters{align-items:center;gap:var(--s2-spacing-100);margin:0;padding:0 0 var(--s2-spacing-100);}
-.artifact-filters .context-help{margin-left:auto;}
+.artifact-filter-option{display:flex;align-items:center;gap:var(--s2-spacing-50);min-width:0;}
 .artifact-wallet-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s2-spacing-300);}
 .artifact-wallet-grid .artifact-card-content{padding:var(--s2-spacing-300);gap:var(--s2-spacing-100);}
 .artifact-wallet-grid .artifact-number{gap:var(--s2-spacing-100);}

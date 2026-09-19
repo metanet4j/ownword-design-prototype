@@ -1,0 +1,15 @@
+{
+  "feature": "R19",
+  "result": "passed",
+  "checks": [
+    "历史关联按钮与帮助组成同一布局组，320px 间隔2px，无横向溢出",
+    "帮助名称与关联说明区分，内容解释历史关联与持有状态关系",
+    "点击和 Escape 关闭、焦点返回、历史筛选显示旧关联已验证",
+    "JSX、双语、模型和 Artifact Token 检查通过"
+  ],
+  "screenshots": [
+    "filters-320.png",
+    "help.png",
+    "history.png"
+  ]
+}
