@@ -1,0 +1,14 @@
+{
+  "feature": "R14",
+  "result": "passed",
+  "checks": [
+    "JSX 和模型检查通过",
+    "未连接时可连接钱包；新身份连接成功后主操作为 Set up identity，直接进入设置",
+    "资料不完整时主操作为 Complete profile，直接进入补全表单；均不重复要求连接",
+    "身份解析期间主操作禁用，公开示例始终可读"
+  ],
+  "screenshots": [
+    "connected-new.png",
+    "incomplete.png"
+  ]
+}
