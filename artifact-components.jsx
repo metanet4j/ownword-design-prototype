@@ -8,10 +8,10 @@ function artifactTime(value,t) {
   const date=new Date(value);
   return Number.isNaN(date.getTime())?value:new Intl.DateTimeFormat(t('artifactLocale'),{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}).format(date);
 }
-function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false,children}) {
+function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false,label,children}) {
   const state=OwnwordArtifactModel.numberState(asset),known=['assigned','stable'].includes(state),number=known?asset.number:'—';
   return <div className={'artifact-number '+(compact?'compact':'')+(number.length>8?' long-number':'')} data-number-status={state}>
-    {known&&copyable?<Identifier className="artifact-number-identifier" id={asset.number} displayValue={number} label={t('digitalId')} copyLabel="artifactCopyNumber" target="number" t={t} failCopy={failCopy}/>:<><p className="eyebrow">{t('digitalId')}</p><strong>{number}</strong></>}
+    {known&&copyable?<Identifier className="artifact-number-identifier" id={asset.number} displayValue={number} label={label||t('digitalId')} copyLabel="artifactCopyNumber" target="number" t={t} failCopy={failCopy}/>:<><p className="eyebrow">{label||t('digitalId')}</p><strong>{number}</strong></>}
     <div className="artifact-number-state"><S2.StatusLight label={t('artifactNumber-'+state)}/>{known&&state==='assigned'&&<span className="hint">{asset.confirmations}/6 {t('artifactConfirmations')}</span>}{children}</div>
     {!compact&&['reorg','unverified'].includes(state)&&<p className="hint">{t('artifactLastNumber')}: {asset.number??t('artifactUnknownOrdinal')} · <time dateTime={asset.observedAt}>{artifactTime(asset.observedAt,t)}</time></p>}
     {!compact&&asset.previousNumber&&known&&asset.previousNumber!==asset.number&&<p role="status">{t('artifactNumberChanged')}: {asset.previousNumber} → {asset.number}</p>}
@@ -28,7 +28,7 @@ function ArtifactCard({asset,data,bapId,t,onOpen,children}) {
   const b=OwnwordArtifactModel.binding(data,asset.id),isCurrent=b?.bapId===bapId;
   return React.cloneElement(S2.Card(), {className:"s2d-card artifact-card","data-artifact-id":asset.id,"data-current":isCurrent}, <>
     {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} t={t}/>}
-    <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}<div className="artifact-card-actions"><Button variant={children?'quiet':'secondary'} onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>{children}</div></div>
+    <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}{children&&<Button variant="quiet" className="s2d-button s2d-button-quiet artifact-card-open" onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}><UiIcon name="ChevronRight"/></Button>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}<div className="artifact-card-actions">{!children&&<Button onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>}{children}</div></div>
   </>);
 }
 function ArtifactSettings({settings,setSettings,store,t}) {
@@ -36,13 +36,24 @@ function ArtifactSettings({settings,setSettings,store,t}) {
 }
 Object.assign(window,{ArtifactArt,NumberStatus,ArtifactSummary,ArtifactCard,ArtifactSettings});
 
-function ArtifactSelector({data,identity,t,onSelect,onOpen,onBack}) {
-  const M=OwnwordArtifactModel,[filter,setFilter]=React.useState('held');
-  const assets=M.selectionAssets(data,identity.bapId,filter);
-  return <section className="artifact-page" data-artifact-screen="select"><ArtifactBack t={t} onClick={onBack}/><div className="page-heading title-with-help"><h1 tabIndex="-1">{t('artifactSelect')}</h1><ContextHelp label={t('artifactAssociationHelp')}><p>{t('artifactSelectBody')}</p></ContextHelp></div><div className="artifact-filters">{['held','history'].map(f=><Button key={f} variant="quiet" aria-pressed={filter===f} onClick={()=>setFilter(f)}>{t('artifactSelect-'+f)} <span className="content-count">{M.selectionAssets(data,identity.bapId,f).length}</span></Button>)}</div><div className="artifact-grid">{assets.map(a=>{const why=M.bindingEligibility(a,identity.bapId),current=M.binding(data,a.id)?.bapId===identity.bapId,busy=M.conflict(data,identity.bapId,a.id);return <ArtifactCard key={a.id} asset={a} data={data} bapId={identity.bapId} t={t} onOpen={onOpen}>
-    {!current&&<Button variant="accent" disabled={!!why||!!busy} data-select-artifact={a.id} onClick={()=>onSelect(a.id)}>{t('artifactSetCurrent')}</Button>}{(why||busy)&&<p className="hint" role="status">{t(busy?'artifactUnresolved':'artifactEligibility-'+why)}</p>}
-  </ArtifactCard>;})}</div>{!assets.length&&<p className="artifact-empty">{t(filter==='history'?'artifactHistoryEmpty':'artifactEmpty')}</p>}</section>;
+function ArtifactHistory({records,data,t,onOpen,showIdentity=false}) {
+  return <ol className="artifact-history-list">{records.map(b=>{const asset=data.assets.find(a=>a.id===b.assetId),replacement=data.assets.find(a=>a.id===b.replacedBy),reason=b.endReason||(b.removedBy?'removed':b.validity==='not-owned'?'transferred':'ended'),name=OwnwordModel.fixtures[OwnwordArtifactModel.identities.indexOf(b.bapId)]?.name;
+    return <li key={b.id}><div className="artifact-history-marker"><UiIcon name="History"/></div><div className="artifact-history-event"><strong>{t('artifactHistory-'+reason)}</strong><p>{asset?.name||b.assetId}{replacement&&<> · {t('artifactHistoryReplacement')}: {replacement.name}</>}</p>{showIdentity&&<div className="artifact-history-identity"><span>{name||t('artifactAssociatedTitle')}</span><code>{b.bapId}</code></div>}<p className="hint">{b.endedAt?<time dateTime={b.endedAt}>{artifactTime(b.endedAt,t)}</time>:t('artifactHistoryTimeUnknown')}</p></div>{onOpen&&asset&&<Button variant="quiet" aria-label={t('artifactView')+' · '+asset.name} onClick={()=>onOpen(asset.id)}><UiIcon name="ChevronRight"/></Button>}</li>;
+  })}</ol>;
 }
+function ArtifactInventory({data,identity,t,onSelect,onOpen,onCreate}) {
+  const M=OwnwordArtifactModel,[filter,setFilter]=React.useState('held'),held=M.selectionAssets(data,identity.bapId),current=held.find(a=>M.binding(data,a.id)?.bapId===identity.bapId),others=held.filter(a=>a.id!==current?.id),history=data.bindings.filter(b=>b.bapId===identity.bapId&&b.state==='history');
+  if(!held.length&&!history.length)return <section className="artifact-empty"><h2>{t('artifactEmpty')}</h2><p>{t('artifactOptionalBody')}</p>{onCreate&&<Button variant="accent" onClick={onCreate}>{t('artifactCreate')}</Button>}</section>;
+  return <div className="artifact-inventory">
+    {current?<section className="artifact-current-overview" aria-label={t('artifactCurrentId')}><div><NumberStatus asset={current} t={t} label={t('artifactCurrentId')}/><h2>{current.name}</h2></div><Button aria-label={t('artifactView')} onClick={()=>onOpen(current.id)}><span className="artifact-current-view-label">{t('artifactView')}</span><UiIcon name="ChevronRight"/></Button></section>:<section className="artifact-current-empty"><div><h2>{t('digitalIdNotSet')}</h2><p className="hint">{t(held.length?'artifactChooseFromWallet':'artifactOptionalBody')}</p></div><ContextHelp label={t('artifactAssociationHelp')}><p>{t('artifactOptionalBody')}</p></ContextHelp></section>}
+    <div className="artifact-filters" role="group" aria-label={t('artifactFilter')}>{['held','history'].map(f=><Button key={f} variant="quiet" aria-pressed={filter===f} onClick={()=>setFilter(f)}>{t('artifactSelect-'+f)} <span className="content-count">{f==='held'?held.length:history.length}</span></Button>)}<ContextHelp label={t('artifactAssociationHelp')}><p>{t('artifactSelectBody')}</p></ContextHelp></div>
+    {filter==='history'?(history.length?<ArtifactHistory records={history} data={data} t={t} onOpen={onOpen}/>:<p className="artifact-inventory-empty">{t('artifactHistoryEmpty')}</p>):others.length?<div className="artifact-grid artifact-wallet-grid">{others.map(a=>{const why=M.bindingEligibility(a,identity.bapId),busy=M.conflict(data,identity.bapId,a.id);return <ArtifactCard key={a.id} asset={a} data={data} bapId={identity.bapId} t={t} onOpen={onOpen}><Button disabled={!!why||!!busy} data-select-artifact={a.id} onClick={()=>onSelect(a.id)}>{t('artifactSetCurrent')}</Button>{(why||busy)&&<p className="hint">{t(busy?'artifactUnresolved':'artifactEligibility-'+why)}</p>}</ArtifactCard>;})}</div>:<div className="artifact-inventory-empty"><p>{t(current?'artifactNoOtherAssets':'artifactEmpty')}</p>{onCreate&&<Button variant={current?'secondary':'accent'} onClick={onCreate}>{t('artifactCreate')}</Button>}</div>}
+  </div>;
+}
+function ArtifactSelector({data,identity,t,onSelect,onOpen,onBack}) {
+  return <section className="artifact-page" data-artifact-screen="select"><ArtifactBack t={t} onClick={onBack}/><div className="page-heading"><h1 tabIndex="-1">{t('artifactSelect')}</h1></div><ArtifactInventory data={data} identity={identity} t={t} onSelect={onSelect} onOpen={onOpen}/></section>;
+}
+Object.assign(window,{ArtifactInventory,ArtifactHistory});
 function ArtifactFixtureControls({store,t}) {
   const assetId=store.settings.target||OwnwordArtifactModel.seed().assets[0].id,scenario=store.settings.facts||'normal',[message,setMessage]=React.useState('');
   const setAssetId=target=>store.setSettings(s=>({...s,target})),setScenario=facts=>store.setSettings(s=>({...s,facts}));

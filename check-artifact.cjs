@@ -86,4 +86,13 @@ for(const m of fs.readFileSync('artifact.css','utf8').matchAll(/var\((--s2[a-z0-
 
 
 check('R05 pending binding gate and meaningful history selection',()=>{let d=M.seed(),bap=M.identities[0];const pending={...d.assets[1],id:'pending',number:null,confirmations:0};d.assets.unshift(pending);assert.equal(M.bindingEligibility(pending,bap),'number-pending');assert.equal(M.bindingEligibility(M.numberObservation(d.assets[2],'reorg'),bap),'number-pending');assert.equal(M.selectionAssets(d,bap).at(-1).id,'pending');assert.deepEqual(M.selectionAssets(d,bap,'history').map(a=>a.number),['4096']);assert.equal(M.bindingEligibility(d.assets[2],bap),'');});
+check('R07 association events retain evidence and original inscription names',()=>{
+ const bap=M.identities[0];let d=M.seed(),first=d.assets[0],next=d.assets[1];
+ const apply=(kind,asset,id)=>{const review={kind,bapId:bap,assetId:asset.id,outpoint:asset.outpoint,bindingVersion:M.bindingVersion(d,bap)};d=M.begin(d,review,id);d=M.accept(d,{...d.operations[0],signature:'valid',signerBapId:bap});};
+ apply('bind',next,'r07-bind');let old=d.bindings.find(b=>b.assetId===first.id&&b.state==='history');assert.equal(old.endReason,'replaced');assert.equal(old.replacedBy,next.id);assert.ok(!isNaN(Date.parse(old.endedAt)));
+ assert.ok(M.selectionAssets(d,bap).some(a=>a.id===first.id));assert.ok(M.selectionAssets(d,bap,'history').some(a=>a.id===first.id));
+ apply('remove',next,'r07-remove');old=d.bindings.find(b=>b.assetId===next.id&&b.state==='history');assert.equal(old.endReason,'removed');assert.ok(old.removedBy);
+ assert.equal(M.previewFixture(first,'metadata').inscriptionName,first.inscriptionName);
+ d=M.seed();first=d.assets[0];d.assets[0]={...first,transfer:{recipient:M.addresses[1],verification:'pending',txid:M.tx(999)}};d=M.reconcileOwnership(d,first.id,true);assert.equal(d.bindings[0].endReason,'transferred');assert.ok(d.bindings[0].endedAt);
+});
 console.log('Artifact JSX and S2 tokens passed; '+checks.length+' model groups.');

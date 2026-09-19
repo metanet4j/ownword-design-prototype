@@ -1,0 +1,84 @@
+{
+  "feature": "R07",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "修复上次 My Artifact 设计原则审查中确认的布局、信息关系与交互问题。",
+  "findings": [
+    {
+      "id": 1,
+      "result": "钱包持有与关联历史分开展示；曾经关联但仍可用的资产不会被标为不可用。历史按关联记录计数。"
+    },
+    {
+      "id": 2,
+      "result": "有资产时创建为次操作，列表直接进入关联确认；空钱包只保留一个主要创建入口。原选择路由复用同一展示组件。"
+    },
+    {
+      "id": 3,
+      "result": "当前数字 ID 独立摘要和较大字号；其他钱包资产不重复当前项。"
+    },
+    {
+      "id": 4,
+      "result": "删除重复身份栏和口号；390px 当前摘要从约148px开始，320px 普通资产卡片约187px；待确认说明使该卡片约221px。"
+    },
+    {
+      "id": 5,
+      "result": "编号复制按钮与数字间距16px；刷新和帮助图标紧邻编号状态，实际复制和刷新成功。"
+    },
+    {
+      "id": 6,
+      "result": "未关联仅保留一个状态，关联按钮位于同一区域。无资产时呈现单一创建空状态。"
+    },
+    {
+      "id": 7,
+      "result": "历史展示对应身份、替换对象、结束时间及更换、移除、核实转出的事件原因。既有数据没有时间时明确标记未记录。"
+    },
+    {
+      "id": 8,
+      "result": "原始名称、类型、creator 归于铭文内容；MAP 名称和 owner 归于持有与展示信息，转移入口紧邻 owner。原始名称不会随展示元数据样例改变。"
+    },
+    {
+      "id": 9,
+      "result": "撤回仅凭原生HTML或三角形判断不符合S2的结论。实际核对官方固定版本、本地bundle与覆盖；使用绑定图标及Token，披露原型封装差异。"
+    }
+  ],
+  "verification": [
+    "实际点击：钱包连接，列表2048直接进入Review并授权关联，Current切换成功，165历史保留replaced原因和时间。",
+    "实际创建默认Artifact，编号pending；列表排在其他可关联资产之后，列表与详情的关联按钮均disabled。",
+    "实际详情复制、刷新、Enter展开铭文/持有/历史、从持有区打开转移表单。",
+    "1306px中英深浅色、390px深色、320px待确认和空状态截图；320/390px无横向溢出，320px列表可见按钮均至少44px。",
+    "未连接访问未关联4096时标签为数字ID，不误显示当前数字ID。",
+    "完整init.ps1通过：身份92断言、内容检查、Artifact12组、JSX与Token及harness校验；日志位于任务evidence/R07-init.txt。",
+    "最终独立浏览器会话重验列表、详情、复制、刷新和键盘展开，运行时错误0。开发期发现的label引用错误及刷新按钮未传递回调已修复。"
+  ],
+  "accessibility": {
+    "violations": 0,
+    "automatedIncomplete": 1,
+    "manualResolution": "最终浅色扫描未判定复制按钮背景；五点命中检查未被覆盖，实际文字rgb(41,41,41)、背景rgb(248,248,248)，计算对比度13.70:1。深色详情和320px列表/待确认详情扫描为0违规、0待确认。"
+  },
+  "designSystem": {
+    "package": "@react-spectrum/s2@1.6.0",
+    "tokens": "@adobe/spectrum-tokens@14.15.0",
+    "binding": "_d_meta.json → _ds/react-spectrum-s2/_ds_prompt.md；来源designs/react-spectrum-s2/README.md",
+    "officialSource": "reference/react-spectrum-main/react-spectrum-main/packages/@react-spectrum/s2/package.json、src/Button.tsx、src/Disclosure.tsx",
+    "actualRuntime": "本地bundle的Button/ActionButton是轻量HTML封装，Disclosure导出为静态占位。本轮从既有组件组合，通过页面包装补入交互和无障碍属性。",
+    "ownwordComposition": "页面层级、关联和历史状态、原生details/summary及其官方ChevronRight图标是OwnWord组合；不声称已运行上游React Aria Disclosure。",
+    "limit": "完整S2生产组件符合性不在本轮成立。当前导入目录缺少完整生成工程；未改生成bundle、消费副本或升级S2。需要修复封装本身时应恢复可维护源工程再编译导入。"
+  },
+  "screenshots": [
+    "detail-desktop.png",
+    "detail-history.png",
+    "detail-light-en.png",
+    "detail-mobile-dark.png",
+    "empty-320.png",
+    "history-desktop.png",
+    "list-desktop-dark.png",
+    "list-desktop-light-en.png",
+    "list-mobile-dark.png",
+    "pending-detail-320.png",
+    "pending-list-320.png"
+  ],
+  "limits": [
+    "仅模拟原型及本次受影响流程；未重跑全部浏览器BDD，未连接生产API或钱包。",
+    "视觉状态等待用户复核，不标记done。"
+  ]
+}

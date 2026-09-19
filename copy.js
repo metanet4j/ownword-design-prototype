@@ -134,7 +134,7 @@ Object.assign(window.OwnwordCopy.en, {
   "artifactFilter": "Filter Artifacts",
   "artifactFilter-all": "All",
   "artifactFilter-usable": "Available",
-  "artifactFilter-history": "History / unavailable",
+  "artifactFilter-history": "Association history",
   "artifactEmpty": "No Artifacts here yet.",
   "artifactLoading": "Loading Artifacts…",
   "artifactLoadError": "Unable to load Artifacts",
@@ -173,7 +173,7 @@ Object.assign(window.OwnwordCopy.zh, {
   "artifactFilter": "筛选 Artifact",
   "artifactFilter-all": "全部",
   "artifactFilter-usable": "可用",
-  "artifactFilter-history": "历史 / 不可用",
+  "artifactFilter-history": "关联历史",
   "artifactEmpty": "这里还没有 Artifact。",
   "artifactLoading": "正在载入 Artifact…",
   "artifactLoadError": "暂时无法加载 Artifact",
@@ -710,4 +710,13 @@ Object.assign(window.OwnwordCopy.zh,{
  'artifactSelect-history':'历史关联',artifactHistoryEmpty:'暂无历史关联。',artifactAssociationEmpty:'此 Artifact 当前不用于标识任何 BAP 身份。',
  'artifactNumber-pending':'编号待确认','artifactNumber-resolving':'编号解析中',
  'writerBody-busy':'请在另一页完成编辑或离开内容工作区，此页面会自动恢复。'
+});
+
+Object.assign(window.OwnwordCopy.en,{
+ artifactCurrentId:'Current digital ID',artifactChooseFromWallet:'Choose an Artifact from your wallet to link a digital ID.',artifactNoOtherAssets:'No other Artifacts in this wallet.',artifactOwnership:'Ownership & display name',
+ 'artifactHistory-replaced':'Replaced as current digital ID','artifactHistory-removed':'Association removed','artifactHistory-transferred':'Association ended after transfer','artifactHistory-ended':'Association ended',artifactHistoryReplacement:'Replaced by',artifactHistoryTimeUnknown:'End time not recorded'
+});
+Object.assign(window.OwnwordCopy.zh,{
+ artifactCurrentId:'当前数字 ID',artifactChooseFromWallet:'从钱包中选择 Artifact，关联你的数字 ID。',artifactNoOtherAssets:'钱包中没有其他 Artifact。',artifactOwnership:'持有与展示信息',
+ 'artifactHistory-replaced':'已更换数字 ID','artifactHistory-removed':'已移除关联','artifactHistory-transferred':'转出后关联结束','artifactHistory-ended':'关联已结束',artifactHistoryReplacement:'更换为',artifactHistoryTimeUnknown:'未记录结束时间'
 });

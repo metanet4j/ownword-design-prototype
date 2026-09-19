@@ -5,8 +5,8 @@
   const addresses=['1BoatSLRHtKNngkdXEeobR76b53LETtpyT','1BitcoinEaterAddressDontSendf59kuE'];
   const tx=n=>n.toString(16).padStart(64,'0');
   function seed() {
-    const asset=(n,name,number,owner,extra={})=>({id:tx(n)+'_0',origin:tx(n)+'_0',outpoint:tx(n)+'_0',name,mapName:name,number,ordinal:String(100000+n),confirmations:12,numberCheck:'verified',observedAt:'2026-09-18T12:00:00Z',owner,creator:identities[1],content:{kind:'brand',type:'image/svg+xml'},originValid:true,ownershipCheck:'verified',transactions:[{kind:'create',txid:tx(n),bapId:identities[1],signer:'1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',signature:'valid',keyEpoch:'historical-key-at-creation',confirmations:12}],...extra});
-    return {version:1,revision:0,assets:[asset(165,'A place to stand','165',addresses[0]),asset(2048,'The quiet horizon','2048',addresses[0],{confirmations:5}),asset(3072,'Open sky','3072',addresses[1]),asset(4096,'An earlier chapter','4096',addresses[0]),asset(9001,'Beyond safe integers','900719925474099312345',addresses[1])],bindings:[{id:'binding-165',assetId:tx(165)+'_0',bapId:identities[0],state:'current',validity:'valid'},{id:'binding-4096',assetId:tx(4096)+'_0',bapId:identities[0],state:'history',validity:'valid'},{id:'binding-3072',assetId:tx(3072)+'_0',bapId:identities[1],state:'current',validity:'valid'}],drafts:{},operations:[]};
+    const asset=(n,name,number,owner,extra={})=>({id:tx(n)+'_0',origin:tx(n)+'_0',outpoint:tx(n)+'_0',name,inscriptionName:name,mapName:name,number,ordinal:String(100000+n),confirmations:12,numberCheck:'verified',observedAt:'2026-09-18T12:00:00Z',owner,creator:identities[1],content:{kind:'brand',type:'image/svg+xml'},originValid:true,ownershipCheck:'verified',transactions:[{kind:'create',txid:tx(n),bapId:identities[1],signer:'1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',signature:'valid',keyEpoch:'historical-key-at-creation',confirmations:12}],...extra});
+    return {version:1,revision:0,assets:[asset(165,'A place to stand','165',addresses[0]),asset(2048,'The quiet horizon','2048',addresses[0],{confirmations:5}),asset(3072,'Open sky','3072',addresses[1]),asset(4096,'An earlier chapter','4096',addresses[0]),asset(9001,'Beyond safe integers','900719925474099312345',addresses[1])],bindings:[{id:'binding-165',assetId:tx(165)+'_0',bapId:identities[0],state:'current',validity:'valid'},{id:'binding-4096',assetId:tx(4096)+'_0',bapId:identities[0],state:'history',validity:'valid',endedAt:'2026-09-17T09:20:00Z',endReason:'replaced',replacedBy:tx(165)+'_0'},{id:'binding-3072',assetId:tx(3072)+'_0',bapId:identities[1],state:'current',validity:'valid'}],drafts:{},operations:[]};
   }
   function load(storage=root.localStorage) {try {const raw=storage.getItem(KEY);if(!raw)return seed();const d=JSON.parse(raw);if(d.version!==1||!Array.isArray(d.assets)||!Array.isArray(d.bindings)||!Array.isArray(d.operations)||!d.drafts)throw Error('schema');return d;} catch {const fallback=seed();return {...fallback,readFailure:true,assets:fallback.assets.map(a=>({...a,numberCheck:'unverified',ownershipCheck:'unverified'}))};}}
   function save(data,storage=root.localStorage) {if(data.readFailure)throw Error('read-failure');storage.setItem(KEY,JSON.stringify(data));return data;}
@@ -71,18 +71,18 @@
     let assetId=op.assetId;
     if(op.kind==='create'){
       assetId=op.txid+'_0';
-      if(!next.assets.some(a=>a.id===assetId))next.assets.unshift({id:assetId,origin:assetId,outpoint:assetId,name:op.review.draft.name,mapName:op.review.draft.name,number:null,ordinal:null,confirmations:0,numberCheck:'verified',observedAt:new Date().toISOString(),owner:ownerFor(op.bapId),creator:op.bapId,content:op.review.draft.content,originValid:true,ownershipCheck:'verified',transactions:[record]});
+      if(!next.assets.some(a=>a.id===assetId))next.assets.unshift({id:assetId,origin:assetId,outpoint:assetId,name:op.review.draft.name,inscriptionName:op.review.draft.name,mapName:op.review.draft.name,number:null,ordinal:null,confirmations:0,numberCheck:'verified',observedAt:new Date().toISOString(),owner:ownerFor(op.bapId),creator:op.bapId,content:op.review.draft.content,originValid:true,ownershipCheck:'verified',transactions:[record]});
     }else if(op.kind==='transfer'){
       const asset=next.assets.find(a=>a.id===assetId);if(!asset||eligible(asset,op.bapId)||asset.outpoint!==op.review.outpoint)throw Error('artifactReviewExpired');
       next.assets=next.assets.map(a=>a.id===assetId?{...a,ownershipCheck:'unverified',transfer:{opId:op.id,txid:op.txid,recipient:op.review.recipient,previousOwner:a.owner,verification:'pending',confirmations:0},transactions:[...a.transactions,record]}:a);
     }else if(op.kind==='remove'){
       if(current(next,op.bapId)?.assetId!==assetId)throw Error('artifactReviewExpired');
-      next.bindings=next.bindings.map(b=>b.bapId===op.bapId&&b.assetId===assetId&&b.state==='current'?{...b,state:'history',removedBy:op.txid}:b);
+      next.bindings=next.bindings.map(b=>b.bapId===op.bapId&&b.assetId===assetId&&b.state==='current'?{...b,state:'history',removedBy:op.txid,endedAt:new Date().toISOString(),endReason:'removed'}:b);
       next.assets=next.assets.map(a=>a.id===assetId?{...a,transactions:[...a.transactions,record]}:a);
     }else if(op.kind==='bind'){
       const asset=next.assets.find(a=>a.id===assetId);if(!asset||bindingEligibility(asset,op.bapId))throw Error('artifactReviewExpired');
-      next.bindings=next.bindings.map(b=>(b.bapId===op.bapId||next.assets.find(a=>a.id===b.assetId)?.origin===asset.origin)&&b.state==='current'?{...b,state:'history'}:b);
-      next.bindings.unshift({id:op.id,assetId,bapId:op.bapId,state:'current',validity:'valid',txid:op.txid});
+      next.bindings=next.bindings.map(b=>(b.bapId===op.bapId||next.assets.find(a=>a.id===b.assetId)?.origin===asset.origin)&&b.state==='current'?{...b,state:'history',endedAt:new Date().toISOString(),endReason:'replaced',replacedBy:assetId,endedByTxid:op.txid}:b);
+      next.bindings.unshift({id:op.id,assetId,bapId:op.bapId,state:'current',validity:'valid',txid:op.txid,startedAt:new Date().toISOString()});
       next.assets=next.assets.map(a=>a.id===assetId?{...a,transactions:[...a.transactions,record]}:a);
     }
     return replaceOperation(next,{...op,assetId,phase:'accepted'});
@@ -90,7 +90,7 @@
   function previewFixture(asset,mode) {
     if(mode==='html'||mode==='svg')return {...asset,content:{kind:'external',type:mode==='html'?'text/html':'image/svg+xml',raw:'<script>window.unsafeArtifactExecuted=true</script>'}};
     if(mode==='damaged')return {...asset,content:{kind:'upload',type:'image/png',blobId:'missing-preview-fixture'}};
-    if(mode==='metadata')return {...asset,name:'<img src=x onerror=alert(1)>',mapName:'<script>alert(1)</script>'};
+    if(mode==='metadata')return {...asset,inscriptionName:asset.inscriptionName||asset.name,name:'<img src=x onerror=alert(1)>',mapName:'<script>alert(1)</script>'};
     return asset;
   }
   const previewSafe=content=>content?.kind==='brand'||(content?.kind==='upload'&&['image/png','image/jpeg'].includes(content.type));
@@ -127,7 +127,7 @@
     if(!verified)return {...data,assets:data.assets.map(a=>a.id===id?{...a,ownershipCheck:'unverified'}:a)};
     const transfer=asset.transfer?.verification==='pending'?asset.transfer:null;
     const updated={...asset,ownershipCheck:'verified',...(transfer?{owner:transfer.recipient,outpoint:transfer.txid+'_0',transfer:{...transfer,verification:'verified'}}:{})};
-    return {...data,assets:data.assets.map(a=>a.id===id?updated:a),bindings:transfer?data.bindings.map(b=>b.assetId===id&&b.state==='current'&&updated.owner!==ownerFor(b.bapId)?{...b,state:'history',validity:'not-owned'}:b):data.bindings};
+    return {...data,assets:data.assets.map(a=>a.id===id?updated:a),bindings:transfer?data.bindings.map(b=>b.assetId===id&&b.state==='current'&&updated.owner!==ownerFor(b.bapId)?{...b,state:'history',validity:'not-owned',endedAt:new Date().toISOString(),endReason:'transferred',endedByTxid:transfer.txid}:b):data.bindings};
   }
   function parseLookup(raw){
     const text=raw.trim(),numeric=text.startsWith('#')?text.slice(1):text;
