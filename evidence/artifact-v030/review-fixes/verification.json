@@ -1,0 +1,57 @@
+{
+  "status": "implemented-and-verified",
+  "features": [
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15",
+    "R16",
+    "R17",
+    "R18",
+    "R19",
+    "R20"
+  ],
+  "additionalChecks": [
+    "390px 中文导入错误位于 y=263px，焦点进入错误区域",
+    "包含需保留 Markdown 语法时禁用视觉标题命令，切换源码后启用，原文保留",
+    "代表界面覆盖320、390、1440及中英文、深浅色；未穷举所有组合"
+  ],
+  "automatedA11y": [
+    {
+      "file": "R16/a11y.json",
+      "counts": {
+        "inapplicable": 51,
+        "incomplete": 1,
+        "passes": 38,
+        "violations": 0
+      }
+    },
+    {
+      "file": "R17/a11y.json",
+      "counts": {
+        "inapplicable": 53,
+        "incomplete": 1,
+        "passes": 36,
+        "violations": 0
+      }
+    },
+    {
+      "file": "review-fixes/editor-a11y.json",
+      "counts": {
+        "inapplicable": 54,
+        "incomplete": 0,
+        "passes": 35,
+        "violations": 0
+      }
+    }
+  ],
+  "errors": "errors.json",
+  "console": "console.txt",
+  "notes": [
+    "浏览器运行错误为空；importType 是主动触发的预期错误",
+    "本地预览 HTTP 和可控样例，不含真实钱包、签名或生产 API 验证",
+    "字体渐变、遮挡等自动对比度待核实项没有据此宣称完全符合 WCAG AA",
+    "全部实现仍待用户视觉复核"
+  ]
+}

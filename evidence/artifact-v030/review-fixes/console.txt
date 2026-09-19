@@ -1,0 +1,184 @@
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "edit", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "save", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "saved", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "edit", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "review", wallet: "connected", operation: "save", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "saved", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] [Ownword writer] released ownword-v030-artifact-writer
+[info] [Ownword prototype] {page: "artifacts", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v020-content-writer
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword content] {page: "write", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword review] {draft: "draft-637f80a7-981b-491a-8819-28b5a0c8aea2", author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD", bytes: 0, issue: "reviewEmpty"}
+[info] [Ownword review] {draft: "draft-637f80a7-981b-491a-8819-28b5a0c8aea2", author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD", bytes: 28, issue: ""}
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword content] {page: "review", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] [Ownword writer] released ownword-v030-artifact-writer
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] [Ownword writer] released ownword-v030-artifact-writer
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "setup", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v020-content-writer
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword content] {page: "write", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "write", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "write", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v020-content-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v020-content-writer
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword content] {page: "write", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "edit", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] [Ownword writer] released ownword-v030-artifact-writer
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "visitor"}
+[info] [Ownword prototype] {page: "content", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword content] {page: "content", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v020-content-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] [Ownword writer] released ownword-v030-artifact-writer
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[warning] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+[info] [Ownword prototype] {page: "welcome", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "disconnected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] [Ownword writer] released ownword-v030-artifact-writer
+[info] [Ownword prototype] {page: "resolving", wallet: "connected", operation: "resolving", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "identity", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword prototype] {page: "artifacts", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v030-artifact-writer
+[info] [Ownword writer] released ownword-v030-artifact-writer
+[info] [Ownword content] {page: "content", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword prototype] {page: "content", wallet: "connected", operation: "none", account: 0, notice: "", ...}
+[info] [Ownword writer] acquired ownword-v020-content-writer
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword content] {page: "write", identity: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
+[info] [Ownword import] reading {name: "not-markdown.txt", bytes: 28, draft: "draft-c0e8b110-7dce-4c60-9a43-373e4fdbe09b"}
+[warning] [Ownword import] rejected importType
+[info] [Ownword import] reading {name: "unsupported.md", bytes: 63, draft: "draft-c0e8b110-7dce-4c60-9a43-373e4fdbe09b"}
+[info] [Ownword import] decoded {draft: "draft-c0e8b110-7dce-4c60-9a43-373e4fdbe09b", characters: 63}
+[info] [Ownword content] drafts saved {author: "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"}
