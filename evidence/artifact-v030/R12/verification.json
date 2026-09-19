@@ -1,0 +1,14 @@
+{
+  "feature": "R12",
+  "result": "passed",
+  "checks": [
+    "Artifact 12 组模型、JSX、Token 检查通过；有效绑定判定保持严格",
+    "320px 详情和选择器显示关联待核实、上次记录和时间，不出现空关联状态",
+    "点击重试后恢复有效关联；查询仍只接受有效 Binding"
+  ],
+  "screenshots": [
+    "unverified-detail.png",
+    "unverified-selector.png",
+    "recovered.png"
+  ]
+}
