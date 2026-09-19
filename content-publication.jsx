@@ -76,9 +76,9 @@ function useContentPublication({dataRef,setData,identityRef,identity,settings,on
   return {start,approve,cancel,query};
 }
 function ContentPublication({operation:op,t,locale,failCopy,onApprove,onCancel,onQuery,onEdit,onRead,onBack}) {
-  if (!op) return <section className="content-publication" data-content-screen="publish"><h1 tabIndex="-1">{t('reviewExpired')}</h1><Button onClick={onEdit}>{t('reviewEdit')}</Button></section>;
+  if (!op) return <section className="content-publication" data-content-screen="publish"><h1 className="task-title" tabIndex="-1">{t('reviewExpired')}</h1><Button onClick={onEdit}>{t('reviewEdit')}</Button></section>;
   return <section className="content-publication" data-content-screen="publish" data-publish-phase={op.phase}>
-    <p className="eyebrow">{t('publishEyebrow')}</p><h1 tabIndex="-1" aria-live="polite">{t('publish-'+op.phase)}</h1>
+    <p className="eyebrow">{t('publishEyebrow')}</p><h1 className="task-title" tabIndex="-1" aria-live="polite">{t('publish-'+op.phase)}</h1>
     <p className="publish-subtitle">{OwnwordContentModel.title(op.content) || t('contentUntitled')}</p>
     <ol className="publish-steps"><li data-complete={!!op.signature}><span>{op.signature ? '✓' : '1'}</span><div><strong>{t('publishSignatureStep')}</strong><p>{t(op.signature ? 'publishSigned' : 'publishSignDescription')}</p></div></li><li data-complete={op.phase==='published'}><span>{op.phase==='published' ? '✓' : '2'}</span><div><strong>{t('publishChainStep')}</strong><p>{t(op.phase==='published' ? 'publishAccepted' : 'publishChainDescription')}</p></div></li></ol>
     {['signing','broadcasting'].includes(op.phase) && <div className="publish-processing"><LoadingMark small /><p>{t('publishProcessing')}</p></div>}

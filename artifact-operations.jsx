@@ -47,9 +47,9 @@ function useArtifactOperations({store,identity,onAccountEvent}) {
 function ArtifactActionReview({review,data,t,failCopy,onSign,onBack,issue}) {
   const asset=review?.assetSnapshot||data.assets.find(a=>a.id===review?.assetId);
   const previous=data.assets.find(a=>a.id===OwnwordArtifactModel.current(data,review?.bapId)?.assetId);
-  if(!review||!asset)return <section className="artifact-page"><ArtifactBack t={t} onClick={onBack}/><h1 tabIndex="-1">{t('reviewExpired')}</h1></section>;
+  if(!review||!asset)return <section className="artifact-page"><ArtifactBack t={t} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t('reviewExpired')}</h1></section>;
   return <section className="artifact-page" data-artifact-screen="action-review">
-    <div className="page-heading title-with-help"><h1 tabIndex="-1">{t('artifactReview-'+review.kind)}</h1><ContextHelp label={t(review.kind==='bind'?'artifactAssociationHelp':'artifactActionHelp')}><p>{t('artifactImpact-'+review.kind)}</p>{review.kind==='bind'&&previous&&previous.id!==asset.id&&<p>{t('artifactOldCurrent')} {previous.name}</p>}<p>{t('artifactSignatureScope')}</p></ContextHelp></div>
+    <div className="page-heading title-with-help"><h1 className="task-title" tabIndex="-1">{t('artifactReview-'+review.kind)}</h1><ContextHelp label={t(review.kind==='bind'?'artifactAssociationHelp':'artifactActionHelp')}><p>{t('artifactImpact-'+review.kind)}</p>{review.kind==='bind'&&previous&&previous.id!==asset.id&&<p>{t('artifactOldCurrent')} {previous.name}</p>}<p>{t('artifactSignatureScope')}</p></ContextHelp></div>
     <div className={'artifact-compose-grid'+(asset.content.kind==='brand'?' artifact-compose-default':'')}>
       {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} large t={t}/>}
       <div className="artifact-review-copy"><NumberStatus asset={asset} t={t}/><h2>{asset.name}</h2>
@@ -65,13 +65,13 @@ function ArtifactActionReview({review,data,t,failCopy,onSign,onBack,issue}) {
   </section>;
 }
 function ArtifactOperation({op,data,t,failCopy,operations,onBind,onReview,onOpen,onBack,onVerify}) {
-  if(!op)return <section className="artifact-page"><ArtifactBack t={t} onClick={onBack}/><h1 tabIndex="-1">{t('artifactNotFound')}</h1></section>;
+  if(!op)return <section className="artifact-page"><ArtifactBack t={t} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t('artifactNotFound')}</h1></section>;
   const M=OwnwordArtifactModel,asset=data.assets.find(a=>a.id===op.assetId),accepted=op.phase==='accepted',processing=['signing','validating','submitting'].includes(op.phase),canBind=asset&&!M.bindingEligibility(asset,op.bapId);
   return <section className="artifact-page artifact-operation" data-artifact-screen="operation" data-artifact-phase={op.phase} data-operation-kind={op.kind}>
     <ArtifactBack t={t} onClick={onBack}/>
     <div className="operation-receipt">
       <div className={'operation-seal '+(accepted?'is-complete':processing?'is-processing':'')} aria-hidden="true"><UiIcon name={accepted?'Checkmark':'InfoCircle'}/></div>
-      <div className="operation-heading"><h1 tabIndex="-1" aria-live="polite">{t(accepted?'artifactResult-'+op.kind:'artifactPhase-'+op.phase)}</h1><p>{op.review.draft?.name||asset?.name}</p></div>
+      <div className="operation-heading"><h1 className="task-title" tabIndex="-1" aria-live="polite">{t(accepted?'artifactResult-'+op.kind:'artifactPhase-'+op.phase)}</h1><p>{op.review.draft?.name||asset?.name}</p></div>
       <div className="operation-meta" data-signature={op.signature} data-phase={op.phase}>
         {op.signature==='valid'&&<span className="status-with-help"><span>{t('artifactSigned')}</span><ContextHelp label={t('artifactSignatureHelp')}><p>{t('artifactSignatureScope')}</p></ContextHelp></span>}
         {accepted&&<span className="status-with-help"><span>{t('artifactSubmitted')}</span><ContextHelp label={t('artifactConfirmationHelp')}><p>{t('artifactSubmissionMeaning')}</p></ContextHelp></span>}

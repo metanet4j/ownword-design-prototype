@@ -1,0 +1,15 @@
+{
+  "feature": "R18",
+  "result": "passed",
+  "checks": [
+    "工作区、操作表单、Review 和操作结果共用 task-title：S2 字号600，手机400，S2 sans 字体；正文与公开身份卡不受影响",
+    "编辑资料、设置身份、核对身份及查找页面使用直接任务名称，删去表单重复小标题",
+    "320px Edit profile 与 Create Artifact 均为600字重、20px/26px，无横向溢出；桌面 Find identity 截图检查",
+    "JSX、模型与双语文案检查通过"
+  ],
+  "screenshots": [
+    "edit-320.png",
+    "create-320.png",
+    "find-desktop.png"
+  ]
+}

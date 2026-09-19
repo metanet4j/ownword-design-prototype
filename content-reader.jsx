@@ -5,7 +5,7 @@ function ContentReader({record,t,locale,identity,go,onExport,failCopy,records,dr
   async function copyLink() {
     try {if(failCopy)throw new Error('Simulated clipboard failure');await navigator.clipboard.writeText(location.origin+location.pathname+'#/read/'+encodeURIComponent(record.id));setFeedback('copied');} catch {setFeedback('copyFailed');}
   }
-  if (!record) return <section className="content-missing" data-content-screen="read"><p className="eyebrow">{t('readerPublic')}</p><h1 tabIndex="-1">{t('readerMissing')}</h1><p>{t('readerMissingBody')}</p><Button data-action="reader-sample" onClick={()=>go('read','first-words')}>{t('contentReadSample')}</Button></section>;
+  if (!record) return <section className="content-missing" data-content-screen="read"><p className="eyebrow">{t('readerPublic')}</p><h1 className="task-title" tabIndex="-1">{t('readerMissing')}</h1><p>{t('readerMissingBody')}</p><Button data-action="reader-sample" onClick={()=>go('read','first-words')}>{t('contentReadSample')}</Button></section>;
   const history=OwnwordContentModel.versions(records,record), latest=history[0];
   const revision=drafts.find(d=>d.baseContentId===record.id && d.authorBapId===identity?.bapId);
   const time=new Intl.DateTimeFormat(locale==='zh'?'zh-CN':'en-US',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(record.publishedAt));
@@ -60,7 +60,7 @@ function useReaderContents(paper,record) {
 function ContentHistory({record,records,go,t,locale}) {
   if (!record) return <ContentReader record={null} t={t} go={go} />;
   const items=OwnwordContentModel.versions(records,record);
-  return <section className="content-history" data-content-screen="history"><Button variant="quiet" onClick={()=>go('read',record.id)}>{t('historyBack')}</Button><div className="page-heading"><p className="eyebrow">{OwnwordContentModel.title(record.content) || t('contentUntitled')}</p><h1 tabIndex="-1">{t('versionHistory')}</h1><p>{t('versionHistoryBody')}</p></div><ol className="version-list">{items.map((item,index)=><li key={item.id}><div><span className="eyebrow">{t('readerVersion')} {item.revisionNo}{index===0 ? ' · '+t('versionCurrent') : ''}</span><h2>{OwnwordContentModel.title(item.content) || t('contentUntitled')}</h2><time dateTime={item.publishedAt}>{new Date(item.publishedAt).toLocaleString(locale==='zh' ? 'zh-CN' : 'en-US')}</time></div><Button data-version-id={item.id} onClick={()=>go('read',item.id)}>{t('contentRead')}</Button></li>)}</ol></section>;
+  return <section className="content-history" data-content-screen="history"><Button variant="quiet" onClick={()=>go('read',record.id)}>{t('historyBack')}</Button><div className="page-heading"><p className="eyebrow">{OwnwordContentModel.title(record.content) || t('contentUntitled')}</p><h1 className="task-title" tabIndex="-1">{t('versionHistory')}</h1><p>{t('versionHistoryBody')}</p></div><ol className="version-list">{items.map((item,index)=><li key={item.id}><div><span className="eyebrow">{t('readerVersion')} {item.revisionNo}{index===0 ? ' · '+t('versionCurrent') : ''}</span><h2>{OwnwordContentModel.title(item.content) || t('contentUntitled')}</h2><time dateTime={item.publishedAt}>{new Date(item.publishedAt).toLocaleString(locale==='zh' ? 'zh-CN' : 'en-US')}</time></div><Button data-version-id={item.id} onClick={()=>go('read',item.id)}>{t('contentRead')}</Button></li>)}</ol></section>;
 }
 function ContentProof({record,settings,operations,t,failCopy}) {
   const proof=OwnwordContentModel.proofResult(record,settings.proof,operations);

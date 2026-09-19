@@ -150,7 +150,7 @@ function App() {
       dispatch({type: 'DRAFT', field: 'image', value: url}); setImageError('');
     } catch {URL.revokeObjectURL(url); setImageError('invalidImage');}
   }
-  function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
+  function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 className={k==='publicIntro'?'':'task-title'} tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
   const currentModule = state.page==='content'?'myContent':state.page==='artifacts'?(location.hash.startsWith('#/find')?'artifactFind':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
   const profileDisplay = state.page === 'identity' || state.page === 'public' ? state.profile : state.draft;
@@ -200,7 +200,7 @@ function App() {
         {['setupStep', 'reviewStep', 'confirmStep', 'doneStep'].map((step, i) => <li key={step} aria-current={(state.page === 'setup' ? 0 : state.page === 'review' ? (state.busy ? 2 : 1) : 3) === i ? 'step' : undefined}><span>{String(i + 1).padStart(2, '0')}</span>{t(step)}</li>)}
       </ol>}
       {formPage && <section className="workbench">
-        <aside>{heading(editing ? 'editHeading' : state.incomplete ? 'complete' : 'setupHeading', editing ? 'editBody' : state.incomplete ? 'completeBody' : 'setupBody', editing ? 'editProfile' : 'setup')}
+        <aside>{heading(editing ? 'editHeading' : state.incomplete ? 'complete' : 'setupHeading', editing ? 'editBody' : state.incomplete ? 'completeBody' : 'setupBody')} 
           <div className="aside-identity"><span className="eyebrow">{t('currentIdentity')}</span><code>{bapId}</code><p>{t(state.published ? 'published' : 'localId')}</p></div>
         </aside>
         <form className="profile-form" noValidate onSubmit={e => {e.preventDefault(); checkForm();}}>
@@ -222,7 +222,7 @@ function App() {
       </section>}
       {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"><UiIcon name="Checkmark"/></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}
       {state.page === 'identity' && <section className="identity-page">
-        <div className="identity-heading"><h1 tabIndex="-1">{t('myIdentity')}</h1><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div>
+        <div className="identity-heading"><h1 className="task-title" tabIndex="-1">{t('myIdentity')}</h1><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div>
         <div className="identity-layout">
           <section className="identity-profile" aria-label={t('profileDetails')}>
             <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight label={t('published')}/></div></div></div><Button variant="quiet" data-action="public" onClick={()=>{setAngle(-10);setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches);navigate('public');}}>{t('viewPublicIdentity')}<UiIcon name="ChevronRight"/></Button></div>

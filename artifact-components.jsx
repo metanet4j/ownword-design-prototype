@@ -51,7 +51,7 @@ function ArtifactInventory({data,identity,t,onSelect,onOpen,onCreate}) {
   </div>;
 }
 function ArtifactSelector({data,identity,t,onSelect,onOpen,onBack}) {
-  return <section className="artifact-page" data-artifact-screen="select"><ArtifactBack t={t} onClick={onBack}/><div className="page-heading"><h1 tabIndex="-1">{t('artifactSelect')}</h1></div><ArtifactInventory data={data} identity={identity} t={t} onSelect={onSelect} onOpen={onOpen}/></section>;
+  return <section className="artifact-page" data-artifact-screen="select"><ArtifactBack t={t} onClick={onBack}/><div className="page-heading"><h1 className="task-title" tabIndex="-1">{t('artifactSelect')}</h1></div><ArtifactInventory data={data} identity={identity} t={t} onSelect={onSelect} onOpen={onOpen}/></section>;
 }
 Object.assign(window,{ArtifactInventory,ArtifactHistory});
 function ArtifactFixtureControls({store,t}) {

@@ -439,3 +439,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .plate-chain-summary span{font-size:var(--s2-font-size-75);color:var(--s2d-text-muted);}
 .plate-chain-summary code{font-size:var(--s2-font-size-75);overflow-wrap:anywhere;}
 @media(max-width:650px){.header-tools{gap:0;}.workspace-toggle.s2d-button{padding-inline:var(--s2-spacing-100);gap:var(--s2-spacing-100);}.header-tools>.preference-anchor .preferences{width:min(296px,calc(100vw - 32px));}}
+
+/* Task titles share one hierarchy; public cards and written content keep their typography. */
+.app main h1.task-title { font:600 var(--s2-font-size-600)/1.3 var(--s2d-font-family); letter-spacing:0; text-wrap:pretty; }
+@media(max-width:700px) { .app main h1.task-title { font-size:var(--s2-font-size-400); } }
