@@ -176,7 +176,7 @@ function App() {
         {state.wallet && <Button data-action="disconnect" onClick={disconnect}>{t('disconnectWallet')}</Button>}
       </nav>}
       </div>
-        <div className="preference-anchor" ref={prefsRef}><Button variant="quiet" className="s2d-button header-preferences" onClick={()=>{setMenuOpen(false);setPrefs(!prefs);}} aria-label={t('appearanceLanguage')} aria-expanded={prefs} aria-controls="preferences-panel"><UiIcon name="Settings"/></Button>
+        <div className="preference-anchor" ref={prefsRef}>{React.cloneElement(S2.ActionButton({variant:'quiet',onPress:()=>{setMenuOpen(false);setPrefs(!prefs);}}),{className:'s2d-button s2d-button-quiet header-preferences','aria-label':t('appearanceLanguage'),'aria-expanded':prefs,'aria-controls':'preferences-panel',title:t('appearanceLanguage')},<UiIcon name="Contrast"/>)}
           {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
         </div>
     </div>

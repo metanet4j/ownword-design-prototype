@@ -1,0 +1,20 @@
+{
+  "feature": "R06",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "change": "头部偏好入口使用 S2 ActionButton 与 Contrast 图标，圆形中性表面、细边框、悬浮与展开状态。",
+  "source": "_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_Contrast_20_N.svg",
+  "verification": [
+    "1189×792 英文浅色与中文深色实际截图",
+    "Enter 打开；Escape 关闭并恢复按钮焦点",
+    "320×568 面板与页面无横向溢出，按钮 44×44px",
+    "浏览器运行时错误为 0",
+    "完整启动检查通过，记录在任务 evidence/R06-init.txt"
+  ],
+  "screenshots": [
+    "light.png",
+    "dark.png",
+    "mobile-open.png"
+  ],
+  "note": "深色与手机截图保留键盘焦点外圈；普通状态仅有细边框。只检查受影响入口，不重跑全部浏览器 BDD。"
+}
