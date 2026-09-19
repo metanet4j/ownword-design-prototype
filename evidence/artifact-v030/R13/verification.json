@@ -1,0 +1,13 @@
+{
+  "feature": "R13",
+  "result": "passed",
+  "checks": [
+    "内容模型和 JSX 检查通过",
+    "320×780 空稿点击发布检查，错误位于 y=379.6px，焦点进入错误区，无横向溢出",
+    "输入有效正文后可以进入 Review，旧校验错误消失"
+  ],
+  "screenshots": [
+    "empty-validation.png",
+    "valid-review.png"
+  ]
+}

@@ -2,7 +2,7 @@ function MarkdownBody({source, t}) {
   const result = React.useMemo(() => OwnwordEditorTools.renderMarkdown(source), [source]);
   return <><div className="markdown-body" ref={node=>node?.querySelector("h1")?.setAttribute("tabindex","-1")} dangerouslySetInnerHTML={{__html: result.html}}></div>{result.unsupported && <p className="content-syntax-note">{t('markdownUnsupported')}</p>}</>;
 }
-function ContentEditor({draft, onChange, t, locale, actions, savedState}) {
+function ContentEditor({draft, onChange, t, locale, actions, savedState, feedback, feedbackRef}) {
   const host = React.useRef(null), editor = React.useRef(null), menuRef = React.useRef(null), latestChange = React.useRef(onChange);
   latestChange.current = onChange;
   const visualHost = React.useRef(null), visual = React.useRef(null), latestDraft = React.useRef(draft), latestLabels = React.useRef({});
@@ -86,6 +86,7 @@ function ContentEditor({draft, onChange, t, locale, actions, savedState}) {
   const bytes = new TextEncoder().encode(draft.content).length;
   return <div className="content-editor" data-editor-mode={mode}>
     <div className="editor-topline"><div><span className="eyebrow">{t('contentDraft')}</span><h1 tabIndex="-1">{OwnwordContentModel.title(draft.content) || t('contentUntitled')}</h1></div><div className="editor-actions">{savedState}{actions}</div></div>
+    <div className="editor-feedback" ref={feedbackRef} tabIndex="-1">{feedback}</div>
     <div className="editor-controls"><div className="editor-tools" role="group" aria-label={t('editorFormatting')}>
       <label className="editor-heading-picker"><span className="sr-only">{t('editorHeading')}</span><select disabled={visualBlocked} aria-label={t('editorHeading')} value="" onChange={e => command(e.target.value)}><option value="" disabled>{t('editorHeading')}</option>{['h1','h2','h3'].map((v,i) => <option value={v} key={v}>{t('editorHeading')} {i+1}</option>)}</select></label>
       {['bold','italic','link'].map(key => <Button iconOnly key={key} variant="quiet" data-format={key} disabled={visualBlocked} aria-pressed={mode === 'visual' ? !!formats[key] : undefined} aria-label={t('editor-' + key)} onClick={() => command(key)}>{key === 'bold' ? <UiIcon name="TextBold"/> : key === 'italic' ? <UiIcon name="TextItalic"/> : <UiIcon name="Link"/>}</Button>)}
