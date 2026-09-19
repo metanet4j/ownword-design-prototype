@@ -1,0 +1,202 @@
+{
+  "feature": "R09",
+  "date": "2026-09-19",
+  "status": "implemented-and-verified",
+  "scope": "公开身份卡内容溢出与移动端重复头像留白",
+  "cause": "R05 的 aspect-ratio:1.5 与 min-height:0 将桌面卡面固定在 351px；S2 触控字号下内容达到 390px，页脚溢出并重叠外部复制区域。",
+  "fix": [
+    "移除固定比例覆盖，由当前卡面内容决定高度并保留内边距。",
+    "隐藏卡面仍绝对定位，不参与当前卡面高度；保留 inert 与 aria-hidden。",
+    "合并重复 flex、摘要行数和移动端留白规则；仅姓名为头像预留宽度。"
+  ],
+  "source": "app.css；绑定 _ds/react-spectrum-s2/tokens/s2-tokens.css 的触控媒体规则；PRD v0.3.0 公开身份卡正反面独立高度要求。",
+  "reproduction": {
+    "method": "agent-browser 独立会话；遍历页面 CSSOM，提取绑定 S2 的触控 @media 内 :root 规则，临时应用于测试页面。测试样式未写入产品代码。",
+    "limitation": "CLI 设备设置仍报告 pointer:fine，所以本次用真实 S2 token 规则进行放大字号实验；不声称真实触控硬件测试。",
+    "before": {
+      "scrollHeight": 390,
+      "nameFont": "44px",
+      "height": 351,
+      "viewport": "1126x733"
+    },
+    "after": {
+      "bottomPadding": 24,
+      "scrollHeight": 414,
+      "height": 414
+    },
+    "longText": "仅临时修改测试 DOM 的姓名及简介，不改变样例数据或产品逻辑。"
+  },
+  "geometryCriteria": "当前卡面 scrollHeight 不超过 clientHeight；直接内容加底部 padding 位于卡内；外部复制区位于投影之后；页面无横向溢出；隐藏面绝对定位且 inert。",
+  "measurements": [
+    {
+      "activeFont": "44px",
+      "bottomPadding": 24,
+      "contentBottom": 390,
+      "copyGap": 10.89,
+      "face": "front",
+      "height": 414,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "desktop-touch-tokens-front",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 414,
+      "viewport": {
+        "height": 733,
+        "width": 1126
+      }
+    },
+    {
+      "activeFont": "27px",
+      "bottomPadding": 24,
+      "contentBottom": 374,
+      "copyGap": 8.82,
+      "face": "back",
+      "height": 398,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "desktop-touch-tokens-back-keyboard-flip",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 398,
+      "viewport": {
+        "height": 733,
+        "width": 1126
+      }
+    },
+    {
+      "activeFont": "36px",
+      "bottomPadding": 24,
+      "contentBottom": 344,
+      "copyGap": 12.69,
+      "face": "front",
+      "height": 368,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "desktop-fine-pointer-front",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 368,
+      "viewport": {
+        "height": 733,
+        "width": 1126
+      }
+    },
+    {
+      "activeFont": "28px",
+      "bottomPadding": 16,
+      "contentBottom": 332,
+      "copyGap": 12.92,
+      "face": "front",
+      "height": 348,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "mobile-320-zh-dark-front",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 348,
+      "viewport": {
+        "height": 760,
+        "width": 320
+      }
+    },
+    {
+      "activeFont": "22px",
+      "bottomPadding": 16,
+      "contentBottom": 317,
+      "copyGap": 13.07,
+      "face": "back",
+      "height": 333,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "mobile-320-zh-dark-back",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 333,
+      "viewport": {
+        "height": 760,
+        "width": 320
+      }
+    },
+    {
+      "activeFont": "34px",
+      "bottomPadding": 16,
+      "contentBottom": 379,
+      "copyGap": 10.66,
+      "face": "front",
+      "height": 395,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "mobile-320-zh-dark-touch-tokens-front",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 395,
+      "viewport": {
+        "height": 760,
+        "width": 320
+      }
+    },
+    {
+      "activeFont": "34px",
+      "bottomPadding": 16,
+      "contentBottom": 428,
+      "copyGap": 11.72,
+      "face": "front",
+      "height": 444,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "mobile-320-zh-dark-touch-long-text-front",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 444,
+      "viewport": {
+        "height": 760,
+        "width": 320
+      }
+    },
+    {
+      "activeFont": "27px",
+      "bottomPadding": 16,
+      "contentBottom": 386,
+      "copyGap": 11.19,
+      "face": "back",
+      "height": 402,
+      "inactiveInert": true,
+      "inactivePosition": "absolute",
+      "label": "mobile-320-zh-dark-touch-tokens-back",
+      "pageOverflow": 0,
+      "pass": true,
+      "scrollHeight": 402,
+      "viewport": {
+        "height": 760,
+        "width": 320
+      }
+    }
+  ],
+  "interactions": [
+    "焦点定位翻面按钮，Enter 切换正反面，焦点保持可见。",
+    "复制完整 BAP ID 按钮显示“已复制”状态。"
+  ],
+  "browserRuntimeErrors": 0,
+  "startup": {
+    "exitCode": 0,
+    "log": "../evidence/R09-init.txt",
+    "command": "./init.ps1"
+  },
+  "screenshots": [
+    "after-desktop.png",
+    "after-mobile-back.png",
+    "after-mobile-touch-back.png",
+    "after-mobile-touch-long.png",
+    "after-mobile.png",
+    "after-touch-desktop-back.png",
+    "after-touch-desktop.png",
+    "before-desktop.png",
+    "before-touch-desktop.png"
+  ],
+  "limits": [
+    "仅验证本轮公开身份卡与相关边界，未运行全站浏览器回归。",
+    "没有修改生成的 S2 资源、按钮封装或业务模型。",
+    "等待用户视觉复核。"
+  ]
+}
