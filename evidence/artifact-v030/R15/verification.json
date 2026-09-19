@@ -1,0 +1,15 @@
+{
+  "feature": "R15",
+  "result": "passed",
+  "checks": [
+    "320×780 编辑正文起点由评审时 y=562px 降至 y=370px，首屏增加约 192px；无横向溢出",
+    "导入导出放入 File 浮层；Escape 关闭并返回触发按钮",
+    "视觉模式说明放在视图按钮旁的帮助入口；可点击和 Escape 关闭",
+    "1440×1000 截图、JSX 和模型检查通过；触控按钮仍至少44px"
+  ],
+  "screenshots": [
+    "editor-320.png",
+    "files.png",
+    "editor-desktop.png"
+  ]
+}
