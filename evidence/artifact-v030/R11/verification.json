@@ -1,0 +1,15 @@
+{
+  "feature": "R11",
+  "result": "passed",
+  "checks": [
+    "95 身份模型断言通过，覆盖当前资料优先、其他身份回退、未知身份",
+    "浏览器修改名称后，Artifact 详情、公开身份及数字 ID 165 查找均显示 Review Maya",
+    "浏览器运行错误为空"
+  ],
+  "screenshots": [
+    "detail.png",
+    "public.png",
+    "find.png"
+  ],
+  "limits": "当前会话资料；模拟原型不提供跨断开或刷新持久化身份。"
+}

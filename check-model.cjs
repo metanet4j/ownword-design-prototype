@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const {initial, reducer: step, validate, countGraphemes, ids} = require('./model.js');
+const {initial, reducer: step, validate, countGraphemes, ids, fixtures} = require('./model.js');
 let checks = 0;
 const eq = (a, b) => {assert.deepEqual(a, b); checks++;};
 const connect = scenario => step(step(initial(), {type: 'CONNECTED'}), {type: 'RESOLVED', scenario});
@@ -78,4 +78,8 @@ eq(countGraphemes('字'), 1);
 eq(validate({name: family.repeat(15), bio: '', type: 'Person'}).name, '');
 eq(validate({name: 'a'.repeat(101), bio: '', type: 'Person'}).name, 'nameLong');
 eq(validate({name: 'a'.repeat(100), bio: family.repeat(5), type: 'Person'}).bio, '');
+const latestIdentity = {bapId: ids[0], profile: {...fixtures[0], name: 'Updated profile'}, transaction: {txid: 'latest'}};
+eq(require('./model.js').resolveIdentity(ids[0], latestIdentity), latestIdentity);
+eq(require('./model.js').resolveIdentity(ids[1], latestIdentity).profile, fixtures[1]);
+eq(require('./model.js').resolveIdentity('unknown', latestIdentity), null);
 console.log(`${checks} model assertions passed`);

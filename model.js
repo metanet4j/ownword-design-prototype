@@ -58,7 +58,12 @@
       default: return s;
     }
   }
-  const api = {ids, fixtures, transactions, emptyProfile, initial, countGraphemes, validate, hasProfileChanges, reducer};
+  function resolveIdentity(bapId, current) {
+    if (current?.bapId === bapId) return current;
+    const index = ids.indexOf(bapId);
+    return index < 0 ? null : {bapId, profile: fixtures[index], transaction: transactions[index]};
+  }
+  const api = {resolveIdentity, ids, fixtures, transactions, emptyProfile, initial, countGraphemes, validate, hasProfileChanges, reducer};
   if (typeof module !== 'undefined') module.exports = api;
   else root.OwnwordModel = api;
 })(typeof window !== 'undefined' ? window : globalThis);

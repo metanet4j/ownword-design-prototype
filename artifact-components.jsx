@@ -36,8 +36,8 @@ function ArtifactSettings({settings,setSettings,store,t}) {
 }
 Object.assign(window,{ArtifactArt,NumberStatus,ArtifactSummary,ArtifactCard,ArtifactSettings});
 
-function ArtifactHistory({records,data,t,onOpen,showIdentity=false}) {
-  return <ol className="artifact-history-list">{records.map(b=>{const asset=data.assets.find(a=>a.id===b.assetId),replacement=data.assets.find(a=>a.id===b.replacedBy),reason=b.endReason||(b.removedBy?'removed':b.validity==='not-owned'?'transferred':'ended'),name=OwnwordModel.fixtures[OwnwordArtifactModel.identities.indexOf(b.bapId)]?.name;
+function ArtifactHistory({records,data,t,onOpen,resolveIdentity,showIdentity=false}) {
+  return <ol className="artifact-history-list">{records.map(b=>{const asset=data.assets.find(a=>a.id===b.assetId),replacement=data.assets.find(a=>a.id===b.replacedBy),reason=b.endReason||(b.removedBy?'removed':b.validity==='not-owned'?'transferred':'ended'),name=resolveIdentity?.(b.bapId)?.profile.name;
     return <li key={b.id}><div className="artifact-history-marker"><UiIcon name="History"/></div><div className="artifact-history-event"><strong>{t('artifactHistory-'+reason)}</strong><p>{asset?.name||b.assetId}{replacement&&<> · {t('artifactHistoryReplacement')}: {replacement.name}</>}</p>{showIdentity&&<div className="artifact-history-identity"><span>{name||t('artifactAssociatedTitle')}</span><code>{b.bapId}</code></div>}<p className="hint">{b.endedAt?<time dateTime={b.endedAt}>{artifactTime(b.endedAt,t)}</time>:t('artifactHistoryTimeUnknown')}</p></div>{onOpen&&asset&&<Button variant="quiet" aria-label={t('artifactView')+' · '+asset.name} onClick={()=>onOpen(asset.id)}><UiIcon name="ChevronRight"/></Button>}</li>;
   })}</ol>;
 }
