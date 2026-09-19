@@ -1,0 +1,93 @@
+{
+  "feature": "R21",
+  "verifiedAt": "2026-09-19T14:39:37.176581+00:00",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "用户两条批注：重新设计查找身份页，移除查询页的演示样例按钮。",
+  "design": {
+    "秩序清晰": "查询区居中且最大宽度640px，桌面输入框与按钮同高对齐。",
+    "关系可感知": "帮助与错误紧邻输入；公开身份与 Artifact 分组，各自操作就近放置。",
+    "密度适当": "手机查询操作占独立一行，长编号与 BAP ID 可以换行，桌面结果操作在首屏可见。",
+    "表达精细": "复用既有 S2 控件、Token 和图标；删除该页重复覆盖样式与样例文案。"
+  },
+  "sources": {
+    "product": "核心认知 Explorer 与偏好、PRD v0.3.0 第4.9节与 A09-A/B/C/D、X01/X02",
+    "componentPackage": "@react-spectrum/s2 1.6.0",
+    "tokens": "@adobe/spectrum-tokens 14.15.0",
+    "runtime": "原有 ReactSpectrumS2_ad4872 轻量原型封装；OwnWord 组合层负责布局和行为。未修改设计系统消费副本。"
+  },
+  "scenarios": [
+    {
+      "case": "165 与 #165",
+      "result": "均返回 Maya Chen 和 A place to stand；数字编号为165。Enter提交有效。",
+      "screenshot": "result-desktop.png"
+    },
+    {
+      "case": "完整 BAP ID",
+      "result": "返回公开身份，查看公开身份按钮可进入身份页。",
+      "screenshot": "bap-mobile.png"
+    },
+    {
+      "case": "0165",
+      "result": "字段下显示前导零修正提示，aria-invalid=true；修改后清除错误。",
+      "screenshots": [
+        "invalid-desktop.png",
+        "invalid-mobile-zh-dark.png"
+      ]
+    },
+    {
+      "case": "99999999",
+      "result": "未找到；输入保留，与服务失败反馈区分。",
+      "screenshot": "not-found-mobile.png"
+    },
+    {
+      "case": "2048",
+      "result": "显示无当前关联、5/6确认和尚未稳定；只有查看 Artifact 操作。",
+      "screenshot": "unassociated-mobile.png"
+    },
+    {
+      "case": "900719925474099312345",
+      "result": "保持精确数字串，无横向溢出，不出现错误身份跳转。",
+      "screenshot": "long-number-mobile.png"
+    },
+    {
+      "case": "演练场景 lookup=error",
+      "result": "服务不可用反馈保留输入和重试，重试仍执行查询。",
+      "screenshot": "unavailable-desktop.png"
+    },
+    {
+      "case": "演练场景 lookup=reorg",
+      "result": "显示待核实提示和重试，不显示未经核实的公开身份；恢复normal后返回正常结果。",
+      "screenshot": "unverified-desktop.png"
+    }
+  ],
+  "visualReview": {
+    "viewports": [
+      "937×792 英文浅色",
+      "937×792 中文深色反馈",
+      "320×780 中文深色",
+      "320×780 英文浅色长编号"
+    ],
+    "screenshotsReviewed": true,
+    "idle": "find-desktop.png",
+    "mobile": "result-mobile-zh-dark.png"
+  },
+  "checks": {
+    "desktop": "desktop-probe.json",
+    "mobile": "mobile-probe.json",
+    "accessibility": [
+      "a11y-desktop.json",
+      "a11y-mobile.json"
+    ],
+    "console": "console.json",
+    "runtimeErrors": "errors.json",
+    "resources": "resources.json",
+    "startup": "../../../../evidence/R21-init.txt",
+    "diffCheck": "git diff --check 通过"
+  },
+  "logs": "浏览器运行错误与console error均为空；warning为现有Babel开发提示。共享预览日志存在根路径CSS的404；本验证会话资源失败为空且5个样式表均已加载，未在本页复现资源加载故障。",
+  "limits": [
+    "未进行真实手机软键盘、读屏或生产API验证；自动无障碍抽查不代表完整认证。",
+    "本项修改查询页；此前提出的跨页返回来源与浏览上下文保留属于独立优化项。"
+  ]
+}
