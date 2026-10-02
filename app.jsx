@@ -106,6 +106,10 @@ function App() {
     window.addEventListener('beforeunload', block); return () => window.removeEventListener('beforeunload', block);
   }, [dirty, formPage, state.page]);
   React.useEffect(() => {
+    const restoreHome=()=>{if(!location.hash||location.hash==='#/')dispatch({type:'GO',page:currentState.current.wallet?(currentState.current.published?'identity':'setup'):'welcome'});};
+    window.addEventListener('hashchange',restoreHome);return()=>window.removeEventListener('hashchange',restoreHome);
+  }, []);
+  React.useEffect(() => {
     const activate = () => {if (/^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});};
     activate(); window.addEventListener('hashchange', activate);
     return () => window.removeEventListener('hashchange', activate);
@@ -183,7 +187,9 @@ function App() {
     } catch {URL.revokeObjectURL(url); setImageError('invalidImage');}
   }
   function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 className={k==='publicIntro'?'':'task-title'} tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
-  const currentModule = state.page==='content'?'myContent':state.page==='artifacts'?(location.hash.startsWith('#/find')?'artifactFind':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
+  const [navigationHash,setNavigationHash]=React.useState(location.hash);
+  React.useEffect(()=>{const update=()=>setNavigationHash(location.hash);window.addEventListener('hashchange',update);return()=>window.removeEventListener('hashchange',update);},[]);
+  const currentModule = state.page==='content'?(/^#\/(read|history)(\/|$)/.test(navigationHash)?'readerPublic':'myContent'):state.page==='artifacts'?(navigationHash.startsWith('#/find')?'artifactFind':navigationHash.startsWith('#/identity-view/')?'publicIdentity':navigationHash.startsWith('#/artifact/')?'artifactDetailTitle':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
   const profileDisplay = state.page === 'identity' || state.page === 'public' ? state.profile : state.draft;
   const toastError = state.page !== 'resolve-error' ? state.error : '';

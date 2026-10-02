@@ -2,7 +2,20 @@ const S2 = window.ReactSpectrumS2_ad4872;
 
 function UiIcon({name,className=''}) {return <span className={'ui-icon '+className} aria-hidden="true" style={{maskImage:`url('_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_${name}_20_N.svg')`}}/>;}
 window.UiIcon=UiIcon;
-function ArtifactBack({onClick,t}) {return <Button variant="quiet" className="s2d-button s2d-button-quiet artifact-back" data-action="artifact-back" onClick={onClick}><UiIcon name="ChevronLeft"/>{t('artifactBack')}</Button>;}
+function ArtifactBack({onClick,t,label='artifactBack'}) {return <Button variant="quiet" className="s2d-button s2d-button-quiet artifact-back" data-action="artifact-back" onClick={onClick}><UiIcon name="ChevronLeft"/>{t(label)}</Button>;}
+
+// 公开页面的返回语义跟随浏览器历史；刷新后仍可回到实际入口。
+function openPublicRoute(page,id) {
+  const screen=document.querySelector('main')?.dataset.screenLabel;
+  const labels={find:'backFind',artifact:'backArtifact','identity-view':'backPublicIdentity',read:'historyBack',history:'versionHistory',content:'contentBack',artifacts:'artifactBack'};
+  const route=location.hash.split('/')[1];
+  const back=screen==='welcome'?'backHome':screen==='identity'?'backIdentity':labels[route];
+  const oldURL=location.href;
+  history.pushState(back?{ownwordBack:back}:null,'', '#/'+page+(id?'/'+encodeURIComponent(id):''));
+  window.dispatchEvent(new HashChangeEvent('hashchange',{oldURL,newURL:location.href}));
+}
+function publicBackLabel(fallback) {return history.state?.ownwordBack || fallback;}
+function returnFromPublic(fallback) {if(history.state?.ownwordBack)history.back();else fallback();}
 window.ArtifactBack=ArtifactBack;
 function BrandMark() {
   return <img className="brand-mark" src="brand/ownword-mark.svg" width="32" height="32" alt="" aria-hidden="true" />;

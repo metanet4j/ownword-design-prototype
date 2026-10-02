@@ -17,19 +17,21 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   const M=OwnwordArtifactModel,{settings,setSettings}=store;
   const data={...store.data,assets:store.data.assets.map(a=>M.previewFixture(a,settings.preview))};
   const [route,setRoute]=React.useState(()=>M.parseRoute(location.hash));
+  const [findQuery,setFindQuery]=React.useState(()=>globalThis.history?.state?.ownwordFind || {input:'',submitted:null});
+  function updateFindQuery(query){setFindQuery(query);history.replaceState({...history.state,ownwordFind:query},'',location.href);}
   const operations=useArtifactOperations({store,identity,onAccountEvent});
   const [actionReview,setActionReview]=React.useState(null);
   React.useEffect(()=>setActionReview(null),[identity?.bapId]);
   const [loading,setLoading]=React.useState(true);
   const leaveHandler=React.useRef(null),lastHash=React.useRef(location.hash),routeRef=React.useRef(route);routeRef.current=route;
   const leave=action=>leaveHandler.current?leaveHandler.current(action):action();
-  const go=(page,id='')=>leave(()=>{location.hash='/'+page+(id?'/'+encodeURIComponent(id):'');});
+  const go=(page,id='')=>leave(()=>{if(['artifact','identity-view'].includes(page))openPublicRoute(page,id);else location.hash='/'+page+(id?'/'+encodeURIComponent(id):'');});
   React.useImperativeHandle(ref,()=>({go,leave}));
   const allowHash=React.useRef(false);
   React.useEffect(()=>{const change=event=>{
     const incoming=location.hash,isArtifact=/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(incoming);
     if(incoming==='#main')return;
-    if(!leaveHandler.current||allowHash.current){allowHash.current=false;if(isArtifact){lastHash.current=incoming;setRoute(M.parseRoute(incoming));}return;}
+    if(!leaveHandler.current||allowHash.current){allowHash.current=false;if(isArtifact){lastHash.current=incoming;setRoute(M.parseRoute(incoming));if(incoming==='#/find'&&history.state?.ownwordFind)setFindQuery(history.state.ownwordFind);}return;}
     event.stopImmediatePropagation();history.replaceState(null,'',lastHash.current);
     leave(()=>{history.replaceState(null,'',incoming);allowHash.current=true;window.dispatchEvent(new HashChangeEvent('hashchange'));});
   };window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
@@ -43,14 +45,14 @@ const ArtifactWorkspace=React.forwardRef(function ArtifactWorkspace({active,iden
   if(!identity&&!['artifact','find','identity-view'].includes(route.page))return gate;
   const asset=data.assets.find(a=>a.id===route.id);
   if(identity&&['artifact-create','artifact-review','artifact-select','artifact-transfer','artifact-action','artifact-operation'].includes(route.page)&&store.writer.state!=='ready')return <section className="artifact-page" data-artifact-screen="writer-gate"><ArtifactBack t={t} onClick={()=>go('artifacts')}/><h1 className="task-title" tabIndex="-1">{t('artifactWriterTitle-'+store.writer.state)}</h1><p>{t('artifactWriterBody-'+store.writer.state)}</p><Button onClick={store.writer.retry}>{t('retry')}</Button></section>;
-  if(route.page==='find')return <ArtifactFind resolveIdentity={resolveIdentity} store={store} t={t} failCopy={failCopy} go={go}/>;
+  if(route.page==='find')return <ArtifactFind query={findQuery} setQuery={updateFindQuery} resolveIdentity={resolveIdentity} store={store} t={t} failCopy={failCopy} go={go}/>;
   if(route.page==='artifact-transfer')return <ArtifactTransfer key={identity.bapId+route.id} asset={asset} initialRecipient={actionReview?.kind==='transfer'&&actionReview.assetId===route.id?actionReview.recipient:''} identity={identity} store={store} t={t} failCopy={failCopy} onReview={review=>{setActionReview({...review,returnTo:{page:'artifact-transfer',id:route.id}});go('artifact-action');}} onBack={()=>go('artifact',route.id)}/>;
   if(route.page==='artifact-select')return <ArtifactSelector data={data} identity={identity} t={t} onSelect={id=>prepare('bind',id)} onOpen={id=>go('artifact',id)} onBack={()=>go('artifacts')}/>;
   if(route.page==='artifact-operation'){const op=data.operations.find(o=>o.id===route.id&&o.bapId===identity?.bapId);return <ArtifactOperation op={op} data={data} t={t} failCopy={failCopy} operations={operations} onBind={id=>prepare('bind',id)} onReview={op=>op.kind==='create'?go('artifact-create'):op.kind==='transfer'?go('artifact-transfer',op.assetId):prepare(op.kind,op.assetId)} onVerify={id=>store.refreshOwnership(id)} onOpen={id=>go('artifact',id)} onBack={()=>go('artifacts')}/>;}
   if(route.page==='artifact-action')return <ArtifactActionReview review={actionReview?.bapId===identity?.bapId?actionReview:null} data={data} t={t} failCopy={failCopy} onSign={()=>start(actionReview)} onBack={()=>actionReview?.returnTo?go(actionReview.returnTo.page,actionReview.returnTo.id):go('artifacts')} issue={operations.message}/>;
   if(['artifact-create','artifact-review'].includes(route.page))return <ArtifactComposer key={identity.bapId} identity={identity} store={store} t={t} failCopy={failCopy} go={go} reviewPage={route.page==='artifact-review'} setLeaveHandler={fn=>{leaveHandler.current=fn;}} operationIssue={operations.message} onReview={draft=>start({kind:'create',bapId:identity.bapId,draft:M.cleanDraft(draft)})}/>;
-  if(route.page==='identity-view')return <ArtifactPublicIdentity resolveIdentity={resolveIdentity} bapId={route.id} t={t} failCopy={failCopy} onBack={()=>go('artifacts')}/>;
-  if(route.page==='artifact')return <ArtifactDetail resolveIdentity={resolveIdentity} asset={asset} data={data} identity={identity} t={t} failCopy={failCopy} go={go} onBack={()=>identity?go('artifacts'):onConnect()} onRefresh={()=>store.refreshNumber(asset.id)} onTransfer={()=>go('artifact-transfer',asset.id)} onBind={()=>prepare('bind',asset.id)} onVerify={()=>store.refreshOwnership(asset.id)}><ArtifactAssociationNotice data={data} bapId={identity?.bapId} assetId={asset?.id} t={t} store={store} onReplace={()=>go('artifact-select')} onRemove={id=>prepare('remove',id)}/></ArtifactDetail>;
+  if(route.page==='identity-view')return <ArtifactPublicIdentity resolveIdentity={resolveIdentity} bapId={route.id} t={t} failCopy={failCopy} backLabel={publicBackLabel('backFind')} onBack={()=>returnFromPublic(()=>go('find'))}/>;
+  if(route.page==='artifact')return <ArtifactDetail resolveIdentity={resolveIdentity} asset={asset} data={data} identity={identity} t={t} failCopy={failCopy} go={go} backLabel={publicBackLabel(identity?'artifactBack':'backFind')} onBack={()=>returnFromPublic(()=>go(identity?'artifacts':'find'))} onConnect={onConnect} onRefresh={()=>store.refreshNumber(asset.id)} onTransfer={()=>go('artifact-transfer',asset.id)} onBind={()=>prepare('bind',asset.id)} onVerify={()=>store.refreshOwnership(asset.id)}><ArtifactAssociationNotice data={data} bapId={identity?.bapId} assetId={asset?.id} t={t} store={store} onReplace={()=>go('artifact-select')} onRemove={id=>prepare('remove',id)}/></ArtifactDetail>;
   if(route.page!=='artifacts')return <section className="artifact-page" data-artifact-screen={route.page}>{header('artifactCreate','artifactCreateBody')}<Button onClick={()=>go('artifacts')}>{t('artifactBack')}</Button></section>;
   const inventory=settings.list==='empty'?{...data,assets:[],bindings:[]}:data;
   const hasInventory=M.selectionAssets(inventory,identity.bapId).length||inventory.bindings.some(b=>b.bapId===identity.bapId);

@@ -55,7 +55,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     const replacement=item && recovered.find(d=>d.recoveredFrom===item.id && d.authorBapId===item.authorBapId);
     if (replacement) {lastHash.current='#/write/'+encodeURIComponent(replacement.id);history.replaceState(null,'',lastHash.current);setRoute({page:'write',id:replacement.id});}
   }
-  function go(page, id = '') {requestLeave(() => {location.hash = '/' + page + (id ? '/' + encodeURIComponent(id) : '');});}
+  function go(page, id = '') {requestLeave(() => {if(['read','history'].includes(page))openPublicRoute(page,id);else location.hash = '/' + page + (id ? '/' + encodeURIComponent(id) : '');});}
   React.useImperativeHandle(ref, () => ({go, leave: requestLeave}));
   const hashHandler = React.useRef(null);
   hashHandler.current = () => {

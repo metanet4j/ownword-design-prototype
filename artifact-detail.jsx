@@ -1,12 +1,12 @@
-function ArtifactDetail({asset,data,identity,resolveIdentity,t,failCopy,go,onBack,onRefresh,onTransfer,onBind,onVerify,children}) {
+function ArtifactDetail({asset,data,identity,resolveIdentity,t,failCopy,go,onBack,backLabel,onConnect,onRefresh,onTransfer,onBind,onVerify,children}) {
   const [retry,setRetry]=React.useState(0),[refreshState,setRefreshState]=React.useState(''),M=OwnwordArtifactModel;
-  if(!asset)return <section className="artifact-page" data-artifact-screen="detail"><ArtifactBack t={t} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t('artifactNotFound')}</h1><p>{t('artifactLocalScope')}</p></section>;
+  if(!asset)return <section className="artifact-page" data-artifact-screen="detail"><ArtifactBack t={t} label={backLabel} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t('artifactNotFound')}</h1><p>{t('artifactLocalScope')}</p></section>;
   function refresh(){try{onRefresh();setRefreshState('artifactRefreshed');}catch{setRefreshState('artifactSaveFailed');}}
   const defaultContent=asset.content.kind==='brand',binding=M.binding(data,asset.id),history=data.bindings.filter(b=>b.assetId===asset.id&&b.state==='history'),canManage=identity&&asset.owner===M.ownerFor(identity.bapId);
   const candidate=data.bindings.find(b=>b.assetId===asset.id&&b.state==='current'),associationState=M.bindingState(data,candidate);
   const value=(id,label,target)=>id?<Identifier id={String(id)} label={label} copyLabel="artifactCopyFull" target={target} t={t} failCopy={failCopy}/>:<p className="hint">{label}: {t('artifactUnknownOrdinal')}</p>;
   return <section className="artifact-page" data-artifact-screen="detail">
-    <ArtifactBack t={t} onClick={identity?onBack:()=>go('find')}/>
+    <ArtifactBack t={t} label={backLabel} onClick={onBack}/>
     <div className="artifact-detail-overview">
       <div className="artifact-detail-main"><NumberStatus asset={asset} t={t} copyable failCopy={failCopy} label={binding&&binding.bapId===identity?.bapId?t('artifactCurrentId'):undefined}><ContextHelp label={t('artifactConfirmationHelp')}><p>{t('artifactSubmissionMeaning')}</p><p>{t('artifactInscriptionConfirmations')}: {asset.confirmations}</p><p>{t('artifactLastObserved')}: {artifactTime(asset.observedAt,t)}</p></ContextHelp><Button iconOnly variant="quiet" className="artifact-refresh-button" aria-label={t('artifactRefreshNumber')} title={t('artifactRefreshNumber')} onClick={refresh}><UiIcon name="Refresh"/></Button></NumberStatus><h1 className="task-title" tabIndex="-1">{asset.name}</h1>{refreshState&&<p role="status" className="hint">{t(refreshState)}</p>}</div>
       <section className="artifact-association"><h2 className="eyebrow">{t('artifactAssociatedTitle')}</h2>{binding?<><strong>{resolveIdentity(binding.bapId)?.profile.name||t('publicIdentity')}</strong>{value(binding.bapId,'BAP ID','associated')}<Button variant="quiet" onClick={()=>go('identity-view',binding.bapId)}>{t('artifactOpenIdentity')}<UiIcon name="ChevronRight"/></Button></>:candidate?<><p>{t(associationState==='unverified'?'artifactAssociationUnverified':'artifactAssociationInvalid')}</p>{value(candidate.bapId,t('artifactRecordedIdentity'),'recorded-identity')}<p className="hint">{t('artifactBinding-'+associationState)}</p></>:<p>{t('artifactNoBinding')}</p>}{canManage&&!binding&&<ArtifactDetailActions placement="association" asset={asset} data={data} identity={identity} t={t} onBind={onBind}/>}</section>
@@ -19,7 +19,7 @@ function ArtifactDetail({asset,data,identity,resolveIdentity,t,failCopy,go,onBac
       {id:'proof',title:t('artifactProof'),content:<div className="artifact-proof-body">{value(asset.id,'Inscription ID','inscription')}{value(asset.ordinal,t('artifactOrdinal'),'ordinal')}{value(asset.origin,'Origin','origin')}{value(asset.outpoint,'Current Outpoint','outpoint')}{value(location.origin+location.pathname+'#/artifact/'+encodeURIComponent(asset.id),t('artifactLink'),'artifact-link')}{asset.transactions.map((record,index)=><section className="artifact-transaction" key={record.txid+index}><h3>{t('artifactKind-'+record.kind)}</h3>{value(record.txid,t('publishSampleTx'),'tx-'+index)}<IdentitySignatureProof bapId={record.bapId} signer={record.signer} signature={record.signature} keyEpoch={record.keyEpoch} t={t} failCopy={failCopy}/><p>{record.confirmations} {t('artifactConfirmations')}</p></section>)}</div>},
       {id:'history',title:t('artifactHistory'),content:history.length?<ArtifactHistory resolveIdentity={resolveIdentity} records={history} data={data} t={t} showIdentity/>:<p className="artifact-inventory-empty">{t('artifactHistoryEmpty')}</p>}
     ]}/>
-    {!identity&&<Button onClick={onBack}>{t('connect')}</Button>}
+    {!identity&&<Button onClick={onConnect}>{t('connect')}</Button>}
   </section>;
 }
 window.ArtifactDetail=ArtifactDetail;
@@ -40,8 +40,8 @@ function ArtifactRecordTabs({items,t}) {
   </div>;
 }
 
-function ArtifactPublicIdentity({bapId,resolveIdentity,t,failCopy,onBack}) {
+function ArtifactPublicIdentity({bapId,resolveIdentity,t,failCopy,onBack,backLabel}) {
   const [rotating,setRotating]=React.useState(false),[angle,setAngle]=React.useState(0),record=resolveIdentity(bapId);
-  return <section className="artifact-page" data-artifact-screen="public-identity"><ArtifactBack t={t} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t(!!record?'publicIdentity':'artifactNotFound')}</h1>{!!record&&<IdentityCard profile={record.profile} id={bapId} t={t} failCopy={failCopy} transaction={record.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle}/>}</section>;
+  return <section className="artifact-page" data-artifact-screen="public-identity"><ArtifactBack t={t} label={backLabel} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t(!!record?'publicIdentity':'artifactNotFound')}</h1>{!!record&&<IdentityCard profile={record.profile} id={bapId} t={t} failCopy={failCopy} transaction={record.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle}/>}</section>;
 }
 window.ArtifactPublicIdentity=ArtifactPublicIdentity;

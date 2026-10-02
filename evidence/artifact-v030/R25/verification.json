@@ -1,0 +1,21 @@
+{
+  "feature": "R25",
+  "date": "2026-10-02",
+  "result": "passed",
+  "scope": "公开查找、身份、Artifact 与阅读的返回连续性和导航语义",
+  "command": ".\\check-public-navigation.ps1",
+  "checks": [
+    "查找 165 后打开身份，刷新身份，再返回仍恢复输入与关联结果",
+    "查找、Artifact、关联身份逐层返回，返回标签与实际来源一致",
+    "查找页面刷新保留查询；重新查询当前样例结果，不复用过期关联结论",
+    "首页阅读的页面内返回、浏览器后退前进、阅读刷新后返回均正常",
+    "首页公开身份探索可返回首页；直接公开阅读链接返回公开查找",
+    "公开身份、Artifact 与公开阅读使用对应顶部导航名称",
+    "390px 查找与阅读无页面溢出；键盘 Enter 可执行返回",
+    "浏览器 errors 无输出；初始化模型、语法、Token、构建及 harness 检查通过"
+  ],
+  "independentReview": "experience_audit 子代理独立复验查找恢复、刷新、首页返回、标签和标题焦点通过，无浏览器错误。",
+  "screenshots": ["public-identity-desktop.png", "find-return-mobile.png", "reader-return-mobile.png"],
+  "designSystem": "维持 @react-spectrum/s2 1.6.0 和 Spectrum Tokens 14.15.0 的既有原型封装；未修改导入来源或消费副本。",
+  "limitations": "仅验证受影响流程；未运行整站回归或真人读屏，不代表真实链上服务或奖项评审结果。人工视觉复核待完成。"
+}

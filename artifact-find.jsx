@@ -1,7 +1,7 @@
-function ArtifactFind({store,resolveIdentity,t,failCopy,go}) {
-  const [input,setInput]=React.useState(''),[request,setRequest]=React.useState(null),[result,setResult]=React.useState({status:'idle'}),sequence=React.useRef(0),M=OwnwordArtifactModel;
-  function edit(value){sequence.current++;setInput(value);setRequest(null);setResult({status:'idle'});}
-  function search(value=input){setRequest({value,id:++sequence.current});}
+function ArtifactFind({store,resolveIdentity,t,failCopy,go,query,setQuery}) {
+  const input=query.input,[request,setRequest]=React.useState(()=>query.submitted===null?null:{value:query.submitted,id:0}),[result,setResult]=React.useState({status:'idle'}),sequence=React.useRef(0),M=OwnwordArtifactModel;
+  function edit(value){sequence.current++;setQuery({input:value,submitted:null});setRequest(null);setResult({status:'idle'});}
+  function search(value=input){setQuery({input:value,submitted:value});setRequest({value,id:++sequence.current});}
   React.useEffect(()=>{
     if(!request)return;
     const ticket=++sequence.current,parsed=M.parseLookup(request.value);let second;
