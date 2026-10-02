@@ -1,0 +1,112 @@
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R22\words-desktop.png
+✓ Done
+"PASS"
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R22\proof-desktop.png
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R22\home-320-en-light.png
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R22\home-390-zh-dark.png
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R22\home-768-en-dark.png
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R22\home-1440-zh-light.png
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R22\home-1220-en-light.png
+✓ Done
+"PASS"
+✓ Done
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R22-check
+✓ Done
+"PASS"
+公开身份、公开阅读、数字查找、取消恢复、键盘标签、五组布局与减少动态效果检查通过。
+✓ Browser closed

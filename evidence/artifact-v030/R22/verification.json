@@ -1,0 +1,35 @@
+{
+  "feature": "R22",
+  "verifiedAt": "2026-10-02",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "scope": "首页产品叙事、公开查找与读取入口；整站获奖品质目标仍在推进",
+  "designSystem": {
+    "componentPackage": "@react-spectrum/s2 1.6.0",
+    "tokens": "@adobe/spectrum-tokens 14.15.0",
+    "runtime": "既有轻量原型封装；未修改消费副本"
+  },
+  "checks": [
+    "真实点击公开身份、公开阅读及165查找，均不要求连接钱包",
+    "标签支持左右方向键、Home、End与单一可见面板",
+    "取消钱包连接返回首页并恢复触发点焦点",
+    "320×568英文浅色、390×844中文深色、768×1024英文深色、1440×1000中文浅色、1220×555英文浅色：无横向溢出，主次操作首屏可达，触控至少44px",
+    "减少动态效果下没有持续循环动画，浏览器运行异常为空",
+    "初始化模型、JS/JSX、资源与harness检查通过"
+  ],
+  "accessibility": {
+    "automated": "Lighthouse 自动无障碍100；axe无报告违规但有对比度待人工核实项，不能仅凭零违规关闭",
+    "manual": "键盘与焦点、截图已检查；新增正文、身份信息与标识颜色对比度7.59至18.58，见contrast-home.json",
+    "limitations": "未作实机读屏验证；渐变头像与背景需结合截图及实际颜色人工检查"
+  },
+  "performance": {
+    "report": "lighthouse-baseline.json",
+    "mobilePerformance": 34,
+    "lcpSeconds": 35.5,
+    "tbtMilliseconds": 5870,
+    "cls": 0.001,
+    "finding": "浏览器实时Babel编译是主要阻塞源；此结果未达品质目标，下一项优先修复"
+  },
+  "reproduce": "先启动预览，再执行agent-browser --session v030-r22-check open http://127.0.0.1:4313/，随后在原型目录执行./check-welcome.ps1",
+  "next": "R23：预编译页面并拆分编辑器加载，复测慢速启动与受影响流程。"
+}

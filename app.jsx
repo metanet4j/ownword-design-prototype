@@ -160,7 +160,7 @@ function App() {
     : '';
   const retryError = toastError ? () => dispatch(toastError === 'connectFailed'
     ? {type: 'CONNECT'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
-  return <div className={`app page-${state.page}`} onPointerDown={e => {if (!e.target.closest('button, input, textarea, select, a, .identity-object')) window.dispatchEvent(new Event('ownword-vault'));}}>
+  return <div className={`app page-${state.page}`}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
       <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
@@ -188,12 +188,11 @@ function App() {
       {state.page === 'welcome' && <section className="welcome">
         <p className="eyebrow">{t('independent')}</p>
         <h1 tabIndex="-1"><span>{t('headlineOne')}</span><em>{t('headlineTwo')}</em></h1>
-        <p className="welcome-intro">{t('welcomeIntro')}</p>
-        <p className="welcome-body">{t('welcomeBody')}</p>
-        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t(state.error === 'connectFailed' ? 'retry' : 'connect')}<UiIcon name="ChevronRight"/></Button><p>{t('walletNote')}</p></div>
-        <div className="horizon"><span>{t('horizonCaption')}</span></div>
-        <p className="welcome-note">{t('welcomeNote')}</p>
+        <p className="welcome-body">{t('welcomeDiscoveryBody')}</p>
+        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t(state.error === 'connectFailed' ? 'retry' : 'connect')}<UiIcon name="ChevronRight"/></Button><Button data-action="welcome-find" onClick={() => openArtifacts('find')}>{t('artifactFind')}</Button></div>
+        <div className="horizon" aria-hidden="true"></div>
       </section>}
+      {state.page === 'welcome' && <WelcomeStory t={t} failCopy={failCopy} onIdentity={id => openArtifacts('identity-view', id)} onRead={id => contentRef.current?.go('read', id)}/>}
       {state.page === 'resolving' && <section className="center-state">{heading('resolving', 'resolvingBody', 'connected')}<LoadingMark label={t('resolving')} /><span aria-hidden="true"><S2.Skeleton /></span><Button onClick={disconnect}>{t('disconnect')}</Button></section>}
       {state.page === 'resolve-error' && <section className="center-state">{heading('resolveFailed', 'resolveFailedBody', 'connected')}<div className="state-symbol error-symbol" aria-hidden="true">!</div><div className="action-row"><Button variant="accent" data-action="retry" onClick={resolveAgain}>{t('retry')}</Button><Button data-action="disconnect" onClick={disconnect}>{t('disconnect')}</Button></div></section>}
       {isFlow && <ol className="flow-steps" aria-label={t('setup')}>
