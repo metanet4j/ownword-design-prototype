@@ -198,7 +198,7 @@ function App() {
   return <div className={`app page-${state.page}`}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
-      <Button variant="quiet" className="brand" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark />ownword</Button>
+      <Button variant="quiet" className="brand" aria-label="ownword" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark /><span className="brand-wordmark">ownword</span></Button>
       <div className="header-tools"><div className="workspace-switcher" ref={navigationRef}>
       <Button variant="quiet" id="navigation-toggle" className="s2d-button workspace-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={t('switchWorkspace')+' · '+t(currentModule)} onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}} onKeyDown={e=>{if(e.key==='ArrowDown'){e.preventDefault();setMenuOpen(true);requestAnimationFrame(()=>navigationRef.current?.querySelector('nav button')?.focus());}}}>{t(currentModule)}<UiIcon name="ChevronDown"/></Button>
       {menuOpen&&<nav id="primary-navigation" aria-label={t('navigationLabel')} className="topnav is-open" onKeyDown={e=>{if(e.target.closest('.preferences'))return;if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;const items=[...e.currentTarget.querySelectorAll('button')].filter(el=>el.getClientRects().length);const i=items.indexOf(document.activeElement);e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length]?.focus();}}>

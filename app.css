@@ -422,6 +422,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 /* R05: compact public surfaces and icon-based utilities. */
 
 .header-tools{display:flex;align-items:center;gap:var(--s2-spacing-100);}
+@media(max-width:360px){.brand{width:44px;min-width:44px;padding:0;justify-content:center;}.brand-wordmark{display:none;}}
 
 .header-tools>.preference-anchor .preferences{position:absolute;right:0;top:calc(100% + var(--s2-spacing-200));max-height:calc(100dvh - 100px);overflow:auto;}
 .context-help{display:inline-flex;vertical-align:middle;align-items:center;}
