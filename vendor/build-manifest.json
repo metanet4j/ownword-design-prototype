@@ -34,7 +34,7 @@
     "s2-adapter.css": "ff08db812f416326bfa54bc980c91274df4a0e750980b3f44cf0447436398a97",
     "app.css": "037494d0e5da90300b28b1ca264e1584d439639dc3147aec09975dfb3be48d33",
     "content.css": "d534f3c49c5401341d47b29cdf168ecfbc45e97231336b7b9714b4d7f6c1a594",
-    "artifact.css": "3c0fabc71ef62e10fa8be9e7426ec0334f390b467a3a37f4bd829eb55c4d03eb",
+    "artifact.css": "36203c82731a0b126f360e801a8ff2f589ade301850c46d1b2b5ca5412eb085c",
     "welcome.css": "818c3ce839dee6e48bc9b2612ea10e857db005055e8e9b36fa5d439caef49539",
     "_ds/react-spectrum-s2/tokens/font-faces.css": "0d39b28293ababc35b9c77ad599b566132594570e5f5252058d2a580cb72a2b5",
     "_ds/react-spectrum-s2/tokens/page.css": "2616ec975232eff1f6c6820238bd3e4f85946c3735843e3b26aed0c47c9f5d83",
@@ -50,7 +50,7 @@
     "vendor/styles.css": "d1859cff8e232b23d1b23fca727979cad26fa02224813a504fbcbe54ccd1bd38",
     "index.html": "513b08614960be2f2419744ff0c14780c627bae6e47f5ba15518ff85ced3bdfe",
     "vendor/fonts.css": "c842cec53e5d68a3c0e8fecd42c27929dad2222533b3c6d76cb591d0b7c5a991",
-    "vendor/workspace.css": "c49e8b535088392bc9f7ad0745017c47852a912ef7bbd1744589b89165b3c298",
+    "vendor/workspace.css": "98b437150700bb00919e1c65d7ccf9ab489b6b8ef6f5ec9eb71b6ef904b9c5a2",
     "vendor/runtime.js": "f928e779c128729dd188b96e45ba57457ae6e0f53e270b2c722415d51b8b6e69"
   }
 }
