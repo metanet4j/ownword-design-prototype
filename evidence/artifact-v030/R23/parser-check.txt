@@ -1,0 +1,15 @@
+
+> ownword-content-prototype@0.2.0 check
+> node check-model.cjs && node check-content.cjs && node check-markdown.mjs
+
+95 model assertions passed
+C01 route and author fixtures passed
+C04 durable draft and author separation passed
+C05 UTF-8, BOM, CRLF and invalid import boundaries passed
+C06 empty / UTF-8 byte limit / optional title review gates passed
+C07 publication journal, reload, durable acceptance and duplicate protection passed
+C09 immutable versions, unchanged revision gate and draft reuse passed
+C10 proof sample states and tampered text / author / transaction guards passed
+R01 recovery preserves disk and unsaved drafts, authors, raw text and dirty state
+C03 Markdown structure, title and unsafe-content boundaries passed
+R20 summaries separate blocks and hard breaks while preserving inline words

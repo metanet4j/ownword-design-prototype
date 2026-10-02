@@ -1,0 +1,48 @@
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/#/artifacts
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+null
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+null
+✓ Done
+null
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+null
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+null
+✓ Done
+null
+✓ Done
+✓ Done
+null
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+null
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R23\artifact/transfer.png
+PASS: menu, live validation, draft guard, dialog geometry, keyboard focus and transfer review return.
+✓ Browser closed

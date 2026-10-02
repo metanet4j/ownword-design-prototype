@@ -1,12 +1,12 @@
-param([string]$PreviewUrl='http://127.0.0.1:4313/')
+param([string]$PreviewUrl='http://127.0.0.1:4313/',[string]$EvidenceDirectory='evidence/artifact-v030/R22')
 $ErrorActionPreference = 'Stop'
 $browserCommand = (Get-Command agent-browser).Source
 if ($browserCommand.EndsWith('.ps1')) { $browserCommand = Join-Path (Split-Path $browserCommand) 'node_modules/agent-browser/bin/agent-browser-win32-x64.exe' }
-$evidence = Join-Path $PSScriptRoot 'evidence/artifact-v030/R22'
+$evidence = Join-Path $PSScriptRoot $EvidenceDirectory
 New-Item -ItemType Directory -Path $evidence -Force | Out-Null
 function ab { & $browserCommand --session v030-r22-check @args; if ($LASTEXITCODE -ne 0) { throw ('首页验证失败：'+($args -join ' ')) } }
 function probe([string]$source) { ab eval -b ([Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('(()=>{'+$source+';return "PASS";})()'))) }
-function home { ab open ($PreviewUrl+'?quality=R22-check'); ab wait '.welcome-story' }
+function home { ab open ($PreviewUrl+'?quality=R22-check'); ab wait '[data-ready="true"]'; ab wait '.welcome-story' }
 function preferences([string]$locale,[string]$theme) {
   ab click '.header-preferences'
   ab click ('[data-action="locale-'+$locale+'"]')

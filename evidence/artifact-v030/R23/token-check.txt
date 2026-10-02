@@ -1,0 +1,3 @@
+7 design-system CSS files define 2509 tokens
+prototype CSS references 79 tokens; unresolved: 0
+all referenced tokens resolve

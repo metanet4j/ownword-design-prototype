@@ -1,4 +1,7 @@
+param([string]$EvidenceDirectory='evidence/artifact-v030/R02')
 $ErrorActionPreference = 'Stop'
+$evidence = Join-Path $PSScriptRoot $EvidenceDirectory
+New-Item -ItemType Directory -Path $evidence -Force | Out-Null
 # Uses an isolated, simulated-wallet browser session. No real transaction is sent.
 $browserCommand = (Get-Command agent-browser).Source
 # Resolve the native executable used by the Windows npm shim.
@@ -7,6 +10,7 @@ function ab { & $browserCommand --session v030-r02-regression @args; if ($LASTEX
 function probe([string]$source) { ab eval -b ([Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($source))) }
 try {
   ab open http://127.0.0.1:4313/#/artifacts
+  ab wait '[data-ready="true"]'
   ab set viewport 320 568
   ab find role button click --name 'Connect Wallet'
   ab find role button click --name 'Approve'
@@ -37,9 +41,11 @@ try {
   ab press Escape
   ab wait '[data-artifact-phase="cancelled"]'
   probe 'if(document.activeElement.tagName!=="H1")throw Error("Cancelled signature lost the page heading focus")'
-  ab a11y --json | Set-Content -Encoding utf8 "$PSScriptRoot/evidence/artifact-v030/R02/final-operation-a11y.json"
+  ab a11y --json | Set-Content -Encoding utf8 "$evidence/final-operation-a11y.json"
   ab find role button click --name 'Back to My Artifacts'
-  ab find role button click --name 'View Artifact · A place to stand'
+  ab click '.artifact-current-overview button'
+  ab wait '[role="tab"]'
+  ab find role tab click --name Ownership --exact
   ab find role button click --name 'Transfer Artifact'
   ab find role button click --name 'Address requirements'
   ab find role button click --name 'Use recipient example 1BitcoinEaterAddressDontSendf59kuE'
@@ -48,6 +54,7 @@ try {
   ab find role button click --name 'Back' --exact
   ab wait '[data-artifact-screen="transfer"]'
   probe 'if(document.querySelector("#artifact-recipient").value!=="1BitcoinEaterAddressDontSendf59kuE")throw Error("Transfer review lost the recipient");if(document.documentElement.scrollWidth>innerWidth)throw Error("Mobile horizontal overflow")'
-  ab errors --json | Set-Content -Encoding utf8 "$PSScriptRoot/evidence/artifact-v030/R02/regression-errors.json"
+  ab screenshot "$evidence/transfer.png" --full
+  ab errors --json | Set-Content -Encoding utf8 "$evidence/regression-errors.json"
   'PASS: menu, live validation, draft guard, dialog geometry, keyboard focus and transfer review return.'
 } finally { & $browserCommand --session v030-r02-regression close }

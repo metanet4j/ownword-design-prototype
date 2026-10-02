@@ -3,6 +3,29 @@ function App() {
   const {initial, reducer, validate, hasProfileChanges, countGraphemes, ids} = OwnwordModel;
   const {useDismissable} = window;
   const [state, dispatch] = React.useReducer(reducer, undefined, initial);
+  React.useEffect(() => {
+    const root = document.getElementById('root');
+    if (window.OwnwordBootRoute && state.page === 'welcome' && root.dataset.ready !== 'true') return;
+    const ready = () => {
+    if (root.dataset.ready !== 'true') performance.mark('ownword-interactive');
+    root.hidden = false; root.dataset.ready = 'true'; root.removeAttribute('aria-busy');
+    document.getElementById('boot-status').hidden = true;
+    if (!document.getElementById('ownword-fonts')) {
+      const link = document.createElement('link');
+      link.id = 'ownword-fonts'; link.rel = 'stylesheet'; link.href = 'vendor/fonts.css?v=030-quality-r23';
+      document.head.append(link);
+    }
+    root.removeEventListener('click', window.OwnwordBootClick, true);
+    const target = window.OwnwordBootAction; window.OwnwordBootAction = null;
+    if (target?.isConnected) target.click();
+    };
+    if (window.OwnwordWorkspaceStyleReady) ready();
+    else {
+      const link = document.getElementById('ownword-workspace-style');
+      link.addEventListener('load', ready, {once: true});
+      return () => link.removeEventListener('load', ready);
+    }
+  }, [state.page]);
   const pref = (key, fallback) => {try {return localStorage.getItem(`ownword-astra-${key}`) || fallback;} catch {return fallback;}};
   const [locale, setLocale] = React.useState(() => pref('locale', 'en') === 'zh' ? 'zh' : 'en');
   const [theme, setTheme] = React.useState(() => pref('theme', 'light') === 'dark' ? 'dark' : 'light');
@@ -11,6 +34,15 @@ function App() {
   const artifactRef = React.useRef(null);
   const pendingWorkspaceNavigation=React.useRef(null);
   const [lab, setLab] = React.useState(false);
+  const [markdownState, setMarkdownState] = React.useState(window.OwnwordEditorTools?.renderMarkdown ? 'ready' : 'idle');
+  const [markdownAttempt, setMarkdownAttempt] = React.useState(0);
+  React.useEffect(() => {
+    if (state.page !== 'content') return;
+    let active = true;
+    setMarkdownState('loading');
+    window.loadMarkdown().then(() => {if (active) setMarkdownState('ready');}, () => {if (active) setMarkdownState('error');});
+    return () => {active = false;};
+  }, [state.page, markdownAttempt]);
   const artifactStore = useArtifactStore(state.page==='artifacts'||lab);
   const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [nextResult, setNextResult] = React.useState('success');
@@ -184,7 +216,8 @@ function App() {
     {state.page==='welcome'&&<Dome label={t('domeLabel')} />}
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
       <ArtifactWorkspace resolveIdentity={id=>OwnwordModel.resolveIdentity(id,state.published?{bapId,profile:state.profile,transaction:state.transaction}:null)} onAccountEvent={action=>{if(action==='switch')switchAccount(true);else disconnect(true);}} connected={state.wallet} ref={artifactRef} active={state.page==='artifacts'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile}:null} locale={locale} t={t} store={artifactStore} onConnect={()=>dispatch({type:'CONNECT'})} onIdentity={()=>navigate(state.wallet?(state.published&&!state.incomplete?'identity':'setup'):'welcome')} failCopy={failCopy}/>
-      <ContentWorkspace connected={state.wallet} published={state.published} resolving={state.busy==='resolving'} onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
+      <ContentWorkspace connected={state.wallet} published={state.published} resolving={state.busy==='resolving'} onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content' && markdownState === 'ready'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
+      {state.page === 'content' && markdownState !== 'ready' && <section className="content-gate" data-content-load={markdownState}><h1 className="task-title" tabIndex="-1">{t('myContent')}</h1>{markdownState === 'error' ? <><p role="alert">{t('readerLoadFailed')}</p><Button data-action="reader-load-retry" onClick={() => setMarkdownAttempt(value => value + 1)}>{t('retry')}</Button></> : <LoadingMark small label={t('readerLoading')}/>}</section>}
       {state.page === 'welcome' && <section className="welcome">
         <p className="eyebrow">{t('independent')}</p>
         <h1 tabIndex="-1"><span>{t('headlineOne')}</span><em>{t('headlineTwo')}</em></h1>
@@ -257,4 +290,4 @@ function App() {
     </Modal>}
   </div>;
 }
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.hydrateRoot(document.getElementById('root'), <App />);

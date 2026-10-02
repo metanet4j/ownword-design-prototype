@@ -4,6 +4,10 @@ Identity Artifact 高保真模拟原型，沿用 React Spectrum S2。
 
 在上一级目录运行 `./init.ps1 -Serve`，打开 http://127.0.0.1:4313/ 。单独运行 `node check-artifact.cjs` 可检查 Artifact 模型、JSX 和 S2 token。
 
+页面源码保留为 JSX，预览使用已提交的构建产物，浏览器不运行 Babel。修改 JSX、样式、模型、文案或 `index.template.html` 后，在本目录运行 `npm run build`；依赖缺失时先按锁文件执行 `npm ci`。启动检查会拦截过期或修改过的产物，无需在正常预览时安装依赖。首页由同一 React 界面预生成中英文 HTML，再接续交互；正文解析与完整编辑器在使用时加载，加载失败可以重试。
+
+`./check-loading.ps1` 验证初始点击接续、正文与编辑器按需加载、失败恢复、刷新后重新连接恢复草稿、阅读目录、安全解析和 S2 样式一致性。Windows 首次运行先单独执行 `agent-browser --session v030-r23-check open http://127.0.0.1:4313/`。字体遵循 S2 原有字体与回退栈，首次慢速载入可能先显示系统字体；字体文件仍来自原有许可外链。
+
 交付范围、33 条 BDD 证据与限制见[交付验收v0.3.0-20260919-005031.md](交付验收v0.3.0-20260919-005031.md)。准确功能状态和提交见[任务清单](../feature_list.json)。
 
 美学、交互和移动端的全面检查见[体验审查](evidence/artifact-v030/R02/体验审查-20260919-011800.md)。当前页面说明、纯数字排版和帮助交互调整见[说明收敛审查](evidence/artifact-v030/R03/说明收敛审查-20260919-071512.md)，等待用户视觉复核。

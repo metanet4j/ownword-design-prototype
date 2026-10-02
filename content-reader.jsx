@@ -31,9 +31,12 @@ function useReaderContents(paper,record) {
   React.useEffect(()=>{const query=matchMedia('(min-width:1200px)');const change=()=>setWide(query.matches);query.addEventListener('change',change);return ()=>query.removeEventListener('change',change);},[]);
   React.useEffect(()=>{
     // 从实际渲染的标题取目录，避免代码块、原始 HTML 和格式标记被误当作标题。
-    const nodes=[...(paper.current?.querySelectorAll('.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6') || [])].filter((node,index)=>!(index===0 && node.tagName==='H1') && node.textContent.trim());
-    const next=nodes.map((node,index)=>{node.id='reader-heading-'+(index+1);node.tabIndex=-1;return {node,id:node.id,text:node.textContent.trim(),depth:Number(node.tagName[1])};});
-    setItems(next);setExpanded(false);
+    let next=[];
+    function collect() {
+      const nodes=[...(paper.current?.querySelectorAll('.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6') || [])].filter((node,index)=>!(index===0 && node.tagName==='H1') && node.textContent.trim());
+      next=nodes.map((node,index)=>{node.id='reader-heading-'+(index+1);node.tabIndex=-1;return {node,id:node.id,text:node.textContent.trim(),depth:Number(node.tagName[1])};});
+      setItems(next);setExpanded(false);update();
+    }
     let frame;
     function update() {
       const headerBottom=Math.max(0,document.querySelector('.topbar')?.getBoundingClientRect().bottom || 0);
@@ -44,8 +47,11 @@ function useReaderContents(paper,record) {
       setCurrent(selected?.id || '');
     }
     const schedule=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(update);};
-    update();window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
-    return ()=>{cancelAnimationFrame(frame);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);};
+    collect();
+    const observer=new MutationObserver(collect);
+    if(paper.current)observer.observe(paper.current,{childList:true,subtree:true});
+    window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
+    return ()=>{observer.disconnect();cancelAnimationFrame(frame);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);};
   },[record?.id,record?.content,wide]);
   function jump(item) {
     setExpanded(false);setCurrent(item.id);

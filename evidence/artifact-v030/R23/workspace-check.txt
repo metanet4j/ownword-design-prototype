@@ -1,0 +1,50 @@
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+"PASS"
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+true
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+true
+PASS: workspace navigation, 320px bounds, keyboard, outside dismissal and two draft guards.
+✓ Browser closed

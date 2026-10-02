@@ -1,4 +1,7 @@
+param([string]$EvidenceDirectory='evidence/artifact-v030/R04')
 $ErrorActionPreference = 'Stop'
+$evidence = Join-Path $PSScriptRoot $EvidenceDirectory
+New-Item -ItemType Directory -Path $evidence -Force | Out-Null
 # Run in an isolated browser session; only deterministic prototype data is used.
 $browserCommand = (Get-Command agent-browser).Source
 if ($browserCommand.EndsWith('.ps1')) { $browserCommand = Join-Path (Split-Path $browserCommand) 'node_modules/agent-browser/bin/agent-browser-win32-x64.exe' }
@@ -6,6 +9,7 @@ function ab { & $browserCommand --session v030-r04-check @args; if ($LASTEXITCOD
 function probe([string]$source) { ab eval -b ([Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('(()=>{'+$source+';return "PASS";})()'))) }
 try {
   ab open http://127.0.0.1:4313/
+  ab wait '[data-ready="true"]'
   ab wait '[data-action="connect"]'
   ab click '[data-action="connect"]'
   ab find role button click --name Approve --exact
@@ -21,7 +25,7 @@ try {
   probe 'if(document.querySelector("#primary-navigation")||document.activeElement.id!=="navigation-toggle")throw Error("Escape did not close and restore focus")'
   ab set viewport 575 792
   ab click '#navigation-toggle'
-  ab click h1
+  ab click '.footer > p'
   probe 'if(document.querySelector("#primary-navigation"))throw Error("Outside click did not close navigation")'
   ab click '[data-action="edit"]'
   ab fill '#profile-name' 'Unsaved profile edit'
@@ -51,6 +55,6 @@ try {
   ab wait 'dialog[open]'
   ab find role button click --name 'Discard changes' --exact
   ab wait --fn 'location.hash==="#/content"'
-  ab errors --json | Set-Content -Encoding utf8 "$PSScriptRoot/evidence/artifact-v030/R04/regression-errors.json"
+  ab errors --json | Set-Content -Encoding utf8 "$evidence/regression-errors.json"
   Write-Output 'PASS: workspace navigation, 320px bounds, keyboard, outside dismissal and two draft guards.'
 } finally { ab close }

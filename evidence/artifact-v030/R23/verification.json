@@ -1,0 +1,142 @@
+{
+  "feature": "R23",
+  "date": "2026-10-02",
+  "preview": "http://127.0.0.1:4313/",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "baseCommit": "be03af41da55cfed9ba776e5361aa6e1c5354089",
+  "implementation": [
+    "构建前预编译全部 JSX，原共享顶层依赖保留在同一作用域；浏览器使用固定 React 18.3.1 原始生产发行文件。",
+    "同一 App 预生成中英首页，保留启动失败重试和早期点击接续；工作区 CSS 与字体在首屏之后载入。",
+    "原 unified 安全 Markdown 管线单独按需加载；完整编辑器仅在写作时载入，失败重试和草稿恢复可操作。",
+    "构建清单验证输入和输出，CRLF/LF 输入一致；初始化拒绝过期产物；静态预览压缩文本资源。"
+  ],
+  "verification": {
+    "build": "通过：重复构建一致、源码过期被拒绝、CRLF、gzip 及 q=0.0",
+    "init": "通过：语法、身份/内容/Artifact 模型、UI、任务登记与 harness；33 项任务、33 条 BDD",
+    "tokens": "2509 个已定义 token，79 个消费引用，0 未解析",
+    "loading": "通过：首页未载入 Babel/Markdown/编辑器；启动中点击接续；未知路线；320px 启动失败重试焦点；解析失败重试；目录；编辑器失败重试、持久化草稿恢复及安全解析。",
+    "originalStyles": "通过：首页、阅读、身份、编辑器的可见元素计算样式与原始 S2 及页面 CSS 一致。",
+    "home": "通过：公开身份/正文/编号查找、键盘标签、取消焦点、减少动态效果；320/390/768/1440/1220x555 的代表布局。",
+    "artifact": "通过：创建内容长度边界、脏内容导航取消、Review 弹窗焦点、签名取消、转让回退保留收件人。",
+    "workspace": "通过：320px 导航边界、键盘箭头/Escape/外部关闭及资料/Artifact 离开保护。",
+    "runtimeErrors": "三个浏览器流程返回 0 异常。",
+    "visualReview": "已查看当前首页中英浅深、阅读、320px 启动失败和转让截图；人工复核尚未进行。",
+    "artifactA11y": {
+      "inapplicable": 55,
+      "incomplete": 1,
+      "passes": 34,
+      "violations": 0,
+      "limitation": "1 项对比度扫描不完整，未将其记作通过；自动扫描不能证明读屏可用性。"
+    }
+  },
+  "performance": {
+    "actual": {
+      "method": "devtools",
+      "fetchTime": "2026-10-02T06:32:31.145Z",
+      "version": "13.0.1",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100
+      },
+      "timings": {
+        "first-contentful-paint": 2256.664,
+        "largest-contentful-paint": 2256.664,
+        "total-blocking-time": 175.3130000000001,
+        "cumulative-layout-shift": 0,
+        "interactive": 6829.331
+      },
+      "marks": [
+        {
+          "name": "ownword-interactive",
+          "startTime": 5995.579,
+          "timingType": "Mark"
+        }
+      ]
+    },
+    "simulated": {
+      "method": "simulate",
+      "fetchTime": "2026-10-02T06:58:54.148Z",
+      "version": "13.0.1",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "scores": {
+        "performance": 80,
+        "accessibility": 100,
+        "best-practices": 100
+      },
+      "timings": {
+        "first-contentful-paint": 2340.8476250000003,
+        "largest-contentful-paint": 4841.2038250000005,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "interactive": 4841.5207775
+      },
+      "marks": [
+        {
+          "name": "ownword-interactive",
+          "startTime": 152.721,
+          "timingType": "Mark"
+        }
+      ]
+    },
+    "comparableBaseline": {
+      "method": "simulate",
+      "feature": "R22",
+      "performance": 34,
+      "LCPms": 35500,
+      "TBTms": 5870,
+      "CLS": 0.001
+    },
+    "assessment": "当前实际 DevTools 限速 LCP 2256.664ms、TBT175.313ms、CLS0 达到本项阈值；默认模拟为性能80、LCP4841.204ms。仅默认模拟与 R22 同口径比较，实际性能94不与基线34直接比较。",
+    "limitations": [
+      "冷启动 ownword-interactive 标记5995.579ms，交互准备仍需改善。",
+      "浏览器代理响应可能以解压长度记录 transferSize；gzip 字节正确性由独立请求验证，未人为更改 Lighthouse 传输数据。",
+      "本机 Chromium 实验仅为当前原型证据，未代表真实用户群、实机或生产服务。"
+    ]
+  },
+  "remaining": "整站目标继续推进，检查冷启动可交互时间、公开导航上下文、工作区视觉和完整主流程。",
+  "files": [
+    "artifact-check.txt",
+    "build-check.txt",
+    "editor-load-error.png",
+    "editor.png",
+    "home-check.txt",
+    "home.png",
+    "init-check.txt",
+    "lighthouse-actual.json",
+    "lighthouse-simulated.json",
+    "loading-check.txt",
+    "parser-check.txt",
+    "reader.png",
+    "startup-error-mobile.png",
+    "token-check.txt",
+    "workspace-check.txt",
+    "artifact/final-operation-a11y.json",
+    "artifact/regression-errors.json",
+    "artifact/transfer.png",
+    "home/home-1220-en-light.png",
+    "home/home-1440-zh-light.png",
+    "home/home-320-en-light.png",
+    "home/home-390-zh-dark.png",
+    "home/home-768-en-dark.png",
+    "home/proof-desktop.png",
+    "home/words-desktop.png",
+    "workspace/regression-errors.json"
+  ]
+}

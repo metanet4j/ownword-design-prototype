@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Ownword — v0.3.0 Identity Artifact</title>
+  <link rel="icon" type="image/svg+xml" href="brand/ownword-small.svg">
+  <link rel="preload" as="image" href="brand/ownword-mark.svg">
+  <link rel="stylesheet" href="vendor/styles.css?v=030-quality-r23">
+</head>
+<body class="s2">
+  <div id="root" aria-busy="true"><!-- PRE_RENDER_EN --></div>
+  <template id="boot-zh"><!-- PRE_RENDER_ZH --></template>
+  <div id="boot-status" class="boot-screen" role="status" hidden>
+    <div class="brand-loading" aria-hidden="true"><img class="brand-mark" src="brand/ownword-mark.svg" width="64" height="64" alt=""></div>
+    <span class="boot-caption">Loading your space…</span>
+    <button class="s2d-button s2d-button-accent" hidden onclick="location.reload()">Try Again</button>
+  </div>
+  <noscript>Enable JavaScript to use the Ownword prototype.</noscript>
+  <script>
+    const bootRoot = document.getElementById('root'), bootStatus = document.getElementById('boot-status');
+    try {
+      if (localStorage.getItem('ownword-astra-theme') === 'dark') document.documentElement.dataset.colorScheme = 'dark';
+      if (localStorage.getItem('ownword-astra-locale') === 'zh') {
+        document.documentElement.lang = 'zh-CN';
+        bootRoot.innerHTML = document.getElementById('boot-zh').innerHTML;
+        bootStatus.querySelector('.boot-caption').textContent = '正在载入你的空间…';
+        bootStatus.querySelector('button').textContent = '重试';
+      }
+    } catch (_) {}
+    window.OwnwordBootRoute = /^#\/(content|write|review|publish|read|history|artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash);
+    if (window.OwnwordBootRoute) {
+      bootRoot.hidden = true; bootStatus.hidden = false;
+    }
+    window.OwnwordBootClick = event => {
+      if (bootRoot.dataset.ready === 'true') return;
+      const target = event.target.closest('button,a');
+      if (target) {event.preventDefault();event.stopPropagation();window.OwnwordBootAction = target;}
+    };
+    bootRoot.addEventListener('click', window.OwnwordBootClick, true);
+    window.OwnwordBootFailed = () => {
+      if (bootRoot.dataset.ready === 'true') return;
+      bootRoot.hidden = true;
+      bootStatus.hidden = false;
+      bootStatus.querySelector('.boot-caption').textContent = document.documentElement.lang === 'zh-CN' ? '页面暂时无法加载，请重试。' : 'The page could not load. Try again.';
+      bootStatus.querySelector('button').hidden = false;
+      bootStatus.querySelector('button').focus();
+    };
+    window.addEventListener('error', window.OwnwordBootFailed, {once: true});
+    // 先显示预生成内容，再并行下载运行代码，并按原有顺序执行。
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const workspaceStyle = document.createElement('link');
+      workspaceStyle.id = 'ownword-workspace-style'; workspaceStyle.rel = 'stylesheet';
+      workspaceStyle.href = 'vendor/workspace.css?v=030-quality-r23';
+      workspaceStyle.onload = () => {window.OwnwordWorkspaceStyleReady = true;};
+      workspaceStyle.onerror = window.OwnwordBootFailed;
+      document.head.append(workspaceStyle);
+      for (const source of document.querySelectorAll('script[data-src]')) {
+        const script = document.createElement('script');
+        script.async = false; script.src = source.dataset.src;
+        if (source.integrity) {script.integrity = source.integrity; script.crossOrigin = source.crossOrigin;}
+        script.onerror = window.OwnwordBootFailed;
+        document.head.append(script);
+      }
+    }));
+  </script>
+  <script type="application/ownword-runtime" data-src="vendor/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+  <script type="application/ownword-runtime" data-src="vendor/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+  <script type="application/ownword-runtime" data-src="_ds/react-spectrum-s2/_ds_bundle.js"></script>
+  <script type="application/ownword-runtime" data-src="model.js?v=030-review-fixed"></script>
+  <script type="application/ownword-runtime" data-src="content-model.js?v=030-review-fixed"></script>
+  <script type="application/ownword-runtime" data-src="artifact-model.js?v=030-review-fixed"></script>
+  <script type="application/ownword-runtime" data-src="copy.js?v=030-quality-r23"></script>
+  <script type="application/ownword-runtime" data-src="vendor/app.js?v=030-quality-r23" onerror="OwnwordBootFailed()"></script>
+</body>
+</html>

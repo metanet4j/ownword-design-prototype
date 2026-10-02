@@ -135,6 +135,10 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .brand-loading.small { width: 72px; height: 72px; }
 .brand-loading.small .brand-mark { width: 40px; height: 40px; }
 .boot-screen { min-height: 100dvh; display: grid; place-content: center; justify-items: center; gap: var(--s2-spacing-300); padding: var(--s2-spacing-500); color: var(--s2-gray-900); text-align: center; }
+#boot-status[hidden] { display: none; }
+#boot-status button[hidden] { display: none; }
+#boot-status { position: fixed; inset: 0; z-index: 20; background: var(--s2-gray-50); --s2d-focus: var(--s2-focus-indicator-color); }
+#boot-status .s2d-button { min-height: 44px; min-width: 44px; }
 .boot-wordmark { font-size: var(--s2-font-size-800); font-weight: 750; letter-spacing: -.065em; }
 .boot-caption { color: var(--s2-gray-700); font-size: var(--s2-font-size-100); }
 @keyframes seal-breathe { 0%, 100% { opacity: .68; transform: scale(.96); } 50% { opacity: 1; transform: scale(1); } }

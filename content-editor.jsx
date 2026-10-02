@@ -1,8 +1,74 @@
-function MarkdownBody({source, t}) {
+let markdownLoading;
+function loadMarkdown() {
+  if (window.OwnwordEditorTools?.renderMarkdown) return Promise.resolve();
+  if (!markdownLoading) markdownLoading = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'vendor/markdown-tools.js?v=030-quality-r23';
+    script.onload = () => {
+      if (window.OwnwordMarkdownTools?.renderMarkdown) {
+        Object.assign(window.OwnwordEditorTools ??= {}, window.OwnwordMarkdownTools);
+        resolve();
+      } else {script.remove(); markdownLoading = null; reject(new Error('Markdown bundle is incomplete'));}
+    };
+    script.onerror = () => {script.remove(); markdownLoading = null; reject(new Error('Markdown bundle could not load'));};
+    document.head.append(script);
+  });
+  return markdownLoading;
+}
+function MarkdownBody(props) {
+  const [state, setState] = React.useState(window.OwnwordEditorTools?.renderMarkdown ? 'ready' : 'loading');
+  const [attempt, setAttempt] = React.useState(0);
+  React.useEffect(() => {
+    if (window.OwnwordEditorTools?.renderMarkdown) return;
+    let active = true;
+    setState('loading');
+    loadMarkdown().then(() => {if (active) setState('ready');}, () => {if (active) setState('error');});
+    return () => {active = false;};
+  }, [attempt]);
+  if (state === 'ready') return <ReadyMarkdownBody {...props}/>;
+  return <div className="markdown-body" data-markdown-load={state}>{state === 'loading' ? <LoadingMark small label={props.t('readerLoading')}/> : <><p role="alert">{props.t('readerLoadFailed')}</p><Button data-action="reader-load-retry" onClick={() => setAttempt(value => value + 1)}>{props.t('retry')}</Button></>}</div>;
+}
+function ReadyMarkdownBody({source, t}) {
   const result = React.useMemo(() => OwnwordEditorTools.renderMarkdown(source), [source]);
   return <><div className="markdown-body" ref={node=>node?.querySelector("h1")?.setAttribute("tabindex","-1")} dangerouslySetInnerHTML={{__html: result.html}}></div>{result.unsupported && <p className="content-syntax-note">{t('markdownUnsupported')}</p>}</>;
 }
-function ContentEditor({draft, onChange, t, locale, actions, fileActions, savedState, feedback, feedbackRef}) {
+let editorLoading;
+function loadEditor() {
+  if (window.OwnwordEditorTools?.createEditor) return Promise.resolve();
+  if (!editorLoading) editorLoading = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'vendor/editor-tools.js?v=030-quality-r23';
+    script.onload = () => {
+      if (window.OwnwordEditorTools.createEditor && window.OwnwordEditorTools.createVisualEditor) resolve();
+      else {script.remove(); editorLoading = null; reject(new Error('Editor bundle is incomplete'));}
+    };
+    script.onerror = () => {script.remove(); editorLoading = null; reject(new Error('Editor bundle could not load'));};
+    document.head.append(script);
+  });
+  return editorLoading;
+}
+function ContentEditor(props) {
+  const [state, setState] = React.useState(window.OwnwordEditorTools?.createEditor ? 'ready' : 'loading');
+  const [attempt, setAttempt] = React.useState(0);
+  React.useEffect(() => {
+    if (window.OwnwordEditorTools?.createEditor) return;
+    let active = true;
+    setState('loading');
+    loadEditor().then(() => {
+      if (active) {
+        setState('ready');
+        if (attempt) requestAnimationFrame(() => document.querySelector('[data-content-screen="write"] h1')?.focus({preventScroll:true}));
+      }
+    }, () => {if (active) setState('error');});
+    return () => {active = false;};
+  }, [attempt]);
+  if (state === 'ready') return <ReadyContentEditor {...props}/>;
+  return <div className="content-editor" data-editor-load={state}>
+    <div className="editor-topline"><div className="editor-title"><h1 tabIndex="-1">{OwnwordContentModel.title(props.draft.content) || props.t('contentUntitled')}</h1>{props.savedState}</div></div>
+    <div className="visual-fallback">{state === 'loading' ? <LoadingMark small label={props.t('editorBundleLoading')}/> : <><p role="alert">{props.t('editorBundleFailed')}</p><Button data-action="editor-load-retry" onClick={() => setAttempt(value => value + 1)}>{props.t('retry')}</Button></>}</div>
+  </div>;
+}
+function ReadyContentEditor({draft, onChange, t, locale, actions, fileActions, savedState, feedback, feedbackRef}) {
   const host = React.useRef(null), editor = React.useRef(null), menuRef = React.useRef(null), latestChange = React.useRef(onChange);
   latestChange.current = onChange;
   const visualHost = React.useRef(null), visual = React.useRef(null), latestDraft = React.useRef(draft), latestLabels = React.useRef({});
@@ -108,7 +174,7 @@ function ContentEditor({draft, onChange, t, locale, actions, fileActions, savedS
     {bytes > 102400 && <p className="field-error" role="alert">{t('editorTooLong')}</p>}
   </div>;
 }
-Object.assign(window, {ContentEditor, MarkdownBody});
+Object.assign(window, {ContentEditor, MarkdownBody, loadMarkdown});
 
 // Heading applies a command; compose the bound ActionMenu rather than a fake Picker.
 function EditorHeadingMenu({t,disabled,onCommand}) {

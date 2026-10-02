@@ -32,8 +32,9 @@ for (const file of fs.readdirSync('.').filter(file => file.endsWith('.jsx'))) {
     assert.ok(fs.existsSync(`_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_${match[1]}_20_N.svg`), `${file}: missing ${match[1]}`);
   }
 }
-const links = [...fs.readFileSync('index.html', 'utf8').matchAll(/href="(_ds\/[^\"]+\.css)"/g)].map(match => match[1]);
-assert.deepEqual(links, ['_ds/react-spectrum-s2/styles.css']);
+const html = fs.readFileSync('index.html', 'utf8');
+assert.match(html, /href="vendor\/styles\.css\?v=/);
+assert.match(fs.readFileSync('build-prototype.mjs', 'utf8'), /_ds\/react-spectrum-s2\/styles\.css/);
 const tokens = new Set([...['tokens/s2-tokens.css', 'tokens/semantic.css', 'components/components.css'].map(file => fs.readFileSync('_ds/react-spectrum-s2/' + file, 'utf8')).join('\n').matchAll(/(--[\w-]+)\s*:/g)].map(match => match[1]));
 for (const [, token] of fs.readFileSync('s2-adapter.css', 'utf8').matchAll(/var\((--[\w-]+)/g)) assert.ok(tokens.has(token), `Unknown S2 token: ${token}`);
 console.log('R08 button variants, selection, disabled state, field accessibility and S2 icon assets passed');
