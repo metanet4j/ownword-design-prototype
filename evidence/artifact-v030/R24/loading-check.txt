@@ -1,0 +1,84 @@
+✓ Done
+✓ Done
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R23-startup-error
+✓ Done
+"PASS"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R24\startup-error-mobile.png
+✓ Done
+✓ Done
+✓ Done
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R23-unknown#/unknown
+✓ Done
+✓ Done
+✓ Done
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/early-click-7d5769b3d7734d449c8b44d37f749a50.html?quality=early-click
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+null
+✓ Done
+✓ Done
+"PASS"
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R23-loading
+✓ Done
+✓ Done
+"PASS"
+"PASS"
+"PASS original styles: 81 elements"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R24\home.png
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+"PASS original styles: 88 elements"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R24\reader.png
+✓ Done
+http://127.0.0.1:4313/?quality=R23-loading#/read/first-words
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Ownword — v0.3.0 Identity Artifact
+  http://127.0.0.1:4313/?quality=R23-writing
+✓ Done
+✓ Done
+✓ Done
+"PASS original styles: 61 elements"
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R24\editor-load-error.png
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+true
+"PASS original styles: 65 elements"
+✓ Screenshot saved to C:\haodev\ownword\_task\prototype-worktree\ownword-v0.3.0\ownword-prototype\evidence\artifact-v030\R24\editor.png
+✓ Done
+http://127.0.0.1:4313/?quality=R23-writing#/write/draft-5bea39c2-bb51-4d0b-86d7-1cb7ad169b74
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+✓ Done
+✓ Done
+✓ Done
+"PASS"
+PASS：按需读取、失败重试、目录、草稿持久化、安全解析、样式一致性及浏览器错误检查。
+✓ Done
+✓ Browser closed

@@ -1,6 +1,6 @@
 # 本地依赖与构建产物
 
-预览使用本地 React 与 ReactDOM 18.3.1 production UMD，来源为 npm 官方包 `react@18.3.1`、`react-dom@18.3.1` 的 `umd/` 目录，原文件与 MIT 许可头保持不变。页面保留 SHA-384 完整性校验。`react-dom-server.production.min.js` 来自同一包的 `react-dom-server-legacy.browser.production.min.js`，只用于构建中英文首页 HTML，不发送到浏览器。
+预览使用本地 React 与 ReactDOM 18.3.1 production UMD，来源为 npm 官方包 `react@18.3.1`、`react-dom@18.3.1` 的 `umd/` 目录，原文件与 MIT 许可头保持不变。构建将消费代码合并为 runtime，页面对整体产物使用 SHA-384 完整性校验。`react-dom-server.production.min.js` 来自同一包的 `react-dom-server-legacy.browser.production.min.js`，只用于构建中英文首页 HTML，不发送到浏览器。
 
 | 文件 | SHA-384 |
 | --- | --- |
@@ -12,6 +12,7 @@
 运行 `npm run build`，由锁定的 esbuild 0.28.2 生成以下文件：
 
 - `app.js`：按原依赖顺序统一编译 JSX，保留共享辅助函数和既有全局导出。
+- `runtime.js`：按依赖顺序合并 React、ReactDOM、S2、模型、文案与 app；低优先级预加载，首屏显示后执行，减少请求排队。绑定的 S2 源文件保持原样。
 - `markdown-tools.js`：原有 unified、remark、rehype 安全解析链，公开读取时加载。
 - `editor-tools.js`：CodeMirror 与 Milkdown 完整编辑器，进入写作时加载。
 - `styles.css`：页面及原有 S2 样式，移除无消费者的 token 声明；被引用声明的原值和模式保持不变。

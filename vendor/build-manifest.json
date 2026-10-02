@@ -1,14 +1,14 @@
 {
   "esbuild": "0.28.2",
   "inputs": {
-    "build-prototype.mjs": "aa601d96c27ed552a6fb4d46522cbd49a58b1bc4a9defcfcf12b2b99053941f1",
+    "build-prototype.mjs": "819f9dae9b654831f646036098d1b20aca6785aca2e98729a2592aa62f5e0e98",
     "package.json": "8ab3f53bb3f4239856cc7da5a733f8cf16c2e399f95666df4914726000100907",
     "package-lock.json": "5db1d789b88233e27065fd006458eb79cacdfa0eb652d592f49aa182cc1e9fe3",
     "editor-tools.js": "dc6754d975c7211007c9a030283e4e75cbf707b1208f13e764f0a00e33ae573b",
     "markdown-tools.mjs": "e75f35651ee270b6f4a372cc560125d292ebf6d0e25f9dae9cec8c478060e982",
     "visual-editor.js": "4c082fe4cdc06a00efd65e84e01791e768e1ac3f1b3ad20a3fd5c649247bf73d",
     "_ds/react-spectrum-s2/_ds_bundle.js": "ac147c74d2b4684e69e3608ec1c8406fb4485e3373292bab0dd49abe5c2f350c",
-    "index.template.html": "5d2d93d3bd5308f47027a0a84cf7eede4b01cf596f260614d0a732c36f29c739",
+    "index.template.html": "2539b60640dc0345729d1ab8562d9e6cfc5b771f736f3c41031ad01b15fa2e62",
     "model.js": "bd77d6adb0c645c2d9e95ea82edcf24d3822f6384a9a33311c972529c514372e",
     "content-model.js": "fd20215318732685c8b7a629b4ef20ff5e0546219b45aa71b4adbd699ea6d6e5",
     "artifact-model.js": "721751d33bdf504d8efdcbd2155afdacb8f14e56f5379aea0410ea083a986e7c",
@@ -48,8 +48,9 @@
     "vendor/markdown-tools.js": "cf30be6189c26d0124e141c0a51d86e501815af774e456b5e8dc47feb27a8dfa",
     "vendor/editor-tools.js": "ec6ea10f330bbf4b3aa8d6867c47cc34f26470c95416fcebef5b951fdf627747",
     "vendor/styles.css": "d1859cff8e232b23d1b23fca727979cad26fa02224813a504fbcbe54ccd1bd38",
-    "index.html": "8d7c50858998a7e57fc279e7db2cc34d47db0401aed0cfe6e4340e140d13ef11",
+    "index.html": "6489246ea3018b37239aa8d3ac13865d84376d5b69d95e1a2099099e3830636c",
     "vendor/fonts.css": "c842cec53e5d68a3c0e8fecd42c27929dad2222533b3c6d76cb591d0b7c5a991",
-    "vendor/workspace.css": "c49e8b535088392bc9f7ad0745017c47852a912ef7bbd1744589b89165b3c298"
+    "vendor/workspace.css": "c49e8b535088392bc9f7ad0745017c47852a912ef7bbd1744589b89165b3c298",
+    "vendor/runtime.js": "423374c054d91df59d12a142248a35b1e495dfdb5bb6fb114f1e5f812362a6e5"
   }
 }

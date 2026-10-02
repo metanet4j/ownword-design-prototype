@@ -17,7 +17,7 @@ const inputs = ['build-prototype.mjs', 'package.json', 'package-lock.json', 'edi
   'markdown-tools.mjs', 'visual-editor.js', '_ds/react-spectrum-s2/_ds_bundle.js', 'index.template.html',
   'model.js', 'content-model.js', 'artifact-model.js', 'copy.js', 'vendor/react.production.min.js',
   'vendor/react-dom.production.min.js', 'vendor/react-dom-server.production.min.js', ...files, ...styles, ...dsStyles];
-const outputs = ['vendor/app.js', 'vendor/markdown-tools.js', 'vendor/editor-tools.js', 'vendor/styles.css', 'index.html', 'vendor/fonts.css', 'vendor/workspace.css'];
+const outputs = ['vendor/app.js', 'vendor/markdown-tools.js', 'vendor/editor-tools.js', 'vendor/styles.css', 'index.html', 'vendor/fonts.css', 'vendor/workspace.css', 'vendor/runtime.js'];
 const manifest = path.join(root, 'vendor/build-manifest.json');
 const hash = (file, text = false) => createHash('sha256').update(text ?
   fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n') : fs.readFileSync(path.join(root, file))).digest('hex');
@@ -34,6 +34,11 @@ if (process.argv[2] === '--check') {
   const source = files.map(file => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
   const script = await esbuild.transform(source, {...options, loader: 'jsx', format: 'iife', sourcefile: 'ownword-app.jsx'});
   fs.writeFileSync(path.join(root, outputs[0]), script.code);
+  const runtimeFiles = ['vendor/react.production.min.js', 'vendor/react-dom.production.min.js',
+    '_ds/react-spectrum-s2/_ds_bundle.js', 'model.js', 'content-model.js', 'artifact-model.js', 'copy.js', outputs[0]];
+  const runtime = runtimeFiles.map(file => fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n')).join('\n;\n');
+  fs.writeFileSync(path.join(root, outputs[7]), (await esbuild.transform(runtime, options)).code);
+  const integrity = 'sha384-' + createHash('sha384').update(fs.readFileSync(path.join(root, outputs[7]))).digest('base64');
   for (const [entry, output] of [['markdown-tools.mjs', outputs[1]], ['editor-tools.js', outputs[2]]]) {
     await esbuild.build({...options, absWorkingDir: root, entryPoints: [entry], outfile: output,
       bundle: true, format: 'iife', globalName: entry === 'markdown-tools.mjs' ? 'OwnwordMarkdownTools' : 'OwnwordEditorTools'});
@@ -79,7 +84,7 @@ if (process.argv[2] === '--check') {
     return html;
   }
   const template = fs.readFileSync(path.join(root, 'index.template.html'), 'utf8').replace(/\r\n/g, '\n');
-  fs.writeFileSync(path.join(root, 'index.html'), template.replace('<!-- PRE_RENDER_EN -->', render('en')).replace('<!-- PRE_RENDER_ZH -->', render('zh')));
+  fs.writeFileSync(path.join(root, 'index.html'), template.replace('<!-- PRE_RENDER_EN -->', render('en')).replace('<!-- PRE_RENDER_ZH -->', render('zh')).replaceAll('<!-- RUNTIME_INTEGRITY -->', integrity));
   fs.writeFileSync(manifest, JSON.stringify({esbuild: esbuild.version, inputs: hashes(inputs, true), outputs: hashes(outputs)}, null, 2) + '\n');
   console.log('页面已预编译；公开阅读与完整编辑器分别构建。');
 }

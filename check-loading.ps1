@@ -1,10 +1,10 @@
-param([string]$PreviewUrl='http://127.0.0.1:4313/')
+param([string]$PreviewUrl='http://127.0.0.1:4313/', [string]$EvidenceDirectory='evidence/artifact-v030/R23', [string]$Session='v030-r23-check')
 $ErrorActionPreference = 'Stop'
 $browserCommand = (Get-Command agent-browser).Source
 if ($browserCommand.EndsWith('.ps1')) { $browserCommand = Join-Path (Split-Path $browserCommand) 'node_modules/agent-browser/bin/agent-browser-win32-x64.exe' }
-$evidence = Join-Path $PSScriptRoot 'evidence/artifact-v030/R23'
+$evidence = Join-Path $PSScriptRoot $EvidenceDirectory
 New-Item -ItemType Directory -Path $evidence -Force | Out-Null
-function ab { & $browserCommand --session v030-r23-check @args; if ($LASTEXITCODE -ne 0) { throw ('加载验证失败：'+($args -join ' ')) } }
+function ab { & $browserCommand --session $Session @args; if ($LASTEXITCODE -ne 0) { throw ('加载验证失败：'+($args -join ' ')) } }
 function probe([string]$source) { ab eval -b ([Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('(()=>{'+$source+';return "PASS";})()'))) }
 function tokens {
   ab eval -b ([Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes(@'
@@ -27,7 +27,7 @@ function tokens {
 }
 try {
   ab set viewport 320 568
-  ab network route '**/vendor/app.js*' --abort
+  ab network route '**/vendor/runtime.js*' --abort
   ab open ($PreviewUrl+'?quality=R23-startup-error')
   ab wait '#boot-status:not([hidden]) button:not([hidden])'
   probe 'const b=document.querySelector("#boot-status button"),r=b.getBoundingClientRect();if(!document.getElementById("root").hidden||document.activeElement!==b||r.height<44||r.right>innerWidth||r.bottom>innerHeight)throw Error("启动失败不能通过可达的重试恢复")'
@@ -38,13 +38,18 @@ try {
   ab open ($PreviewUrl+'?quality=R23-unknown#/unknown')
   ab wait '[data-ready="true"]'
   ab set viewport 1440 1000
-  ab network route '**/vendor/app.js*' --body ''
-  ab open ($PreviewUrl+'?quality=R23-early-click')
+  # 仅本次空代码模拟移除完整性声明；正式页面仍校验 runtime 完整性。
+  $earlyPageName = 'early-click-'+[guid]::NewGuid().ToString('N')+'.html'
+  $earlyPage = Join-Path $PSScriptRoot $earlyPageName
+  $earlyHtml = (Get-Content (Join-Path $PSScriptRoot 'index.html') -Raw) -replace 'integrity="[^"]+"', ''
+  [IO.File]::WriteAllText($earlyPage, $earlyHtml, [Text.UTF8Encoding]::new($false))
+  ab network route '**/vendor/runtime.js*' --body ''
+  ab open ($PreviewUrl+$earlyPageName+'?quality=early-click')
   ab wait '.welcome-story'
   ab click '[data-action="connect"]'
   probe 'if(window.OwnwordBootAction?.dataset.action!=="connect"||document.querySelector("dialog[open]"))throw Error("初始点击未等待交互加载")'
   ab network unroute
-  ab eval 'const script=document.createElement("script");script.src="vendor/app.js?quality=early-click";document.body.append(script)'
+  ab eval 'const script=document.createElement("script");script.src="vendor/runtime.js?quality=early-click";document.body.append(script)'
   ab wait 'dialog[open]'
   ab press Escape
   probe 'if(document.getElementById("root").dataset.ready!=="true"||document.activeElement.dataset.action!=="connect")throw Error("初始点击未接续或取消未恢复焦点")'
@@ -52,6 +57,7 @@ try {
   ab wait '[data-ready="true"]'
   ab wait '.welcome-story'
   probe 'if(typeof Babel!=="undefined"||window.OwnwordEditorTools||performance.getEntriesByType("resource").some(x=>/babel|editor-tools|markdown-tools/.test(x.name)))throw Error("首页仍在编译或加载编辑器/阅读器")'
+  probe 'const resources=performance.getEntriesByType("resource");if(React.version!=="18.3.1"||!/^18\.3\.1(?:-|$)/.test(ReactDOM.version)||!window.ReactSpectrumS2_ad4872||resources.filter(x=>/vendor\/runtime\.js/.test(x.name)).length!==1||resources.some(x=>/\/(react(?:-dom)?\.production\.min|app|_ds_bundle|model|content-model|artifact-model|copy)\.js/.test(x.name)))throw Error("运行依赖未正确合并为单次请求")'
   tokens
   ab screenshot (Join-Path $evidence 'home.png') --full
   ab find role tab click --name Words --exact
@@ -104,4 +110,4 @@ try {
   $errors = ab errors --json | ConvertFrom-Json
   if($errors.data.errors.Count -gt 0) {throw '浏览器存在运行异常'}
   Write-Output 'PASS：按需读取、失败重试、目录、草稿持久化、安全解析、样式一致性及浏览器错误检查。'
-} finally { ab network unroute; ab close }
+} finally { if ($earlyPage -and (Test-Path -LiteralPath $earlyPage)) {Remove-Item -LiteralPath $earlyPage}; ab network unroute; ab close }

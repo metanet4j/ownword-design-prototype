@@ -1,0 +1,88 @@
+{
+  "feature": "R24",
+  "date": "2026-10-02",
+  "baseCommit": "db6ff192f1e5d78bac966d90383d274b277e6dfd",
+  "status": "implemented-and-verified",
+  "reviewStatus": "awaiting-user-review",
+  "implementation": [
+    "按原依赖顺序合并8个运行资源，消费构建压缩并低优先级预加载；首屏之后执行。",
+    "React原始发行文件、绑定S2源文件与共享App作用域保持；runtime整体使用构建生成的SHA-384完整性校验。"
+  ],
+  "verification": {
+    "loading": "通过：单次runtime请求、固定React版本和S2导出、提前点击接续、启动失败重试、目录、安全解析、编辑器失败重试与草稿恢复、四类页面原始样式一致性。",
+    "artifact": "通过：创建校验、离开保护、Review焦点、签名取消、转让回退保持输入；0浏览器运行异常。",
+    "init": "通过：34项任务、33条BDD；模型、语法、构建对应性与harness。",
+    "repeatBuild": "通过：当前manifest重复构建字节一致，--check通过。",
+    "integrityFailure": "实际拦截runtime为空代码，正式页面完整性校验拒绝执行；320px重试显示，恢复正常资源后点击重试可用。",
+    "visualReview": "已查看合并后首页及320px完整性失败截图；样式计算一致，人工复核待进行。"
+  },
+  "performance": {
+    "actual": {
+      "method": "devtools",
+      "time": "2026-10-02T07:12:20.495Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100
+      },
+      "timings": {
+        "first-contentful-paint": 2239.744,
+        "largest-contentful-paint": 2239.744,
+        "total-blocking-time": 64.91400000000067,
+        "cumulative-layout-shift": 0,
+        "interactive": 5245.212
+      },
+      "marks": [
+        {
+          "name": "ownword-interactive",
+          "startTime": 4479.433,
+          "timingType": "Mark"
+        }
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4313/vendor/runtime.js?v=030-quality-r24",
+          "resourceSize": 457631,
+          "networkRequestTime": 616.3229999989271,
+          "networkEndTime": 4338.335000000894
+        }
+      ]
+    },
+    "simulated": {
+      "method": "simulate",
+      "time": "2026-10-02T07:13:57.693Z",
+      "version": "13.0.1",
+      "scores": {
+        "performance": 81,
+        "accessibility": 100,
+        "best-practices": 100
+      },
+      "timings": {
+        "first-contentful-paint": 2640.053875,
+        "largest-contentful-paint": 4224.086200000001,
+        "total-blocking-time": 21.000000000000455,
+        "cumulative-layout-shift": 0,
+        "interactive": 4224.086200000001
+      },
+      "marks": [
+        {
+          "name": "ownword-interactive",
+          "startTime": 132.046,
+          "timingType": "Mark"
+        }
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4313/vendor/runtime.js?v=030-quality-r24",
+          "resourceSize": 457631,
+          "networkRequestTime": 20.727000005543232,
+          "networkEndTime": 95.11300000548363
+        }
+      ]
+    },
+    "comparison": "同口径实际限速：R23 ownword-interactive5995.579ms→R24 4479.433ms，改善25.29%；LCP2256.664→2239.744ms，TBT175.313→64.914ms，CLS均0。默认模拟：性能80→81，LCP4841.204→4224.086ms，TBT0→21ms。",
+    "limitation": "默认模拟LCP仍高于2.5秒；实际可交互仍约4.48秒。本机Chromium实验不代表实机或生产用户；未人为修改代理传输数据。"
+  },
+  "remaining": "继续审查公开页面返回与查询上下文、工作区视觉和完整主流程；整站目标尚未完成。"
+}
