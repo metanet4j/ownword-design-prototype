@@ -159,8 +159,9 @@
 .content-reader { max-width:820px; margin:auto; }
 .reader-toolbar { display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--s2-spacing-200); margin-bottom:var(--s2-spacing-500); }
 .reader-toolbar > div { display:flex; gap:var(--s2-spacing-200); }
-.reader-byline { display:flex; align-items:center; gap:var(--s2-spacing-200); color:var(--s2-gray-700); }
-.reader-byline > div:last-child { display:grid; gap:var(--s2-spacing-100); }
+.reader-byline { display:flex; flex-wrap:wrap; align-items:center; column-gap:var(--s2-spacing-400); row-gap:var(--s2-spacing-100); color:var(--s2-gray-700); }
+.reader-author-link { max-width:100%; padding:0; gap:var(--s2-spacing-200); text-align:left; }
+.reader-author-link strong { min-width:0; white-space:normal; overflow-wrap:anywhere; }
 .reader-byline strong { color:var(--s2-gray-900); font-weight:600; }
 .reader-byline span { font-size:var(--s2-font-size-75); }
 .reader-byline .portrait { width:40px; height:40px; }
