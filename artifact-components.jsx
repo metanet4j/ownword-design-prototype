@@ -17,11 +17,11 @@ function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false,label
     {!compact&&asset.previousNumber&&known&&asset.previousNumber!==asset.number&&<p role="status">{t('artifactNumberChanged')}: {asset.previousNumber} → {asset.number}</p>}
   </div>;
 }
-function ArtifactSummary({data,bapId,t,onManage,onOpen}) {
+function ArtifactSummary({data,bapId,t,onManage,onOpen,readOnly=false}) {
   const b=OwnwordArtifactModel.current(data,bapId),asset=data.assets.find(a=>a.id===b?.assetId),validity=OwnwordArtifactModel.bindingState(data,b);
   return <section className="artifact-summary" aria-label={t('digitalId')}>
-    {asset&&validity==='valid'?<NumberStatus asset={asset} t={t} compact/>:<div className="artifact-summary-empty"><p className="eyebrow">{t('digitalId')}</p><p className="artifact-summary-state">{t(asset?(validity==='unverified'?'artifactAssociationUnverified':'artifactAssociationInvalid'):'digitalIdNotSet')}</p></div>}
-    <Button variant="quiet" onClick={()=>asset?onOpen(asset.id):onManage()}>{t(asset?(validity==='valid'?'artifactView':'reviewAssociation'):'chooseDigitalId')}<UiIcon name="ChevronRight"/></Button>
+    {asset&&validity==='valid'?<NumberStatus asset={asset} t={t} compact/>:<div className="artifact-summary-empty"><p className="eyebrow">{t('digitalId')}</p><p className="artifact-summary-state">{t(b?(validity==='unverified'?'artifactAssociationUnverified':'artifactAssociationInvalid'):'digitalIdNotSet')}</p></div>}
+    {(asset||(!readOnly&&onManage))&&<Button variant="quiet" onClick={()=>asset?onOpen(asset.id):onManage()}>{t(asset?(readOnly||validity==='valid'?'artifactView':'reviewAssociation'):'chooseDigitalId')}<UiIcon name="ChevronRight"/></Button>}
   </section>;
 }
 function ArtifactCard({asset,data,bapId,t,onOpen,children}) {

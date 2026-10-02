@@ -163,9 +163,6 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .profile-detail .bio { color: var(--s2-gray-700); }
 .flat-horizon { border-top: 1px solid var(--s2-gray-600); margin-top: var(--s2-spacing-800); }
 .public-page { padding-top: var(--s2-spacing-400); }
-.public-page .page-heading { margin-inline: auto; text-align: center; }
-.public-page .page-heading .eyebrow { margin-bottom: var(--s2-spacing-200); }
-.public-page .page-heading > p:last-child { margin-inline: auto; margin-top: var(--s2-spacing-200); }
 .identity-stage { position: relative; max-width: 680px; margin: var(--s2-spacing-400) auto 0; }
 .card-controls { max-width: 500px; margin-inline: auto; display: flex; justify-content: flex-end; }
 .identity-object { perspective: 1600px; padding: var(--s2-spacing-200) var(--s2-spacing-400); touch-action: pan-y; cursor: grab; }
@@ -193,8 +190,6 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .plate-foot { margin-top: var(--s2-spacing-300); font-size: var(--s2-font-size-50); color: var(--s2-gray-700); }
 .plate-foot span:last-child { letter-spacing: .15em; }
 .object-shadow { margin: 0 auto; width: 70%; height: var(--s2-spacing-50); border-radius: 50%; background: color-mix(in srgb, var(--s2-gray-800) 10%, transparent); filter: blur(16px); }
-.public-copy { max-width: 500px; margin-inline: auto; }
-.public-copy .identifier { padding: var(--s2-spacing-50) 0; border: 0; }
 .chain-disclosure, .profile-disclosure { max-width: 500px; margin: var(--s2-spacing-300) auto 0; border-top: 1px solid var(--s2d-border); padding-block: var(--s2-spacing-50); }
 .profile-disclosure + .chain-disclosure { margin-top: 0; border-bottom: 1px solid var(--s2d-border); }
 .chain-disclosure > .s2d-button, .profile-disclosure > .s2d-button { width: 100%; justify-content: space-between; gap: var(--s2-spacing-200); padding-inline: var(--s2-spacing-100); text-align: start; }
@@ -295,7 +290,6 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
   .identity-primary .action-row { gap: var(--s2-spacing-100); }
   .identity-primary .action-row .s2d-button { padding-inline: var(--s2-spacing-300); font-size: var(--s2-font-size-100); }
   .flat-horizon { margin-top: var(--s2-spacing-500); }
-  .public-page { padding-top: var(--s2-spacing-300); }
   .identity-stage { margin-top: var(--s2-spacing-200); }
   .identity-object { padding: var(--s2-spacing-200) var(--s2-spacing-100); }
   .identity-plate { padding: var(--s2-spacing-300); min-height: 300px; }
@@ -401,6 +395,7 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .identity-identifiers .identifier-value{align-items:flex-start;gap:var(--s2-spacing-200);flex-wrap:wrap;}
 .identity-identifiers .identifier-value code{font-size:var(--s2-font-size-100);white-space:normal;overflow-wrap:anywhere;}
 .identity-identifiers .identifier-value .s2d-button{padding-inline:var(--s2-spacing-200);}
+.public-identifiers{margin-bottom:var(--s2-spacing-300);}
 @media(max-width:650px){.identity-page{padding-top:var(--s2-spacing-400);}.identity-heading h1{font-size:var(--s2-font-size-600);}.identity-profile{padding:var(--s2-spacing-400);}.identity-profile-top{align-items:flex-start;flex-direction:column;gap:var(--s2-spacing-200);}.identity-profile-top>.s2d-button{padding-inline:0;}.identity-person h2{font-size:var(--s2-font-size-500);}.identity-profile .profile-detail{padding-top:var(--s2-spacing-300);}.identity-identifiers{grid-template-columns:1fr;padding:var(--s2-spacing-400);gap:var(--s2-spacing-400);}}
 
 /* Keep confirmation controls outside the dialog's scrolling content. */

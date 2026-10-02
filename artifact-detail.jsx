@@ -40,8 +40,8 @@ function ArtifactRecordTabs({items,t}) {
   </div>;
 }
 
-function ArtifactPublicIdentity({bapId,resolveIdentity,t,failCopy,onBack,backLabel}) {
+function ArtifactPublicIdentity({bapId,resolveIdentity,t,failCopy,onBack,backLabel,data,onOpenArtifact}) {
   const [rotating,setRotating]=React.useState(false),[angle,setAngle]=React.useState(0),record=resolveIdentity(bapId);
-  return <section className="artifact-page" data-artifact-screen="public-identity"><ArtifactBack t={t} label={backLabel} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t(!!record?'publicIdentity':'artifactNotFound')}</h1>{!!record&&<IdentityCard profile={record.profile} id={bapId} t={t} failCopy={failCopy} transaction={record.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle}/>}</section>;
+  return <section className="artifact-page" data-artifact-screen="public-identity"><ArtifactBack t={t} label={backLabel} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t(!!record?'publicIdentity':'artifactNotFound')}</h1>{!!record&&<IdentityCard profile={record.profile} id={bapId} t={t} failCopy={failCopy} transaction={record.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} artifactData={data} onOpenArtifact={onOpenArtifact}/>}</section>;
 }
 window.ArtifactPublicIdentity=ArtifactPublicIdentity;

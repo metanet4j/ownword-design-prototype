@@ -57,8 +57,6 @@ function App() {
   const [validationShown, setValidationShown] = React.useState(false);
   const [imageError, setImageError] = React.useState('');
   const [failCopy, setFailCopy] = React.useState(false);
-  const [rotating, setRotating] = React.useState(false);
-  const [angle, setAngle] = React.useState(-10);
   const [storageError, setStorageError] = React.useState(false);
   const prefsRef = React.useRef(null);
   const firstPaint = React.useRef(true);
@@ -186,12 +184,11 @@ function App() {
       dispatch({type: 'DRAFT', field: 'image', value: url}); setImageError('');
     } catch {URL.revokeObjectURL(url); setImageError('invalidImage');}
   }
-  function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 className={k==='publicIntro'?'':'task-title'} tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
+  function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 className="task-title" tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
   const [navigationHash,setNavigationHash]=React.useState(location.hash);
   React.useEffect(()=>{const update=()=>setNavigationHash(location.hash);window.addEventListener('hashchange',update);return()=>window.removeEventListener('hashchange',update);},[]);
   const currentModule = state.page==='content'?(/^#\/(read|history)(\/|$)/.test(navigationHash)?'readerPublic':'myContent'):state.page==='artifacts'?(navigationHash.startsWith('#/find')?'artifactFind':navigationHash.startsWith('#/identity-view/')?'publicIdentity':navigationHash.startsWith('#/artifact/')?'artifactDetailTitle':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
-  const profileDisplay = state.page === 'identity' || state.page === 'public' ? state.profile : state.draft;
   const toastError = state.page !== 'resolve-error' ? state.error : '';
   const toastMessage = toastError || (storageError ? 'persistFailed' : state.notice);
   const toastBody = toastError ? (toastError === 'connectFailed' ? 'connectFailedBody' : 'operationFailedBody')
@@ -263,7 +260,7 @@ function App() {
         <div className="identity-heading"><h1 className="task-title" tabIndex="-1">{t('myIdentity')}</h1><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div>
         <div className="identity-layout">
           <section className="identity-profile" aria-label={t('profileDetails')}>
-            <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight label={t('published')}/></div></div></div><Button variant="quiet" data-action="public" onClick={()=>{setAngle(-10);setRotating(!matchMedia('(prefers-reduced-motion: reduce)').matches);navigate('public');}}>{t('viewPublicIdentity')}<UiIcon name="ChevronRight"/></Button></div>
+            <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight label={t('published')}/></div></div></div><Button variant="quiet" data-action="public" onClick={()=>openArtifacts('identity-view',bapId)}>{t('viewPublicIdentity')}<UiIcon name="ChevronRight"/></Button></div>
             <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio||t('noBio')}</p></section>
           </section>
           <section className="identity-identifiers" aria-label={t('identityIdentifiers')}>
@@ -272,7 +269,6 @@ function App() {
           </section>
         </div>
       </section>}
-      {state.page === 'public' && <section className="public-page"><Button variant="quiet" className="s2d-button artifact-back" data-action="back-identity" onClick={()=>navigate('identity')}><UiIcon name="ChevronLeft"/>{t('backIdentity')}</Button>{heading('publicIntro', 'publicBody', 'publicIdentity')}<IdentityCard profile={profileDisplay} id={bapId} t={t} failCopy={failCopy} transaction={state.transaction} rotating={rotating} setRotating={setRotating} angle={angle} setAngle={setAngle} /></section>}
     </main>
     {toastMessage && <Toast key={toastMessage + ':' + state.epoch} message={toastMessage} body={toastBody} error={!!(toastError || storageError)} notice={!toastError && !storageError ? state.notice : undefined} storageError={!toastError && storageError} t={t} onRetry={retryError} onDismiss={() => {
       if (storageError && !toastError) setStorageError(false);

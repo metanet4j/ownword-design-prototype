@@ -1,0 +1,167 @@
+[
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "稳定编号",
+    "文案": "Digital ID165StableView Artifact",
+    "状态": "stable",
+    "结果": "通过",
+    "编号": "165",
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 396
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "五次确认",
+    "文案": "Digital ID165Not yet stable5/6 confirmationsView Artifact",
+    "状态": "assigned",
+    "结果": "通过",
+    "编号": "165",
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 451
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "编号待确认",
+    "文案": "Digital ID—Number pendingView Artifact",
+    "状态": "pending",
+    "结果": "通过",
+    "编号": "—",
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 396
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "编号解析中",
+    "文案": "Digital ID—Resolving numberView Artifact",
+    "状态": "resolving",
+    "结果": "通过",
+    "编号": "—",
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 396
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "重组重新核实",
+    "文案": "Digital ID—Number being verified after reorganizationView Artifact",
+    "状态": "reorg",
+    "结果": "通过",
+    "编号": "—",
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 448
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "编号不可核实",
+    "文案": "Digital ID—Number status not verifiedView Artifact",
+    "状态": "unverified",
+    "结果": "通过",
+    "编号": "—",
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 448
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "关联不可核实",
+    "文案": "Digital IDAssociation needs verificationView Artifact",
+    "状态": null,
+    "结果": "通过",
+    "编号": null,
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 415
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "已转移",
+    "文案": "Digital IDCurrent association is unavailableView Artifact",
+    "状态": null,
+    "结果": "通过",
+    "编号": null,
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 415
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "来源失效",
+    "文案": "Digital IDCurrent association is unavailableView Artifact",
+    "状态": null,
+    "结果": "通过",
+    "编号": null,
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 415
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "重复关联",
+    "文案": "Digital IDCurrent association is unavailableView Artifact",
+    "状态": null,
+    "结果": "通过",
+    "编号": null,
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 415
+  },
+  {
+    "动作": [],
+    "场景": "资产缺失",
+    "文案": "Digital IDCurrent association is unavailable",
+    "状态": null,
+    "结果": "通过",
+    "编号": null,
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 392
+  },
+  {
+    "动作": [],
+    "场景": "只有历史关联",
+    "文案": "Digital IDNot linked",
+    "状态": null,
+    "结果": "通过",
+    "编号": null,
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 392
+  },
+  {
+    "动作": [
+      "View Artifact"
+    ],
+    "场景": "长编号",
+    "文案": "Digital ID900719925474099312345StableView Artifact",
+    "状态": "stable",
+    "结果": "通过",
+    "编号": "900719925474099312345",
+    "视口宽度": 320,
+    "页面宽度": 320,
+    "首屏标识底部": 474
+  }
+]

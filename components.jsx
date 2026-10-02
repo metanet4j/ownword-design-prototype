@@ -14,7 +14,7 @@ function openPublicRoute(page,id) {
   history.pushState(back?{ownwordBack:back}:null,'', '#/'+page+(id?'/'+encodeURIComponent(id):''));
   window.dispatchEvent(new HashChangeEvent('hashchange',{oldURL,newURL:location.href}));
 }
-function publicBackLabel(fallback) {return history.state?.ownwordBack || fallback;}
+function publicBackLabel(fallback,connected) {const label=history.state?.ownwordBack||fallback;return typeof connected==='boolean'&&['backIdentity','backHome'].includes(label)?(connected?'backIdentity':'backHome'):label;}
 function returnFromPublic(fallback) {if(history.state?.ownwordBack)history.back();else fallback();}
 window.ArtifactBack=ArtifactBack;
 function BrandMark() {
@@ -208,7 +208,7 @@ function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {
     {transaction ? <Identifier id={transaction.txid} label={t('publicationTx')} copyLabel="copyTx" target={target} t={t} failCopy={failCopy} /> : <p className="hint">{t('recordUnavailable')}</p>}
   </>;
 }
-function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotating, angle, setAngle}) {
+function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotating, angle, setAngle, artifactData, onOpenArtifact}) {
   const drag = React.useRef(null);
   const [recordOpen, setRecordOpen] = React.useState(false);
   const [profileOpen, setProfileOpen] = React.useState(false);
@@ -232,6 +232,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     setAngle(angle + ((target - normalized + 540) % 360) - 180);
   }
   return <div className="identity-stage">
+    <div className="identity-identifiers public-identifiers" role="region" aria-label={t('identityIdentifiers')}><Identifier id={id} t={t} failCopy={failCopy}/><ArtifactSummary data={artifactData} bapId={id} t={t} readOnly onOpen={onOpenArtifact}/></div>
     <div className="card-controls"><Button data-action="flip-card" aria-controls="identity-card-object" onClick={flipCard}>{t(back ? 'flipToFront' : 'flipToBack')}</Button></div>
     <div id="identity-card-object" className="identity-object" onPointerDown={e => {if (e.target.closest('button')) return; drag.current = {x: e.clientX, angle}; setRotating(false); e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e => {if (drag.current) setAngle(drag.current.angle + (e.clientX - drag.current.x) * .35);}} onPointerUp={() => {drag.current = null;}} onPointerCancel={() => {drag.current = null;}}>
       <div className={`identity-sculpture ${rotating ? 'rotating' : ''}`} data-face={back ? 'back' : 'front'} style={{'--angle': `${angle}deg`}} onAnimationEnd={e => {if (e.target === e.currentTarget && e.animationName === 'identity-turn') setRotating(false);}}>
@@ -251,7 +252,6 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
       </div>
     </div>
     <div className="object-shadow" aria-hidden="true"></div>
-    <div className="public-copy"><Identifier id={id} t={t} failCopy={failCopy} /></div>
     <div className="profile-disclosure">
       <Button variant="quiet" data-action="toggle-full-profile" aria-expanded={profileOpen} aria-controls="public-profile-details" onClick={() => setProfileOpen(value => !value)}>{t(profileOpen ? 'hideFullProfile' : 'viewFullProfile')}<UiIcon name="ChevronDown"/></Button>
       <div id="public-profile-details" hidden={!profileOpen}>

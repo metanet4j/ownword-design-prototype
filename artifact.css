@@ -143,6 +143,9 @@
 .artifact-summary-empty{display:grid;gap:var(--s2-spacing-200);}
 .artifact-summary-state{font-size:var(--s2-font-size-200);color:var(--s2d-text-muted);}
 @media(max-width:650px){.identity-identifiers .artifact-summary{padding:var(--s2-spacing-300) 0 0;border-left:0;border-top:1px solid var(--s2d-border);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s2-spacing-200);align-items:end;}.artifact-summary>.s2d-button{white-space:normal;text-align:right;}.artifact-summary .artifact-number{column-gap:var(--s2-spacing-200);}}
+.identity-identifiers.public-identifiers{max-width:530px;margin-inline:auto;padding:var(--s2-spacing-300) 0;background:transparent;border-bottom:1px solid var(--s2d-border);gap:var(--s2-spacing-300);}
+.identity-identifiers.public-identifiers>.identifier{padding:0;}
+@media(max-width:650px){.public-identifiers .artifact-summary:has(.long-number){grid-template-columns:minmax(0,1fr);}.public-identifiers .artifact-summary:has(.long-number)>.s2d-button{justify-self:start;}}
 
 /* R05: common return location, grouped details, and compact transaction receipts. */
 .artifact-back.s2d-button{justify-self:start;display:inline-flex;align-items:center;gap:var(--s2-spacing-100);padding-inline:0;color:var(--s2d-text-muted);font-size:var(--s2-font-size-100);}
