@@ -29,10 +29,10 @@
     "artifact-find.jsx": "44b273c4d58cbeb2956eeb29cbaa2dbdb48408da7c1233b7edfb899d698d95bb",
     "artifact.jsx": "75ccf4bdd63aba77d313256b81be2e795cc76110196de71c3bfa0d7ca668b10a",
     "welcome.jsx": "33708e1a724e15933329294dd735d3675d9c4561aefed871178425351cf37768",
-    "app.jsx": "15c7df7af49a8452d3d0b61572b304ddd4a75b924f3f942b644d1c147f687aa1",
+    "app.jsx": "72e3dd5767cf8a3610beeaeaae78dae19ad9c1795fa2177dfd0537c9d9baabda",
     "_ds/react-spectrum-s2/styles.css": "650e92f5b135bf62809005238ef610bfd622d6408b50ac41e1682ab6ed1ee19a",
     "s2-adapter.css": "ff08db812f416326bfa54bc980c91274df4a0e750980b3f44cf0447436398a97",
-    "app.css": "e00470df990001e1603e2d32cfb7f8f8a5e77e777450a5522febc3a893223f5b",
+    "app.css": "7098eb3a2705d86ad95cdee0bd0d3f34f48bb1d314689da07009eb073bf39ce8",
     "content.css": "c60070e4f91442b83a7115d1a2f3ba3aeb2d26fbdcc5833bbe3ea446964644a6",
     "artifact.css": "53bdc088da2b9d054cd9e24ace53a1ecb27f9068d971d16d9cfb57ccf2af39d8",
     "welcome.css": "818c3ce839dee6e48bc9b2612ea10e857db005055e8e9b36fa5d439caef49539",
@@ -44,13 +44,13 @@
     "_ds/react-spectrum-s2/guidelines/cards.css": "b6ce88faf0ab64609b53977af258cedfc1a09278ea626877688f1c0144a58044"
   },
   "outputs": {
-    "vendor/app.js": "fffdf85ec9e08991294efb528063fc3086da4ced9cbfc9be0857188e0c52308e",
+    "vendor/app.js": "35fef5573cc313bed496f25e16a79e7d2458cd706b5355d6bec6f84018dc8fe5",
     "vendor/markdown-tools.js": "cf30be6189c26d0124e141c0a51d86e501815af774e456b5e8dc47feb27a8dfa",
     "vendor/editor-tools.js": "ec6ea10f330bbf4b3aa8d6867c47cc34f26470c95416fcebef5b951fdf627747",
-    "vendor/styles.css": "51af3ab4ad68839748bb34429e2aa01ae4a777325ddcdc599359bf797de1cd90",
-    "index.html": "2cc54e38e9c087b6a366b5cf0766a2b1587b25b4d4cfd04cc85d4a933bdbe5f0",
+    "vendor/styles.css": "3b08748f9e58b390733ae57c46629e5f972e6511e1b7501d052df0de55552b9c",
+    "index.html": "50e87dbf7c346b9bd8ab3a877caff5d10f06709dce92fda801c9a480d3550c43",
     "vendor/fonts.css": "c842cec53e5d68a3c0e8fecd42c27929dad2222533b3c6d76cb591d0b7c5a991",
     "vendor/workspace.css": "251a34e52b96f729c440814121f6022835cc771390b43c6ceaad16fe580fa6de",
-    "vendor/runtime.js": "968db61f7279395238989a1aeb00708f6ab7c1b35066aed0c9355157110cba03"
+    "vendor/runtime.js": "f0c5fffd28225e0aec75620a7934eef1512b25d2b24ed1d6a7cab685ea73dc62"
   }
 }
