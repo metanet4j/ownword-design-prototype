@@ -6,6 +6,7 @@ function ArtifactBack({onClick,t,label='artifactBack'}) {return <Button variant=
 
 // 公开页面的返回语义跟随浏览器历史；刷新后仍可回到实际入口。
 function openPublicRoute(page,id) {
+  if(page==='identity-view')page='identity';
   const screen=document.querySelector('main')?.dataset.screenLabel;
   const labels={find:'backFind',artifact:'backArtifact','identity-view':'backPublicIdentity',read:'historyBack',history:'versionHistory',content:'contentBack',artifacts:'artifactBack'};
   const route=location.hash.split('/')[1];

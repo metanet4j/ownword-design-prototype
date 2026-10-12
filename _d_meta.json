@@ -11,7 +11,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-10-02T09:22:39.741Z",
+  "updatedAt": "2026-10-12",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -90,8 +90,21 @@
           }
         }
       ]
+    },
+    "Ownword v0.4.0 — Identity Homepage": {
+      "versions": [
+        {
+          "path": "index.html",
+          "createdAt": "2026-10-12",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
     }
   },
-  "title": "Ownword v0.3.0 — Identity Artifact",
-  "prompt": "PRD v0.3.0：Identity Artifact、Inscription Number、逐笔身份签名、Current 关联、转移与精确查找的高保真模拟原型；沿用 React Spectrum S2。"
+  "title": "Ownword v0.4.0 — Identity Homepage",
+  "prompt": "当前 PRD v0.4.0：从最新 v0.3.0 继承公开主页、内容与关系交互；保持绑定 Spectrum S2，身份和交易使用确定性模拟。"
 }

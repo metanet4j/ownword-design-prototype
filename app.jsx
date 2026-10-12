@@ -44,6 +44,7 @@ function App() {
     return () => {active = false;};
   }, [state.page, markdownAttempt]);
   const artifactStore = useArtifactStore(state.page==='artifacts'||lab);
+  const [homepageSettings,setHomepageSettings]=React.useState(OwnwordHomepageModel.defaults);
   const [contentSettings, setContentSettings] = React.useState(OwnwordContentModel.defaultScenarios);
   const [nextResult, setNextResult] = React.useState('success');
   const [accountEvent, setAccountEvent] = React.useState('none');
@@ -108,16 +109,18 @@ function App() {
     window.addEventListener('hashchange',restoreHome);return()=>window.removeEventListener('hashchange',restoreHome);
   }, []);
   React.useEffect(() => {
-    const activate = () => {if (/^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});};
+    const activate = () => {if (!OwnwordHomepageModel.publicRoute(location.hash) && /^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});};
     activate(); window.addEventListener('hashchange', activate);
     return () => window.removeEventListener('hashchange', activate);
   }, []);
-  React.useEffect(() => {if (!state.busy && /^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});}, [state.busy, state.wallet, state.published]);
+  React.useEffect(() => {if (!state.busy && !OwnwordHomepageModel.publicRoute(location.hash) && /^#\/(content|write|review|publish|read|history)(\/|$)/.test(location.hash)) dispatch({type: 'GO', page: 'content'});}, [state.busy, state.wallet, state.published]);
   React.useEffect(() => {
     const activate = () => {if (/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash)) dispatch({type:'GO',page:'artifacts'});};
     activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);
   }, []);
   React.useEffect(()=>{if(!state.busy&&/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))dispatch({type:'GO',page:'artifacts'});},[state.busy,state.wallet,state.published]);
+  React.useEffect(()=>{const activate=()=>{if(OwnwordHomepageModel.publicRoute(location.hash))dispatch({type:'GO',page:'homepage'});};activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);},[]);
+  React.useEffect(()=>{if(!state.busy&&OwnwordHomepageModel.publicRoute(location.hash))dispatch({type:'GO',page:'homepage'});},[state.busy,state.wallet,state.published]);
   function openArtifacts(page='artifacts',id='') {closeNavigation();const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'artifacts'};dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
   React.useEffect(()=>{if(!state.modal&&pendingWorkspaceNavigation.current){const pending=pendingWorkspaceNavigation.current;pendingWorkspaceNavigation.current=null;if(state.page===pending.page)pending.action();}},[state.modal,state.page]);
   function openContent(){closeNavigation();const action=()=>contentRef.current?.go('content');if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'content'};dispatch({type:'DISCARD_ASK',page:'content'});return;}if(state.page==='artifacts')artifactRef.current?.leave(action);else action();}
@@ -187,7 +190,7 @@ function App() {
   function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 className="task-title" tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
   const [navigationHash,setNavigationHash]=React.useState(location.hash);
   React.useEffect(()=>{const update=()=>setNavigationHash(location.hash);window.addEventListener('hashchange',update);return()=>window.removeEventListener('hashchange',update);},[]);
-  const currentModule = state.page==='content'?(/^#\/(read|history)(\/|$)/.test(navigationHash)?'readerPublic':'myContent'):state.page==='artifacts'?(navigationHash.startsWith('#/find')?'artifactFind':navigationHash.startsWith('#/identity-view/')?'publicIdentity':navigationHash.startsWith('#/artifact/')?'artifactDetailTitle':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
+  const currentModule = state.page==='homepage'?'publicIdentity':state.page==='content'?(/^#\/(read|history)(\/|$)/.test(navigationHash)?'readerPublic':'myContent'):state.page==='artifacts'?(navigationHash.startsWith('#/find')?'artifactFind':navigationHash.startsWith('#/identity-view/')?'publicIdentity':navigationHash.startsWith('#/artifact/')?'artifactDetailTitle':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
   const toastError = state.page !== 'resolve-error' ? state.error : '';
   const toastMessage = toastError || (storageError ? 'persistFailed' : state.notice);
@@ -218,6 +221,7 @@ function App() {
     </header>
     {state.page==='welcome'&&<Dome label={t('domeLabel')} />}
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
+      <HomepageWorkspace active={state.page==='homepage'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile,transaction:state.transaction}:null} locale={locale} t={t} settings={homepageSettings} setSettings={setHomepageSettings} failCopy={failCopy}/>
       <ArtifactWorkspace resolveIdentity={id=>OwnwordModel.resolveIdentity(id,state.published?{bapId,profile:state.profile,transaction:state.transaction}:null)} onAccountEvent={action=>{if(action==='switch')switchAccount(true);else disconnect(true);}} connected={state.wallet} ref={artifactRef} active={state.page==='artifacts'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile}:null} locale={locale} t={t} store={artifactStore} onConnect={()=>dispatch({type:'CONNECT'})} onIdentity={()=>navigate(state.wallet?(state.published&&!state.incomplete?'identity':'setup'):'welcome')} failCopy={failCopy}/>
       <ContentWorkspace connected={state.wallet} published={state.published} resolving={state.busy==='resolving'} onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content' && markdownState === 'ready'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
       {state.page === 'content' && markdownState !== 'ready' && <section className="content-gate" data-content-load={markdownState}><h1 className="task-title" tabIndex="-1">{t('myContent')}</h1>{markdownState === 'error' ? <><p role="alert">{t('readerLoadFailed')}</p><Button data-action="reader-load-retry" onClick={() => setMarkdownAttempt(value => value + 1)}>{t('retry')}</Button></> : <LoadingMark small label={t('readerLoading')}/>}</section>}
@@ -281,6 +285,7 @@ function App() {
       <label>{t('accountEvent')}<select data-scenario="account-event" value={accountEvent} onChange={e => setAccountEvent(e.target.value)}>{['none', 'switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'].map(value => <option key={value} value={value}>{t(value)}</option>)}</select></label>
       <p className="hint">{t('accountEventHint')}</p>
       <ArtifactSettings store={artifactStore} settings={artifactStore.settings} setSettings={artifactStore.setSettings} t={t}/>
+      <HomepageSettings settings={homepageSettings} setSettings={setHomepageSettings} locale={locale}/>
       <ContentSettings settings={contentSettings} setSettings={setContentSettings} t={t} />
       <label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <><Button onClick={resolveAgain}>{t('resolveAgain')}</Button><Button data-action="simulate-switch" onClick={() => switchAccount(true)}>{t('accountSwitch')}</Button><Button data-action="simulate-disconnect" onClick={() => disconnect(true)}>{t('disconnect')}</Button></>}<Button data-action="reset-session" onClick={resetSession}>{t('reset')}</Button></div></section>}
     {state.modal && <Modal context={state.modal === 'discard' || (state.modal === 'connect' && scenario === 'missing') ? 'OWNWORD' : t('walletAuthorization')} closeLabel={t('close')} titleKey={state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle'} title={t(state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle')} onCancel={() => dispatch({type: state.modal === 'discard' ? 'STAY' : 'CANCEL'})}>

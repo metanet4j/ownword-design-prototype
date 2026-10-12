@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict');
+const H=require('./homepage-model.js'),I=require('./model.js');
+assert.equal(H.parseRoute('#/identity/'+I.ids[0]+'/followers').kind,'followers');
+assert.equal(H.parseRoute('#/identity/%E0%A4%A').kind,'invalid');
+assert.equal(H.resolveIdentity('!!').status,'invalid');
+assert.equal(H.resolveIdentity('9'.repeat(34)).status,'missing');
+assert.equal(H.resolveIdentity(I.ids[0],null,'failure').status,'error');
+assert.equal(H.resolveIdentity(I.ids[0]).profile.name,'Maya Chen');
+assert.deepEqual(H.list(I.ids[0],'following'),[I.ids[1]]);
+assert.deepEqual(H.list(I.ids[0],'followers'),[I.ids[1]]);
+console.log('Homepage：公开路由、身份输入及独立读取边界通过。');

@@ -9,13 +9,13 @@ import vm from 'node:vm';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const files = ['components', 'content-editor', 'content-publication', 'content-reader', 'content',
   'artifact-compose', 'artifact-components', 'artifact-operations', 'artifact-transfer', 'artifact-detail',
-  'artifact-find', 'artifact', 'welcome', 'app'].map(name => name + '.jsx');
-const styles = ['_ds/react-spectrum-s2/styles.css', 's2-adapter.css', 'app.css', 'content.css', 'artifact.css', 'welcome.css'];
+  'artifact-find', 'artifact', 'welcome', 'homepage', 'app'].map(name => name + '.jsx');
+const styles = ['_ds/react-spectrum-s2/styles.css', 's2-adapter.css', 'app.css', 'content.css', 'artifact.css', 'welcome.css', 'homepage.css'];
 const dsStyles = ['tokens/font-faces.css', 'tokens/page.css', 'tokens/s2-tokens.css', 'tokens/semantic.css',
   'components/components.css', 'guidelines/cards.css'].map(file => '_ds/react-spectrum-s2/' + file);
 const inputs = ['build-prototype.mjs', 'package.json', 'package-lock.json', 'editor-tools.js',
   'markdown-tools.mjs', 'visual-editor.js', '_ds/react-spectrum-s2/_ds_bundle.js', 'index.template.html',
-  'model.js', 'content-model.js', 'artifact-model.js', 'copy.js', 'vendor/react.production.min.js',
+  'model.js', 'content-model.js', 'artifact-model.js', 'homepage-model.js', 'copy.js', 'vendor/react.production.min.js',
   'vendor/react-dom.production.min.js', 'vendor/react-dom-server.production.min.js', ...files, ...styles, ...dsStyles];
 const outputs = ['vendor/app.js', 'vendor/markdown-tools.js', 'vendor/editor-tools.js', 'vendor/styles.css', 'index.html', 'vendor/fonts.css', 'vendor/workspace.css', 'vendor/runtime.js'];
 const manifest = path.join(root, 'vendor/build-manifest.json');
@@ -35,7 +35,7 @@ if (process.argv[2] === '--check') {
   const script = await esbuild.transform(source, {...options, loader: 'jsx', format: 'iife', sourcefile: 'ownword-app.jsx'});
   fs.writeFileSync(path.join(root, outputs[0]), script.code);
   const runtimeFiles = ['vendor/react.production.min.js', 'vendor/react-dom.production.min.js',
-    '_ds/react-spectrum-s2/_ds_bundle.js', 'model.js', 'content-model.js', 'artifact-model.js', 'copy.js', outputs[0]];
+    '_ds/react-spectrum-s2/_ds_bundle.js', 'model.js', 'content-model.js', 'artifact-model.js', 'homepage-model.js', 'copy.js', outputs[0]];
   const runtime = runtimeFiles.map(file => fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n')).join('\n;\n');
   fs.writeFileSync(path.join(root, outputs[7]), (await esbuild.transform(runtime, options)).code);
   const integrity = 'sha384-' + createHash('sha384').update(fs.readFileSync(path.join(root, outputs[7]))).digest('base64');
@@ -55,7 +55,7 @@ if (process.argv[2] === '--check') {
     previous = used.size;
     for (const match of declarations) if (used.has(match[1])) for (const token of references(match[0])) used.add(token);
   } while (used.size !== previous);
-  const cssFiles = [...dsStyles.filter(file => !file.endsWith('/font-faces.css')), 's2-adapter.css', 'app.css', 'welcome.css'];
+  const cssFiles = [...dsStyles.filter(file => !file.endsWith('/font-faces.css')), 's2-adapter.css', 'app.css', 'welcome.css', 'homepage.css'];
   const css = cssFiles.map(file => {
     const source = fs.readFileSync(path.join(root, file), 'utf8');
     if (file === tokenPath) return tokenSource.replace(/(--[\w-]+)\s*:[^;{}]+;/g,
@@ -77,7 +77,7 @@ if (process.argv[2] === '--check') {
       console, localStorage: {getItem: key => key.endsWith('locale') ? locale : null}, location: {hash: ''},
       document: {getElementById: () => ({})}, matchMedia: () => ({matches: false}), navigator: {}, setTimeout, clearTimeout};
     context.window = context; vm.createContext(context);
-    for (const file of ['_ds/react-spectrum-s2/_ds_bundle.js', 'model.js', 'content-model.js', 'artifact-model.js', 'copy.js', outputs[0]]) {
+    for (const file of ['_ds/react-spectrum-s2/_ds_bundle.js', 'model.js', 'content-model.js', 'artifact-model.js', 'homepage-model.js', 'copy.js', outputs[0]]) {
       vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
     }
     assert.ok(html?.includes('welcome-story'), '首页预生成失败');

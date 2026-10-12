@@ -60,6 +60,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   const hashHandler = React.useRef(null);
   hashHandler.current = () => {
       const incoming = location.hash;
+      if (window.OwnwordHomepageModel?.publicRoute(incoming)) return;
       if (!/^#\/(content|write|review|publish|read|history)(\/|$)/.test(incoming)) return;
       const apply = () => {lastHash.current = incoming; setRoute(M.parseRoute(incoming));};
       if (dirty(currentDraft())) {

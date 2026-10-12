@@ -1,0 +1,50 @@
+{
+  "feature": "P01",
+  "command": "node verify-homepage.mjs P01",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P01-A",
+      "check": "未连接 Wallet 的公开身份、内容和关系列表入口",
+      "result": "passed"
+    },
+    {
+      "bdd": "P01-B",
+      "check": "无效输入单独显示",
+      "result": "passed"
+    },
+    {
+      "bdd": "P01-B",
+      "check": "不存在的 Identity 不显示其他人的资料",
+      "result": "passed"
+    },
+    {
+      "bdd": "P01-C",
+      "check": "内容失败不遮蔽身份与关系入口",
+      "result": "passed"
+    },
+    {
+      "bdd": "P01-C",
+      "check": "关系失败不清除公开作品",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}
