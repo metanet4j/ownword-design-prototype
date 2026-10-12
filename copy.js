@@ -738,3 +738,6 @@ Object.assign(window.OwnwordCopy.zh,{
  artifactRecords:'Artifact 详情','artifactTab-content':'内容','artifactTab-ownership':'持有','artifactTab-proof':'凭证','artifactTab-history':'历史',artifactCurrentId:'当前数字 ID',artifactChooseFromWallet:'从钱包中选择 Artifact，关联你的数字 ID。',artifactNoOtherAssets:'钱包中没有其他 Artifact。',artifactOwnership:'持有与展示信息',
  'artifactHistory-replaced':'已更换数字 ID','artifactHistory-removed':'已移除关联','artifactHistory-transferred':'转出后关联结束','artifactHistory-ended':'关联已结束',artifactHistoryReplacement:'更换为',artifactHistoryTimeUnknown:'未记录结束时间'
 });
+
+Object.assign(window.OwnwordCopy.en,{readerMediaFailed:'Some media could not be loaded. The text and its source remain available.'});
+Object.assign(window.OwnwordCopy.zh,{readerMediaFailed:'部分媒体暂时无法读取，正文及已知来源仍可阅读。'});

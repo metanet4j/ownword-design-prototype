@@ -70,6 +70,17 @@ if(feature==='P01') {
   await route('#/identity/'+I.ids[1]);browser('click','[role="tab"][id$="-audio"]');check('P03-B','没有音频时显示明确类型空状态',`!document.querySelector('[data-homepage-post]') && document.querySelector('.homepage-empty')?.textContent.includes('this type')`);
   await route('#/identity/'+I.ids[0]);browser('click','[role="tab"][id$="-all"]');await scenario('pagination','failure');browser('click','[data-homepage-action="more-content"]');
   check('P03-A','后续页失败保留首批作品',`document.querySelectorAll('[data-homepage-post]').length===3 && !!document.querySelector('.homepage-stream [role="alert"]')`);await scenario('pagination','normal');browser('click','[data-homepage-action="more-content"]');
+ } else if(feature==='P04') {
+  browser('open','http://127.0.0.1:4314/?check=P04#/identity/'+I.ids[0]);await ready();browser('click','[role="tab"][id$="-blog"]');browser('click','a[href="#/content/'+ 'c3'.repeat(32)+'"]');await ready('.markdown-body h1');
+  check('P04-A','从主页按 TxID 阅读正文与内嵌媒体',`location.hash==='#/content/'+'c3'.repeat(32) && document.querySelector('.markdown-body h1')?.textContent==='Your words deserve a home' && !!document.querySelector('.markdown-body img') && document.querySelector('.reader-author-link')?.textContent.includes('Maya Chen')`);
+  browser('click','[data-action="reader-author"]');await ready();check('P04-A','作者入口回到该作者稳定主页',`location.hash==='#/identity/'+${JSON.stringify(I.ids[0])}`);
+  await route('#/content/'+'a1'.repeat(32));await ready('.markdown-body h1');
+  check('P04-B','历史链接保留旧正文并明确标记',`location.hash==='#/content/'+'a1'.repeat(32) && !!document.querySelector('[data-action="reader-latest"]') && !document.querySelector('.markdown-body').textContent.includes('A note from the workbench')`);
+  shot();browser('click','[data-action="reader-latest"]');await ready('.markdown-body h1');
+  check('P04-B','可从历史版本进入当前正文',`location.hash==='#/content/'+'c3'.repeat(32) && document.querySelector('.markdown-body').textContent.includes('A note from the workbench')`);
+  browser('click','[data-action="reader-history"]');await ready('.content-history');check('P04-B','历史列表包含两个不可变版本',`document.querySelectorAll('[data-version-id]').length===2 && location.hash.endsWith('/history')`);
+  await route('#/content/'+'c3'.repeat(32));await scenario('markdown','unsafe');await ready('.markdown-body h1');await ready('[data-reader-media-error]');
+  check('P04-C','脚本和危险 URL 不执行，局部媒体失败保留正文和来源',`window.__unsafeHomepage!==true && !document.querySelector('.markdown-body script') && !document.querySelector('.markdown-body a[href^="javascript:"]') && !!document.querySelector('[data-reader-media-error]') && !!document.querySelector('.markdown-body a[href^="https://github.com/mdn/"]') && document.querySelector('.markdown-body').textContent.includes('Start with the author')`);await scenario('markdown','normal');
 } else throw new Error('未知功能：'+feature);
 const errors=browser('errors');
 assert.equal((errors.errors||[]).length,0,JSON.stringify(errors));

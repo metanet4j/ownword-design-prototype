@@ -28,9 +28,11 @@ function MarkdownBody(props) {
   if (state === 'ready') return <ReadyMarkdownBody {...props}/>;
   return <div className="markdown-body" data-markdown-load={state}>{state === 'loading' ? <LoadingMark small label={props.t('readerLoading')}/> : <><p role="alert">{props.t('readerLoadFailed')}</p><Button data-action="reader-load-retry" onClick={() => setAttempt(value => value + 1)}>{props.t('retry')}</Button></>}</div>;
 }
-function ReadyMarkdownBody({source, t}) {
-  const result = React.useMemo(() => OwnwordEditorTools.renderMarkdown(source), [source]);
-  return <><div className="markdown-body" ref={node=>node?.querySelector("h1")?.setAttribute("tabindex","-1")} dangerouslySetInnerHTML={{__html: result.html}}></div>{result.unsupported && <p className="content-syntax-note">{t('markdownUnsupported')}</p>}</>;
+function ReadyMarkdownBody({source, t,media=false}) {
+  const result = React.useMemo(() => OwnwordEditorTools.renderMarkdown(source,{media}), [source,media]);
+  const [failedMedia,setFailedMedia]=React.useState(false);
+  React.useEffect(()=>setFailedMedia(false),[source]);
+  return <><div className="markdown-body" onErrorCapture={event=>{if(event.target.tagName==='IMG')setFailedMedia(true);}} ref={node=>node?.querySelector("h1")?.setAttribute("tabindex","-1")} dangerouslySetInnerHTML={{__html: result.html}}></div>{failedMedia&&<p className="content-syntax-note" role="alert" data-reader-media-error>{t('readerMediaFailed')}</p>}{result.unsupported && <p className="content-syntax-note">{t('markdownUnsupported')}</p>}</>;
 }
 let editorLoading;
 function loadEditor() {

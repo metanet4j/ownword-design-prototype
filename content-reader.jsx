@@ -1,27 +1,27 @@
-function ContentReader({record,t,locale,identity,go,onExport,failCopy,records,drafts,onRevision,settings,operations}) {
+function ContentReader({record,t,locale,identity,go,onExport,failCopy,records,drafts,onRevision,settings,operations,onAuthor,onBack,shareUrl,allowMedia=false,proofOverride,backLabel}) {
   const [feedback,setFeedback]=React.useState('');
   const paper=React.useRef(null), toc=useReaderContents(paper,record);
   React.useEffect(()=>setFeedback(''),[record?.id]);
   async function copyLink() {
-    try {if(failCopy)throw new Error('Simulated clipboard failure');await navigator.clipboard.writeText(location.origin+location.pathname+'#/read/'+encodeURIComponent(record.id));setFeedback('copied');} catch {setFeedback('copyFailed');}
+    try {if(failCopy)throw new Error('Simulated clipboard failure');await navigator.clipboard.writeText(shareUrl||location.origin+location.pathname+'#/read/'+encodeURIComponent(record.id));setFeedback('copied');} catch {setFeedback('copyFailed');}
   }
   if (!record) return <section className="content-missing" data-content-screen="read"><p className="eyebrow">{t('readerPublic')}</p><h1 className="task-title" tabIndex="-1">{t('readerMissing')}</h1><p>{t('readerMissingBody')}</p><Button data-action="reader-sample" onClick={()=>go('read','first-words')}>{t('contentReadSample')}</Button></section>;
   const history=OwnwordContentModel.versions(records,record), latest=history[0];
   const revision=drafts.find(d=>d.baseContentId===record.id && d.authorBapId===identity?.bapId);
   const time=new Intl.DateTimeFormat(locale==='zh'?'zh-CN':'en-US',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(record.publishedAt));
   return <section className={'content-reader'+(toc.items.length ? ' has-toc' : '')} data-content-screen="read" data-record-id={record.id}>
-    <div className="reader-toolbar"><Button variant="quiet" data-action="reader-back" onClick={()=>returnFromPublic(()=>{if(identity)go('content');else location.hash='/find';})}><UiIcon name="ChevronLeft"/>{t(publicBackLabel(identity?'contentBack':'backFind'))}</Button><div><Button data-action="reader-copy-link" onClick={copyLink}>{t('readerCopyLink')}</Button><Button data-action="reader-export" onClick={()=>onExport(record)}>{t('markdownExport')}</Button></div></div>
+    <div className="reader-toolbar"><Button variant="quiet" data-action="reader-back" onClick={onBack||(()=>returnFromPublic(()=>{if(identity)go('content');else location.hash='/find';}))}><UiIcon name="ChevronLeft"/>{t(publicBackLabel(backLabel||(identity?'contentBack':'backFind')))}</Button><div><Button data-action="reader-copy-link" onClick={copyLink}>{t('readerCopyLink')}</Button><Button data-action="reader-export" onClick={()=>onExport(record)}>{t('markdownExport')}</Button></div></div>
     {feedback && <p role="status" className="reader-feedback" data-reader-copy={feedback}>{t(feedback)}</p>}
-    <div className="reader-byline"><Button variant="quiet" className="reader-author-link" data-action="reader-author" aria-label={t('readerViewAuthor')+' · '+record.author.name} title={t('readerViewAuthor')} onClick={()=>openPublicRoute('identity-view',record.authorBapId)}><Portrait profile={record.author}/><strong>{record.author.name}</strong><UiIcon name="ChevronRight"/></Button><span><time dateTime={record.publishedAt}>{time}</time><span aria-hidden="true"> · </span>{t('readerVersion')} {record.revisionNo}</span></div>
+    <div className="reader-byline"><Button variant="quiet" className="reader-author-link" data-action="reader-author" aria-label={t('readerViewAuthor')+' · '+record.author.name} title={t('readerViewAuthor')} onClick={onAuthor||(()=>openPublicRoute('identity-view',record.authorBapId))}><Portrait profile={record.author}/><strong>{record.author.name}</strong><UiIcon name="ChevronRight"/></Button><span><time dateTime={record.publishedAt}>{time}</time><span aria-hidden="true"> · </span>{t('readerVersion')} {record.revisionNo}</span></div>
     <div className="reader-version-bar"><Button variant="quiet" data-action="reader-history" onClick={()=>go("history",record.id)}>{t("versionHistory")} · {history.length}</Button>{latest.id!==record.id ? <><span>{t("versionHistorical")}</span><Button data-action="reader-latest" onClick={()=>go("read",latest.id)}>{t("versionLatest")}</Button></> : identity?.bapId===record.authorBapId && <Button data-action="reader-revise" onClick={()=>onRevision(record)}>{t(revision ? "revisionContinue" : "revisionCreate")}</Button>}</div>
     <div className="reader-layout">
       {!!toc.items.length && <nav className="reader-toc" ref={toc.nav} style={{top:toc.top}} aria-label={t('readerContents')}>
         {toc.wide ? <h2>{t('readerContents')}</h2> : <Button variant="quiet" className="s2d-button s2d-button-quiet reader-toc-toggle" data-action="reader-toc-toggle" aria-expanded={toc.expanded} aria-controls="reader-toc-items" onClick={()=>toc.setExpanded(!toc.expanded)}>{t('readerContents')}<span>{t(toc.expanded ? 'readerTocCollapse' : 'readerTocExpand')}</span></Button>}
         <ol id="reader-toc-items" hidden={!toc.wide && !toc.expanded}>{toc.items.map(item=><li key={item.id}><Button variant="quiet" className="s2d-button s2d-button-quiet reader-toc-item" style={{paddingInlineStart:12+(item.depth-toc.minDepth)*12}} data-toc-target={item.id} aria-current={toc.current===item.id ? 'location' : undefined} onClick={()=>toc.jump(item)}>{item.text}</Button></li>)}</ol>
       </nav>}
-      <article className="reader-paper" ref={paper}>{!OwnwordContentModel.title(record.content) && <h1 tabIndex="-1">{t('contentUntitled')}</h1>}<MarkdownBody source={record.content} t={t} /></article>
+      <article className="reader-paper" ref={paper}>{!OwnwordContentModel.title(record.content) && <h1 tabIndex="-1">{t('contentUntitled')}</h1>}<MarkdownBody source={record.content} t={t} media={allowMedia}/></article>
     </div>
-    <ContentProof key={record.id} record={record} settings={settings} operations={operations} t={t} failCopy={failCopy} />
+    <ContentProof key={record.id} record={record} settings={settings} operations={operations} t={t} failCopy={failCopy} proofOverride={proofOverride}/>
   </section>;
 }
 function useReaderContents(paper,record) {
@@ -68,8 +68,8 @@ function ContentHistory({record,records,go,t,locale}) {
   const items=OwnwordContentModel.versions(records,record);
   return <section className="content-history" data-content-screen="history"><Button variant="quiet" onClick={()=>returnFromPublic(()=>go('read',record.id))}>{t('historyBack')}</Button><div className="page-heading"><p className="eyebrow">{OwnwordContentModel.title(record.content) || t('contentUntitled')}</p><h1 className="task-title" tabIndex="-1">{t('versionHistory')}</h1><p>{t('versionHistoryBody')}</p></div><ol className="version-list">{items.map((item,index)=><li key={item.id}><div><span className="eyebrow">{t('readerVersion')} {item.revisionNo}{index===0 ? ' · '+t('versionCurrent') : ''}</span><h2>{OwnwordContentModel.title(item.content) || t('contentUntitled')}</h2><time dateTime={item.publishedAt}>{new Date(item.publishedAt).toLocaleString(locale==='zh' ? 'zh-CN' : 'en-US')}</time></div><Button data-version-id={item.id} onClick={()=>go('read',item.id)}>{t('contentRead')}</Button></li>)}</ol></section>;
 }
-function ContentProof({record,settings,operations,t,failCopy}) {
-  const proof=OwnwordContentModel.proofResult(record,settings.proof,operations);
+function ContentProof({record,settings,operations,t,failCopy,proofOverride}) {
+  const proof=proofOverride??OwnwordContentModel.proofResult(record,settings.proof,operations);
   const confirmation=settings.proofConfirmation==='record' ? record.confirmation : settings.proofConfirmation;
   return <details className="content-proof" data-content-proof><summary>{t('proofSummary')}</summary><div className="proof-body"><dl className="proof-facts"><div><dt>{t('proofSignature')}</dt><dd data-proof-state={proof}>{t('proof-'+proof)}</dd></div><div><dt>{t('proofConfirmation')}</dt><dd data-proof-confirmation={confirmation}>{t(confirmation==='confirmed'?'confirmed':'pendingConfirmation')}</dd></div></dl>{proof==='failed' && <p className="field-error" role="alert">{t('proofFailedBody')}</p>}{proof==='unverified' && <p className="hint">{t('proofUnverifiedBody')}</p>}<IdentitySignatureProof bapId={record.authorBapId} signer={record.operationId?OwnwordArtifactModel.signerFor(record.authorBapId):OwnwordArtifactModel.historicalSignerFor(record.authorBapId)} signature={proof==='failed'?'invalid':proof} keyEpoch={record.operationId?'effective-at-signing':'historical-key-at-creation'} t={t} failCopy={failCopy}/><Identifier id={record.txid} label={t('publishSampleTx')} copyLabel="copyTx" target="proof-tx" t={t} failCopy={failCopy} /></div></details>;
 }

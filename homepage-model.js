@@ -7,9 +7,9 @@
   const additionalProfiles=[I.emptyProfile(),{name:'Eli Park',type:'Person',bio:'Field notes, photographs, and small discoveries.',image:''},{name:'Jules Morgan',type:'Person',bio:'Listening for the everyday.',image:''},{name:'Aster Library',type:'Organization',bio:'A shared collection of independent writing.',image:''}];
   const publicRoute = hash => /^#\/(?:identity\/|content\/)/.test(hash);
   function parseRoute(hash) {
-    const match = /^#\/(identity|content)\/([^/?#]+)(?:\/(following|followers))?$/.exec(hash);
+    const match = /^#\/(identity|content)\/([^/?#]+)(?:\/(following|followers|history))?$/.exec(hash);
     if (!match) return {kind:'invalid',id:''};
-    try {return {kind:match[1] === 'content' ? 'content' : match[3] || 'identity',id:decodeURIComponent(match[2])};}
+    try {return {kind:match[1] === 'content' ? match[3]==='history'?'history':'content' : match[3] || 'identity',id:decodeURIComponent(match[2])};}
     catch {return {kind:'invalid',id:''};}
   }
   const validId = id => /^[1-9A-HJ-NP-Za-km-z]{20,64}$/.test(id);
@@ -25,7 +25,7 @@
     const original=C.seed().records[0];
     const media=(key,mime,src,title,publishedAt,author=0)=>({id:key,rootContentId:key,revisionNo:1,authorBapId:I.ids[author],author:{...I.fixtures[author]},title,content:title,publishedAt,txid:({image:'d4',video:'e5',audio:'f6',studio:'17'})[key].repeat(32),confirmation:'confirmed',proof:'unverified',mime,src,status:'published'});
     return [
-      {...original,id:'first-words-v2',revisionNo:2,previousContentId:original.id,txid:'c3'.repeat(32),publishedAt:'2026-10-11T09:00:00Z',proof:'valid',content:original.content+'\n\n## A note from the workbench\n\nColour can hold a small memory. This public-domain image is shared as a study, with its source kept visible.\n\n![A painted hand holding colour](fixtures/homepage/painted-hand.jpg)\n\n[Image source](https://github.com/mdn/interactive-examples/tree/main/live-examples/media/cc0-images)\n\n<script>window.__unsafeHomepage=true</script>\n\n[Unsafe link](javascript:window.__unsafeHomepage=true)\n\n![Unavailable study](fixtures/homepage/unavailable.jpg)'},
+      {...original,id:'first-words-v2',revisionNo:2,previousContentId:original.id,txid:'c3'.repeat(32),publishedAt:'2026-10-11T09:00:00Z',proof:'valid',content:original.content+'\n\n## A note from the workbench\n\nColour can hold a small memory. This public-domain image is shared as a study, with its source kept visible.\n\n![A painted hand holding colour](fixtures/homepage/painted-hand.jpg)\n\n[Image source](https://github.com/mdn/interactive-examples/tree/main/live-examples/media/cc0-images)'},
       media('image','image/jpeg','fixtures/homepage/painted-hand.jpg','Colour, held in a hand','2026-10-10T11:00:00Z'),
       media('video','video/mp4','fixtures/homepage/flower.mp4','A breeze in the garden','2026-10-09T11:00:00Z'),
       {...media('audio','audio/wav','fixtures/homepage/four-notes.wav','Four notes, one idea','2026-10-08T11:00:00Z'),source:'Local tone study: C, E, G, C.'},
@@ -43,10 +43,16 @@
     }
     return [...groups.values()].sort((a,b)=>(b.publishedAt||'').localeCompare(a.publishedAt||'')||a.txid.localeCompare(b.txid));
   }
+  function proof(record,scenario='record') {
+    const source=[...C.seed().records,...contentFixtures()].find(r=>r.id===record.id);
+    if(!source)return C.proofResult(record,scenario,C.load().operations);
+    if(record.content!==source.content||record.authorBapId!==source.authorBapId||record.txid!==source.txid)return 'failed';
+    return scenario==='record'?source.proof:['valid','failed'].includes(scenario)?scenario:'unverified';
+  }
   const seedFollows = () => [{from:I.ids[0],to:I.ids[1]},{from:I.ids[1],to:I.ids[0]}];
   function list(id,direction,events=seedFollows()) {
     return [...new Set(events.filter(e=>direction==='following'?e.from===id:e.to===id).map(e=>direction==='following'?e.to:e.from))];
   }
-  const api = {defaults,additionalIds,publicRoute,parseRoute,validId,resolveIdentity,records,contentFixtures,kind,stream,seedFollows,list};
+  const api = {defaults,additionalIds,publicRoute,parseRoute,validId,resolveIdentity,records,contentFixtures,kind,stream,proof,seedFollows,list};
   if (typeof module !== 'undefined') module.exports=api; else root.OwnwordHomepageModel=api;
 })(typeof window !== 'undefined' ? window : globalThis);

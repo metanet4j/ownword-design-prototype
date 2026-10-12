@@ -15,3 +15,7 @@ assert.equal(posts.length,5);assert.equal(posts.filter(p=>p.rootContentId==='fir
 assert.deepEqual([...new Set(posts.map(H.kind))].sort(),['audio','blog','image','video']);assert.ok(posts.every(r=>r.status!=='draft'));
 assert.equal(H.stream(I.ids[1]).some(p=>H.kind(p)==='audio'),false);
 console.log('Homepage：公开内容归属、Draft 隔离、混合媒体、当前版本归并和排序通过。');
+
+assert.equal(H.parseRoute('#/content/'+'a1'.repeat(32)+'/history').kind,'history');
+assert.equal(H.proof(H.contentFixtures()[0]),'valid');
+assert.equal(H.proof({...H.contentFixtures()[0],authorBapId:I.ids[1]}),'failed');

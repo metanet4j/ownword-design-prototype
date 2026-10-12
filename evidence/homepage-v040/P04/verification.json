@@ -1,0 +1,55 @@
+{
+  "feature": "P04",
+  "command": "node verify-homepage.mjs P04",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P04-A",
+      "check": "从主页按 TxID 阅读正文与内嵌媒体",
+      "result": "passed"
+    },
+    {
+      "bdd": "P04-A",
+      "check": "作者入口回到该作者稳定主页",
+      "result": "passed"
+    },
+    {
+      "bdd": "P04-B",
+      "check": "历史链接保留旧正文并明确标记",
+      "result": "passed"
+    },
+    {
+      "bdd": "P04-B",
+      "check": "可从历史版本进入当前正文",
+      "result": "passed"
+    },
+    {
+      "bdd": "P04-B",
+      "check": "历史列表包含两个不可变版本",
+      "result": "passed"
+    },
+    {
+      "bdd": "P04-C",
+      "check": "脚本和危险 URL 不执行，局部媒体失败保留正文和来源",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}

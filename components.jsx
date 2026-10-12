@@ -5,14 +5,14 @@ window.UiIcon=UiIcon;
 function ArtifactBack({onClick,t,label='artifactBack'}) {return <Button variant="quiet" className="s2d-button s2d-button-quiet artifact-back" data-action="artifact-back" onClick={onClick}><UiIcon name="ChevronLeft"/>{t(label)}</Button>;}
 
 // 公开页面的返回语义跟随浏览器历史；刷新后仍可回到实际入口。
-function openPublicRoute(page,id) {
+function openPublicRoute(page,id,tail='') {
   if(page==='identity-view')page='identity';
   const screen=document.querySelector('main')?.dataset.screenLabel;
   const labels={identity:'backPublicIdentity',find:'backFind',artifact:'backArtifact','identity-view':'backPublicIdentity',read:'historyBack',history:'versionHistory',content:'contentBack',artifacts:'artifactBack'};
   const route=location.hash.split('/')[1];
   const back=screen==='welcome'?'backHome':screen==='identity'?'backIdentity':labels[route];
   const oldURL=location.href;
-  history.pushState(back?{ownwordBack:back}:null,'', '#/'+page+(id?'/'+encodeURIComponent(id):''));
+  history.pushState(back?{ownwordBack:back}:null,'', '#/'+page+(id?'/'+encodeURIComponent(id):'')+(tail?'/'+tail:''));
   window.dispatchEvent(new HashChangeEvent('hashchange',{oldURL,newURL:location.href}));
 }
 function publicBackLabel(fallback,connected) {const label=history.state?.ownwordBack||fallback;return typeof connected==='boolean'&&['backIdentity','backHome'].includes(label)?(connected?'backIdentity':'backHome'):label;}
