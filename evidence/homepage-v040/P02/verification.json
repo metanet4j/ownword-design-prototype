@@ -1,0 +1,60 @@
+{
+  "feature": "P02",
+  "command": "node verify-homepage.mjs P02",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P02-A",
+      "check": "缺失资料只回退姓名，不生成简介或空资产卡",
+      "result": "passed"
+    },
+    {
+      "bdd": "P02-A",
+      "check": "完整 BAP ID 实际复制",
+      "result": "passed"
+    },
+    {
+      "bdd": "P02-B",
+      "check": "Current 数字 ID 与 BAP ID 同时显示，编号状态独立",
+      "result": "passed"
+    },
+    {
+      "bdd": "P02-B",
+      "check": "身份详情包含完整身份与发布交易",
+      "result": "passed"
+    },
+    {
+      "bdd": "P02-B",
+      "check": "Current 关联未知时不声称数字 ID 有效",
+      "result": "passed"
+    },
+    {
+      "bdd": "P02-C",
+      "check": "尚未核实不宣称签名有效",
+      "result": "passed"
+    },
+    {
+      "bdd": "P02-C",
+      "check": "验证失败与未验证分别显示",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}
