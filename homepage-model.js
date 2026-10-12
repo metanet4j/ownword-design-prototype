@@ -49,10 +49,6 @@
     if(record.content!==source.content||record.authorBapId!==source.authorBapId||record.txid!==source.txid)return 'failed';
     return scenario==='record'?source.proof:['valid','failed'].includes(scenario)?scenario:'unverified';
   }
-  const seedFollows = () => [{from:I.ids[0],to:I.ids[1]},{from:I.ids[1],to:I.ids[0]}];
-  function list(id,direction,events=seedFollows()) {
-    return [...new Set(events.filter(e=>direction==='following'?e.from===id:e.to===id).map(e=>direction==='following'?e.to:e.from))];
-  }
   const relationshipKey='ownword-v040-public-relationships';
   const operationKey=actor=>'ownword-v040-relationship-ops:'+actor;
   const pending=op=>['submitting','unknown','indexing'].includes(op.phase);
@@ -138,6 +134,6 @@
     if(data.events.some(e=>e.id===op.id)||result==='accepted')return acceptOperation(storage,op,true);
     const operation={...op,phase:result==='not-received'?'not-received':'unknown'};saveOperation(storage,operation);return {data,operation};
   }
-  const api = {defaults,additionalIds,publicRoute,parseRoute,validId,resolveIdentity,records,contentFixtures,kind,stream,proof,seedFollows,list,relationshipKey,operationKey,pending,relationshipSeed,loadRelationships,loadOperations,relation,relationshipList,actionError,saveOperation,beginOperation,submitOperation,acceptOperation,queryOperation};
+  const api = {defaults,additionalIds,publicRoute,parseRoute,validId,resolveIdentity,records,contentFixtures,kind,stream,proof,relationshipKey,operationKey,pending,relationshipSeed,loadRelationships,loadOperations,relation,relationshipList,actionError,saveOperation,beginOperation,submitOperation,acceptOperation,queryOperation};
   if (typeof module !== 'undefined') module.exports=api; else root.OwnwordHomepageModel=api;
 })(typeof window !== 'undefined' ? window : globalThis);

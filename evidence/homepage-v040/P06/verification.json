@@ -1,0 +1,50 @@
+{
+  "feature": "P06",
+  "command": "node verify-homepage.mjs P06",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P06-A",
+      "check": "关注后按钮与目标粉丝总人数同步，记录归实际操作方",
+      "result": "passed"
+    },
+    {
+      "bdd": "P06-A",
+      "check": "实际出向列表含目标 Identity",
+      "result": "passed"
+    },
+    {
+      "bdd": "P06-B",
+      "check": "取消一个方向的关注，反向关注与 Friend 均保留",
+      "result": "passed"
+    },
+    {
+      "bdd": "P06-C",
+      "check": "索引延迟时保留已核实人数并阻止重复提交",
+      "result": "passed"
+    },
+    {
+      "bdd": "P06-C",
+      "check": "查询完成后同步人数与按钮",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}

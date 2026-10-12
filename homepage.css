@@ -60,3 +60,6 @@
 .homepage-scenarios {border:1px solid var(--s2d-border);border-radius:var(--s2d-radius);padding:12px;}
 .homepage-scenarios legend {font-weight:700;}
 @media (max-width:600px) {.homepage {padding-top:24px;}.homepage-summary {gap:16px;}.homepage .portrait.large {width:56px;height:56px;flex:0 0 56px;}.homepage h1 {font-size:32px;}.homepage-relations {gap:8px;}}
+
+.relationship-following {font-size:14px;display:inline-flex;align-items:center;min-height:44px;color:var(--s2d-content-subdued);}
+.homepage-relations .hint {flex-basis:100%;margin:0;font-size:14px;}
