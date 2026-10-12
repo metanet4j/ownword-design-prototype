@@ -30,7 +30,7 @@
     "artifact-find.jsx": "44b273c4d58cbeb2956eeb29cbaa2dbdb48408da7c1233b7edfb899d698d95bb",
     "artifact.jsx": "75ccf4bdd63aba77d313256b81be2e795cc76110196de71c3bfa0d7ca668b10a",
     "welcome.jsx": "33708e1a724e15933329294dd735d3675d9c4561aefed871178425351cf37768",
-    "homepage.jsx": "99170ae40fc2010a5395575a57e1ff590dafdf4d55a61112d319096db1dfe85c",
+    "homepage.jsx": "de90e08d4269a7c1f2881be968d60f4255d30998d60ff4a0fba779e237a8f802",
     "app.jsx": "3f28f4181493b52f0c277e3de192c910b1f3e04a5139b9499414d135a29832e7",
     "_ds/react-spectrum-s2/styles.css": "650e92f5b135bf62809005238ef610bfd622d6408b50ac41e1682ab6ed1ee19a",
     "s2-adapter.css": "ff08db812f416326bfa54bc980c91274df4a0e750980b3f44cf0447436398a97",
@@ -38,7 +38,7 @@
     "content.css": "ff15016545cd688b77a4aa72f589cba088f417aec1f48f005f6492923652b23d",
     "artifact.css": "53bdc088da2b9d054cd9e24ace53a1ecb27f9068d971d16d9cfb57ccf2af39d8",
     "welcome.css": "818c3ce839dee6e48bc9b2612ea10e857db005055e8e9b36fa5d439caef49539",
-    "homepage.css": "90533d17c836fd300f044bab2f61946c99c285159c77cefeb7dbd2684f86bdbe",
+    "homepage.css": "b8491fe14ba7e3dcee0bac2317fe003b50bdda047dd0cdaae9ca3dce14c0936b",
     "_ds/react-spectrum-s2/tokens/font-faces.css": "0d39b28293ababc35b9c77ad599b566132594570e5f5252058d2a580cb72a2b5",
     "_ds/react-spectrum-s2/tokens/page.css": "2616ec975232eff1f6c6820238bd3e4f85946c3735843e3b26aed0c47c9f5d83",
     "_ds/react-spectrum-s2/tokens/s2-tokens.css": "96d2c4d2884d375ccefb20cafe7f1d98b40c390440c42c82d15f33f366d021aa",
@@ -47,13 +47,13 @@
     "_ds/react-spectrum-s2/guidelines/cards.css": "b6ce88faf0ab64609b53977af258cedfc1a09278ea626877688f1c0144a58044"
   },
   "outputs": {
-    "vendor/app.js": "6e674b4e9f1b41df784d1afd40da96384244f4435ff9efdf14d56a9ac357def0",
+    "vendor/app.js": "f6a3bd1f0ee156f729ff422f0456a6857756a750091a298dd2015775d9b46baf",
     "vendor/markdown-tools.js": "0d01c8e308b36a6dfa434333c16d0a6c85a44216cfeb0caae33a40fbbe935d0f",
     "vendor/editor-tools.js": "73bb6c69e8075dcd868089a0c0ec5858f1b72ac549d4622cc83ff213fa2e7b3a",
-    "vendor/styles.css": "3d5d2e65717d9dfc35b68729f83de86c7a5333fdd6517ec0018354e1a8eb412c",
-    "index.html": "46f138abbc78c54840ea13967b8951fb4d9ad691f24cb681ffe67986591b88e9",
+    "vendor/styles.css": "a50a7593d6298963cbda74b8ba08dd9d907d87e8b4440a8b4204ebd72de8f973",
+    "index.html": "fb544261308d11e81d941e9d547ba2d9e0c6980db438ad41c3c64f0449a499e4",
     "vendor/fonts.css": "c842cec53e5d68a3c0e8fecd42c27929dad2222533b3c6d76cb591d0b7c5a991",
     "vendor/workspace.css": "7da7cfa551e296fa4cb837d1e7190de815f74f6879aea7001aaf8c23a6b74d46",
-    "vendor/runtime.js": "6c5ef28c1eae18293776ebcf06f8570f6813608e1f7c201fb6d481ff617defe7"
+    "vendor/runtime.js": "f9ae5d3a3f95badfb23cab94f370612443941bd6ec2c7c375674a401b5175542"
   }
 }

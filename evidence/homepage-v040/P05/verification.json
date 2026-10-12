@@ -1,0 +1,75 @@
+{
+  "feature": "P05",
+  "command": "node verify-homepage.mjs P05",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P05-A",
+      "check": "图片加载并可完整查看",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-A",
+      "check": "图片可放大并恢复",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-A",
+      "check": "视频读取真实时长且不自动播放",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-A",
+      "check": "键盘启动视频，实际播放进度增加",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-A",
+      "check": "离开视频后停止播放",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-A",
+      "check": "音频实际播放且可暂停",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-A",
+      "check": "离开音频后停止播放",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-B",
+      "check": "格式不支持与资源失败分别反馈",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-B",
+      "check": "资源不可用仍保留作者及来源，不显示假时长",
+      "result": "passed"
+    },
+    {
+      "bdd": "P05-C",
+      "check": "可播放资源不会把未核实签名改成有效",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}
