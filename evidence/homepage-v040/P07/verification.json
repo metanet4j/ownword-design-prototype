@@ -1,0 +1,60 @@
+{
+  "feature": "P07",
+  "command": "node verify-homepage.mjs P07",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P07-A",
+      "check": "A 单方申请后等待 B 接受，尚未成为好友",
+      "result": "passed"
+    },
+    {
+      "bdd": "P07-C",
+      "check": "单方申请不会自动关注或显示好友",
+      "result": "passed"
+    },
+    {
+      "bdd": "P07-D",
+      "check": "再次点击申请只查看原记录，不出现重复签名入口",
+      "result": "passed"
+    },
+    {
+      "bdd": "P07-A",
+      "check": "B 通过独立钱包身份看到 A 的申请",
+      "result": "passed"
+    },
+    {
+      "bdd": "P07-B",
+      "check": "B 授权相反方向记录后，双方派生为好友",
+      "result": "passed"
+    },
+    {
+      "bdd": "P07-D",
+      "check": "已成立关系只提供详情，保留两个原始方向",
+      "result": "passed"
+    },
+    {
+      "bdd": "P07-C",
+      "check": "双方 Follow 仍不等于 Friend",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}
