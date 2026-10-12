@@ -1,0 +1,70 @@
+{
+  "feature": "P08",
+  "command": "node verify-homepage.mjs P08",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P08-A",
+      "check": "未连接钱包的出向列表可读，行内不代替列表所属身份操作",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-A",
+      "check": "粉丝显示入向关系",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-A",
+      "check": "行身份入口实际打开该 Identity",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-B",
+      "check": "总数不取首批行数，后续重复对象按 BAP ID 去重",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-B",
+      "check": "刷新恢复已加载名单",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-C",
+      "check": "Profile 失败不丢失关系及完整 BAP ID",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-C",
+      "check": "可以独立恢复一行的 Profile",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-C",
+      "check": "查询错误保留已加载名单，不假装为零人数",
+      "result": "passed"
+    },
+    {
+      "bdd": "P08-C",
+      "check": "后续页失败保留首批并给出重试",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}

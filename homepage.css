@@ -63,3 +63,15 @@
 
 .relationship-following {font-size:14px;display:inline-flex;align-items:center;min-height:44px;color:var(--s2d-content-subdued);}
 .homepage-relations .hint {flex-basis:100%;margin:0;font-size:14px;}
+.relationship-rows article {display:flex;gap:24px;justify-content:space-between;padding:24px 0;border-bottom:1px solid var(--s2d-border);}
+.relationship-person {display:flex;gap:16px;min-width:0;flex:1;}
+.relationship-person>div {min-width:0;flex:1;}
+.relationship-person h3 {font-size:20px;margin:0 0 8px;overflow-wrap:anywhere;}
+.relationship-name {color:var(--s2d-content-neutral);text-decoration:none;}
+.relationship-name:hover {color:var(--s2d-action-accent);text-decoration:underline;}
+.relationship-person p {font-size:14px;line-height:1.5;white-space:pre-line;max-width:560px;}
+.relationship-person .identifier {border:0;padding-block:8px;margin:0;}
+.relationship-person .identifier-top {display:none;}
+.relationship-person .identifier-value code {font-size:14px;}
+.relationship-rows .homepage-actions {padding-top:0;flex:0 1 240px;}
+@media (max-width:760px) {.relationship-rows article {display:block;}.relationship-rows .homepage-actions {margin-top:16px;}.relationship-person h3 {font-size:18px;}}
