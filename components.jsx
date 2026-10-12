@@ -8,7 +8,7 @@ function ArtifactBack({onClick,t,label='artifactBack'}) {return <Button variant=
 function openPublicRoute(page,id) {
   if(page==='identity-view')page='identity';
   const screen=document.querySelector('main')?.dataset.screenLabel;
-  const labels={find:'backFind',artifact:'backArtifact','identity-view':'backPublicIdentity',read:'historyBack',history:'versionHistory',content:'contentBack',artifacts:'artifactBack'};
+  const labels={identity:'backPublicIdentity',find:'backFind',artifact:'backArtifact','identity-view':'backPublicIdentity',read:'historyBack',history:'versionHistory',content:'contentBack',artifacts:'artifactBack'};
   const route=location.hash.split('/')[1];
   const back=screen==='welcome'?'backHome':screen==='identity'?'backIdentity':labels[route];
   const oldURL=location.href;

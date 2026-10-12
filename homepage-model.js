@@ -21,11 +21,32 @@
     if (scenario === 'failure') return {status:'error',bapId:id};
     return {status:'ready',...found,...(scenario==='missing-fields'?{profile:I.emptyProfile()}:{} )};
   }
-  function records() {return C.load().records;}
+  function contentFixtures() {
+    const original=C.seed().records[0];
+    const media=(key,mime,src,title,publishedAt,author=0)=>({id:key,rootContentId:key,revisionNo:1,authorBapId:I.ids[author],author:{...I.fixtures[author]},title,content:title,publishedAt,txid:({image:'d4',video:'e5',audio:'f6',studio:'17'})[key].repeat(32),confirmation:'confirmed',proof:'unverified',mime,src,status:'published'});
+    return [
+      {...original,id:'first-words-v2',revisionNo:2,previousContentId:original.id,txid:'c3'.repeat(32),publishedAt:'2026-10-11T09:00:00Z',proof:'valid',content:original.content+'\n\n## A note from the workbench\n\nColour can hold a small memory. This public-domain image is shared as a study, with its source kept visible.\n\n![A painted hand holding colour](fixtures/homepage/painted-hand.jpg)\n\n[Image source](https://github.com/mdn/interactive-examples/tree/main/live-examples/media/cc0-images)\n\n<script>window.__unsafeHomepage=true</script>\n\n[Unsafe link](javascript:window.__unsafeHomepage=true)\n\n![Unavailable study](fixtures/homepage/unavailable.jpg)'},
+      media('image','image/jpeg','fixtures/homepage/painted-hand.jpg','Colour, held in a hand','2026-10-10T11:00:00Z'),
+      media('video','video/mp4','fixtures/homepage/flower.mp4','A breeze in the garden','2026-10-09T11:00:00Z'),
+      {...media('audio','audio/wav','fixtures/homepage/four-notes.wav','Four notes, one idea','2026-10-08T11:00:00Z'),source:'Local tone study: C, E, G, C.'},
+      {...media('studio','image/jpeg','fixtures/homepage/painted-hand.jpg','An experiment in colour','2026-10-09T10:00:00Z',1),source:'MDN CC0 image'},
+      {...original,id:'private-draft',txid:'18'.repeat(32),status:'draft',content:'# Private notebook'}
+    ].map(record=>record.mime?{source:'MDN CC0 media example',...record}:record);
+  }
+  function records() {return [...C.load().records,...contentFixtures()];}
+  const kind = record => record.mime?.startsWith('image/')?'image':record.mime?.startsWith('video/')?'video':record.mime?.startsWith('audio/')?'audio':'blog';
+  function stream(author,all=records()) {
+    const groups=new Map();
+    for(const record of all.filter(r=>r.authorBapId===author&&r.status!=='draft')) {
+      const key=record.rootContentId||record.txid,old=groups.get(key);
+      if(!old || record.revisionNo>old.revisionNo || record.revisionNo===old.revisionNo&&record.publishedAt>old.publishedAt)groups.set(key,record);
+    }
+    return [...groups.values()].sort((a,b)=>(b.publishedAt||'').localeCompare(a.publishedAt||'')||a.txid.localeCompare(b.txid));
+  }
   const seedFollows = () => [{from:I.ids[0],to:I.ids[1]},{from:I.ids[1],to:I.ids[0]}];
   function list(id,direction,events=seedFollows()) {
     return [...new Set(events.filter(e=>direction==='following'?e.from===id:e.to===id).map(e=>direction==='following'?e.to:e.from))];
   }
-  const api = {defaults,additionalIds,publicRoute,parseRoute,validId,resolveIdentity,records,seedFollows,list};
+  const api = {defaults,additionalIds,publicRoute,parseRoute,validId,resolveIdentity,records,contentFixtures,kind,stream,seedFollows,list};
   if (typeof module !== 'undefined') module.exports=api; else root.OwnwordHomepageModel=api;
 })(typeof window !== 'undefined' ? window : globalThis);

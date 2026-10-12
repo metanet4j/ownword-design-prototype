@@ -26,6 +26,7 @@ async function scenario(key,value) {
 function check(id,label,source) {assert.equal(evaluate(source),true,label);steps.push({bdd:id,check:label,result:'passed'});}
 function shot(name='desktop') {browser('mouse','move','0','0');browser('screenshot',path.join(target,name+'.png'));}
 browser('set','viewport','1440','1000');
+browser('open','about:blank');
 if(feature==='P01') {
   browser('open','http://127.0.0.1:4314/?check=P01#/identity/'+I.ids[0]);await ready();
   check('P01-A','未连接 Wallet 的公开身份、内容和关系列表入口',`document.querySelector('.homepage h1')?.textContent==='Maya Chen' && !!document.querySelector('[data-homepage-module="content"] article') && !!document.querySelector('[data-homepage-list="following"]') && !document.querySelector('.wallet-connected') && !document.querySelector('dialog[open]')`);
@@ -35,7 +36,7 @@ if(feature==='P01') {
   await route('#/identity/'+I.ids[0]);await scenario('content','failure');
   check('P01-C','内容失败不遮蔽身份与关系入口',`document.querySelector('.homepage h1')?.textContent==='Maya Chen' && !!document.querySelector('[data-homepage-module="content"] [role="alert"]') && !!document.querySelector('[data-homepage-list="followers"]')`);
   await scenario('content','normal');await scenario('relationship','failure');
-  check('P01-C','关系失败不清除公开作品',`!!document.querySelector('[data-homepage-module="relationship"] [role="alert"]') && document.querySelectorAll('.homepage article').length===2`);
+  check('P01-C','关系失败不清除公开作品',`!!document.querySelector('[data-homepage-module="relationship"] [role="alert"]') && document.querySelectorAll('.homepage article').length>=2`);
   await scenario('relationship','normal');
  } else if(feature==='P02') {
   browser('open','http://127.0.0.1:4314/?check=P02#/identity/'+H.additionalIds[0]);await ready();
@@ -58,6 +59,17 @@ if(feature==='P01') {
   browser('press','Escape');await scenario('proof','failed');browser('click','[data-homepage-action="details"]');
   check('P02-C','验证失败与未验证分别显示',`document.querySelector('[data-identity-signature]')?.dataset.identitySignature==='invalid'`);
   browser('press','Escape');await scenario('proof','record');
+ } else if(feature==='P03') {
+  browser('open','http://127.0.0.1:4314/?check=P03#/identity/'+I.ids[0]);await ready();
+  browser('click','[role="tab"][id$="-all"]');browser('click','[data-homepage-action="more-content"]');
+  check('P03-A','只展示公开作品，四种内容均可到达',`document.querySelectorAll('[data-homepage-post]').length===5 && ['blog','image','video','audio'].every(k=>document.querySelector('[data-content-type="'+k+'"]')) && !document.querySelector('.homepage').textContent.includes('Private notebook')`);
+  check('P03-A','公开发布时间稳定倒序',`(()=>{const times=[...document.querySelectorAll('[data-published-at]')].map(n=>n.dataset.publishedAt);return times.every((t,i)=>!i||times[i-1]>=t);})()`);
+  check('P03-C','当前版本只出现一次，历史原文仍在源模型',`document.querySelectorAll('[data-homepage-post="'+ 'c3'.repeat(32)+'"]').length===1 && !document.querySelector('[data-homepage-post="'+'a1'.repeat(32)+'"]') && OwnwordHomepageModel.records().some(r=>r.txid==='a1'.repeat(32))`);
+  browser('click','[role="tab"][id$="-image"]');check('P03-B','图片是独立内容条目',`document.querySelectorAll('[data-homepage-post]').length===1 && !!document.querySelector('[data-content-type="image"] img')`);shot();
+  browser('reload');await ready();check('P03-B','刷新恢复原有内容筛选',`document.querySelector('[role="tab"][aria-selected="true"]')?.textContent==='Images'`);
+  await route('#/identity/'+I.ids[1]);browser('click','[role="tab"][id$="-audio"]');check('P03-B','没有音频时显示明确类型空状态',`!document.querySelector('[data-homepage-post]') && document.querySelector('.homepage-empty')?.textContent.includes('this type')`);
+  await route('#/identity/'+I.ids[0]);browser('click','[role="tab"][id$="-all"]');await scenario('pagination','failure');browser('click','[data-homepage-action="more-content"]');
+  check('P03-A','后续页失败保留首批作品',`document.querySelectorAll('[data-homepage-post]').length===3 && !!document.querySelector('.homepage-stream [role="alert"]')`);await scenario('pagination','normal');browser('click','[data-homepage-action="more-content"]');
 } else throw new Error('未知功能：'+feature);
 const errors=browser('errors');
 assert.equal((errors.errors||[]).length,0,JSON.stringify(errors));

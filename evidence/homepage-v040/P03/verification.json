@@ -1,0 +1,60 @@
+{
+  "feature": "P03",
+  "command": "node verify-homepage.mjs P03",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P03-A",
+      "check": "只展示公开作品，四种内容均可到达",
+      "result": "passed"
+    },
+    {
+      "bdd": "P03-A",
+      "check": "公开发布时间稳定倒序",
+      "result": "passed"
+    },
+    {
+      "bdd": "P03-C",
+      "check": "当前版本只出现一次，历史原文仍在源模型",
+      "result": "passed"
+    },
+    {
+      "bdd": "P03-B",
+      "check": "图片是独立内容条目",
+      "result": "passed"
+    },
+    {
+      "bdd": "P03-B",
+      "check": "刷新恢复原有内容筛选",
+      "result": "passed"
+    },
+    {
+      "bdd": "P03-B",
+      "check": "没有音频时显示明确类型空状态",
+      "result": "passed"
+    },
+    {
+      "bdd": "P03-A",
+      "check": "后续页失败保留首批作品",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}

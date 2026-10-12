@@ -1,0 +1,26 @@
+{
+  "scope": "原型播放资源；样例 Post 与资源出处分别展示，不宣称是真实上链作品。",
+  "files": [
+    {
+      "file": "painted-hand.jpg",
+      "source": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/painted-hand-298-332.jpg",
+      "license": "CC0",
+      "bytes": 12108,
+      "sha256": "6c60544bcf3cad38dcb3015e79a377d3fbe443b42e0fdf95a35e85f366cf152c"
+    },
+    {
+      "file": "flower.mp4",
+      "source": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "license": "CC0",
+      "bytes": 1128375,
+      "sha256": "0cd83d944a6ca7822b4a8306cecc60a36e859b041f6702c6a1ad9ead78924451"
+    },
+    {
+      "file": "four-notes.wav",
+      "source": "本地生成：C E G C 四音、22050 Hz、6 秒",
+      "license": "项目自建演练资源",
+      "bytes": 264644,
+      "sha256": "fe2679f59c4be7562065c6dd9baa58e5f8d7750d1eb232e646c1f233166d1507"
+    }
+  ]
+}
