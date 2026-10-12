@@ -1,0 +1,100 @@
+{
+  "feature": "P10",
+  "command": "node verify-homepage.mjs P10",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P10-A",
+      "check": "返回恢复博客筛选和阅读位置",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-A",
+      "check": "中英与浅深偏好刷新持久化，用户名称和标识保留原值",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-B",
+      "check": "320px 主页与完整标识没有页面横向溢出",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-B",
+      "check": "标签方向键切换并保留可见键盘焦点",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-B",
+      "check": "窄屏名单头像保持圆形且名单无横向溢出",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-B",
+      "check": "窄屏 Review 保留完整双方 ID，操作可达且焦点在弹层内",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-B",
+      "check": "弹层 Tab 焦点不会进入背景",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-B",
+      "check": "关闭 Review 后焦点返回原动作",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-C",
+      "check": "自己主页不提供关注自己或添加自己",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-C",
+      "check": "列表行操作方是当前 A，不是列表所有者 B",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-A",
+      "check": "旧公开身份链接适配到稳定主页",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-A",
+      "check": "原有我的身份模块仍可到达",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-A",
+      "check": "原有 Artifact 模块可到达",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-A",
+      "check": "原有内容模块及草稿保留",
+      "result": "passed"
+    },
+    {
+      "bdd": "P10-A",
+      "check": "离开未保存的旧编辑器到新主页仍受保护",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}

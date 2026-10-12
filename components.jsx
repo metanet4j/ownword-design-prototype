@@ -5,7 +5,13 @@ window.UiIcon=UiIcon;
 function ArtifactBack({onClick,t,label='artifactBack'}) {return <Button variant="quiet" className="s2d-button s2d-button-quiet artifact-back" data-action="artifact-back" onClick={onClick}><UiIcon name="ChevronLeft"/>{t(label)}</Button>;}
 
 // 公开页面的返回语义跟随浏览器历史；刷新后仍可回到实际入口。
+function rememberPublicScroll() {
+  if(!window.OwnwordHomepageModel?.publicRoute(location.hash))return;
+  history.replaceState({...history.state,ownwordPublicScroll:window.scrollY},'',location.href);
+}
+window.rememberPublicScroll=rememberPublicScroll;
 function openPublicRoute(page,id,tail='') {
+  rememberPublicScroll();
   if(page==='identity-view')page='identity';
   const screen=document.querySelector('main')?.dataset.screenLabel;
   const labels={identity:'backPublicIdentity',find:'backFind',artifact:'backArtifact','identity-view':'backPublicIdentity',read:'historyBack',history:'versionHistory',content:'contentBack',artifacts:'artifactBack'};
@@ -115,7 +121,7 @@ function useDismissable(open, onClose, ref, focusSelector='button') {
     };
   }, [open, onClose, ref, focusSelector]);
 }
-function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNWORD'}) {
+function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNWORD',returnFocus}) {
   const dialog = React.useRef(null);
   const parts=React.Children.toArray(children),actions=parts.findLast(child=>React.isValidElement(child)&&child.props.className==='action-row');
   function containFocus(event) {
@@ -125,7 +131,7 @@ function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNW
     if(first&&((event.shiftKey&&document.activeElement===first)||(!event.shiftKey&&document.activeElement===last))){event.preventDefault();(event.shiftKey?last:first).focus();}
   }
   React.useEffect(() => {
-    const previous = document.activeElement;
+    const previous = returnFocus||document.activeElement;
     dialog.current.showModal();
     return () => {queueMicrotask(()=>{const target=previous?.isConnected&&previous.getClientRects().length&&!previous.disabled&&previous!==document.body&&previous.id!=='main'?previous:(document.querySelector('[data-artifact-screen] h1')||document.querySelector('#main h1')||document.getElementById('main'));target?.focus({preventScroll:true});});};
   }, []);

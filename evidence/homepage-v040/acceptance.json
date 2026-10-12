@@ -1,0 +1,113 @@
+{
+  "version": "v0.4.0",
+  "sourceBaseline": "1355bdc4a14197d1d2dfec09e26096446d080be5",
+  "features": [
+    {
+      "id": "P01",
+      "bdd": [
+        "P01-A",
+        "P01-B",
+        "P01-C"
+      ],
+      "browserAssertions": 5,
+      "evidence": "evidence/homepage-v040/P01/verification.json"
+    },
+    {
+      "id": "P02",
+      "bdd": [
+        "P02-A",
+        "P02-B",
+        "P02-C"
+      ],
+      "browserAssertions": 7,
+      "evidence": "evidence/homepage-v040/P02/verification.json"
+    },
+    {
+      "id": "P03",
+      "bdd": [
+        "P03-A",
+        "P03-B",
+        "P03-C"
+      ],
+      "browserAssertions": 7,
+      "evidence": "evidence/homepage-v040/P03/verification.json"
+    },
+    {
+      "id": "P04",
+      "bdd": [
+        "P04-A",
+        "P04-B",
+        "P04-C"
+      ],
+      "browserAssertions": 6,
+      "evidence": "evidence/homepage-v040/P04/verification.json"
+    },
+    {
+      "id": "P05",
+      "bdd": [
+        "P05-A",
+        "P05-B",
+        "P05-C"
+      ],
+      "browserAssertions": 10,
+      "evidence": "evidence/homepage-v040/P05/verification.json"
+    },
+    {
+      "id": "P06",
+      "bdd": [
+        "P06-A",
+        "P06-B",
+        "P06-C"
+      ],
+      "browserAssertions": 5,
+      "evidence": "evidence/homepage-v040/P06/verification.json"
+    },
+    {
+      "id": "P07",
+      "bdd": [
+        "P07-A",
+        "P07-B",
+        "P07-C",
+        "P07-D"
+      ],
+      "browserAssertions": 7,
+      "evidence": "evidence/homepage-v040/P07/verification.json"
+    },
+    {
+      "id": "P08",
+      "bdd": [
+        "P08-A",
+        "P08-B",
+        "P08-C"
+      ],
+      "browserAssertions": 9,
+      "evidence": "evidence/homepage-v040/P08/verification.json"
+    },
+    {
+      "id": "P09",
+      "bdd": [
+        "P09-A",
+        "P09-B",
+        "P09-C",
+        "P09-D"
+      ],
+      "browserAssertions": 10,
+      "evidence": "evidence/homepage-v040/P09/verification.json"
+    },
+    {
+      "id": "P10",
+      "bdd": [
+        "P10-A",
+        "P10-B",
+        "P10-C"
+      ],
+      "browserAssertions": 15,
+      "evidence": "evidence/homepage-v040/P10/verification.json"
+    }
+  ],
+  "bddCount": 32,
+  "browserAssertions": 81,
+  "scope": "当前 P01–P10；不使用旧 v0.4.0 证据，不等同生产 API 或密码学校验。",
+  "userVisualReview": "pending",
+  "spectrum": "继承 S2 1.6.0 / Tokens 14.15.0 的轻量消费运行时，namespace ReactSpectrumS2_ad4872"
+}

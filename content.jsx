@@ -58,9 +58,12 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
   function go(page, id = '') {requestLeave(() => {if(['read','history'].includes(page))openPublicRoute(page,id);else location.hash = '/' + page + (id ? '/' + encodeURIComponent(id) : '');});}
   React.useImperativeHandle(ref, () => ({go, leave: requestLeave}));
   const hashHandler = React.useRef(null);
-  hashHandler.current = () => {
+  hashHandler.current = event => {
       const incoming = location.hash;
-      if (window.OwnwordHomepageModel?.publicRoute(incoming)) return;
+      if (window.OwnwordHomepageModel?.publicRoute(incoming)) {
+        if(dirty(currentDraft())){event?.stopImmediatePropagation();history.replaceState(history.state,'',lastHash.current||'#/content');requestLeave(()=>{history.pushState(null,'',incoming);window.dispatchEvent(new HashChangeEvent('hashchange'));});}
+        return;
+      }
       if (!/^#\/(content|write|review|publish|read|history)(\/|$)/.test(incoming)) return;
       const apply = () => {lastHash.current = incoming; setRoute(M.parseRoute(incoming));};
       if (dirty(currentDraft())) {
@@ -69,7 +72,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
       } else apply();
   };
   React.useEffect(() => {
-    const change = () => hashHandler.current();
+    const change = event => hashHandler.current(event);
     window.addEventListener('hashchange', change); return () => window.removeEventListener('hashchange', change);
   }, []);
   React.useEffect(() => {setLoading(true); const timer = setTimeout(() => setLoading(false), 350); return () => clearTimeout(timer);}, [identity?.bapId, settings.list, active]);

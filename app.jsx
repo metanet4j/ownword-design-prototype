@@ -121,14 +121,15 @@ function App() {
     activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);
   }, []);
   React.useEffect(()=>{if(!state.busy&&/^#\/(artifacts|artifact(?:-[a-z]+)?|find|identity-view)(\/|$)/.test(location.hash))dispatch({type:'GO',page:'artifacts'});},[state.busy,state.wallet,state.published]);
+  React.useEffect(()=>{const redirect=()=>{if(location.hash.startsWith('#/identity-view/')){history.replaceState(history.state,'',location.hash.replace('#/identity-view/','#/identity/'));window.dispatchEvent(new HashChangeEvent('hashchange'));}};redirect();window.addEventListener('hashchange',redirect);return()=>window.removeEventListener('hashchange',redirect);},[]);
   React.useEffect(()=>{const activate=()=>{if(OwnwordHomepageModel.publicRoute(location.hash))dispatch({type:'GO',page:'homepage'});};activate();window.addEventListener('hashchange',activate);return()=>window.removeEventListener('hashchange',activate);},[]);
   React.useEffect(()=>{if(!state.busy&&OwnwordHomepageModel.publicRoute(location.hash))dispatch({type:'GO',page:'homepage'});},[state.busy,state.wallet,state.published]);
-  function openArtifacts(page='artifacts',id='') {closeNavigation();const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'artifacts'};dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
+  function openArtifacts(page='artifacts',id='') {rememberPublicScroll();closeNavigation();const action=()=>artifactRef.current?.go(page,id);if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'artifacts'};dispatch({type:'DISCARD_ASK',page:'artifacts'});return;}if(state.page==='content')contentRef.current?.leave(action);else action();}
   React.useEffect(()=>{if(!state.modal&&pendingWorkspaceNavigation.current){const pending=pendingWorkspaceNavigation.current;pendingWorkspaceNavigation.current=null;if(state.page===pending.page)pending.action();}},[state.modal,state.page]);
-  function openContent(){closeNavigation();const action=()=>contentRef.current?.go('content');if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'content'};dispatch({type:'DISCARD_ASK',page:'content'});return;}if(state.page==='artifacts')artifactRef.current?.leave(action);else action();}
+  function openContent(){rememberPublicScroll();closeNavigation();const action=()=>contentRef.current?.go('content');if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'content'};dispatch({type:'DISCARD_ASK',page:'content'});return;}if(state.page==='artifacts')artifactRef.current?.leave(action);else action();}
   function navigate(page) {
     closeNavigation();
-    if(OwnwordHomepageModel.publicRoute(location.hash))history.pushState(null,'',location.pathname+location.search);
+    if(OwnwordHomepageModel.publicRoute(location.hash)){rememberPublicScroll();history.pushState(null,'',location.pathname+location.search);}
     if(state.page==='artifacts'){artifactRef.current?.leave(()=>{history.pushState(null,'',location.pathname+location.search);dispatch({type:'GO',page});});return;}
     if (state.page === 'content') {contentRef.current?.leave(() => {history.pushState(null, '', location.pathname + location.search); dispatch({type: 'GO', page});}); return;}
     setPrefs(false);
@@ -193,7 +194,7 @@ function App() {
   function heading(k, subtitle, eyebrow) {return <div className="page-heading">{eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}<h1 className="task-title" tabIndex="-1">{t(k)}</h1><p>{t(subtitle)}</p></div>;}
   const [navigationHash,setNavigationHash]=React.useState(location.hash);
   React.useEffect(()=>{const update=()=>setNavigationHash(location.hash);window.addEventListener('hashchange',update);return()=>window.removeEventListener('hashchange',update);},[]);
-  const currentModule = state.page==='homepage'?'publicIdentity':state.page==='content'?(/^#\/(read|history)(\/|$)/.test(navigationHash)?'readerPublic':'myContent'):state.page==='artifacts'?(navigationHash.startsWith('#/find')?'artifactFind':navigationHash.startsWith('#/identity-view/')?'publicIdentity':navigationHash.startsWith('#/artifact/')?'artifactDetailTitle':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
+  const currentModule = state.page==='homepage'?(/^#\/content\//.test(navigationHash)?'readerPublic':'publicIdentity'):state.page==='content'?(/^#\/(read|history)(\/|$)/.test(navigationHash)?'readerPublic':'myContent'):state.page==='artifacts'?(navigationHash.startsWith('#/find')?'artifactFind':navigationHash.startsWith('#/identity-view/')?'publicIdentity':navigationHash.startsWith('#/artifact/')?'artifactDetailTitle':'myArtifacts'):state.page==='welcome'?'startUsing':state.page==='public'?'publicIdentity':'myIdentity';
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
   const toastError = state.page !== 'resolve-error' ? state.error : '';
   const toastMessage = toastError || (storageError ? 'persistFailed' : state.notice);

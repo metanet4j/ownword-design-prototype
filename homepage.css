@@ -65,7 +65,8 @@
 .homepage-relations .hint {flex-basis:100%;margin:0;font-size:14px;}
 .relationship-rows article {display:flex;gap:24px;justify-content:space-between;padding:24px 0;border-bottom:1px solid var(--s2d-border);}
 .relationship-person {display:flex;gap:16px;min-width:0;flex:1;}
-.relationship-person>div {min-width:0;flex:1;}
+.relationship-person>div:not(.portrait) {min-width:0;flex:1;}
+.relationship-person>.portrait {width:56px;height:56px;flex:0 0 56px;font-size:24px;}
 .relationship-person h3 {font-size:20px;margin:0 0 8px;overflow-wrap:anywhere;}
 .relationship-name {color:var(--s2d-content-neutral);text-decoration:none;}
 .relationship-name:hover {color:var(--s2d-action-accent);text-decoration:underline;}
@@ -75,3 +76,13 @@
 .relationship-person .identifier-value code {font-size:14px;}
 .relationship-rows .homepage-actions {padding-top:0;flex:0 1 240px;}
 @media (max-width:760px) {.relationship-rows article {display:block;}.relationship-rows .homepage-actions {margin-top:16px;}.relationship-person h3 {font-size:18px;}}
+@media (max-width:600px) {
+  .homepage-summary {display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px 16px;}
+  .homepage-summary>.portrait {grid-column:1;grid-row:1/3;}
+  .homepage-summary>.homepage-person {display:contents;}
+  .homepage-summary>.homepage-person>.eyebrow {grid-column:2;grid-row:1;margin:0;align-self:end;}
+  .homepage-summary>.homepage-person>h1 {grid-column:2;grid-row:2;margin:0;}
+  .homepage-summary>.homepage-person>.bio {grid-column:1/-1;margin:8px 0;}
+  .homepage-summary>.homepage-person>.homepage-identifiers {grid-column:1/-1;}
+  .homepage-summary>.homepage-actions {grid-column:1/-1;}
+}
