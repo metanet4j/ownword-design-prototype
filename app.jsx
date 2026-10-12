@@ -33,6 +33,8 @@ function App() {
   const contentRef = React.useRef(null);
   const artifactRef = React.useRef(null);
   const pendingWorkspaceNavigation=React.useRef(null);
+  const pendingHomepageTarget=React.useRef(null),[homepageResume,setHomepageResume]=React.useState(null);
+  React.useEffect(()=>{if(pendingHomepageTarget.current&&state.published&&!state.incomplete&&!state.busy){const goal=pendingHomepageTarget.current;pendingHomepageTarget.current=null;setHomepageResume(goal);openPublicRoute('identity',goal.target);}},[state.published,state.incomplete,state.busy]);
   const [lab, setLab] = React.useState(false);
   const [markdownState, setMarkdownState] = React.useState(window.OwnwordEditorTools?.renderMarkdown ? 'ready' : 'idle');
   const [markdownAttempt, setMarkdownAttempt] = React.useState(0);
@@ -126,6 +128,7 @@ function App() {
   function openContent(){closeNavigation();const action=()=>contentRef.current?.go('content');if((formPage||state.page==='review')&&dirty){pendingWorkspaceNavigation.current={action,page:'content'};dispatch({type:'DISCARD_ASK',page:'content'});return;}if(state.page==='artifacts')artifactRef.current?.leave(action);else action();}
   function navigate(page) {
     closeNavigation();
+    if(OwnwordHomepageModel.publicRoute(location.hash))history.pushState(null,'',location.pathname+location.search);
     if(state.page==='artifacts'){artifactRef.current?.leave(()=>{history.pushState(null,'',location.pathname+location.search);dispatch({type:'GO',page});});return;}
     if (state.page === 'content') {contentRef.current?.leave(() => {history.pushState(null, '', location.pathname + location.search); dispatch({type: 'GO', page});}); return;}
     setPrefs(false);
@@ -134,8 +137,8 @@ function App() {
     else dispatch({type: 'GO', page});
   }
   function resolveAgain() {operationScenario.current = scenario === 'missing' ? 'new' : scenario; dispatch({type: 'RETRY_RESOLVE'});}
-  function switchAccount(forced = false) {const perform = () => {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
-  function disconnect(forced = false) {closeNavigation();const perform = () => {setPrefs(false); dispatch({type: 'DISCONNECT'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
+  function switchAccount(forced = false) {pendingHomepageTarget.current=null;setHomepageResume(null);const perform = () => {operationScenario.current = 'existing'; setPrefs(false); dispatch({type: 'SWITCH'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
+  function disconnect(forced = false) {pendingHomepageTarget.current=null;setHomepageResume(null);closeNavigation();const perform = () => {setPrefs(false); dispatch({type: 'DISCONNECT'});}; if (forced === true) perform(); else if(state.page==='artifacts')artifactRef.current?.leave(perform);else contentRef.current?.leave(perform);}
   // 演练配置只决定下一次操作，不进入产品状态或签名输入。
   function confirmConnection() {
     operationScenario.current = scenario;
@@ -221,7 +224,7 @@ function App() {
     </header>
     {state.page==='welcome'&&<Dome label={t('domeLabel')} />}
     <main id="main" data-screen-label={state.page} data-modal={state.modal || ""} data-busy={state.busy || ""} data-incomplete={state.incomplete ? "true" : "false"} tabIndex="-1">
-      <HomepageWorkspace artifactData={artifactStore.data} active={state.page==='homepage'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile,transaction:state.transaction}:null} locale={locale} t={t} settings={homepageSettings} setSettings={setHomepageSettings} failCopy={failCopy}/>
+      <HomepageWorkspace resumeIntent={homepageResume} onResumeConsumed={()=>setHomepageResume(null)} connectionCancelled={state.notice==='connectCancelled'} onAccountEvent={action=>{setHomepageSettings(s=>({...s,relationshipAccount:'none'}));if(action==='switch')switchAccount(true);else disconnect(true);}} connected={state.wallet} onConnect={()=>dispatch({type:'CONNECT'})} onIdentity={intent=>{pendingHomepageTarget.current=intent;navigate('setup');}} artifactData={artifactStore.data} active={state.page==='homepage'||state.page!=='welcome'&&OwnwordHomepageModel.publicRoute(location.hash)} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile,transaction:state.transaction}:null} locale={locale} t={t} settings={homepageSettings} setSettings={setHomepageSettings} failCopy={failCopy}/>
       <ArtifactWorkspace resolveIdentity={id=>OwnwordModel.resolveIdentity(id,state.published?{bapId,profile:state.profile,transaction:state.transaction}:null)} onAccountEvent={action=>{if(action==='switch')switchAccount(true);else disconnect(true);}} connected={state.wallet} ref={artifactRef} active={state.page==='artifacts'} identity={state.wallet&&state.published&&!state.incomplete?{bapId,profile:state.profile}:null} locale={locale} t={t} store={artifactStore} onConnect={()=>dispatch({type:'CONNECT'})} onIdentity={()=>navigate(state.wallet?(state.published&&!state.incomplete?'identity':'setup'):'welcome')} failCopy={failCopy}/>
       <ContentWorkspace connected={state.wallet} published={state.published} resolving={state.busy==='resolving'} onAccountEvent={action=>{setContentSettings(s=>({...s,account:"none"}));if(action==="switch")switchAccount(true);else disconnect(true);}} failCopy={failCopy} ref={contentRef} active={state.page === 'content' && markdownState === 'ready'} identity={state.wallet && state.published && !state.incomplete ? {bapId, profile: state.profile} : null} locale={locale} t={t} settings={contentSettings} setSettings={setContentSettings} onConnect={() => dispatch({type: 'CONNECT'})} onIdentity={() => navigate(state.wallet ? (state.published && !state.incomplete ? 'identity' : 'setup') : 'welcome')} />
       {state.page === 'content' && markdownState !== 'ready' && <section className="content-gate" data-content-load={markdownState}><h1 className="task-title" tabIndex="-1">{t('myContent')}</h1>{markdownState === 'error' ? <><p role="alert">{t('readerLoadFailed')}</p><Button data-action="reader-load-retry" onClick={() => setMarkdownAttempt(value => value + 1)}>{t('retry')}</Button></> : <LoadingMark small label={t('readerLoading')}/>}</section>}

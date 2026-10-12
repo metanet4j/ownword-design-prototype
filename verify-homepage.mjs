@@ -4,25 +4,30 @@ import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url), I=require('./model.js'),H=require('./homepage-model.js');
-const feature=process.argv[2], session='ownword-v040-20261012';
+const feature=process.argv[2], session=process.env.OWNWORD_BROWSER_SESSION||'ownword-v040-clean-20261012';
 const target=path.resolve('evidence/homepage-v040',feature);
 fs.mkdirSync(target,{recursive:true});
 const steps=[];
 function browser(...args) {
+  if(args[0]==='click' && !args[1].startsWith('@'))evaluate(`(()=>{document.querySelector(${JSON.stringify(args[1])})?.scrollIntoView({behavior:'instant',block:'center',inline:'nearest'});return true;})()`);
   const result=JSON.parse(execFileSync('agent-browser',['--session',session,'--json',...args],{encoding:'utf8',maxBuffer:8*1024*1024}));
   assert.equal(result.success,true,JSON.stringify(result));
   return result.data;
 }
 const evaluate=source=>browser('eval',source).result;
 async function ready(selector='[data-homepage-state]') {
-  for(let i=0;i<30;i++){if(evaluate(`!!document.querySelector(${JSON.stringify(selector)}) && !document.querySelector('.homepage[aria-busy="true"]')`))return;await new Promise(r=>setTimeout(r,100));}
+  for(let i=0;i<30;i++){if(evaluate(`document.getElementById('root')?.dataset.ready==='true' && !!document.querySelector(${JSON.stringify(selector)}) && !document.querySelector('.homepage[aria-busy="true"]')`))return;await new Promise(r=>setTimeout(r,100));}
   throw new Error('页面没有就绪：'+selector);
 }
-async function route(hash) {browser('open','http://127.0.0.1:4314/'+hash);await ready();}
-async function scenario(key,value) {
+async function route(hash) {browser('open','http://127.0.0.1:4314/'+evaluate('location.search')+hash);await ready();}
+async function scenario(key,value,{keepOpen=false}={}) {
   if(!evaluate('!!document.querySelector(".scenario-panel")'))browser('click','[data-action="prototype-settings"]');
   browser('select',`[data-homepage-scenario="${key}"]`,value);
+  if(!keepOpen)browser('click','.scenario-panel .panel-title button');
 }
+async function resetRelationships(mode='initial'){await scenario('relationshipFixture',mode,{keepOpen:true});browser('click','[data-homepage-action="reset-relationships"]');browser('click','.scenario-panel .panel-title button');}
+async function walletConnect(){browser('click','[data-action="approve"]');await ready('[data-relationship-actor="'+I.ids[0]+'"]');}
+async function perform(action){browser('click','[data-relationship-action="'+action+'"]');await ready('dialog[data-modal-title="relationship-review"]');browser('click','[data-relationship-action="sign"]');await ready('dialog[data-modal-title="relationship-wallet"]');browser('click','[data-relationship-action="approve"]');}
 function check(id,label,source) {assert.equal(evaluate(source),true,label);steps.push({bdd:id,check:label,result:'passed'});}
 function shot(name='desktop') {browser('mouse','move','0','0');browser('screenshot',path.join(target,name+'.png'));}
 browser('set','viewport','1440','1000');
@@ -92,6 +97,27 @@ if(feature==='P01') {
   evaluate('window.__testedAudio.focus();true');browser('press','Space');await ready('[data-media-playing="true"]');await route('#/identity/'+I.ids[0]);check('P05-A','离开音频后停止播放',`window.__testedAudio.paused`);
   await route('#/content/'+'e5'.repeat(32));await scenario('media','unsupportedFormat');check('P05-B','格式不支持与资源失败分别反馈',`!!document.querySelector('[data-media-error="unsupported"]') && !!document.querySelector('[data-action="reader-author"]') && !document.querySelector('[data-media-duration]')`);await scenario('media','missingAsset');await ready('[data-media-error="resource"]');check('P05-B','资源不可用仍保留作者及来源，不显示假时长',`!!document.querySelector('[data-media-error="resource"]') && !!document.querySelector('.homepage-media-source') && !document.querySelector('[data-media-duration]')`);
   await scenario('media','normal');await ready('[data-media-duration]');browser('click','[data-content-proof] summary');check('P05-C','可播放资源不会把未核实签名改成有效',`document.querySelector('[data-proof-state]')?.dataset.proofState==='unverified' && document.querySelector('.homepage-media video').duration>0`);
+ } else if(feature==='P09') {
+  browser('open','http://127.0.0.1:4314/?check=P09#/identity/'+I.ids[1]);await ready();await resetRelationships();
+  browser('click','[data-relationship-action="follow"]');await ready('dialog[data-modal-title="connectTitle"]');browser('click','[data-action="cancel"]');
+  check('P09-A','取消连接后仍能读取公开主页，不产生关系事件',`!!document.querySelector('[data-homepage-module="content"]') && !document.querySelector('dialog[open]') && !document.querySelector('.wallet-connected') && OwnwordHomepageModel.loadRelationships().events.length===7`);
+  browser('click','[data-relationship-action="follow"]');await ready('dialog[data-modal-title="connectTitle"]');await walletConnect();await ready('dialog[data-modal-title="relationship-review"]');
+  check('P09-A','连接完成后重新进入 Review，未自动签名或提交',`document.querySelector('dialog[open]').textContent.includes(${JSON.stringify(I.ids[0])}) && document.querySelector('dialog[open]').textContent.includes(${JSON.stringify(I.ids[1])}) && OwnwordHomepageModel.loadRelationships().events.length===7`);shot();
+  browser('click','[data-relationship-action="sign"]');await ready('dialog[data-modal-title="relationship-wallet"]');browser('click','[data-relationship-action="cancel"]');
+  check('P09-B','钱包授权取消与失败分别呈现，关系不提前变化',`!!document.querySelector('[data-relationship-message="cancelled"]') && OwnwordHomepageModel.loadRelationships().events.length===7`);
+  await scenario('signature','mismatch');await perform('follow');await ready('[data-relationship-message="relationshipMismatch"]');check('P09-B','签名身份不匹配时没有广播记录',`OwnwordHomepageModel.loadRelationships().events.length===7 && !OwnwordHomepageModel.relation(OwnwordHomepageModel.loadRelationships(),${JSON.stringify(I.ids[0])},${JSON.stringify(I.ids[1])}).following`);
+  await scenario('signature','match');await scenario('relationshipOutcome','unknown');await scenario('relationshipQuery','unknown');await perform('follow');await ready('[data-relationship-phase="unknown"]');
+  const original=evaluate(`OwnwordHomepageModel.loadOperations(${JSON.stringify(I.ids[0])}).operations.at(-1).id`);
+  browser('reload');await ready();browser('click','[data-relationship-action="follow"]');await ready('dialog[data-modal-title="connectTitle"]');await walletConnect();await ready('[data-relationship-phase="unknown"]');
+  check('P09-C','刷新并恢复原身份后保留未知操作，禁止再次提交',`!document.querySelector('dialog[open]') && document.querySelector('[data-relationship-action="follow"]')?.disabled && OwnwordHomepageModel.loadOperations(${JSON.stringify(I.ids[0])}).operations.at(-1).id===${JSON.stringify(original)}`);
+  await scenario('relationshipQuery','unknown');browser('click','[data-relationship-action="query"]');check('P09-C','结果仍未知只查询，不新建交易',`OwnwordHomepageModel.loadOperations(${JSON.stringify(I.ids[0])}).operations.at(-1).id===${JSON.stringify(original)} && !OwnwordHomepageModel.loadRelationships().events.some(e=>e.id===${JSON.stringify(original)})`);
+  await scenario('relationshipQuery','accepted');browser('click','[data-relationship-action="query"]');await ready('[data-relationship-phase="verified"]');check('P09-C','查询原操作得到接收结果并只归并一次',`OwnwordHomepageModel.loadRelationships().events.filter(e=>e.id===${JSON.stringify(original)}).length===1`);
+  await route('#/identity/'+H.additionalIds[1]);await scenario('relationshipOutcome','unknown');await scenario('relationshipQuery','not-received');await perform('follow');await ready('[data-relationship-phase="unknown"]');browser('click','[data-relationship-action="query"]');await ready('[data-relationship-phase="not-received"]');browser('click','[data-relationship-action="follow"]');await ready('dialog[data-modal-title="relationship-review"]');check('P09-C','确认未接收后可重新 Review，仍由用户确认',`!!document.querySelector('[data-relationship-action="sign"]')`);browser('click','[data-relationship-action="cancel"]');
+  await route('#/identity/'+H.additionalIds[0]);await scenario('relationshipAccount','review-switch');browser('click','[data-relationship-action="unfollow"]');await ready('dialog[data-modal-title="relationship-review"]');await ready('[data-relationship-actor="'+I.ids[1]+'"]');
+  check('P09-D','Review 切换身份使未提交授权失效，主页目标保持不变',`!document.querySelector('dialog[open]') && location.hash==='#/identity/'+${JSON.stringify(H.additionalIds[0])} && !!document.querySelector('[data-relationship-message="identityChanged"]')`);
+  if(!evaluate('!!document.querySelector(".scenario-panel")'))browser('click','[data-action="prototype-settings"]');browser('click','[data-action="simulate-switch"]');await ready('[data-relationship-actor="'+I.ids[0]+'"]');
+  await scenario('relationshipOutcome','unknown');await scenario('relationshipAccount','submitted-switch');await perform('unfollow');await ready('[data-relationship-actor="'+I.ids[1]+'"]');
+  check('P09-D','已提交操作只保存在原身份，切换不改写主页归属',`location.hash==='#/identity/'+${JSON.stringify(H.additionalIds[0])} && OwnwordHomepageModel.loadOperations(${JSON.stringify(I.ids[0])}).operations.some(op=>op.target===${JSON.stringify(H.additionalIds[0])}&&op.phase==='unknown') && !OwnwordHomepageModel.loadOperations(${JSON.stringify(I.ids[1])}).operations.some(op=>op.actor===${JSON.stringify(I.ids[0])})`);
 } else throw new Error('未知功能：'+feature);
 const errors=browser('errors');
 assert.equal((errors.errors||[]).length,0,JSON.stringify(errors));

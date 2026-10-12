@@ -1,0 +1,75 @@
+{
+  "feature": "P09",
+  "command": "node verify-homepage.mjs P09",
+  "scope": "本项新增流程与相关边界；确定性演练，无真实 Wallet 或交易",
+  "steps": [
+    {
+      "bdd": "P09-A",
+      "check": "取消连接后仍能读取公开主页，不产生关系事件",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-A",
+      "check": "连接完成后重新进入 Review，未自动签名或提交",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-B",
+      "check": "钱包授权取消与失败分别呈现，关系不提前变化",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-B",
+      "check": "签名身份不匹配时没有广播记录",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-C",
+      "check": "刷新并恢复原身份后保留未知操作，禁止再次提交",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-C",
+      "check": "结果仍未知只查询，不新建交易",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-C",
+      "check": "查询原操作得到接收结果并只归并一次",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-C",
+      "check": "确认未接收后可重新 Review，仍由用户确认",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-D",
+      "check": "Review 切换身份使未提交授权失效，主页目标保持不变",
+      "result": "passed"
+    },
+    {
+      "bdd": "P09-D",
+      "check": "已提交操作只保存在原身份，切换不改写主页归属",
+      "result": "passed"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshot": "desktop.png",
+  "visualReview": "awaiting-user-review"
+}

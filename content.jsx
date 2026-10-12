@@ -81,7 +81,7 @@ const ContentWorkspace = React.forwardRef(function ContentWorkspace({active, ide
     const author = identity?.bapId;
     if (previousAuthor.current && previousAuthor.current !== author) {
       setDialog(null); setMenu(null); setReview(null);
-      if (!['read','history'].includes(routeRef.current.page)) {lastHash.current = '#/content'; history.replaceState(null, '', '#/content'); setRoute({page:'content', id:''});}
+      if (active && !['read','history'].includes(routeRef.current.page)) {lastHash.current = '#/content'; history.replaceState(null, '', '#/content'); setRoute({page:'content', id:''});}
     }
     previousAuthor.current = author;
   }, [identity?.bapId]);
