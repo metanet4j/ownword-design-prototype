@@ -1,0 +1,144 @@
+{
+  "feature": "R01",
+  "checkedAt": "2026-10-12T23:18:31.685Z",
+  "scope": "本轮 CSS 字级和相关密度修订；桌面、320/390px 手机，复制、键盘、阅读、Artifact 与欢迎页定向检查；未重跑全量 BDD。",
+  "steps": [
+    {
+      "check": "桌面主标题、列表标题和正文分别不超过 28/20/16px",
+      "result": "passed"
+    },
+    {
+      "check": "桌面首屏显示第一条作品标题且没有横向溢出",
+      "result": "passed"
+    },
+    {
+      "check": "紧凑标识真实复制成功且完整 BAP ID 保留",
+      "result": "passed"
+    },
+    {
+      "check": "390px 中文深色首屏能看到首条作品标题，字级及标识保留",
+      "result": "passed"
+    },
+    {
+      "check": "320px 首条标题可见，无横向溢出且主要按钮保留 44px 点击高度",
+      "result": "passed"
+    },
+    {
+      "check": "紧凑标签保留方向键及可见焦点",
+      "result": "passed"
+    },
+    {
+      "check": "窄屏名单字号正常、头像为圆形且没有横向溢出",
+      "result": "passed"
+    },
+    {
+      "check": "关系确认标题常规、完整双方 ID 可读且操作在屏幕内",
+      "result": "passed"
+    },
+    {
+      "check": "弹层缩小字号后焦点仍在弹层内",
+      "result": "passed"
+    },
+    {
+      "check": "关闭确认后焦点返回关注动作",
+      "result": "passed"
+    },
+    {
+      "check": "阅读标题不超过 28px，正文不超过 16px，原内容仍可阅读",
+      "result": "passed"
+    },
+    {
+      "check": "Artifact 编号不超过 28px，保留实际编号和相关身份标识",
+      "result": "passed"
+    },
+    {
+      "check": "欢迎页主标题和展示标题均不超过 28px",
+      "result": "passed"
+    }
+  ],
+  "metrics": [
+    {
+      "label": "desktop-light",
+      "bodyFont": 16,
+      "firstWorkTop": 563,
+      "headerHeight": 64,
+      "hover": false,
+      "listFont": 20,
+      "pointerFine": false,
+      "titleFont": 28,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "label": "mobile-390-dark",
+      "bodyFont": 16,
+      "firstWorkTop": 650,
+      "headerHeight": 64,
+      "hover": false,
+      "listFont": 20,
+      "pointerFine": false,
+      "titleFont": 28,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "mobile-320-dark",
+      "bodyFont": 16,
+      "firstWorkTop": 674,
+      "headerHeight": 64,
+      "hover": false,
+      "listFont": 20,
+      "pointerFine": false,
+      "titleFont": 28,
+      "viewport": [
+        320,
+        900
+      ]
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "screenshots": [
+    "desktop.png",
+    "mobile-390.png",
+    "mobile-320.png",
+    "mobile-list.png",
+    "mobile-review.png",
+    "reader.png",
+    "artifact.png",
+    "welcome.png"
+  ],
+  "userVisualReview": "pending",
+  "agentVisualReview": {
+    "result": "reviewed",
+    "screenshots": [
+      "desktop.png",
+      "mobile-390.png",
+      "mobile-320.png",
+      "mobile-list.png",
+      "mobile-review.png",
+      "reader.png",
+      "artifact.png",
+      "welcome.png"
+    ],
+    "observations": "已查看八张截图；常规字级保持主次，390px 和 320px 首屏可见首条作品标题与摘要，标识和按钮无重叠，关系确认保留完整 ID 与底部操作。用户视觉复核待完成。"
+  }
+}
