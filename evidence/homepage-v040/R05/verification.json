@@ -1,0 +1,599 @@
+{
+  "checkedAt": "2026-10-13T02:06:42.644Z",
+  "scope": "R05 混合列表收敛、相关筛选与详情返回；未重跑全站 BDD",
+  "method": "agent-browser 实际访问、点击、键盘操作、尺寸测量与截图；长标题和损坏预览仅在独立浏览器内覆盖模型输出，未写入持久化样例。",
+  "pages": [
+    {
+      "name": "mixed",
+      "rows": [
+        {
+          "bottom": 319.390625,
+          "height": 140,
+          "target": {
+            "bottom": 260.390625,
+            "height": 44,
+            "left": 208,
+            "right": 1232,
+            "top": 216.390625,
+            "width": 1024,
+            "x": 208,
+            "y": 216.390625
+          },
+          "textLeft": 0,
+          "titleHeight": 28,
+          "titleLineHeight": 28,
+          "titleSize": "20px",
+          "top": 179.390625,
+          "type": "blog"
+        },
+        {
+          "bottom": 472.390625,
+          "error": "false",
+          "height": 153,
+          "preview": {
+            "bottom": 455.390625,
+            "height": 120,
+            "left": 1072,
+            "right": 1232,
+            "top": 335.390625,
+            "width": 160,
+            "x": 1072,
+            "y": 335.390625
+          },
+          "target": {
+            "bottom": 400.390625,
+            "height": 44,
+            "left": 208,
+            "right": 1056,
+            "top": 356.390625,
+            "width": 848,
+            "x": 208,
+            "y": 356.390625
+          },
+          "textLeft": 0,
+          "titleHeight": 28,
+          "titleLineHeight": 28,
+          "titleSize": "20px",
+          "top": 319.390625,
+          "type": "image"
+        },
+        {
+          "bottom": 625.390625,
+          "error": "false",
+          "height": 153,
+          "preview": {
+            "bottom": 608.390625,
+            "height": 120,
+            "left": 1072,
+            "right": 1232,
+            "top": 488.390625,
+            "width": 160,
+            "x": 1072,
+            "y": 488.390625
+          },
+          "target": {
+            "bottom": 553.390625,
+            "height": 44,
+            "left": 208,
+            "right": 1056,
+            "top": 509.390625,
+            "width": 848,
+            "x": 208,
+            "y": 509.390625
+          },
+          "textLeft": 0,
+          "titleHeight": 28,
+          "titleLineHeight": 28,
+          "titleSize": "20px",
+          "top": 472.390625,
+          "type": "video"
+        },
+        {
+          "bottom": 723.390625,
+          "height": 98,
+          "target": {
+            "bottom": 706.390625,
+            "height": 44,
+            "left": 208,
+            "right": 1232,
+            "top": 662.390625,
+            "width": 1024,
+            "x": 208,
+            "y": 662.390625
+          },
+          "textLeft": 0,
+          "titleHeight": 28,
+          "titleLineHeight": 28,
+          "titleSize": "20px",
+          "top": 625.390625,
+          "type": "audio"
+        },
+        {
+          "bottom": 863.390625,
+          "height": 140,
+          "target": {
+            "bottom": 804.390625,
+            "height": 44,
+            "left": 208,
+            "right": 1232,
+            "top": 760.390625,
+            "width": 1024,
+            "x": 208,
+            "y": 760.390625
+          },
+          "textLeft": 0,
+          "titleHeight": 28,
+          "titleLineHeight": 28,
+          "titleSize": "20px",
+          "top": 723.390625,
+          "type": "blog"
+        }
+      ],
+      "scrollWidth": 1440,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 1440,
+      "screenshot": "mixed-1440.png"
+    },
+    {
+      "name": "mixed",
+      "rows": [
+        {
+          "bottom": 297.6875,
+          "height": 119,
+          "target": {
+            "bottom": 259.6875,
+            "height": 44,
+            "left": 16,
+            "right": 304,
+            "top": 215.6875,
+            "width": 288,
+            "x": 16,
+            "y": 215.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 25.1875,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 178.6875,
+          "type": "blog"
+        },
+        {
+          "bottom": 402.6875,
+          "error": "false",
+          "height": 105,
+          "preview": {
+            "bottom": 385.6875,
+            "height": 72,
+            "left": 208,
+            "right": 304,
+            "top": 313.6875,
+            "width": 96,
+            "x": 208,
+            "y": 313.6875
+          },
+          "target": {
+            "bottom": 385.0625,
+            "height": 50.375,
+            "left": 16,
+            "right": 192,
+            "top": 334.6875,
+            "width": 176,
+            "x": 16,
+            "y": 334.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 50.375,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 297.6875,
+          "type": "image"
+        },
+        {
+          "bottom": 507.6875,
+          "error": "false",
+          "height": 105,
+          "preview": {
+            "bottom": 490.6875,
+            "height": 72,
+            "left": 208,
+            "right": 304,
+            "top": 418.6875,
+            "width": 96,
+            "x": 208,
+            "y": 418.6875
+          },
+          "target": {
+            "bottom": 490.0625,
+            "height": 50.375,
+            "left": 16,
+            "right": 192,
+            "top": 439.6875,
+            "width": 176,
+            "x": 16,
+            "y": 439.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 50.375,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 402.6875,
+          "type": "video"
+        },
+        {
+          "bottom": 605.6875,
+          "height": 98,
+          "target": {
+            "bottom": 588.6875,
+            "height": 44,
+            "left": 16,
+            "right": 304,
+            "top": 544.6875,
+            "width": 288,
+            "x": 16,
+            "y": 544.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 25.1875,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 507.6875,
+          "type": "audio"
+        },
+        {
+          "bottom": 724.6875,
+          "height": 119,
+          "target": {
+            "bottom": 686.6875,
+            "height": 44,
+            "left": 16,
+            "right": 304,
+            "top": 642.6875,
+            "width": 288,
+            "x": 16,
+            "y": 642.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 25.1875,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 605.6875,
+          "type": "blog"
+        }
+      ],
+      "scrollWidth": 320,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 320,
+      "screenshot": "mixed-320.png"
+    },
+    {
+      "name": "video-filter",
+      "rows": [
+        {
+          "bottom": 718.6875,
+          "error": "false",
+          "height": 105,
+          "preview": {
+            "bottom": 701.6875,
+            "height": 72,
+            "left": 208,
+            "right": 304,
+            "top": 629.6875,
+            "width": 96,
+            "x": 208,
+            "y": 629.6875
+          },
+          "target": {
+            "bottom": 701.0625,
+            "height": 50.375,
+            "left": 16,
+            "right": 192,
+            "top": 650.6875,
+            "width": 176,
+            "x": 16,
+            "y": 650.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 50.375,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 613.6875,
+          "type": "video"
+        }
+      ],
+      "scrollWidth": 320,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 320,
+      "screenshot": "video-filter-320.png"
+    },
+    {
+      "name": "long-title-unavailable",
+      "rows": [
+        {
+          "bottom": 448.6875,
+          "height": 119,
+          "target": {
+            "bottom": 410.6875,
+            "height": 44,
+            "left": 16,
+            "right": 304,
+            "top": 366.6875,
+            "width": 288,
+            "x": 16,
+            "y": 366.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 25.1875,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 329.6875,
+          "type": "blog"
+        },
+        {
+          "bottom": 553.6875,
+          "error": "true",
+          "height": 105,
+          "preview": {
+            "bottom": 536.6875,
+            "height": 72,
+            "left": 208,
+            "right": 304,
+            "top": 464.6875,
+            "width": 96,
+            "x": 208,
+            "y": 464.6875
+          },
+          "target": {
+            "bottom": 536.0625,
+            "height": 50.375,
+            "left": 16,
+            "right": 192,
+            "top": 485.6875,
+            "width": 176,
+            "x": 16,
+            "y": 485.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 50.375,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 448.6875,
+          "type": "image"
+        },
+        {
+          "bottom": 658.6875,
+          "error": "true",
+          "height": 105,
+          "preview": {
+            "bottom": 641.6875,
+            "height": 72,
+            "left": 208,
+            "right": 304,
+            "top": 569.6875,
+            "width": 96,
+            "x": 208,
+            "y": 569.6875
+          },
+          "target": {
+            "bottom": 641.0625,
+            "height": 50.375,
+            "left": 16,
+            "right": 192,
+            "top": 590.6875,
+            "width": 176,
+            "x": 16,
+            "y": 590.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 50.375,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 553.6875,
+          "type": "video"
+        }
+      ],
+      "scrollWidth": 320,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 320,
+      "screenshot": "long-title-unavailable-320.png"
+    },
+    {
+      "name": "mixed-zh-dark",
+      "rows": [
+        {
+          "bottom": 297.6875,
+          "height": 119,
+          "target": {
+            "bottom": 259.6875,
+            "height": 44,
+            "left": 16,
+            "right": 304,
+            "top": 215.6875,
+            "width": 288,
+            "x": 16,
+            "y": 215.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 25.1875,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 178.6875,
+          "type": "blog"
+        },
+        {
+          "bottom": 402.6875,
+          "error": "false",
+          "height": 105,
+          "preview": {
+            "bottom": 385.6875,
+            "height": 72,
+            "left": 208,
+            "right": 304,
+            "top": 313.6875,
+            "width": 96,
+            "x": 208,
+            "y": 313.6875
+          },
+          "target": {
+            "bottom": 385.0625,
+            "height": 50.375,
+            "left": 16,
+            "right": 192,
+            "top": 334.6875,
+            "width": 176,
+            "x": 16,
+            "y": 334.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 50.375,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 297.6875,
+          "type": "image"
+        },
+        {
+          "bottom": 507.6875,
+          "error": "false",
+          "height": 105,
+          "preview": {
+            "bottom": 490.6875,
+            "height": 72,
+            "left": 208,
+            "right": 304,
+            "top": 418.6875,
+            "width": 96,
+            "x": 208,
+            "y": 418.6875
+          },
+          "target": {
+            "bottom": 490.0625,
+            "height": 50.375,
+            "left": 16,
+            "right": 192,
+            "top": 439.6875,
+            "width": 176,
+            "x": 16,
+            "y": 439.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 50.375,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 402.6875,
+          "type": "video"
+        },
+        {
+          "bottom": 605.6875,
+          "height": 98,
+          "target": {
+            "bottom": 588.6875,
+            "height": 44,
+            "left": 16,
+            "right": 304,
+            "top": 544.6875,
+            "width": 288,
+            "x": 16,
+            "y": 544.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 25.1875,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 507.6875,
+          "type": "audio"
+        },
+        {
+          "bottom": 724.6875,
+          "height": 119,
+          "target": {
+            "bottom": 686.6875,
+            "height": 44,
+            "left": 16,
+            "right": 304,
+            "top": 642.6875,
+            "width": 288,
+            "x": 16,
+            "y": 642.6875
+          },
+          "textLeft": 0,
+          "titleHeight": 25.1875,
+          "titleLineHeight": 25.2,
+          "titleSize": "18px",
+          "top": 605.6875,
+          "type": "blog"
+        }
+      ],
+      "scrollWidth": 320,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 320,
+      "screenshot": "mixed-zh-dark-320.png"
+    }
+  ],
+  "checks": [
+    "四类作品按发布时间连续排列",
+    "列表视频、音频不自动播放且时长来自资源",
+    "预览键盘焦点可见",
+    "视频详情默认暂停",
+    "视频详情可键盘播放",
+    "详情返回保留加载结果和阅读位置",
+    "类型筛选保留相同预览尺寸",
+    "筛选 End 键到音频",
+    "失败时两个预览窗口保持尺寸和详情入口",
+    "预览失败仍可进入原始作品详情",
+    "无浏览器运行异常",
+    "320×720 首屏完整显示第一条作品标题"
+  ],
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "accessibilityCounts": {
+    "inapplicable": 36,
+    "incomplete": 0,
+    "passes": 24,
+    "violations": 0
+  },
+  "firstFold": {
+    "viewport": [
+      320,
+      720
+    ],
+    "titleTop": 661.6875,
+    "titleBottom": 705.6875,
+    "screenshot": "homepage-fold-320.png"
+  },
+  "baseline": {
+    "commit": "0146b06",
+    "viewport": [
+      1440,
+      900
+    ],
+    "rowHeights": {
+      "blog": 155.5,
+      "image": 319.1875,
+      "video": 470
+    },
+    "source": "实施前方案审查时的浏览器实测及 before-desktop.png"
+  },
+  "review": {
+    "standard": "OwnWord 四项原则、绑定 Spectrum S2 与 frontend-design",
+    "result": "agent-reviewed; awaiting-user-visual-review",
+    "observations": [
+      "文字左边缘、右侧预览与分隔线在四类作品间保持连续；作品标题为视觉主体。",
+      "媒体尺寸约束形成稳定节奏；桌面图片及视频均为 153px 行高，手机均为 105px，音频不再单独占用图标行。",
+      "图片在预览窗口内保留完整比例，视频用静态画面与小播放标记；长标题截断及资源失败不改变媒体窗口。",
+      "逐一查看五份列表状态截图与手机首屏截图；中文深色列表 axe 为 0 violations、0 incomplete。"
+    ]
+  }
+}
