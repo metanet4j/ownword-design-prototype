@@ -3,7 +3,7 @@
 .page-content main { max-width: 1280px; padding-top: var(--s2-spacing-300); }
 .content-workspace { max-width: 920px; margin: auto; }
 .content-heading { display: flex; justify-content: space-between; align-items: center; gap: var(--s2-spacing-400); margin-bottom: var(--s2-spacing-300); }
-.content-heading h1, .content-gate h1 { font-family: var(--s2d-font-serif), "Songti SC", serif; font-size: var(--ownword-font-title); font-weight: 500; line-height: 1.2; margin: var(--s2-spacing-200) 0; letter-spacing: -.025em; }
+.content-heading h1, .content-gate h1 { font-family: var(--s2d-font-family); font-size: var(--ownword-font-title); font-weight: 600; line-height: 1.3; margin: var(--s2-spacing-200) 0; letter-spacing: -.025em; }
 .content-heading h1:lang(zh), .content-gate h1:lang(zh) { letter-spacing: 0; }
 .content-heading p:not(.eyebrow), .content-gate > p:not(.eyebrow) { color: var(--s2-gray-700); line-height: 1.7; }
 .content-author { display: flex; align-items: center; gap: var(--s2-spacing-200); padding: var(--s2-spacing-300) 0; border-top: 1px solid var(--s2d-border); }

@@ -1,0 +1,28 @@
+[
+  {
+    "firstWorkTop": 592.140625,
+    "loaded": [
+      "http://127.0.0.1:4314/vendor/styles.css?v=040-homepage",
+      "http://127.0.0.1:4314/vendor/runtime.js?v=040-homepage",
+      "http://127.0.0.1:4314/vendor/workspace.css?v=040-homepage",
+      "http://127.0.0.1:4314/vendor/fonts.css?v=030-quality-r23"
+    ],
+    "summaryHeight": 251.140625,
+    "tabFont": "17px",
+    "titleFont": "adobe-clean-spectrum-srf-vf, Georgia, serif",
+    "width": 1440
+  },
+  {
+    "firstWorkTop": 752.140625,
+    "loaded": [
+      "http://127.0.0.1:4314/vendor/styles.css?v=040-homepage",
+      "http://127.0.0.1:4314/vendor/runtime.js?v=040-homepage",
+      "http://127.0.0.1:4314/vendor/workspace.css?v=040-homepage",
+      "http://127.0.0.1:4314/vendor/fonts.css?v=030-quality-r23"
+    ],
+    "summaryHeight": 415.140625,
+    "tabFont": "17px",
+    "titleFont": "adobe-clean-spectrum-srf-vf, Georgia, serif",
+    "width": 320
+  }
+]

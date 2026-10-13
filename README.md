@@ -22,4 +22,4 @@
 
 图片、视频和音频实际工作。素材出处、许可与 SHA-256 在 `fixtures/homepage/sources.json`；原有字体按既有绑定加载并提供系统回退。生产实现应采用官方 S2 组件；本原型消费的是继承的轻量视觉运行时。
 
-当前界面采用常规字级和紧凑布局，公开主页的定向检查见 `evidence/homepage-v040/R01/verification.json`。全部主要页面及相关状态的布局检查为 `node verify-layout.mjs`，结果和截图在 `evidence/homepage-v040/R02/verification.json`；用 `OWNWORD_BROWSER_SESSION` 指定独立演练会话。当前成果等待用户视觉复核，资产保持 `needs-review`。
+当前页面以身份、作品和任务操作组织层级，设计依据见当前 PRD 第 4.2 节。最新定向验收运行 `node verify-experience.mjs`，截图、键盘和复制检查位于 `evidence/homepage-v040/R03/verification.json`。脚本使用独立 agent-browser 会话；可用 `OWNWORD_BROWSER_SESSION` 指定会话。既有功能检查入口继续适用，按本次变更选择范围。当前成果等待用户视觉复核，资产保持 `needs-review`。

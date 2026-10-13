@@ -186,7 +186,7 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
     <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button iconOnly variant="quiet" data-action="dismiss-toast" aria-label={t('close')} onClick={dismiss}><UiIcon name="Close"/></Button></div>
   </div>;
 }
-function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = ''}) {
+function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = '', compact = false}) {
   const [feedback, setFeedback] = React.useState('');
   const feedbackTimer = React.useRef(0), labelId=React.useId();
   const announce = value => {
@@ -200,9 +200,10 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, 
     try {if (failCopy) throw new Error('Simulated clipboard failure'); await navigator.clipboard.writeText(id); announce('copied');}
     catch {announce('copyFailed');}
   }
-  return <div role="group" aria-labelledby={labelId} className={'identifier '+className+(feedback==='copyFailed'?' copy-failed':'')}>
-    <div className="identifier-top"><div className="field-label-row"><span id={labelId} className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback) : ''}</span></div>
-    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={copyLabel==='artifactCopyFull'?t('copyField').replace('{field}',label):t(copyLabel)}>{t('copy')}</Button></div>
+  const copyName=copyLabel==='artifactCopyFull'?t('copyField').replace('{field}',label):t(copyLabel);
+  return <div role="group" aria-labelledby={labelId} className={'identifier '+className+(compact?' identifier-compact':'')+(feedback==='copyFailed'?' copy-failed':'')}>
+    <div className="identifier-top"><div className="field-label-row"><span id={labelId} className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(compact&&feedback==='copyFailed'?'copyManually':feedback) : ''}</span></div>
+    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={copyName} title={compact?copyName:undefined} iconOnly={compact} variant={compact?'quiet':'secondary'}>{compact?<UiIcon name={feedback==='copied'?'Checkmark':'Copy'}/>:t('copy')}</Button></div>
   </div>;
 }
 function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {

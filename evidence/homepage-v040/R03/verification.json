@@ -1,0 +1,486 @@
+{
+  "checkedAt": "2026-10-13T01:34:14.744Z",
+  "session": "ownword-r03-1791855238290",
+  "pages": [
+    {
+      "page": "homepage",
+      "firstWorkTop": 493.390625,
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "homepage-1440.png"
+    },
+    {
+      "page": "homepage",
+      "firstWorkTop": 653.6875,
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "homepage-320.png"
+    },
+    {
+      "page": "copy-failure",
+      "firstWorkTop": 714.578125,
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "copy-failure-320.png"
+    },
+    {
+      "page": "missing-profile",
+      "firstWorkTop": 557.6875,
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "missing-profile-320.png"
+    },
+    {
+      "page": "relationship-unavailable",
+      "firstWorkTop": 774.28125,
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "relationship-unavailable-320.png"
+    },
+    {
+      "page": "connections",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "connections-1440.png"
+    },
+    {
+      "page": "connections",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "connections-320.png"
+    },
+    {
+      "page": "connections-error",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "connections-error-320.png"
+    },
+    {
+      "page": "reader",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "reader-1440.png"
+    },
+    {
+      "page": "reader",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "reader-320.png"
+    },
+    {
+      "page": "versions",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "versions-1440.png"
+    },
+    {
+      "page": "versions",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "versions-320.png"
+    },
+    {
+      "page": "audio",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "audio-1440.png"
+    },
+    {
+      "page": "audio",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "audio-320.png"
+    },
+    {
+      "page": "relationship-review",
+      "firstWorkTop": 629.6875,
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "relationship-review-320.png"
+    },
+    {
+      "page": "my-identity",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "my-identity-1440.png"
+    },
+    {
+      "page": "my-identity",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "my-identity-320.png"
+    },
+    {
+      "page": "profile-edit",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "profile-edit-1440.png"
+    },
+    {
+      "page": "profile-edit",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "profile-edit-320.png"
+    },
+    {
+      "page": "my-content",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "my-content-1440.png"
+    },
+    {
+      "page": "my-content",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "my-content-320.png"
+    },
+    {
+      "page": "editor",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "editor-1440.png"
+    },
+    {
+      "page": "editor",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "editor-320.png"
+    },
+    {
+      "page": "artifacts",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "artifacts-1440.png"
+    },
+    {
+      "page": "artifacts",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "artifacts-320.png"
+    },
+    {
+      "page": "find-result",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "light",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "find-result-1440.png"
+    },
+    {
+      "page": "find-result",
+      "largeText": [],
+      "locale": "en",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "light",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "find-result-320.png"
+    },
+    {
+      "page": "homepage-zh-dark",
+      "firstWorkTop": 469.390625,
+      "largeText": [],
+      "locale": "zh-CN",
+      "outsideControls": [],
+      "scrollWidth": 1440,
+      "theme": "dark",
+      "viewport": [
+        1440,
+        720
+      ],
+      "screenshot": "homepage-zh-dark-1440.png"
+    },
+    {
+      "page": "homepage-zh-dark",
+      "firstWorkTop": 629.6875,
+      "largeText": [],
+      "locale": "zh-CN",
+      "outsideControls": [],
+      "scrollWidth": 320,
+      "theme": "dark",
+      "viewport": [
+        320,
+        720
+      ],
+      "screenshot": "homepage-zh-dark-320.png"
+    }
+  ],
+  "checks": [
+    {
+      "check": "320×720 首条作品标题完整出现",
+      "result": "passed"
+    },
+    {
+      "check": "五个筛选标签完整可见且操作区域至少 44px",
+      "result": "passed"
+    },
+    {
+      "check": "紧凑复制保留完整标识与成功反馈",
+      "result": "passed"
+    },
+    {
+      "check": "粘贴到查找框得到完整 BAP ID",
+      "result": "passed"
+    },
+    {
+      "check": "身份详情显示完整标识，焦点进入弹层",
+      "result": "passed"
+    },
+    {
+      "check": "弹层反向 Tab 保持焦点范围",
+      "result": "passed"
+    },
+    {
+      "check": "关闭详情焦点返回触发按钮",
+      "result": "passed"
+    },
+    {
+      "check": "End 选择音频并显示选中焦点",
+      "result": "passed"
+    },
+    {
+      "check": "复制失败时完整 BAP ID 可手动读取并有错误反馈",
+      "result": "passed"
+    },
+    {
+      "check": "未知关系人数保持未知而非零",
+      "result": "passed"
+    },
+    {
+      "check": "名单首个身份在手机首屏可见",
+      "result": "passed"
+    },
+    {
+      "check": "名单页可直接返回所属身份主页",
+      "result": "passed"
+    },
+    {
+      "check": "名单读取失败保留已加载行和上次核实信息",
+      "result": "passed"
+    },
+    {
+      "check": "音频控件可实际播放",
+      "result": "passed"
+    },
+    {
+      "check": "当前深色中文主页 axe WCAG A/AA 无违规",
+      "result": "passed"
+    },
+    {
+      "check": "本轮会话无浏览器运行异常",
+      "result": "passed"
+    }
+  ],
+  "baseline": [
+    {
+      "firstWorkTop": 592.140625,
+      "loaded": [
+        "http://127.0.0.1:4314/vendor/styles.css?v=040-homepage",
+        "http://127.0.0.1:4314/vendor/runtime.js?v=040-homepage",
+        "http://127.0.0.1:4314/vendor/workspace.css?v=040-homepage",
+        "http://127.0.0.1:4314/vendor/fonts.css?v=030-quality-r23"
+      ],
+      "summaryHeight": 251.140625,
+      "tabFont": "17px",
+      "titleFont": "adobe-clean-spectrum-srf-vf, Georgia, serif",
+      "width": 1440
+    },
+    {
+      "firstWorkTop": 752.140625,
+      "loaded": [
+        "http://127.0.0.1:4314/vendor/styles.css?v=040-homepage",
+        "http://127.0.0.1:4314/vendor/runtime.js?v=040-homepage",
+        "http://127.0.0.1:4314/vendor/workspace.css?v=040-homepage",
+        "http://127.0.0.1:4314/vendor/fonts.css?v=030-quality-r23"
+      ],
+      "summaryHeight": 415.140625,
+      "tabFont": "17px",
+      "titleFont": "adobe-clean-spectrum-srf-vf, Georgia, serif",
+      "width": 320
+    }
+  ],
+  "scope": "R03 本次影响页面；不重跑全部业务 BDD"
+}
