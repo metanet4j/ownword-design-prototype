@@ -15,7 +15,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-10-13T12:55:20.262Z",
+  "updatedAt": "2026-10-13T13:24:08.098Z",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -218,6 +218,19 @@
         {
           "path": "visual-review-v8.html",
           "createdAt": "2026-10-13T12:55:20.231Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
+    },
+    "官方组件改造版 · 整站验收总览": {
+      "versions": [
+        {
+          "path": "acceptance-review.html",
+          "createdAt": "2026-10-13T13:24:08.098Z",
           "status": "needs-review",
           "viewport": {
             "width": 1440,

@@ -1,6 +1,6 @@
 {
-  "session": "ownword-security-1791893052403",
-  "checkedAt": "2026-10-13T12:04:12.403Z",
+  "session": "ownword-security-1791896332298",
+  "checkedAt": "2026-10-13T12:58:52.298Z",
   "scope": "身份安全与模拟轮换；真实点击／键盘／演练配置，DOM eval 只读。",
   "actions": [
     {
@@ -312,78 +312,7 @@
       "violations": []
     }
   ],
-  "errors": [
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 308,
-      "line": 55,
-      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
-      "url": null
-    },
-    {
-      "column": 231,
-      "line": 36,
-      "text": "Uncaught (in promise) Error: Network request failed",
-      "url": null
-    }
-  ],
+  "errors": [],
   "warnings": [],
-  "result": "needs-fix",
-  "error": "[{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":231,\"line\":36,\"text\":\"Uncaught (in promise) Error: Network request failed\",\"url\":null}]\n\n9 !== 0\n",
-  "behaviorResult": "passed",
-  "validation": {
-    "behaviorChecks": 26,
-    "a11yAudits": 18,
-    "a11yViolations": 0,
-    "browserErrors": 9,
-    "errorsWithTypekitUrl": 8,
-    "genericNetworkErrors": 1,
-    "fontFaceCurrent": "adobe-clean-han-simplified-c: normal / 500 / 700 / 900 loaded after network idle"
-  },
-  "knownLimitations": [
-    "整体运行仍为 needs-fix：8 条错误明确指向 Typekit 字体子集；1 条通用 Network request failed 与 Typekit XHR helper 文案相同，但缺少精确错误 URL。",
-    "所有未完成或失败网络请求均属于 use.typekit.net 或 p.typekit.net，原始网络记录保留。不能据此把历史字体错误宣称为已修复。",
-    "签名密钥只以原型内存中的代次和历史模拟，没有真实密钥、交易或费用。"
-  ]
+  "result": "passed"
 }
