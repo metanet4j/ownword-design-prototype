@@ -1,0 +1,4074 @@
+[
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/html",
+    "requestId": "26C77CF29AE85F33D1E7740EE77E1649",
+    "resourceType": "Document",
+    "responseHeaders": {
+      "Content-Length": "1203",
+      "Content-type": "text/html",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "http://127.0.0.1:4315/?security=1791893053035"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/?security=1791893053035",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.2",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "124526",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "http://127.0.0.1:4315/vendor/styles.css"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/?security=1791893053035",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.3",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "133688",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "http://127.0.0.1:4315/vendor/runtime.css"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/?security=1791893053035",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.4",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "201",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "http://127.0.0.1:4315/brand/ownword-mark.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/?security=1791893053035",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.5",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "Content-Length": "1085725",
+      "Content-type": "text/javascript",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "http://127.0.0.1:4315/vendor/runtime.js"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.10",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f6f",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "482528",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"097888762190f39c9806e8e385ef6b1b42be392d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.13",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f73",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "167540",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"b3f436044f22e400a6ac82f2d0338f1a88af5563\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.19",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f75",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "127124",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"4c0c3621de65bf3bfad8c3077636d024a0d542bc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.55",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f74",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "67676",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"ad285bdd5d7a90b789a7533c20c98eaa20f19202\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/?security=1791893053035",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.61",
+    "resourceType": "Other",
+    "responseHeaders": {
+      "Content-Length": "196",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893054997,
+    "url": "http://127.0.0.1:4315/brand/ownword-small.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/vendor/styles.css",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.64",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "631",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:17 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893057420,
+    "url": "http://127.0.0.1:4315/_ds/react-spectrum-s2/assets/ui-icons/S2_ArrowSize400.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.69",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893068.10f7a151",
+      "cache-control": "public, max-age=600, stale-while-revalidate=604800",
+      "content-encoding": "gzip",
+      "content-length": "371673",
+      "content-type": "text/javascript;charset=utf-8",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:28 GMT",
+      "server": "nginx",
+      "strict-transport-security": "max-age=31536000; includeSubDomains;",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893067987,
+    "url": "https://use.typekit.net/qwy0qqd.js"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/gif",
+    "requestId": "632584.70",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "accept-ranges": "bytes",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=604800",
+      "content-length": "35",
+      "content-type": "image/gif",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "etag": "\"65351a94-23\"",
+      "last-modified": "Sun, 22 Oct 2023 12:50:28 GMT",
+      "server": "nginx"
+    },
+    "status": 200,
+    "timestamp": 1791893069452,
+    "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791893069385"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.71",
+    "resourceType": "XHR",
+    "timestamp": 1791893069452,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.520.601.630.1182.1194.1202.1234.1235.1241.1269.1272.1280.1355.1418.1424.1426.1432.1434.1452.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.72",
+    "resourceType": "XHR",
+    "timestamp": 1791893069452,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.520.601.630.1182.1194.1202.1234.1235.1241.1269.1272.1280.1355.1418.1424.1426.1432.1434.1452.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.73",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893070.10f7ab7c",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "etag": "W/\"a154d40e412ff7a48a706c20c006b7d7f9d3ae4a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893069452,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.520.601.630.1182.1194.1202.1234.1235.1241.1269.1272.1280.1355.1418.1424.1426.1432.1434.1452.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.74",
+    "resourceType": "XHR",
+    "timestamp": 1791893069452,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.520.601.630.1182.1194.1202.1234.1235.1241.1269.1272.1280.1355.1418.1424.1426.1432.1434.1452.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/html",
+    "requestId": "497E234D25C4CCD8EE0EC9A35323F772",
+    "resourceType": "Document",
+    "responseHeaders": {
+      "Content-Length": "1203",
+      "Content-type": "text/html",
+      "Date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "http://127.0.0.1:4315/?security=1791893070751"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "If-Modified-Since": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Referer": "http://127.0.0.1:4315/?security=1791893070751",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.76",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 304,
+    "timestamp": 1791893070925,
+    "url": "http://127.0.0.1:4315/vendor/styles.css"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "If-Modified-Since": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Referer": "http://127.0.0.1:4315/?security=1791893070751",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.77",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 304,
+    "timestamp": 1791893070925,
+    "url": "http://127.0.0.1:4315/vendor/runtime.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893070751"
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.78",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "201",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "http://127.0.0.1:4315/brand/ownword-mark.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "If-Modified-Since": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/?security=1791893070751",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.79",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "Date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 304,
+    "timestamp": 1791893070925,
+    "url": "http://127.0.0.1:4315/vendor/runtime.js"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.83",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f6f",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "482528",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"097888762190f39c9806e8e385ef6b1b42be392d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.86",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f73",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "167540",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"b3f436044f22e400a6ac82f2d0338f1a88af5563\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.92",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f75",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "127124",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"4c0c3621de65bf3bfad8c3077636d024a0d542bc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.128",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f74",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "67676",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"ad285bdd5d7a90b789a7533c20c98eaa20f19202\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.133",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893068.10f7a151",
+      "cache-control": "public, max-age=600, stale-while-revalidate=604800",
+      "content-encoding": "gzip",
+      "content-length": "371673",
+      "content-type": "text/javascript;charset=utf-8",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:28 GMT",
+      "server": "nginx",
+      "strict-transport-security": "max-age=31536000; includeSubDomains;",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/qwy0qqd.js"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/gif",
+    "requestId": "632584.135",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "accept-ranges": "bytes",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=604800",
+      "content-length": "35",
+      "content-type": "image/gif",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:31 GMT",
+      "etag": "\"65351a94-23\"",
+      "last-modified": "Sun, 22 Oct 2023 12:50:28 GMT",
+      "server": "nginx"
+    },
+    "status": 200,
+    "timestamp": 1791893070925,
+    "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791893070902"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.136",
+    "resourceType": "XHR",
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.137",
+    "resourceType": "XHR",
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.138",
+    "resourceType": "XHR",
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.139",
+    "resourceType": "XHR",
+    "timestamp": 1791893070925,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/"
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.142",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f6f",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "482528",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"097888762190f39c9806e8e385ef6b1b42be392d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893072061,
+    "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.143",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "631",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:17 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893073561,
+    "url": "http://127.0.0.1:4315/_ds/react-spectrum-s2/assets/ui-icons/S2_ArrowSize400.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/html",
+    "requestId": "96CB694E99F41DD98FD9C182EF2A7C19",
+    "resourceType": "Document",
+    "responseHeaders": {
+      "Content-Length": "1203",
+      "Content-type": "text/html",
+      "Date": "Tue, 13 Oct 2026 12:04:47 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "http://127.0.0.1:4315/?security=1791893087274"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893087274"
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.149",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "124526",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "http://127.0.0.1:4315/vendor/styles.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893087274"
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.150",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "133688",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "http://127.0.0.1:4315/vendor/runtime.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893087274"
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.151",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "201",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "http://127.0.0.1:4315/brand/ownword-mark.svg"
+  },
+  {
+    "headers": {
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/?security=1791893087274"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.152",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "Content-Length": "1085725",
+      "Content-type": "text/javascript",
+      "Date": "Tue, 13 Oct 2026 12:04:30 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "http://127.0.0.1:4315/vendor/runtime.js"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.157",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f6f",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "482528",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"097888762190f39c9806e8e385ef6b1b42be392d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.160",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f73",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "167540",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"b3f436044f22e400a6ac82f2d0338f1a88af5563\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.166",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f75",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "127124",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"4c0c3621de65bf3bfad8c3077636d024a0d542bc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.202",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f74",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "67676",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"ad285bdd5d7a90b789a7533c20c98eaa20f19202\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.206",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893068.10f7a151",
+      "cache-control": "public, max-age=600, stale-while-revalidate=604800",
+      "content-encoding": "gzip",
+      "content-length": "371673",
+      "content-type": "text/javascript;charset=utf-8",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:28 GMT",
+      "server": "nginx",
+      "strict-transport-security": "max-age=31536000; includeSubDomains;",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/qwy0qqd.js"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/gif",
+    "requestId": "632584.208",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "accept-ranges": "bytes",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=604800",
+      "content-length": "35",
+      "content-type": "image/gif",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "\"65351a94-23\"",
+      "last-modified": "Sun, 22 Oct 2023 12:50:28 GMT",
+      "server": "nginx"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791893087406"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.209",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f44",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1443838",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"995a06ca1b95cd23154f0a66ff5462db584ba874\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.210",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f45",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1406903",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"98b11f725b24ec961bb4f1f4052761dbb21651ba\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.211",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f47",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1441272",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"e84db4f30d00a78fc9de82185147e551578cf55d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893087432,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.212",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f46",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1399216",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"40d288aa15eedb1db3d615d1a944860e2a07bcb3\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893087433,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.215",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "631",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:17 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893088470,
+    "url": "http://127.0.0.1:4315/_ds/react-spectrum-s2/assets/ui-icons/S2_ArrowSize400.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.216",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f827be",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "304057",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"fbef92e37732e236e483e16e870e1a22a36b286a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893089068,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.217",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f82b79",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "285322",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"07da4ece9e0b31050016097cb03171d7b4ff43dc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893089614,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.218",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82d61",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "286301",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"29c990729fe28dd9ddf0b9f5744870552ad3b462\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893089891,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.219",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82df0",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "291296",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"5747a8534f5ec6f10c6a65fc036bf80f54d8d5d4\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893089999,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.220",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82e39",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"4498be3bc1bd648179c04dc9efc62d5dace97070\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893089999,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1241.1246.1258.1268.1269.1274.1278.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.221",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82ea3",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"6f8bad1c205b3d7a1bb1f66fa1157e255dfad680\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893090045,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1241.1246.1258.1268.1269.1274.1278.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.224",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f830b1",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:51 GMT",
+      "etag": "W/\"bb744c2a3924c3b0086f19b44a7dbe5fb5cd268c\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893090321,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1241.1246.1258.1268.1269.1274.1278.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.225",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f83191",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:51 GMT",
+      "etag": "W/\"d671f4e560f92b4b84baca9a2efe652de35d2f35\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893090518,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1241.1246.1258.1268.1269.1274.1278.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/html",
+    "requestId": "C6CE6000F56A17DD36AE112D1239024A",
+    "resourceType": "Document",
+    "responseHeaders": {
+      "Content-Length": "1203",
+      "Content-type": "text/html",
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893092859,
+    "url": "http://127.0.0.1:4315/?security=1791893092765"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "If-Modified-Since": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Referer": "http://127.0.0.1:4315/?security=1791893092765",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.227",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 304,
+    "timestamp": 1791893092859,
+    "url": "http://127.0.0.1:4315/vendor/styles.css"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "If-Modified-Since": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Referer": "http://127.0.0.1:4315/?security=1791893092765",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.228",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 304,
+    "timestamp": 1791893092859,
+    "url": "http://127.0.0.1:4315/vendor/runtime.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893092765"
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.229",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "201",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893092859,
+    "url": "http://127.0.0.1:4315/brand/ownword-mark.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "If-Modified-Since": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/?security=1791893092765",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.230",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 304,
+    "timestamp": 1791893092859,
+    "url": "http://127.0.0.1:4315/vendor/runtime.js"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.234",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f6f",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "482528",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"097888762190f39c9806e8e385ef6b1b42be392d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893092859,
+    "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.237",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f73",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "167540",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"b3f436044f22e400a6ac82f2d0338f1a88af5563\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893092859,
+    "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.243",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f75",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "127124",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"4c0c3621de65bf3bfad8c3077636d024a0d542bc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893092859,
+    "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.279",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f74",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "67676",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"ad285bdd5d7a90b789a7533c20c98eaa20f19202\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893092859,
+    "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.284",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893068.10f7a151",
+      "cache-control": "public, max-age=600, stale-while-revalidate=604800",
+      "content-encoding": "gzip",
+      "content-length": "371673",
+      "content-type": "text/javascript;charset=utf-8",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:28 GMT",
+      "server": "nginx",
+      "strict-transport-security": "max-age=31536000; includeSubDomains;",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893092859,
+    "url": "https://use.typekit.net/qwy0qqd.js"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "requestId": "632584.286",
+    "resourceType": "XHR",
+    "timestamp": 1791893092939,
+    "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791893092907"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.287",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f44",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1443838",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"995a06ca1b95cd23154f0a66ff5462db584ba874\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893092939,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.288",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f45",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1406903",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"98b11f725b24ec961bb4f1f4052761dbb21651ba\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893092939,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.289",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f47",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1441272",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"e84db4f30d00a78fc9de82185147e551578cf55d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893092939,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.290",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f46",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1399216",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"40d288aa15eedb1db3d615d1a944860e2a07bcb3\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893092939,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.291",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f827be",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "304057",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"fbef92e37732e236e483e16e870e1a22a36b286a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093200,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.292",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f82b79",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "285322",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"07da4ece9e0b31050016097cb03171d7b4ff43dc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093200,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.293",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82df0",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "291296",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"5747a8534f5ec6f10c6a65fc036bf80f54d8d5d4\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093207,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.294",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82d61",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "286301",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"29c990729fe28dd9ddf0b9f5744870552ad3b462\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093567,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.297",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe14c",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "240158",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"c241ecee788238ebe0122fc79899c9d9e1c05c25\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093567,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.298",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe165",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"d9020ebe81c528f27d37734af0f445fcf751d2ae\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093567,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.299",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe166",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "228043",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"940db4761cc24bded65a5466e1cea1ec55e03e0a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093568,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.300",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe164",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "223004",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"e90efdb05221047f6f45366d7593039f0bedd77d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893093568,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.301",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "631",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:17 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893094463,
+    "url": "http://127.0.0.1:4315/_ds/react-spectrum-s2/assets/ui-icons/S2_ArrowSize400.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.302",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe7a1",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:55 GMT",
+      "etag": "W/\"37d34f8ba45bd355ef4d099d73e47fa8ac61b74f\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893094782,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.303",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893095.16afe94b",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:55 GMT",
+      "etag": "W/\"796e048f6d45466c05dca940b449a51547610621\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893094983,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.306",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893095.16afeb1e",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:56 GMT",
+      "etag": "W/\"5e055a2d1dc89c46d60f7980f57a1ee1dbe426c8\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893095116,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.307",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893095.16afeb40",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:56 GMT",
+      "etag": "W/\"ea191594f11f3ce2536c203f8c0497548bc4615c\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893095163,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.341.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1350.1351.1373.1385.1406.1410.1411.1423.1432.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/html",
+    "requestId": "5D44BDD290E2F39A6126C70A38913902",
+    "resourceType": "Document",
+    "responseHeaders": {
+      "Content-Length": "1203",
+      "Content-type": "text/html",
+      "Date": "Tue, 13 Oct 2026 12:04:58 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893098356,
+    "url": "http://127.0.0.1:4315/?security=1791893098210"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893098210"
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.311",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "124526",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893098356,
+    "url": "http://127.0.0.1:4315/vendor/styles.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893098210"
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.312",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "133688",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893098356,
+    "url": "http://127.0.0.1:4315/vendor/runtime.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893098210"
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.313",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "201",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893098356,
+    "url": "http://127.0.0.1:4315/brand/ownword-mark.svg"
+  },
+  {
+    "headers": {
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/?security=1791893098210"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.314",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "Content-Length": "1085725",
+      "Content-type": "text/javascript",
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893098356,
+    "url": "http://127.0.0.1:4315/vendor/runtime.js"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.319",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f6f",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "482528",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"097888762190f39c9806e8e385ef6b1b42be392d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893098356,
+    "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.322",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f73",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "167540",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"b3f436044f22e400a6ac82f2d0338f1a88af5563\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.328",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f75",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "127124",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"4c0c3621de65bf3bfad8c3077636d024a0d542bc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.364",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f74",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "67676",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"ad285bdd5d7a90b789a7533c20c98eaa20f19202\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.368",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893068.10f7a151",
+      "cache-control": "public, max-age=600, stale-while-revalidate=604800",
+      "content-encoding": "gzip",
+      "content-length": "371673",
+      "content-type": "text/javascript;charset=utf-8",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:28 GMT",
+      "server": "nginx",
+      "strict-transport-security": "max-age=31536000; includeSubDomains;",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/qwy0qqd.js"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/gif",
+    "requestId": "632584.370",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "accept-ranges": "bytes",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=604800",
+      "content-length": "35",
+      "content-type": "image/gif",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:58 GMT",
+      "etag": "\"65351a94-23\"",
+      "last-modified": "Sun, 22 Oct 2023 12:50:28 GMT",
+      "server": "nginx"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791893098340"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.371",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f44",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1443838",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"995a06ca1b95cd23154f0a66ff5462db584ba874\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.372",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f45",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1406903",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"98b11f725b24ec961bb4f1f4052761dbb21651ba\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.373",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f47",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1441272",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"e84db4f30d00a78fc9de82185147e551578cf55d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.374",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f46",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1399216",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"40d288aa15eedb1db3d615d1a944860e2a07bcb3\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098357,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.375",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f827be",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "304057",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"fbef92e37732e236e483e16e870e1a22a36b286a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098602,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.376",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f82b79",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "285322",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"07da4ece9e0b31050016097cb03171d7b4ff43dc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098602,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.377",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82df0",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "291296",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"5747a8534f5ec6f10c6a65fc036bf80f54d8d5d4\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098602,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.378",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82d61",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "286301",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"29c990729fe28dd9ddf0b9f5744870552ad3b462\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098602,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.381",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe14c",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "240158",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"c241ecee788238ebe0122fc79899c9d9e1c05c25\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098901,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.382",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe165",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"d9020ebe81c528f27d37734af0f445fcf751d2ae\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098901,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.383",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe166",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "228043",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"940db4761cc24bded65a5466e1cea1ec55e03e0a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098901,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.384",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe164",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "223004",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"e90efdb05221047f6f45366d7593039f0bedd77d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893098907,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.385",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a0",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:00 GMT",
+      "etag": "W/\"245d349b7b438f665f247e570e3996ea38798902\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893099744,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.386",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a1",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:00 GMT",
+      "etag": "W/\"bae4c36308be98e0a5b577ea49733e724fee9c40\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893099744,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.387",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a2",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "267679",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:59 GMT",
+      "etag": "W/\"d07c0d2c6ed7575c73e0cc237e5af944374c0e91\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893099744,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.388",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a5",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:00 GMT",
+      "etag": "W/\"4ca291ece14da036bc22ae5130744ecc6a4072e6\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893099744,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.389",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "631",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:17 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893099784,
+    "url": "http://127.0.0.1:4315/_ds/react-spectrum-s2/assets/ui-icons/S2_ArrowSize400.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.390",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893100.16b0143b",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:01 GMT",
+      "etag": "W/\"471fdab8d3fe534dc5e741da3e12c6e63f32d69e\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893100133,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.391",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893100.16b019aa",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:01 GMT",
+      "etag": "W/\"71b8f8f6ab526eb735a1ad1fb3529e59493601f3\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893100905,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.392",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893101.16b01a27",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:01 GMT",
+      "etag": "W/\"aeda22881bd9c5b8c18eb82173885615e5777711\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893100905,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.393",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893101.16b01a8e",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:01 GMT",
+      "etag": "W/\"926c8b7109d79bd3d493ff937ad1038ae8249655\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893100905,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=299.607.616.630.1191.1197.1208.1223.1229.1235.1246.1258.1268.1269.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "text/html",
+    "requestId": "0C5398DA51511140DBE9CDE9D1B4D10C",
+    "resourceType": "Document",
+    "responseHeaders": {
+      "Content-Length": "1203",
+      "Content-type": "text/html",
+      "Date": "Tue, 13 Oct 2026 12:05:03 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "http://127.0.0.1:4315/?security=1791893103087"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893103087"
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.395",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "124526",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "http://127.0.0.1:4315/vendor/styles.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893103087"
+    },
+    "method": "GET",
+    "mimeType": "text/css",
+    "requestId": "632584.396",
+    "resourceType": "Stylesheet",
+    "responseHeaders": {
+      "Content-Length": "133688",
+      "Content-type": "text/css",
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "http://127.0.0.1:4315/vendor/runtime.css"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/?security=1791893103087"
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.397",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "201",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:13 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "http://127.0.0.1:4315/brand/ownword-mark.svg"
+  },
+  {
+    "headers": {
+      "Origin": "http://127.0.0.1:4315",
+      "Referer": "http://127.0.0.1:4315/?security=1791893103087"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.398",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "Content-Length": "1085725",
+      "Content-type": "text/javascript",
+      "Date": "Tue, 13 Oct 2026 12:04:52 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 12:01:26 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "http://127.0.0.1:4315/vendor/runtime.js"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.403",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f6f",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "482528",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"097888762190f39c9806e8e385ef6b1b42be392d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.406",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f73",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "167540",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"b3f436044f22e400a6ac82f2d0338f1a88af5563\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.412",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f75",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "127124",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"4c0c3621de65bf3bfad8c3077636d024a0d542bc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "application/font-woff2",
+    "requestId": "632584.448",
+    "resourceType": "Font",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.97a33017.1791893054.30672f74",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "67676",
+      "content-type": "application/font-woff2",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:14 GMT",
+      "etag": "\"ad285bdd5d7a90b789a7533c20c98eaa20f19202\"",
+      "server": "nginx",
+      "timing-allow-origin": "*"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3"
+  },
+  {
+    "headers": {
+      "Referer": "http://127.0.0.1:4315/"
+    },
+    "method": "GET",
+    "mimeType": "text/javascript",
+    "requestId": "632584.452",
+    "resourceType": "Script",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893068.10f7a151",
+      "cache-control": "public, max-age=600, stale-while-revalidate=604800",
+      "content-encoding": "gzip",
+      "content-length": "371673",
+      "content-type": "text/javascript;charset=utf-8",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:28 GMT",
+      "server": "nginx",
+      "strict-transport-security": "max-age=31536000; includeSubDomains;",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/qwy0qqd.js"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "image/gif",
+    "requestId": "632584.454",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "accept-ranges": "bytes",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=604800",
+      "content-length": "35",
+      "content-type": "image/gif",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:03 GMT",
+      "etag": "\"65351a94-23\"",
+      "last-modified": "Sun, 22 Oct 2023 12:50:28 GMT",
+      "server": "nginx"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791893103228"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.455",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f44",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1443838",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"995a06ca1b95cd23154f0a66ff5462db584ba874\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.456",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f45",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1406903",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"98b11f725b24ec961bb4f1f4052761dbb21651ba\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.457",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f47",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1441272",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"e84db4f30d00a78fc9de82185147e551578cf55d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "font/opentype",
+    "requestId": "632584.458",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893088.10f81f46",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "1399216",
+      "content-type": "font/opentype",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:48 GMT",
+      "etag": "W/\"40d288aa15eedb1db3d615d1a944860e2a07bcb3\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103255,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.459",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f827be",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "304057",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"fbef92e37732e236e483e16e870e1a22a36b286a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103531,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.460",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893089.10f82b79",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "285322",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:49 GMT",
+      "etag": "W/\"07da4ece9e0b31050016097cb03171d7b4ff43dc\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103531,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.461",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82df0",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "291296",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"5747a8534f5ec6f10c6a65fc036bf80f54d8d5d4\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103531,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.462",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.94a33017.1791893090.10f82d61",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "286301",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:50 GMT",
+      "etag": "W/\"29c990729fe28dd9ddf0b9f5744870552ad3b462\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103531,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1194.1195.1244.1272.1277.1343.1679&state=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.465",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe14c",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "240158",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"c241ecee788238ebe0122fc79899c9d9e1c05c25\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103763,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.466",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe165",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"d9020ebe81c528f27d37734af0f445fcf751d2ae\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103763,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.467",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe166",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "228043",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"940db4761cc24bded65a5466e1cea1ec55e03e0a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103763,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.468",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893094.16afe164",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "223004",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:54 GMT",
+      "etag": "W/\"e90efdb05221047f6f45366d7593039f0bedd77d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893103763,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1241.1278&state=31.295.597.601.629.635.639.708.1182.1194.1232.1244.1245.1247.1263.1277.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.469",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a0",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:00 GMT",
+      "etag": "W/\"245d349b7b438f665f247e570e3996ea38798902\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104621,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.470",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a1",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:00 GMT",
+      "etag": "W/\"bae4c36308be98e0a5b577ea49733e724fee9c40\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104621,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.471",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a2",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-length": "267679",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:04:59 GMT",
+      "etag": "W/\"d07c0d2c6ed7575c73e0cc237e5af944374c0e91\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104621,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.472",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893099.16b011a5",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:00 GMT",
+      "etag": "W/\"4ca291ece14da036bc22ae5130744ecc6a4072e6\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104621,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1350.1369.1432&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Referer": ""
+    },
+    "method": "GET",
+    "mimeType": "image/svg+xml",
+    "requestId": "632584.473",
+    "resourceType": "Image",
+    "responseHeaders": {
+      "Content-Length": "631",
+      "Content-type": "image/svg+xml",
+      "Date": "Tue, 13 Oct 2026 12:04:17 GMT",
+      "Last-Modified": "Tue, 13 Oct 2026 06:23:01 GMT",
+      "Server": "SimpleHTTP/0.6 Python/3.12.3"
+    },
+    "status": 200,
+    "timestamp": 1791893104856,
+    "url": "http://127.0.0.1:4315/_ds/react-spectrum-s2/assets/ui-icons/S2_ArrowSize400.svg"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.474",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893105.16b03736",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:05 GMT",
+      "etag": "W/\"98cdccfe0b6e2cc1919bb365d0ed7e9dab7c3465\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104860,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=630.1202.1235.1269&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.475",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893105.16b03739",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:05 GMT",
+      "etag": "W/\"44caeed90bef5ae2fff23d077671943807bfe474\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104860,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=630.1202.1235.1269&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.476",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893105.16b0373a",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:05 GMT",
+      "etag": "W/\"56321bfd7d54baec53829555ddf6ae115cca3924\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104860,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=630.1202.1235.1269&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.477",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893105.16b0373f",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:05 GMT",
+      "etag": "W/\"5aab0feeb7835fdbccdf21388a7bf5e0a63603fe\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893104860,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=630.1202.1235.1269&state=31.295.597.601.629.635.638.639.708.1182.1194.1232.1241.1244.1245.1247.1263.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.480",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893106.16b03e5a",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:06 GMT",
+      "etag": "W/\"ca8f1ce15022cfb4a61bf1dc1f05a291d0d417b0\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893106126,
+    "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=607.616.1191.1197.1199.1201.1208.1223.1229.1246.1258.1268.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.314.597.601.635.638.639.708.1182.1194.1202.1232.1235.1241.1244.1245.1247.1263.1269.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.481",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893106.16b03ed9",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:06 GMT",
+      "etag": "W/\"ba0ca0f631461b73493053240000fa64ffd0c69d\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893106126,
+    "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=607.616.1191.1197.1199.1201.1208.1223.1229.1246.1258.1268.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.314.597.601.635.638.639.708.1182.1194.1202.1232.1235.1241.1244.1245.1247.1263.1269.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.482",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893106.16b03f55",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:06 GMT",
+      "etag": "W/\"15b3300cf8a4296262b41dd5d105670309d4055e\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893106126,
+    "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=607.616.1191.1197.1199.1201.1208.1223.1229.1246.1258.1268.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.314.597.601.635.638.639.708.1182.1194.1202.1232.1235.1241.1244.1245.1247.1263.1269.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  },
+  {
+    "headers": {
+      "Accept-Language": "en-US,en;q=0.9",
+      "Referer": "http://127.0.0.1:4315/",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Linux\""
+    },
+    "method": "GET",
+    "mimeType": "application/x-typekit-augmentation",
+    "requestId": "632584.483",
+    "resourceType": "XHR",
+    "responseHeaders": {
+      "access-control-allow-origin": "*",
+      "akamai-grn": "0.8fa33017.1791893106.16b03fb9",
+      "cache-control": "public, max-age=31536000",
+      "content-encoding": "gzip",
+      "content-type": "application/x-typekit-augmentation",
+      "cross-origin-resource-policy": "cross-origin",
+      "date": "Tue, 13 Oct 2026 12:05:06 GMT",
+      "etag": "W/\"65a1f12441128d0eaf30446326a4a7d8f83e155a\"",
+      "server": "nginx",
+      "timing-allow-origin": "*",
+      "vary": "Accept-Encoding"
+    },
+    "status": 200,
+    "timestamp": 1791893106126,
+    "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=607.616.1191.1197.1199.1201.1208.1223.1229.1246.1258.1268.1274.1282.1298.1300.1306.1341.1351.1368.1370.1373.1385.1406.1410.1411.1423.1433.1453.1467&state=31.295.314.597.601.635.638.639.708.1182.1194.1202.1232.1235.1241.1244.1245.1247.1263.1269.1343.1350.1355.1367.1369.1375.1419.1424.1426.1432.1434.1452.1457.1475.1679&order=0"
+  }
+]

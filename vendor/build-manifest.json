@@ -13,11 +13,11 @@
     "visual-editor.js": "80cca750ea58443320a83425d5aeeab2ed03fafea6a879f4ac8e4fb30777aa1b",
     "_ds/react-spectrum-s2/tokens/page.css": "2616ec975232eff1f6c6820238bd3e4f85946c3735843e3b26aed0c47c9f5d83",
     "_ds/react-spectrum-s2/tokens/s2-tokens.css": "96d2c4d2884d375ccefb20cafe7f1d98b40c390440c42c82d15f33f366d021aa",
-    "model.js": "bd77d6adb0c645c2d9e95ea82edcf24d3822f6384a9a33311c972529c514372e",
+    "model.js": "947672d94d4ca6df756f7489d07bf91fe8e7f62c08f439a032b9894baed034f0",
     "content-model.js": "fd20215318732685c8b7a629b4ef20ff5e0546219b45aa71b4adbd699ea6d6e5",
     "artifact-model.js": "721751d33bdf504d8efdcbd2155afdacb8f14e56f5379aea0410ea083a986e7c",
     "homepage-model.js": "2b1ddb324bca421b8e6b1f54449d5c707bcedb76215e11b719b59a773a581133",
-    "copy.js": "248721263bc4e5c3704e58cb81267539da019b27530f766c7386e4222aaf290e",
+    "copy.js": "77cea12c56a399aa72bfff8570b3095e87a675c32b7cb31d345014bc644a5a7e",
     "components.jsx": "128ffa6b307d4cb09c427a77a1da136156ec9553597ff4e35da54e0cfdf239eb",
     "content-editor.jsx": "33c8e9cbdfd449a88b04ed837169393bd2c6611c02f19d7c45a07dc7652c0cd5",
     "content-publication.jsx": "2e669abe1bb91e9271e62db8da02e8dda5f2fc3ef95f18d031ab750bc1a4425d",
@@ -32,10 +32,10 @@
     "artifact.jsx": "a6b3f8201834af7bb64f35cdd2bebceee77039f6d6a874a719dbe7e56b99808d",
     "welcome.jsx": "4215260664e55a0eb766b7f7984ab2f4e631c50325b5b30e7dc73657635ed202",
     "homepage.jsx": "b53bff927a926851fedc69cb32e035915017e2ef5cd5a84836a1022b55c25763",
-    "app.jsx": "47dc26f56f6db8984997527a065700b0055cf129d2bd57126497d1f751592704",
+    "app.jsx": "979158ac0d7ebe1e093199999f0ed5bef5e281e97e64ad29c6004194a48c6adf",
     "_ds/react-spectrum-s2/tokens/semantic.css": "dc79eb95039e3f091bcbf36289458b2b736a9d153d0551edf2d5b9a13153833f",
     "ownword-tokens.css": "b89fc63f133174f3d0c1f8b71df51855e6ba22e6a16e392c0f2a6dff5f3a50c5",
-    "app.css": "43d31f4ece7fc2c27bb348b1e4b5d647a4d0c0913d241df61fc364cfd2e1700e",
+    "app.css": "05c6b62e8d363c1e433c464fca13172799643ab02da63fa0135511374b11f854",
     "content.css": "83b285b114e1cf4836b5524dd7c3bb09367d91b758c671badaae14b9804dacb2",
     "artifact.css": "2641e7083d7b78f6e0151821b6e95dbf9b77585de21ca3d87056bf966b891440",
     "welcome.css": "614776d6f36dfb5ce683a09168fcafde2916a2f95df56ed248da838a1700f858",
@@ -43,12 +43,12 @@
     "official-layout.css": "592bdd5524aa7149237a6b300d14058bfd2cf7483a9f62603e64a7a4980b183f"
   },
   "outputs": {
-    "vendor/runtime.js": "5b7f3ba91406e0ce4ae9d588ad7ebc4d7d700247ad5ff27774f583353f026a0a",
+    "vendor/runtime.js": "24c41808b8c01c344dc3da3248cb46db9ff91c7700b7148a13cdb787717c5874",
     "vendor/runtime.css": "42b0d5e6cd49e52cebe4ca3e4ae6bbf3a04bb8ecd89540bb4c77b9fe759f595f",
-    "vendor/styles.css": "0b8370caaecce9b3f43cf1a12a82b8af05e1e16eecacb110e43815bf32f89da5",
+    "vendor/styles.css": "af9b7964bd971c3b3e8de1ce8f9d4c769bca22fd8ee40d5e2fcbc485f3b6513a",
     "vendor/markdown-tools.js": "a1a3cda7695a95e86bab077e30eec14fa7048f8097863c2535e4e91e892a7f22",
     "vendor/editor-tools.js": "c8c9a2b7a313b69a5638914f174c361e6c00cfceec26039d90d16ece11585009",
-    "index.html": "4540f3f0d61f9c8de28f9e2c21ae8712b98b2f49d2fab777e1178b65ebe4729c"
+    "index.html": "3c4636a06bb6f6aa013f4c7385c49475dd15c97558b010003fc8e6896d4cc0f7"
   },
   "officialInputs": [
     "node_modules/@react-spectrum/s2/dist/private/Provider.css",

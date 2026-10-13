@@ -1,0 +1,60 @@
+{
+  "session": "ownword-security-1791892729537",
+  "checkedAt": "2026-10-13T11:58:49.537Z",
+  "scope": "身份安全与模拟轮换；真实点击／键盘／演练配置，DOM eval 只读。",
+  "actions": [
+    {
+      "key": "desktop-entry-back",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-review-back-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-copy-full-id",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-security-1791892729537 --json eval navigator.clipboard.readText()"
+    }
+  ],
+  "screenshots": [
+    "after-identity-desktop",
+    "security-desktop",
+    "review-desktop"
+  ],
+  "audits": [
+    {
+      "name": "after-identity-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "security-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "result": "needs-fix",
+  "error": "Command failed: agent-browser --session ownword-security-1791892729537 --json eval navigator.clipboard.readText()",
+  "diagnosticReason": "页面剪贴板 read 权限被拒绝；复制写入成功，已由真实 Ctrl+V 确认完整值。改用真实粘贴验收。"
+}

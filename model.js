@@ -12,7 +12,7 @@
     {name: 'Maya Chen', type: 'Person', bio: 'Thinking in systems. Writing with intention.\nBuilding a more human internet.', image: ''},
     {name: 'North Studio', type: 'Organization', bio: 'An independent practice for ideas that endure.', image: ''}
   ];
-  function initial() { return {page: 'welcome', wallet: false, account: 0, published: false, transaction: null, profile: emptyProfile(), draft: emptyProfile(), modal: null, notice: '', error: '', busy: '', epoch: 0, incomplete: false}; }
+  function initial() { return {page: 'welcome', wallet: false, account: 0, published: false, transaction: null, profile: emptyProfile(), draft: emptyProfile(), modal: null, notice: '', error: '', busy: '', epoch: 0, incomplete: false, keyVersion: 1, keyHistory: []}; }
   // Count what the user perceives as characters: one ZWJ family emoji is one
   // character, not seven code points. Falls back to code points where the
   // platform lacks Intl.Segmenter.
@@ -28,6 +28,7 @@
     return {name: !p.name.trim() ? 'required' : countGraphemes(p.name) > 100 ? 'nameLong' : '', bio: countGraphemes(p.bio) > 1000 ? 'bioLong' : '', type: !['Person', 'Organization'].includes(p.type) ? 'typeRequired' : ''};
   }
   const hasProfileChanges = s => Object.keys(emptyProfile()).some(field => s.profile[field] !== s.draft[field]);
+  const rotationAllowed = s => s.wallet && s.published && !s.incomplete && !!ids[s.account];
   function reducer(s, a) {
     if (a.epoch !== undefined && a.epoch !== s.epoch) return s;
     switch (a.type) {
@@ -43,13 +44,22 @@
       case 'DRAFT': return {...s, draft: {...s.draft, [a.field]: a.value}, notice: '', error: ''};
       case 'REVIEW': return s.published && !hasProfileChanges(s) ? s : {...s, page: 'review', notice: '', error: ''};
       case 'EDIT': return {...s, page: 'edit', draft: {...s.profile}, notice: '', error: ''};
-      case 'AUTHORIZE': return a.operation === 'save' && !hasProfileChanges(s) ? s : {...s, modal: a.operation, error: '', notice: ''};
-      case 'CANCEL': return {...s, modal: null, busy: '', page: s.modal === 'save' ? (s.incomplete ? 'setup' : 'edit') : s.page, notice: s.modal === 'connect' ? 'connectCancelled' : s.modal === 'create' ? 'createCancelled' : 'saveCancelled'};
+      case 'ROTATION_REVIEW': return !rotationAllowed(s) || s.busy ? s : {...s, page: 'rotation-review', notice: '', error: ''};
+      case 'AUTHORIZE': return s.busy || a.operation === 'save' && !hasProfileChanges(s) || a.operation === 'rotate' && (!rotationAllowed(s) || s.page !== 'rotation-review') ? s : {...s, modal: a.operation, error: '', notice: ''};
+      case 'CANCEL': return !s.modal ? s : {...s, modal: null, busy: '', page: s.modal === 'save' ? (s.incomplete ? 'setup' : 'edit') : s.page, notice: s.modal === 'connect' ? 'connectCancelled' : s.modal === 'create' ? 'createCancelled' : s.modal === 'rotate' ? 'rotationCancelled' : 'saveCancelled'};
       case 'CONNECT_FAILED': return {...s, modal: null, error: 'connectFailed'};
-      case 'PROCESS': return {...s, modal: null, busy: a.operation, epoch: s.epoch + 1};
-      case 'RESULT': return a.fail ? {...s, busy: '', error: a.operation === 'create' ? 'createFailed' : 'saveFailed'} : {...s, busy: '', page: a.operation === 'create' ? 'ready' : 'identity', published: true, transaction: a.operation === 'create' ? {...transactions[s.account], blockHeight: null} : s.transaction, incomplete: false, profile: {...s.draft}, notice: a.operation === 'save' ? 'saved' : '', error: ''};
+      case 'PROCESS': return s.busy || s.modal !== a.operation || a.operation === 'rotate' && !rotationAllowed(s) ? s : {...s, modal: null, busy: a.operation, epoch: s.epoch + 1};
+      case 'RESULT': {
+        if(a.operation === 'rotate') {
+          if(s.busy !== 'rotate' || !rotationAllowed(s))return s;
+          if(a.fail)return {...s, busy: '', error: 'rotationFailed'};
+          // 只模拟签名路径代次与历史，不生成真实密钥或把旧交易改成新签名。
+          return {...s, busy: '', page: s.page === 'rotation-review' ? 'rotation-complete' : s.page, keyVersion: s.keyVersion + 1, keyHistory: [...s.keyHistory, s.keyVersion], notice: s.page === 'rotation-review' ? '' : 'rotationCompleted', error: ''};
+        }
+        return a.fail ? {...s, busy: '', error: a.operation === 'create' ? 'createFailed' : 'saveFailed'} : {...s, busy: '', page: a.operation === 'create' ? 'ready' : 'identity', published: true, transaction: a.operation === 'create' ? {...transactions[s.account], blockHeight: null} : s.transaction, incomplete: false, profile: {...s.draft}, notice: a.operation === 'save' ? 'saved' : '', error: ''};
+      }
       case 'CLEAR_NOTICE': return s.notice === a.notice ? {...s, notice: ''} : s;
-      case 'GO': return {...s, page: a.page, notice: '', error: ''};
+      case 'GO': return ['security','rotation-review','rotation-complete'].includes(a.page) && !rotationAllowed(s) ? s : {...s, page: a.page, notice: '', error: ''};
       case 'DISCARD_ASK': return {...s, modal: 'discard', destination: a.page};
       case 'DISCARD': return s.destination === 'welcome' ? {...initial(), epoch: s.epoch + 1} : {...s, modal: null, draft: {...s.profile}, page: s.destination, error: '', notice: ''};
       case 'STAY': return {...s, modal: null};

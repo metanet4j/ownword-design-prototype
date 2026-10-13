@@ -1,0 +1,389 @@
+{
+  "session": "ownword-security-1791893052403",
+  "checkedAt": "2026-10-13T12:04:12.403Z",
+  "scope": "身份安全与模拟轮换；真实点击／键盘／演练配置，DOM eval 只读。",
+  "actions": [
+    {
+      "key": "desktop-entry-back",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-review-back-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-copy-full-id",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-authorization-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-authorization-escape",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-failure-retry",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-success-identity-invariants",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-en-light",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-en-dark",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-zh-light",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-zh-dark",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-entry-back",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-review-back-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-copy-full-id",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-authorization-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-authorization-escape",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-failure-retry",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-success-identity-invariants",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-en-light",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-en-dark",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-zh-light",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-zh-dark",
+      "result": "passed"
+    },
+    {
+      "key": "switch-confirm-rejects-old-operation",
+      "result": "passed"
+    },
+    {
+      "key": "switch-process-rejects-old-operation",
+      "result": "passed"
+    },
+    {
+      "key": "disconnect-confirm-rejects-old-operation",
+      "result": "passed"
+    },
+    {
+      "key": "disconnect-process-rejects-old-operation",
+      "result": "passed"
+    }
+  ],
+  "screenshots": [
+    "after-identity-desktop",
+    "security-desktop",
+    "review-desktop",
+    "authorization-desktop",
+    "processing-desktop",
+    "completed-desktop",
+    "review-desktop-en-light",
+    "review-desktop-en-dark",
+    "review-desktop-zh-light",
+    "review-desktop-zh-dark",
+    "after-identity-mobile",
+    "security-mobile",
+    "review-mobile",
+    "authorization-mobile",
+    "processing-mobile",
+    "completed-mobile",
+    "review-mobile-en-light",
+    "review-mobile-en-dark",
+    "review-mobile-zh-light",
+    "review-mobile-zh-dark"
+  ],
+  "audits": [
+    {
+      "name": "after-identity-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "security-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "authorization-desktop",
+      "counts": {
+        "inapplicable": 56,
+        "incomplete": 1,
+        "passes": 33,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "completed-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-en-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-en-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-zh-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-zh-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "after-identity-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "security-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "authorization-mobile",
+      "counts": {
+        "inapplicable": 55,
+        "incomplete": 1,
+        "passes": 34,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "completed-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-en-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-en-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-zh-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-zh-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "errors": [
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\"",
+      "url": null
+    },
+    {
+      "column": 231,
+      "line": 36,
+      "text": "Uncaught (in promise) Error: Network request failed",
+      "url": null
+    }
+  ],
+  "warnings": [],
+  "result": "needs-fix",
+  "error": "[{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":308,\"line\":55,\"text\":\"Uncaught (in promise) Error: Failed to fetch: \\\"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=31.295.601.629.639.708.1182.1196.1232.1245.1247.1263.1271.1355.1367.1375.1419.1424.1426.1434.1452.1457.1475&order=0\\\"\",\"url\":null},{\"column\":231,\"line\":36,\"text\":\"Uncaught (in promise) Error: Network request failed\",\"url\":null}]\n\n9 !== 0\n",
+  "behaviorResult": "passed",
+  "validation": {
+    "behaviorChecks": 26,
+    "a11yAudits": 18,
+    "a11yViolations": 0,
+    "browserErrors": 9,
+    "errorsWithTypekitUrl": 8,
+    "genericNetworkErrors": 1,
+    "fontFaceCurrent": "adobe-clean-han-simplified-c: normal / 500 / 700 / 900 loaded after network idle"
+  },
+  "knownLimitations": [
+    "整体运行仍为 needs-fix：8 条错误明确指向 Typekit 字体子集；1 条通用 Network request failed 与 Typekit XHR helper 文案相同，但缺少精确错误 URL。",
+    "所有未完成或失败网络请求均属于 use.typekit.net 或 p.typekit.net，原始网络记录保留。不能据此把历史字体错误宣称为已修复。",
+    "签名密钥只以原型内存中的代次和历史模拟，没有真实密钥、交易或费用。"
+  ]
+}

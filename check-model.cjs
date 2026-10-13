@@ -82,4 +82,37 @@ const latestIdentity = {bapId: ids[0], profile: {...fixtures[0], name: 'Updated 
 eq(require('./model.js').resolveIdentity(ids[0], latestIdentity), latestIdentity);
 eq(require('./model.js').resolveIdentity(ids[1], latestIdentity).profile, fixtures[1]);
 eq(require('./model.js').resolveIdentity('unknown', latestIdentity), null);
+// 轮换只更新当前签名代次；身份、资料、发布交易和旧签名历史分别保持。
+let rotation=step(step(connect('existing'),{type:'GO',page:'security'}),{type:'ROTATION_REVIEW'});
+const identityBefore=rotation;
+eq(rotation.page,'rotation-review');
+rotation=step(rotation,{type:'AUTHORIZE',operation:'rotate'});
+const rotationCancelled=step(rotation,{type:'CANCEL'});
+eq(rotationCancelled.notice,'rotationCancelled');eq(rotationCancelled.keyVersion,1);eq(rotationCancelled.profile,identityBefore.profile);
+rotation=step(rotation,{type:'PROCESS',operation:'rotate'});
+eq(step(rotation,{type:'PROCESS',operation:'rotate'}),rotation);
+eq(step(rotation,{type:'CANCEL'}),rotation);
+const rotationFailed=step(rotation,{type:'RESULT',operation:'rotate',fail:true,epoch:rotation.epoch});
+eq(rotationFailed.error,'rotationFailed');eq(rotationFailed.keyVersion,1);eq(rotationFailed.keyHistory,[]);
+let rotationDone=step(rotation,{type:'RESULT',operation:'rotate',epoch:rotation.epoch});
+eq(rotationDone.page,'rotation-complete');eq(rotationDone.keyVersion,2);eq(rotationDone.keyHistory,[1]);
+eq(ids[rotationDone.account],ids[identityBefore.account]);eq(rotationDone.profile,identityBefore.profile);eq(rotationDone.draft,identityBefore.draft);eq(rotationDone.transaction,identityBefore.transaction);
+eq(step(rotationDone,{type:'RESULT',operation:'rotate',epoch:rotation.epoch}),rotationDone);
+rotationDone=step(step(step(rotationDone,{type:'ROTATION_REVIEW'}),{type:'AUTHORIZE',operation:'rotate'}),{type:'PROCESS',operation:'rotate'});
+rotationDone=step(rotationDone,{type:'RESULT',operation:'rotate',epoch:rotationDone.epoch});
+eq(rotationDone.keyVersion,3);eq(rotationDone.keyHistory,[1,2]);eq(rotationDone.transaction,identityBefore.transaction);
+for(const action of ['SWITCH','DISCONNECT'])for(const old of [step(identityBefore,{type:'AUTHORIZE',operation:'rotate'}),rotation]){
+ const changed=step(old,{type:action});
+ eq(changed.modal,null);eq(changed.keyHistory,[]);
+ eq(step(changed,{type:'RESULT',operation:'rotate',epoch:old.epoch}),changed);
+ eq(step(changed,{type:'PROCESS',operation:'rotate'}),changed);
+}
+for(const denied of [initial(),connect('new'),connect('incomplete')]){
+ eq(step(denied,{type:'GO',page:'security'}),denied);
+ eq(step(denied,{type:'ROTATION_REVIEW'}),denied);
+ eq(step(denied,{type:'AUTHORIZE',operation:'rotate'}),denied);
+}
+const background=step(rotation,{type:'GO',page:'identity'});
+const backgroundDone=step(background,{type:'RESULT',operation:'rotate',epoch:background.epoch});
+eq(backgroundDone.page,'identity');eq(backgroundDone.notice,'rotationCompleted');eq(backgroundDone.keyVersion,2);
 console.log(`${checks} model assertions passed`);

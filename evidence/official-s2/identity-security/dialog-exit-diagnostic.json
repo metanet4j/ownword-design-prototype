@@ -1,0 +1,68 @@
+{
+  "session": "ownword-security-1791892890467",
+  "checkedAt": "2026-10-13T12:01:30.467Z",
+  "scope": "身份安全与模拟轮换；真实点击／键盘／演练配置，DOM eval 只读。",
+  "actions": [
+    {
+      "key": "desktop-entry-back",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-review-back-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-copy-full-id",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-authorization-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-authorization-escape",
+      "result": "failed",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'copy-bap'\n- 'rotation-authorize'\n"
+    }
+  ],
+  "screenshots": [
+    "after-identity-desktop",
+    "security-desktop",
+    "review-desktop"
+  ],
+  "audits": [
+    {
+      "name": "after-identity-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "security-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "result": "needs-fix",
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'copy-bap'\n- 'rotation-authorize'\n",
+  "diagnosticReason": "Tab 聚焦复制按钮打开了嵌套 Tooltip；第一次 Escape 只关闭 Tooltip。聚焦无嵌套提示的取消按钮后 Escape 正常取消授权并返回触发按钮。"
+}

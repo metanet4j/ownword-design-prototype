@@ -137,8 +137,8 @@ function App() {
     if (!state.wallet || accountEvent === 'none') return;
     const [action, phase] = accountEvent.split('-');
     const active = phase === 'confirm'
-      ? ['create', 'save'].includes(state.modal)
-      : ['create', 'save'].includes(state.busy);
+      ? ['create', 'save', 'rotate'].includes(state.modal)
+      : ['create', 'save', 'rotate'].includes(state.busy);
     if (!active) return;
     const epoch = state.epoch;
     const timer = setTimeout(() => {
@@ -175,10 +175,10 @@ function App() {
   const isFlow = ['setup', 'review', 'ready'].includes(state.page);
   const toastError = state.page !== 'resolve-error' ? state.error : '';
   const toastMessage = toastError || (storageError ? 'persistFailed' : state.notice);
-  const toastBody = toastError ? (toastError === 'connectFailed' ? 'connectFailedBody' : 'operationFailedBody')
+  const toastBody = toastError ? (toastError === 'connectFailed' ? 'connectFailedBody' : toastError === 'rotationFailed' ? 'rotationFailedBody' : 'operationFailedBody')
     : '';
   const retryError = toastError ? () => dispatch(toastError === 'connectFailed'
-    ? {type: 'CONNECT'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
+    ? {type: 'CONNECT'} : toastError === 'rotationFailed' ? {type:'ROTATION_REVIEW'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
   return <S2.Provider locale={locale==='zh'?'zh-CN':'en-US'} colorScheme={theme} background="base"><div className={`app page-${state.page}`}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
@@ -244,7 +244,7 @@ function App() {
       </section>}
       {state.page === 'ready' && <section className="center-state ready-state"><div className="ready-seal" aria-hidden="true"><UiIcon name="Checkmark"/></div>{heading('ready', 'readyBody')}<Identifier id={bapId} t={t} failCopy={failCopy} /><Button variant="accent" data-action="go-identity" onClick={() => dispatch({type: 'GO', page: 'identity'})}>{t('goIdentity')}</Button></section>}
       {state.page === 'identity' && <section className="identity-page">
-        <div className="identity-heading"><h1 className="task-title" tabIndex="-1">{t('myIdentity')}</h1><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div>
+        <div className="identity-heading"><h1 className="task-title" tabIndex="-1">{t('myIdentity')}</h1><div className="action-row"><Button variant="quiet" data-action="identity-security" onClick={()=>dispatch({type:'GO',page:'security'})}>{t('identitySecurity')}</Button><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div></div>
         <div className="identity-layout">
           <section className="identity-profile" aria-label={t('profileDetails')}>
             <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight variant="positive">{t('published')}</S2.StatusLight></div></div></div><Button variant="quiet" data-action="public" onClick={()=>openArtifacts('identity-view',bapId)}>{t('viewPublicIdentity')}</Button></div>
@@ -256,6 +256,7 @@ function App() {
           </section>
         </div>
       </section>}
+      {['security','rotation-review','rotation-complete'].includes(state.page) && <IdentitySecurity state={state} dispatch={dispatch} bapId={bapId} t={t} failCopy={failCopy}/>}
     </main>
     {toastMessage && <Toast key={toastMessage + ':' + state.epoch} message={toastMessage} body={toastBody} error={!!(toastError || storageError)} notice={!toastError && !storageError ? state.notice : undefined} storageError={!toastError && storageError} t={t} onRetry={retryError} onDismiss={() => {
       if (storageError && !toastError) setStorageError(false);
@@ -271,13 +272,24 @@ function App() {
       <HomepageSettings settings={homepageSettings} setSettings={setHomepageSettings} locale={locale}/>
       <ContentSettings settings={contentSettings} setSettings={setContentSettings} t={t} />
       <label className="check-row"><input type="checkbox" checked={failCopy} onChange={e => setFailCopy(e.target.checked)} />{t('failClipboard')}</label><div className="action-row">{state.wallet && <><Button onClick={resolveAgain}>{t('resolveAgain')}</Button><Button data-action="simulate-switch" onClick={() => switchAccount(true)}>{t('accountSwitch')}</Button><Button data-action="simulate-disconnect" onClick={() => disconnect(true)}>{t('disconnect')}</Button></>}<Button data-action="reset-session" onClick={resetSession}>{t('reset')}</Button></div></section>}
-    {state.modal && <Modal context={state.modal === 'discard' || (state.modal === 'connect' && scenario === 'missing') ? 'OWNWORD' : t('walletAuthorization')} closeLabel={t('close')} titleKey={state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle'} title={t(state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : 'saveTitle')} onCancel={() => dispatch({type: state.modal === 'discard' ? 'STAY' : 'CANCEL'})}>
+    {state.modal && <Modal context={state.modal === 'discard' || (state.modal === 'connect' && scenario === 'missing') ? 'OWNWORD' : t('walletAuthorization')} closeLabel={t('close')} titleKey={state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : state.modal === 'rotate' ? 'rotationAuthorize' : 'saveTitle'} title={t(state.modal === 'connect' ? (scenario === 'missing' ? 'missingTitle' : 'connectTitle') : state.modal === 'discard' ? 'discardTitle' : state.modal === 'create' ? 'createTitle' : state.modal === 'rotate' ? 'rotationAuthorize' : 'saveTitle')} onCancel={() => dispatch({type: state.modal === 'discard' ? 'STAY' : 'CANCEL'})}>
       {state.modal === 'discard' ? <><p>{t('discardBody')}</p><div className="action-row"><Button data-action="keep-editing" onClick={() => dispatch({type: 'STAY'})}>{t('keepEditing')}</Button><Button variant="negative" data-action="discard" onClick={() => dispatch({type: 'DISCARD'})}>{t('discard')}</Button></div></> : <>
-        <p>{t(state.modal === 'connect' ? scenario === 'missing' ? 'missingBody' : 'connectBody' : state.modal === 'create' ? 'createImpact' : 'saveImpact')}</p>
-        {state.modal !== 'connect' && <><div className="person-row compact"><Portrait profile={state.draft} /><div><span className="eyebrow">{t('currentIdentity')}</span><strong>{state.draft.name}</strong></div></div><Identifier id={bapId} t={t} failCopy={failCopy} /><p className="hint">{t('controlStatement')}</p></>}
+        <p>{t(state.modal === 'connect' ? scenario === 'missing' ? 'missingBody' : 'connectBody' : state.modal === 'create' ? 'createImpact' : state.modal === 'rotate' ? 'rotationImpact' : 'saveImpact')}</p>
+        {state.modal !== 'connect' && <><div className="person-row compact"><Portrait profile={state.modal === 'rotate' ? state.profile : state.draft} /><div><span className="eyebrow">{t('currentIdentity')}</span><strong>{state.modal === 'rotate' ? state.profile.name : state.draft.name}</strong></div></div><Identifier id={bapId} t={t} failCopy={failCopy} /><p className="hint">{t('controlStatement')}</p></>}
         <div className="action-row"><Button data-action="cancel" onClick={() => dispatch({type: 'CANCEL'})}>{t('cancel')}</Button><Button variant="accent" data-action="approve" onClick={() => state.modal === 'connect' ? confirmConnection() : approveOperation()}>{t(scenario === 'missing' && state.modal === 'connect' ? 'retry' : 'approve')}</Button></div>
       </>}
     </Modal>}
   </div></S2.Provider>;
+}
+function IdentitySecurity({state,dispatch,bapId,t,failCopy}) {
+  const review=state.page==='rotation-review',complete=state.page==='rotation-complete',rotating=state.busy==='rotate';
+  return <section className="identity-security" data-rotation-phase={rotating?'processing':complete?'completed':review?'review':'security'}>
+    <BackButton data-action="security-back" disabled={rotating} onClick={()=>dispatch({type:'GO',page:review?'security':'identity'})}>{t(review?'identitySecurity':'backIdentity')}</BackButton>
+    <h1 className="task-title" tabIndex="-1">{t(complete?'rotationCompleted':review?'rotationReview':'identitySecurity')}</h1>
+    <p className="security-intro">{t(complete?'rotationCompletedBody':'rotationBody')}</p>
+    <div className="security-context"><div className="person-row"><Portrait profile={state.profile}/><div><h2>{state.profile.name}</h2><span className="profile-type">{t(state.profile.type)}</span></div></div><Identifier compact id={bapId} target="rotation-bap" t={t} failCopy={failCopy}/></div>
+    <div className="security-impact"><h2>{t('rotationStableId')}</h2><p>{t('rotationStableProfile')}</p><p>{t('rotationHistory')}</p></div>
+    {rotating?<div className="processing" role="status"><LoadingMark small/><strong>{t('rotating')}</strong><p>{t('processingBody')}</p></div>:complete?<div className="form-footer"><S2.StatusLight variant="positive">{t('rotationCompleteStatus')}</S2.StatusLight><Button variant="accent" data-action="rotation-done" onClick={()=>dispatch({type:'GO',page:'identity'})}>{t('goIdentity')}</Button></div>:<div className="form-footer">{review?<Button data-action="rotation-cancel" onClick={()=>dispatch({type:'GO',page:'security'})}>{t('cancel')}</Button>:<span/>}<Button variant="accent" data-action={review?'rotation-authorize':'rotation-review'} onClick={()=>dispatch(review?{type:'AUTHORIZE',operation:'rotate'}:{type:'ROTATION_REVIEW'})}>{t('rotateKey')}</Button></div>}
+  </section>;
 }
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
