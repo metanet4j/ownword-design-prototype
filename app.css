@@ -133,7 +133,9 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .identifier-compact .copy-feedback { grid-column:1/-1; grid-row:2; }
 .identifier-compact .copy-feedback:empty { display:none; }
 .identifier-compact.copy-failed .identifier-value { grid-column:1/-1; grid-row:2; }
-.identifier-compact.copy-failed .identifier-value code { white-space:normal; overflow-wrap:anywhere; }
+.identifier.copy-failed .identifier-value code { white-space:normal; overflow-wrap:anywhere; overflow:visible; }
+.identifier.copy-failed:not(.identifier-compact) .identifier-top { flex-wrap:wrap; }
+.identifier.copy-failed:not(.identifier-compact) .copy-feedback { flex-basis:100%; }
 .identifier-compact.copy-failed .copy-feedback { grid-row:3; }
 
 .review-profile .identifier-value { align-items: flex-start; }

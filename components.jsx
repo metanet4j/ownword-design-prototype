@@ -203,7 +203,7 @@ function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, 
   }
   const copyName=copyLabel==='artifactCopyFull'?t('copyField').replace('{field}',label):t(copyLabel);
   return <div role="group" aria-labelledby={labelId} className={'identifier '+className+(compact?' identifier-compact':'')+(feedback==='copyFailed'?' copy-failed':'')}>
-    <div className="identifier-top"><div className="field-label-row"><span id={labelId} className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(compact&&feedback==='copyFailed'?'copyManually':feedback) : ''}</span></div>
+    <div className="identifier-top"><div className="field-label-row"><span id={labelId} className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback==='copyFailed'?'copyManually':feedback) : ''}</span></div>
     <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={copyName} title={compact?copyName:undefined} iconOnly={compact} variant={compact?'quiet':'secondary'}>{compact?<UiIcon name={feedback==='copied'?'Checkmark':'Copy'}/>:t('copy')}</Button></div>
   </div>;
 }

@@ -1,0 +1,147 @@
+{
+  "module": "R06",
+  "date": "2026-10-13",
+  "branch": "codex/prototype-v0.4.0-homepage",
+  "url": "http://127.0.0.1:4314/",
+  "method": "agent-browser 独立会话；真实点击及键盘操作，模拟身份和交易",
+  "pages": [
+    {
+      "name": "identity-desktop",
+      "headings": [
+        {
+          "size": 28,
+          "text": "My Identity"
+        },
+        {
+          "size": 28,
+          "text": "Maya Chen"
+        }
+      ],
+      "scrollWidth": 1440,
+      "width": 1440,
+      "screenshot": "identity-desktop.png"
+    },
+    {
+      "name": "identity-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "My Identity"
+        },
+        {
+          "size": 20,
+          "text": "Maya Chen"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "identity-mobile.png"
+    },
+    {
+      "name": "edit-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Edit profile"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "edit-mobile.png"
+    },
+    {
+      "name": "review-long-name",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Review identity"
+        },
+        {
+          "size": 20,
+          "text": "A very long identity name used to check the compact review layout"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "review-long-name.png"
+    },
+    {
+      "name": "review-actions",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Review identity"
+        },
+        {
+          "size": 20,
+          "text": "A very long identity name used to check the compact review layout"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "review-actions.png"
+    },
+    {
+      "name": "copy-failure-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "My Identity"
+        },
+        {
+          "size": 20,
+          "text": "Maya Chen"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "copy-failure-mobile.png"
+    }
+  ],
+  "checks": [
+    {
+      "name": "长名称在确认页完整保留且无裁切",
+      "passed": true
+    },
+    {
+      "name": "返回按钮键盘焦点可见，命中区域至少44px",
+      "passed": true
+    },
+    {
+      "name": "确认返回编辑保留输入",
+      "passed": true
+    },
+    {
+      "name": "复制失败给出手动操作，并完整展示标识",
+      "passed": true
+    },
+    {
+      "name": "公开身份入口仍进入个人主页",
+      "passed": true
+    }
+  ],
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "review": {
+    "basis": "OwnWord 设计指南、frontend-design、绑定 Spectrum S2 1.6.0 / Tokens 14.15.0",
+    "observed": "身份主次与长名称已正确继承；编辑和确认页返回仍为粗体旧按钮，普通标识复制失败缺少恢复指引。",
+    "change": "两处返回统一共用 BackButton；Identifier 失败统一手动复制提示和完整值换行。",
+    "result": "已查看桌面身份、手机身份、编辑、长名称确认、确认操作及复制失败截图；标题层级、表单内左对齐和完整值可读。",
+    "limit": "定向视觉与行为检查；未重跑全部业务 BDD、完整无障碍矩阵或生产钱包。"
+  },
+  "build": "npm run build 与 ./init.sh 通过"
+}
