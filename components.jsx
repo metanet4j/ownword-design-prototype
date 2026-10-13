@@ -187,24 +187,31 @@ function Toast({message, body, error, notice, storageError, t, onRetry, onDismis
     <div className="toast-actions">{onRetry && <Button onClick={onRetry}>{t('retry')}</Button>}<Button iconOnly variant="quiet" data-action="dismiss-toast" aria-label={t('close')} onClick={dismiss}><UiIcon name="Close"/></Button></div>
   </div>;
 }
-function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = '', compact = false}) {
-  const [feedback, setFeedback] = React.useState('');
-  const feedbackTimer = React.useRef(0), labelId=React.useId();
-  const announce = value => {
-    setFeedback(value);
-    clearTimeout(feedbackTimer.current);
-    // A confirmation should not outlive its moment; six seconds matches the notice cadence.
-    feedbackTimer.current = setTimeout(() => setFeedback(''), 6000);
-  };
-  React.useEffect(() => {setFeedback(''); return () => clearTimeout(feedbackTimer.current);}, [id]);
+// 复制入口共享同一种 ActionButton 和反馈周期，布局不改变操作类型。
+function CopyButton({label,feedback,t,...props}) {
+  return <Button iconOnly variant="quiet" className="copy-button" aria-label={label} title={feedback==='copied'?t('copied'):label} {...props}><UiIcon name={feedback==='copied'?'Checkmark':'Copy'}/></Button>;
+}
+function useCopyValue(value,failCopy) {
+  const [feedback,setFeedback]=React.useState(''),timer=React.useRef(0),epoch=React.useRef(0);
+  React.useEffect(()=>{setFeedback('');return()=>{epoch.current++;clearTimeout(timer.current);};},[value]);
   async function copy() {
-    try {if (failCopy) throw new Error('Simulated clipboard failure'); await navigator.clipboard.writeText(id); announce('copied');}
-    catch {announce('copyFailed');}
+    const request=++epoch.current;
+    clearTimeout(timer.current);
+    try {
+      if(failCopy)throw new Error('Simulated clipboard failure');
+      await navigator.clipboard.writeText(value);
+      if(request!==epoch.current)return;
+      setFeedback('copied');timer.current=setTimeout(()=>setFeedback(''),6000);
+    } catch {if(request===epoch.current)setFeedback('copyFailed');}
   }
+  return [feedback,copy];
+}
+function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = '', compact = false}) {
+  const [feedback,copy]=useCopyValue(id,failCopy),labelId=React.useId();
   const copyName=copyLabel==='artifactCopyFull'?t('copyField').replace('{field}',label):t(copyLabel);
   return <div role="group" aria-labelledby={labelId} className={'identifier '+className+(compact?' identifier-compact':'')+(feedback==='copyFailed'?' copy-failed':'')}>
     <div className="identifier-top"><div className="field-label-row"><span id={labelId} className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback==='copyFailed'?'copyManually':feedback) : ''}</span></div>
-    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><Button data-action={'copy-' + target} onClick={copy} aria-label={copyName} title={compact?copyName:undefined} iconOnly={compact} variant={compact?'quiet':'secondary'}>{compact?<UiIcon name={feedback==='copied'?'Checkmark':'Copy'}/>:t('copy')}</Button></div>
+    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><CopyButton data-action={'copy-' + target} onClick={copy} label={copyName} feedback={feedback} t={t}/></div>
   </div>;
 }
 function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {
@@ -275,7 +282,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
     </div>
   </div>;
 }
-Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Toast, Identifier, IdentityCard, useDismissable});
+Object.assign(window, {S2, BrandMark, LoadingMark, Button, Field, Portrait, Dome, Modal, Toast, CopyButton, useCopyValue, Identifier, IdentityCard, useDismissable});
 
 function IdentitySignatureProof({bapId,signer,signature='unverified',keyEpoch,t,failCopy}) {
   return <div className="identity-signature-proof" data-identity-signature={signature}><p>{t('artifactProof-'+signature)}</p><Identifier id={bapId} label={t('artifactOperationIdentity')} t={t} failCopy={failCopy}/>{signer&&<Identifier id={signer} label={t('artifactSigner')} copyLabel="artifactCopyFull" target="signer" t={t} failCopy={failCopy}/>}<p className="hint">{t(keyEpoch==='historical-key-at-creation'?'artifactHistoricalKey':'artifactEffectiveKey')}</p></div>;

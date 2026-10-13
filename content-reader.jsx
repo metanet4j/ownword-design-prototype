@@ -1,17 +1,14 @@
 function ContentReader({record,t,locale,identity,go,onExport,failCopy,records,drafts,onRevision,settings,operations,onAuthor,onBack,shareUrl,allowMedia=false,proofOverride,backLabel}) {
-  const [feedback,setFeedback]=React.useState('');
+  const link=shareUrl||location.origin+location.pathname+'#/read/'+encodeURIComponent(record?.id||'');
+  const [feedback,copyLink]=useCopyValue(link,failCopy);
   const paper=React.useRef(null), toc=useReaderContents(paper,record);
-  React.useEffect(()=>setFeedback(''),[record?.id]);
-  async function copyLink() {
-    try {if(failCopy)throw new Error('Simulated clipboard failure');await navigator.clipboard.writeText(shareUrl||location.origin+location.pathname+'#/read/'+encodeURIComponent(record.id));setFeedback('copied');} catch {setFeedback('copyFailed');}
-  }
   if (!record) return <section className="content-missing" data-content-screen="read"><p className="eyebrow">{t('readerPublic')}</p><h1 className="task-title" tabIndex="-1">{t('readerMissing')}</h1><p>{t('readerMissingBody')}</p><Button data-action="reader-sample" onClick={()=>go('read','first-words')}>{t('contentReadSample')}</Button></section>;
   const history=OwnwordContentModel.versions(records,record), latest=history[0];
   const revision=drafts.find(d=>d.baseContentId===record.id && d.authorBapId===identity?.bapId);
   const time=new Intl.DateTimeFormat(locale==='zh'?'zh-CN':'en-US',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(record.publishedAt));
   return <section className={'content-reader'+(toc.items.length ? ' has-toc' : '')} data-content-screen="read" data-record-id={record.id}>
-    <div className="reader-toolbar"><BackButton data-action="reader-back" onClick={onBack||(()=>returnFromPublic(()=>{if(identity)go('content');else location.hash='/find';}))}>{t(publicBackLabel(backLabel||(identity?'contentBack':'backFind')))}</BackButton><div><Button data-action="reader-copy-link" onClick={copyLink}>{t('readerCopyLink')}</Button><Button data-action="reader-export" onClick={()=>onExport(record)}>{t('markdownExport')}</Button></div></div>
-    {feedback && <p role="status" className="reader-feedback" data-reader-copy={feedback}>{t(feedback)}</p>}
+    <div className="reader-toolbar"><BackButton data-action="reader-back" onClick={onBack||(()=>returnFromPublic(()=>{if(identity)go('content');else location.hash='/find';}))}>{t(publicBackLabel(backLabel||(identity?'contentBack':'backFind')))}</BackButton><div><CopyButton data-action="reader-copy-link" onClick={copyLink} label={t('readerCopyLink')} feedback={feedback} t={t}/><Button data-action="reader-export" onClick={()=>onExport(record)}>{t('markdownExport')}</Button></div></div>
+    <div className="reader-copy-feedback"><p role="status" className="reader-feedback" data-reader-copy={feedback}>{feedback?t(feedback==='copyFailed'?'copyManually':feedback):''}</p>{feedback==='copyFailed'&&<code aria-label={t('readerCopyLink')}>{link}</code>}</div>
     <div className="reader-byline"><Button variant="quiet" className="reader-author-link" data-action="reader-author" aria-label={t('readerViewAuthor')+' · '+record.author.name} title={t('readerViewAuthor')} onClick={onAuthor||(()=>openPublicRoute('identity-view',record.authorBapId))}><Portrait profile={record.author}/><strong>{record.author.name}</strong><UiIcon name="ChevronRight"/></Button><span><time dateTime={record.publishedAt}>{time}</time><span aria-hidden="true"> · </span>{t('readerVersion')} {record.revisionNo}</span></div>
     <div className="reader-version-bar"><Button variant="quiet" data-action="reader-history" onClick={()=>go("history",record.id)}>{t("versionHistory")} · {history.length}</Button>{latest.id!==record.id ? <><span>{t("versionHistorical")}</span><Button data-action="reader-latest" onClick={()=>go("read",latest.id)}>{t("versionLatest")}</Button></> : identity?.bapId===record.authorBapId && <Button data-action="reader-revise" onClick={()=>onRevision(record)}>{t(revision ? "revisionContinue" : "revisionCreate")}</Button>}</div>
     <div className="reader-layout">

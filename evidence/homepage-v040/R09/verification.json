@@ -1,0 +1,865 @@
+{
+  "date": "2026-10-13",
+  "url": "http://127.0.0.1:4314/",
+  "branch": "codex/prototype-v0.4.0-homepage",
+  "pages": [
+    {
+      "name": "homepage-copy-desktop",
+      "width": 1440,
+      "file": "homepage-copy-desktop.png"
+    },
+    {
+      "name": "homepage-copy-mobile",
+      "width": 320,
+      "file": "homepage-copy-mobile.png"
+    },
+    {
+      "name": "identity-dialog-mobile",
+      "width": 320,
+      "file": "identity-dialog-mobile.png"
+    },
+    {
+      "name": "reader-copy-mobile",
+      "width": 320,
+      "file": "reader-copy-mobile.png"
+    },
+    {
+      "name": "reader-copy-failure",
+      "width": 320,
+      "file": "reader-copy-failure.png"
+    },
+    {
+      "name": "identity-copy-mobile",
+      "width": 320,
+      "file": "identity-copy-mobile.png"
+    },
+    {
+      "name": "identity-review-mobile",
+      "width": 320,
+      "file": "identity-review-mobile.png"
+    },
+    {
+      "name": "artifact-copy-mobile",
+      "width": 320,
+      "file": "artifact-copy-mobile.png"
+    },
+    {
+      "name": "artifact-proof-failure",
+      "width": 320,
+      "file": "artifact-proof-failure.png"
+    },
+    {
+      "name": "copy-zh-dark",
+      "width": 320,
+      "file": "copy-zh-dark.png"
+    }
+  ],
+  "checks": [
+    {
+      "name": "公开 BAP ID 键盘焦点可见",
+      "passed": true
+    },
+    {
+      "name": "公开 BAP ID 使用一致成功图标",
+      "passed": true
+    },
+    {
+      "name": "公开 BAP ID 实际粘贴值等于完整原值",
+      "passed": true
+    },
+    {
+      "name": "homepage-copy-desktop 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "homepage-copy-mobile 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "交易 ID 使用一致成功图标",
+      "passed": true
+    },
+    {
+      "name": "交易 ID 实际粘贴值等于完整原值",
+      "passed": true
+    },
+    {
+      "name": "identity-dialog-mobile 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "公开作品分享链接 键盘焦点可见",
+      "passed": true
+    },
+    {
+      "name": "公开作品分享链接 使用一致成功图标",
+      "passed": true
+    },
+    {
+      "name": "公开作品分享链接 实际粘贴值等于完整原值",
+      "passed": true
+    },
+    {
+      "name": "reader-copy-mobile 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "reader-copy-failure 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "阅读链接恢复文本完整换行、未被裁切",
+      "passed": true
+    },
+    {
+      "name": "链接失败时完整链接可手动复制",
+      "passed": true
+    },
+    {
+      "name": "失败恢复入口不会定时消失",
+      "passed": true
+    },
+    {
+      "name": "链接重试 使用一致成功图标",
+      "passed": true
+    },
+    {
+      "name": "链接重试 实际粘贴值等于完整原值",
+      "passed": true
+    },
+    {
+      "name": "成功后清除失败恢复文本",
+      "passed": true
+    },
+    {
+      "name": "我的身份 BAP ID 使用一致成功图标",
+      "passed": true
+    },
+    {
+      "name": "我的身份 BAP ID 实际粘贴值等于完整原值",
+      "passed": true
+    },
+    {
+      "name": "identity-copy-mobile 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "identity-review-mobile 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "数字编号 使用一致成功图标",
+      "passed": true
+    },
+    {
+      "name": "数字编号 实际粘贴值等于完整原值",
+      "passed": true
+    },
+    {
+      "name": "artifact-copy-mobile 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "完整 Inscription ID 使用一致成功图标",
+      "passed": true
+    },
+    {
+      "name": "完整 Inscription ID 实际粘贴值等于完整原值",
+      "passed": true
+    },
+    {
+      "name": "artifact-proof-failure 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "标识失败时完整值可见且不裁切",
+      "passed": true
+    },
+    {
+      "name": "copy-zh-dark 无页面横向溢出",
+      "passed": true
+    },
+    {
+      "name": "Space 可触发复制，失败状态及完整值保留",
+      "passed": true
+    }
+  ],
+  "buttons": [
+    {
+      "name": "公开主页紧凑标识",
+      "controls": [
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "name": "身份详情弹层 BAP ID、TxID 和 signer",
+      "controls": [
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-identity-proof-tx",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy publication TxID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-signer",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Transaction signer · address",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "name": "公开阅读工具栏",
+      "controls": [
+        {
+          "action": "reader-copy-link",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy link",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-signer",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Transaction signer · address",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-proof-tx",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy publication TxID",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "name": "我的身份普通标识",
+      "controls": [
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "name": "身份确认标识",
+      "controls": [
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "name": "Artifact 编号与关联身份",
+      "controls": [
+        {
+          "action": "copy-number",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy inscription number",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-associated",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-creator",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Creator · BAP ID",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "name": "Artifact 证明中的协议标识",
+      "controls": [
+        {
+          "action": "copy-number",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy inscription number",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-associated",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-inscription",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Inscription ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-ordinal",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Ordinal Number · satoshi position",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-origin",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Origin",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-outpoint",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Current Outpoint",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-artifact-link",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Permanent Artifact link",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-tx-0",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full TxID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-signer",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "Copy full Transaction signer · address",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    },
+    {
+      "name": "中文深色",
+      "controls": [
+        {
+          "action": "copy-number",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制铭文编号",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-associated",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-inscription",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整Inscription ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-ordinal",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整Ordinal Number · 聪的位置",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-origin",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整Origin",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-outpoint",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整Current Outpoint",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-artifact-link",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整Artifact 固定链接",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-tx-0",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整TxID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-bap",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整 BAP ID",
+          "padding": "0px",
+          "width": 44
+        },
+        {
+          "action": "copy-signer",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "2px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "999px",
+          "className": "s2d-button s2d-button-quiet copy-button icon-button",
+          "height": 44,
+          "iconToken": 24,
+          "iconWidth": 24,
+          "label": "复制完整交易签名者 · 地址",
+          "padding": "0px",
+          "width": 44
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "counts": {
+      "inapplicable": 38,
+      "incomplete": 0,
+      "passes": 22,
+      "violations": 0
+    },
+    "url": "http://127.0.0.1:4314/#/artifact/00000000000000000000000000000000000000000000000000000000000000a5_0"
+  },
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "interactionStates": {
+    "context": "中文深色 Artifact Inscription ID，模拟复制失败",
+    "hover": {
+      "ariaLabel": "复制完整Inscription ID",
+      "background": "rgba(0, 0, 0, 0)",
+      "borderRadius": "999px",
+      "outline": "rgb(219, 219, 219) none 3px",
+      "title": "复制完整Inscription ID",
+      "transform": "matrix(1, 0, 0, 1, 0, -1)"
+    },
+    "pressed": {
+      "ariaLabel": "复制完整Inscription ID",
+      "background": "rgba(0, 0, 0, 0)",
+      "borderRadius": "999px",
+      "outline": "rgb(219, 219, 219) none 3px",
+      "title": "复制完整Inscription ID",
+      "transform": "matrix(1, 0, 0, 1, 0, -0.976461)"
+    },
+    "focus": {
+      "ariaLabel": "复制完整Inscription ID",
+      "background": "rgba(0, 0, 0, 0)",
+      "borderRadius": "999px",
+      "outline": "rgb(64, 105, 253) solid 2px",
+      "title": "复制完整Inscription ID",
+      "transform": "matrix(1, 0, 0, 1, 0, -0.138922)"
+    }
+  },
+  "sourceAudit": {
+    "files": [
+      {
+        "file": "app.jsx",
+        "IdentifierCallsites": 4,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "artifact-components.jsx",
+        "IdentifierCallsites": 1,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "artifact-compose.jsx",
+        "IdentifierCallsites": 2,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "artifact-detail.jsx",
+        "IdentifierCallsites": 1,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "artifact-find.jsx",
+        "IdentifierCallsites": 1,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "artifact-operations.jsx",
+        "IdentifierCallsites": 7,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "artifact-transfer.jsx",
+        "IdentifierCallsites": 1,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "components.jsx",
+        "IdentifierCallsites": 4,
+        "CopyButtonCallsites": 1,
+        "clipboardWrites": 1
+      },
+      {
+        "file": "content-publication.jsx",
+        "IdentifierCallsites": 2,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "content-reader.jsx",
+        "IdentifierCallsites": 1,
+        "CopyButtonCallsites": 1,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "content.jsx",
+        "IdentifierCallsites": 1,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "homepage.jsx",
+        "IdentifierCallsites": 11,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      },
+      {
+        "file": "welcome.jsx",
+        "IdentifierCallsites": 1,
+        "CopyButtonCallsites": 0,
+        "clipboardWrites": 0
+      }
+    ],
+    "identifierCallsites": 37,
+    "clipboardWriteSites": 1,
+    "note": "37 个 Identifier 源码调用点与阅读工具栏经同一个 CopyButton 组合；动态列表实际实例数量不等于调用点数量。"
+  },
+  "method": {
+    "browser": "agent-browser，独立全新会话 ownword-v04-copy-final",
+    "clipboard": "实际点击/Enter 写入系统剪贴板，通过临时 textarea 与 Control+V 验证 BAP ID、TxID、分享链接、数字编号、Inscription ID 的完整原值；未模拟 clipboard.writeText 成功。",
+    "failure": "使用原型内置模拟复制失败开关；超过 6 秒恢复入口仍保留，关闭模拟后重试成功。",
+    "screenshots": "等待实际 workspace CSS 与字体，1440×800 和 320×800；已逐张查看 10 张最终截图。",
+    "scope": "源码入口穷举与代表性页面定向复核；未逐一重跑所有动态实例或全站业务 BDD。"
+  },
+  "designSystemReview": {
+    "binding": "ReactSpectrumS2_ad4872",
+    "declaredSource": "@react-spectrum/s2@1.6.0；Spectrum Tokens 14.15.0",
+    "officialReference": "reference/react-spectrum-main/react-spectrum-main/packages/@react-spectrum/s2/src/ActionButton.tsx",
+    "facadeSource": "designs/react-spectrum-s2/components/shared/s2Primitive.jsx",
+    "result": "站内复制操作一致性通过；官方 S2 完整符合性未通过，封装差异仍待处理。",
+    "differences": [
+      "官方 ActionButton 使用 control({shape:default}) 圆角；预览封装复用 Button 的 999px 圆角，44px 方形图标按钮呈圆形焦点环。",
+      "官方 quiet ActionButton 有悬停、按下背景状态；实际封装对应状态背景透明，悬停上移 1px。",
+      "图标名称通过 aria-label 和原生 title 提供；未接入官方 TooltipTrigger/Tooltip 的键盘提示行为。"
+    ],
+    "unverified": [
+      "真实读屏播报",
+      "全站无障碍矩阵",
+      "官方生产运行时行为等价性"
+    ]
+  },
+  "visualReview": {
+    "status": "agent-reviewed",
+    "reviewedScreenshots": [
+      "homepage-copy-desktop.png",
+      "homepage-copy-mobile.png",
+      "identity-dialog-mobile.png",
+      "reader-copy-mobile.png",
+      "reader-copy-failure.png",
+      "identity-copy-mobile.png",
+      "identity-review-mobile.png",
+      "artifact-copy-mobile.png",
+      "artifact-proof-failure.png",
+      "copy-zh-dark.png"
+    ],
+    "findings": [
+      "普通标识、紧凑标识、编号与分享链接均为同一轻量图标操作。",
+      "手机长值可换行，失败提示不遮挡复制操作。",
+      "保留的官方 S2 差异单独登记，不作为符合性通过项。"
+    ]
+  }
+}

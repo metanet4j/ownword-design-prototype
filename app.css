@@ -426,7 +426,6 @@ main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; paddi
 .identity-identifiers>.identifier{border:0;padding:0;margin:0;min-width:0;align-content:start;}
 .identity-identifiers .identifier-value{align-items:flex-start;gap:var(--s2-spacing-200);flex-wrap:wrap;}
 .identity-identifiers .identifier-value code{font-size:min(var(--s2-font-size-100),14px);white-space:normal;overflow-wrap:anywhere;}
-.identity-identifiers .identifier-value .s2d-button{padding-inline:var(--s2-spacing-200);}
 .public-identifiers{margin-bottom:var(--s2-spacing-300);}
 @media(max-width:650px){.identity-page{padding-top:var(--s2-spacing-300);}.identity-heading h1{font-size:var(--ownword-font-title);}.identity-profile{padding:var(--s2-spacing-300);}.identity-profile-top{align-items:flex-start;flex-direction:column;gap:var(--s2-spacing-200);}.identity-profile-top>.s2d-button{padding-inline:0;}.identity-person h2{font-size:var(--ownword-font-heading);}.identity-profile .profile-detail{padding-top:var(--s2-spacing-300);}.identity-identifiers{grid-template-columns:1fr;padding:var(--s2-spacing-300);gap:var(--s2-spacing-300);}}
 
