@@ -4,7 +4,7 @@
 .app :is(.s2d-button, .s2d-field input, .s2d-field textarea, select) {
   min-height: max(44px, var(--s2d-control-height));
 }
-.app .s2d-button { min-width: 44px; gap: var(--s2-spacing-100); }
+.app .s2d-button { min-width: 44px; gap: var(--s2-spacing-100); font-size: min(var(--s2-font-size-100), 16px); }
 .app .icon-button { width: max(44px, var(--s2d-control-height)); flex-shrink: 0; padding: 0; }
 /* S2 Field.tsx: neutral focused border; style/index.ts: separate focus ring.
    The facade references a missing focus-ring token and lacks pointer modality. */
@@ -38,8 +38,6 @@
 /* The facade omits field error/disabled states. Source: pinned S2 Field.tsx. */
 .s2d-field :is(input, textarea)[aria-invalid="true"] { border-color: var(--s2-negative-border-color-default); }
 .s2d-field :is(input, textarea):disabled { color: var(--s2-disabled-content-color); border-color: var(--s2-disabled-border-color); cursor: default; }
-/* The facade hardcodes white text on both schemes. Preserve dark contrast. */
-[data-color-scheme="dark"] :is(.s2d-button-primary, .s2d-button-accent) { color: var(--s2-black); }
 @media (forced-colors: active) {
   .ui-icon { background: ButtonText; }
   .s2d-field :is(input, textarea)[aria-invalid="true"] { border-color: Mark; }

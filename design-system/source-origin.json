@@ -1,0 +1,12 @@
+{
+  "baselineCommit": "1355bdc4a14197d1d2dfec09e26096446d080be5",
+  "originalSource": "designs/react-spectrum-s2",
+  "namespace": "ReactSpectrumS2_ad4872",
+  "s2Version": "1.6.0",
+  "tokensVersion": "14.15.0",
+  "baselineFiles": {
+    "_ds_bundle.js": "ac147c74d2b4684e69e3608ec1c8406fb4485e3373292bab0dd49abe5c2f350c",
+    "_ds_manifest.json": "d196380d2f77a440693f5e3be5d1bd46452e994b51f33ed0356773aeb83c5a35",
+    "_ds_prompt.md": "d1bc4df52f0ae86c91c9fe00a1a0f7753b039b715446889b83a90466bff93107"
+  }
+}

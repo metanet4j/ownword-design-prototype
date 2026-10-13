@@ -44,9 +44,8 @@ button { touch-action: manipulation; }
 .vault[data-pulse="true"] .vault-line { animation: resonance 2.4s cubic-bezier(.2,.65,.2,1) both; animation-delay: calc(var(--line) * 65ms); }
 @keyframes resonance { 0% { translate: 0 0; opacity: .8; } 30% { translate: 0 -14px; border-color: var(--s2-blue-600); opacity: 1; } 100% { translate: 0 0; opacity: 1; } }
 main { position: relative; width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 var(--s2-spacing-700) var(--s2-spacing-700); flex: 1; }
-.app .back-button { justify-self:start; padding-inline:var(--s2-spacing-100); margin-inline-start:calc(-1 * var(--s2-spacing-100)); border:0; border-radius:var(--s2d-radius); font-size:min(var(--s2-font-size-100),14px); font-weight:500; line-height:1.4; color:var(--s2d-content-subdued); transform:none; }
+.app .back-button { justify-self:start; padding-inline:var(--s2-spacing-100); margin-inline-start:calc(-1 * var(--s2-spacing-100)); border:0; font-size:min(var(--s2-font-size-100),14px); font-weight:500; line-height:1.4; }
 .app .back-button .ui-icon { width:var(--s2-workflow-icon-size-75); height:var(--s2-workflow-icon-size-75); }
-.app .back-button:hover { color:var(--s2d-content-neutral); background:var(--s2-gray-100); }
 .welcome { position: relative; padding-top: 112px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .eyebrow { font-size: var(--s2-font-size-75); font-weight: 650; text-transform: none; letter-spacing: normal; color: var(--s2-gray-700); }
 .welcome h1 { display: flex; flex-direction: column; gap: var(--s2-spacing-75); margin-top: var(--s2-spacing-500); font-family: var(--s2d-font-serif), "Songti SC", "SimSun", serif; font-size: var(--ownword-font-title); font-weight: 500; letter-spacing: -.055em; line-height: 1.12; color: var(--s2-gray-900); }

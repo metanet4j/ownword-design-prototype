@@ -36,11 +36,13 @@ function LoadingMark({small = false, label}) {
 // elements without copying or modifying the design-system implementation.
 function Button({children, onClick, variant = 'secondary', className = '', iconOnly = false, ...props}) {
   const selected = props['aria-pressed'] === true || props['aria-current'] === 'page';
-  const Component = iconOnly ? S2.ActionButton : selected ? S2.ToggleButton : S2.Button;
-  const base = Component({children, onPress: onClick, variant: selected ? 'primary' : variant, isDisabled: props.disabled});
+  const Component = typeof props['aria-pressed'] === 'boolean' || selected ? S2.ToggleButton : iconOnly || variant === 'quiet' ? S2.ActionButton : S2.Button;
+  const base = Component({children, onPress: onClick, variant, isQuiet: variant === 'quiet', isSelected: selected, fillStyle: props.fillStyle || (variant === 'secondary' ? 'outline' : 'fill'), isDisabled: props.disabled});
   // Keep the bundle's variant classes when callers add layout classes.
   const layoutClasses = className.split(/\s+/).filter(name => name && !/^s2d-button(?:-|$)/.test(name));
-  return React.cloneElement(base, {...props, className: [base.props.className, ...layoutClasses, iconOnly ? 'icon-button' : ''].filter(Boolean).join(' ')});
+  const button = React.cloneElement(base, {...props, fillStyle: undefined, title: iconOnly ? undefined : props.title, className: [base.props.className, ...layoutClasses, iconOnly ? 'icon-button' : ''].filter(Boolean).join(' ')});
+  const tooltip = iconOnly && (props.title || props['aria-label']);
+  return tooltip ? <S2.TooltipTrigger>{button}<S2.Tooltip>{tooltip}</S2.Tooltip></S2.TooltipTrigger> : button;
 }
 function Field({errorKey, id, label, contextualHelp, value, onChange, multiline, error, required, maxLength, ...inputProps}) {
   const base = (multiline ? S2.TextArea : S2.TextField)({label, value: value || ' '});

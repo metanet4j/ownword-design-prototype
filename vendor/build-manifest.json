@@ -1,13 +1,13 @@
 {
   "esbuild": "0.28.2",
   "inputs": {
-    "build-prototype.mjs": "d8f3b706ab7e7636f8143e8289a97ed79db94513b4033e08b6d1fd04d265221f",
-    "package.json": "46ea27124a50775655c63ed4e73035275a883faa7016e0250fbfdaa0ca68c9d1",
+    "build-prototype.mjs": "4039466e8486f5568a5e3f0f0513e5cebbdcc1bc35aa6f994a5048335d484ee8",
+    "package.json": "986cb70f5bc0218de4ce9955dbe84a99328a56d1396efc79720f65ee08896a88",
     "package-lock.json": "f51540fd3f47648c1b259547b676308c59f2f571fc9084d2020318bd8a06d7e9",
     "editor-tools.js": "3c31f26682a0708170bcaf31c2f84d0ae14e8d5b7ddfbb27a7236fc13653c6d2",
     "markdown-tools.mjs": "d3c75d613466e25673be92dea8c372de516082818f81fd0de6fe269d2e1bfe42",
     "visual-editor.js": "4c082fe4cdc06a00efd65e84e01791e768e1ac3f1b3ad20a3fd5c649247bf73d",
-    "_ds/react-spectrum-s2/_ds_bundle.js": "ac147c74d2b4684e69e3608ec1c8406fb4485e3373292bab0dd49abe5c2f350c",
+    "_ds/react-spectrum-s2/_ds_bundle.js": "feb1c79ea7de48e349cfe14a0356da3ed4084b623a310462d4f8f025337e0141",
     "index.template.html": "47bddbbbb8b9894c5d47afd888322a7ec872f579f822639c995039aebf4dc84b",
     "model.js": "bd77d6adb0c645c2d9e95ea82edcf24d3822f6384a9a33311c972529c514372e",
     "content-model.js": "fd20215318732685c8b7a629b4ef20ff5e0546219b45aa71b4adbd699ea6d6e5",
@@ -17,7 +17,7 @@
     "vendor/react.production.min.js": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd",
     "vendor/react-dom.production.min.js": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d",
     "vendor/react-dom-server.production.min.js": "829b2f17da148d9bc5b635c329b67068e67e4bf7d6a5bb64e49e9e92483deee5",
-    "components.jsx": "15e2e3cca7b60117c4b36ca24102032033154f4e6200f60a0552b77dbc1f9094",
+    "components.jsx": "8b060badced5cd74bca6647efd920ba556ddc608319cf702d41a7bdb62a7422f",
     "content-editor.jsx": "22858057101b13d091953ef1743165fe95e0fb4141094fbe3304b2c601573c3b",
     "content-publication.jsx": "f380414e856de191e336a3c995d9a8e363b8586bdb9f0b3693a87c1f7075cb0f",
     "content-reader.jsx": "1bf97e05f2b8f0b624939b6d20efcdabafe48577a8f5943826f52cadfffc3528",
@@ -33,8 +33,8 @@
     "homepage.jsx": "2f853ca2fecf255556b9dbb422c89a8d1aa9ac79364581967cf2919ce8efd748",
     "app.jsx": "3c1bbac0ffcb7955499dc7c2da500a02a2dd9338fdba7bdd1d7962d4f1cfda91",
     "_ds/react-spectrum-s2/styles.css": "650e92f5b135bf62809005238ef610bfd622d6408b50ac41e1682ab6ed1ee19a",
-    "s2-adapter.css": "ff08db812f416326bfa54bc980c91274df4a0e750980b3f44cf0447436398a97",
-    "app.css": "8708437bd1b5593dcbdca7868d46225c24c5ba607929ee221c1b58ecf97a3d03",
+    "s2-adapter.css": "0886e07ab4b92618ad1898043afd623d347a3b2952b8c605b40ecbf20823a6fa",
+    "app.css": "74e759e63e34f0a1cbe798ef84c670b4ad626c7119999d8a26b1a97a819ac118",
     "content.css": "297e2af3101be4ef2ad0528f11c7c07ae001002a80a29328cce6a0ab044b84c1",
     "artifact.css": "c673d11adcae28a147ab90be5287a83c782ac5dfacf87701e081ff1eba24a08d",
     "welcome.css": "2698ff81951f4372e78685b9e1cc05fbaade16451b954360c2a7d0e946144578",
@@ -43,17 +43,17 @@
     "_ds/react-spectrum-s2/tokens/page.css": "2616ec975232eff1f6c6820238bd3e4f85946c3735843e3b26aed0c47c9f5d83",
     "_ds/react-spectrum-s2/tokens/s2-tokens.css": "96d2c4d2884d375ccefb20cafe7f1d98b40c390440c42c82d15f33f366d021aa",
     "_ds/react-spectrum-s2/tokens/semantic.css": "dc79eb95039e3f091bcbf36289458b2b736a9d153d0551edf2d5b9a13153833f",
-    "_ds/react-spectrum-s2/components/components.css": "f986cc46e1f59e00fd8956ebc082877b6008c32d10aa780fc21e304309db75fa",
+    "_ds/react-spectrum-s2/components/components.css": "4013c22d93736ec1d49b9bc86801db130ca168fbc35dc260de6cd1ea1f385927",
     "_ds/react-spectrum-s2/guidelines/cards.css": "b6ce88faf0ab64609b53977af258cedfc1a09278ea626877688f1c0144a58044"
   },
   "outputs": {
-    "vendor/app.js": "dc279f6d273702f8c22d3ab927a02052a3e328e9e2c7d8cec7ebbd26e61b5003",
+    "vendor/app.js": "0a46a246b6d37cb2e6aff5e63c93a2e6d70a5a346015a690ef3ff68ba42c2f38",
     "vendor/markdown-tools.js": "0d01c8e308b36a6dfa434333c16d0a6c85a44216cfeb0caae33a40fbbe935d0f",
     "vendor/editor-tools.js": "9c9596820783f417de8101b841bb4474e13005f4b4698f7f5f803a87e872d5bb",
-    "vendor/styles.css": "5d26ee6103e072e523be6a22aac94ae166ac8716146dc460549406b4cb2698fb",
-    "index.html": "f57a7769ae1d7d5c9a6280ad6b1eff38f1490d46b6cb1069a7f2644a78814750",
+    "vendor/styles.css": "d6046e2e0bfb115c42164e2e8fda32c1c36eafc033191597f21370bf6eb41274",
+    "index.html": "e10504ddc9a55751a082cfeba30535cb7480d8357b772e01d460dc9e1d40fa97",
     "vendor/fonts.css": "c842cec53e5d68a3c0e8fecd42c27929dad2222533b3c6d76cb591d0b7c5a991",
     "vendor/workspace.css": "03c23e0e18c875df83fb1b242bd3f52341fb7514fc27eb38b8161a5de5279ccc",
-    "vendor/runtime.js": "c2737d5ca1732f9d55efdb858776460994bd0f2e57966e48ee1b60d4020da2dd"
+    "vendor/runtime.js": "db0c653f73f7304cfd6e08867847af36cbe5de92766b21d94889b6a28c5cf831"
   }
 }

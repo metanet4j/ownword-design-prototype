@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "node build-prototype.mjs",
-    "check": "node check-model.cjs && node check-content.cjs && node check-markdown.mjs"
+    "check": "node check-model.cjs && node check-content.cjs && node check-markdown.mjs",
+    "build:design-system": "node build-design-system.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "6.11.1",

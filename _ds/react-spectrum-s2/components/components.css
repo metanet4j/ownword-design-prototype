@@ -30,19 +30,33 @@
 .s2d-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 24px; background: var(--s2d-background); }
 .s2d-gallery-item { min-width: 0; min-height: 144px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; justify-content: center; padding: 18px; border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); background: var(--s2d-layer-raised); box-shadow: 0 1px 2px rgb(0 0 0 / .06); }
 .s2d-gallery-item > small { color: var(--s2d-text-muted); font-size: 11px; font-weight: 700; letter-spacing: .045em; text-transform: uppercase; }
-.s2d-button { min-height: var(--s2d-control-height); display: inline-flex; align-items: center; justify-content: center; padding: 0 calc(var(--s2d-control-height) / 2); border: 2px solid transparent; border-radius: 999px; color: var(--s2d-text); background: transparent; font: 700 14px/1 var(--s2d-font-family); text-decoration: none; cursor: pointer; transition: color 150ms cubic-bezier(.45,0,.4,1), background 150ms cubic-bezier(.45,0,.4,1), border-color 150ms cubic-bezier(.45,0,.4,1), transform 150ms cubic-bezier(.45,0,.4,1); }
-.s2d-button:hover { transform: translateY(-1px); }
-.s2d-button:active { transform: translateY(0); }
-.s2d-button:focus-visible, .s2d-field input:focus-visible, .s2d-field textarea:focus-visible { outline: 2px solid var(--s2d-focus); outline-offset: 2px; }
-.s2d-button-accent { color: white; background: var(--s2d-accent); }
-.s2d-button-accent:hover { background: var(--s2d-accent-hover); }
-.s2d-button-primary { color: white; background: var(--s2d-text); }
-.s2d-button-secondary { border-color: var(--s2d-border-strong); background: var(--s2d-layer); }
-.s2d-button-negative { color: white; background: var(--s2d-negative); }
-.s2d-button-premium { color: white; background: linear-gradient(to bottom right, var(--s2-fuchsia-900), var(--s2-indigo-900) 66%, var(--s2-blue-900)); }
-.s2d-button-genai { color: white; background: linear-gradient(to bottom right, var(--s2-red-900), var(--s2-magenta-900) 33%, var(--s2-indigo-900)); }
-.s2d-button-quiet { background: transparent; }
-.s2d-button:disabled { cursor: not-allowed; opacity: .42; transform: none; }
+/* 对照 @react-spectrum/s2 1.6.0 Button、ActionButton 与 style-utils。 */
+.s2d-button { min-height: var(--s2d-control-height); display: inline-flex; align-items: center; justify-content: center; padding: 0 calc(var(--s2d-control-height) * 3 / 8); border: 0 solid transparent; border-radius: 999px; color: var(--s2-neutral-content-color-default); background: transparent; font: 700 var(--s2-font-size-100)/1.3 var(--s2d-font-family); text-decoration: none; cursor: pointer; transition: color var(--s2d-duration-default), background var(--s2d-duration-default), border-color var(--s2d-duration-default); }
+.s2d-button:focus-visible, .s2d-field input:focus-visible, .s2d-field textarea:focus-visible { outline: var(--s2-focus-indicator-thickness) solid var(--s2-focus-indicator-color); outline-offset: var(--s2-focus-indicator-gap); }
+.s2d-button-accent { color: var(--s2-white); background: light-dark(var(--s2-accent-color-900), var(--s2-accent-color-700)); }
+.s2d-button-accent:is(:hover,:active,:focus-visible):not(:disabled) { background: light-dark(var(--s2-accent-color-1000), var(--s2-accent-color-600)); }
+.s2d-button-primary { color: var(--s2-gray-25); background: var(--s2-neutral-background-color-default); }
+.s2d-button-primary:is(:hover,:active,:focus-visible):not(:disabled) { background: var(--s2-neutral-background-color-hover); }
+.s2d-button-secondary { background: var(--s2-gray-100); }
+.s2d-button-secondary:is(:hover,:active,:focus-visible):not(:disabled) { background: var(--s2-gray-200); }
+.s2d-button-negative { color: var(--s2-white); background: light-dark(var(--s2-negative-color-900), var(--s2-negative-color-700)); }
+.s2d-button-negative:is(:hover,:active,:focus-visible):not(:disabled) { background: light-dark(var(--s2-negative-color-1000), var(--s2-negative-color-600)); }
+.s2d-button-premium { color: var(--s2-white); background: linear-gradient(to bottom right, var(--s2-fuchsia-900), var(--s2-indigo-900) 66%, var(--s2-blue-900)); }
+.s2d-button-genai { color: var(--s2-white); background: linear-gradient(to bottom right, var(--s2-red-900), var(--s2-magenta-900) 33%, var(--s2-indigo-900)); }
+.s2d-button-outline { border-width: 2px; border-color: var(--s2-gray-300); background: transparent; color: var(--s2-neutral-content-color-default); }
+.s2d-button-outline.s2d-button-primary { border-color: var(--s2-gray-800); }
+.s2d-button-outline:is(:hover,:active,:focus-visible):not(:disabled) { border-color: var(--s2-gray-400); background: var(--s2-gray-100); }
+.s2d-button-outline.s2d-button-primary:is(:hover,:active,:focus-visible):not(:disabled) { border-color: var(--s2-gray-900); }
+.s2d-action-button { border: 0; border-radius: round(calc(var(--s2-corner-radius-300) * var(--s2-font-size-base) / 14), 1px); font-weight: 500; }
+.s2d-action-button.s2d-button-quiet { background: transparent; }
+.s2d-action-button.s2d-button-quiet:is(:hover,:active,:focus-visible):not(:disabled) { background: var(--s2-gray-200); }
+.s2d-button:disabled { cursor: default; color: var(--s2-disabled-content-color); background: var(--s2-disabled-background-color); }
+.s2d-button-outline:disabled { border-color: var(--s2-disabled-border-color); background: transparent; }
+.s2d-action-button.s2d-button-quiet:disabled { background: transparent; }
+.s2d-tooltip { position: fixed; z-index: 100; max-width: var(--s2-tooltip-maximum-width); min-height: var(--s2-component-height-75); padding: var(--s2-spacing-75) calc(var(--s2-component-height-75) * 3 / 8); border-radius: round(calc(var(--s2-corner-radius-300) * var(--s2-font-size-base) / 14), 1px); font: 400 var(--s2-font-size-75)/1.4 var(--s2d-font-family); color: var(--s2-gray-25); background: var(--s2-neutral-background-color-default); overflow-wrap: anywhere; }
+.s2d-tooltip::after { content: ''; position: absolute; left: var(--s2-tooltip-arrow-x); bottom: calc(-1 * var(--s2-spacing-50)); width: var(--s2-spacing-100); height: var(--s2-spacing-100); background: inherit; transform: translateX(-50%) rotate(45deg); }
+.s2d-tooltip[data-placement="bottom"]::after { bottom: auto; top: calc(-1 * var(--s2-spacing-50)); }
+@media (forced-colors: active) { .s2d-button { border: 1px solid ButtonText; } .s2d-button:disabled { color: GrayText; border-color: GrayText; } .s2d-tooltip { color: CanvasText; background: Canvas; border: 1px solid CanvasText; } }
 .s2d-inline-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .s2d-field { width: min(100%, 280px); display: flex; flex-direction: column; gap: 6px; color: var(--s2d-text-muted); font-size: 12px; font-weight: 600; }
 .s2d-field-shell { display: flex; width: 100%; }

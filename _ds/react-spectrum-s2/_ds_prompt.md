@@ -36,7 +36,7 @@ Your own page code stays separate from the bundle: write it in `<script type="te
 
 In text/babel blocks, never give a top-level binding a window-global name — `status`, `name`, `open`, `close`, `top`, `self`, `parent`, `origin`, `event`, `length`, `location`, `history`, `screen`, `scroll`, `stop`, `print`, `focus`, `blur`, `frames`, `closed`, `opener`. Babel injects the transpiled code as a classic script (top-level const/let become var), so `const status = …` writes `window.status`, which coerces or misbehaves, and the page dies with an error the console may never show. Use a longer name (`statusBadge`, `openItems`).
 
-Everything beyond this runtime copy — mocks to fork, specimens, ui_kits, component source — lives in the design system's source tree at `designs/react-spectrum-s2/`; read from there for anything not under `_ds/react-spectrum-s2/`. Its guide is reproduced below so you don't need to fetch it:
+Everything beyond this runtime copy — mocks to fork, specimens, ui_kits, component source — lives in the design system's source tree at `design-system/react-spectrum-s2/`; read from there for anything not under `_ds/react-spectrum-s2/`. Its guide is reproduced below so you don't need to fetch it:
 
 <design-system-guide>
 # React Spectrum 2 / S2 Design System
@@ -158,9 +158,9 @@ S2 内置 48 个结构型 UI glyph 和 410 个 20 px workflow SVG。控制图标
 
 ## 参考文档与引用
 
-- 本地源：`C:\haodev\ownword\reference\react-spectrum-main\react-spectrum-main`
-- 公共导出：`C:\haodev\ownword\reference\react-spectrum-main\react-spectrum-main\packages\@react-spectrum\s2\exports\index.ts`
-- S2 styling：`C:\haodev\ownword\reference\react-spectrum-main\react-spectrum-main\packages\@react-spectrum\s2\style\spectrum-theme.ts`
+- 本地源：`reference/react-spectrum-main/react-spectrum-main`
+- 公共导出：`reference/react-spectrum-main/react-spectrum-main\packages\@react-spectrum\s2\exports\index.ts`
+- S2 styling：`reference/react-spectrum-main/react-spectrum-main\packages\@react-spectrum\s2\style\spectrum-theme.ts`
 - 上游仓库：https://github.com/adobe/react-spectrum
 - 上游文档：https://react-spectrum.adobe.com/s2/
 - 包版本：`@react-spectrum/s2@1.6.0`

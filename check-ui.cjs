@@ -16,8 +16,15 @@ assert.equal(primary.props.disabled, true);
 assert.equal(primary.props.onClick, click);
 const selected = Button({'aria-pressed': true, variant: 'quiet'});
 assert.equal(selected.props['aria-pressed'], true);
-assert.match(selected.props.className, /s2d-button-primary/);
-const icon = Button({iconOnly: true, variant: 'quiet', 'aria-label': 'Refresh'});
+assert.match(selected.props.className, /s2d-is-selected/);
+const unselected = Button({'aria-pressed': false, variant: 'quiet'});
+assert.match(unselected.props.className, /s2d-action-button/);
+assert.equal(unselected.props['aria-pressed'], false);
+assert.doesNotMatch(unselected.props.className, /s2d-is-selected/);
+const iconWithTooltip = Button({iconOnly: true, variant: 'quiet', 'aria-label': 'Refresh'});
+const icon = iconWithTooltip.props.children[0];
+assert.equal(iconWithTooltip.type, context.window.ReactSpectrumS2_ad4872.TooltipTrigger);
+assert.match(icon.props.className, /s2d-action-button/);
 assert.match(icon.props.className, /icon-button/);
 assert.equal(icon.props['aria-label'], 'Refresh');
 function flatten(element) {

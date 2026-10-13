@@ -117,9 +117,9 @@ S2 内置 48 个结构型 UI glyph 和 410 个 20 px workflow SVG。控制图标
 
 ## 参考文档与引用
 
-- 本地源：`C:\haodev\ownword\reference\react-spectrum-main\react-spectrum-main`
-- 公共导出：`C:\haodev\ownword\reference\react-spectrum-main\react-spectrum-main\packages\@react-spectrum\s2\exports\index.ts`
-- S2 styling：`C:\haodev\ownword\reference\react-spectrum-main\react-spectrum-main\packages\@react-spectrum\s2\style\spectrum-theme.ts`
+- 本地源：`reference/react-spectrum-main/react-spectrum-main`
+- 公共导出：`reference/react-spectrum-main/react-spectrum-main\packages\@react-spectrum\s2\exports\index.ts`
+- S2 styling：`reference/react-spectrum-main/react-spectrum-main\packages\@react-spectrum\s2\style\spectrum-theme.ts`
 - 上游仓库：https://github.com/adobe/react-spectrum
 - 上游文档：https://react-spectrum.adobe.com/s2/
 - 包版本：`@react-spectrum/s2@1.6.0`

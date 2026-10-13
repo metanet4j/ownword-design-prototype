@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-13",
+  "scope": "共享 Button、ActionButton、ToggleButton、Tooltip 的真实页面与组件状态验收",
+  "checks": [
+    {
+      "name": "真实按下状态可触发且无位移",
+      "passed": true
+    },
+    {
+      "name": "按钮修复后仍复制完整 BAP ID",
+      "passed": true
+    },
+    {
+      "name": "键盘提示有 aria-describedby 关联且保留可见焦点",
+      "passed": true
+    },
+    {
+      "name": "Escape 仅关闭提示且焦点留在按钮",
+      "passed": true
+    },
+    {
+      "name": "鼠标可以移入提示而不消失",
+      "passed": true
+    },
+    {
+      "name": "窄屏提示不越出视口",
+      "passed": true
+    },
+    {
+      "name": "模态中的提示位于同一 top layer 且不改变焦点",
+      "passed": true
+    },
+    {
+      "name": "首次 Escape 保留身份对话框",
+      "passed": true
+    },
+    {
+      "name": "light 下普通、动作与选中按钮具有不同形态",
+      "passed": true
+    },
+    {
+      "name": "light 禁用按钮不触发操作",
+      "passed": true
+    },
+    {
+      "name": "dark 下普通、动作与选中按钮具有不同形态",
+      "passed": true
+    },
+    {
+      "name": "dark 禁用按钮不触发操作",
+      "passed": true
+    },
+    {
+      "name": "Space 实际产生点击、完成复制并关闭提示",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "homepage-keyboard-tooltip.png",
+    "homepage-tooltip-mobile.png",
+    "dialog-tooltip-mobile.png",
+    "button-states-light.png",
+    "button-states-dark.png",
+    "homepage-tooltip-dark.png"
+  ],
+  "states": [
+    {
+      "name": "图标按钮默认",
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(41, 41, 41)",
+      "fontSize": "16px",
+      "height": 44,
+      "outline": "rgb(41, 41, 41) none 3px",
+      "radius": "7px",
+      "transform": "none",
+      "width": 44
+    },
+    {
+      "name": "悬停",
+      "background": "rgb(225, 225, 225)",
+      "color": "rgb(41, 41, 41)",
+      "fontSize": "16px",
+      "height": 44,
+      "outline": "rgb(41, 41, 41) none 3px",
+      "radius": "7px",
+      "transform": "none",
+      "width": 44
+    },
+    {
+      "name": "按下",
+      "background": "rgb(225, 225, 225)",
+      "color": "rgb(41, 41, 41)",
+      "fontSize": "16px",
+      "height": 44,
+      "outline": "rgb(41, 41, 41) none 3px",
+      "radius": "7px",
+      "transform": "none",
+      "width": 44
+    },
+    {
+      "name": "light 状态对比度",
+      "controls": [
+        {
+          "background": "rgb(41, 41, 41)",
+          "color": "rgb(255, 255, 255)",
+          "label": "primary",
+          "ratio": 14.5481984654954
+        },
+        {
+          "background": "rgb(233, 233, 233)",
+          "color": "rgb(41, 41, 41)",
+          "label": "secondary",
+          "ratio": 11.982818642669752
+        },
+        {
+          "background": "rgb(59, 99, 251)",
+          "color": "rgb(255, 255, 255)",
+          "label": "accent",
+          "ratio": 4.8124250051465225
+        },
+        {
+          "background": "rgb(183, 40, 24)",
+          "color": "rgb(255, 255, 255)",
+          "label": "negative",
+          "ratio": 6.305999098471327
+        },
+        {
+          "background": "rgb(41, 41, 41)",
+          "color": "rgb(255, 255, 255)",
+          "label": "Selected",
+          "ratio": 14.5481984654954
+        },
+        {
+          "background": "rgb(233, 233, 233)",
+          "color": "rgb(41, 41, 41)",
+          "label": "Unselected",
+          "ratio": 11.982818642669752
+        }
+      ]
+    },
+    {
+      "name": "dark 状态对比度",
+      "controls": [
+        {
+          "background": "rgb(219, 219, 219)",
+          "color": "rgb(17, 17, 17)",
+          "label": "primary",
+          "ratio": 13.638529605492378
+        },
+        {
+          "background": "rgb(44, 44, 44)",
+          "color": "rgb(219, 219, 219)",
+          "label": "secondary",
+          "ratio": 10.086546820153432
+        },
+        {
+          "background": "rgb(52, 91, 248)",
+          "color": "rgb(255, 255, 255)",
+          "label": "accent",
+          "ratio": 5.252745559043269
+        },
+        {
+          "background": "rgb(179, 39, 23)",
+          "color": "rgb(255, 255, 255)",
+          "label": "negative",
+          "ratio": 6.523114397462202
+        },
+        {
+          "background": "rgb(219, 219, 219)",
+          "color": "rgb(17, 17, 17)",
+          "label": "Selected",
+          "ratio": 13.638529605492378
+        },
+        {
+          "background": "rgb(44, 44, 44)",
+          "color": "rgb(219, 219, 219)",
+          "label": "Unselected",
+          "ratio": 10.086546820153432
+        }
+      ]
+    }
+  ],
+  "axe": {
+    "inapplicable": 36,
+    "incomplete": 0,
+    "passes": 24,
+    "violations": 0
+  },
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "implementation": {
+    "source": "design-system/react-spectrum-s2",
+    "sourceOrigin": "design-system/source-origin.json",
+    "binding": "ReactSpectrumS2_ad4872",
+    "s2": "1.6.0",
+    "tokens": "14.15.0",
+    "build": "npm run build:design-system && npm run build",
+    "check": "node build-design-system.mjs --check；./init.sh",
+    "runtime": "沿用原型轻量绑定，通过源代码再生成修订；未升级到另一套组件库。"
+  },
+  "review": {
+    "status": "agent-reviewed",
+    "screenshotsViewed": [
+      "homepage-keyboard-tooltip.png",
+      "homepage-tooltip-mobile.png",
+      "dialog-tooltip-mobile.png",
+      "button-states-light.png",
+      "button-states-dark.png",
+      "homepage-tooltip-dark.png"
+    ],
+    "findings": [
+      "ActionButton 默认控件圆角与普通 Button 胶囊形有明确区别。",
+      "浅深色真实使用的按钮变体最小文字对比度分别为 4.81 和 5.25。",
+      "键盘提示在桌面、320px 窄屏和模态内可见且不越界。",
+      "Escape 优先关闭提示并保留模态；聚焦自动滚动只更新位置。"
+    ],
+    "limits": [
+      "状态矩阵为页面上加载的同一绑定组件探针，不代表各版本业务流程已全部验收。",
+      "生产 React Aria 的全部 API 等价性及真实读屏未验证。",
+      "后续 R11 继续核对所有实际使用组件及四版本页面，R12 做最终交付审计。"
+    ]
+  }
+}

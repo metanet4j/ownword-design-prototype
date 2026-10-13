@@ -5,8 +5,10 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 import vm from 'node:vm';
+import {execFileSync} from 'node:child_process';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
+execFileSync(process.execPath, [path.join(root, 'build-design-system.mjs'), '--check'], {stdio: 'inherit'});
 const files = ['components', 'content-editor', 'content-publication', 'content-reader', 'content',
   'artifact-compose', 'artifact-components', 'artifact-operations', 'artifact-transfer', 'artifact-detail',
   'artifact-find', 'artifact', 'welcome', 'homepage', 'app'].map(name => name + '.jsx');
