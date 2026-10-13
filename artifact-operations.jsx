@@ -59,7 +59,7 @@ function ArtifactActionReview({review,data,t,failCopy,onSign,onBack,issue}) {
         {review.kind==='remove'&&<p>{t('artifactRemoveConsequence')}</p>}
 
         <details className="artifact-proof artifact-review-details"><summary>{t('artifactTransactionDetails')}</summary><div className="artifact-proof-body"><Identifier id={asset.id} label="Inscription ID" copyLabel="artifactCopyFull" target="review-inscription" t={t} failCopy={failCopy}/>{review.kind==='transfer'&&<Identifier id={review.outpoint} label="Current Outpoint" copyLabel="artifactCopyFull" target="review-output" t={t} failCopy={failCopy}/>}</div></details>
-        {issue&&<p className="field-error" role="alert">{t(issue)}</p>}<div className="action-row"><Button onClick={onBack}>{t('back')}</Button><Button variant="accent" data-action="artifact-action-sign" onClick={onSign}>{t('artifactSign-'+review.kind)}</Button></div>
+        {issue&&<p className="field-error" role="alert">{t(issue)}</p>}<div className="action-row"><BackButton onClick={onBack}>{t('back')}</BackButton><Button variant="accent" data-action="artifact-action-sign" onClick={onSign}>{t('artifactSign-'+review.kind)}</Button></div>
       </div>
     </div>
   </section>;

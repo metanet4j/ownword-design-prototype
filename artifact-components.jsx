@@ -1,7 +1,7 @@
-function ArtifactArt({asset,large=false,t}) {
+function ArtifactArt({asset,large=false,compact=false,t}) {
   const image=useArtifactImage(asset.content);
-  if(!OwnwordArtifactModel.previewSafe(asset.content))return <div className={'artifact-art artifact-placeholder '+(large?'large':'')}><p>{t('artifactSafePlaceholder')}</p><code>{asset.content?.type||'application/octet-stream'}</code></div>;
-  if(asset.content.kind==='upload')return <div className={'artifact-art artifact-image '+(large?'large':'')}>{image.src?<img src={image.src} alt={asset.name}/>:<p role="status">{t(image.failed?'artifactPreviewFailed':'artifactLoading')}</p>}</div>;
+  if(!OwnwordArtifactModel.previewSafe(asset.content))return <div className={'artifact-art artifact-placeholder '+(large?'large':'')}><p>{t(compact?'artifactPreviewUnavailable':'artifactSafePlaceholder')}</p>{!compact&&<code>{asset.content?.type||'application/octet-stream'}</code>}</div>;
+  if(asset.content.kind==='upload')return <div className={'artifact-art artifact-image '+(large?'large':'')}>{image.src?<img src={image.src} alt={asset.name}/>:<p role="status">{t(image.failed?(compact?'artifactPreviewUnavailable':'artifactPreviewFailed'):'artifactLoading')}</p>}</div>;
   return <div className="artifact-art artifact-default"><p>{t('artifactBuiltIn')}</p></div>;
 }
 function artifactTime(value,t) {
@@ -27,8 +27,11 @@ function ArtifactSummary({data,bapId,t,onManage,onOpen,readOnly=false}) {
 function ArtifactCard({asset,data,bapId,t,onOpen,children}) {
   const b=OwnwordArtifactModel.binding(data,asset.id),isCurrent=b?.bapId===bapId;
   return React.cloneElement(S2.Card(), {className:"s2d-card artifact-card","data-artifact-id":asset.id,"data-current":isCurrent}, <>
-    {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} t={t}/>}
-    <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}{children&&<Button iconOnly variant="quiet" className="artifact-card-open" onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}><UiIcon name="ChevronRight"/></Button>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}<div className="artifact-card-actions">{!children&&<Button onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>}{children}</div></div>
+    <div className="artifact-card-overview">
+      <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}</div>
+      {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} compact t={t}/>}
+    </div>
+    <div className="artifact-card-actions">{!children&&<Button onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>}{children}{children&&<Button iconOnly variant="quiet" className="artifact-card-open" onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}><UiIcon name="ChevronRight"/></Button>}</div>
   </>);
 }
 function ArtifactSettings({settings,setSettings,store,t}) {

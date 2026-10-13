@@ -300,3 +300,21 @@
   .artifact-find-asset:has(>.artifact-art) { grid-template-columns:minmax(0,1fr); }
   .artifact-find-asset>.artifact-art { max-width:160px; }
 }
+
+/* 列表预览服从编号与状态的阅读轴，加载及失败保持同一窗口。 */
+.artifact-card-overview { display:grid; grid-template-columns:minmax(0,1fr); gap:var(--s2-spacing-300); padding:var(--s2-spacing-300); }
+.artifact-card-overview:has(>.artifact-art) { grid-template-columns:minmax(0,1fr) 160px; }
+.artifact-card-overview .artifact-card-content { padding:0; gap:var(--s2-spacing-100); min-width:0; }
+.artifact-card-overview h2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; }
+.artifact-card-overview>.artifact-art { width:160px; height:120px; aspect-ratio:auto; padding:0; border-radius:var(--s2d-radius); }
+.artifact-card-overview>.artifact-art p { padding-inline:var(--s2-spacing-100); text-align:center; }
+.artifact-card-overview>.artifact-art code { max-width:100%; font-size:var(--s2-font-size-75); padding-inline:var(--s2-spacing-100); }
+.artifact-card>.artifact-card-actions { padding:0 var(--s2-spacing-300) var(--s2-spacing-300); }
+.artifact-card-actions>.artifact-card-open { margin-inline-start:auto; }
+.artifact-compose-grid>.artifact-image,.artifact-preview>.artifact-image { height:320px; aspect-ratio:auto; }
+@media(max-width:700px) {
+ .artifact-card-overview:has(>.artifact-art) { grid-template-columns:minmax(0,1fr) 96px; }
+ .artifact-card-overview>.artifact-art { width:96px; height:72px; }
+ .artifact-card-overview>.artifact-art p { font-size:min(var(--s2-font-size-75),12px); line-height:1.3; }
+ .artifact-compose-grid>.artifact-image,.artifact-preview>.artifact-image { height:240px; }
+}

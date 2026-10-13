@@ -1,0 +1,295 @@
+{
+  "module": "R08",
+  "date": "2026-10-13",
+  "branch": "codex/prototype-v0.4.0-homepage",
+  "url": "http://127.0.0.1:4314/",
+  "method": "agent-browser 独立会话；真实点击及键盘操作，模拟身份和交易",
+  "pages": [
+    {
+      "name": "inventory-desktop",
+      "headings": [
+        {
+          "size": 28,
+          "text": "My Artifacts"
+        },
+        {
+          "size": 16,
+          "text": "A place to stand"
+        },
+        {
+          "size": 16,
+          "text": "The quiet horizon"
+        },
+        {
+          "size": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "scrollWidth": 1440,
+      "width": 1440,
+      "screenshot": "inventory-desktop.png"
+    },
+    {
+      "name": "inventory-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "My Artifacts"
+        },
+        {
+          "size": 16,
+          "text": "A place to stand"
+        },
+        {
+          "size": 16,
+          "text": "The quiet horizon"
+        },
+        {
+          "size": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "inventory-mobile.png"
+    },
+    {
+      "name": "image-and-failure-desktop",
+      "headings": [
+        {
+          "size": 28,
+          "text": "My Artifacts"
+        },
+        {
+          "size": 16,
+          "text": "A place to stand"
+        },
+        {
+          "size": 16,
+          "text": "A long Artifact name that keeps the number and available actions visible alongside its image preview"
+        },
+        {
+          "size": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "scrollWidth": 1440,
+      "width": 1440,
+      "screenshot": "image-and-failure-desktop.png"
+    },
+    {
+      "name": "image-and-failure-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "My Artifacts"
+        },
+        {
+          "size": 16,
+          "text": "A place to stand"
+        },
+        {
+          "size": 16,
+          "text": "A long Artifact name that keeps the number and available actions visible alongside its image preview"
+        },
+        {
+          "size": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "image-and-failure-mobile.png"
+    },
+    {
+      "name": "detail-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "A long Artifact name that keeps the number and available actions visible alongside its image preview"
+        },
+        {
+          "size": 15,
+          "text": "Associated identity"
+        },
+        {
+          "size": 22,
+          "text": "Inscribed content"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "detail-mobile.png"
+    },
+    {
+      "name": "create-image-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Create Artifact"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "create-image-mobile.png"
+    },
+    {
+      "name": "review-image-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Review your Artifact"
+        },
+        {
+          "size": 20,
+          "text": "A carefully named Artifact with a portrait image and a clear review of the identity behind it"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "review-image-mobile.png"
+    },
+    {
+      "name": "review-image-actions",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Review your Artifact"
+        },
+        {
+          "size": 20,
+          "text": "A carefully named Artifact with a portrait image and a clear review of the identity behind it"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "review-image-actions.png"
+    },
+    {
+      "name": "transfer-review-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Review this transfer"
+        },
+        {
+          "size": 20,
+          "text": "A place to stand"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "transfer-review-mobile.png"
+    },
+    {
+      "name": "media-zh-dark",
+      "headings": [
+        {
+          "size": 20,
+          "text": "我的 Artifact"
+        },
+        {
+          "size": 16,
+          "text": "A place to stand"
+        },
+        {
+          "size": 16,
+          "text": "A long Artifact name that keeps the number and available actions visible alongside its image preview"
+        },
+        {
+          "size": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "media-zh-dark.png"
+    }
+  ],
+  "checks": [
+    {
+      "name": "桌面成功和失败预览固定160×120",
+      "passed": true
+    },
+    {
+      "name": "手机成功和失败预览固定96×72",
+      "passed": true
+    },
+    {
+      "name": "列表长名称最多两行",
+      "passed": true
+    },
+    {
+      "name": "卡片详情入口可键盘访问",
+      "passed": true
+    },
+    {
+      "name": "详情返回列表",
+      "passed": true
+    },
+    {
+      "name": "确认预览收敛到240px，完整名称可读",
+      "passed": true
+    },
+    {
+      "name": "创建确认返回使用共享焦点及44px命中区域",
+      "passed": true
+    },
+    {
+      "name": "返回修改保留名称和已选图片",
+      "passed": true
+    },
+    {
+      "name": "转移确认返回可键盘访问且至少44px",
+      "passed": true
+    },
+    {
+      "name": "转移确认返回表单，地址保持不变",
+      "passed": true
+    },
+    {
+      "name": "转移表单返回详情",
+      "passed": true
+    },
+    {
+      "name": "失败预览中文文案完整可见",
+      "passed": true
+    }
+  ],
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "accessibility": {
+    "axeVersion": "4.12.1",
+    "counts": {
+      "inapplicable": 40,
+      "incomplete": 0,
+      "passes": 20,
+      "violations": 0
+    },
+    "url": "http://127.0.0.1:4314/#/artifacts"
+  },
+  "review": {
+    "basis": "OwnWord 设计指南、frontend-design、绑定 Spectrum S2 1.6.0 / Tokens 14.15.0",
+    "observed": "默认无图片样例掩盖列表高度问题；真实竖图在手机单独占230px，编号和操作被推后。",
+    "change": "卡片文字在左、图片在右，桌面160×120、手机96×72；图片失败使用简短说明且保持窗口，长名称最多两行；底部集中操作。创建确认预览手机240px，流程返回复用BackButton。",
+    "result": "实际审阅10张截图，检查正常、长名称、失败、中英文浅深色、创建与转移返回；图片完整缩放，状态和操作可读，键盘命中44px。",
+    "limit": "未重跑全部业务BDD、全站无障碍或真实交易；axe仅覆盖本轮中文深色Artifact列表。"
+  },
+  "fixtureReproduction": "在独立浏览器临时包装 OwnwordArtifactModel.previewFixture：编号2048设为kind=upload、type=image/jpeg、blob为本地fixtures/homepage/painted-hand.jpg，名称为记录截图中的长文本；4096设为缺失blobId以触发失败。切换导航触发重绘；刷新恢复默认模型。创建流程通过文件控件上传同一JPG，原始文件未编辑，未进行签名或广播。",
+  "build": "npm run build 与 ./init.sh 通过；新增预览文案双语和完整字典键集合的 VM 检查通过。",
+  "legacyCheck": "旧 check-copy.cjs 直接运行在 copy.js 的 window 附加词典处失败；该脚本未纳入当前初始化，不计为本轮通过项。"
+}

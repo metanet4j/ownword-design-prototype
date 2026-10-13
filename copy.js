@@ -395,6 +395,7 @@ Object.assign(window.OwnwordCopy.zh, {
 
 Object.assign(window.OwnwordCopy.en,{
   "artifactSafePlaceholder": "Preview unavailable for this content type.",
+  "artifactPreviewUnavailable": "Preview unavailable",
   "artifactPreviewFailed": "This image could not be loaded. Known identifiers remain available.",
   "artifactContent": "Inscribed content",
   "artifactMetadata": "Current metadata · MAP",
@@ -429,6 +430,7 @@ Object.assign(window.OwnwordCopy.en,{
 
 Object.assign(window.OwnwordCopy.zh,{
   "artifactSafePlaceholder": "此内容类型不提供预览。",
+  "artifactPreviewUnavailable": "预览不可用",
   "artifactPreviewFailed": "图片加载失败，已知标识仍可查看。",
   "artifactContent": "铭文内容",
   "artifactMetadata": "当前元数据 · MAP",
