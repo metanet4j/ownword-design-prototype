@@ -1,0 +1,4 @@
+{
+  "observation": "普通 OwnWord CSS 尺寸未覆盖官方原子样式层中的 width/min-width；40px宽度的失败测量未计入最终通过记录。",
+  "resolution": "使用官方style宏生成 mobileIconWidth，并通过官方styles API传给本轮三个图标按钮。最终44px宽度和高度均以实际DOM测量证明。"
+}

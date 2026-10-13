@@ -190,6 +190,12 @@
 .content-missing > p:not(.eyebrow) { color:var(--s2-gray-700); line-height:1.8; margin-bottom:var(--s2-spacing-400); }
 .reader-version-bar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--s2-spacing-200); margin-top:var(--s2-spacing-300); padding-block:var(--s2-spacing-100); border-block:1px solid var(--s2d-border); }
 .reader-version-bar > span { color:var(--s2-gray-700); font-size:var(--s2-font-size-75); }
+@media(max-width:600px) {
+ .reader-toolbar .ow-control,.reader-version-bar .ow-control { min-height:44px; }
+ .reader-toolbar { margin-bottom:var(--s2-spacing-300); }
+ .reader-version-bar { margin-top:var(--s2-spacing-100); padding-block:0; }
+ .reader-paper { padding-block:var(--s2-spacing-300); }
+}
 .content-history { max-width:820px; margin:auto; }
 .content-history .page-heading { margin-top:var(--s2-spacing-400); }
 .version-list { list-style:none; padding:0; }

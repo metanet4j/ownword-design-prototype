@@ -178,12 +178,12 @@ function useCopyValue(value,failCopy) {
   }
   return [feedback,copy];
 }
-function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = '', compact = false}) {
+function Identifier({id, t, failCopy = false, label = 'BAP ID', contextualHelp, copyLabel = 'copyBap', target = 'bap', displayValue, className = '', compact = false, copyStyles}) {
   const [feedback,copy]=useCopyValue(id,failCopy),labelId=React.useId();
   const copyName=copyLabel==='artifactCopyFull'?t('copyField').replace('{field}',label):t(copyLabel);
   return <div role="group" aria-labelledby={labelId} className={'identifier '+className+(compact?' identifier-compact':'')+(feedback==='copyFailed'?' copy-failed':'')}>
     <div className="identifier-top"><div className="field-label-row"><span id={labelId} className="eyebrow">{label}</span>{contextualHelp}</div><span className="copy-feedback" role="status" data-copy-target={target} data-copy-feedback={feedback || ""}>{feedback ? t(feedback==='copyFailed'?'copyManually':feedback) : ''}</span></div>
-    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><CopyButton data-action={'copy-' + target} onClick={copy} label={copyName} feedback={feedback} t={t}/></div>
+    <div className="identifier-value"><code title={id}>{feedback==='copyFailed'?id:(displayValue ?? id)}</code><CopyButton styles={copyStyles} data-action={'copy-' + target} onClick={copy} label={copyName} feedback={feedback} t={t}/></div>
   </div>;
 }
 function ChainRecord({transaction, bapId, t, failCopy, target = 'tx'}) {

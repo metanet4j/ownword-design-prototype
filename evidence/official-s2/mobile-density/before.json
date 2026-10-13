@@ -1,0 +1,51 @@
+{
+  "sourceCommit": "a86850a",
+  "viewport": [
+    320,
+    720
+  ],
+  "locale": "en",
+  "theme": "light",
+  "pages": [
+    {
+      "page": "homepage",
+      "width": 320,
+      "scrollY": 0,
+      "overflow": false,
+      "firstWorkTitle": 634.875,
+      "identityHeight": 159.1875,
+      "readerTitle": null
+    },
+    {
+      "page": "reader",
+      "width": 320,
+      "scrollY": 0,
+      "overflow": false,
+      "firstWorkTitle": null,
+      "readerTitle": 416.75,
+      "toolbarHeight": 92
+    }
+  ],
+  "readerControls": [
+    {
+      "label": "Back to public profile",
+      "width": 203.265625,
+      "height": 40
+    },
+    {
+      "label": "Copy link",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "label": "Export .md",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "label": "Version history · 2",
+      "width": 155.15625,
+      "height": 40
+    }
+  ]
+}

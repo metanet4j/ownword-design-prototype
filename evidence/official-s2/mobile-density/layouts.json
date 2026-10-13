@@ -1,0 +1,327 @@
+{
+  "result": "passed",
+  "layouts": [
+    {
+      "name": "after-homepage",
+      "width": 320,
+      "locale": "en",
+      "theme": "light",
+      "overflow": false,
+      "prefixPosition": "absolute",
+      "identityHeight": 127.1875,
+      "titleTop": 602.875,
+      "controls": [
+        {
+          "label": "Copy full BAP ID",
+          "left": 237,
+          "right": 292,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Digital ID #165Stable",
+          "left": 28,
+          "right": 160.65625,
+          "width": 132.65625,
+          "height": 44
+        },
+        {
+          "label": "Identity details",
+          "left": 213.734375,
+          "right": 292,
+          "width": 78.265625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "after-reader",
+      "width": 320,
+      "locale": "en",
+      "theme": "light",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 316.75,
+      "toolbarHeight": 44,
+      "controls": [
+        {
+          "label": "Back to profile",
+          "left": 8,
+          "right": 164.75,
+          "width": 156.75,
+          "height": 44
+        },
+        {
+          "label": "Copy link",
+          "left": 182,
+          "right": 237,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Export .md",
+          "left": 249,
+          "right": 304,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Version history · 2",
+          "left": 16,
+          "right": 171.15625,
+          "width": 155.15625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "reader-zh-dark",
+      "width": 320,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 351.9375,
+      "toolbarHeight": 44,
+      "controls": [
+        {
+          "label": "返回公开身份",
+          "left": 8,
+          "right": 165.984375,
+          "width": 157.984375,
+          "height": 44
+        },
+        {
+          "label": "复制链接",
+          "left": 182,
+          "right": 237,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "导出 .md",
+          "left": 249,
+          "right": 304,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "版本历史 · 2",
+          "left": 16,
+          "right": 149.296875,
+          "width": 133.296875,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "homepage-zh-dark",
+      "width": 320,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": "absolute",
+      "identityHeight": 127.1875,
+      "titleTop": 626.875,
+      "controls": [
+        {
+          "label": "复制完整 BAP ID",
+          "left": 237,
+          "right": 292,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "数字 ID #165稳定",
+          "left": 28,
+          "right": 156.609375,
+          "width": 128.609375,
+          "height": 44
+        },
+        {
+          "label": "身份详情",
+          "left": 228,
+          "right": 292,
+          "width": 64,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "homepage-390",
+      "width": 390,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": "absolute",
+      "identityHeight": 127.1875,
+      "titleTop": 602.875,
+      "controls": [
+        {
+          "label": "复制完整 BAP ID",
+          "left": 307,
+          "right": 362,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "数字 ID #165稳定",
+          "left": 28,
+          "right": 156.609375,
+          "width": 128.609375,
+          "height": 44
+        },
+        {
+          "label": "身份详情",
+          "left": 298,
+          "right": 362,
+          "width": 64,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "reader-390",
+      "width": 390,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 316.75,
+      "toolbarHeight": 44,
+      "controls": [
+        {
+          "label": "返回公开身份",
+          "left": 8,
+          "right": 165.984375,
+          "width": 157.984375,
+          "height": 44
+        },
+        {
+          "label": "复制链接",
+          "left": 252,
+          "right": 307,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "导出 .md",
+          "left": 319,
+          "right": 374,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "版本历史 · 2",
+          "left": 16,
+          "right": 149.296875,
+          "width": 133.296875,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "desktop-homepage",
+      "width": 1440,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": "static",
+      "identityHeight": 56,
+      "titleTop": 433.390625,
+      "controls": [
+        {
+          "label": "复制完整 BAP ID",
+          "left": 603.015625,
+          "right": 653.015625,
+          "width": 50,
+          "height": 40
+        },
+        {
+          "label": "数字 ID #165稳定",
+          "left": 922.765625,
+          "right": 1112,
+          "width": 189.234375,
+          "height": 40
+        },
+        {
+          "label": "身份详情",
+          "left": 1120,
+          "right": 1184,
+          "width": 64,
+          "height": 40
+        }
+      ]
+    },
+    {
+      "name": "desktop-reader",
+      "width": 1440,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 298,
+      "toolbarHeight": 40,
+      "controls": [
+        {
+          "label": "返回公开身份",
+          "left": 232,
+          "right": 389.984375,
+          "width": 157.984375,
+          "height": 40
+        },
+        {
+          "label": "复制链接",
+          "left": 836,
+          "right": 886,
+          "width": 50,
+          "height": 40
+        },
+        {
+          "label": "导出 .md",
+          "left": 898,
+          "right": 948,
+          "width": 50,
+          "height": 40
+        },
+        {
+          "label": "版本历史 · 2",
+          "left": 240,
+          "right": 373.296875,
+          "width": 133.296875,
+          "height": 40
+        }
+      ]
+    }
+  ],
+  "audits": [
+    {
+      "name": "after-homepage",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    {
+      "name": "after-reader",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    {
+      "name": "reader-zh-dark",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    {
+      "name": "homepage-zh-dark",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    }
+  ]
+}

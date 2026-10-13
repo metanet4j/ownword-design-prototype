@@ -124,4 +124,6 @@
   .homepage-identity-links {justify-content:space-between;gap:0;}
   .homepage-identity-links>.s2d-button {padding-inline:var(--s2-spacing-50);}
   .homepage-digital {gap:var(--s2-spacing-50);}
+  .homepage-digital-prefix {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+  .homepage-identifiers .ow-control {min-height:44px;}
 }

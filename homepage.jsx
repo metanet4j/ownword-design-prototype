@@ -45,9 +45,9 @@ function HomepageWorkspace({active,identity,locale,t,settings,setSettings,failCo
         <div className="homepage-relations" data-homepage-module="relationship">{!isList&&relationshipNotice}{!isList&&['following','followers'].map(kind=><Button variant="quiet" key={kind} data-homepage-list={kind} onClick={()=>openList(kind)}><strong data-relationship-count={kind}>{settings.relationship==='failure'||social.data.readFailure?'—':M.relationshipList(social.data,route.id,kind)?.length??'—'}</strong> {h(kind)}</Button>)}{social.data.events.some(event=>!event.indexed&&(event.actor===route.id||event.target===route.id))&&<p className="hint" data-relationship-count-sync role="status">{h('indexing')}</p>}</div>
       </div>}
         <div className="homepage-identifiers">
-          <Identifier compact id={route.id} t={t} failCopy={failCopy}/>
+          <Identifier compact copyStyles={mobileIconWidth} id={route.id} t={t} failCopy={failCopy}/>
           {!isList&&<div className="homepage-identity-links">
-            {showNumber&&<Button variant="quiet" className="homepage-digital" data-homepage-digital={AM.numberState(asset)} onClick={()=>openPublicRoute('artifact',asset.id)}>{h('digital')} #{asset.number}<NumberStatusLight state={AM.numberState(asset)} t={t}/></Button>}
+            {showNumber&&<Button variant="quiet" className="homepage-digital" data-homepage-digital={AM.numberState(asset)} onClick={()=>openPublicRoute('artifact',asset.id)}><span><span className="homepage-digital-prefix">{h('digital')} </span>#{asset.number}</span><NumberStatusLight state={AM.numberState(asset)} t={t}/></Button>}
             <Button variant="quiet" data-homepage-action="details" aria-label={h('details')} onClick={()=>setDetails(true)}>{h('detailsShort')}</Button>
           </div>}
         </div>

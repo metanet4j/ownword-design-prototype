@@ -1,0 +1,6 @@
+{
+  "result": "test-expectation-error",
+  "stage": "return-after-history-navigation",
+  "explanation": "先经过版本历史和版本切换后，返回遵循浏览器历史；测试错误地预期一次返回直达主页。重新从主页打开作品，单独核对返回行为。",
+  "observed": "{\"route\":\"#/content/a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1\",\"back\":\"contentBack\"}"
+}

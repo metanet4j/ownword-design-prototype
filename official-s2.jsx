@@ -43,3 +43,4 @@ export const S2 = {Popover,DialogTrigger,Provider, Button, ActionButton, ToggleB
 export const officialIcons = {Add:IconAdd,Checkmark:IconCheckmark,ChevronDown:IconChevronDown,ChevronRight:IconChevronRight,Close:IconClose,Contrast:IconContrast,Copy:IconCopy,Download:IconDownload,History:IconHistory,InfoCircle:IconInfoCircle,Link:IconLink,More:IconMore,Play:IconPlay,Refresh:IconRefresh,TextBold:IconTextBold,TextItalic:IconTextItalic};
 
 export const fullWidth=style({width:'full'});
+export const mobileIconWidth=style({width:{default:44,sm:40}});

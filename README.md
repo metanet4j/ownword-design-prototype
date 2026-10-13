@@ -10,9 +10,9 @@
 
 ## 当前视觉布局
 
-[本轮前后对照](visual-review.html)展示身份编辑和关系确认。[阅读与详情](visual-review-v4.html)、[筛选与手机列表](visual-review-v3.html)、[身份与作品层级](visual-review-v2.html)保留此前对照。
+[本轮前后对照](visual-review.html)展示手机主页标识区和阅读页头部的两处轻量调整。[整站验收总览](acceptance-review.html)汇总交付；[Artifact 核对](visual-review-v9.html)、[身份安全](visual-review-v8.html)、[编辑器](visual-review-v7.html)和此前各轮对照保留。
 
-身份表单的名称与类型由官方组件生成必填标记，个人／组织使用官方 RadioGroup 与 Radio 表达互斥选择。编辑页的 BAP ID 和发布状态组成紧凑上下文，复用 Identifier／CopyButton。关系确认先展示双方身份，再展示关系规则与公开影响；双方完整标识可换行和复制，缺少展示名时直接呈现标识，说明保留在弹层正文。
+手机主页保留编号、状态与详情同组，数字 ID 的重复视觉标签收起，辅助技术仍可读取完整名称；标识区从约159px降到127px。英文返回文案缩短，阅读页减少头部间距，320px英文浅色示例的正文标题提前100px。手机页头相关操作范围至少44×44px；三个图标按钮的宽度通过官方style宏及styles API设置。
 
 阅读复制与导出使用官方图标操作；Artifact 稳定短编号、复制与状态同行，长编号、未稳定状态、编号变化及复制失败保留展开空间，帮助与刷新成组。三个模块共用 SectionTabs，支持窄屏收敛与恢复桌面；手机草稿标题使用完整行宽，主页作品采用受控媒体窗口。组件内部样式和包源码保持官方来源。
 
@@ -30,12 +30,12 @@
 
 ## 验收与边界
 
-官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v5/verification.json` 和对应截图，覆盖身份单选键盘、必填、取消保留、无改动、复制与字段错误、创建共用字段、双语深色，以及关系确认对象和焦点。此前证据保留在各轮 visual-v2／visual-v3／visual-v4 目录。
+官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮证据为 `evidence/official-s2/mobile-density/verification.json`：13项相关操作及4项最终位置复核、8个页面布局、4次中英主题自动无障碍检查通过。构建及模型检查通过；原始导航、设备预设和样式尺寸诊断保留。设备预设未启用实际触摸能力，44px范围由DOM测量证明，不宣称实机触摸验收。
 
 迁移验收覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
 
 `check-copy.cjs` 是继承的旧脚本，直接 require 浏览器字典时会报 window 未定义；它没有作为本轮迁移门禁。有效命令为上方的 `npm run check` 和 `npm run verify:browser`。继承的旧浏览器脚本指向 4314 和旧 DOM，不代表本次验收结果。
 
-身份、钱包、签名、发布、索引、关系均使用确定性模拟，不产生真实交易。字体依赖官方外部资源，加载失败时使用既有系统字体回退。本轮最终会话记录到 8 条官方字体 CDN 请求失败，业务应用错误为 0；原始记录见 visual-v4/verification.json 和 font-network-observation.json。字体加载稳定性仍待单独处理。图片、视频、音频保留已有素材，出处和许可见 `fixtures/homepage/sources.json`。
+身份、钱包、签名、发布、索引、关系均使用确定性模拟，不产生真实交易。字体依赖官方外部资源，加载失败时使用既有系统字体回退。本轮浏览器和控制台错误为零；历史字体请求失败保留在各轮原始证据，当前通过不证明外部 CDN 永久稳定。图片、视频、音频保留已有素材，出处和许可见 `fixtures/homepage/sources.json`。
 
 实现状态以任务目录的 feature_list.json 为准；用户视觉复核前保持 `needs-review`。

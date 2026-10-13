@@ -1,0 +1,20 @@
+{
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562066
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "observation": "旧会话最初仍呈现上一构建；重新导航后曾未出现main。具体原因未核实，独立新会话成功加载最新源码。",
+  "conclusion": "未把旧会话自动化观察当作产品修复或新构建通过的依据。"
+}

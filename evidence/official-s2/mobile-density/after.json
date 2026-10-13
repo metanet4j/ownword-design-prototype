@@ -1,0 +1,83 @@
+{
+  "viewport": [
+    320,
+    720
+  ],
+  "locale": "en",
+  "theme": "light",
+  "pages": [
+    {
+      "name": "after-homepage",
+      "width": 320,
+      "locale": "en",
+      "theme": "light",
+      "overflow": false,
+      "prefixPosition": "absolute",
+      "identityHeight": 127.1875,
+      "titleTop": 602.875,
+      "controls": [
+        {
+          "label": "Copy full BAP ID",
+          "left": 237,
+          "right": 292,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Digital ID #165Stable",
+          "left": 28,
+          "right": 160.65625,
+          "width": 132.65625,
+          "height": 44
+        },
+        {
+          "label": "Identity details",
+          "left": 213.734375,
+          "right": 292,
+          "width": 78.265625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "after-reader",
+      "width": 320,
+      "locale": "en",
+      "theme": "light",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 316.75,
+      "toolbarHeight": 44,
+      "controls": [
+        {
+          "label": "Back to profile",
+          "left": 8,
+          "right": 164.75,
+          "width": 156.75,
+          "height": 44
+        },
+        {
+          "label": "Copy link",
+          "left": 182,
+          "right": 237,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Export .md",
+          "left": 249,
+          "right": 304,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Version history · 2",
+          "left": 16,
+          "right": 171.15625,
+          "width": 155.15625,
+          "height": 44
+        }
+      ]
+    }
+  ]
+}

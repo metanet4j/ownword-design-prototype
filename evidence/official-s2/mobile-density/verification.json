@@ -1,0 +1,368 @@
+{
+  "result": "passed",
+  "baselineCommit": "a86850a",
+  "sourceHashes": {
+    "homepage.jsx": "0bf21e3a805551c113b1ed34ea8a37755bb4b1fe77ca8253df89d004ade7675d",
+    "homepage.css": "65f45ec3e9135d44ea0b0f84d1b26ecee12656ece45375aec20a886f790b1efa",
+    "content-reader.jsx": "469270498a18c66abad23fed9524dc48156ea55dd93344eb6651285433503c4a",
+    "content.css": "f4861fe8b19cb986e60c7f0ce734525dfd075a146aa130d88b22c770eaebdf0c",
+    "copy.js": "acbfc38d04f50a4dfa787022e1139b5563a9d2c10730dce0b0b9aa7b1416d2d7",
+    "components.jsx": "21848dcd0ac1225cd0a1174381e03ab6ba95b66e7170a5dd3dcddc81463ef700",
+    "official-s2.jsx": "c2275a4064b28f6390e1380dd9458c3108c5c191a2090a0643212a1764b7d5dc",
+    "build-prototype.mjs": "85dd62a8b218799fb6aef8e6a66e023ea7a374c35dc9baa2daaa763253e2a17c"
+  },
+  "layouts": [
+    {
+      "name": "after-homepage",
+      "width": 320,
+      "locale": "en",
+      "theme": "light",
+      "overflow": false,
+      "prefixPosition": "absolute",
+      "identityHeight": 127.1875,
+      "titleTop": 602.875,
+      "controls": [
+        {
+          "label": "Copy full BAP ID",
+          "left": 237,
+          "right": 292,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Digital ID #165Stable",
+          "left": 28,
+          "right": 160.65625,
+          "width": 132.65625,
+          "height": 44
+        },
+        {
+          "label": "Identity details",
+          "left": 213.734375,
+          "right": 292,
+          "width": 78.265625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "after-reader",
+      "width": 320,
+      "locale": "en",
+      "theme": "light",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 316.75,
+      "toolbarHeight": 44,
+      "controls": [
+        {
+          "label": "Back to profile",
+          "left": 8,
+          "right": 164.75,
+          "width": 156.75,
+          "height": 44
+        },
+        {
+          "label": "Copy link",
+          "left": 182,
+          "right": 237,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Export .md",
+          "left": 249,
+          "right": 304,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "Version history · 2",
+          "left": 16,
+          "right": 171.15625,
+          "width": 155.15625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "reader-zh-dark",
+      "width": 320,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 351.9375,
+      "toolbarHeight": 44,
+      "controls": [
+        {
+          "label": "返回公开身份",
+          "left": 8,
+          "right": 165.984375,
+          "width": 157.984375,
+          "height": 44
+        },
+        {
+          "label": "复制链接",
+          "left": 182,
+          "right": 237,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "导出 .md",
+          "left": 249,
+          "right": 304,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "版本历史 · 2",
+          "left": 16,
+          "right": 149.296875,
+          "width": 133.296875,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "homepage-zh-dark",
+      "width": 320,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": "absolute",
+      "identityHeight": 127.1875,
+      "titleTop": 626.875,
+      "controls": [
+        {
+          "label": "复制完整 BAP ID",
+          "left": 237,
+          "right": 292,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "数字 ID #165稳定",
+          "left": 28,
+          "right": 156.609375,
+          "width": 128.609375,
+          "height": 44
+        },
+        {
+          "label": "身份详情",
+          "left": 228,
+          "right": 292,
+          "width": 64,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "homepage-390",
+      "width": 390,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": "absolute",
+      "identityHeight": 127.1875,
+      "titleTop": 602.875,
+      "controls": [
+        {
+          "label": "复制完整 BAP ID",
+          "left": 307,
+          "right": 362,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "数字 ID #165稳定",
+          "left": 28,
+          "right": 156.609375,
+          "width": 128.609375,
+          "height": 44
+        },
+        {
+          "label": "身份详情",
+          "left": 298,
+          "right": 362,
+          "width": 64,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "reader-390",
+      "width": 390,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 316.75,
+      "toolbarHeight": 44,
+      "controls": [
+        {
+          "label": "返回公开身份",
+          "left": 8,
+          "right": 165.984375,
+          "width": 157.984375,
+          "height": 44
+        },
+        {
+          "label": "复制链接",
+          "left": 252,
+          "right": 307,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "导出 .md",
+          "left": 319,
+          "right": 374,
+          "width": 55,
+          "height": 44
+        },
+        {
+          "label": "版本历史 · 2",
+          "left": 16,
+          "right": 149.296875,
+          "width": 133.296875,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "desktop-homepage",
+      "width": 1440,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": "static",
+      "identityHeight": 56,
+      "titleTop": 433.390625,
+      "controls": [
+        {
+          "label": "复制完整 BAP ID",
+          "left": 603.015625,
+          "right": 653.015625,
+          "width": 50,
+          "height": 40
+        },
+        {
+          "label": "数字 ID #165稳定",
+          "left": 922.765625,
+          "right": 1112,
+          "width": 189.234375,
+          "height": 40
+        },
+        {
+          "label": "身份详情",
+          "left": 1120,
+          "right": 1184,
+          "width": 64,
+          "height": 40
+        }
+      ]
+    },
+    {
+      "name": "desktop-reader",
+      "width": 1440,
+      "locale": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "prefixPosition": null,
+      "titleTop": 298,
+      "toolbarHeight": 40,
+      "controls": [
+        {
+          "label": "返回公开身份",
+          "left": 232,
+          "right": 389.984375,
+          "width": 157.984375,
+          "height": 40
+        },
+        {
+          "label": "复制链接",
+          "left": 836,
+          "right": 886,
+          "width": 50,
+          "height": 40
+        },
+        {
+          "label": "导出 .md",
+          "left": 898,
+          "right": 948,
+          "width": 50,
+          "height": 40
+        },
+        {
+          "label": "版本历史 · 2",
+          "left": 240,
+          "right": 373.296875,
+          "width": 133.296875,
+          "height": 40
+        }
+      ]
+    }
+  ],
+  "audits": [
+    {
+      "name": "after-homepage",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    {
+      "name": "after-reader",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    {
+      "name": "reader-zh-dark",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    {
+      "name": "homepage-zh-dark",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    }
+  ],
+  "actions": [
+    "详情保留完整 BAP ID",
+    "关闭详情焦点返回入口",
+    "编号入口仍进入 Artifact",
+    "Artifact 返回所属主页",
+    "完整 BAP ID 实际复制粘贴一致",
+    "工具栏键盘顺序保留",
+    "键盘复制链接反馈成功",
+    "目录跳转将焦点交给正文标题",
+    "作品返回所属主页",
+    "版本历史保留两份记录",
+    "历史版本说明和切换入口保留",
+    "最新版本返回后无横向溢出",
+    "真实导出的 UTF-8 Markdown 包含当前作品标题"
+  ],
+  "finalPositionChecks": [
+    "最终44px详情入口可点击且保留完整标识",
+    "最终44px复制按钮的完整BAP ID实际粘贴一致",
+    "最终44px复制链接入口可点击且反馈成功",
+    "最终44px导出按钮下载有效Markdown"
+  ],
+  "browserErrors": [],
+  "consoleErrors": [],
+  "scope": "仅手机主页标识区和阅读页头部；13项动作在尺寸调整前完成，最终复核四处点击入口及44px尺寸。",
+  "userVisualReview": "pending",
+  "limitations": [
+    "设备预设未启用触摸能力，不宣称实机触摸验证；手机视口下44px范围实际测量通过。",
+    "自动无障碍 incomplete 保留，不计作通过。",
+    "原始自动化导航、设备预设及样式优先级诊断保留。"
+  ]
+}

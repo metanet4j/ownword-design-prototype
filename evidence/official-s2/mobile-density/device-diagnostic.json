@@ -1,0 +1,9 @@
+{
+  "devicePreset": "iPhone 12",
+  "observed": {
+    "width": 390,
+    "coarse": false,
+    "maxTouchPoints": 0
+  },
+  "conclusion": "设备预设没有启用触摸能力；本轮证明手机视口布局和实际44px操作范围，不宣称实机触摸验收。"
+}

@@ -6,7 +6,7 @@
     viewChainRecord: 'View chain record', hideChainRecord: 'Hide chain record',
     viewFullProfile: 'View full profile', hideFullProfile: 'Hide full profile',
     connect: 'Connect Wallet', connected: 'Connected', notConnected: 'Not connected', connecting: 'Connecting', disconnect: 'Disconnect', accountSwitch: 'Switch account', wallet: 'Wallet',
-    myIdentity: 'My Identity', publicIdentity: 'Public Identity', backHome: 'Back to home', backFind: 'Back to find identity', backArtifact: 'Back to Artifact', backPublicIdentity: 'Back to public profile', artifactDetailTitle: 'Artifact', preferences: 'Preferences', theme: 'Theme', light: 'Light', dark: 'Dark', language: 'Language',
+    myIdentity: 'My Identity', publicIdentity: 'Public Identity', backHome: 'Back to home', backFind: 'Back to find identity', backArtifact: 'Back to Artifact', backPublicIdentity: 'Back to profile', artifactDetailTitle: 'Artifact', preferences: 'Preferences', theme: 'Theme', light: 'Light', dark: 'Dark', language: 'Language',
     headlineOne: 'Own your identity.', headlineTwo: 'Own your words.', welcomeIntro: 'A place to stand. A voice that belongs to you.', welcomeBody: 'Start with your wallet. Your identity and your words stay yours.',
     welcomeDiscoveryBody: 'An identity you control. Words you sign. A record anyone can inspect.',
     welcomeStoryTitle: 'A voice. An author. A record.', welcomeStoryBody: 'Follow one identity from its profile to its words and the record behind them.',
