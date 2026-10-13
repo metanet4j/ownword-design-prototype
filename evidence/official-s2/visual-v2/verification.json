@@ -1,0 +1,122 @@
+{
+  "checkedAt": "2026-10-13T07:44:00.620Z",
+  "session": "ownword-visual-final4",
+  "checks": [
+    "桌面主体左右等距",
+    "复制靠近完整 BAP 标识",
+    "320px 首屏可见首条作品标题",
+    "手机详情关闭恢复焦点",
+    "复制成功反馈可用",
+    "官方 Tabs 方向键筛选视频",
+    "阅读返回保留筛选",
+    "窄屏复制失败展开完整标识",
+    "内容作者区复用官方复制控件",
+    "深色主题正确继承"
+  ],
+  "screens": [
+    {
+      "name": "after-homepage",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "after-homepage-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "relationships-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "copy-failure-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-identity",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "identity-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-content",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "content-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-artifacts",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifacts-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-dark-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-en",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    }
+  ],
+  "desktop": {
+    "copyGap": 8,
+    "firstTitleTop": 441.390625,
+    "media": [
+      {
+        "height": 120,
+        "width": 160
+      },
+      {
+        "height": 120,
+        "width": 160
+      }
+    ],
+    "titleSize": "20px"
+  },
+  "mobile": {
+    "firstTitleTop": 604.28125,
+    "media": [
+      {
+        "height": 72,
+        "width": 96
+      },
+      {
+        "height": 72,
+        "width": 96
+      }
+    ],
+    "titleSize": "18px"
+  },
+  "errors": [],
+  "warnings": [],
+  "scope": "本轮布局、受影响复制控件、Tabs 与阅读返回、四模块列表、320px 和中文深色；未重复发布交易及完整旧 BDD。"
+}

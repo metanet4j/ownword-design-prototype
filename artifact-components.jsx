@@ -28,7 +28,7 @@ function ArtifactSummary({data,bapId,t,onManage,onOpen,readOnly=false}) {
 }
 function ArtifactCard({asset,data,bapId,t,onOpen,children}) {
   const b=OwnwordArtifactModel.binding(data,asset.id),isCurrent=b?.bapId===bapId;
-  return <S2.Card styles={fullWidth} variant="secondary" UNSAFE_className="artifact-card" data-artifact-id={asset.id} data-current={isCurrent} density="compact"><div className="artifact-card-inner">
+  return <S2.Card styles={fullWidth} variant="tertiary" UNSAFE_className="artifact-card" data-artifact-id={asset.id} data-current={isCurrent} density="compact"><div className="artifact-card-inner">
     <div className="artifact-card-overview">
       <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}</div>
       {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} compact t={t}/>}

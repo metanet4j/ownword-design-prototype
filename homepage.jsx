@@ -39,18 +39,18 @@ function HomepageWorkspace({active,identity,locale,t,settings,setSettings,failCo
       <div className="homepage-person">
         <div className="homepage-name"><h1 tabIndex="-1">{profile.profile.name||route.id.slice(0,8)+'…'}</h1><span className="profile-type">{t(profile.profile.type||'Person')}</span></div>
         {!isList&&profile.profile.bio&&<p className="bio">{profile.profile.bio}</p>}
-        <div className="homepage-identifiers">
-          <Identifier compact id={route.id} t={t} failCopy={failCopy}/>
-          {!isList&&<div className="homepage-identity-links">
-            {showNumber&&<Button variant="quiet" className="homepage-digital" data-homepage-digital={AM.numberState(asset)} onClick={()=>openPublicRoute('artifact',asset.id)}>{h('digital')} #{asset.number}<NumberStatusLight state={AM.numberState(asset)} t={t}/></Button>}
-            <Button variant="quiet" data-homepage-action="details" aria-label={h('details')} onClick={()=>setDetails(true)}>{h('detailsShort')}<UiIcon name="InfoCircle"/></Button>
-          </div>}
-        </div>
       </div>
       {!isList&&<div className="homepage-social">
         {!isList&&<RelationshipActions identity={identity} target={profile} social={social} connected={connected} onConnect={onConnect} onIdentity={onIdentity} connectionCancelled={connectionCancelled} onAccountEvent={onAccountEvent} resumeIntent={resumeIntent} onResumeConsumed={onResumeConsumed} h={h} t={t} settings={settings} failCopy={failCopy}/>}
         <div className="homepage-relations" data-homepage-module="relationship">{!isList&&relationshipNotice}{!isList&&['following','followers'].map(kind=><Button variant="quiet" key={kind} data-homepage-list={kind} onClick={()=>openList(kind)}><strong data-relationship-count={kind}>{settings.relationship==='failure'||social.data.readFailure?'—':M.relationshipList(social.data,route.id,kind)?.length??'—'}</strong> {h(kind)}</Button>)}{social.data.events.some(event=>!event.indexed&&(event.actor===route.id||event.target===route.id))&&<p className="hint" data-relationship-count-sync role="status">{h('indexing')}</p>}</div>
       </div>}
+        <div className="homepage-identifiers">
+          <Identifier compact id={route.id} t={t} failCopy={failCopy}/>
+          {!isList&&<div className="homepage-identity-links">
+            {showNumber&&<Button variant="quiet" className="homepage-digital" data-homepage-digital={AM.numberState(asset)} onClick={()=>openPublicRoute('artifact',asset.id)}>{h('digital')} #{asset.number}<NumberStatusLight state={AM.numberState(asset)} t={t}/></Button>}
+            <Button variant="quiet" data-homepage-action="details" aria-label={h('details')} onClick={()=>setDetails(true)}>{h('detailsShort')}</Button>
+          </div>}
+        </div>
     </header>
     {isList?<RelationshipList errorNotice={relationshipNotice} key={route.id+'-'+route.kind} bapId={route.id} direction={route.kind} social={social} identity={identity} connected={connected} onConnect={onConnect} onIdentity={onIdentity} onAccountEvent={onAccountEvent} connectionCancelled={connectionCancelled} resumeIntent={resumeIntent} onResumeConsumed={onResumeConsumed} h={h} t={t} locale={locale} settings={settings} setSettings={setSettings} failCopy={failCopy}/>:<ContentStream key={route.id} bapId={route.id} h={h} t={t} locale={locale} settings={settings} setSettings={setSettings}/>}
     {details&&<Modal title={h('details')} titleKey="homepage-identity" closeLabel={h('close')} onCancel={()=>setDetails(false)}><div className="person-row"><Portrait profile={profile.profile}/><strong>{profile.profile.name||route.id}</strong></div><Identifier id={route.id} t={t} failCopy={failCopy}/>{profile.transaction?<Identifier id={profile.transaction.txid} label={t('publishSampleTx')} copyLabel="copyTx" target="identity-proof-tx" t={t} failCopy={failCopy}/>:<p>{h('noTransaction')}</p>}{bindingState==='valid'?<p>{h('digital')}: {asset?.number}</p>:binding&&<p>{h('lastKnown')}</p>}<p className="hint">{h('signatureNote')}</p><details className="homepage-identity-proof"><summary>{h('signature')} · {t('artifactProof-'+signature)}</summary><IdentitySignatureProof bapId={route.id} signer={AM.historicalSignerFor(route.id)} signature={signature} keyEpoch="historical-key-at-creation" t={t} failCopy={failCopy}/></details></Modal>}
@@ -124,8 +124,8 @@ function RelationshipActions({identity,target,social,connected,onConnect,onIdent
     {dialog&&dialog.phase!=='friend-details'&&<Modal returnFocus={focusReturn.current} key={dialog.phase} title={h(dialog.phase==='review'?'relationshipReview':'relationshipWallet')} titleKey={'relationship-'+dialog.phase} closeLabel={h('cancel')} onCancel={cancel} context={dialog.phase==='wallet'?'WALLET · PROTOTYPE':'OWNWORD'}><p>{h(dialog.phase==='review'?'relationshipImpact':'relationshipMock')}</p>{['request','accept'].includes(dialog.action)&&<p>{h('friendImpact')}</p>}<div className="relationship-party"><h3>{h('actor')}</h3><strong>{dialog.actorName}</strong><Identifier id={dialog.actor} t={t} failCopy={failCopy} target="relationship-actor"/></div><div className="relationship-party"><h3>{h('target')}</h3><strong>{dialog.targetName}</strong><Identifier id={dialog.target} t={t} failCopy={failCopy} target="relationship-target"/></div><p className="hint">{h('relationshipMock')}</p><div className="action-row"><Button data-relationship-action="cancel" onClick={cancel}>{h('cancel')}</Button><Button variant="accent" data-relationship-action={dialog.phase==='review'?'sign':'approve'} onClick={dialog.phase==='review'?authorize:approve}>{h(dialog.phase==='review'?{follow:'signFollow',unfollow:'signUnfollow',request:'signRequest',accept:'signAccept'}[dialog.action]:'approve')}</Button></div></Modal>}
   </div>;
 }
-function HomepageTabs({items,value,onChange,label,children}) {
-  return <S2.Tabs aria-label={label} selectedKey={value} onSelectionChange={onChange} UNSAFE_className="homepage-tabs"><S2.TabList>{items.map(item=><S2.Tab key={item.id} id={item.id}>{item.label}</S2.Tab>)}</S2.TabList>{items.map(item=><S2.TabPanel key={item.id} id={item.id}>{item.id===value?children:null}</S2.TabPanel>)}</S2.Tabs>;
+function HomepageTabs({items,value,onChange,label,heading,children}) {
+  return <S2.Tabs aria-label={label} selectedKey={value} onSelectionChange={onChange} density="compact" UNSAFE_className="homepage-tabs"><div className="homepage-browser-heading">{heading&&<h2>{heading}</h2>}<div className="homepage-tab-options"><S2.TabList>{items.map(item=><S2.Tab key={item.id} id={item.id}>{item.label}</S2.Tab>)}</S2.TabList></div></div>{items.map(item=><S2.TabPanel key={item.id} id={item.id}>{item.id===value?children:null}</S2.TabPanel>)}</S2.Tabs>;
 }
 function ContentStream({bapId,h,t,locale,settings,setSettings}) {
   const key='ownword-v040-view:'+bapId;
@@ -136,7 +136,7 @@ function ContentStream({bapId,h,t,locale,settings,setSettings}) {
   React.useEffect(()=>{try{sessionStorage.setItem(key,JSON.stringify(view));}catch{}},[key,view]);
   const error=settings.content==='failure'||loaded.readFailure;
   function select(filter){setView({filter,limit:3});setPageError(false);}
-  return <section data-homepage-module="content"><h2>{h('content')}</h2><HomepageTabs label={h('filter')} items={['all','blog','image','video','audio'].map(id=>({id,label:h(id)}))} value={view.filter} onChange={select}>
+  return <section data-homepage-module="content"><HomepageTabs heading={h('content')} label={h('filter')} items={['all','blog','image','video','audio'].map(id=>({id,label:h(id)}))} value={view.filter} onChange={select}>
     {error?<div role="alert"><p>{h('contentError')}</p><Button onClick={()=>{setSettings(s=>({...s,content:'normal'}));setReadAttempt(x=>x+1);}}>{h('retry')}</Button></div>:<div className="homepage-stream" data-content-attempt={readAttempt}>{filtered.length?filtered.slice(0,view.limit).map(record=><HomepageContentRow key={record.id} record={record} h={h} locale={locale} t={t}/>):<p className="homepage-empty">{h(rows.length?'emptyType':'empty')}</p>}{pageError&&<p role="alert">{h('pageFailure')}</p>}{view.limit<filtered.length&&<Button data-homepage-action="more-content" onClick={()=>{if(settings.pagination==='failure'){setPageError(true);return;}setView(s=>({...s,limit:s.limit+3}));setPageError(false);}}>{h(pageError?'retry':'more')}</Button>}</div>}
   </HomepageTabs></section>;
 }
@@ -144,7 +144,7 @@ function HomepageContentRow({record,h,locale,t}) {
   const M=OwnwordHomepageModel,type=M.kind(record),[duration,setDuration]=React.useState(null),[resourceError,setResourceError]=React.useState(false);
   const link='#/content/'+encodeURIComponent(record.txid),name=record.title||OwnwordContentModel.title(record.content)||h(type)+' · '+record.txid.slice(0,8),date=new Date(record.publishedAt);
   const open=event=>{if(event.button||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();openPublicRoute('content',record.txid);};
-  const title=<S2.Link variant="secondary" isStandalone isQuiet href={link} UNSAFE_className="homepage-work-title" title={name} onPress={event=>{if(!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)openPublicRoute('content',record.txid);}}><span>{name}</span></S2.Link>;
+  const title=<S2.Link variant="secondary" isStandalone isQuiet href={link} UNSAFE_className="homepage-work-title" title={name} onPress={event=>{if(!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)openPublicRoute('content',record.txid);}}><span className="homepage-work-heading">{name}</span></S2.Link>;
   const length=duration!==null?Math.floor(duration/60)+':'+String(Math.floor(duration%60)).padStart(2,'0'):null;
   const metadata=event=>{if(Number.isFinite(event.target.duration))setDuration(event.target.duration);};
   const preview=type==='image'||type==='video';
@@ -170,7 +170,7 @@ function RelationshipList({errorNotice,bapId,direction,social,identity,connected
   React.useEffect(()=>{try{sessionStorage.setItem(cacheKey,JSON.stringify({limit:view.cursor}));}catch{}},[view.cursor,cacheKey]);
   function more(){if(settings.relationshipPage==='failure'){setFailedPage(true);return;}const page=all.slice(settings.relationshipPage==='duplicate'?Math.max(0,view.cursor-1):view.cursor,view.cursor+2);setView(previous=>({ids:[...new Set([...previous.ids,...page])],cursor:Math.min(previous.cursor+2,all.length)}));setFailedPage(false);}
   function switchDirection(value){openPublicRoute('identity',bapId,value);}
-  return <section className="homepage-list" data-relationship-list={direction}><h2>{h('publicConnections')}</h2><HomepageTabs value={direction} onChange={switchDirection} label={h('publicConnections')} items={['following','followers'].map(id=>({id,label:h(id)}))}>
+  return <section className="homepage-list" data-relationship-list={direction}><HomepageTabs heading={h('publicConnections')} value={direction} onChange={switchDirection} label={h('publicConnections')} items={['following','followers'].map(id=>({id,label:h(id)}))}>
     {all&&!failed&&<p className="hint" data-list-total={all.length}>{all.length} {h(all.length===1?'oneIdentity':'identities')}</p>}
     {errorNotice}
     {!failed&&all?.length===0&&<p className="homepage-empty">{h(direction==='following'?'followingEmpty':'followersEmpty')}</p>}

@@ -8,6 +8,12 @@
 
 直接浏览已提交产物不需要安装依赖。开发时运行 `npm ci`，修改后运行 `npm run build`；`npm run check` 核对生产构建来源、输入及产物哈希，并验证四模块模型。`npm run verify:browser` 使用 agent-browser 独立会话验收当前迁移；要求 4315 预览正在运行。
 
+## 当前视觉布局
+
+[前后对照](visual-review.html)覆盖个人主页、320px 手机主页和三个管理页。身份主体与标识条分组，复制紧邻协议值；公开作品标题与筛选放在同一行，标题使用 S2 衬线字体，桌面 20px、手机 18px。内容工作区复用 Identifier／CopyButton；Artifact 持有对象使用官方 Card 的 tertiary 变体。
+
+官方 Tabs 使用公开的 compact 密度，业务容器为其提供稳定的可用宽度，支持窄屏收敛和恢复桌面展开。组件内部样式和包源码保持官方来源。
+
 ## 官方组件与业务组合
 
 运行时直接打包官方 `@react-spectrum/s2@1.6.0`，配套 `react@19.3.0`、`react-dom@19.3.0`，全部锁定于 package-lock。入口是 `official-s2.jsx`，样式由官方包及其 style 宏生成。原型不再加载 `_ds_bundle` 或本地仿制组件运行时。
@@ -22,7 +28,9 @@
 
 ## 验收与边界
 
-本次证据集中于 `evidence/official-s2/verification.json` 与同目录截图。覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
+官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v2/verification.json` 和对应截图，覆盖四个主要页面、复制成功／失败、详情焦点、Tabs 键盘及阅读返回、手机和深色。
+
+迁移验收覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
 
 `check-copy.cjs` 是继承的旧脚本，直接 require 浏览器字典时会报 window 未定义；它没有作为本轮迁移门禁。有效命令为上方的 `npm run check` 和 `npm run verify:browser`。继承的旧浏览器脚本指向 4314 和旧 DOM，不代表本次验收结果。
 
