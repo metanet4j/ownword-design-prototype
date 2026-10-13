@@ -1,0 +1,1417 @@
+{
+  "date": "2026-10-13",
+  "url": "http://127.0.0.1:4314/",
+  "pages": [
+    {
+      "name": "welcome",
+      "file": "welcome.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Own your identity.Own your words."
+        },
+        {
+          "font": 28,
+          "text": "A voice. An author. A record."
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "identity",
+      "file": "identity.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My Identity"
+        },
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "identity-mobile",
+      "file": "identity-mobile.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My Identity"
+        },
+        {
+          "font": 20,
+          "text": "Maya Chen"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "identity-edit",
+      "file": "identity-edit.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Edit profile"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "identity-invalid",
+      "file": "identity-invalid.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Edit profile"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "identity-review",
+      "file": "identity-review.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Review identity"
+        },
+        {
+          "font": 20,
+          "text": "Maya Chen"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "identity-wallet",
+      "file": "identity-wallet.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Review identity"
+        },
+        {
+          "font": 20,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Confirm profile update"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "identity-result",
+      "file": "identity-result.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My Identity"
+        },
+        {
+          "font": 20,
+          "text": "Maya Chen"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-drafts",
+      "file": "content-drafts.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "content-records",
+      "file": "content-records.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-reader",
+      "file": "content-reader.png",
+      "headings": [
+        {
+          "font": 24,
+          "text": "Your words deserve a home"
+        },
+        {
+          "font": 20,
+          "text": "Start with the author"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-history",
+      "file": "content-history.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Version history"
+        },
+        {
+          "font": 20,
+          "text": "Your words deserve a home"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-error",
+      "file": "content-error.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My content"
+        },
+        {
+          "font": 20,
+          "text": "Couldn’t load your content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-empty",
+      "file": "content-empty.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My content"
+        },
+        {
+          "font": 20,
+          "text": "Your first publication starts here."
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "editor-help",
+      "file": "editor-help.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "An orderly review"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "editor-split",
+      "file": "editor-split.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "An orderly review"
+        },
+        {
+          "font": 24,
+          "text": "An orderly review"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "editor-visual",
+      "file": "editor-visual.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "An orderly review"
+        },
+        {
+          "font": 24,
+          "text": "An orderly review"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "editor-preview",
+      "file": "editor-preview.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "An orderly review"
+        },
+        {
+          "font": 24,
+          "text": "An orderly review"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-review",
+      "file": "content-review.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Review publication"
+        },
+        {
+          "font": 24,
+          "text": "An orderly review"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-wallet",
+      "file": "content-wallet.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Ready for your signature"
+        },
+        {
+          "font": 20,
+          "text": "Authorize identity signing"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-result",
+      "file": "content-result.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Your words are published"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-list",
+      "file": "artifact-list.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My Artifacts"
+        },
+        {
+          "font": 16,
+          "text": "A place to stand"
+        },
+        {
+          "font": 16,
+          "text": "The quiet horizon"
+        },
+        {
+          "font": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifact-list-mobile",
+      "file": "artifact-list-mobile.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My Artifacts"
+        },
+        {
+          "font": 16,
+          "text": "A place to stand"
+        },
+        {
+          "font": 16,
+          "text": "The quiet horizon"
+        },
+        {
+          "font": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-detail",
+      "file": "artifact-detail.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "The quiet horizon"
+        },
+        {
+          "font": 15,
+          "text": "Associated identity"
+        },
+        {
+          "font": 22,
+          "text": "Inscribed content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifact-proof",
+      "file": "artifact-proof.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "A place to stand"
+        },
+        {
+          "font": 15,
+          "text": "Associated identity"
+        },
+        {
+          "font": 22,
+          "text": "Proof & transaction records"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-binding-review",
+      "file": "artifact-binding-review.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Associate with your identity"
+        },
+        {
+          "font": 20,
+          "text": "The quiet horizon"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-binding-result",
+      "file": "artifact-binding-result.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Digital ID updated"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-assigned",
+      "file": "homepage-assigned.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-create",
+      "file": "artifact-create.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Create Artifact"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifact-invalid",
+      "file": "artifact-invalid.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Create Artifact"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-upload",
+      "file": "artifact-upload.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Create Artifact"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-create-review",
+      "file": "artifact-create-review.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Review your Artifact"
+        },
+        {
+          "font": 20,
+          "text": "A small study in colour"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-wallet",
+      "file": "artifact-wallet.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Waiting for your approval"
+        },
+        {
+          "font": 20,
+          "text": "Approve identity signature"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-create-result",
+      "file": "artifact-create-result.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Artifact created"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-transfer",
+      "file": "artifact-transfer.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Transfer Artifact"
+        },
+        {
+          "font": 20,
+          "text": "The quiet horizon"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-transfer-review",
+      "file": "artifact-transfer-review.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Review this transfer"
+        },
+        {
+          "font": 20,
+          "text": "The quiet horizon"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-cancelled",
+      "file": "artifact-cancelled.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Operation cancelled"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-error",
+      "file": "artifact-error.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My Artifacts"
+        },
+        {
+          "font": 28,
+          "text": "Unable to load Artifacts"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-empty",
+      "file": "artifact-empty.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My Artifacts"
+        },
+        {
+          "font": 28,
+          "text": "No Artifacts here yet."
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "find",
+      "file": "find.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Find identity"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "find-invalid",
+      "file": "find-invalid.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Find identity"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "find-result",
+      "file": "find-result.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Find identity"
+        },
+        {
+          "font": 20,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 16,
+          "text": "The quiet horizon"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage",
+      "file": "homepage.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "homepage-mobile",
+      "file": "homepage-mobile.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-media-order",
+      "file": "homepage-media-order.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-details",
+      "file": "homepage-details.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        },
+        {
+          "font": 20,
+          "text": "Identity details"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-followers",
+      "file": "homepage-followers.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Public connections"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "relationship-review",
+      "file": "relationship-review.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "North Studio"
+        },
+        {
+          "font": 20,
+          "text": "Review relationship action"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-error",
+      "file": "homepage-error.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-empty",
+      "file": "homepage-empty.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "media-image",
+      "file": "media-image.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Colour, held in a hand"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "media-video",
+      "file": "media-video.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "A breeze in the garden"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "media-audio",
+      "file": "media-audio.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Four notes, one idea"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "media-unavailable",
+      "file": "media-unavailable.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Four notes, one idea"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-dark",
+      "file": "homepage-dark.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "公开作品"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "copy-tooltip-dark",
+      "file": "copy-tooltip-dark.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        },
+        {
+          "font": 20,
+          "text": "公开作品"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-dark",
+      "file": "artifact-dark.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "The quiet horizon"
+        },
+        {
+          "font": 15,
+          "text": "关联身份"
+        },
+        {
+          "font": 22,
+          "text": "铭文内容"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "identity-edit-dark",
+      "file": "identity-edit-dark.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "编辑资料"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "content-dark",
+      "file": "content-dark.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "我的内容"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-create-default",
+      "file": "artifact-create-default.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Create Artifact"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifact-default-review",
+      "file": "artifact-default-review.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Review your Artifact"
+        },
+        {
+          "font": 20,
+          "text": "A small study in colour"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifact-default-review-mobile",
+      "file": "artifact-default-review-mobile.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Review your Artifact"
+        },
+        {
+          "font": 20,
+          "text": "A small study in colour"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-transfer-image",
+      "file": "artifact-transfer-image.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Transfer Artifact"
+        },
+        {
+          "font": 20,
+          "text": "The quiet horizon"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifact-transfer-image-mobile",
+      "file": "artifact-transfer-image-mobile.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Transfer Artifact"
+        },
+        {
+          "font": 20,
+          "text": "The quiet horizon"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    }
+  ],
+  "checks": [
+    {
+      "name": "身份字段键盘焦点和标签关联",
+      "passed": true
+    },
+    {
+      "name": "姓名错误与字段关联",
+      "passed": true
+    },
+    {
+      "name": "标题菜单复用 ActionButton 且方向键进入菜单",
+      "passed": true
+    },
+    {
+      "name": "标题菜单 End 移到末项",
+      "passed": true
+    },
+    {
+      "name": "标题菜单 Escape 返回触发按钮",
+      "passed": true
+    },
+    {
+      "name": "帮助仅显示一个说明浮层",
+      "passed": true
+    },
+    {
+      "name": "帮助 Escape 关闭并返回焦点",
+      "passed": true
+    },
+    {
+      "name": "预览模式呈现只读内容区域",
+      "passed": true
+    },
+    {
+      "name": "返回编辑保持内容",
+      "passed": true
+    },
+    {
+      "name": "编号状态按稳定程度使用一致语义",
+      "passed": true
+    },
+    {
+      "name": "Artifact Tabs 可用方向键和关联面板",
+      "passed": true
+    },
+    {
+      "name": "公开主页的未稳定编号与 Artifact 详情同为中性状态",
+      "passed": true
+    },
+    {
+      "name": "上传图片复用次要按钮",
+      "passed": true
+    },
+    {
+      "name": "字段 hover 边框有状态反馈",
+      "passed": true
+    },
+    {
+      "name": "创建帮助保持单一浮层",
+      "passed": true
+    },
+    {
+      "name": "键盘触发原生文件选择",
+      "passed": true
+    },
+    {
+      "name": "真实文件选择更新预览和文件名",
+      "passed": true
+    },
+    {
+      "name": "取消后保留原资产并提供重新确认入口",
+      "passed": true
+    },
+    {
+      "name": "公开筛选 Tab 支持 End 且选中音频",
+      "passed": true
+    },
+    {
+      "name": "公开列表媒体使用固定预览窗口",
+      "passed": true
+    },
+    {
+      "name": "关系确认弹层焦点不离开对话框",
+      "passed": true
+    },
+    {
+      "name": "Escape 先关闭提示且保留确认框",
+      "passed": true
+    },
+    {
+      "name": "关系确认关闭返回触发按钮",
+      "passed": true
+    },
+    {
+      "name": "图片放大保持选中状态",
+      "passed": true
+    },
+    {
+      "name": "video 实际播放进度",
+      "passed": true
+    },
+    {
+      "name": "audio 实际播放进度",
+      "passed": true
+    },
+    {
+      "name": "中文深色仍保留原始身份标识",
+      "passed": true
+    },
+    {
+      "name": "身份主体左右留白相等",
+      "passed": true
+    },
+    {
+      "name": "身份编辑表单与标题整体居中",
+      "passed": true
+    },
+    {
+      "name": "导航与主内容共享居中轴",
+      "passed": true
+    },
+    {
+      "name": "页脚与主内容共享居中轴",
+      "passed": true
+    },
+    {
+      "name": "返回箭头使用 S2 尺寸 Token 且保留 44px 点击区域",
+      "passed": true
+    },
+    {
+      "name": "内容列表整体居中",
+      "passed": true
+    },
+    {
+      "name": "Artifact 列表整体居中",
+      "passed": true
+    },
+    {
+      "name": "Artifact 单列表单及返回入口共享居中轴",
+      "passed": true
+    },
+    {
+      "name": "Artifact 关联身份复制按钮与标识保持同一行",
+      "passed": true
+    },
+    {
+      "name": "下拉图标采用 S2 尺寸 Token 并随展开旋转",
+      "passed": true
+    },
+    {
+      "name": "公开主页与列表整体居中",
+      "passed": true
+    },
+    {
+      "name": "桌面图片和视频预览固定 160×120",
+      "passed": true
+    },
+    {
+      "name": "手机图片和视频预览固定 96×72",
+      "passed": true
+    },
+    {
+      "name": "默认内容创建表单宽 720px 且左右留白相等",
+      "passed": true
+    },
+    {
+      "name": "默认内容确认页与创建页共用 720px 居中轴",
+      "passed": true
+    },
+    {
+      "name": "图片转移页的两列与整体内容轴对称",
+      "passed": true
+    }
+  ],
+  "axe": [
+    {
+      "name": "identity",
+      "counts": {
+        "inapplicable": 39,
+        "incomplete": 0,
+        "passes": 21,
+        "violations": 0
+      }
+    },
+    {
+      "name": "content",
+      "counts": {
+        "inapplicable": 40,
+        "incomplete": 0,
+        "passes": 20,
+        "violations": 0
+      }
+    },
+    {
+      "name": "artifact",
+      "counts": {
+        "inapplicable": 40,
+        "incomplete": 0,
+        "passes": 20,
+        "violations": 0
+      }
+    },
+    {
+      "name": "homepage-dark",
+      "counts": {
+        "inapplicable": 35,
+        "incomplete": 0,
+        "passes": 25,
+        "violations": 0
+      }
+    },
+    {
+      "name": "artifact-dark",
+      "counts": {
+        "inapplicable": 36,
+        "incomplete": 0,
+        "passes": 24,
+        "violations": 0
+      }
+    },
+    {
+      "name": "identity-edit-dark",
+      "counts": {
+        "inapplicable": 37,
+        "incomplete": 0,
+        "passes": 23,
+        "violations": 0
+      }
+    },
+    {
+      "name": "content-dark",
+      "counts": {
+        "inapplicable": 36,
+        "incomplete": 0,
+        "passes": 24,
+        "violations": 0
+      }
+    }
+  ],
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "source": "当前 v0.4.0 构建，含箭头收敛、视觉居中及复制对齐修复",
+  "agentVisualReview": {
+    "status": "passed",
+    "screenshots": 64,
+    "method": "逐张查看 1440px 截图和 320px 原尺寸联系表；默认内容确认与图片转移修正后单独补看。",
+    "criteria": [
+      "秩序：同类列表、返回和字段保持共同对齐基准",
+      "关系：标题、标识、状态和操作分组，状态语义一致",
+      "密度：正文与标题使用既有字级上限，媒体窗口受控",
+      "表达：沿用 S2 字体与控件角色，图片与正文主次清楚",
+      "居中：页面、单列表单和确认页左右留白平衡；两列媒体整体居中"
+    ],
+    "limit": "代理视觉审阅完成，待用户最终复核。"
+  },
+  "observations": [
+    {
+      "issue": "ActionMenu 使用普通按钮形态且传入非对应 quiet API",
+      "impact": "内容编辑器标题菜单与工具栏动作不一致",
+      "fix": "在同一绑定源按 ActionButton 处理，调用端使用 isQuiet",
+      "verification": "实际 ArrowDown、End、Escape 与焦点返回"
+    },
+    {
+      "issue": "ContextHelp 同时显示 Tooltip 和说明浮层",
+      "impact": "信息重叠",
+      "fix": "已有上下文说明时关闭重复 Tooltip",
+      "verification": "编辑器与 Artifact 创建页仅一个浮层，Escape 恢复焦点"
+    },
+    {
+      "issue": "上传按钮由旧 FileTrigger 外观承担",
+      "impact": "次要动作抢占主操作层级",
+      "fix": "FileTrigger 使用原生文件选择，子按钮统一为 secondary outline",
+      "verification": "键盘触发 input、实际 JPG 文件选择及创建确认"
+    },
+    {
+      "issue": "字段状态与状态灯语义不完整",
+      "impact": "错误、等待和稳定状态难以区分",
+      "fix": "字段 hover/focus/invalid/disabled 对应绑定 Token，StatusLight 接受语义变体",
+      "verification": "字段错误关联与 hover，Artifact 与主页未稳定编号均为 neutral"
+    },
+    {
+      "issue": "部分正文随 Token 增长超过已确认密度",
+      "impact": "确认、编辑和结果页过松",
+      "fix": "应用正文角色封顶 16px，保留 S2 Token",
+      "verification": "受检页面正文不超 16px、标题不超 28px，无横向溢出"
+    },
+    {
+      "issue": "发布步骤使用文本勾号",
+      "impact": "语义重复及 axe 不确定项",
+      "fix": "装饰 SVG 配合已有文字状态",
+      "verification": "受检发布结果 axe 0 violations、0 incomplete"
+    },
+    {
+      "issue": "方向图标比例重、文字入口重复箭头",
+      "impact": "返回与内容入口噪声较多",
+      "fix": "返回使用 S2 Arrow，展开与图标入口使用 Chevron，去掉文字按钮的冗余箭头",
+      "verification": "SVG 使用绑定尺寸 Token，键盘焦点与 44px 点击区域保留"
+    },
+    {
+      "issue": "Artifact 详情的复制按钮被强制换行",
+      "impact": "同类标识动作对齐不一致",
+      "fix": "移除强制占满整行的局部覆盖",
+      "verification": "桌面 BAP ID 与复制按钮中心高度一致"
+    },
+    {
+      "issue": "导航、正文和表单宽度各自定义；默认确认页及图片转移页存在左侧窄列",
+      "impact": "页面及流程切换视觉不对称",
+      "fix": "共享居中轴；列表 960px，单列表单与确认 720px，编辑器适度拓宽；图片转移使用完整两列",
+      "verification": "几何测量及桌面/手机截图确认左右留白平衡"
+    }
+  ],
+  "componentReview": {
+    "binding": "S2 1.6.0 / Tokens 14.15.0 / ReactSpectrumS2_ad4872",
+    "checked": [
+      "ActionButton",
+      "Button",
+      "TooltipTrigger",
+      "Tooltip",
+      "ActionMenu",
+      "FileTrigger",
+      "TextField",
+      "TextArea",
+      "Tabs",
+      "TabList",
+      "Tab",
+      "ContextualHelpPopover",
+      "Card",
+      "Skeleton",
+      "StatusLight",
+      "Link"
+    ],
+    "boundaries": [
+      "轻量绑定及应用组合的实际使用范围，不等同完整生产运行时 API",
+      "FileTrigger 仅当前单文件选择；菜单、Tab 和浮层的交互由现有应用封装实现",
+      "Skeleton 与 Card 核对实际加载占位和内容结构，没有增加交互语义",
+      "真实读屏、生产 Wallet、网络签名及全站无障碍矩阵未验证"
+    ]
+  },
+  "reproduce": "预览 http://127.0.0.1:4314/ 启动后，在原型目录运行 node check-page-review.mjs；脚本使用独立 agent-browser session。浏览器片段已实际顺序执行，汇合脚本通过 node --check。",
+  "latestLayoutVerification": "完整四模块走查后，仅修改 Artifact 默认确认与图片转移的宽度约束；定向复核这两类页面及手机，其他截图布局不受影响。",
+  "fixtures": "钱包、签名、广播与关系操作均为原型确定性样例；图片转移页临时包装 previewFixture 为 2048 提供本地 JPG，刷新恢复。媒体播放与文件选择是真实浏览器行为。",
+  "requiredChecks": [
+    "npm run build:design-system",
+    "npm run build",
+    "node check-ui.cjs",
+    "node --check check-page-review.mjs",
+    "./init.sh --plan",
+    "./init.sh"
+  ]
+}

@@ -691,73 +691,15 @@
       "props": [
         {
           "name": "children",
-          "type": "ReactNode"
+          "type": "ReactElement"
         },
         {
-          "name": "label",
-          "type": "string"
+          "name": "acceptedFileTypes",
+          "type": "readonly string[]"
         },
         {
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "name": "value",
-          "type": "string | number"
-        },
-        {
-          "name": "variant",
-          "values": [
-            "accent",
-            "primary",
-            "secondary",
-            "negative",
-            "premium",
-            "genai",
-            "neutral",
-            "quiet"
-          ]
-        },
-        {
-          "name": "fillStyle",
-          "values": [
-            "fill",
-            "outline"
-          ]
-        },
-        {
-          "name": "size",
-          "values": [
-            "XS",
-            "S",
-            "M",
-            "L",
-            "XL"
-          ]
-        },
-        {
-          "name": "isDisabled",
-          "type": "boolean"
-        },
-        {
-          "name": "isSelected",
-          "type": "boolean"
-        },
-        {
-          "name": "isQuiet",
-          "type": "boolean"
-        },
-        {
-          "name": "isEmphasized",
-          "type": "boolean"
-        },
-        {
-          "name": "onPress",
-          "type": "() => void"
-        },
-        {
-          "name": "className",
-          "type": "string"
+          "name": "onSelect",
+          "type": "(files: FileList | null) => void"
         }
       ]
     },
@@ -4874,70 +4816,20 @@
           "type": "ReactNode"
         },
         {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "name": "value",
-          "type": "string | number"
-        },
-        {
           "name": "variant",
           "values": [
-            "accent",
-            "primary",
-            "secondary",
-            "negative",
-            "premium",
-            "genai",
             "neutral",
-            "quiet"
+            "positive",
+            "notice",
+            "negative",
+            "informative"
           ]
         },
         {
-          "name": "fillStyle",
+          "name": "role",
           "values": [
-            "fill",
-            "outline"
+            "status"
           ]
-        },
-        {
-          "name": "size",
-          "values": [
-            "XS",
-            "S",
-            "M",
-            "L",
-            "XL"
-          ]
-        },
-        {
-          "name": "isDisabled",
-          "type": "boolean"
-        },
-        {
-          "name": "isSelected",
-          "type": "boolean"
-        },
-        {
-          "name": "isQuiet",
-          "type": "boolean"
-        },
-        {
-          "name": "isEmphasized",
-          "type": "boolean"
-        },
-        {
-          "name": "onPress",
-          "type": "() => void"
-        },
-        {
-          "name": "className",
-          "type": "string"
         }
       ]
     },

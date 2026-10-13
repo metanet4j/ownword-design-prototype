@@ -27,6 +27,10 @@ assert.equal(iconWithTooltip.type, context.window.ReactSpectrumS2_ad4872.Tooltip
 assert.match(icon.props.className, /s2d-action-button/);
 assert.match(icon.props.className, /icon-button/);
 assert.equal(icon.props['aria-label'], 'Refresh');
+const help = Button({iconOnly: true, tooltip: false, variant: 'quiet', 'aria-label': 'Help'});
+assert.equal(help.type, 'button');
+assert.equal(help.props.tooltip, undefined);
+assert.match(context.window.ReactSpectrumS2_ad4872.ActionMenu({isQuiet: true}).props.className, /s2d-action-button/);
 function flatten(element) {
   return React.isValidElement(element) ? [element, ...React.Children.toArray(element.props.children).flatMap(flatten)] : [];
 }
@@ -36,7 +40,8 @@ assert.equal(field.find(node => node.type === 'input').props['aria-invalid'], tr
 assert.equal(field.find(node => node.type === 'input').props['aria-describedby'], 'name-error');
 for (const file of fs.readdirSync('.').filter(file => file.endsWith('.jsx'))) {
   for (const match of fs.readFileSync(file, 'utf8').matchAll(/<UiIcon\s+name="([^"]+)"/g)) {
-    assert.ok(fs.existsSync(`_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_${match[1]}_20_N.svg`), `${file}: missing ${match[1]}`);
+    const asset = context.window.UiIcon({name:match[1]}).props.style.maskImage.slice(5,-2);
+    assert.ok(fs.existsSync(asset), `${file}: missing ${match[1]}`);
   }
 }
 const html = fs.readFileSync('index.html', 'utf8');

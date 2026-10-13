@@ -42,7 +42,7 @@ export function renderS2Component(kind, props = {}) {
   const label = labelFor(kind, props);
   const disabled = Boolean(props.isDisabled);
   if (buttonKinds.has(kind)) {
-    const action = ['ActionButton', 'ToggleButton', 'CloseButton'].includes(kind);
+    const action = ['ActionButton', 'ActionMenu', 'ToggleButton', 'CloseButton'].includes(kind);
     const variant = action ? (props.isSelected ? 'primary' : props.isQuiet ? 'quiet' : 'secondary') : (props.variant || 'primary');
     const classes = ['s2d-button', 's2d-button-' + variant, action ? 's2d-action-button' : '', props.isSelected ? 's2d-is-selected' : '', !action && props.fillStyle === 'outline' ? 's2d-button-outline' : '', props.className || ''].filter(Boolean).join(' ');
     const Element = kind === 'LinkButton' ? 'a' : 'button';
@@ -75,7 +75,7 @@ export function renderS2Component(kind, props = {}) {
   }
   if (kind === 'ProgressBar' || kind === 'Meter') return React.createElement('label', {className: 's2d-progress'}, React.createElement('span', null, label, ' · 68%'), React.createElement('progress', {max: 100, value: 68}));
   if (kind === 'ProgressCircle') return React.createElement('div', {className: 's2d-progress-circle'}, React.createElement('span', null, '68'));
-  if (kind === 'StatusLight') return React.createElement('span', {className: 's2d-status'}, React.createElement('i', null), label);
+  if (kind === 'StatusLight') return React.createElement('span', {className: 's2d-status', 'data-variant': props.variant || 'neutral', role: props.role}, React.createElement('i', {'aria-hidden': true}), label);
   if (kind === 'Badge' || kind === 'NotificationBadge') return React.createElement('span', {className: kind === 'Badge' ? 's2d-badge' : 's2d-notification-badge'}, kind === 'NotificationBadge' ? '3' : label);
   if (kind === 'Avatar' || kind === 'AvatarGroup') return React.createElement('div', {className: 's2d-avatar-group'}, React.createElement('div', {className: 's2d-avatar'}, 'S2'), kind === 'AvatarGroup' ? React.createElement('div', {className: 's2d-avatar'}, 'UI') : null);
   if (cardKinds.has(kind)) return card(kind, props);

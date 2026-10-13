@@ -233,7 +233,7 @@ function App() {
         <p className="eyebrow">{t('independent')}</p>
         <h1 tabIndex="-1"><span>{t('headlineOne')}</span><em>{t('headlineTwo')}</em></h1>
         <p className="welcome-body">{t('welcomeDiscoveryBody')}</p>
-        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t(state.error === 'connectFailed' ? 'retry' : 'connect')}<UiIcon name="ChevronRight"/></Button><Button data-action="welcome-find" onClick={() => openArtifacts('find')}>{t('artifactFind')}</Button></div>
+        <div className="welcome-action"><Button variant="accent" data-action="connect" onClick={() => dispatch({type: 'CONNECT'})}>{t(state.error === 'connectFailed' ? 'retry' : 'connect')}</Button><Button data-action="welcome-find" onClick={() => openArtifacts('find')}>{t('artifactFind')}</Button></div>
         <div className="horizon" aria-hidden="true"></div>
       </section>}
       {state.page === 'welcome' && <WelcomeStory t={t} failCopy={failCopy} onIdentity={id => openArtifacts('identity-view', id)} onRead={id => contentRef.current?.go('read', id)}/>}
@@ -268,7 +268,7 @@ function App() {
         <div className="identity-heading"><h1 className="task-title" tabIndex="-1">{t('myIdentity')}</h1><Button data-action="edit" onClick={()=>dispatch({type:'EDIT'})}>{t('editProfile')}</Button></div>
         <div className="identity-layout">
           <section className="identity-profile" aria-label={t('profileDetails')}>
-            <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight label={t('published')}/></div></div></div><Button variant="quiet" data-action="public" onClick={()=>openArtifacts('identity-view',bapId)}>{t('viewPublicIdentity')}<UiIcon name="ChevronRight"/></Button></div>
+            <div className="identity-profile-top"><div className="person-row"><Portrait profile={state.profile} large/><div className="identity-person"><h2>{state.profile.name||t('complete')}</h2><div className="identity-meta"><span>{t(state.profile.type)}</span><S2.StatusLight variant="positive">{t('published')}</S2.StatusLight></div></div></div><Button variant="quiet" data-action="public" onClick={()=>openArtifacts('identity-view',bapId)}>{t('viewPublicIdentity')}</Button></div>
             <section className="profile-detail" aria-labelledby="identity-bio-heading"><h3 id="identity-bio-heading">{t('bio')}</h3><p className="bio">{state.profile.bio||t('noBio')}</p></section>
           </section>
           <section className="identity-identifiers" aria-label={t('identityIdentifiers')}>
@@ -282,7 +282,7 @@ function App() {
       if (storageError && !toastError) setStorageError(false);
       if (!toastError && !storageError) dispatch({type: 'CLEAR_NOTICE', notice: state.notice, epoch: state.epoch});
     }} />}
-    <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight label={t('connected')} /></span>}<Button variant="quiet" data-action="prototype-settings" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
+    <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight variant="positive">{t('connected')}</S2.StatusLight></span>}<Button variant="quiet" data-action="prototype-settings" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
     {lab && <section ref={labRef} className="scenario-panel" aria-label={t('scenarios')} onPointerEnter={()=>clearTimeout(labLeave.current)} onPointerLeave={e=>{if(e.pointerType==='mouse'&&e.relatedTarget&&!document.querySelector('dialog[open]'))labLeave.current=setTimeout(()=>setLab(false),250);}}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><p>{t('sampleDataNote')}</p><p>{t('artifactNoFees')}</p><p>{t('proofSimulation')}</p><p>{t('readerLocalScope')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
       <label>{t('nextResult')}<select data-scenario="result" value={nextResult} onChange={e => setNextResult(e.target.value)}><option value="success">{t('resultSuccess')}</option><option value="failure">{t('simulateFailure')}</option></select></label>
       <p className="hint">{t('nextResultHint')}</p>

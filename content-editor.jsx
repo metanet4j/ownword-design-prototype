@@ -190,7 +190,7 @@ function EditorHeadingMenu({t,disabled,onCommand}) {
     if(next===null)return;
     event.preventDefault();host.current.querySelectorAll('[role=menuitem]')[next].focus();
   }
-  const trigger=S2.ActionMenu({variant:'quiet',isDisabled:disabled});
+  const trigger=S2.ActionMenu({isQuiet:true,isDisabled:disabled});
   return <div className="editor-heading-picker" ref={host}>
     {React.cloneElement(trigger,{id,type:'button',disabled,'data-action':'editor-heading','aria-haspopup':'menu','aria-expanded':open,'aria-controls':open?id+'-menu':undefined,onClick:()=>open?setOpen(false):show(),onKeyDown:event=>{if(['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();show(event.key==='ArrowUp'?2:0);}}},<>{t('editorHeading')}<UiIcon name="ChevronDown"/></>)}
     {open&&<div className="editor-menu" id={id+'-menu'} role="menu" aria-labelledby={id}>{['h1','h2','h3'].map((key,index)=><Button key={key} variant="quiet" role="menuitem" tabIndex={-1} onKeyDown={event=>move(event,index)} onClick={()=>{setOpen(false);onCommand(key);}}>{t('editorHeading')} {index+1}</Button>)}</div>}

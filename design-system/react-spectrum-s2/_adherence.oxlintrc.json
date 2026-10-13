@@ -971,20 +971,8 @@
         "message": "<EditableCell> size must be one of 'XS' | 'S' | 'M' | 'L' | 'XL'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='FileTrigger'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|label|description|value|variant|fillStyle|size|isDisabled|isSelected|isQuiet|isEmphasized|onPress|className|key|ref|style)$/]",
-        "message": "<FileTrigger> doesn't accept that prop. Declared props: children, label, description, value, variant, fillStyle, size, isDisabled, isSelected, isQuiet, isEmphasized, onPress, className."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='FileTrigger'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:accent|primary|secondary|negative|premium|genai|neutral|quiet)$/]",
-        "message": "<FileTrigger> variant must be one of 'accent' | 'primary' | 'secondary' | 'negative' | 'premium' | 'genai' | 'neutral' | 'quiet'."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='FileTrigger'] > JSXAttribute[name.name='fillStyle'] > Literal[value!=/^(?:fill|outline)$/]",
-        "message": "<FileTrigger> fillStyle must be one of 'fill' | 'outline'."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='FileTrigger'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L|XL)$/]",
-        "message": "<FileTrigger> size must be one of 'XS' | 'S' | 'M' | 'L' | 'XL'."
+        "selector": "JSXOpeningElement[name.name='FileTrigger'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|acceptedFileTypes|onSelect|key|ref|className|style)$/]",
+        "message": "<FileTrigger> doesn't accept that prop. Declared props: children, acceptedFileTypes, onSelect."
       },
       {
         "selector": "JSXOpeningElement[name.name='Footer'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|label|description|value|variant|fillStyle|size|isDisabled|isSelected|isQuiet|isEmphasized|onPress|className|key|ref|style)$/]",
@@ -1771,20 +1759,16 @@
         "message": "<Slider> size must be one of 'XS' | 'S' | 'M' | 'L' | 'XL'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='StatusLight'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|label|description|value|variant|fillStyle|size|isDisabled|isSelected|isQuiet|isEmphasized|onPress|className|key|ref|style)$/]",
-        "message": "<StatusLight> doesn't accept that prop. Declared props: children, label, description, value, variant, fillStyle, size, isDisabled, isSelected, isQuiet, isEmphasized, onPress, className."
+        "selector": "JSXOpeningElement[name.name='StatusLight'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|variant|role|key|ref|className|style)$/]",
+        "message": "<StatusLight> doesn't accept that prop. Declared props: children, variant, role."
       },
       {
-        "selector": "JSXOpeningElement[name.name='StatusLight'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:accent|primary|secondary|negative|premium|genai|neutral|quiet)$/]",
-        "message": "<StatusLight> variant must be one of 'accent' | 'primary' | 'secondary' | 'negative' | 'premium' | 'genai' | 'neutral' | 'quiet'."
+        "selector": "JSXOpeningElement[name.name='StatusLight'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:neutral|positive|notice|negative|informative)$/]",
+        "message": "<StatusLight> variant must be one of 'neutral' | 'positive' | 'notice' | 'negative' | 'informative'."
       },
       {
-        "selector": "JSXOpeningElement[name.name='StatusLight'] > JSXAttribute[name.name='fillStyle'] > Literal[value!=/^(?:fill|outline)$/]",
-        "message": "<StatusLight> fillStyle must be one of 'fill' | 'outline'."
-      },
-      {
-        "selector": "JSXOpeningElement[name.name='StatusLight'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:XS|S|M|L|XL)$/]",
-        "message": "<StatusLight> size must be one of 'XS' | 'S' | 'M' | 'L' | 'XL'."
+        "selector": "JSXOpeningElement[name.name='StatusLight'] > JSXAttribute[name.name='role'] > Literal[value!=/^(?:status)$/]",
+        "message": "<StatusLight> role must be one of 'status'."
       },
       {
         "selector": "JSXOpeningElement[name.name='SubmenuTrigger'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|label|description|value|variant|fillStyle|size|isDisabled|isSelected|isQuiet|isEmphasized|onPress|className|key|ref|style)$/]",

@@ -48,7 +48,7 @@ function WelcomeStory({t, onIdentity, onRead, failCopy}) {
             <p>{t('welcomeProofBody')}</p>
             <ContentProof record={record} settings={OwnwordContentModel.defaultScenarios} operations={[]} t={t} failCopy={failCopy}/>
           </div>}
-          <div className="welcome-example-action"><Button variant="quiet" data-action={`welcome-open-${item}`} onClick={() => item === 'identity' ? onIdentity(record.authorBapId) : onRead(record.id)}>{t(item === 'identity' ? 'viewPublicIdentity' : 'welcomeReadWords')}<UiIcon name="ChevronRight"/></Button></div>
+          <div className="welcome-example-action"><Button variant="quiet" data-action={`welcome-open-${item}`} onClick={() => item === 'identity' ? onIdentity(record.authorBapId) : onRead(record.id)}>{t(item === 'identity' ? 'viewPublicIdentity' : 'welcomeReadWords')}</Button></div>
         </>}
       </div>)}
     </div>

@@ -18,7 +18,7 @@
 .welcome-story-navigation .s2d-tabs [role="tablist"] { display: flex; gap: var(--s2-spacing-100); }
 .welcome-story-navigation [role="tab"] { flex: 1; min-height: 48px; padding-inline: var(--s2-spacing-100); font-size: var(--ownword-font-body); }
 .welcome-chapter-description { margin-top: var(--s2-spacing-400); max-width: 34ch; font-size: var(--ownword-font-body); line-height: 1.65; color: var(--s2-gray-800); }
-.welcome-story-principle { margin-top: var(--s2-spacing-600); max-width: 36ch; font-size: var(--s2-font-size-100); line-height: 1.7; color: var(--s2-gray-700); }
+.welcome-story-principle { margin-top: var(--s2-spacing-600); max-width: 36ch; font-size: min(var(--s2-font-size-100), 16px); line-height: 1.7; color: var(--s2-gray-700); }
 .welcome-story-surface { min-width: 0; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; padding: var(--s2-spacing-500); border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); background: var(--s2d-layer-raised); }
 .welcome-story-surface[hidden] { display: none; }
 .welcome-story-surface:focus-visible { outline: 2px solid var(--s2d-focus); outline-offset: 4px; }
@@ -28,7 +28,7 @@
 .welcome-story-surface .portrait { width: 64px; height: 64px; }
 .welcome-example-action { display: flex; justify-content: flex-end; margin-top: var(--s2-spacing-400); }
 .welcome-example-action .s2d-button { gap: var(--s2-spacing-100); }
-.welcome-example-author { font-size: var(--s2-font-size-100); color: var(--s2-gray-700); margin-bottom: var(--s2-spacing-300); }
+.welcome-example-author { font-size: min(var(--s2-font-size-100), 16px); color: var(--s2-gray-700); margin-bottom: var(--s2-spacing-300); }
 .welcome-words-example h3 { font-family: var(--s2d-font-serif), Georgia, serif; font-weight: 500; font-size: var(--ownword-font-title); }
 .welcome-words-example p:not(.welcome-example-author) { margin-top: var(--s2-spacing-300); line-height: 1.8; }
 .welcome-proof-example > p { margin-top: var(--s2-spacing-300); color: var(--s2-gray-700); line-height: 1.7; }

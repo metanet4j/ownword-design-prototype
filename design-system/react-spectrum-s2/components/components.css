@@ -60,7 +60,13 @@
 .s2d-inline-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .s2d-field { width: min(100%, 280px); display: flex; flex-direction: column; gap: 6px; color: var(--s2d-text-muted); font-size: 12px; font-weight: 600; }
 .s2d-field-shell { display: flex; width: 100%; }
-.s2d-field input, .s2d-field textarea, .s2d-field-shell input { box-sizing: border-box; width: 100%; min-height: var(--s2d-control-height); padding: 6px 10px; border: 2px solid var(--s2d-border-strong); border-radius: var(--s2d-radius); color: var(--s2d-text); background: var(--s2-gray-25, white); font: 400 14px/1.4 var(--s2d-font-family); }
+.s2d-field input, .s2d-field textarea, .s2d-field-shell input { box-sizing: border-box; width: 100%; min-height: var(--s2d-control-height); padding: 6px 10px; border: 2px solid var(--s2d-border-strong); border-radius: round(calc(var(--s2-corner-radius-300) * var(--s2-font-size-base) / 14), 1px); color: var(--s2d-text); background: var(--s2-gray-25); font: 400 14px/1.4 var(--s2d-font-family); }
+/* S2 Field.tsx：边框区分 hover、focus、invalid、disabled，焦点环独立。 */
+.s2d-field :is(input, textarea):hover:not(:disabled) { border-color: var(--s2-gray-400); }
+.s2d-field :is(input, textarea):focus { border-color: var(--s2-gray-900); }
+.s2d-field :is(input, textarea)[aria-invalid="true"] { border-color: var(--s2-negative-border-color-default); }
+.s2d-field :is(input, textarea)[aria-invalid="true"]:is(:hover,:focus) { border-color: var(--s2-negative-color-1000); }
+.s2d-field :is(input, textarea):disabled { color: var(--s2-disabled-content-color); border-color: var(--s2-disabled-border-color); cursor: default; }
 .s2d-field textarea { min-height: 78px; resize: vertical; }
 .s2d-field-shell input { border-radius: var(--s2d-radius) 0 0 var(--s2d-radius); border-right: 0; }
 .s2d-field-shell button { min-width: 54px; border: 2px solid var(--s2d-border-strong); border-radius: 0 var(--s2d-radius) var(--s2d-radius) 0; color: var(--s2d-text); background: var(--s2d-layer); font: 600 11px var(--s2d-font-family); }
@@ -93,8 +99,13 @@
 .s2d-progress { min-width: 260px; display: grid; gap: 8px; }
 .s2d-progress progress { width: 100%; height: 8px; accent-color: var(--s2d-accent); }
 .s2d-progress-circle { width: 56px; height: 56px; display: grid; place-items: center; border: 7px solid var(--s2d-border); border-top-color: var(--s2d-accent); border-radius: 50%; font-size: 11px; }
-.s2d-status { display: inline-flex; align-items: center; gap: 8px; }
-.s2d-status i { width: 9px; height: 9px; border-radius: 50%; background: var(--s2d-positive); }
+.s2d-status { display: inline-flex; align-items: center; gap: var(--s2-spacing-100); }
+.s2d-status[data-variant="neutral"] { color: var(--s2-gray-600); }
+.s2d-status i { width: 10px; height: 10px; flex-shrink: 0; border-radius: 50%; background: var(--s2-neutral-content-color-default); }
+.s2d-status[data-variant="positive"] i { background: var(--s2-positive-color-900); }
+.s2d-status[data-variant="notice"] i { background: var(--s2-notice-color-900); }
+.s2d-status[data-variant="negative"] i { background: var(--s2-negative-color-900); }
+.s2d-status[data-variant="informative"] i { background: var(--s2-informative-color-900); }
 .s2d-badge, .s2d-notification-badge { display: inline-flex; align-items: center; min-height: 22px; padding: 0 10px; border-radius: 999px; color: var(--s2d-text); background: var(--s2d-layer); font-size: 12px; font-weight: 700; }
 .s2d-notification-badge { min-width: 22px; justify-content: center; padding: 0; color: white; background: var(--s2d-negative); }
 .s2d-avatar-group { display: flex; }

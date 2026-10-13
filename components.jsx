@@ -1,8 +1,12 @@
 const S2 = window.ReactSpectrumS2_ad4872;
 
-function UiIcon({name,className=''}) {return <span className={'ui-icon '+className} aria-hidden="true" style={{maskImage:`url('_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_${name}_20_N.svg')`}}/>;}
+function UiIcon({name,className=''}) {
+  const directional={ArrowLeft:['S2_ArrowSize400','back'],ChevronRight:['S2_ChevronSize100','forward'],ChevronDown:['S2_ChevronSize100','down']}[name];
+  const asset=directional?`ui-icons/${directional[0]}.svg`:`workflow-icons/S2_Icon_${name}_20_N.svg`;
+  return <span className={'ui-icon '+(directional?'ui-direction ui-direction-'+directional[1]+' ':'')+className} aria-hidden="true" style={{maskImage:`url('_ds/react-spectrum-s2/assets/${asset}')`}}/>;
+}
 window.UiIcon=UiIcon;
-function BackButton({children,className='',...props}) {return <Button variant="quiet" className={'back-button '+className} {...props}><UiIcon name="ChevronLeft"/>{children}</Button>;}
+function BackButton({children,className='',...props}) {return <Button variant="quiet" className={'back-button '+className} {...props}><UiIcon name="ArrowLeft"/>{children}</Button>;}
 function ArtifactBack({onClick,t,label='artifactBack'}) {return <BackButton data-action="artifact-back" onClick={onClick}>{t(label)}</BackButton>;}
 
 // 公开页面的返回语义跟随浏览器历史；刷新后仍可回到实际入口。
@@ -32,17 +36,16 @@ function LoadingMark({small = false, label}) {
   return <div className={`brand-loading ${small ? 'small' : ''}`} role={label ? 'status' : undefined} aria-label={label} aria-hidden={label ? undefined : true}><BrandMark /></div>;
 }
 
-// The imported S2 bundle is a cosmetic preview. Add behavior to its returned
-// elements without copying or modifying the design-system implementation.
-function Button({children, onClick, variant = 'secondary', className = '', iconOnly = false, ...props}) {
+// 页面在绑定原型组件上接入业务事件；组件通用样式由 design-system 可维护源提供。
+function Button({children, onClick, variant = 'secondary', className = '', iconOnly = false, tooltip = true, ...props}) {
   const selected = props['aria-pressed'] === true || props['aria-current'] === 'page';
   const Component = typeof props['aria-pressed'] === 'boolean' || selected ? S2.ToggleButton : iconOnly || variant === 'quiet' ? S2.ActionButton : S2.Button;
   const base = Component({children, onPress: onClick, variant, isQuiet: variant === 'quiet', isSelected: selected, fillStyle: props.fillStyle || (variant === 'secondary' ? 'outline' : 'fill'), isDisabled: props.disabled});
   // Keep the bundle's variant classes when callers add layout classes.
   const layoutClasses = className.split(/\s+/).filter(name => name && !/^s2d-button(?:-|$)/.test(name));
   const button = React.cloneElement(base, {...props, fillStyle: undefined, title: iconOnly ? undefined : props.title, className: [base.props.className, ...layoutClasses, iconOnly ? 'icon-button' : ''].filter(Boolean).join(' ')});
-  const tooltip = iconOnly && (props.title || props['aria-label']);
-  return tooltip ? <S2.TooltipTrigger>{button}<S2.Tooltip>{tooltip}</S2.Tooltip></S2.TooltipTrigger> : button;
+  const tooltipLabel = tooltip && iconOnly && (props.title || props['aria-label']);
+  return tooltipLabel ? <S2.TooltipTrigger>{button}<S2.Tooltip>{tooltipLabel}</S2.Tooltip></S2.TooltipTrigger> : button;
 }
 function Field({errorKey, id, label, contextualHelp, value, onChange, multiline, error, required, maxLength, ...inputProps}) {
   const base = (multiline ? S2.TextArea : S2.TextField)({label, value: value || ' '});
@@ -161,7 +164,7 @@ function ContextHelp({label,children}) {
     return()=>{window.removeEventListener('resize',close);document.removeEventListener('scroll',dismiss,true);document.removeEventListener('keydown',escape,true);};
   },[open]);
   return <div className="context-help" ref={wrapper} onPointerEnter={e=>{clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);if(e.pointerType==='mouse'){suppressFocus.current=false;hoverTimer.current=setTimeout(()=>setMode(v=>v==='closed'?'preview':v),300);}}} onPointerLeave={()=>{clearTimeout(hoverTimer.current);if(mode==='preview'&&!wrapper.current.contains(document.activeElement))leaveTimer.current=setTimeout(()=>setMode('closed'),180);}} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget)){suppressFocus.current=false;setMode('closed');}}}>
-    <Button iconOnly variant="quiet" className="context-help-trigger" aria-label={label} aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}><UiIcon name="InfoCircle"/></Button>
+    <Button iconOnly tooltip={false} variant="quiet" className="context-help-trigger" aria-label={label} aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}><UiIcon name="InfoCircle"/></Button>
     {open&&React.cloneElement(S2.ContextualHelpPopover(),{ref:panel,id,role:'region','aria-label':label,className:'s2d-overlay context-help-panel',style:position},children)}
   </div>;
 }
@@ -264,7 +267,7 @@ function IdentityCard({profile, id, t, failCopy, transaction, rotating, setRotat
         <article className="identity-plate plate-back" aria-hidden={!back} inert={!back ? '' : undefined}>
           <div className="plate-top"><span className="wordmark-small"><BrandMark />ownword</span><span className="eyebrow">{t('chainRecord')}</span></div>
           <div className="chain-heading"><h2>{t('identityPublication')}</h2><p>{profile.name}</p></div>
-          <div className="plate-chain-summary"><S2.StatusLight label={t(transaction?.blockHeight?'confirmed':'pendingConfirmation')}/><div><span>{t('blockHeight')}</span><strong>{transaction?.blockHeight?.toLocaleString('en-US')||t('pendingBlock')}</strong></div><div><span>{t('publicationTx')}</span><code>{transaction?.txid||t('recordUnavailable')}</code></div></div>
+          <div className="plate-chain-summary"><S2.StatusLight variant={transaction?.blockHeight?'positive':'neutral'}>{t(transaction?.blockHeight?'confirmed':'pendingConfirmation')}</S2.StatusLight><div><span>{t('blockHeight')}</span><strong>{transaction?.blockHeight?.toLocaleString('en-US')||t('pendingBlock')}</strong></div><div><span>{t('publicationTx')}</span><code>{transaction?.txid||t('recordUnavailable')}</code></div></div>
           <div className="plate-foot"><span>BSV</span></div>
         </article>
       </div>

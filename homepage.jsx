@@ -42,7 +42,7 @@ function HomepageWorkspace({active,identity,locale,t,settings,setSettings,failCo
         <div className="homepage-identifiers">
           <Identifier compact id={route.id} t={t} failCopy={failCopy}/>
           {!isList&&<div className="homepage-identity-links">
-            {showNumber&&<Button variant="quiet" className="homepage-digital" data-homepage-digital={AM.numberState(asset)} onClick={()=>openPublicRoute('artifact',asset.id)}>{h('digital')} #{asset.number}<S2.StatusLight label={t('artifactNumber-'+AM.numberState(asset))}/></Button>}
+            {showNumber&&<Button variant="quiet" className="homepage-digital" data-homepage-digital={AM.numberState(asset)} onClick={()=>openPublicRoute('artifact',asset.id)}>{h('digital')} #{asset.number}<NumberStatusLight state={AM.numberState(asset)} t={t}/></Button>}
             <Button variant="quiet" data-homepage-action="details" aria-label={h('details')} onClick={()=>setDetails(true)}>{h('detailsShort')}<UiIcon name="InfoCircle"/></Button>
           </div>}
         </div>
@@ -197,7 +197,7 @@ function MediaReader({record,h,t,locale,settings,failCopy}) {
   const metadata=event=>{if(Number.isFinite(event.target.duration))setDuration(event.target.duration);};
   return <section className="homepage homepage-media" data-homepage-state="ready" data-public-content={record.txid} data-media-kind={type} data-media-playing={playing}>
     <BackButton data-homepage-action="media-back" onClick={()=>returnFromPublic(()=>openPublicRoute('identity',record.authorBapId))}>{t('backPublicIdentity')}</BackButton>
-    <div className="reader-byline"><Button variant="quiet" className="reader-author-link" data-action="reader-author" aria-label={t('readerViewAuthor')+' · '+record.author.name} onClick={()=>openPublicRoute('identity',record.authorBapId)}><Portrait profile={record.author}/><strong>{record.author.name}</strong><UiIcon name="ChevronRight"/></Button><time dateTime={record.publishedAt}>{new Date(record.publishedAt).toLocaleDateString(locale==='zh'?'zh-CN':'en-US',{year:'numeric',month:'long',day:'numeric'})}</time></div>
+    <div className="reader-byline"><Button variant="quiet" className="reader-author-link" data-action="reader-author" aria-label={t('readerViewAuthor')+' · '+record.author.name} onClick={()=>openPublicRoute('identity',record.authorBapId)}><Portrait profile={record.author}/><strong>{record.author.name}</strong></Button><time dateTime={record.publishedAt}>{new Date(record.publishedAt).toLocaleDateString(locale==='zh'?'zh-CN':'en-US',{year:'numeric',month:'long',day:'numeric'})}</time></div>
     <p className="eyebrow">{h(type)}</p><h1 tabIndex="-1">{record.title||h(type)+' · '+record.txid.slice(0,8)}</h1>
     {!supported?<p className="homepage-media-error" role="alert" data-media-error="unsupported">{h('unsupported')}</p>:<div className="homepage-media-stage">
       {type==='image'?<div className={'homepage-image-stage'+(zoomed?' is-zoomed':'')}><img src={src} alt={record.title} onError={()=>setFailed(true)}/></div>:type==='video'?<video ref={player} tabIndex={0} aria-label={record.title||h(type)+' · '+record.txid.slice(0,8)} src={src} controls preload="metadata" onLoadedMetadata={metadata} onError={()=>setFailed(true)} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)}/>:<audio ref={player} tabIndex={0} aria-label={record.title||h(type)+' · '+record.txid.slice(0,8)} src={src} controls preload="metadata" onLoadedMetadata={metadata} onError={()=>setFailed(true)} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)}/>}

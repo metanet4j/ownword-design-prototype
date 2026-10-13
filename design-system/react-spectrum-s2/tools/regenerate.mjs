@@ -170,11 +170,14 @@ function tokenCss() {
 }
 
 function componentSource(name) {
+  if(name === 'FileTrigger') return `import React from 'react';\nimport {S2FileTrigger} from '../shared/S2FileTrigger.jsx';\nexport function FileTrigger(props) {return React.createElement(S2FileTrigger, props); }\n`;
   if(name === 'TooltipTrigger') return `import React from 'react';\nimport {S2TooltipTrigger} from '../shared/S2TooltipTrigger.jsx';\nexport function TooltipTrigger(props) {return React.createElement(S2TooltipTrigger, props); }\n`;
   return `import {renderS2Component} from '../shared/s2Primitive.jsx';\n\nexport function ${name}(props) {\n  return renderS2Component('${name}', props);\n}\n`;
 }
 
 function componentTypes(name) {
+  if(name === 'FileTrigger') return `import type {ReactElement} from 'react';\nexport interface FileTriggerProps { children: ReactElement; acceptedFileTypes?: readonly string[]; onSelect?: (files: FileList | null) => void; }\nexport declare function FileTrigger(props: FileTriggerProps): ReactElement;\n`;
+  if(name === 'StatusLight') return `import type {ReactElement, ReactNode} from 'react';\nexport interface StatusLightProps { children?: ReactNode; variant?: 'neutral' | 'positive' | 'notice' | 'negative' | 'informative'; role?: 'status'; }\nexport declare function StatusLight(props: StatusLightProps): ReactElement;\n`;
   return `import type {ReactElement, ReactNode} from 'react';\n\nexport interface ${name}Props {\n  children?: ReactNode;\n  label?: string;\n  description?: string;\n  value?: string | number;\n  variant?: 'accent' | 'primary' | 'secondary' | 'negative' | 'premium' | 'genai' | 'neutral' | 'quiet';\n  fillStyle?: 'fill' | 'outline';\n  size?: 'XS' | 'S' | 'M' | 'L' | 'XL';\n  isDisabled?: boolean;\n  isSelected?: boolean;\n  isQuiet?: boolean;\n  isEmphasized?: boolean;\n  onPress?: () => void;\n  className?: string;\n  'aria-label'?: string;\n}\n\nexport declare function ${name}(props: ${name}Props): ReactElement;\n`;
 }
 
@@ -226,7 +229,7 @@ export function renderS2Component(kind, props = {}) {
   const label = labelFor(kind, props);
   const disabled = Boolean(props.isDisabled);
   if (buttonKinds.has(kind)) {
-    const action = ['ActionButton', 'ToggleButton', 'CloseButton'].includes(kind);
+    const action = ['ActionButton', 'ActionMenu', 'ToggleButton', 'CloseButton'].includes(kind);
     const variant = action ? (props.isSelected ? 'primary' : props.isQuiet ? 'quiet' : 'secondary') : (props.variant || 'primary');
     const classes = ['s2d-button', 's2d-button-' + variant, action ? 's2d-action-button' : '', props.isSelected ? 's2d-is-selected' : '', !action && props.fillStyle === 'outline' ? 's2d-button-outline' : '', props.className || ''].filter(Boolean).join(' ');
     const Element = kind === 'LinkButton' ? 'a' : 'button';
@@ -259,7 +262,7 @@ export function renderS2Component(kind, props = {}) {
   }
   if (kind === 'ProgressBar' || kind === 'Meter') return React.createElement('label', {className: 's2d-progress'}, React.createElement('span', null, label, ' · 68%'), React.createElement('progress', {max: 100, value: 68}));
   if (kind === 'ProgressCircle') return React.createElement('div', {className: 's2d-progress-circle'}, React.createElement('span', null, '68'));
-  if (kind === 'StatusLight') return React.createElement('span', {className: 's2d-status'}, React.createElement('i', null), label);
+  if (kind === 'StatusLight') return React.createElement('span', {className: 's2d-status', 'data-variant': props.variant || 'neutral', role: props.role}, React.createElement('i', {'aria-hidden': true}), label);
   if (kind === 'Badge' || kind === 'NotificationBadge') return React.createElement('span', {className: kind === 'Badge' ? 's2d-badge' : 's2d-notification-badge'}, kind === 'NotificationBadge' ? '3' : label);
   if (kind === 'Avatar' || kind === 'AvatarGroup') return React.createElement('div', {className: 's2d-avatar-group'}, React.createElement('div', {className: 's2d-avatar'}, 'S2'), kind === 'AvatarGroup' ? React.createElement('div', {className: 's2d-avatar'}, 'UI') : null);
   if (cardKinds.has(kind)) return card(kind, props);
@@ -349,7 +352,13 @@ const componentCss = `.s2 {
 .s2d-inline-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .s2d-field { width: min(100%, 280px); display: flex; flex-direction: column; gap: 6px; color: var(--s2d-text-muted); font-size: 12px; font-weight: 600; }
 .s2d-field-shell { display: flex; width: 100%; }
-.s2d-field input, .s2d-field textarea, .s2d-field-shell input { box-sizing: border-box; width: 100%; min-height: var(--s2d-control-height); padding: 6px 10px; border: 2px solid var(--s2d-border-strong); border-radius: var(--s2d-radius); color: var(--s2d-text); background: var(--s2-gray-25, white); font: 400 14px/1.4 var(--s2d-font-family); }
+.s2d-field input, .s2d-field textarea, .s2d-field-shell input { box-sizing: border-box; width: 100%; min-height: var(--s2d-control-height); padding: 6px 10px; border: 2px solid var(--s2d-border-strong); border-radius: round(calc(var(--s2-corner-radius-300) * var(--s2-font-size-base) / 14), 1px); color: var(--s2d-text); background: var(--s2-gray-25); font: 400 14px/1.4 var(--s2d-font-family); }
+/* S2 Field.tsx：边框区分 hover、focus、invalid、disabled，焦点环独立。 */
+.s2d-field :is(input, textarea):hover:not(:disabled) { border-color: var(--s2-gray-400); }
+.s2d-field :is(input, textarea):focus { border-color: var(--s2-gray-900); }
+.s2d-field :is(input, textarea)[aria-invalid="true"] { border-color: var(--s2-negative-border-color-default); }
+.s2d-field :is(input, textarea)[aria-invalid="true"]:is(:hover,:focus) { border-color: var(--s2-negative-color-1000); }
+.s2d-field :is(input, textarea):disabled { color: var(--s2-disabled-content-color); border-color: var(--s2-disabled-border-color); cursor: default; }
 .s2d-field textarea { min-height: 78px; resize: vertical; }
 .s2d-field-shell input { border-radius: var(--s2d-radius) 0 0 var(--s2d-radius); border-right: 0; }
 .s2d-field-shell button { min-width: 54px; border: 2px solid var(--s2d-border-strong); border-radius: 0 var(--s2d-radius) var(--s2d-radius) 0; color: var(--s2d-text); background: var(--s2d-layer); font: 600 11px var(--s2d-font-family); }
@@ -382,8 +391,13 @@ const componentCss = `.s2 {
 .s2d-progress { min-width: 260px; display: grid; gap: 8px; }
 .s2d-progress progress { width: 100%; height: 8px; accent-color: var(--s2d-accent); }
 .s2d-progress-circle { width: 56px; height: 56px; display: grid; place-items: center; border: 7px solid var(--s2d-border); border-top-color: var(--s2d-accent); border-radius: 50%; font-size: 11px; }
-.s2d-status { display: inline-flex; align-items: center; gap: 8px; }
-.s2d-status i { width: 9px; height: 9px; border-radius: 50%; background: var(--s2d-positive); }
+.s2d-status { display: inline-flex; align-items: center; gap: var(--s2-spacing-100); }
+.s2d-status[data-variant="neutral"] { color: var(--s2-gray-600); }
+.s2d-status i { width: 10px; height: 10px; flex-shrink: 0; border-radius: 50%; background: var(--s2-neutral-content-color-default); }
+.s2d-status[data-variant="positive"] i { background: var(--s2-positive-color-900); }
+.s2d-status[data-variant="notice"] i { background: var(--s2-notice-color-900); }
+.s2d-status[data-variant="negative"] i { background: var(--s2-negative-color-900); }
+.s2d-status[data-variant="informative"] i { background: var(--s2-informative-color-900); }
 .s2d-badge, .s2d-notification-badge { display: inline-flex; align-items: center; min-height: 22px; padding: 0 10px; border-radius: 999px; color: var(--s2d-text); background: var(--s2d-layer); font-size: 12px; font-weight: 700; }
 .s2d-notification-badge { min-width: 22px; justify-content: center; padding: 0; color: white; background: var(--s2d-negative); }
 .s2d-avatar-group { display: flex; }
