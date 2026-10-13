@@ -10,19 +10,17 @@
 
 ## 当前视觉布局
 
-[本轮前后对照](visual-review.html)展示阅读工具栏、Artifact 详情和必填标记优化。[筛选与手机列表](visual-review-v3.html)、[身份与作品层级](visual-review-v2.html)保留此前对照。
+[本轮前后对照](visual-review.html)展示身份编辑和关系确认。[阅读与详情](visual-review-v4.html)、[筛选与手机列表](visual-review-v3.html)、[身份与作品层级](visual-review-v2.html)保留此前对照。
 
-阅读页将复制和导出组成官方图标操作组，导出使用 Download 图标、可访问名称与 Tooltip。Artifact 详情将稳定短编号、复制与状态同行展示，关联身份复用紧凑 Identifier；长编号、未稳定状态、编号变化与复制失败保留独立行空间，帮助与刷新保持成组。创建表单的必填标记由官方 TextField 生成。
+身份表单的名称与类型由官方组件生成必填标记，个人／组织使用官方 RadioGroup 与 Radio 表达互斥选择。编辑页的 BAP ID 和发布状态组成紧凑上下文，复用 Identifier／CopyButton。关系确认先展示双方身份，再展示关系规则与公开影响；双方完整标识可换行和复制，缺少展示名时直接呈现标识，说明保留在弹层正文。
 
-内容、Artifact 与主页复用 SectionTabs，内部采用官方 Tabs／TabList／TabPanel。管理页使用常规密度，主页保留 compact，容器提供稳定可用宽度，支持窄屏收敛与恢复桌面。手机草稿菜单对齐状态行，标题保留完整行宽；列表当前数字 ID 与状态同行。身份主体与标识条分组，复制紧邻协议值；公开作品标题使用 S2 衬线字体，桌面 20px、手机 18px，媒体采用受控窗口。
-
-组件内部样式和包源码保持官方来源。
+阅读复制与导出使用官方图标操作；Artifact 稳定短编号、复制与状态同行，长编号、未稳定状态、编号变化及复制失败保留展开空间，帮助与刷新成组。三个模块共用 SectionTabs，支持窄屏收敛与恢复桌面；手机草稿标题使用完整行宽，主页作品采用受控媒体窗口。组件内部样式和包源码保持官方来源。
 
 ## 官方组件与业务组合
 
 运行时直接打包官方 `@react-spectrum/s2@1.6.0`，配套 `react@19.3.0`、`react-dom@19.3.0`，全部锁定于 package-lock。入口是 `official-s2.jsx`，样式由官方包及其 style 宏生成。原型不再加载 `_ds_bundle` 或本地仿制组件运行时。
 
-- 官方组件负责 Provider、Button、ActionButton、ToggleButton、TextField、TextArea、Tooltip、ContextualHelp、Tabs、Link、Card、StatusLight、Skeleton、FileTrigger、Menu、ActionMenu、Popover、Dialog 和操作分组。
+- 官方组件负责 Provider、Button、ActionButton、ToggleButton、RadioGroup、Radio、TextField、TextArea、Tooltip、ContextualHelp、Tabs、Link、Card、StatusLight、Skeleton、FileTrigger、Menu、ActionMenu、Popover、Dialog 和操作分组。
 - 按钮、字段、弹窗仅保留业务参数适配；官方组件负责内部样式、键盘、禁用、校验和焦点。宽度使用官方 `style()` 的公开布局能力，未修改 node_modules。
 - 工作流图标直接导入官方图标组件；返回箭头使用项目绑定的官方 S2 UI SVG。字体由官方 Provider 加载，保留系统回退。
 - OwnWord 保留身份、作品、关系、证明、媒体、编辑器和页面布局。业务 Token 别名引用既有 S2 Token；页面 CSS 放在官方组件 CSS 之前的 cascade layer，避免旧控件样式覆盖官方组件。
@@ -32,7 +30,7 @@
 
 ## 验收与边界
 
-官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v4/verification.json` 和对应截图，覆盖阅读复制与实际 Markdown 下载、返回、详情 Tabs 与说明焦点、编号变化和重组、关联身份复制失败、必填字段，以及手机、双语和深色。此前证据保留在 `evidence/official-s2/visual-v2/`、`visual-v3/`。
+官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v5/verification.json` 和对应截图，覆盖身份单选键盘、必填、取消保留、无改动、复制与字段错误、创建共用字段、双语深色，以及关系确认对象和焦点。此前证据保留在各轮 visual-v2／visual-v3／visual-v4 目录。
 
 迁移验收覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
 

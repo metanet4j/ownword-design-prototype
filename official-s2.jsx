@@ -22,6 +22,7 @@ import {ButtonGroup} from '@react-spectrum/s2/ButtonGroup';
 import {Picker, PickerItem} from '@react-spectrum/s2/Picker';
 import {Popover,DialogTrigger} from '@react-spectrum/s2/Popover';
 import {Checkbox} from '@react-spectrum/s2/Checkbox';
+import {RadioGroup,Radio} from '@react-spectrum/s2/RadioGroup';
 import IconAdd from '@react-spectrum/s2/icons/Add';
 import IconCheckmark from '@react-spectrum/s2/icons/Checkmark';
 import IconChevronDown from '@react-spectrum/s2/icons/ChevronDown';
@@ -38,7 +39,7 @@ import IconPlay from '@react-spectrum/s2/icons/Play';
 import IconRefresh from '@react-spectrum/s2/icons/Refresh';
 import IconTextBold from '@react-spectrum/s2/icons/TextBold';
 import IconTextItalic from '@react-spectrum/s2/icons/TextItalic';
-export const S2 = {Popover,DialogTrigger,Provider, Button, ActionButton, ToggleButton, TextField, TextArea, Tooltip, TooltipTrigger, ContextualHelp, Tabs, TabList, Tab, TabPanel, Link, Card, StatusLight, Skeleton, Text, FileTrigger, MenuTrigger, Menu, MenuItem, ActionMenu, DialogContainer, Dialog, Heading, Header, Content, Footer, ButtonGroup, Picker, PickerItem, Checkbox};
+export const S2 = {Popover,DialogTrigger,Provider, Button, ActionButton, ToggleButton, TextField, TextArea, Tooltip, TooltipTrigger, ContextualHelp, Tabs, TabList, Tab, TabPanel, Link, Card, StatusLight, Skeleton, Text, FileTrigger, MenuTrigger, Menu, MenuItem, ActionMenu, DialogContainer, Dialog, Heading, Header, Content, Footer, ButtonGroup, Picker, PickerItem, Checkbox, RadioGroup, Radio};
 export const officialIcons = {Add:IconAdd,Checkmark:IconCheckmark,ChevronDown:IconChevronDown,ChevronRight:IconChevronRight,Close:IconClose,Contrast:IconContrast,Copy:IconCopy,Download:IconDownload,History:IconHistory,InfoCircle:IconInfoCircle,Link:IconLink,More:IconMore,Play:IconPlay,Refresh:IconRefresh,TextBold:IconTextBold,TextItalic:IconTextItalic};
 
 export const fullWidth=style({width:'full'});

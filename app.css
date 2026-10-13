@@ -80,6 +80,8 @@ main { position: relative; width: 100%; max-width: var(--ownword-page-width); ma
 .workbench > aside { padding-top:0; }
 .aside-identity { display: grid; gap: var(--s2-spacing-200); margin-top: var(--s2-spacing-300); padding-top: var(--s2-spacing-200); border-top: 1px solid var(--s2d-border); max-width: 380px; }
 .aside-identity code { font-family: var(--s2d-font-mono); font-size: min(var(--s2-font-size-100), 16px); overflow-wrap: anywhere; }
+.aside-identity-compact {grid-template-columns:minmax(0,1fr) auto;align-items:center;max-width:none;}
+.aside-identity-compact>.identifier {padding:0;border:0;}
 .aside-identity p { color: var(--s2-gray-700); font-size: var(--s2-font-size-75); }
 .profile-form { display: grid; gap: var(--s2-spacing-300); padding: var(--s2-spacing-300); border-radius: var(--s2d-radius-xl); border: 1px solid var(--s2d-border); background: var(--s2d-layer-raised); }
 .avatar-field, .person-row { display: flex; align-items: center; gap: var(--s2-spacing-400); }
@@ -485,5 +487,5 @@ main { position: relative; width: 100%; max-width: var(--ownword-page-width); ma
 .flow-steps { max-width:var(--ownword-task-width); margin-inline:auto; justify-content:space-between; }
 @media(min-width:701px) {
  .workbench .page-heading { max-width:none; }
- .workbench .aside-identity { max-width:none; grid-template-columns:auto minmax(0,1fr) auto; align-items:baseline; }
+ .workbench .aside-identity:not(.aside-identity-compact) { max-width:none; grid-template-columns:auto minmax(0,1fr) auto; align-items:baseline; }
 }

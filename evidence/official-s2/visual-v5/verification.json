@@ -1,0 +1,108 @@
+{
+  "checkedAt": "2026-10-13T09:43:21.668Z",
+  "session": "ownword-v5-check2",
+  "baselineCommit": "426803a",
+  "runtime": "@react-spectrum/s2@1.6.0",
+  "checks": [
+    "名称只保留官方必填图标",
+    "类型是有名称和必填语义的官方互斥组",
+    "原始类型与无改动状态正确",
+    "方向键只选中组织并启用核对",
+    "核对保留组织类型与原 BAP ID",
+    "取消授权后保留编辑选择",
+    "恢复原类型后再次识别无改动",
+    "编辑上下文复用统一复制与完整原值",
+    "复制失败展开完整 BAP ID",
+    "空名称错误与焦点保留",
+    "英文深色仍保留类型与标签语义",
+    "关系确认先展示双方身份和完整标识",
+    "双方身份在手机弹层中实际可见",
+    "关系确认焦点留在弹层内",
+    "钱包确认保留相同双方身份",
+    "关闭关系确认回到触发按钮",
+    "创建页复用单选组并保留默认个人类型"
+  ],
+  "screens": [
+    {
+      "name": "after-identity-edit",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "after-identity-edit-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "radio-focus-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "editing-copy-failure",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "name-required-error",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "identity-edit-en-dark",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-relationship-review-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "setup-radio-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    }
+  ],
+  "formTop": 260.59375,
+  "errors": [],
+  "externalFontErrors": 0,
+  "applicationErrors": [],
+  "warnings": [],
+  "scope": "身份编辑的单选、必填、取消授权保留、无改动、复制、创建共用字段、双语深色；关系确认的完整身份、首屏与焦点。未改业务交易流程，在线字体限制沿用。",
+  "followup": {
+    "checkedAt": "2026-10-13T09:47:10.781Z",
+    "session": "ownword-v5-relationship-final",
+    "checks": [
+      "匿名目标不重复用编号充当姓名，完整标识仍可见",
+      "双方首屏、钱包身份快照与 Escape 焦点定向复核通过"
+    ],
+    "errors": [],
+    "externalFontErrors": 0,
+    "applicationErrors": [],
+    "warnings": []
+  },
+  "comparison": {
+    "path": "visual-review.html",
+    "imagesLoaded": 6,
+    "horizontalOverflow": false,
+    "reviewedViewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "baseline": "改动前真实截图；同样例、状态、语言和视口，等待字体就绪。"
+  },
+  "fontAudit": {
+    "source": "node_modules/@react-spectrum/s2/src/Provider.tsx 与 Fonts.tsx",
+    "finding": "中文字体经官方 Typekit 动态子集加载，Provider 公开 API 未提供字体重试配置。",
+    "status": "本轮两次验收未出现字体错误；上轮失败记录仍有效，未声称加载稳定性已解决。"
+  }
+}
