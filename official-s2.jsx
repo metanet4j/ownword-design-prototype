@@ -29,6 +29,7 @@ import IconChevronRight from '@react-spectrum/s2/icons/ChevronRight';
 import IconClose from '@react-spectrum/s2/icons/Close';
 import IconContrast from '@react-spectrum/s2/icons/Contrast';
 import IconCopy from '@react-spectrum/s2/icons/Copy';
+import IconDownload from '@react-spectrum/s2/icons/Download';
 import IconHistory from '@react-spectrum/s2/icons/History';
 import IconInfoCircle from '@react-spectrum/s2/icons/InfoCircle';
 import IconLink from '@react-spectrum/s2/icons/Link';
@@ -38,6 +39,6 @@ import IconRefresh from '@react-spectrum/s2/icons/Refresh';
 import IconTextBold from '@react-spectrum/s2/icons/TextBold';
 import IconTextItalic from '@react-spectrum/s2/icons/TextItalic';
 export const S2 = {Popover,DialogTrigger,Provider, Button, ActionButton, ToggleButton, TextField, TextArea, Tooltip, TooltipTrigger, ContextualHelp, Tabs, TabList, Tab, TabPanel, Link, Card, StatusLight, Skeleton, Text, FileTrigger, MenuTrigger, Menu, MenuItem, ActionMenu, DialogContainer, Dialog, Heading, Header, Content, Footer, ButtonGroup, Picker, PickerItem, Checkbox};
-export const officialIcons = {Add:IconAdd,Checkmark:IconCheckmark,ChevronDown:IconChevronDown,ChevronRight:IconChevronRight,Close:IconClose,Contrast:IconContrast,Copy:IconCopy,History:IconHistory,InfoCircle:IconInfoCircle,Link:IconLink,More:IconMore,Play:IconPlay,Refresh:IconRefresh,TextBold:IconTextBold,TextItalic:IconTextItalic};
+export const officialIcons = {Add:IconAdd,Checkmark:IconCheckmark,ChevronDown:IconChevronDown,ChevronRight:IconChevronRight,Close:IconClose,Contrast:IconContrast,Copy:IconCopy,Download:IconDownload,History:IconHistory,InfoCircle:IconInfoCircle,Link:IconLink,More:IconMore,Play:IconPlay,Refresh:IconRefresh,TextBold:IconTextBold,TextItalic:IconTextItalic};
 
 export const fullWidth=style({width:'full'});

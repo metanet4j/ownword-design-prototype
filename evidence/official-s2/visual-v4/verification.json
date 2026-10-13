@@ -1,0 +1,195 @@
+{
+  "checkedAt": "2026-10-13T09:08:01.263Z",
+  "session": "ownword-v4-delivery",
+  "baselineCommit": "73d37ce",
+  "runtime": "@react-spectrum/s2@1.6.0",
+  "checks": [
+    "320px 阅读返回、复制、导出同排",
+    "官方导出图标按钮具备名称与键盘提示",
+    "下载 Markdown 与所读版本原文逐字一致",
+    "阅读链接复制成功且包含当前版本路由",
+    "阅读链接复制失败可手动选择完整地址",
+    "阅读返回原内容工作区",
+    "手机短编号、复制与状态同行",
+    "关联身份复用紧凑标识及复制反馈",
+    "确认说明关闭恢复焦点",
+    "详情 Tabs 支持 End 并隐藏无关面板",
+    "关联身份复制失败展开完整值",
+    "编号复制失败仍可选择原值且无横向溢出",
+    "编号变化保留旧值及未稳定状态",
+    "未稳定编号先显示数值再显示完整状态",
+    "重组状态不把上次编号当成稳定编号",
+    "名称只有一个必填标记且保留必填语义",
+    "名称为空时官方字段提示错误并获得焦点",
+    "修正名称后错误清除",
+    "英文必填标签也无手写星号",
+    "英文阅读工具栏仍在视口内",
+    "深色阅读仍使用官方按钮及可见正文"
+  ],
+  "screens": [
+    {
+      "name": "after-reader",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "after-reader-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "reader-copy-failure",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-artifact-detail",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "after-artifact-detail-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-copy-failure",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-number-changed",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-reorg",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-artifact-create",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "after-artifact-create-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-required-error",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "reader-en-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "reader-dark-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    }
+  ],
+  "positions": {
+    "readerTitleTop": 368.75,
+    "artifactContentTitleTop": 606.9375
+  },
+  "errors": [
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    },
+    {
+      "column": 308,
+      "line": 55,
+      "text": "Uncaught (in promise) Error: Failed to fetch: \"https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=1349.1359.1492&state=63.259.295.314.341.597.600.601.607.616.622.635.638.639.708.711.716.1182.1191.1194.1197.1199.1208.1223.1229.1235.1241.1244.1247.1258.1263.1268.1269.1274.1282.1294.1298.1300.1306.1341.1343.1350.1351.1355.1373.1385.1406.1410.1411.1419.1426.1432.1452.1453.1457.1467.1475.1679&order=0\"",
+      "url": null
+    }
+  ],
+  "warnings": [],
+  "externalFontErrors": 8,
+  "applicationErrors": [],
+  "scope": "阅读工具栏、真实 Markdown 下载、复制反馈和返回；Artifact 详情的复制、Tabs、帮助、编号变化和重组；必填字段；中文／英文、深色、320px 与桌面。钱包及链上事实仍为模拟，未扩大到无关发布与转移全流程。",
+  "comparison": {
+    "viewport": {
+      "width": 320,
+      "height": 720
+    },
+    "baselineSource": "改动前由 agent-browser 实际采集；同样例、同语言、同主题和视口，等待 document.fonts.ready。",
+    "before": {
+      "readerTitleTop": 421,
+      "artifactContentTitleTop": 691
+    },
+    "after": {
+      "readerTitleTop": 368.75,
+      "artifactContentTitleTop": 606.9375
+    },
+    "reviewPage": {
+      "path": "visual-review.html",
+      "imagesLoaded": 10,
+      "horizontalOverflow": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    }
+  },
+  "limitations": [
+    "官方在线字体请求出现失败：最终会话 8 条，仅涉及 use.typekit.net 字体 fetch；业务应用错误为 0。另保留早期会话的 34 条同类失败记录。",
+    "字体加载稳定性尚待单独处理；保留官方字体及既有系统回退，不修改官方包或吞掉运行错误。"
+  ]
+}

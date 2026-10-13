@@ -10,9 +10,13 @@
 
 ## 当前视觉布局
 
-[本轮前后对照](visual-review.html)覆盖内容、Artifact 管理页的桌面与 320px 手机；[上一轮对照](visual-review-v2.html)保留个人主页及管理页的身份分组优化。身份主体与标识条分组，复制紧邻协议值；公开作品标题与筛选放在同一行，标题使用 S2 衬线字体，桌面 20px、手机 18px。内容工作区复用 Identifier／CopyButton；Artifact 持有对象使用官方 Card 的 tertiary 变体。
+[本轮前后对照](visual-review.html)展示阅读工具栏、Artifact 详情和必填标记优化。[筛选与手机列表](visual-review-v3.html)、[身份与作品层级](visual-review-v2.html)保留此前对照。
 
-内容、Artifact 与主页复用 SectionTabs，内部采用官方 Tabs／TabList／TabPanel。管理页使用官方常规密度，主页保留 compact 密度；业务容器提供稳定的可用宽度，支持窄屏收敛和恢复桌面展开。手机当前数字 ID 与状态同行，长编号保留换行空间；草稿菜单对齐行首并与文字留出间距，手机标题保留完整行宽。组件内部样式和包源码保持官方来源。
+阅读页将复制和导出组成官方图标操作组，导出使用 Download 图标、可访问名称与 Tooltip。Artifact 详情将稳定短编号、复制与状态同行展示，关联身份复用紧凑 Identifier；长编号、未稳定状态、编号变化与复制失败保留独立行空间，帮助与刷新保持成组。创建表单的必填标记由官方 TextField 生成。
+
+内容、Artifact 与主页复用 SectionTabs，内部采用官方 Tabs／TabList／TabPanel。管理页使用常规密度，主页保留 compact，容器提供稳定可用宽度，支持窄屏收敛与恢复桌面。手机草稿菜单对齐状态行，标题保留完整行宽；列表当前数字 ID 与状态同行。身份主体与标识条分组，复制紧邻协议值；公开作品标题使用 S2 衬线字体，桌面 20px、手机 18px，媒体采用受控窗口。
+
+组件内部样式和包源码保持官方来源。
 
 ## 官方组件与业务组合
 
@@ -28,12 +32,12 @@
 
 ## 验收与边界
 
-官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v3/verification.json` 和对应截图，覆盖内容与 Artifact 筛选计数、键盘、菜单与帮助焦点、空列表及读取失败重试、手机、双语深色和主页共享 Tabs 回归。上一轮证据保留在 `evidence/official-s2/visual-v2/`。
+官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v4/verification.json` 和对应截图，覆盖阅读复制与实际 Markdown 下载、返回、详情 Tabs 与说明焦点、编号变化和重组、关联身份复制失败、必填字段，以及手机、双语和深色。此前证据保留在 `evidence/official-s2/visual-v2/`、`visual-v3/`。
 
 迁移验收覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
 
 `check-copy.cjs` 是继承的旧脚本，直接 require 浏览器字典时会报 window 未定义；它没有作为本轮迁移门禁。有效命令为上方的 `npm run check` 和 `npm run verify:browser`。继承的旧浏览器脚本指向 4314 和旧 DOM，不代表本次验收结果。
 
-身份、钱包、签名、发布、索引、关系均使用确定性模拟，不产生真实交易。字体依赖官方外部资源；离线时使用系统字体。图片、视频、音频保留已有素材，出处和许可见 `fixtures/homepage/sources.json`。
+身份、钱包、签名、发布、索引、关系均使用确定性模拟，不产生真实交易。字体依赖官方外部资源，加载失败时使用既有系统字体回退。本轮最终会话记录到 8 条官方字体 CDN 请求失败，业务应用错误为 0；原始记录见 visual-v4/verification.json 和 font-network-observation.json。字体加载稳定性仍待单独处理。图片、视频、音频保留已有素材，出处和许可见 `fixtures/homepage/sources.json`。
 
 实现状态以任务目录的 feature_list.json 为准；用户视觉复核前保持 `needs-review`。

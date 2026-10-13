@@ -14,7 +14,7 @@ function NumberStatus({asset,t,compact=false,copyable=false,failCopy=false,label
   const state=OwnwordArtifactModel.numberState(asset),known=['assigned','stable'].includes(state),number=known?asset.number:'—';
   return <div className={'artifact-number '+(compact?'compact':'')+(number.length>8?' long-number':'')} data-number-status={state}>
     {known&&copyable?<Identifier className="artifact-number-identifier" id={asset.number} displayValue={number} label={label||t('digitalId')} copyLabel="artifactCopyNumber" target="number" t={t} failCopy={failCopy}/>:<><p className="eyebrow">{label||t('digitalId')}</p><strong>{number}</strong></>}
-    <div className="artifact-number-state"><NumberStatusLight state={state} t={t}/>{known&&state==='assigned'&&<span className="hint">{asset.confirmations}/6 {t('artifactConfirmations')}</span>}{children}</div>
+    <div className="artifact-number-state"><NumberStatusLight state={state} t={t}/>{known&&state==='assigned'&&<span className="hint">{asset.confirmations}/6 {t('artifactConfirmations')}</span>}{children&&<span className="artifact-number-tools">{children}</span>}</div>
     {!compact&&['reorg','unverified'].includes(state)&&<p className="hint">{t('artifactLastNumber')}: {asset.number??t('artifactUnknownOrdinal')} · <time dateTime={asset.observedAt}>{artifactTime(asset.observedAt,t)}</time></p>}
     {!compact&&asset.previousNumber&&known&&asset.previousNumber!==asset.number&&<p role="status">{t('artifactNumberChanged')}: {asset.previousNumber} → {asset.number}</p>}
   </div>;

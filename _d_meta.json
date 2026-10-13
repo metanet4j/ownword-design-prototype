@@ -15,7 +15,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-10-13T08:27:03.676Z",
+  "updatedAt": "2026-10-13T08:57:47.326Z",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -118,7 +118,7 @@
             "width": 1440,
             "height": 1000
           },
-          "evidence": "evidence/official-s2/visual-v3/verification.json"
+          "evidence": "evidence/official-s2/visual-v4/verification.json"
         }
       ]
     },
@@ -147,8 +147,21 @@
           }
         }
       ]
+    },
+    "官方组件改造版 · 筛选与手机列表对照": {
+      "versions": [
+        {
+          "path": "visual-review-v3.html",
+          "createdAt": "2026-10-13T08:57:47.266Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
     }
   },
   "title": "OwnWord — 官方组件改造版",
-  "prompt": "在官方 S2 独立 worktree 中统一内容、Artifact 和主页筛选组合，收紧手机信息分组与草稿菜单对齐，交付同条件前后对照。"
+  "prompt": "继续在官方 S2 独立 worktree 中收紧阅读工具栏与 Artifact 详情，修复重复必填标记，保留长状态和复制失败的可读性，交付同条件对照。"
 }
