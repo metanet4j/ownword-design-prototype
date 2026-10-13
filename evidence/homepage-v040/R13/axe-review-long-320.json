@@ -1,0 +1,25 @@
+{
+  "axeVersion": "4.12.1",
+  "counts": {
+    "inapplicable": 39,
+    "incomplete": 0,
+    "passes": 21,
+    "violations": 0
+  },
+  "incomplete": [],
+  "lifecycle": {
+    "effectiveLaunch": {
+      "browserLaunched": true,
+      "engine": "chrome",
+      "launchHash": 1983588522094562000
+    },
+    "launched": false,
+    "relaunchedBrowser": false,
+    "restartedBackground": false,
+    "restoreStatus": "not_configured",
+    "reused": true,
+    "saveStatus": "not_attempted"
+  },
+  "url": "http://127.0.0.1:4314/?r13=verified#/review/draft-2fc6e4fe-e256-4c90-8d3b-e6fa50f06f1a",
+  "violations": []
+}

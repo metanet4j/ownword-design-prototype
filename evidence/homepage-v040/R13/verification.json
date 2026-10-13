@@ -1,0 +1,567 @@
+{
+  "date": "2026-10-13",
+  "url": "http://127.0.0.1:4314/",
+  "pages": [
+    {
+      "name": "before-identity",
+      "file": "before-identity.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My Identity"
+        },
+        {
+          "font": 28,
+          "text": "Maya Chen"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-edit",
+      "file": "before-edit.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Edit profile"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-long-review",
+      "file": "before-long-review.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Review identity"
+        },
+        {
+          "font": 20,
+          "text": "An independent studio for identity, language, and the shared public record"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-content",
+      "file": "before-content.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-editor",
+      "file": "before-editor.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Untitled"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-artifacts",
+      "file": "before-artifacts.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My Artifacts"
+        },
+        {
+          "font": 16,
+          "text": "A place to stand"
+        },
+        {
+          "font": 16,
+          "text": "The quiet horizon"
+        },
+        {
+          "font": 16,
+          "text": "An earlier chapter"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-artifact-detail",
+      "file": "before-artifact-detail.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "A place to stand"
+        },
+        {
+          "font": 15,
+          "text": "Associated identity"
+        },
+        {
+          "font": 22,
+          "text": "Inscribed content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-create-image",
+      "file": "before-create-image.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Create Artifact"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-image-review",
+      "file": "before-image-review.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Review your Artifact"
+        },
+        {
+          "font": 20,
+          "text": "Maya Chen Artifact"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-profile-visitor",
+      "file": "before-profile-visitor.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "North Studio"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-profile-visitor-960",
+      "file": "before-profile-visitor-960.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "North Studio"
+        },
+        {
+          "font": 20,
+          "text": "Published work"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 960,
+      "width": 960
+    },
+    {
+      "name": "before-long-editor",
+      "file": "before-long-editor.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "A public notebook for identity, language, and the shared record across communities"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-long-content-review",
+      "file": "before-long-content-review.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Review publication"
+        },
+        {
+          "font": 24,
+          "text": "A public notebook for identity, language, and the shared record across communities"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-long-authorize",
+      "file": "before-long-authorize.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Ready for your signature"
+        },
+        {
+          "font": 20,
+          "text": "Authorize identity signing"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "after-content-normal-960",
+      "file": "after-content-normal-960.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 960,
+      "width": 960
+    },
+    {
+      "name": "after-content-long-768",
+      "file": "after-content-long-768.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "after-content-long-960",
+      "file": "after-content-long-960.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 960,
+      "width": 960
+    },
+    {
+      "name": "after-content-long-320",
+      "file": "after-content-long-320.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-review-long-768",
+      "file": "after-review-long-768.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Review publication"
+        },
+        {
+          "font": 24,
+          "text": "A public notebook for identity, language, and the shared record across communities"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "after-review-long-320",
+      "file": "after-review-long-320.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Review publication"
+        },
+        {
+          "font": 24,
+          "text": "A public notebook for identity, language, and the shared record across communities"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-authorize-long-768",
+      "file": "after-authorize-long-768.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "Ready for your signature"
+        },
+        {
+          "font": 20,
+          "text": "Authorize identity signing"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "after-authorize-long-320",
+      "file": "after-authorize-long-320.png",
+      "headings": [
+        {
+          "font": 20,
+          "text": "Ready for your signature"
+        },
+        {
+          "font": 20,
+          "text": "Authorize identity signing"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-reader-long-320",
+      "file": "after-reader-long-320.png",
+      "headings": [
+        {
+          "font": 24,
+          "text": "A public notebook for identity, language, and the shared record across communities"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-content-normal-768",
+      "file": "after-content-normal-768.png",
+      "headings": [
+        {
+          "font": 28,
+          "text": "My content"
+        }
+      ],
+      "largeBody": [],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "name": "before-long-author",
+      "file": "before-long-author.png",
+      "width": 768,
+      "documentScrollWidth": 768,
+      "authorNameRight": 957.921875,
+      "bapIdLeft": 969.921875,
+      "bapIdHeight": 739.5,
+      "result": "页面被 overflow:clip 裁切；仅检查 document.scrollWidth 无法发现子项溢出。"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Normal author children fit at 768",
+      "passed": true
+    },
+    {
+      "name": "Content remains centered at 768",
+      "passed": true
+    },
+    {
+      "name": "Normal author children fit at 960",
+      "passed": true
+    },
+    {
+      "name": "Content remains centered at 960",
+      "passed": true
+    },
+    {
+      "name": "Long author children fit at 768",
+      "passed": true
+    },
+    {
+      "name": "Full name and BAP ID retained at 768",
+      "passed": true
+    },
+    {
+      "name": "Long author children fit at 960",
+      "passed": true
+    },
+    {
+      "name": "Full name and BAP ID retained at 960",
+      "passed": true
+    },
+    {
+      "name": "Long author children fit at 320",
+      "passed": true
+    },
+    {
+      "name": "Full name and BAP ID retained at 320",
+      "passed": true
+    },
+    {
+      "name": "Review author children fit at 768",
+      "passed": true
+    },
+    {
+      "name": "Review author children fit at 320",
+      "passed": true
+    },
+    {
+      "name": "Authorization author children fit at 768",
+      "passed": true
+    },
+    {
+      "name": "Authorization actions fit at 768",
+      "passed": true
+    },
+    {
+      "name": "Authorization author children fit at 320",
+      "passed": true
+    },
+    {
+      "name": "Authorization actions fit at 320",
+      "passed": true
+    },
+    {
+      "name": "Published reader author fits at 320",
+      "passed": true
+    },
+    {
+      "name": "Published content keeps full long author",
+      "passed": true
+    },
+    {
+      "name": "Manual contrast and occlusion check for authorization dialog",
+      "passed": true,
+      "evidence": "contrast-manual.json"
+    }
+  ],
+  "axe": [
+    {
+      "name": "review-long-320",
+      "counts": {
+        "inapplicable": 39,
+        "incomplete": 0,
+        "passes": 21,
+        "violations": 0
+      }
+    },
+    {
+      "name": "authorize-long-320",
+      "counts": {
+        "inapplicable": 44,
+        "incomplete": 1,
+        "passes": 16,
+        "violations": 0
+      }
+    },
+    {
+      "name": "authorize-long-320-stable",
+      "counts": {
+        "inapplicable": 44,
+        "incomplete": 1,
+        "passes": 16,
+        "violations": 0
+      }
+    }
+  ],
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "scope": "R13：四模块平板布局与长内容边界审查；修复我的内容、发布确认和签名授权中的长作者名称溢出。",
+  "baseRevision": "2e0d847",
+  "visualReview": {
+    "reviewedFiles": [
+      "after-authorize-long-320.png",
+      "after-authorize-long-768.png",
+      "after-content-long-320.png",
+      "after-content-long-768.png",
+      "after-content-long-960.png",
+      "after-content-normal-768.png",
+      "after-content-normal-960.png",
+      "after-reader-long-320.png",
+      "after-review-long-320.png",
+      "after-review-long-768.png",
+      "before-artifact-detail.png",
+      "before-artifacts.png",
+      "before-content.png",
+      "before-create-image.png",
+      "before-edit.png",
+      "before-editor.png",
+      "before-identity.png",
+      "before-image-review.png",
+      "before-long-author.png",
+      "before-long-authorize.png",
+      "before-long-content-review.png",
+      "before-long-editor.png",
+      "before-long-review.png",
+      "before-profile-visitor-960.png",
+      "before-profile-visitor.png"
+    ],
+    "result": "已查看全部基线及修复后截图；三处长作者区域的姓名、头像和标识位于容器内，平板左右留白相等；长标题和图片表单未发现本轮需改动的问题。"
+  },
+  "reproduction": [
+    "以独立 agent-browser session 打开预览并连接样例钱包。",
+    "在我的身份编辑名称为 OpenIdentityAndPublicRecordResearchCollective 重复两次（88 字符），确认并批准模拟保存。",
+    "在我的内容检查 768、960、320px：逐个测量作者区域子项边界和 scrollWidth，姓名及 BAP ID 保留完整文本。",
+    "新建草稿并输入长标题，进入发布确认与授权弹窗；在 768、320px 检查名称换行及操作边界。",
+    "批准确定性模拟发布并在 320px 阅读页核对完整作者；为对比度复核创建有实际改动的修订并打开授权弹窗，检查后取消。",
+    "基线还在 768px 查看身份编辑、身份确认、Artifact 列表、详情、实际 JPG 上传及确认；公开主页查看 768、960px。"
+  ],
+  "accessibilityReview": {
+    "result": "3 次扫描均为 0 violations；确认页 0 incomplete，授权弹窗的初次及稳定后复测均有 1 项 color-contrast incomplete（4 个文本节点）。",
+    "manualEvidence": "contrast-manual.json",
+    "manualResult": "四处文本均在不透明弹窗内且未被遮挡；实际色值计算的对比度为 8.06:1–18.58:1，达到 4.5:1。未将人工结论改写为 axe 自动通过。"
+  },
+  "commandsPassed": [
+    "npm run build",
+    "./init.sh --plan",
+    "./init.sh"
+  ],
+  "limits": "仅受影响布局与关联流程；未重跑全量 BDD、全部主题语言组合、真实读屏或生产钱包。"
+}

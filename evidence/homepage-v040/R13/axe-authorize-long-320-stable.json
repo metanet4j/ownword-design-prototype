@@ -1,0 +1,75 @@
+{
+  "axeVersion": "4.12.1",
+  "counts": {
+    "inapplicable": 44,
+    "incomplete": 1,
+    "passes": 16,
+    "violations": 0
+  },
+  "incomplete": [
+    {
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodeCount": 4,
+      "nodes": [
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+          "html": "<p>Sign the Markdown you just reviewed with the following identity, then publish it.</p>",
+          "target": [
+            ".modal-body > p:nth-child(3)"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+          "html": "<strong>OpenIdentityAndPublicRecordResearchCollectiveOpenIdentityAndPublicRecordResearchCollective</strong>",
+          "target": [
+            ".review-author > strong"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+          "html": "<code title=\"2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD\">2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD</code>",
+          "target": [
+            "code"
+          ]
+        },
+        {
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+          "html": "<p class=\"publish-explanation\">A public notebook for identity, language, and the shared record across communities · 371 bytes</p>",
+          "target": [
+            ".publish-explanation"
+          ]
+        }
+      ],
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ]
+    }
+  ],
+  "lifecycle": {
+    "effectiveLaunch": {
+      "browserLaunched": true,
+      "engine": "chrome",
+      "launchHash": 1983588522094562000
+    },
+    "launched": false,
+    "relaunchedBrowser": false,
+    "restartedBackground": false,
+    "restoreStatus": "not_configured",
+    "reused": true,
+    "saveStatus": "not_attempted"
+  },
+  "url": "http://127.0.0.1:4314/?r13=verified#/publish/draft-ebc5d5e7-0aa4-4596-a647-e1ad63d10d09",
+  "violations": []
+}

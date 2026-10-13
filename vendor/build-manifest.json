@@ -35,7 +35,7 @@
     "_ds/react-spectrum-s2/styles.css": "650e92f5b135bf62809005238ef610bfd622d6408b50ac41e1682ab6ed1ee19a",
     "s2-adapter.css": "fb9e89e1dfbf47534f53eda8d12cfd524952c77cfdc8d28e1528cf1d7f7b92dc",
     "app.css": "89485f2fdd2171f25569904ce991aa412fa4304ebe29616d11f036bc41fd98f7",
-    "content.css": "7a8e314486695e2b4e20ace8d2bda1ba7e67968845d68d4c49e89a0bdb07bb5b",
+    "content.css": "0343a20ae031da019bb185982053b590c3f548fc20c49636d48e35df27ff5c29",
     "artifact.css": "4a911fadc2703c46abd1b9e60a10f26edc3774c4e8313db22e17ae714dcaaee9",
     "welcome.css": "614776d6f36dfb5ce683a09168fcafde2916a2f95df56ed248da838a1700f858",
     "homepage.css": "5ec1e80e20dc311b25c24d443d0a7809b0aa3d653fc514208f1b697b04b1ac86",
@@ -53,7 +53,7 @@
     "vendor/styles.css": "ac91542371aecd1390c012c3123ab609121585347fefe10b2625de1a6e68cd6d",
     "index.html": "cfc439b04f4b2f6881d1d0df17ccbb2e97a1df24fbf0284b0f82abbd413abb7e",
     "vendor/fonts.css": "c842cec53e5d68a3c0e8fecd42c27929dad2222533b3c6d76cb591d0b7c5a991",
-    "vendor/workspace.css": "919f57f561070292059a8081acb844b36a82effc85638b37f28e02469d3e9d16",
+    "vendor/workspace.css": "c3d932ade25df4c4cf61f878c57047566dec4985a8805b9635d44732117c0c54",
     "vendor/runtime.js": "762dbbabf1e56131fb148245d762bed4e009be7054708c31187578d5752121e3"
   }
 }
