@@ -1,0 +1,9 @@
+{
+  "observed": {
+    "url": "http://127.0.0.1:4315/?review=center-final#/artifact-create",
+    "dialogs": [
+      "Keep your changes?OWNWORDYour latest image and name have not been saved.Keep editingSave and leaveDiscard changes"
+    ]
+  },
+  "reason": "创建页有未保存内容，真实离开保护阻止了测试导航；选择保存并离开后继续。"
+}

@@ -1,7 +1,7 @@
 /* 内容页面继承 S2 组件、颜色与节奏，阅读与写作优先于装饰。 */
 .page-content > .dome { display: none; }
 .page-content main { max-width: var(--ownword-page-width); padding-top: var(--s2-spacing-300); }
-.content-workspace { max-width: 960px; margin: auto; }
+.content-workspace,[data-content-screen="write"]:not(:has([data-editor-mode="split"])) { max-width: 960px; margin: auto; }
 .content-heading { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; column-gap:var(--s2-spacing-200); row-gap:var(--s2-spacing-100); margin-bottom:var(--s2-spacing-300); }
 .content-heading>div { display:contents; }
 .content-heading h1 { grid-column:1; grid-row:1; }
@@ -226,11 +226,13 @@
 .reader-toc-item[aria-current="location"] { color:var(--s2d-accent); border-inline-start-color:var(--s2-gray-700); background:var(--s2-gray-75); font-weight:600; }
 .reader-paper :is(h1,h2,h3,h4,h5,h6):focus-visible { outline:2px solid var(--s2d-focus); outline-offset:4px; }
 @media(min-width:1200px) {
- .content-reader.has-toc { max-width:1120px; }
- .content-reader.has-toc > :not(.reader-layout) { max-width:calc(100% - 252px); }
- .has-toc .reader-layout { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:var(--s2-spacing-400); }
- .has-toc .reader-paper { grid-column:1; grid-row:1; min-width:0; margin-inline:0; width:100%; }
- .reader-toc { grid-column:2; grid-row:1; border-bottom:0; margin-top:var(--s2-spacing-500); }
+ .app:has(.content-reader.has-toc) main { max-width:1280px; }
+ .homepage.homepage-reader { width:100%; }
+ .content-reader.has-toc { max-width:none; --reader-aside-width:220px; --reader-main-width:min(var(--ownword-task-width),72ch,calc(100% - 2 * var(--reader-aside-width) - 2 * var(--s2-spacing-400))); }
+ .content-reader.has-toc > :not(.reader-layout) { max-width:var(--reader-main-width); margin-inline:auto; }
+ .has-toc .reader-layout { display:grid; grid-template-columns:minmax(var(--reader-aside-width),1fr) minmax(0,var(--reader-main-width)) minmax(var(--reader-aside-width),1fr); gap:var(--s2-spacing-400); }
+ .has-toc .reader-paper { grid-column:2; grid-row:1; min-width:0; margin-inline:auto; width:100%; }
+ .reader-toc { grid-column:3; grid-row:1; max-width:var(--reader-aside-width); border-bottom:0; margin-top:var(--s2-spacing-500); }
  .reader-toc h2 { font-family:var(--s2d-font-family); font-size:min(var(--s2-font-size-100),16px); font-weight:600; margin:0 0 var(--s2-spacing-200); }
  .reader-toc ol { max-height:calc(100dvh - 200px); border-inline-start:1px solid var(--s2d-border); }
 }

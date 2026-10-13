@@ -1,0 +1,427 @@
+{
+  "baselineCommit": "b3e6ef1",
+  "phase": "after-build",
+  "layouts": [
+    {
+      "name": "welcome",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 80,
+          "width": 1280,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".welcome",
+          "left": 128,
+          "width": 1184,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "identity",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".identity-page",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "identity-edit",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".workbench",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".page-heading",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "content-list",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".content-workspace",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "editor",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "[data-content-screen=write]",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "editor-split",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 80,
+          "width": 1280,
+          "centerDelta": 0
+        },
+        {
+          "selector": "[data-content-screen=write]",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "content-review",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".content-review",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".page-heading",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "artifacts",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-page",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".page-heading",
+          "left": 240,
+          "width": 140.4375,
+          "centerDelta": -409.78125
+        }
+      ]
+    },
+    {
+      "name": "artifact-create",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-page",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-compose-grid",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-form",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".page-heading",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "artifact-create-preview",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-page",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-compose-grid",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-form",
+          "left": 744,
+          "width": 456,
+          "centerDelta": 252
+        },
+        {
+          "selector": ".artifact-preview",
+          "left": 240,
+          "width": 456,
+          "centerDelta": -252
+        },
+        {
+          "selector": ".page-heading",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "artifact-review",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-page",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-compose-grid",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".artifact-review-copy",
+          "left": 744,
+          "width": 456,
+          "centerDelta": 252
+        },
+        {
+          "selector": ".page-heading",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "homepage",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".homepage",
+          "left": 240,
+          "width": 960,
+          "centerDelta": 0
+        }
+      ]
+    },
+    {
+      "name": "reader",
+      "width": 1440,
+      "overflow": false,
+      "regions": [
+        {
+          "selector": ".topbar",
+          "left": 160,
+          "width": 1120,
+          "centerDelta": 0
+        },
+        {
+          "selector": "main",
+          "left": 80,
+          "width": 1280,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".content-reader",
+          "left": 128,
+          "width": 1184,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".reader-paper",
+          "left": 360,
+          "width": 720,
+          "centerDelta": 0
+        },
+        {
+          "selector": ".reader-toc",
+          "left": 1104,
+          "width": 208,
+          "centerDelta": 488
+        },
+        {
+          "selector": ".homepage",
+          "left": 128,
+          "width": 1184,
+          "centerDelta": 0
+        }
+      ]
+    }
+  ]
+}

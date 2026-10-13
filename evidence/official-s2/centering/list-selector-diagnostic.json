@@ -1,0 +1,4 @@
+{
+  "reason": "列表卡片容器没有详情动作；改用实际View Artifact按钮继续测试。",
+  "url": "http://127.0.0.1:4315/?review=center-final#/artifacts"
+}

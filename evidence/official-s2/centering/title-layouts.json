@@ -1,0 +1,120 @@
+{
+  "result": "passed",
+  "layouts": [
+    {
+      "name": "after-artifact-create",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 360,
+        "width": 720,
+        "right": 1080,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center",
+      "titleGroup": {
+        "left": 619.515625,
+        "right": 820.46875,
+        "centerDelta": -0.0078125
+      }
+    },
+    {
+      "name": "after-artifact-create-preview",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 240,
+        "width": 960,
+        "right": 1200,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center",
+      "titleGroup": {
+        "left": 619.515625,
+        "right": 820.46875,
+        "centerDelta": -0.0078125
+      }
+    },
+    {
+      "name": "after-artifact-review",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 240,
+        "width": 960,
+        "right": 1200,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center"
+    },
+    {
+      "name": "artifact-transfer-title",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 360,
+        "width": 720,
+        "right": 1080,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center",
+      "titleGroup": {
+        "left": 609.96875,
+        "right": 830.015625,
+        "centerDelta": -0.0078125
+      }
+    },
+    {
+      "name": "artifact-transfer-title-320",
+      "width": 320,
+      "overflow": false,
+      "primary": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 0,
+        "width": 320,
+        "right": 320,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "start"
+    }
+  ]
+}

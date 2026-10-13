@@ -15,7 +15,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-10-13T14:53:19.682305+00:00",
+  "updatedAt": "2026-10-13T16:17:19.437421+00:00",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -118,7 +118,7 @@
             "width": 1440,
             "height": 1000
           },
-          "evidence": "evidence/official-s2/transfer-review/verification.json"
+          "evidence": "evidence/official-s2/centering/verification.json"
         }
       ]
     },
@@ -238,8 +238,21 @@
           }
         }
       ]
+    },
+    "官方组件改造版 · 手机首屏对照": {
+      "versions": [
+        {
+          "path": "visual-review-v11.html",
+          "createdAt": "2026-10-13T16:17:19.437421+00:00",
+          "status": "needs-review",
+          "viewport": {
+            "width": 320,
+            "height": 720
+          }
+        }
+      ]
     }
   },
   "title": "OwnWord — 官方组件改造版",
-  "prompt": "按 Spectrum S2 收拢 Artifact 转移、关联和移除核对页的对象、完整标识、影响与操作，保留数字精度与签名前校验。"
+  "prompt": "沿用官方 Spectrum S2，统一阅读正文与页头中轴、单/双栏编辑比例和桌面任务标题组；正文与字段左对齐，交付同条件前后对照。"
 }

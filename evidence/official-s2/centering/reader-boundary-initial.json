@@ -1,0 +1,48 @@
+{
+  "width": 1200,
+  "overflow": false,
+  "paper": {
+    "x": 240,
+    "y": 266,
+    "width": 720,
+    "height": 888.390625,
+    "top": 266,
+    "right": 960,
+    "bottom": 1154.390625,
+    "left": 240
+  },
+  "toc": {
+    "x": 984,
+    "y": 298,
+    "width": 168,
+    "height": 130,
+    "top": 298,
+    "right": 1152,
+    "bottom": 428,
+    "left": 984
+  },
+  "items": [
+    {
+      "text": "Start with the author",
+      "x": 985,
+      "y": 332,
+      "width": 167,
+      "height": 44,
+      "top": 332,
+      "right": 1152,
+      "bottom": 376,
+      "left": 985
+    },
+    {
+      "text": "A note from the workbench",
+      "x": 985,
+      "y": 376,
+      "width": 167,
+      "height": 44,
+      "top": 376,
+      "right": 1152,
+      "bottom": 420,
+      "left": 985
+    }
+  ]
+}

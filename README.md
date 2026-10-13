@@ -10,9 +10,9 @@
 
 ## 当前视觉布局
 
-[本轮前后对照](visual-review.html)展示手机主页标识区和阅读页头部的两处轻量调整。[整站验收总览](acceptance-review.html)汇总交付；[Artifact 核对](visual-review-v9.html)、[身份安全](visual-review-v8.html)、[编辑器](visual-review-v7.html)和此前各轮对照保留。
+[本轮前后对照](visual-review.html)展示阅读、编辑器、身份任务、内容确认和 Artifact 创建的中轴与比例调整。[整站验收总览](acceptance-review.html)汇总交付；[手机首屏](visual-review-v11.html)、[Artifact 核对](visual-review-v9.html)、[身份安全](visual-review-v8.html)和[编辑器](visual-review-v7.html)对照保留。
 
-手机主页保留编号、状态与详情同组，数字 ID 的重复视觉标签收起，辅助技术仍可读取完整名称；标识区从约159px降到127px。英文返回文案缩短，阅读页减少头部间距，320px英文浅色示例的正文标题提前100px。手机页头相关操作范围至少44×44px；三个图标按钮的宽度通过官方style宏及styles API设置。
+阅读正文与阅读页头共同居中，修正此前正文中轴向左偏移122px的问题，外侧目录保留220px。页头统一1120px，单栏编辑区960px，双栏仍保留1184px；桌面任务标题与帮助按钮组居中，正文与字段左对齐。手机沿用既有布局。
 
 阅读复制与导出使用官方图标操作；Artifact 稳定短编号、复制与状态同行，长编号、未稳定状态、编号变化及复制失败保留展开空间，帮助与刷新成组。三个模块共用 SectionTabs，支持窄屏收敛与恢复桌面；手机草稿标题使用完整行宽，主页作品采用受控媒体窗口。组件内部样式和包源码保持官方来源。
 
@@ -30,7 +30,7 @@
 
 ## 验收与边界
 
-官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮证据为 `evidence/official-s2/mobile-density/verification.json`：13项相关操作及4项最终位置复核、8个页面布局、4次中英主题自动无障碍检查通过。构建及模型检查通过；原始导航、设备预设和样式尺寸诊断保留。设备预设未启用实际触摸能力，44px范围由DOM测量证明，不宣称实机触摸验收。
+官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮证据为 `evidence/official-s2/centering/verification.json`：页面初查与相关布局、标题组、目录键盘、帮助入口及编辑模式定向复核组合；构建来源与四模块模型检查通过。自动无障碍检查零违规，中文深色保留1项 incomplete，不记为自动通过。原始窄屏裁切、导航保护与焦点时序诊断保留；未扩大为全站重复验收。
 
 迁移验收覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
 

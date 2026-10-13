@@ -1,0 +1,594 @@
+{
+  "result": "passed",
+  "baselineCommit": "b3e6ef1",
+  "sourceHashes": {
+    "app.css": "878cb3707ae91a56f2584fa3a316f0cb92865252f7c86f9c26f01b6788ecc105",
+    "content.css": "fe5e075ebffff6b34961a9e298a2a6324c19ad58d93007530445d3906a8b2a3e"
+  },
+  "initialSweep": "after-initial.json；13个大屏状态，编辑器双栏及阅读比例随后定向修正",
+  "finalLayouts": [
+    {
+      "name": "after-identity-edit",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 360,
+        "width": 720,
+        "right": 1080,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center"
+    },
+    {
+      "name": "after-editor",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 240,
+        "width": 960,
+        "right": 1200,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": null
+    },
+    {
+      "name": "after-editor-split",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 128,
+        "width": 1184,
+        "right": 1312,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": null
+    },
+    {
+      "name": "after-content-review",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 360,
+        "width": 720,
+        "right": 1080,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center"
+    },
+    {
+      "name": "after-artifact-create-preview",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 240,
+        "width": 960,
+        "right": 1200,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center",
+      "titleGroup": {
+        "left": 619.515625,
+        "right": 820.46875,
+        "centerDelta": -0.0078125
+      }
+    },
+    {
+      "name": "after-reader",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 416.453125,
+        "width": 607.09375,
+        "right": 1023.546875,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": {
+        "left": 416.453125,
+        "width": 607.09375,
+        "right": 1023.546875,
+        "centerDelta": 0
+      },
+      "toc": {
+        "left": 1047.546875,
+        "width": 220,
+        "right": 1267.546875,
+        "centerDelta": 437.546875
+      },
+      "titleAlign": null
+    },
+    {
+      "name": "reader-1200",
+      "width": 1200,
+      "overflow": false,
+      "primary": {
+        "left": 296.453125,
+        "width": 607.09375,
+        "right": 903.546875,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 40,
+        "width": 1120,
+        "right": 1160,
+        "centerDelta": 0
+      },
+      "readerHeader": {
+        "left": 296.453125,
+        "width": 607.09375,
+        "right": 903.546875,
+        "centerDelta": 0
+      },
+      "toc": {
+        "left": 927.546875,
+        "width": 220,
+        "right": 1147.546875,
+        "centerDelta": 437.546875
+      },
+      "titleAlign": null
+    },
+    {
+      "name": "reader-1024",
+      "width": 1024,
+      "overflow": false,
+      "primary": {
+        "left": 132,
+        "width": 760,
+        "right": 892,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 0,
+        "width": 1024,
+        "right": 1024,
+        "centerDelta": 0
+      },
+      "readerHeader": {
+        "left": 102,
+        "width": 820,
+        "right": 922,
+        "centerDelta": 0
+      },
+      "toc": {
+        "left": 102,
+        "width": 820,
+        "right": 922,
+        "centerDelta": 0
+      },
+      "titleAlign": null
+    },
+    {
+      "name": "reader-320",
+      "width": 320,
+      "overflow": false,
+      "primary": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 0,
+        "width": 320,
+        "right": 320,
+        "centerDelta": 0
+      },
+      "readerHeader": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "toc": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "titleAlign": null
+    },
+    {
+      "name": "reader-zh-dark",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 382.46875,
+        "width": 675.0625,
+        "right": 1057.53125,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": {
+        "left": 382.46875,
+        "width": 675.0625,
+        "right": 1057.53125,
+        "centerDelta": 0
+      },
+      "toc": {
+        "left": 1081.53125,
+        "width": 220,
+        "right": 1301.53125,
+        "centerDelta": 471.53125
+      },
+      "titleAlign": null
+    },
+    {
+      "name": "reader-zh-dark-320",
+      "width": 320,
+      "overflow": false,
+      "primary": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 0,
+        "width": 320,
+        "right": 320,
+        "centerDelta": 0
+      },
+      "readerHeader": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "toc": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "titleAlign": null
+    }
+  ],
+  "audits": [
+    {
+      "name": "after-artifact-create-preview",
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    {
+      "name": "after-content-review",
+      "inapplicable": 50,
+      "incomplete": 0,
+      "passes": 39,
+      "violations": 0
+    },
+    {
+      "name": "after-editor",
+      "inapplicable": 51,
+      "incomplete": 0,
+      "passes": 38,
+      "violations": 0
+    },
+    {
+      "name": "after-identity-edit",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    {
+      "name": "after-reader",
+      "inapplicable": 45,
+      "incomplete": 0,
+      "passes": 44,
+      "violations": 0
+    },
+    {
+      "name": "reader-zh-dark",
+      "inapplicable": 45,
+      "incomplete": 1,
+      "passes": 44,
+      "violations": 0
+    }
+  ],
+  "checks": [
+    "编辑器模式切换和进入内容确认保留正文",
+    "居中标题的帮助入口和弹层可用",
+    "未保存保护按保存并离开恢复目标主页",
+    "手机目录展开与键盘跳转可用",
+    "大屏外侧目录键盘跳转，等待焦点提交后确认正文获得焦点",
+    "Artifact居中标题帮助按钮打开和关闭可用"
+  ],
+  "browserErrors": [],
+  "consoleErrors": [],
+  "userVisualReview": "pending",
+  "scope": "仅页面中轴、标题对齐、单/双栏编辑空间与阅读比例；自动无障碍incomplete保留，不视为通过。",
+  "titleLayouts": [
+    {
+      "name": "after-artifact-create",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 360,
+        "width": 720,
+        "right": 1080,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center",
+      "titleGroup": {
+        "left": 619.515625,
+        "right": 820.46875,
+        "centerDelta": -0.0078125
+      }
+    },
+    {
+      "name": "after-artifact-create-preview",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 240,
+        "width": 960,
+        "right": 1200,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center",
+      "titleGroup": {
+        "left": 619.515625,
+        "right": 820.46875,
+        "centerDelta": -0.0078125
+      }
+    },
+    {
+      "name": "after-artifact-review",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 240,
+        "width": 960,
+        "right": 1200,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center"
+    },
+    {
+      "name": "artifact-transfer-title",
+      "width": 1440,
+      "overflow": false,
+      "primary": {
+        "left": 360,
+        "width": 720,
+        "right": 1080,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "right": 1280,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "center",
+      "titleGroup": {
+        "left": 609.96875,
+        "right": 830.015625,
+        "centerDelta": -0.0078125
+      }
+    },
+    {
+      "name": "artifact-transfer-title-320",
+      "width": 320,
+      "overflow": false,
+      "primary": {
+        "left": 16,
+        "width": 288,
+        "right": 304,
+        "centerDelta": 0
+      },
+      "header": {
+        "left": 0,
+        "width": 320,
+        "right": 320,
+        "centerDelta": 0
+      },
+      "readerHeader": null,
+      "toc": null,
+      "titleAlign": "start"
+    }
+  ],
+  "titleAudits": [
+    {
+      "name": "after-artifact-create-preview",
+      "inapplicable": 46,
+      "incomplete": 0,
+      "passes": 43,
+      "violations": 0
+    },
+    {
+      "name": "artifact-transfer-title",
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    }
+  ],
+  "verificationMethod": "13个页面初查，11个布局定向复核；标题帮助组补正后再核对创建、Review、转移及手机，阅读规则未改动。",
+  "build": "passed",
+  "models": "passed",
+  "comparisonPairs": 5,
+  "comparisonConditions": {
+    "baseline": "b3e6ef1",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "locale": "en",
+    "theme": "light",
+    "sameData": true
+  },
+  "deliveryChecks": [
+    {
+      "width": 320,
+      "overflow": false,
+      "images": [
+        {
+          "src": "evidence/official-s2/centering/before-reader.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-reader.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-editor.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-editor.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-identity-edit.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-identity-edit.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-content-review.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-content-review.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-artifact-create-preview.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-artifact-create-preview.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "images": [
+        {
+          "src": "evidence/official-s2/centering/before-reader.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-reader.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-editor.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-editor.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-identity-edit.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-identity-edit.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-content-review.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-content-review.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/before-artifact-create-preview.png",
+          "loaded": true
+        },
+        {
+          "src": "evidence/official-s2/centering/after-artifact-create-preview.png",
+          "loaded": true
+        }
+      ]
+    }
+  ],
+  "acceptanceArticles": 11
+}

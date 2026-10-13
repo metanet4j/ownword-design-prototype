@@ -1,0 +1,4 @@
+{
+  "reason": "目录键盘跳转后即时读取早于焦点提交；等待真实焦点后复核通过。",
+  "activeElement": "<h2 data-line=\"7\" id=\"reader-heading-1\" tabindex=\"-1\">Start with the author</h2>"
+}
