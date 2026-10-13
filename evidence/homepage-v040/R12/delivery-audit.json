@@ -1,0 +1,133 @@
+{
+  "sourceCommit": "26055b4e01b68c32270467e1717f807187cae044",
+  "branch": "codex/prototype-v0.4.0-homepage",
+  "inheritedBaseline": "1355bdc4a14197d1d2dfec09e26096446d080be5",
+  "baselineIsAncestor": true,
+  "binding": {
+    "type": "design",
+    "designSystems": [
+      {
+        "name": "React Spectrum 2 / S2 Design System",
+        "slug": "react-spectrum-s2",
+        "namespace": "ReactSpectrumS2_ad4872",
+        "dsFolder": "_ds/react-spectrum-s2",
+        "sourcePath": "design-system/react-spectrum-s2"
+      }
+    ],
+    "primaryDesignSystem": "react-spectrum-s2",
+    "createdAt": "2026-09-05T14:25:19.554Z",
+    "updatedAt": "2026-10-13T04:28:12.999Z",
+    "assets": {
+      "Ownword — Dome and Horizon": {
+        "versions": [
+          {
+            "path": "index.html",
+            "createdAt": "2026-09-05T14:55:54.957Z",
+            "status": "needs-review",
+            "viewport": {
+              "width": 1440,
+              "height": 1000
+            }
+          }
+        ]
+      },
+      "Ownword 品牌图标 · 穹印": {
+        "versions": [
+          {
+            "path": "brand.html",
+            "createdAt": "2026-09-05T15:28:13.520Z",
+            "status": "needs-review",
+            "viewport": {
+              "width": 1320,
+              "height": 1000
+            }
+          }
+        ]
+      },
+      "Ownword 品牌方向探索": {
+        "versions": [
+          {
+            "path": "brand-explorations.html",
+            "createdAt": "2026-09-05T16:08:32.668Z",
+            "status": "needs-review",
+            "viewport": {
+              "width": 1440,
+              "height": 1180
+            }
+          }
+        ]
+      },
+      "视觉与交互评审 · 2026-09-17": {
+        "versions": [
+          {
+            "path": "review-20260917/index.html",
+            "createdAt": "2026-09-17T09:59:04.135Z",
+            "status": "needs-review",
+            "viewport": {
+              "width": 1440,
+              "height": 1000
+            }
+          }
+        ]
+      },
+      "Ownword v0.2.0 — Content": {
+        "versions": [
+          {
+            "path": "index.html",
+            "status": "needs-review",
+            "createdAt": "2026-09-17T13:35:00Z",
+            "viewport": {
+              "width": 1440,
+              "height": 1000
+            }
+          }
+        ]
+      },
+      "Ownword v0.3.0 — Identity Artifact": {
+        "versions": [
+          {
+            "path": "index.html",
+            "createdAt": "2026-09-18T16:48:18.239Z",
+            "status": "needs-review",
+            "viewport": {
+              "width": 1440,
+              "height": 1000
+            }
+          }
+        ]
+      },
+      "Ownword v0.4.0 — Identity Homepage": {
+        "versions": [
+          {
+            "path": "index.html",
+            "createdAt": "2026-10-12",
+            "status": "needs-review",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            }
+          }
+        ]
+      }
+    },
+    "title": "Ownword v0.4.0 — Identity Homepage",
+    "prompt": "当前 PRD v0.4.0：从最新 v0.3.0 继承公开主页、内容与关系交互；保持绑定 Spectrum S2，身份和交易使用确定性模拟。"
+  },
+  "manifests": {
+    "vendor/build-manifest.json": "a2e8e4933da85bcf2fc4ef1a29574654fdb74566abb4fd9d8a9da16e26fd2fc1",
+    "vendor/design-system-manifest.json": "34b58a7d0de325612f36c3672ce84e4680814d56082bc67974b8ccc5cef7dff4",
+    "_ds/react-spectrum-s2/_ds_manifest.json": "b143a7c5a7b0a2594dc0575609726b80453485055afe4516c657e04364ae5947"
+  },
+  "requiredChecks": {
+    "build": "passed after final CSS change",
+    "init": "passed after final CSS change",
+    "plan": "passed with R12 active"
+  },
+  "reviewScope": {
+    "v0.1.0": "身份查看、字段错误、编辑、确认与结果",
+    "v0.2.0": "内容列表、编辑器、阅读、历史、确认与发布结果、空和错误",
+    "v0.3.0": "Artifact 列表、详情、Proof、创建、关联、转移确认与取消、空和错误",
+    "v0.4.0": "公开主页、身份详情、关系确认、粉丝列表、媒体及空和错误"
+  },
+  "verificationBoundary": "R10–R12 验证本轮修复与受影响流程，继承 P01–P10 功能证据；未全量重跑历次 BDD，未执行生产验证。"
+}

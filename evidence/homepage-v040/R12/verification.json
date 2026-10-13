@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-13T04:58:37.448Z",
+  "checks": [
+    {
+      "name": "我的身份 BAP ID 成功切换统一勾选图标",
+      "passed": true
+    },
+    {
+      "name": "阅读分享链接 成功切换统一勾选图标",
+      "passed": true
+    },
+    {
+      "name": "Artifact 数字编号 成功切换统一勾选图标",
+      "passed": true
+    },
+    {
+      "name": "Artifact 铭文标识 成功切换统一勾选图标",
+      "passed": true
+    },
+    {
+      "name": "公开主页 BAP ID 成功切换统一勾选图标",
+      "passed": true
+    },
+    {
+      "name": "公开身份 TxID 成功切换统一勾选图标",
+      "passed": true
+    },
+    {
+      "name": "复制失败模拟开关为 true",
+      "passed": true
+    },
+    {
+      "name": "失败说明持续保留完整 BAP ID",
+      "passed": true
+    },
+    {
+      "name": "失败全文可见且手机无横向溢出",
+      "passed": true
+    },
+    {
+      "name": "复制失败模拟开关为 false",
+      "passed": true
+    },
+    {
+      "name": "失败后重试 BAP ID 成功切换统一勾选图标",
+      "passed": true
+    },
+    {
+      "name": "重试成功后退出失败状态",
+      "passed": true
+    }
+  ],
+  "copies": [
+    {
+      "name": "我的身份 BAP ID",
+      "action": true,
+      "focus": true,
+      "height": 44,
+      "iconHeight": 24,
+      "iconWidth": 24,
+      "label": "Copy full BAP ID",
+      "offsetX": 0,
+      "offsetY": 0,
+      "radius": "7px",
+      "width": 44,
+      "valueVerified": true
+    },
+    {
+      "name": "阅读分享链接",
+      "action": true,
+      "focus": true,
+      "height": 44,
+      "iconHeight": 24,
+      "iconWidth": 24,
+      "label": "Copy link",
+      "offsetX": 0,
+      "offsetY": 0,
+      "radius": "7px",
+      "width": 44,
+      "valueVerified": true
+    },
+    {
+      "name": "Artifact 数字编号",
+      "action": true,
+      "focus": true,
+      "height": 44,
+      "iconHeight": 24,
+      "iconWidth": 24,
+      "label": "Copy inscription number",
+      "offsetX": 0,
+      "offsetY": 0,
+      "radius": "7px",
+      "width": 44,
+      "valueVerified": true
+    },
+    {
+      "name": "Artifact 铭文标识",
+      "action": true,
+      "focus": true,
+      "height": 44,
+      "iconHeight": 24,
+      "iconWidth": 24,
+      "label": "Copy full Inscription ID",
+      "offsetX": 0,
+      "offsetY": 0,
+      "radius": "7px",
+      "width": 44,
+      "valueVerified": true
+    },
+    {
+      "name": "公开主页 BAP ID",
+      "action": true,
+      "focus": true,
+      "height": 44,
+      "iconHeight": 24,
+      "iconWidth": 24,
+      "label": "Copy full BAP ID",
+      "offsetX": 0,
+      "offsetY": 0,
+      "radius": "7px",
+      "width": 44,
+      "valueVerified": true
+    },
+    {
+      "name": "公开身份 TxID",
+      "action": true,
+      "focus": true,
+      "height": 44,
+      "iconHeight": 24,
+      "iconWidth": 24,
+      "label": "Copy publication TxID",
+      "offsetX": 0,
+      "offsetY": 0,
+      "radius": "7px",
+      "width": 44,
+      "valueVerified": true
+    },
+    {
+      "name": "失败后重试 BAP ID",
+      "action": true,
+      "focus": true,
+      "height": 44,
+      "iconHeight": 24,
+      "iconWidth": 24,
+      "label": "复制完整 BAP ID",
+      "offsetX": 0,
+      "offsetY": 0,
+      "radius": "7px",
+      "width": 44,
+      "valueVerified": true
+    }
+  ],
+  "screenshots": [
+    "copy-success-dark.png",
+    "copy-failure-dark.png"
+  ],
+  "axe": {
+    "inapplicable": 36,
+    "incomplete": 0,
+    "passes": 24,
+    "violations": 0
+  },
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "source": "26055b4",
+  "scope": "当前最终构建的四模块复制入口抽检及中文深色失败恢复，补充 R10/R11 页面和共享组件验收。",
+  "method": "真实键盘 Enter/Space 激活；在当前页面或模态内部创建临时文本域，通过 Control+V 验证完整剪贴板值，之后移除。",
+  "review": {
+    "status": "agent-reviewed",
+    "screenshotsViewed": [
+      "copy-success-dark.png",
+      "copy-failure-dark.png"
+    ],
+    "findings": [
+      "成功使用同一勾选图标与本地化状态",
+      "失败后完整标识自然换行，说明持续保留，手机无横向溢出",
+      "关闭失败模拟后，Space 可成功重试并清除失败状态"
+    ],
+    "userVisualReview": "pending"
+  },
+  "deliveryAudit": "delivery-audit.json"
+}
