@@ -96,7 +96,7 @@
 .artifact-page .artifact-number-identifier.identifier{padding:0;}
 [data-action="artifact-back"]{padding-inline:0;}
 .artifact-compose-default{grid-template-columns:1fr;max-width:720px;}
-.artifact-compose-grid:has(>.artifact-default){max-width:780px;}
+.artifact-compose-grid:has(>.artifact-default){grid-template-columns:minmax(0,1fr);max-width:720px;}
 .artifact-preview,.artifact-review-copy{gap:var(--s2-spacing-300);}
 .artifact-review-copy .identifier-value code{white-space:normal;overflow-wrap:anywhere;}
 [data-artifact-screen="transfer"] .artifact-default{display:none;}
@@ -149,7 +149,7 @@
 
 /* R05: common return location, grouped details, and compact transaction receipts. */
 .artifact-back.s2d-button{justify-self:start;display:inline-flex;align-items:center;gap:var(--s2-spacing-100);padding-inline:0;color:var(--s2d-text-muted);font-size:var(--s2-font-size-100);}
-.artifact-detail-overview{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:var(--s2-spacing-500);padding:var(--s2-spacing-500);border:1px solid var(--s2d-border);border-radius:var(--s2d-radius-xl);background:var(--s2d-layer-raised);}
+.artifact-detail-overview{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:var(--s2-spacing-300);padding:var(--s2-spacing-300);border:1px solid var(--s2d-border);border-radius:var(--s2d-radius-xl);background:var(--s2d-layer-raised);}
 .artifact-detail-overview .artifact-detail-main{display:grid;align-content:start;gap:var(--s2-spacing-300);}
 .artifact-detail-overview .artifact-association{border:0;border-left:1px solid var(--s2d-border);border-radius:0;padding:0 0 0 var(--s2-spacing-500);background:none;align-content:start;gap:var(--s2-spacing-300);}
 .artifact-detail-overview h1{font-family:var(--s2d-font-family);font-weight:550;font-size:var(--ownword-font-heading);}
@@ -160,7 +160,7 @@
 .artifact-detail-overview .artifact-number-state{gap:var(--s2-spacing-100);}
 .artifact-detail-overview .artifact-association .identifier{padding:0;}
 .artifact-detail-overview .artifact-association .identifier-value{flex-wrap:wrap;}
-.artifact-detail-overview .artifact-association code{flex-basis:100%;font-size:var(--s2-font-size-100);}
+.artifact-detail-overview .artifact-association code{flex-basis:100%;font-size:min(var(--s2-font-size-100),14px);}
 
 .operation-receipt{padding:var(--s2-spacing-600);display:grid;justify-items:center;text-align:center;gap:var(--s2-spacing-300);border:1px solid var(--s2d-border);border-radius:var(--s2d-radius-xl);background:var(--s2d-layer-raised);}
 .operation-seal{width:64px;height:64px;display:grid;place-items:center;border-radius:50%;background:var(--s2-gray-100);color:var(--s2d-text-muted);}
@@ -183,13 +183,13 @@
 .operation-record{width:100%;text-align:left;margin-top:var(--s2-spacing-300);}
 .operation-record .identifier-value code{white-space:normal;overflow-wrap:anywhere;}
 .operation-receipt>.artifact-transfer-result{text-align:left;width:100%;}
-@media(max-width:700px){.artifact-detail-overview{grid-template-columns:1fr;padding:var(--s2-spacing-400);gap:var(--s2-spacing-400);}.artifact-detail-overview .artifact-association{border-left:0;border-top:1px solid var(--s2d-border);padding:var(--s2-spacing-400) 0 0;}.operation-receipt{padding:var(--s2-spacing-400);}.operation-heading h1{font-size:var(--ownword-font-title);}.operation-meta{gap:var(--s2-spacing-100);}.operation-actions>.s2d-button{white-space:normal;}.artifact-filters{flex-wrap:wrap;}}
+@media(max-width:700px){.artifact-detail-overview{grid-template-columns:1fr;padding:var(--s2-spacing-300);gap:var(--s2-spacing-300);}.artifact-detail-overview .artifact-association{border-left:0;border-top:1px solid var(--s2d-border);padding:var(--s2-spacing-300) 0 0;}.operation-receipt{padding:var(--s2-spacing-400);}.operation-heading h1{font-size:var(--ownword-font-title);}.operation-meta{gap:var(--s2-spacing-100);}.operation-actions>.s2d-button{white-space:normal;}.artifact-filters{flex-wrap:wrap;}}
 @media(prefers-reduced-motion:reduce){.operation-seal,.operation-seal .ui-icon{animation:none!important;}}
 
 [data-artifact-screen="list"]>.artifact-empty h2,[data-artifact-screen="select"]>.artifact-empty h2{font:600 var(--ownword-font-title)/1.3 var(--s2d-font-family);}
 /* Task hierarchy: current identifier, wallet choices, then historical records. */
 .artifact-inventory{display:grid;gap:var(--s2-spacing-400);}
-.artifact-current-overview{display:flex;align-items:center;justify-content:space-between;gap:var(--s2-spacing-400);padding:var(--s2-spacing-500);border:1px solid var(--s2d-border);border-radius:var(--s2d-radius-xl);background:var(--s2d-layer-raised);}
+.artifact-current-overview{display:flex;align-items:center;justify-content:space-between;gap:var(--s2-spacing-300);padding:var(--s2-spacing-300);border:1px solid var(--s2d-border);border-radius:var(--s2d-radius-xl);background:var(--s2d-layer-raised);}
 .artifact-current-overview .artifact-number{grid-template-columns:auto 1fr;align-items:center;column-gap:var(--s2-spacing-300);}
 .artifact-current-overview .artifact-number>.eyebrow,.artifact-current-overview .artifact-number>.hint{grid-column:1/-1;}
 .artifact-current-overview>div{min-width:0;display:grid;gap:var(--s2-spacing-200);}
@@ -247,7 +247,7 @@
  .artifact-current-overview .artifact-number.long-number>strong{font-size:var(--ownword-font-heading);}
  .artifact-wallet-grid{grid-template-columns:1fr;}
  .artifact-heading{flex-direction:row;align-items:center;gap:var(--s2-spacing-200);}
- .artifact-heading>.s2d-button{font-size:var(--s2-font-size-100);padding-inline:var(--s2-spacing-200);}
+ .artifact-heading>.s2d-button{font-size:min(var(--s2-font-size-100),14px);padding-inline:var(--s2-spacing-200);}
  .artifact-heading>.s2d-button .ui-icon{display:none;}
  .artifact-detail-overview .artifact-association .identifier-value{flex-wrap:nowrap;}
  .artifact-detail-overview .artifact-association code{flex-basis:auto;}
@@ -264,7 +264,7 @@
 }
 
 /* Lookup is one focused task; shared controls retain their bound S2 appearance. */
-.artifact-page.artifact-find { width:100%; max-width:640px; margin-inline:auto; padding-top:var(--s2-spacing-700); gap:var(--s2-spacing-500); }
+.artifact-page.artifact-find { width:100%; max-width:640px; margin-inline:auto; padding-top:var(--s2-spacing-300); gap:var(--s2-spacing-300); }
 .artifact-find-heading { display:grid; gap:var(--s2-spacing-200); text-align:center; }
 .artifact-find-heading>p { color:var(--s2-gray-700); font-size:var(--ownword-font-body); line-height:1.65; }
 .artifact-search-form { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:var(--s2-spacing-300); align-items:start; }
@@ -292,7 +292,7 @@
 .artifact-find-result .artifact-number-identifier .identifier-value code { font-size:var(--ownword-font-title); }
 .artifact-find-asset h2 { font-size:var(--ownword-font-body); font-weight:500; }
 @media(max-width:600px) {
-  .artifact-page.artifact-find { padding-top:var(--s2-spacing-600); gap:var(--s2-spacing-500); }
+  .artifact-page.artifact-find { padding-top:var(--s2-spacing-300); gap:var(--s2-spacing-300); }
   .artifact-find-heading { text-align:left; }
   .artifact-search-form { grid-template-columns:minmax(0,1fr); gap:var(--s2-spacing-300); }
   .artifact-search-form>.s2d-button { margin-top:0; width:100%; }

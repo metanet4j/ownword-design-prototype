@@ -1,14 +1,14 @@
 /* Ownword public storytelling; all UI and palette stay on the bound S2 system. */
 .page-welcome .topbar { min-height: 64px; padding-block: var(--s2-spacing-100); }
 .page-welcome main { max-width: 1280px; }
-.welcome { padding-top: var(--s2-spacing-800); }
+.welcome { padding-top: var(--s2-spacing-400); }
 .welcome h1 { margin-top: var(--s2-spacing-400); font-size: var(--ownword-font-title); text-wrap: balance; }
 .welcome h1 em { padding-bottom: var(--s2-spacing-75); }
 .welcome-body { max-width: 460px; margin-top: var(--s2-spacing-400); font-size: var(--ownword-font-body); }
 .welcome-action { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s2-spacing-200); margin-top: var(--s2-spacing-500); }
 .welcome-action > .s2d-button { min-height: 48px; font-size: var(--ownword-font-body); gap: var(--s2-spacing-200); padding-inline: var(--s2-spacing-400); white-space: nowrap; }
-.horizon { width: 100%; margin-top: var(--s2-spacing-800); padding-top: 0; border-color: var(--s2d-border); }
-.welcome-story { padding-block: var(--s2-spacing-800); }
+.horizon { width: 100%; margin-top: var(--s2-spacing-500); padding-top: 0; border-color: var(--s2d-border); }
+.welcome-story { padding-block: var(--s2-spacing-500); }
 .welcome-story-intro { max-width: 640px; }
 .welcome-story-intro h2 { font: 500 var(--ownword-font-title)/1.2 var(--s2d-font-serif), "Songti SC", serif; letter-spacing: -.025em; color: var(--s2-gray-900); }
 .welcome-story-intro > p { margin-top: var(--s2-spacing-300); color: var(--s2-gray-700); line-height: 1.7; }
@@ -19,7 +19,7 @@
 .welcome-story-navigation [role="tab"] { flex: 1; min-height: 48px; padding-inline: var(--s2-spacing-100); font-size: var(--ownword-font-body); }
 .welcome-chapter-description { margin-top: var(--s2-spacing-400); max-width: 34ch; font-size: var(--ownword-font-body); line-height: 1.65; color: var(--s2-gray-800); }
 .welcome-story-principle { margin-top: var(--s2-spacing-600); max-width: 36ch; font-size: var(--s2-font-size-100); line-height: 1.7; color: var(--s2-gray-700); }
-.welcome-story-surface { min-width: 0; min-height: 370px; display: flex; flex-direction: column; justify-content: space-between; padding: var(--s2-spacing-500); border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); background: var(--s2d-layer-raised); }
+.welcome-story-surface { min-width: 0; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; padding: var(--s2-spacing-500); border: 1px solid var(--s2d-border); border-radius: var(--s2d-radius-xl); background: var(--s2d-layer-raised); }
 .welcome-story-surface[hidden] { display: none; }
 .welcome-story-surface:focus-visible { outline: 2px solid var(--s2d-focus); outline-offset: 4px; }
 .welcome-story-surface h3 { font-size: var(--ownword-font-title); line-height: 1.25; color: var(--s2-gray-900); }
@@ -41,17 +41,17 @@
 }
 @media (max-width: 650px) {
   .page-welcome .topbar { min-height: 64px; }
-  .welcome { padding-top: var(--s2-spacing-600); }
+  .welcome { padding-top: var(--s2-spacing-400); }
   .welcome h1 { font-size: var(--ownword-font-title); }
   .welcome-body { max-width: 31ch; font-size: var(--ownword-font-body); line-height: 1.7; }
   .welcome-action { margin-top: var(--s2-spacing-400); gap: var(--s2-spacing-100); }
   .welcome-action > .s2d-button { padding-inline: var(--s2-spacing-300); }
   .horizon { margin-top: var(--s2-spacing-600); }
-  .welcome-story { padding-block: var(--s2-spacing-600); }
+  .welcome-story { padding-block: var(--s2-spacing-400); }
   .welcome-story-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s2-spacing-400); margin-top: var(--s2-spacing-400); }
   .welcome-chapter-description { max-width: none; font-size: var(--ownword-font-body); margin-top: var(--s2-spacing-300); }
   .welcome-story-principle { margin-top: var(--s2-spacing-300); max-width: none; }
-  .welcome-story-surface { min-height: 340px; padding: var(--s2-spacing-300); }
+  .welcome-story-surface { min-height: 240px; padding: var(--s2-spacing-300); }
   .welcome-story-surface h3 { font-size: var(--ownword-font-title); }
   .welcome-words-example h3 { font-size: var(--ownword-font-title); }
   .welcome-story-surface .person-row { gap: var(--s2-spacing-200); }
