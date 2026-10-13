@@ -64,7 +64,7 @@
 .editor-actions .s2d-button {font-size:min(var(--s2-font-size-100),14px);padding-inline:var(--s2-spacing-200);}
 .editor-title {min-width:0;}
 .editor-title h1 {display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.editor-controls { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s2-spacing-200); border-block: 1px solid var(--s2d-border); padding: var(--s2-spacing-100) 0; }
+.editor-controls { position:sticky; top:64px; z-index:3; background:var(--s2d-background); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s2-spacing-200); border-block: 1px solid var(--s2d-border); padding: var(--s2-spacing-100) 0; }
 .editor-tools, .editor-modes { display: flex; align-items: center; gap: var(--s2-spacing-50); }
 .editor-tools button { min-width: 44px; }
 .editor-heading-picker { position:relative; }
@@ -235,7 +235,7 @@
 .visual-editor-host { height: clamp(340px, 56vh, 640px); overflow: auto; background: var(--s2-gray-25); }
 .visual-editor-host .milkdown { min-height: 100%; }
 .visual-surface { min-height: clamp(340px, 56vh, 640px); padding: var(--s2-spacing-400); outline: none; white-space: pre-wrap; }
-.visual-editor-host:focus-within, .editor-host:focus-within { box-shadow: inset 0 -2px var(--s2-gray-600); }
+.visual-editor-host:focus-within, .editor-host:focus-within, .editor-preview-scroll:focus-visible { outline:none; box-shadow: inset 0 -2px var(--s2-gray-600); }
 .visual-surface p { white-space: pre-wrap; }
 .visual-surface {font-size:var(--ownword-font-body);line-height:1.7;}
 .visual-surface>* {margin-bottom:var(--s2-spacing-300);}

@@ -1,0 +1,14 @@
+{
+  "session": "ownword-editor-flows-1791891615583",
+  "width": 1440,
+  "checkedAt": "2026-10-13T11:40:15.583Z",
+  "actions": [
+    {
+      "key": "find-case-regexp-word-results",
+      "result": "passed"
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "result": "passed"
+}

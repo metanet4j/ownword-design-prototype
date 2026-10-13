@@ -1,11 +1,12 @@
 // Markdown 原文仍由草稿持有；可视化文档只在用户实际修改后回写。
 import {Editor, rootCtx, defaultValueCtx, editorViewCtx, editorViewOptionsCtx, remarkStringifyOptionsCtx} from '@milkdown/kit/core';
-import {commonmark, remarkPreserveEmptyLinePlugin, imageSchema, linkSchema, toggleStrongCommand, toggleEmphasisCommand, toggleInlineCodeCommand, wrapInHeadingCommand, wrapInBlockquoteCommand, wrapInBulletListCommand, wrapInOrderedListCommand, createCodeBlockCommand, insertHrCommand} from '@milkdown/kit/preset/commonmark';
+import {commonmark, remarkPreserveEmptyLinePlugin, imageSchema, linkSchema, toggleStrongCommand, toggleEmphasisCommand, toggleInlineCodeCommand, wrapInHeadingCommand, wrapInBlockquoteCommand, createCodeBlockCommand, insertHrCommand} from '@milkdown/kit/preset/commonmark';
 import {gfm, extendListItemSchemaForTask, toggleStrikethroughCommand, insertTableCommand} from '@milkdown/kit/preset/gfm';
 import {history, undoCommand, redoCommand} from '@milkdown/kit/plugin/history';
+import {wrapInList} from '@milkdown/kit/prose/schema-list';
 import {cursor} from '@milkdown/kit/plugin/cursor';
 import {callCommand, getMarkdown, replaceAll, insert} from '@milkdown/kit/utils';
-import {TextSelection} from '@milkdown/kit/prose/state';
+import {AllSelection, TextSelection} from '@milkdown/kit/prose/state';
 import {renderMarkdown} from './markdown-tools.mjs';
 
 export async function createVisualEditor(parent, value, options) {
@@ -18,6 +19,7 @@ export async function createVisualEditor(parent, value, options) {
       const schema=prev(context);return {...schema,toDOM:node=>node.attrs.checked==null ? schema.toDOM(node) : ['li',{'data-item-type':'task','data-checked':String(node.attrs.checked)},['input',{type:'checkbox',...(node.attrs.checked ? {checked:''} : {}),contenteditable:'false','data-task-checkbox':'','aria-label':options.taskLabel}],['div',0]]};
     });
     ctx.update(editorViewOptionsCtx,prev=>({...prev,attributes:{...prev.attributes,class:'markdown-body visual-surface',role:'textbox','aria-multiline':'true','aria-label':options.label},
+      handleKeyDown(_view,event){if((event.ctrlKey||event.metaKey)&&event.altKey&&['7','8'].includes(event.key)){api.command(event.key==='7'?'ordered':'unordered');return true;}return false;},
       handleDOMEvents:{click(view,event){
         if(event.target.matches('[data-task-checkbox]')) {
           event.preventDefault();const li=event.target.closest('li');const pos=view.state.doc.resolve(view.posAtDOM(li,0));
@@ -50,20 +52,34 @@ export async function createVisualEditor(parent, value, options) {
     }
     selection();
   }});
-  const commands={bold:toggleStrongCommand,italic:toggleEmphasisCommand,strike:toggleStrikethroughCommand,code:toggleInlineCodeCommand,quote:wrapInBlockquoteCommand,unordered:wrapInBulletListCommand,ordered:wrapInOrderedListCommand,codeblock:createCodeBlockCommand,rule:insertHrCommand,table:insertTableCommand,undo:undoCommand,redo:redoCommand};
+  const commands={bold:toggleStrongCommand,italic:toggleEmphasisCommand,strike:toggleStrikethroughCommand,code:toggleInlineCodeCommand,quote:wrapInBlockquoteCommand,codeblock:createCodeBlockCommand,rule:insertHrCommand,table:insertTableCommand,undo:undoCommand,redo:redoCommand};
+  // 全选的边界位于文档节点外；格式与链接操作需要可编辑文字的边界。
+  function textSelection() {
+    const selected=view.state.selection;
+    if(selected instanceof AllSelection)view.dispatch(view.state.tr.setSelection(TextSelection.between(selected.$from,selected.$to)));
+  }
   const api={view,value:()=>raw,
     command(key){
       if(view.composing)return;
+      if(!['undo','redo'].includes(key))textSelection();
       if(/^h[1-3]$/.test(key))instance.action(callCommand(wrapInHeadingCommand.key,Number(key[1])));
-      else if(key==='task'){
-        instance.action(callCommand(wrapInBulletListCommand.key));const pos=view.state.selection.$from;
-        for(let depth=pos.depth;depth>0;depth--){const node=pos.node(depth);if(node.type.name==='list_item'){view.dispatch(view.state.tr.setNodeMarkup(pos.before(depth),undefined,{...node.attrs,checked:node.attrs.checked==null ? false : null}));break;}}
+      else if(['unordered','ordered','task'].includes(key)){
+        // 通用 wrapIn 会把多段合并为一个条目；列表命令按段生成独立条目。
+        wrapInList(view.state.schema.nodes[key==='ordered'?'ordered_list':'bullet_list'])(view.state,view.dispatch,view);
+        if(key==='task'){
+          const {from,to}=view.state.selection,tr=view.state.tr,items=[];
+          view.state.doc.nodesBetween(from,to,(node,pos)=>{if(node.type.name==='list_item')items.push({node,pos});});
+          const checked=items.every(({node})=>node.attrs.checked!=null)?null:false;
+          for(const {node,pos} of items)tr.setNodeMarkup(pos,undefined,{...node.attrs,checked});
+          if(items.length)view.dispatch(tr);
+        }
       } else if(commands[key])instance.action(callCommand(commands[key].key,key==='table' ? {row:2,col:2} : undefined));
       view.focus();selection();
     },
     selectedText:()=>view.state.doc.textBetween(view.state.selection.from,view.state.selection.to,' '),
     selectedLink:()=>{const mark=[...(view.state.storedMarks || []),...view.state.selection.$from.marks()].find(x=>x.type.name==='link');return mark?.attrs.href || '';},
     link(href,label){
+      textSelection();
       const {from,to}=view.state.selection;const text=label || api.selectedText() || href;
       const tr=view.state.tr.insertText(text,from,to);tr.setSelection(TextSelection.create(tr.doc,from,from+text.length));
       const mark=linkSchema.type(instance.ctx);tr.removeMark(from,from+text.length,mark);if(href)tr.addMark(from,from+text.length,mark.create({href}));view.dispatch(tr);view.focus();

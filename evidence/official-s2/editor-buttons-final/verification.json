@@ -1,0 +1,822 @@
+{
+  "session": "ownword-editor-actions-1791888518812",
+  "checkedAt": "2026-10-13T10:48:38.813Z",
+  "scope": "逐按钮检查正文变化；DOM eval 只读，输入、选择与动作均通过浏览器控件。",
+  "actions": [
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "h1",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "# alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "h2",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "## alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "h3",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "### alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "bold",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "**alpha beta**\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "italic",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "*alpha beta*\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "strike",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "~~alpha beta~~\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "quote",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "> alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "unordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "ordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "1. alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "task",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- [ ] alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "code",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "`alpha beta`\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "codeblock",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "```\nalpha beta\n```\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "table",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "|    |    |\n| :- | :- |\n|    |    |\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "rule",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "***\n\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "undo",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "redo",
+      "expected": "text=>/\\*\\*alpha beta\\*\\*/.test(text)",
+      "actual": "**alpha beta**\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "link",
+      "expected": "text=>/\\[alpha beta\\]\\(https:\\/\\/example.com\\)/.test(text)",
+      "actual": "[alpha beta](https://example.com)\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "find",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "mode-split",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "mode-preview",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "mode-edit",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "mode-visual",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 1440,
+      "key": "a11y",
+      "result": "passed",
+      "audit": {
+        "axeVersion": "4.12.1",
+        "counts": {
+          "inapplicable": 51,
+          "incomplete": 0,
+          "passes": 38,
+          "violations": 0
+        },
+        "incomplete": [],
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1983588522094562000
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "url": "http://127.0.0.1:4315/?editor-actions=1791888518813#/write/draft-86a47ba6-4883-4373-b8f2-7d709df48e7d",
+        "violations": []
+      }
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "h1",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "# alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "h2",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "## alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "h3",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "### alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "bold",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "**alpha beta**",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "italic",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "*alpha beta*",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "strike",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "~~alpha beta~~",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "quote",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "> alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "unordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "ordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "1. alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "task",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- [ ] alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "code",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "`alpha beta`",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "codeblock",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "```\nalpha beta\n```",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "table",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "\n| Heading | Heading |\n| --- | --- |\n| Text | Text |\n",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "rule",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "\n\n---\n\n",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "undo",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "redo",
+      "expected": "text=>/\\*\\*alpha beta\\*\\*/.test(text)",
+      "actual": "**alpha beta**",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "link",
+      "expected": "text=>/\\[alpha beta\\]\\(https:\\/\\/example.com\\)/.test(text)",
+      "actual": "[alpha beta](https://example.com)",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "find",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "mode-split",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "mode-preview",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "mode-edit",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "mode-visual",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 1440,
+      "key": "a11y",
+      "result": "passed",
+      "audit": {
+        "axeVersion": "4.12.1",
+        "counts": {
+          "inapplicable": 51,
+          "incomplete": 0,
+          "passes": 38,
+          "violations": 0
+        },
+        "incomplete": [],
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1983588522094562000
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "url": "http://127.0.0.1:4315/?editor-actions=1791888518813#/write/draft-86a47ba6-4883-4373-b8f2-7d709df48e7d",
+        "violations": []
+      }
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "h1",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "# alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "h2",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "## alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "h3",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "### alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "bold",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "**alpha beta**\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "italic",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "*alpha beta*\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "strike",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "~~alpha beta~~\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "quote",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "> alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "unordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "ordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "1. alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "task",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- [ ] alpha beta\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "code",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "`alpha beta`\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "codeblock",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "```\nalpha beta\n```\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "table",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "|    |    |\n| :- | :- |\n|    |    |\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "rule",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "***\n\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "undo",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "redo",
+      "expected": "text=>/\\*\\*alpha beta\\*\\*/.test(text)",
+      "actual": "**alpha beta**\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "link",
+      "expected": "text=>/\\[alpha beta\\]\\(https:\\/\\/example.com\\)/.test(text)",
+      "actual": "[alpha beta](https://example.com)\n",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "find",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "mode-preview",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "mode-edit",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "mode-visual",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "visual",
+      "width": 320,
+      "key": "a11y",
+      "result": "passed",
+      "audit": {
+        "axeVersion": "4.12.1",
+        "counts": {
+          "inapplicable": 51,
+          "incomplete": 0,
+          "passes": 38,
+          "violations": 0
+        },
+        "incomplete": [],
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1983588522094562000
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "url": "http://127.0.0.1:4315/?editor-actions=1791888518813#/write/draft-86a47ba6-4883-4373-b8f2-7d709df48e7d",
+        "violations": []
+      }
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "h1",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "# alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "h2",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "## alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "h3",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "### alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "bold",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "**alpha beta**",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "italic",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "*alpha beta*",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "strike",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "~~alpha beta~~",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "quote",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "> alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "unordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "ordered",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "1. alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "task",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "- [ ] alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "code",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "`alpha beta`",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "codeblock",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "```\nalpha beta\n```",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "table",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "\n| Heading | Heading |\n| --- | --- |\n| Text | Text |\n",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "rule",
+      "expected": "text=>expected.test(text)&&((text.match(/alpha beta/g)||[]).length===(key==='table'||key==='rule'?0:1))",
+      "actual": "\n\n---\n\n",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "undo",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "redo",
+      "expected": "text=>/\\*\\*alpha beta\\*\\*/.test(text)",
+      "actual": "**alpha beta**",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "link",
+      "expected": "text=>/\\[alpha beta\\]\\(https:\\/\\/example.com\\)/.test(text)",
+      "actual": "[alpha beta](https://example.com)",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "find",
+      "expected": "text=>text.trim()==='alpha beta'",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "mode-preview",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "mode-edit",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "mode-visual",
+      "expected": "alpha beta",
+      "actual": "alpha beta",
+      "result": "passed"
+    },
+    {
+      "mode": "edit",
+      "width": 320,
+      "key": "a11y",
+      "result": "passed",
+      "audit": {
+        "axeVersion": "4.12.1",
+        "counts": {
+          "inapplicable": 51,
+          "incomplete": 0,
+          "passes": 38,
+          "violations": 0
+        },
+        "incomplete": [],
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1983588522094562000
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "url": "http://127.0.0.1:4315/?editor-actions=1791888518813#/write/draft-86a47ba6-4883-4373-b8f2-7d709df48e7d",
+        "violations": []
+      }
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "result": "passed"
+}

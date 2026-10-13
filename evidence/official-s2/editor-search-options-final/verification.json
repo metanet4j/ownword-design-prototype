@@ -1,0 +1,16 @@
+{
+  "session": "ownword-editor-flows-1791890970525",
+  "width": 1440,
+  "checkedAt": "2026-10-13T11:29:30.525Z",
+  "actions": [
+    {
+      "key": "find-case-regexp-word-results",
+      "result": "failed",
+      "error": "未就绪：document.querySelectorAll('.cm-searchMatch').length===3",
+      "actual": "Alpha alpha beta alphabet"
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "result": "needs-fix"
+}

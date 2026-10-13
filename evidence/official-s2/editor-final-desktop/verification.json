@@ -1,0 +1,12 @@
+{
+  "session": "ownword-editor-flows-1791889650787",
+  "width": 1440,
+  "checkedAt": "2026-10-13T11:07:30.787Z",
+  "actions": [
+    {
+      "key": "empty-review",
+      "result": "passed",
+      "actual": "Write something before publishing."
+    }
+  ]
+}

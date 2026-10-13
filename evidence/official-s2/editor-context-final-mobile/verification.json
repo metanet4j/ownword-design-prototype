@@ -1,0 +1,172 @@
+{
+  "session": "ownword-editor-flows-1791888523170",
+  "width": 320,
+  "checkedAt": "2026-10-13T10:48:43.171Z",
+  "actions": [
+    {
+      "key": "empty-review",
+      "result": "passed",
+      "actual": "Write something before publishing."
+    },
+    {
+      "key": "file-import-empty",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "mode-preserves-raw",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-export",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-replace-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "file-replace-confirm",
+      "result": "failed",
+      "error": "未就绪：!!document.querySelector('[data-action=import-confirm]')",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "file-invalid-encoding",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-action=editor-files]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "file-size-limit",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-action=editor-files]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "visual-unsupported-source",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-action=editor-files]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "preview-readonly",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "link-cancel-invalid-apply",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "find-controls",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "autosave-back-reopen",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "storage-stay-save-discard",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json select [data-scenario=content-storage] failure",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "file-menu-cancel-focus",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-action=editor-files]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "heading-menu-cancel",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "mode-help",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json find role button click --name About editor views Help --exact",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "task-checkbox",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "task-multiple-selection",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "selected-range-only",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "link-text-apply",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "inline-format-toggle",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "preview-disabled-menu-find",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "find-replace-one-close",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "review-limit-keeps-text",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "preferences-content-snapshot",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-mode=edit]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "review-edit",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-action=content-review]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    },
+    {
+      "key": "publish-cancel-retry-approve-read",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791888523170 --json click [data-action=content-review]",
+      "actual": "# 替换后的正文\n\n确实更新内容"
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "result": "needs-fix"
+}

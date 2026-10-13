@@ -1,0 +1,223 @@
+{
+  "session": "ownword-editor-flows-1791887579640",
+  "width": 1440,
+  "checkedAt": "2026-10-13T10:32:59.641Z",
+  "actions": [
+    {
+      "key": "empty-review",
+      "result": "passed",
+      "actual": "Write something before publishing."
+    },
+    {
+      "key": "file-import-empty",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "mode-preserves-raw",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-export",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-replace-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "file-replace-confirm",
+      "result": "passed"
+    },
+    {
+      "key": "file-invalid-encoding",
+      "result": "passed"
+    },
+    {
+      "key": "file-size-limit",
+      "result": "passed"
+    },
+    {
+      "key": "visual-unsupported-source",
+      "result": "passed"
+    },
+    {
+      "key": "preview-readonly",
+      "result": "passed"
+    },
+    {
+      "key": "link-cancel-invalid-apply",
+      "result": "passed"
+    },
+    {
+      "key": "find-controls",
+      "result": "passed"
+    },
+    {
+      "key": "autosave-back-reopen",
+      "result": "passed"
+    },
+    {
+      "key": "storage-stay-save-discard",
+      "result": "passed"
+    },
+    {
+      "key": "file-menu-cancel-focus",
+      "result": "passed"
+    },
+    {
+      "key": "heading-menu-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "mode-help",
+      "result": "passed"
+    },
+    {
+      "key": "task-checkbox",
+      "result": "failed",
+      "error": "未就绪：!!document.querySelector('[data-task-checkbox]')"
+    },
+    {
+      "key": "link-text-apply",
+      "result": "failed",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(source().includes('[ownword](https://example.com/ownword)'))\n"
+    },
+    {
+      "key": "inline-format-toggle",
+      "result": "passed"
+    },
+    {
+      "key": "preview-disabled-menu-find",
+      "result": "passed"
+    },
+    {
+      "key": "find-replace-one-close",
+      "result": "failed",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'alpha beta alpha beta'\n- 'gamma beta alpha beta'\n"
+    },
+    {
+      "key": "split-scroll-both-directions",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows-1791887579640 --json mouse move 1016.5 357"
+    },
+    {
+      "key": "review-limit-keeps-text",
+      "result": "passed"
+    },
+    {
+      "key": "preferences-content-snapshot",
+      "result": "failed",
+      "error": "Expected values to be strictly equal:\n\n1 !== 0\n"
+    },
+    {
+      "key": "review-edit",
+      "result": "passed"
+    },
+    {
+      "key": "publish-cancel-retry-approve-read",
+      "result": "failed",
+      "error": "未就绪：!!document.querySelector('[data-publish-phase=cancelled]')"
+    }
+  ],
+  "errors": [],
+  "console": [
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword import] rejected"
+        },
+        {
+          "type": "string",
+          "value": "importEncoding"
+        }
+      ],
+      "text": "[Ownword import] rejected importEncoding",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword import] rejected"
+        },
+        {
+          "type": "string",
+          "value": "importSize"
+        }
+      ],
+      "text": "[Ownword import] rejected importSize",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword content] draft save failed"
+        },
+        {
+          "className": "Object",
+          "description": "Object",
+          "objectId": "-8342667779213413319.2.59",
+          "preview": {
+            "description": "Object",
+            "overflow": false,
+            "properties": [
+              {
+                "name": "author",
+                "type": "string",
+                "value": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"
+              }
+            ],
+            "type": "object"
+          },
+          "type": "object"
+        }
+      ],
+      "text": "[Ownword content] draft save failed {author: \"2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD\"}",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword content] draft save failed"
+        },
+        {
+          "className": "Object",
+          "description": "Object",
+          "objectId": "-8342667779213413319.2.60",
+          "preview": {
+            "description": "Object",
+            "overflow": false,
+            "properties": [
+              {
+                "name": "author",
+                "type": "string",
+                "value": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"
+              }
+            ],
+            "type": "object"
+          },
+          "type": "object"
+        }
+      ],
+      "text": "[Ownword content] draft save failed {author: \"2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD\"}",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "TextSelection endpoint not pointing into a node with inline content (doc)"
+        }
+      ],
+      "text": "TextSelection endpoint not pointing into a node with inline content (doc)",
+      "type": "warning"
+    }
+  ],
+  "result": "needs-fix"
+}

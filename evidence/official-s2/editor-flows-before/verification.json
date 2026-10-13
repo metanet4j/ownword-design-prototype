@@ -1,0 +1,102 @@
+{
+  "session": "ownword-editor-flows",
+  "checkedAt": "2026-10-13T10:21:39.065Z",
+  "actions": [
+    {
+      "key": "empty-review",
+      "result": "passed",
+      "actual": "Write something before publishing."
+    },
+    {
+      "key": "file-import-empty",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "mode-preserves-raw",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-export",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-replace-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "file-replace-confirm",
+      "result": "passed"
+    },
+    {
+      "key": "file-invalid-encoding",
+      "result": "passed"
+    },
+    {
+      "key": "file-size-limit",
+      "result": "passed"
+    },
+    {
+      "key": "visual-unsupported-source",
+      "result": "passed"
+    },
+    {
+      "key": "preview-readonly",
+      "result": "failed",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'alpha beta**text**'\n- 'alpha beta'\n             ^\n"
+    },
+    {
+      "key": "link-cancel-invalid-apply",
+      "result": "failed",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "key": "find-controls",
+      "result": "passed"
+    },
+    {
+      "key": "autosave-back-reopen",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows --json click [data-mode=edit]"
+    },
+    {
+      "key": "storage-stay-save-discard",
+      "result": "failed",
+      "error": "Command failed: agent-browser --session ownword-editor-flows --json click [data-mode=edit]"
+    }
+  ],
+  "errors": [],
+  "console": [
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword import] rejected"
+        },
+        {
+          "type": "string",
+          "value": "importEncoding"
+        }
+      ],
+      "text": "[Ownword import] rejected importEncoding",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword import] rejected"
+        },
+        {
+          "type": "string",
+          "value": "importSize"
+        }
+      ],
+      "text": "[Ownword import] rejected importSize",
+      "type": "warning"
+    }
+  ],
+  "result": "needs-fix"
+}

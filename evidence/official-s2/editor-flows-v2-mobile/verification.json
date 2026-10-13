@@ -1,0 +1,209 @@
+{
+  "session": "ownword-editor-flows-1791887991179",
+  "width": 320,
+  "checkedAt": "2026-10-13T10:39:51.179Z",
+  "actions": [
+    {
+      "key": "empty-review",
+      "result": "passed",
+      "actual": "Write something before publishing."
+    },
+    {
+      "key": "file-import-empty",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "mode-preserves-raw",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-export",
+      "result": "passed",
+      "actual": "# 文件验收\r\n\r\n保留 **中文** 与原始换行。\r\n"
+    },
+    {
+      "key": "file-replace-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "file-replace-confirm",
+      "result": "passed"
+    },
+    {
+      "key": "file-invalid-encoding",
+      "result": "passed"
+    },
+    {
+      "key": "file-size-limit",
+      "result": "passed"
+    },
+    {
+      "key": "visual-unsupported-source",
+      "result": "passed"
+    },
+    {
+      "key": "preview-readonly",
+      "result": "passed"
+    },
+    {
+      "key": "link-cancel-invalid-apply",
+      "result": "passed"
+    },
+    {
+      "key": "find-controls",
+      "result": "passed"
+    },
+    {
+      "key": "autosave-back-reopen",
+      "result": "passed"
+    },
+    {
+      "key": "storage-stay-save-discard",
+      "result": "passed"
+    },
+    {
+      "key": "file-menu-cancel-focus",
+      "result": "passed"
+    },
+    {
+      "key": "heading-menu-cancel",
+      "result": "passed"
+    },
+    {
+      "key": "mode-help",
+      "result": "passed"
+    },
+    {
+      "key": "task-checkbox",
+      "result": "passed"
+    },
+    {
+      "key": "link-text-apply",
+      "result": "passed"
+    },
+    {
+      "key": "inline-format-toggle",
+      "result": "passed"
+    },
+    {
+      "key": "preview-disabled-menu-find",
+      "result": "passed"
+    },
+    {
+      "key": "find-replace-one-close",
+      "result": "passed"
+    },
+    {
+      "key": "review-limit-keeps-text",
+      "result": "passed"
+    },
+    {
+      "key": "preferences-content-snapshot",
+      "result": "passed",
+      "actual": {
+        "inapplicable": 51,
+        "incomplete": 0,
+        "passes": 38,
+        "violations": 0
+      }
+    },
+    {
+      "key": "review-edit",
+      "result": "passed"
+    },
+    {
+      "key": "publish-cancel-retry-approve-read",
+      "result": "passed"
+    }
+  ],
+  "errors": [],
+  "console": [
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword import] rejected"
+        },
+        {
+          "type": "string",
+          "value": "importEncoding"
+        }
+      ],
+      "text": "[Ownword import] rejected importEncoding",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword import] rejected"
+        },
+        {
+          "type": "string",
+          "value": "importSize"
+        }
+      ],
+      "text": "[Ownword import] rejected importSize",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword content] draft save failed"
+        },
+        {
+          "className": "Object",
+          "description": "Object",
+          "objectId": "1452477062349125768.2.60",
+          "preview": {
+            "description": "Object",
+            "overflow": false,
+            "properties": [
+              {
+                "name": "author",
+                "type": "string",
+                "value": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"
+              }
+            ],
+            "type": "object"
+          },
+          "type": "object"
+        }
+      ],
+      "text": "[Ownword content] draft save failed {author: \"2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD\"}",
+      "type": "warning"
+    },
+    {
+      "args": [
+        {
+          "type": "string",
+          "value": "[Ownword content] draft save failed"
+        },
+        {
+          "className": "Object",
+          "description": "Object",
+          "objectId": "1452477062349125768.2.61",
+          "preview": {
+            "description": "Object",
+            "overflow": false,
+            "properties": [
+              {
+                "name": "author",
+                "type": "string",
+                "value": "2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD"
+              }
+            ],
+            "type": "object"
+          },
+          "type": "object"
+        }
+      ],
+      "text": "[Ownword content] draft save failed {author: \"2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD\"}",
+      "type": "warning"
+    }
+  ],
+  "result": "passed"
+}

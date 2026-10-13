@@ -1,0 +1,14 @@
+{
+  "session": "ownword-editor-flows-1791889232754",
+  "width": 1440,
+  "checkedAt": "2026-10-13T11:00:32.754Z",
+  "actions": [
+    {
+      "key": "task-multiple-selection",
+      "result": "passed"
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "result": "passed"
+}

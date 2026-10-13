@@ -15,7 +15,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-10-13T10:15:17.365Z",
+  "updatedAt": "2026-10-13T11:42:47.567Z",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -118,7 +118,7 @@
             "width": 1440,
             "height": 1000
           },
-          "evidence": "evidence/official-s2/visual-v5/verification.json"
+          "evidence": "evidence/official-s2/editor-review/verification.json"
         }
       ]
     },
@@ -173,8 +173,34 @@
           }
         }
       ]
+    },
+    "官方组件改造版 · 中文字体对照": {
+      "versions": [
+        {
+          "path": "visual-review-v6.html",
+          "createdAt": "2026-10-13T11:42:47.491Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
+    },
+    "官方组件改造版 · 编辑器逐动作验收": {
+      "versions": [
+        {
+          "path": "editor-review.html",
+          "createdAt": "2026-10-13T11:42:47.566Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
     }
   },
   "title": "OwnWord — 官方组件改造版",
-  "prompt": "继续按 Spectrum S2 和 frontend-design 复查身份表单与关系确认，复用官方单选和统一复制，调整双方身份与说明顺序。"
+  "prompt": "按 Spectrum S2 和 frontend-design 逐项复核内容编辑器的按钮、选区、模式、文件、查找、保存与发布，修复已复现问题。"
 }

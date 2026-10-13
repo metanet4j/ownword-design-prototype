@@ -133,9 +133,17 @@ function ReadyContentEditor({draft, onChange, t, locale, actions, fileActions, s
   React.useEffect(() => {editor.current?.setLabel(t('editorSource'), locale); visual.current?.setLabel(t('editorVisualBody'), t('editorTaskToggle'));}, [locale]);
   React.useEffect(() => {const query = matchMedia('(min-width:960px)'); const change = () => {setWide(query.matches); setMode(value => !query.matches && value === 'split' ? 'edit' : value);}; query.addEventListener('change', change); return () => query.removeEventListener('change', change);}, []);
   React.useEffect(() => {if (mode !== 'preview') editor.current?.view.requestMeasure();}, [mode]);
+  React.useEffect(() => {
+    if(mode!=='split')return;
+    const frame=requestAnimationFrame(()=>syncScroll(activeArea.current));
+    return()=>cancelAnimationFrame(frame);
+  }, [mode,preview]);
   const visualBlocked = mode === 'visual' && (unsupported || visualState !== 'ready');
+  const formatBlocked = visualBlocked || mode === 'preview';
   const command = key => {
     setMore(false);
+    // 预览只读；查找会明确进入源码，不在隐藏选区上执行格式命令。
+    if (mode === 'preview' && key !== 'find') return;
     if (mode === 'visual') {
       if (visualBlocked) return;
       if (key === 'link') {setLink({href:visual.current.selectedLink(),label:visual.current.selectedText(),error:false}); return;}
@@ -157,15 +165,15 @@ function ReadyContentEditor({draft, onChange, t, locale, actions, fileActions, s
     <div className="editor-topline"><div className="editor-title"><h1 tabIndex="-1">{OwnwordContentModel.title(draft.content) || t('contentUntitled')}</h1>{savedState}</div><div className="editor-actions"><S2.MenuTrigger><S2.ActionButton data-action="editor-files"><S2.Text>{t('editorFiles')}</S2.Text><UiIcon name="ChevronDown"/></S2.ActionButton><S2.Menu aria-label={t('editorFiles')}>{fileActions}</S2.Menu></S2.MenuTrigger>{actions}</div></div>
     <div className="editor-feedback" ref={feedbackRef} tabIndex="-1">{feedback}</div>
     <div className="editor-controls"><div className="editor-tools" role="group" aria-label={t('editorFormatting')}>
-      <EditorHeadingMenu t={t} disabled={visualBlocked} onCommand={command}/>
-      {['bold','italic',...(wide?['link']:[])].map(key => <Button iconOnly key={key} variant="quiet" data-format={key} disabled={visualBlocked} aria-pressed={mode === 'visual' ? !!formats[key] : undefined} aria-label={t('editor-' + key)} onClick={() => command(key)}>{key === 'bold' ? <UiIcon name="TextBold"/> : key === 'italic' ? <UiIcon name="TextItalic"/> : <UiIcon name="Link"/>}</Button>)}
-      <S2.MenuTrigger isOpen={more} onOpenChange={setMore}><S2.ActionButton isQuiet data-action="editor-more" isDisabled={visualBlocked}>{t('editorMore')}</S2.ActionButton><S2.Menu aria-label={t('editorMore')} onAction={command}>{[...(!wide?['link']:[]),'strike','quote','unordered','ordered','task','code','codeblock','table','rule','undo','redo','find'].map(key=><S2.MenuItem key={key} id={key} data-format={key}>{t('editor-'+key)}</S2.MenuItem>)}</S2.Menu></S2.MenuTrigger>
+      <EditorHeadingMenu t={t} disabled={formatBlocked} onCommand={command}/>
+      {['bold','italic',...(wide?['link']:[])].map(key => <Button iconOnly key={key} variant="quiet" data-format={key} disabled={formatBlocked} aria-pressed={mode === 'visual' ? !!formats[key] : undefined} aria-label={t('editor-' + key)} onClick={() => command(key)}>{key === 'bold' ? <UiIcon name="TextBold"/> : key === 'italic' ? <UiIcon name="TextItalic"/> : <UiIcon name="Link"/>}</Button>)}
+      <S2.MenuTrigger isOpen={more} onOpenChange={setMore}><S2.ActionButton isQuiet data-action="editor-more" isDisabled={visualBlocked}>{t('editorMore')}</S2.ActionButton><S2.Menu aria-label={t('editorMore')} onAction={command}>{[...(!wide?['link']:[]),'strike','quote','unordered','ordered','task','code','codeblock','table','rule','undo','redo','find'].map(key=><S2.MenuItem key={key} id={key} data-format={key} isDisabled={mode==='preview'&&key!=='find'}>{t('editor-'+key)}</S2.MenuItem>)}</S2.Menu></S2.MenuTrigger>
     </div><div className="editor-modes" role="group" aria-label={t('editorMode')}>{(wide ? ['visual','edit','split','preview'] : ['visual','edit','preview']).map(key => <Button key={key} variant="quiet" data-mode={key} aria-pressed={mode === key} onClick={() => setMode(key)}>{t('editor-' + key)}</Button>)}<ContextHelp label={t('editorModeHelp')}><p>{t('editorVisualHint')}</p></ContextHelp></div></div>
     <section className="editor-visual" hidden={mode !== 'visual'} aria-label={t('editor-visual')}>
       <div className="visual-editor-host" key={draft.id} ref={visualHost} hidden={unsupported || visualState !== 'ready'} data-visual-state={visualState}></div>
       {(unsupported || visualState === 'error') ? <div className="visual-fallback"><p>{t(unsupported ? 'editorVisualUnsupported' : 'editorVisualFailed')}</p><Button data-action="visual-source" onClick={() => setMode('edit')}>{t('editorOpenSource')}</Button></div> : visualState === 'loading' && <div className="visual-fallback"><LoadingMark small label={t('editorVisualLoading')} /></div>}
     </section>
-    <div className="editor-columns"><section className="editor-source" onPointerEnter={() => {activeArea.current = 'source';}} onFocusCapture={() => {activeArea.current = 'source';}} hidden={mode === 'preview' || mode === 'visual'} aria-label={t('editorSource')}><div className="editor-pane-label">Markdown</div><div className="editor-host" ref={host}></div></section><section className="editor-preview" hidden={mode === 'edit' || mode === 'visual'} aria-label={t('editor-preview')}><div className="editor-pane-label">{t('editor-preview')}</div><div className="editor-preview-scroll" ref={previewScroll} onPointerEnter={() => {activeArea.current = 'preview';}} onFocusCapture={() => {activeArea.current = 'preview';}} onScroll={() => syncScroll('preview')}><MarkdownBody source={preview} t={t} /></div></section></div>
+    <div className="editor-columns"><section className="editor-source" onWheelCapture={() => {activeArea.current = 'source';}} onPointerEnter={() => {activeArea.current = 'source';}} onFocusCapture={() => {activeArea.current = 'source';}} hidden={mode === 'preview' || mode === 'visual'} aria-label={t('editorSource')}><div className="editor-pane-label">Markdown</div><div className="editor-host" ref={host}></div></section><section className="editor-preview" hidden={mode === 'edit' || mode === 'visual'} aria-label={t('editor-preview')}><div className="editor-pane-label">{t('editor-preview')}</div><div className="editor-preview-scroll" ref={previewScroll} tabIndex="0" onWheelCapture={() => {activeArea.current = 'preview';}} onPointerEnter={() => {activeArea.current = 'preview';}} onFocusCapture={() => {activeArea.current = 'preview';}} onScroll={() => syncScroll('preview')}><MarkdownBody source={preview} t={t} /></div></section></div>
     <div className="editor-status"><span>{OwnwordModel.countGraphemes(draft.content.replace(/\s/g,''))} {t('editorCharacters')}<span aria-hidden="true"> · </span>{bytes.toLocaleString(locale === 'zh' ? 'zh-CN' : 'en-US')} / 102,400 {t('editorBytes')}</span><span>{t('editorUtf8')}</span></div>
     {link && <Modal title={t('editor-link')} onCancel={() => setLink(null)} closeLabel={t('close')}><form onSubmit={applyLink}>
       <Field id="visual-link-label" label={t('editorLinkText')} value={link.label} onChange={label => setLink({...link,label})} />

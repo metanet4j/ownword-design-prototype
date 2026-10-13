@@ -21,3 +21,6 @@
 *.woff2 binary
 *.ttf binary
 *.otf binary
+
+# 编辑器导出证据保留原始 CRLF，用于核对导出没有改写正文。
+evidence/official-s2/editor-*/export.md -text

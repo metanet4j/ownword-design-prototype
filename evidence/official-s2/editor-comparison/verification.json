@@ -1,0 +1,192 @@
+[
+  {
+    "side": "before",
+    "name": "toolbar-mobile",
+    "port": 4316,
+    "body": "alpha beta",
+    "scroll": {
+      "page": 0,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "before",
+    "name": "preview-mobile",
+    "port": 4316,
+    "body": "alpha beta**text**",
+    "scroll": {
+      "page": 0,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "before",
+    "name": "task-mobile",
+    "port": 4316,
+    "body": "- alpha beta\n",
+    "scroll": {
+      "page": 91,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "before",
+    "name": "link-mobile",
+    "port": 4316,
+    "body": "[ownwor](https://example.com/ownword)d\n",
+    "scroll": {
+      "page": 0,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "before",
+    "name": "find-dark-mobile",
+    "port": 4316,
+    "body": "# 操作验收\n\n保留正文与归属",
+    "scroll": {
+      "page": 232,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "before",
+    "name": "find-dark-a11y",
+    "counts": {
+      "inapplicable": 48,
+      "incomplete": 1,
+      "passes": 41,
+      "violations": 1
+    },
+    "violations": [
+      {
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodeCount": 2,
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.11 (foreground color: #f2f2f2, background color: #ffffff, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "html": "<input value=\"\" placeholder=\"查找\" aria-label=\"查找\" class=\"cm-textfield\" name=\"search\" form=\"\" main-field=\"true\">",
+            "target": [
+              "input[placeholder=\"查找\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.11 (foreground color: #f2f2f2, background color: #ffffff, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "html": "<input value=\"\" placeholder=\"替换\" aria-label=\"替换\" class=\"cm-textfield\" name=\"replace\" form=\"\">",
+            "target": [
+              "input[placeholder=\"替换\"]"
+            ]
+          }
+        ],
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ]
+      }
+    ]
+  },
+  {
+    "side": "before",
+    "name": "split-desktop",
+    "port": 4316,
+    "body": "## Section 0\n\nparagraph 0\n\n## Section 1\n\nparagraph 1\n\n## Section 2\n\nparagraph 2\n\n## Section 3\n\nparagraph 3\n\n## Section 4\n\nparagraph 4\n\n## Section 5\n\nparagraph 5\n\n## Section 6\n\nparagraph 6\n\n## Section 7\n\nparagraph 7\n\n## Section 8\n\nparagraph 8\n\n## Section 9\n\nparagraph 9\n\n## Section 10\n\nparagraph 10\n\n## Section 11\n\nparagraph 11\n\n## Section 12\n\nparagraph 12\n\n## Section 13\n\nparagraph 13\n\n## Section 14\n\nparagraph 14\n\n## Section 15\n\nparagraph 15\n\n## Section 16\n\nparagraph 16\n\n## Section 17\n\nparagraph 17\n\n## Section 18\n\nparagraph 18\n\n## Section 19\n\nparagraph 19\n\n## Section 20\n\nparagraph 20\n\n## Section 21\n\nparagraph 21\n\n## Section 22\n\nparagraph 22\n\n## Section 23\n\nparagraph 23\n\n## Section 24\n\nparagraph 24\n\n## Section 25\n\nparagraph 25\n\n## Section 26\n\nparagraph 26\n\n## Section 27\n\nparagraph 27\n\n## Section 28\n\nparagraph 28\n\n## Section 29\n\nparagraph 29\n\n## Section 30\n\nparagraph 30\n\n## Section 31\n\nparagraph 31\n\n## Section 32\n\nparagraph 32\n\n## Section 33\n\nparagraph 33\n\n## Section 34\n\nparagraph 34\n\n## Section 35\n\nparagraph 35\n\n## Section 36\n\nparagraph 36\n\n## Section 37\n\nparagraph 37\n\n## Section 38\n\nparagraph 38\n\n## Section 39\n\nparagraph 39\n\n## Section 40\n\nparagraph 40\n\n## Section 41\n\nparagraph 41\n\n## Section 42\n\nparagraph 42\n\n## Section 43\n\nparagraph 43\n\n## Section 44\n\nparagraph 44\n\n## Section 45\n\nparagraph 45\n\n## Section 46\n\nparagraph 46\n\n## Section 47\n\nparagraph 47\n\n## Section 48\n\nparagraph 48\n\n## Section 49\n\nparagraph 49\n\n## Section 50\n\nparagraph 50\n\n## Section 51\n\nparagraph 51\n\n## Section 52\n\nparagraph 52\n\n## Section 53\n\nparagraph 53\n\n## Section 54\n\nparagraph 54\n\n## Section 55\n\nparagraph 55\n\n## Section 56\n\nparagraph 56\n\n## Section 57\n\nparagraph 57\n\n## Section 58\n\nparagraph 58\n\n## Section 59\n\nparagraph 59\n\n## Section 60\n\nparagraph 60\n\n## Section 61\n\nparagraph 61\n\n## Section 62\n\nparagraph 62\n\n## Section 63\n\nparagraph 63\n\n## Section 64\n\nparagraph 64\n\n## Section 65\n\nparagraph 65\n\n## Section 66\n\nparagraph 66\n\n## Section 67\n\nparagraph 67\n\n## Section 68\n\nparagraph 68\n\n## Section 69\n\nparagraph 69",
+    "scroll": {
+      "page": 0,
+      "total": 1440,
+      "width": 1440
+    }
+  },
+  {
+    "side": "after",
+    "name": "toolbar-mobile",
+    "port": 4315,
+    "body": "alpha beta",
+    "scroll": {
+      "page": 0,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "after",
+    "name": "preview-mobile",
+    "port": 4315,
+    "body": "alpha beta",
+    "scroll": {
+      "page": 0,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "after",
+    "name": "task-mobile",
+    "port": 4315,
+    "body": "- [ ] alpha beta\n",
+    "scroll": {
+      "page": 91,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "after",
+    "name": "link-mobile",
+    "port": 4315,
+    "body": "[ownword](https://example.com/ownword)\n",
+    "scroll": {
+      "page": 0,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "after",
+    "name": "find-dark-mobile",
+    "port": 4315,
+    "body": "# 操作验收\n\n保留正文与归属",
+    "scroll": {
+      "page": 232,
+      "total": 320,
+      "width": 320
+    }
+  },
+  {
+    "side": "after",
+    "name": "find-dark-a11y",
+    "counts": {
+      "inapplicable": 47,
+      "incomplete": 0,
+      "passes": 42,
+      "violations": 0
+    },
+    "violations": []
+  },
+  {
+    "side": "after",
+    "name": "split-desktop",
+    "port": 4315,
+    "body": "## Section 0\n\nparagraph 0\n\n## Section 1\n\nparagraph 1\n\n## Section 2\n\nparagraph 2\n\n## Section 3\n\nparagraph 3\n\n## Section 4\n\nparagraph 4\n\n## Section 5\n\nparagraph 5\n\n## Section 6\n\nparagraph 6\n\n## Section 7\n\nparagraph 7\n\n## Section 8\n\nparagraph 8\n\n## Section 9\n\nparagraph 9\n\n## Section 10\n\nparagraph 10\n\n## Section 11\n\nparagraph 11\n\n## Section 12\n\nparagraph 12\n\n## Section 13\n\nparagraph 13\n\n## Section 14\n\nparagraph 14\n\n## Section 15\n\nparagraph 15\n\n## Section 16\n\nparagraph 16\n\n## Section 17\n\nparagraph 17\n\n## Section 18\n\nparagraph 18\n\n## Section 19\n\nparagraph 19\n\n## Section 20\n\nparagraph 20\n\n## Section 21\n\nparagraph 21\n\n## Section 22\n\nparagraph 22\n\n## Section 23\n\nparagraph 23\n\n## Section 24\n\nparagraph 24\n\n## Section 25\n\nparagraph 25\n\n## Section 26\n\nparagraph 26\n\n## Section 27\n\nparagraph 27\n\n## Section 28\n\nparagraph 28\n\n## Section 29\n\nparagraph 29\n\n## Section 30\n\nparagraph 30\n\n## Section 31\n\nparagraph 31\n\n## Section 32\n\nparagraph 32\n\n## Section 33\n\nparagraph 33\n\n## Section 34\n\nparagraph 34\n\n## Section 35\n\nparagraph 35\n\n## Section 36\n\nparagraph 36\n\n## Section 37\n\nparagraph 37\n\n## Section 38\n\nparagraph 38\n\n## Section 39\n\nparagraph 39\n\n## Section 40\n\nparagraph 40\n\n## Section 41\n\nparagraph 41\n\n## Section 42\n\nparagraph 42\n\n## Section 43\n\nparagraph 43\n\n## Section 44\n\nparagraph 44\n\n## Section 45\n\nparagraph 45\n\n## Section 46\n\nparagraph 46\n\n## Section 47\n\nparagraph 47\n\n## Section 48\n\nparagraph 48\n\n## Section 49\n\nparagraph 49\n\n## Section 50\n\nparagraph 50\n\n## Section 51\n\nparagraph 51\n\n## Section 52\n\nparagraph 52\n\n## Section 53\n\nparagraph 53\n\n## Section 54\n\nparagraph 54\n\n## Section 55\n\nparagraph 55\n\n## Section 56\n\nparagraph 56\n\n## Section 57\n\nparagraph 57\n\n## Section 58\n\nparagraph 58\n\n## Section 59\n\nparagraph 59\n\n## Section 60\n\nparagraph 60\n\n## Section 61\n\nparagraph 61\n\n## Section 62\n\nparagraph 62\n\n## Section 63\n\nparagraph 63\n\n## Section 64\n\nparagraph 64\n\n## Section 65\n\nparagraph 65\n\n## Section 66\n\nparagraph 66\n\n## Section 67\n\nparagraph 67\n\n## Section 68\n\nparagraph 68\n\n## Section 69\n\nparagraph 69",
+    "scroll": {
+      "page": 0,
+      "total": 1440,
+      "width": 1440
+    }
+  }
+]

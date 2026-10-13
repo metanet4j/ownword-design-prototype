@@ -1,0 +1,32 @@
+[
+  {
+    "step": "进入双栏",
+    "preview": 6480,
+    "source": 7722
+  },
+  {
+    "step": "源码回到顶部",
+    "preview": 39,
+    "source": 22
+  },
+  {
+    "step": "源码下翻",
+    "preview": 516,
+    "source": 584
+  },
+  {
+    "step": "预览回到顶部",
+    "preview": 0,
+    "source": 0
+  },
+  {
+    "step": "预览下翻",
+    "preview": 490,
+    "source": 558
+  },
+  {
+    "step": "预览鼠标滚动",
+    "preview": 490,
+    "source": 558
+  }
+]
