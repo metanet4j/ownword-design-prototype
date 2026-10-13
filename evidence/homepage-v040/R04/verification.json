@@ -1,0 +1,342 @@
+{
+  "checkedAt": "2026-10-13T01:50:33.830Z",
+  "scope": "R04 返回按钮定向检查；未重跑全站 BDD",
+  "method": "使用 agent-browser 独立会话访问所列路由、测量图标框与内容左边缘及中心、实际点击或键盘返回，并查看截图。",
+  "pages": [
+    {
+      "name": "homepage",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 124,
+        "height": 44,
+        "left": 200,
+        "right": 269.53125,
+        "top": 80,
+        "width": 69.53125,
+        "x": 200,
+        "y": 80
+      },
+      "centerError": 0,
+      "contentLeft": 208,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 111,
+        "height": 18,
+        "left": 208,
+        "right": 226,
+        "top": 93,
+        "width": 18,
+        "x": 208,
+        "y": 93
+      },
+      "label": "Back",
+      "scrollWidth": 1440,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 1440,
+      "screenshot": "homepage-1440.png"
+    },
+    {
+      "name": "homepage",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 120,
+        "height": 44,
+        "left": 8,
+        "right": 77.53125,
+        "top": 76,
+        "width": 69.53125,
+        "x": 8,
+        "y": 76
+      },
+      "centerError": 0,
+      "contentLeft": 16,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 107,
+        "height": 18,
+        "left": 16,
+        "right": 34,
+        "top": 89,
+        "width": 18,
+        "x": 16,
+        "y": 89
+      },
+      "label": "Back",
+      "scrollWidth": 320,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 320,
+      "screenshot": "homepage-320.png"
+    },
+    {
+      "name": "connections",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 120,
+        "height": 44,
+        "left": 8,
+        "right": 171.296875,
+        "top": 76,
+        "width": 163.296875,
+        "x": 8,
+        "y": 76
+      },
+      "centerError": 0,
+      "contentLeft": 16,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 107,
+        "height": 18,
+        "left": 16,
+        "right": 34,
+        "top": 89,
+        "width": 18,
+        "x": 16,
+        "y": 89
+      },
+      "label": "Back to public profile",
+      "scrollWidth": 320,
+      "url": "#/identity/3GkA8rRtC4a6oX9PzM2cV7mHxTqB5wEeNs/following",
+      "viewport": 320,
+      "screenshot": "connections-320.png"
+    },
+    {
+      "name": "reader",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 124,
+        "height": 44,
+        "left": 200,
+        "right": 363.296875,
+        "top": 80,
+        "width": 163.296875,
+        "x": 200,
+        "y": 80
+      },
+      "centerError": 0,
+      "contentLeft": 208,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 111,
+        "height": 18,
+        "left": 208,
+        "right": 226,
+        "top": 93,
+        "width": 18,
+        "x": 208,
+        "y": 93
+      },
+      "label": "Back to public profile",
+      "scrollWidth": 1440,
+      "url": "#/content/c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3",
+      "viewport": 1440,
+      "screenshot": "reader-1440.png"
+    },
+    {
+      "name": "versions",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 120,
+        "height": 44,
+        "left": 8,
+        "right": 138.984375,
+        "top": 76,
+        "width": 130.984375,
+        "x": 8,
+        "y": 76
+      },
+      "centerError": 0,
+      "contentLeft": 16,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 107,
+        "height": 18,
+        "left": 16,
+        "right": 34,
+        "top": 89,
+        "width": 18,
+        "x": 16,
+        "y": 89
+      },
+      "label": "Back to reading",
+      "scrollWidth": 320,
+      "url": "#/content/c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3/history",
+      "viewport": 320,
+      "screenshot": "versions-320.png"
+    },
+    {
+      "name": "media",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 120,
+        "height": 44,
+        "left": 8,
+        "right": 171.296875,
+        "top": 76,
+        "width": 163.296875,
+        "x": 8,
+        "y": 76
+      },
+      "centerError": 0,
+      "contentLeft": 16,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 107,
+        "height": 18,
+        "left": 16,
+        "right": 34,
+        "top": 89,
+        "width": 18,
+        "x": 16,
+        "y": 89
+      },
+      "label": "Back to public profile",
+      "scrollWidth": 320,
+      "url": "#/content/f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6",
+      "viewport": 320,
+      "screenshot": "media-320.png"
+    },
+    {
+      "name": "artifact",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 124,
+        "height": 44,
+        "left": 8,
+        "right": 165.078125,
+        "top": 80,
+        "width": 157.078125,
+        "x": 8,
+        "y": 80
+      },
+      "centerError": 0,
+      "contentLeft": 16,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 111,
+        "height": 18,
+        "left": 16,
+        "right": 34,
+        "top": 93,
+        "width": 18,
+        "x": 16,
+        "y": 93
+      },
+      "label": "Back to find identity",
+      "scrollWidth": 320,
+      "url": "#/artifact/00000000000000000000000000000000000000000000000000000000000000a5_0",
+      "viewport": 320,
+      "screenshot": "artifact-320.png"
+    },
+    {
+      "name": "editor",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 124,
+        "height": 44,
+        "left": 8,
+        "right": 115.140625,
+        "top": 80,
+        "width": 107.140625,
+        "x": 8,
+        "y": 80
+      },
+      "centerError": 0,
+      "contentLeft": 16,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 111,
+        "height": 18,
+        "left": 16,
+        "right": 34,
+        "top": 93,
+        "width": 18,
+        "x": 16,
+        "y": 93
+      },
+      "label": "My content",
+      "scrollWidth": 320,
+      "url": "#/write/draft-first",
+      "viewport": 320,
+      "screenshot": "editor-320.png"
+    },
+    {
+      "name": "homepage-zh-dark",
+      "alignmentError": 0,
+      "button": {
+        "bottom": 120,
+        "height": 44,
+        "left": 8,
+        "right": 78,
+        "top": 76,
+        "width": 70,
+        "x": 8,
+        "y": 76
+      },
+      "centerError": 0,
+      "contentLeft": 16,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "icon": {
+        "bottom": 107,
+        "height": 18,
+        "left": 16,
+        "right": 34,
+        "top": 89,
+        "width": 18,
+        "x": 16,
+        "y": 89
+      },
+      "label": "返回",
+      "scrollWidth": 320,
+      "url": "#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD",
+      "viewport": 320,
+      "screenshot": "homepage-zh-dark-320.png"
+    }
+  ],
+  "checks": [
+    "键盘焦点回到返回按钮并可见",
+    "公开主页返回查找",
+    "名单返回所属主页",
+    "版本返回阅读",
+    "阅读返回作者主页",
+    "媒体返回作者主页",
+    "Artifact 返回查找",
+    "编辑器返回内容列表",
+    "悬停不移动按钮",
+    "本轮浏览器无运行异常"
+  ],
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "review": {
+    "standard": "OwnWord 四项原则、绑定 Spectrum S2 与 frontend-design",
+    "result": "agent-reviewed; awaiting-user-visual-review",
+    "observations": [
+      "图标框与每页内容左边缘一致，图标和文字居中，较轻字重保持返回操作的辅助层级。",
+      "较小的 S2 ChevronLeft 与紧凑间距适合短标签及英文长标签；320px 下未溢出。",
+      "悬停使用 S2 中性表面且不平移；键盘焦点轮廓完整可见。"
+    ],
+    "scope": "逐一查看 7 类页面截图及焦点、中文深色悬停状态；没有以自动尺寸断言替代实际截图审核。"
+  }
+}

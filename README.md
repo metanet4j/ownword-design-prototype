@@ -22,4 +22,4 @@
 
 图片、视频和音频实际工作。素材出处、许可与 SHA-256 在 `fixtures/homepage/sources.json`；原有字体按既有绑定加载并提供系统回退。生产实现应采用官方 S2 组件；本原型消费的是继承的轻量视觉运行时。
 
-当前页面以身份、作品和任务操作组织层级，设计依据见当前 PRD 第 4.2 节。最新定向验收运行 `node verify-experience.mjs`，截图、键盘和复制检查位于 `evidence/homepage-v040/R03/verification.json`。脚本使用独立 agent-browser 会话；可用 `OWNWORD_BROWSER_SESSION` 指定会话。既有功能检查入口继续适用，按本次变更选择范围。当前成果等待用户视觉复核，资产保持 `needs-review`。
+当前页面以身份、作品和任务操作组织层级，设计依据见当前 PRD 第 4.2 节。页面顶部返回入口统一使用共用 BackButton，图标框对齐内容左边缘，保留 44px 点击高度和键盘焦点。当前返回按钮的桌面、窄屏、相关导航和截图证据位于 `evidence/homepage-v040/R04/verification.json`；按记录中的路由和操作使用 agent-browser 复核。信息层级与复制检查脚本为 `node verify-experience.mjs`，使用独立会话，可用 `OWNWORD_BROWSER_SESSION` 指定会话。既有功能检查入口继续适用，按本次变更选择范围。当前成果等待用户视觉复核，资产保持 `needs-review`。

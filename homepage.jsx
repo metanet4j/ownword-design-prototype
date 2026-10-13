@@ -31,7 +31,7 @@ function HomepageWorkspace({active,identity,locale,t,settings,setSettings,failCo
   const signature=settings.proof==='record'?(profile.transaction?'valid':'unverified'):settings.proof==='failed'?'invalid':settings.proof;
   const relationshipNotice=(settings.relationship==='failure'||social.data.readFailure)?<div className="homepage-relationship-error" role="alert" data-homepage-module={isList?'relationship':undefined} data-list-error={isList?'first':undefined}><p>{h('relationshipError')}</p>{social.data.hadVerified&&<p className="hint">{h('lastKnownRelationships')}: {M.relationshipList({...social.data,readFailure:false},route.id,'following')?.length} {h('following')} · {M.relationshipList({...social.data,readFailure:false},route.id,'followers')?.length} {h('followers')} · {social.data.checkedAt&&new Date(social.data.checkedAt).toLocaleTimeString(locale==='zh'?'zh-CN':'en-US')}</p>}<Button data-homepage-action={isList?'retry-list':undefined} onClick={()=>{setSettings(s=>({...s,relationship:'normal'}));social.reload();}}>{h('retry')}</Button></div>:null;
   return <section className="homepage" data-homepage-state="ready" data-homepage-id={route.id}>
-    <Button variant="quiet" className="homepage-back" onClick={()=>isList?openPublicRoute('identity',route.id):returnFromPublic(()=>{location.hash='/find';})}><UiIcon name="ChevronLeft"/>{isList?t('backPublicIdentity'):h('back')}</Button>
+    <BackButton className="homepage-back" onClick={()=>isList?openPublicRoute('identity',route.id):returnFromPublic(()=>{location.hash='/find';})}>{isList?t('backPublicIdentity'):h('back')}</BackButton>
     <header className="homepage-summary" data-view={isList?'connections':'profile'}>
       <Portrait profile={profile.profile} large/>
       <div className="homepage-person">
@@ -190,7 +190,7 @@ function MediaReader({record,h,t,locale,settings,failCopy}) {
   React.useEffect(()=>{setFailed(false);setDuration(null);setPlaying(false);const node=player.current;if(node){node.pause();node.load();}return()=>{node?.pause();};},[src,supported]);
   const metadata=event=>{if(Number.isFinite(event.target.duration))setDuration(event.target.duration);};
   return <section className="homepage homepage-media" data-homepage-state="ready" data-public-content={record.txid} data-media-kind={type} data-media-playing={playing}>
-    <Button variant="quiet" data-homepage-action="media-back" onClick={()=>returnFromPublic(()=>openPublicRoute('identity',record.authorBapId))}><UiIcon name="ChevronLeft"/>{t('backPublicIdentity')}</Button>
+    <BackButton data-homepage-action="media-back" onClick={()=>returnFromPublic(()=>openPublicRoute('identity',record.authorBapId))}>{t('backPublicIdentity')}</BackButton>
     <div className="reader-byline"><Button variant="quiet" className="reader-author-link" data-action="reader-author" aria-label={t('readerViewAuthor')+' · '+record.author.name} onClick={()=>openPublicRoute('identity',record.authorBapId)}><Portrait profile={record.author}/><strong>{record.author.name}</strong><UiIcon name="ChevronRight"/></Button><time dateTime={record.publishedAt}>{new Date(record.publishedAt).toLocaleDateString(locale==='zh'?'zh-CN':'en-US',{year:'numeric',month:'long',day:'numeric'})}</time></div>
     <p className="eyebrow">{h(type)}</p><h1 tabIndex="-1">{record.title||h(type)+' · '+record.txid.slice(0,8)}</h1>
     {!supported?<p className="homepage-media-error" role="alert" data-media-error="unsupported">{h('unsupported')}</p>:<div className="homepage-media-stage">

@@ -2,7 +2,8 @@ const S2 = window.ReactSpectrumS2_ad4872;
 
 function UiIcon({name,className=''}) {return <span className={'ui-icon '+className} aria-hidden="true" style={{maskImage:`url('_ds/react-spectrum-s2/assets/workflow-icons/S2_Icon_${name}_20_N.svg')`}}/>;}
 window.UiIcon=UiIcon;
-function ArtifactBack({onClick,t,label='artifactBack'}) {return <Button variant="quiet" className="s2d-button s2d-button-quiet artifact-back" data-action="artifact-back" onClick={onClick}><UiIcon name="ChevronLeft"/>{t(label)}</Button>;}
+function BackButton({children,className='',...props}) {return <Button variant="quiet" className={'back-button '+className} {...props}><UiIcon name="ChevronLeft"/>{children}</Button>;}
+function ArtifactBack({onClick,t,label='artifactBack'}) {return <BackButton data-action="artifact-back" onClick={onClick}>{t(label)}</BackButton>;}
 
 // 公开页面的返回语义跟随浏览器历史；刷新后仍可回到实际入口。
 function rememberPublicScroll() {
