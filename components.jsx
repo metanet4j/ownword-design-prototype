@@ -260,3 +260,15 @@ function IdentitySignatureProof({bapId,signer,signature='unverified',keyEpoch,t,
   return <div className="identity-signature-proof" data-identity-signature={signature}><p>{t('artifactProof-'+signature)}</p><Identifier id={bapId} label={t('artifactOperationIdentity')} t={t} failCopy={failCopy}/>{signer&&<Identifier id={signer} label={t('artifactSigner')} copyLabel="artifactCopyFull" target="signer" t={t} failCopy={failCopy}/>}<p className="hint">{t(keyEpoch==='historical-key-at-creation'?'artifactHistoricalKey':'artifactEffectiveKey')}</p></div>;
 }
 window.IdentitySignatureProof=IdentitySignatureProof;
+
+// 不同内容集合共用官方 Tabs；业务层提供标题、计数与当前视图。
+function SectionTabs({items,value,onChange,label,heading,help,density='regular',className='',children}) {
+  return <S2.Tabs aria-label={label} selectedKey={value} onSelectionChange={onChange} density={density} UNSAFE_className={'section-tabs '+className}>
+    <div className="section-tabs-heading">
+      {heading&&<h2>{heading}</h2>}
+      <div className="section-tab-options"><S2.TabList>{items.map(item=><S2.Tab key={item.id} id={item.id} data-action={item.action}>{item.label}</S2.Tab>)}</S2.TabList></div>
+      {help}
+    </div>
+    {items.map(item=><S2.TabPanel key={item.id} id={item.id}>{item.id===value?children:null}</S2.TabPanel>)}
+  </S2.Tabs>;
+}

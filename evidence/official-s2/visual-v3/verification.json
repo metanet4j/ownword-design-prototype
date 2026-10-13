@@ -1,0 +1,128 @@
+{
+  "checkedAt": "2026-10-13T08:32:57.965Z",
+  "session": "ownword-order-v3-check-1791880356994",
+  "runtime": "@react-spectrum/s2@1.6.0",
+  "comparison": {
+    "baselineCommit": "bfce237",
+    "captureMethod": "保留改动前已加载的基准页面，未重载；前后均等待字体就绪、同数据状态与视口、无控件焦点描边。",
+    "metrics": {
+      "before": {
+        "firstCardTop": 495.640625,
+        "fontsReady": true,
+        "secondCardTop": 702.8125,
+        "viewport": {
+          "height": 720,
+          "width": 320
+        }
+      },
+      "after": {
+        "firstCardTop": 453.328125,
+        "fontsReady": true,
+        "secondCardTop": 661.3125,
+        "viewport": {
+          "height": 720,
+          "width": 320
+        }
+      }
+    },
+    "reviewPage": {
+      "path": "visual-review.html",
+      "imagesLoaded": 8,
+      "horizontalOverflow": false,
+      "reviewedViewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    }
+  },
+  "checks": [
+    "内容默认草稿与计数一致",
+    "内容官方 Tabs 方向键切到已发布",
+    "草稿菜单 Escape 返回入口焦点",
+    "草稿操作和文字保留间距",
+    "手机草稿标题使用完整行宽且不与菜单重叠",
+    "空内容两类计数为零并保留创建入口",
+    "内容读取失败显示可重试反馈",
+    "手机编号与状态同行且筛选单行",
+    "Artifact 键盘切换历史与数量",
+    "历史说明解释关联不代表离开钱包",
+    "历史说明关闭恢复焦点",
+    "手机恢复桌面仍展示两个官方 Tab",
+    "Artifact 空钱包不展示虚假数量",
+    "Artifact 读取失败可重试",
+    "深色偏好与官方 Tabs 正确呈现",
+    "英文桌面恢复官方 Tab 展开",
+    "共享 Tabs 保持主页窄屏往返恢复",
+    "主页 Tabs 方向键仍筛选视频"
+  ],
+  "screens": [
+    {
+      "name": "after-content",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "after-content-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-artifacts-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifacts-history-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "after-artifacts",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifacts-dark-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifacts-en-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifacts-en",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "homepage",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "homepage-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    }
+  ],
+  "mobile": {
+    "firstCardTop": 453.328125,
+    "secondCardTop": 661.3125,
+    "tabsHeight": 61
+  },
+  "errors": [],
+  "warnings": [],
+  "scope": "内容与 Artifact 筛选、计数、菜单和帮助焦点、空列表、读取失败重试、320px/1440px、中文深色/英文以及主页共享 Tabs 回归。未重跑未受影响的发布、转移全部流程。"
+}

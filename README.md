@@ -10,9 +10,9 @@
 
 ## 当前视觉布局
 
-[前后对照](visual-review.html)覆盖个人主页、320px 手机主页和三个管理页。身份主体与标识条分组，复制紧邻协议值；公开作品标题与筛选放在同一行，标题使用 S2 衬线字体，桌面 20px、手机 18px。内容工作区复用 Identifier／CopyButton；Artifact 持有对象使用官方 Card 的 tertiary 变体。
+[本轮前后对照](visual-review.html)覆盖内容、Artifact 管理页的桌面与 320px 手机；[上一轮对照](visual-review-v2.html)保留个人主页及管理页的身份分组优化。身份主体与标识条分组，复制紧邻协议值；公开作品标题与筛选放在同一行，标题使用 S2 衬线字体，桌面 20px、手机 18px。内容工作区复用 Identifier／CopyButton；Artifact 持有对象使用官方 Card 的 tertiary 变体。
 
-官方 Tabs 使用公开的 compact 密度，业务容器为其提供稳定的可用宽度，支持窄屏收敛和恢复桌面展开。组件内部样式和包源码保持官方来源。
+内容、Artifact 与主页复用 SectionTabs，内部采用官方 Tabs／TabList／TabPanel。管理页使用官方常规密度，主页保留 compact 密度；业务容器提供稳定的可用宽度，支持窄屏收敛和恢复桌面展开。手机当前数字 ID 与状态同行，长编号保留换行空间；草稿菜单对齐行首并与文字留出间距，手机标题保留完整行宽。组件内部样式和包源码保持官方来源。
 
 ## 官方组件与业务组合
 
@@ -28,7 +28,7 @@
 
 ## 验收与边界
 
-官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v2/verification.json` 和对应截图，覆盖四个主要页面、复制成功／失败、详情焦点、Tabs 键盘及阅读返回、手机和深色。
+官方组件迁移证据位于 `evidence/official-s2/verification.json`。本轮视觉调整证据位于 `evidence/official-s2/visual-v3/verification.json` 和对应截图，覆盖内容与 Artifact 筛选计数、键盘、菜单与帮助焦点、空列表及读取失败重试、手机、双语深色和主页共享 Tabs 回归。上一轮证据保留在 `evidence/official-s2/visual-v2/`。
 
 迁移验收覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
 
