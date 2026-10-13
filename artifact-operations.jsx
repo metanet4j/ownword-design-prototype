@@ -48,13 +48,16 @@ function ArtifactActionReview({review,data,t,failCopy,onSign,onBack,issue}) {
   const asset=review?.assetSnapshot||data.assets.find(a=>a.id===review?.assetId);
   const previous=data.assets.find(a=>a.id===OwnwordArtifactModel.current(data,review?.bapId)?.assetId);
   if(!review||!asset)return <section className="artifact-page"><ArtifactBack t={t} onClick={onBack}/><h1 className="task-title" tabIndex="-1">{t('reviewExpired')}</h1></section>;
-  return <section className="artifact-page" data-artifact-screen="action-review">
+  return <section className="artifact-page artifact-action-review" data-artifact-screen="action-review" data-review-kind={review.kind}>
     <div className="page-heading title-with-help"><h1 className="task-title" tabIndex="-1">{t('artifactReview-'+review.kind)}</h1><ContextHelp label={t(review.kind==='bind'?'artifactAssociationHelp':'artifactActionHelp')}><p>{t('artifactImpact-'+review.kind)}</p>{review.kind==='bind'&&previous&&previous.id!==asset.id&&<p>{t('artifactOldCurrent')} {previous.name}</p>}<p>{t('artifactSignatureScope')}</p></ContextHelp></div>
     <div className={'artifact-compose-grid'+(asset.content.kind==='brand'?' artifact-compose-default':'')}>
       {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} large t={t}/>}
-      <div className="artifact-review-copy"><NumberStatus asset={asset} t={t}/><h2>{asset.name}</h2>
-        {review.kind==='transfer'&&<><p>BSV Mainnet</p><Identifier id={review.recipient} label={t('artifactRecipient')} copyLabel="artifactCopyFull" target="recipient" t={t} failCopy={failCopy}/><p>{t('artifactTransferConsequence')}</p></>}
-        <Identifier id={review.bapId} t={t} failCopy={failCopy}/>
+      <div className="artifact-review-copy"><div className="artifact-review-object"><NumberStatus asset={asset} t={t} compact={['stable','assigned'].includes(OwnwordArtifactModel.numberState(asset))} copyable failCopy={failCopy}/><h2>{asset.name}</h2></div>
+        <div className="artifact-review-identifiers">
+          {review.kind==='transfer'&&<div className="artifact-review-recipient"><Identifier compact id={review.recipient} label={t('artifactRecipient')} copyLabel="artifactCopyFull" target="recipient" t={t} failCopy={failCopy}/><p className="hint">BSV Mainnet</p></div>}
+          <Identifier compact id={review.bapId} t={t} failCopy={failCopy}/>
+        </div>
+        {review.kind==='transfer'&&<p>{t('artifactTransferConsequence')}</p>}
         {review.kind==='bind'&&previous&&previous.id!==asset.id&&<div className="artifact-replacement"><span>{t('artifactReplacing')}</span><strong>{previous.number??previous.name}</strong></div>}
         {review.kind==='remove'&&<p>{t('artifactRemoveConsequence')}</p>}
 

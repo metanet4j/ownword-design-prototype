@@ -1,0 +1,65 @@
+{
+  "session": "ownword-transfer-1791894033422",
+  "before": true,
+  "checkedAt": "2026-10-13T12:20:33.422Z",
+  "actions": [],
+  "screenshots": [
+    "before-desktop",
+    "before-mobile"
+  ],
+  "audits": [
+    {
+      "name": "before-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "before-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "layouts": [
+    {
+      "button": {
+        "bottom": 734.21875,
+        "height": 40,
+        "left": 453.40625,
+        "right": 659.03125,
+        "top": 694.21875,
+        "width": 205.625,
+        "x": 453.40625,
+        "y": 694.21875
+      },
+      "scroll": 0,
+      "width": 1440
+    },
+    {
+      "button": {
+        "bottom": 823.765625,
+        "height": 40,
+        "left": 16,
+        "right": 221.625,
+        "top": 783.765625,
+        "width": 205.625,
+        "x": 16,
+        "y": 783.765625
+      },
+      "scroll": 0,
+      "width": 320
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "result": "passed"
+}

@@ -15,7 +15,7 @@
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-10-13T12:11:40.411Z",
+  "updatedAt": "2026-10-13T12:55:20.262Z",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -118,7 +118,7 @@
             "width": 1440,
             "height": 1000
           },
-          "evidence": "evidence/official-s2/identity-security/verification.json"
+          "evidence": "evidence/official-s2/transfer-review/verification.json"
         }
       ]
     },
@@ -212,8 +212,21 @@
           }
         }
       ]
+    },
+    "官方组件改造版 · 身份安全与轮换": {
+      "versions": [
+        {
+          "path": "visual-review-v8.html",
+          "createdAt": "2026-10-13T12:55:20.231Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        }
+      ]
     }
   },
   "title": "OwnWord — 官方组件改造版",
-  "prompt": "复用官方 Spectrum S2 与现有模拟授权补齐身份安全、密钥轮换核对及结果，核对稳定身份与历史签名。"
+  "prompt": "按 Spectrum S2 收拢 Artifact 转移、关联和移除核对页的对象、完整标识、影响与操作，保留数字精度与签名前校验。"
 }

@@ -1,0 +1,145 @@
+{
+  "session": "ownword-transfer-1791894164273",
+  "before": false,
+  "checkedAt": "2026-10-13T12:22:44.273Z",
+  "actions": [
+    {
+      "key": "desktop-primary-first-viewport",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-recipient-copy-back-preserved",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-bap-copy-address-boundary",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-transaction-details",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-en-light",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-en-dark",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-zh-light",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-zh-dark",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-cancel-keeps-asset",
+      "result": "passed"
+    }
+  ],
+  "screenshots": [
+    "after-desktop",
+    "review-desktop-en-light",
+    "review-desktop-en-dark",
+    "review-desktop-zh-light",
+    "review-desktop-zh-dark",
+    "after-mobile"
+  ],
+  "audits": [
+    {
+      "name": "after-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-en-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-en-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-zh-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-zh-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "after-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "layouts": [
+    {
+      "button": {
+        "bottom": 620.546875,
+        "height": 40,
+        "left": 874.375,
+        "right": 1080,
+        "top": 580.546875,
+        "width": 205.625,
+        "x": 874.375,
+        "y": 580.546875
+      },
+      "scroll": 0,
+      "width": 1440
+    },
+    {
+      "button": {
+        "bottom": 720.328125,
+        "height": 40,
+        "left": 16,
+        "right": 221.625,
+        "top": 680.328125,
+        "width": 205.625,
+        "x": 16,
+        "y": 680.328125
+      },
+      "scroll": 0,
+      "width": 320
+    }
+  ],
+  "result": "needs-fix",
+  "error": "签名按钮完整进入首屏"
+}

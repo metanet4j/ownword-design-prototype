@@ -1,0 +1,67 @@
+{
+  "session": "ownword-transfer-1791894727596",
+  "before": false,
+  "checkedAt": "2026-10-13T12:32:07.596Z",
+  "actions": [
+    {
+      "key": "desktop-number-copy-address-boundary",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-association-grouping",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-removal-grouping",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-number-copy-address-boundary",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-association-grouping",
+      "result": "passed"
+    }
+  ],
+  "screenshots": [
+    "association-desktop",
+    "removal-desktop",
+    "association-mobile"
+  ],
+  "audits": [
+    {
+      "name": "association-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "removal-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "association-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "layouts": [],
+  "result": "needs-fix",
+  "error": "Command failed: agent-browser --session ownword-transfer-1791894727596 --json select [data-artifact-scenario=facts] unknown"
+}

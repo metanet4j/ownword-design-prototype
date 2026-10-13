@@ -1,0 +1,89 @@
+{
+  "session": "ownword-transfer-1791894953365",
+  "before": false,
+  "checkedAt": "2026-10-13T12:35:53.365Z",
+  "actions": [
+    {
+      "key": "desktop-number-copy-address-boundary",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-association-grouping",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-removal-grouping",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-number-copy-address-boundary",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-association-grouping",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-removal-grouping",
+      "result": "passed",
+      "evidence": "removal-mobile.png；工具进程 28989 已通过该页 axe=0／无横向溢出的断言，然后因错误假设账户切换回身份页而停止。"
+    },
+    {
+      "key": "long-number-keeps-exact-value",
+      "result": "passed"
+    }
+  ],
+  "screenshots": [
+    "association-desktop",
+    "removal-desktop",
+    "association-mobile",
+    "long-number-mobile"
+  ],
+  "audits": [
+    {
+      "name": "association-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "removal-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "association-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "long-number-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "layouts": [],
+  "result": "passed",
+  "errors": [],
+  "previousAttemptError": "未就绪：!!document.querySelector(\"[data-review-kind=remove]\")",
+  "verificationMethod": "组合五项初次通过与手机移除、超长编号两个定向复核；原始失败保留。账户切换后保持 Artifact 工作区是现有路由行为，原先等待身份页的假设已更正。"
+}

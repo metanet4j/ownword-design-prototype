@@ -1,0 +1,234 @@
+{
+  "session": "ownword-transfer-1791894523313",
+  "before": false,
+  "checkedAt": "2026-10-13T12:28:43.313Z",
+  "actions": [
+    {
+      "key": "desktop-primary-first-viewport",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-recipient-copy-back-preserved",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-bap-copy-address-boundary",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-transaction-details",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-en-light",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-en-dark",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-zh-light",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-zh-dark",
+      "result": "passed"
+    },
+    {
+      "key": "desktop-cancel-keeps-asset",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-primary-first-viewport",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-recipient-copy-back-preserved",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-bap-copy-address-boundary",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-transaction-details",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-en-light",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-en-dark",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-zh-light",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-zh-dark",
+      "result": "passed"
+    },
+    {
+      "key": "mobile-cancel-keeps-asset",
+      "result": "passed"
+    },
+    {
+      "key": "changed-output-requires-review",
+      "result": "passed"
+    },
+    {
+      "key": "ownership-unknown-stops-signing",
+      "result": "passed"
+    }
+  ],
+  "screenshots": [
+    "after-desktop",
+    "review-desktop-en-light",
+    "review-desktop-en-dark",
+    "review-desktop-zh-light",
+    "review-desktop-zh-dark",
+    "after-mobile",
+    "review-mobile-en-light",
+    "review-mobile-en-dark",
+    "review-mobile-zh-light",
+    "review-mobile-zh-dark"
+  ],
+  "audits": [
+    {
+      "name": "after-desktop",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-en-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-en-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-zh-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-desktop-zh-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "after-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-en-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-en-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-zh-light",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    },
+    {
+      "name": "review-mobile-zh-dark",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": []
+    }
+  ],
+  "layouts": [
+    {
+      "button": {
+        "bottom": 634.921875,
+        "height": 40,
+        "left": 934.1875,
+        "right": 1080,
+        "top": 594.921875,
+        "width": 145.8125,
+        "x": 934.1875,
+        "y": 594.921875
+      },
+      "scroll": 0,
+      "width": 1440
+    },
+    {
+      "button": {
+        "bottom": 651.3125,
+        "height": 40,
+        "left": 158.1875,
+        "right": 304,
+        "top": 611.3125,
+        "width": 145.8125,
+        "x": 158.1875,
+        "y": 611.3125
+      },
+      "scroll": 0,
+      "width": 320
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "result": "passed"
+}
