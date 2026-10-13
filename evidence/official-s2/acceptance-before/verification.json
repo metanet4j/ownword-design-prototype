@@ -1,0 +1,1912 @@
+{
+  "session": "ownword-acceptance-1791886010161",
+  "checkedAt": "2026-10-13T10:06:50.161Z",
+  "runtime": "@react-spectrum/s2@1.6.0",
+  "checks": [
+    {
+      "id": "v01-connect",
+      "label": "取消连接保留欢迎页",
+      "result": "passed"
+    },
+    {
+      "id": "v01-cancel",
+      "label": "取消授权保留未保存修改",
+      "result": "passed"
+    },
+    {
+      "id": "C02-B",
+      "label": "编辑到预览保持正文",
+      "result": "passed"
+    },
+    {
+      "id": "C02-B",
+      "label": "返回可视化保留正文",
+      "result": "passed"
+    },
+    {
+      "id": "A07-B",
+      "label": "无效接收地址阻止进入授权",
+      "result": "passed"
+    },
+    {
+      "id": "A07-cancel",
+      "label": "取消转移不显示成功",
+      "result": "passed"
+    },
+    {
+      "id": "A09-A",
+      "label": "数字 ID 查找展示关联身份",
+      "result": "passed"
+    },
+    {
+      "id": "P05-A",
+      "label": "video 实际播放",
+      "result": "passed"
+    },
+    {
+      "id": "P05-A",
+      "label": "video 可暂停",
+      "result": "passed"
+    },
+    {
+      "id": "P05-A",
+      "label": "audio 实际播放",
+      "result": "passed"
+    },
+    {
+      "id": "P05-A",
+      "label": "audio 可暂停",
+      "result": "passed"
+    }
+  ],
+  "screens": [
+    {
+      "name": "welcome",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "welcome-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "connect-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "identity",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "identity-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "identity-edit",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "identity-edit-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "identity-review",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "identity-review-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "identity-wallet-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "content-drafts",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "content-drafts-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "content-published",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "content-published-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "content-empty",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "content-empty-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "content-failure",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "content-failure-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "editor",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "editor-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "content-review",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "content-review-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "content-wallet-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifacts",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "artifacts-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-detail",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-detail-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-proof",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-proof-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-transfer",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-transfer-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-transfer-review",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-transfer-review-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-wallet-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-create",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-create-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-create-review",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "artifact-create-review-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "find-result",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "find-result-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "find-invalid",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "find-invalid-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "homepage",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "homepage-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "reader",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "reader-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "content-history",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "content-history-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "image",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "image-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "video",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "video-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "audio",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "audio-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "following",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "following-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "homepage-zh-dark",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "homepage-zh-dark-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    },
+    {
+      "name": "identity-proof-zh-dark",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440,
+      "result": "passed"
+    },
+    {
+      "name": "identity-proof-zh-dark-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320,
+      "result": "passed"
+    }
+  ],
+  "audits": [
+    {
+      "name": "welcome",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 1,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodeCount": 13,
+          "nodes": [
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<p class=\"eyebrow\">Your identity starts with you.</p>",
+              "target": [
+                ".welcome > .eyebrow"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<span>Own your identity.</span>",
+              "target": [
+                "h1 > span"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<em>Own your words.</em>",
+              "target": [
+                "em"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<p class=\"welcome-body\">An identity you control. Words you sign. A record anyone can inspect.</p>",
+              "target": [
+                ".welcome-body"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<span class=\"ownword-button-label\">Find identity</span>",
+              "target": [
+                "#react-aria9866851946-_r_c_ > .TAzEcG16.QAzEcG16._Jb16 > .ownword-button-label"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<h2 id=\"_r_e_-heading\">A voice. An author. A record.</h2>",
+              "target": [
+                "#_r_e_-heading"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<span role=\"img\" aria-label=\"Maya Chen\">MC</span>",
+              "target": [
+                "span[aria-label=\"Maya Chen\"]"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"profile-type\">Person</p>",
+              "target": [
+                ".profile-type"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<h3>Maya Chen</h3>",
+              "target": [
+                "h3"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"bio\" lang=\"en\">Thinking in systems. Writing with intention.\nBuilding a more human internet.</p>",
+              "target": [
+                ".bio"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "welcome-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 1,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodeCount": 11,
+          "nodes": [
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<p class=\"eyebrow\">Your identity starts with you.</p>",
+              "target": [
+                ".welcome > .eyebrow"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<span>Own your identity.</span>",
+              "target": [
+                "h1 > span"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<em>Own your words.</em>",
+              "target": [
+                "em"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "html": "<p class=\"welcome-body\">An identity you control. Words you sign. A record anyone can inspect.</p>",
+              "target": [
+                ".welcome-body"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<span role=\"img\" aria-label=\"Maya Chen\">MC</span>",
+              "target": [
+                "span[aria-label=\"Maya Chen\"]"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"profile-type\">Person</p>",
+              "target": [
+                ".profile-type"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<h3>Maya Chen</h3>",
+              "target": [
+                "h3"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"bio\" lang=\"en\">Thinking in systems. Writing with intention.\nBuilding a more human internet.</p>",
+              "target": [
+                ".bio"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<span id=\"_r_s_\" class=\"eyebrow\">BAP ID</span>",
+              "target": [
+                "#_r_s_"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<code title=\"2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD\">2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD</code>",
+              "target": [
+                "code"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "connect-mobile",
+      "counts": {
+        "inapplicable": 57,
+        "incomplete": 1,
+        "passes": 32,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodeCount": 3,
+          "nodes": [
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<h2 slot=\"title\" class=\" _ub16 Jy16 Gy16 uk16 ucJ9TBTb16 ud3Euai16 uea16 ugb16 uhd16 uje16 u2NhKxcl16 uic16 -_6BNtrc-g16 vx16 xd16 _xa16 xX0cczbc16 _xX0cczba16 xfd16 _xfa16 xfX0cczbc16 _xfX0cczba16 _Fd16 _FnuYUweb16 po16\">Connect Yours Wallet</h2>",
+              "target": [
+                ".Jy16"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<header class=\" uk16 ucJ9TBTb16 ud3Euai16 uea16 ugb16 uhd16 uje16 u2NhKxcl16 uic16 -_6BNtrc-d16 vx16 xb16 _xa16 _Fb16 _FnuYUwec16 pt16\">Yours Wallet · External authorization</header>",
+              "target": [
+                ".Jz16 > header"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<p>Let this app see your wallet identity. Publishing needs a separate confirmation.</p>",
+              "target": [
+                ".ownword-dialog-content > p"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "identity",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-edit",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-edit-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-review",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 0,
+        "passes": 41,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-review-mobile",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 0,
+        "passes": 41,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-wallet-mobile",
+      "counts": {
+        "inapplicable": 55,
+        "incomplete": 1,
+        "passes": 34,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodeCount": 2,
+          "nodes": [
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<h2 slot=\"title\" class=\" _ub16 Jy16 Gy16 uk16 ucJ9TBTb16 ud3Euai16 uea16 ugb16 uhd16 uje16 u2NhKxcl16 uic16 -_6BNtrc-g16 vx16 xd16 _xa16 xX0cczbc16 _xX0cczba16 xfd16 _xfa16 xfX0cczbc16 _xfX0cczba16 _Fd16 _FnuYUweb16 po16\">Confirm profile update</h2>",
+              "target": [
+                ".Jy16"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<header class=\" uk16 ucJ9TBTb16 ud3Euai16 uea16 ugb16 uhd16 uje16 u2NhKxcl16 uic16 -_6BNtrc-d16 vx16 xb16 _xa16 _Fb16 _FnuYUwec16 pt16\">Yours Wallet · External authorization</header>",
+              "target": [
+                ".Jz16 > header"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content-drafts",
+      "counts": {
+        "inapplicable": 45,
+        "incomplete": 0,
+        "passes": 44,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-drafts-mobile",
+      "counts": {
+        "inapplicable": 45,
+        "incomplete": 0,
+        "passes": 44,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-published",
+      "counts": {
+        "inapplicable": 45,
+        "incomplete": 0,
+        "passes": 44,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-published-mobile",
+      "counts": {
+        "inapplicable": 45,
+        "incomplete": 0,
+        "passes": 44,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-empty",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-empty-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-failure",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-failure-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "editor",
+      "counts": {
+        "inapplicable": 51,
+        "incomplete": 0,
+        "passes": 38,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "editor-mobile",
+      "counts": {
+        "inapplicable": 51,
+        "incomplete": 0,
+        "passes": 38,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-review",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-review-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-wallet-mobile",
+      "counts": {
+        "inapplicable": 55,
+        "incomplete": 1,
+        "passes": 34,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodeCount": 1,
+          "nodes": [
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<h2 slot=\"title\" class=\" _ub16 Jy16 Gy16 uk16 ucJ9TBTb16 ud3Euai16 uea16 ugb16 uhd16 uje16 u2NhKxcl16 uic16 -_6BNtrc-g16 vx16 xd16 _xa16 xX0cczbc16 _xX0cczba16 xfd16 _xfa16 xfX0cczbc16 _xfX0cczba16 _Fd16 _FnuYUweb16 po16\">Authorize identity signing</h2>",
+              "target": [
+                "h2"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "artifacts",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 0,
+        "passes": 41,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifacts-mobile",
+      "counts": {
+        "inapplicable": 51,
+        "incomplete": 0,
+        "passes": 38,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-detail",
+      "counts": {
+        "inapplicable": 46,
+        "incomplete": 0,
+        "passes": 43,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-detail-mobile",
+      "counts": {
+        "inapplicable": 49,
+        "incomplete": 0,
+        "passes": 40,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-proof",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 0,
+        "passes": 41,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-proof-mobile",
+      "counts": {
+        "inapplicable": 51,
+        "incomplete": 0,
+        "passes": 38,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-transfer",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-transfer-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-transfer-review",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-transfer-review-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-wallet-mobile",
+      "counts": {
+        "inapplicable": 57,
+        "incomplete": 1,
+        "passes": 32,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodeCount": 2,
+          "nodes": [
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<h2 slot=\"title\" class=\" _ub16 Jy16 Gy16 uk16 ucJ9TBTb16 ud3Euai16 uea16 ugb16 uhd16 uje16 u2NhKxcl16 uic16 -_6BNtrc-g16 vx16 xd16 _xa16 xX0cczbc16 _xX0cczba16 xfd16 _xfa16 xfX0cczbc16 _xfX0cczba16 _Fd16 _FnuYUweb16 po16\">Approve identity signature</h2>",
+              "target": [
+                "h2"
+              ]
+            },
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "html": "<header class=\" uk16 ucJ9TBTb16 ud3Euai16 uea16 ugb16 uhd16 uje16 u2NhKxcl16 uic16 -_6BNtrc-d16 vx16 xb16 _xa16 _Fb16 _FnuYUwec16 pt16\">Yours Wallet · External authorization</header>",
+              "target": [
+                ".Jz16 > header"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "artifact-create",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 0,
+        "passes": 41,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-create-mobile",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 0,
+        "passes": 41,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-create-review",
+      "counts": {
+        "inapplicable": 51,
+        "incomplete": 0,
+        "passes": 38,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "artifact-create-review-mobile",
+      "counts": {
+        "inapplicable": 51,
+        "incomplete": 0,
+        "passes": 38,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "find-result",
+      "counts": {
+        "inapplicable": 46,
+        "incomplete": 0,
+        "passes": 43,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "find-result-mobile",
+      "counts": {
+        "inapplicable": 46,
+        "incomplete": 0,
+        "passes": 43,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "find-invalid",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "find-invalid-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "homepage",
+      "counts": {
+        "inapplicable": 44,
+        "incomplete": 0,
+        "passes": 45,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "homepage-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "reader",
+      "counts": {
+        "inapplicable": 45,
+        "incomplete": 0,
+        "passes": 44,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "reader-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-history",
+      "counts": {
+        "inapplicable": 53,
+        "incomplete": 0,
+        "passes": 36,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "content-history-mobile",
+      "counts": {
+        "inapplicable": 53,
+        "incomplete": 0,
+        "passes": 36,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "image",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "image-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "video",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 1,
+        "passes": 40,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "<video> elements must have captions",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/video-caption?application=axeAPI",
+          "id": "video-caption",
+          "impact": "critical",
+          "nodeCount": 1,
+          "nodes": [
+            {
+              "failureSummary": "Fix all of the following:\n  Check that captions are available for the element",
+              "html": "<video tabindex=\"0\" aria-label=\"A breeze in the garden\" src=\"fixtures/homepage/flower.mp4\" controls=\"\" preload=\"metadata\"></video>",
+              "target": [
+                "video"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag122",
+            "section508",
+            "section508.22.a",
+            "TTv5",
+            "TT17.a",
+            "EN-301-549",
+            "EN-9.1.2.2",
+            "RGAAv4",
+            "RGAA-4.3.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "video-mobile",
+      "counts": {
+        "inapplicable": 48,
+        "incomplete": 1,
+        "passes": 40,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "<video> elements must have captions",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/video-caption?application=axeAPI",
+          "id": "video-caption",
+          "impact": "critical",
+          "nodeCount": 1,
+          "nodes": [
+            {
+              "failureSummary": "Fix all of the following:\n  Check that captions are available for the element",
+              "html": "<video tabindex=\"0\" aria-label=\"A breeze in the garden\" src=\"fixtures/homepage/flower.mp4\" controls=\"\" preload=\"metadata\"></video>",
+              "target": [
+                "video"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag122",
+            "section508",
+            "section508.22.a",
+            "TTv5",
+            "TT17.a",
+            "EN-301-549",
+            "EN-9.1.2.2",
+            "RGAAv4",
+            "RGAA-4.3.1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "audio",
+      "counts": {
+        "inapplicable": 49,
+        "incomplete": 0,
+        "passes": 40,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "audio-mobile",
+      "counts": {
+        "inapplicable": 49,
+        "incomplete": 0,
+        "passes": 40,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "following",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "following-mobile",
+      "counts": {
+        "inapplicable": 50,
+        "incomplete": 0,
+        "passes": 39,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "homepage-zh-dark",
+      "counts": {
+        "inapplicable": 44,
+        "incomplete": 0,
+        "passes": 45,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "homepage-zh-dark-mobile",
+      "counts": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-proof-zh-dark",
+      "counts": {
+        "inapplicable": 55,
+        "incomplete": 0,
+        "passes": 34,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "identity-proof-zh-dark-mobile",
+      "counts": {
+        "inapplicable": 54,
+        "incomplete": 1,
+        "passes": 35,
+        "violations": 0
+      },
+      "violations": [],
+      "incomplete": [
+        {
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodeCount": 1,
+          "nodes": [
+            {
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element",
+              "html": "<summary>身份签名 · 身份签名有效</summary>",
+              "target": [
+                "summary"
+              ]
+            }
+          ],
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "network": [
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/88da4d/00000000000000007758ce1a/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n7&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200,
+      "resourceType": "Font"
+    },
+    {
+      "url": "https://use.typekit.net/qwy0qqd.js",
+      "status": 200,
+      "resourceType": "Script"
+    },
+    {
+      "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791886206269",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=601.630.683.1041.1202.1216.1233.1268.1269.1272.1325.1355.1417.1432.1475.1679&state=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=601.630.683.1041.1202.1216.1233.1268.1269.1272.1325.1355.1417.1432.1475.1679&state=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=601.630.683.1041.1202.1216.1233.1268.1269.1272.1325.1355.1417.1432.1475.1679&state=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    },
+    {
+      "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=601.630.683.1041.1202.1216.1233.1268.1269.1272.1325.1355.1417.1432.1475.1679&state=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1452.1467&order=0",
+      "status": 200,
+      "resourceType": "XHR"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "adobe-clean-spectrum-vf",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-spectrum-srf-vf",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-spectrum-vf",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-spectrum-srf-vf",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-arabic",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-arabic",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-arabic",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-arabic",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-arabic",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-hebrew",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-hebrew",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-hebrew",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-hebrew",
+      "status": "unloaded"
+    },
+    {
+      "family": "adobe-clean-hebrew",
+      "status": "unloaded"
+    },
+    {
+      "family": "source-code-pro",
+      "status": "unloaded"
+    },
+    {
+      "family": "source-code-pro",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    }
+  ],
+  "result": "passed",
+  "scope": "四模块主要页面、布局、自动无障碍及 11 项交互检查；不代表历史 PRD 全部 BDD、真实钱包签名或链上验证。"
+}

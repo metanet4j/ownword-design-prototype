@@ -1,0 +1,106 @@
+{
+  "session": "ownword-fonts-final",
+  "checks": [
+    {
+      "body": "adobe-clean-han-simplified-c, source-han-simplified-c, SimSun, \"Heiti SC Light\", sans-serif",
+      "control": "adobe-clean-han-simplified-c, source-han-simplified-c, SimSun, \"Heiti SC Light\", sans-serif",
+      "heading": "adobe-clean-han-simplified-c, source-han-simplified-c, SimSun, \"Heiti SC Light\", sans-serif",
+      "lang": "zh-CN",
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "body": "adobe-clean-han-simplified-c, source-han-simplified-c, SimSun, \"Heiti SC Light\", sans-serif",
+      "control": "adobe-clean-han-simplified-c, source-han-simplified-c, SimSun, \"Heiti SC Light\", sans-serif",
+      "heading": "adobe-clean-han-simplified-c, source-han-simplified-c, SimSun, \"Heiti SC Light\", sans-serif",
+      "lang": "zh-CN",
+      "scroll": 320,
+      "width": 320
+    }
+  ],
+  "screens": [
+    {
+      "name": "after-homepage-zh-dark",
+      "a11y": {
+        "inapplicable": 44,
+        "incomplete": 0,
+        "passes": 45,
+        "violations": 0
+      }
+    },
+    {
+      "name": "after-homepage-zh-dark-mobile",
+      "a11y": {
+        "inapplicable": 47,
+        "incomplete": 0,
+        "passes": 42,
+        "violations": 0
+      }
+    }
+  ],
+  "errors": [],
+  "fonts": [
+    {
+      "family": "source-code-pro",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    },
+    {
+      "family": "adobe-clean-han-simplified-c",
+      "status": "loaded"
+    }
+  ],
+  "network": [
+    {
+      "url": "https://use.typekit.net/af/ca4cba/0000000000000000775c55a1/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/af/4a1d0d/0000000000000000775c55a4/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n1&v=3",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/af/45f67c/0000000000000000775c55a3/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=i1&v=3",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/af/80f457/00000000000000007758ce1d/31/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/qwy0qqd.js",
+      "status": 200
+    },
+    {
+      "url": "https://p.typekit.net/p.gif?s=1&k=qwy0qqd&ht=tk&h=127.0.0.1&f=25551.25552.25553.25557&a=88462460&js=1.12.0&app=typekit&e=js&_=1791886379441",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/af/27bc4e/00000000000000007735daa0/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1432.1452.1467&order=0",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/af/731b78/00000000000000007735daa1/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1432.1452.1467&order=0",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/af/f471de/00000000000000007735daa3/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1432.1452.1467&order=0",
+      "status": 200
+    },
+    {
+      "url": "https://use.typekit.net/af/20bcc5/00000000000000007735dabd/31/m?features=calt%2Cccmp%2Cdlig%2Cfwid%2Chist%2Chwid%2Cliga%2Clocl%2Cpwid%2Cruby&v=4&chunks=63.295.1040.1182.1194.1215.1245.1302.1350.1359.1410.1418.1426.1432.1452.1467&order=0",
+      "status": 200
+    }
+  ]
+}
