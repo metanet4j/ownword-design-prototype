@@ -21,7 +21,7 @@
     "content-editor.jsx": "22858057101b13d091953ef1743165fe95e0fb4141094fbe3304b2c601573c3b",
     "content-publication.jsx": "f380414e856de191e336a3c995d9a8e363b8586bdb9f0b3693a87c1f7075cb0f",
     "content-reader.jsx": "faf52f0f83a899088f5aede9fadfb3cc956371fe24f447a9b38cae44c1316fc7",
-    "content.jsx": "9ef2d83d54836ec33b76756c22500cd8c52effec56a18ed5c34ff237502dfb5e",
+    "content.jsx": "39c6e598112edee8ec54f252ad53fdd16e80cc9743132ddaa156c5989ff0ac08",
     "artifact-compose.jsx": "8346ac82d201e30c8cb9114e698459badc88c2883b2328721d03595e21dcb43a",
     "artifact-components.jsx": "a63ed224ab677e1070fb17f482025b01ccd81b2b852dc4b6aaa93d6f6a7c5b40",
     "artifact-operations.jsx": "3eefea41d870ab14734f2a83d420c8e9b7a5d3cf0cda8dbf3aae2bbd27b1d124",
@@ -35,7 +35,7 @@
     "_ds/react-spectrum-s2/styles.css": "650e92f5b135bf62809005238ef610bfd622d6408b50ac41e1682ab6ed1ee19a",
     "s2-adapter.css": "ff08db812f416326bfa54bc980c91274df4a0e750980b3f44cf0447436398a97",
     "app.css": "b33fd0839f1a8f45ba7b3eb6b61736ce207111ca281cbe815d4425df446ac949",
-    "content.css": "688084ace2248ba204ac44a249d8023d4106a7136135a96eb644669c7399ac55",
+    "content.css": "57649b2a10feb32025a6f05cfb8913b31962c8d28b76bd49d5faf25a532ed51b",
     "artifact.css": "c0577975139987aaa4a62c4ed2a20c2de22fcd911e94d10114afd6a256d83805",
     "welcome.css": "2698ff81951f4372e78685b9e1cc05fbaade16451b954360c2a7d0e946144578",
     "homepage.css": "86001bf742d5647ff69b4a7f4d838ee7799d0111690c26a2ee9778c7c12ae5c0",
@@ -47,13 +47,13 @@
     "_ds/react-spectrum-s2/guidelines/cards.css": "b6ce88faf0ab64609b53977af258cedfc1a09278ea626877688f1c0144a58044"
   },
   "outputs": {
-    "vendor/app.js": "b60e6e765987290e72a57c44892ab02a838b349594f3c86522b0ca62547d4926",
+    "vendor/app.js": "24c57c500ac96fd4d997d5165114b79ec63f9b1793c6ca33b4220758b7d4ce1c",
     "vendor/markdown-tools.js": "0d01c8e308b36a6dfa434333c16d0a6c85a44216cfeb0caae33a40fbbe935d0f",
     "vendor/editor-tools.js": "9c9596820783f417de8101b841bb4474e13005f4b4698f7f5f803a87e872d5bb",
     "vendor/styles.css": "222820f050a75ccc9af2930ad5ec7d560b4922ea3fd7db80ec8ba86ed73b9deb",
-    "index.html": "d891b15ee2e7e3c8f488b16600bc4a2a462ae3e16491e6f513ffe1cfb856f580",
+    "index.html": "507f02a0981b688cc52a39b73e07e205b1b2cacf740411df49a252ad85d5e310",
     "vendor/fonts.css": "c842cec53e5d68a3c0e8fecd42c27929dad2222533b3c6d76cb591d0b7c5a991",
-    "vendor/workspace.css": "5fa3ae80ed904348a0badf52ca6dac36f4a69fad09f14a1f1e4f71c94c505386",
-    "vendor/runtime.js": "75d4b00881dc72e9c00d7569f9d416e1c3dbe3b4da0eb9d78c972faedd52a85b"
+    "vendor/workspace.css": "95b3bb67a7461a6ad5fe1113dd932fab1baf1e14a11b784aa6488ba9742270cc",
+    "vendor/runtime.js": "2c72c037b219caf02728fe1d38be33bacab8354a39b4d7cd2388f5829f88ae94"
   }
 }

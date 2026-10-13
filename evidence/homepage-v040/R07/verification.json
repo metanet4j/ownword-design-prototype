@@ -1,0 +1,175 @@
+{
+  "module": "R07",
+  "date": "2026-10-13",
+  "branch": "codex/prototype-v0.4.0-homepage",
+  "url": "http://127.0.0.1:4314/",
+  "method": "agent-browser 独立会话；真实点击及键盘操作，模拟身份和交易",
+  "pages": [
+    {
+      "name": "review-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Review publication"
+        },
+        {
+          "size": 24,
+          "text": "A long content title about keeping a calm and orderly writing experience across identity content and digital artifacts"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "review-mobile.png"
+    },
+    {
+      "name": "review-actions",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Review publication"
+        },
+        {
+          "size": 24,
+          "text": "A long content title about keeping a calm and orderly writing experience across identity content and digital artifacts"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "review-actions.png"
+    },
+    {
+      "name": "editor-long-title",
+      "headings": [
+        {
+          "size": 20,
+          "text": "A long content title about keeping a calm and orderly writing experience across identity content and digital artifacts"
+        },
+        {
+          "size": 24,
+          "text": "A long content title about keeping a calm and orderly writing experience across identity content and digital artifacts"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "editor-long-title.png"
+    },
+    {
+      "name": "drafts-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "My content"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "drafts-mobile.png"
+    },
+    {
+      "name": "drafts-desktop",
+      "headings": [
+        {
+          "size": 28,
+          "text": "My content"
+        }
+      ],
+      "scrollWidth": 1440,
+      "width": 1440,
+      "screenshot": "drafts-desktop.png"
+    },
+    {
+      "name": "published-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "My content"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "published-mobile.png"
+    },
+    {
+      "name": "reader-mobile",
+      "headings": [
+        {
+          "size": 24,
+          "text": "Your words deserve a home"
+        },
+        {
+          "size": 20,
+          "text": "Start with the author"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "reader-mobile.png"
+    },
+    {
+      "name": "history-mobile",
+      "headings": [
+        {
+          "size": 20,
+          "text": "Version history"
+        },
+        {
+          "size": 20,
+          "text": "Your words deserve a home"
+        }
+      ],
+      "scrollWidth": 320,
+      "width": 320,
+      "screenshot": "history-mobile.png"
+    }
+  ],
+  "checks": [
+    {
+      "name": "发布确认返回按钮焦点和点击尺寸",
+      "passed": true
+    },
+    {
+      "name": "返回编辑保留完整长标题",
+      "passed": true
+    },
+    {
+      "name": "桌面列表标题最多两行",
+      "passed": true
+    },
+    {
+      "name": "手机摘要单行、完整标题仍在按钮名称中",
+      "passed": true
+    },
+    {
+      "name": "历史返回阅读保持同一作品",
+      "passed": true
+    },
+    {
+      "name": "阅读返回内容管理",
+      "passed": true
+    }
+  ],
+  "errors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 1983588522094562000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "review": {
+    "basis": "OwnWord 设计指南、frontend-design、绑定 Spectrum S2",
+    "observed": "手机主操作另占一行，列表长标题无行数上限；发布确认返回编辑仍为独立旧按钮。",
+    "change": "主操作与页标题同行，列表16px垂直留白，标题两行，手机摘要一行；发布确认使用共用返回按钮。",
+    "result": "桌面与手机列表、长标题编辑及确认、阅读与历史截图核对通过，截断仅影响摘要呈现，完整内容及操作仍可访问。",
+    "limit": "仅检查受影响内容流程；未发送发布交易，未重跑全部业务 BDD。"
+  },
+  "build": "npm run build 与 ./init.sh 通过"
+}
