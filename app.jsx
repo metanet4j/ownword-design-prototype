@@ -3,29 +3,7 @@ function App() {
   const {initial, reducer, validate, hasProfileChanges, countGraphemes, ids} = OwnwordModel;
   const {useDismissable} = window;
   const [state, dispatch] = React.useReducer(reducer, undefined, initial);
-  React.useEffect(() => {
-    const root = document.getElementById('root');
-    if (window.OwnwordBootRoute && state.page === 'welcome' && root.dataset.ready !== 'true') return;
-    const ready = () => {
-    if (root.dataset.ready !== 'true') performance.mark('ownword-interactive');
-    root.hidden = false; root.dataset.ready = 'true'; root.removeAttribute('aria-busy');
-    document.getElementById('boot-status').hidden = true;
-    if (!document.getElementById('ownword-fonts')) {
-      const link = document.createElement('link');
-      link.id = 'ownword-fonts'; link.rel = 'stylesheet'; link.href = 'vendor/fonts.css?v=030-quality-r23';
-      document.head.append(link);
-    }
-    root.removeEventListener('click', window.OwnwordBootClick, true);
-    const target = window.OwnwordBootAction; window.OwnwordBootAction = null;
-    if (target?.isConnected) target.click();
-    };
-    if (window.OwnwordWorkspaceStyleReady) ready();
-    else {
-      const link = document.getElementById('ownword-workspace-style');
-      link.addEventListener('load', ready, {once: true});
-      return () => link.removeEventListener('load', ready);
-    }
-  }, [state.page]);
+  React.useEffect(()=>{const root=document.getElementById('root');root.dataset.ready='true';root.removeAttribute('aria-busy');document.getElementById('boot-status').hidden=true;},[]);
   const pref = (key, fallback) => {try {return localStorage.getItem(`ownword-astra-${key}`) || fallback;} catch {return fallback;}};
   const [locale, setLocale] = React.useState(() => pref('locale', 'en') === 'zh' ? 'zh' : 'en');
   const [theme, setTheme] = React.useState(() => pref('theme', 'light') === 'dark' ? 'dark' : 'light');
@@ -55,18 +33,15 @@ function App() {
   const labRef=React.useRef(null),labLeave=React.useRef(0);
   useDismissable(lab,()=>setLab(false),labRef,'[data-action=prototype-settings]');
   React.useEffect(()=>()=>clearTimeout(labLeave.current),[]);
-  const navigationRef=React.useRef(null);
   function closeNavigation(){setMenuOpen(false);setPrefs(false);}
   const [validationShown, setValidationShown] = React.useState(false);
   const [imageError, setImageError] = React.useState('');
   const [failCopy, setFailCopy] = React.useState(false);
   const [storageError, setStorageError] = React.useState(false);
-  const prefsRef = React.useRef(null);
   const firstPaint = React.useRef(true);
   const pendingResult = React.useRef(false);
   const operationScenario = React.useRef('new');
   const currentState = React.useRef(state);
-  const upload = React.useRef(null);
   currentState.current = state;
   const t = key => (words[locale][key] || words.en[key] || key);
   const bapId = ids[state.account];
@@ -75,10 +50,12 @@ function App() {
   const dirty = hasProfileChanges(state);
   const noChanges = state.published && !dirty;
   const errors = validationShown ? validate(state.draft) : {};
-  useDismissable(prefs, () => setPrefs(false), prefsRef);
-  useDismissable(menuOpen,()=>setMenuOpen(false),navigationRef,'#navigation-toggle');
+
+
   React.useEffect(() => {
     document.documentElement.dataset.colorScheme = theme;
+    document.documentElement.style.colorScheme = theme;
+    document.documentElement.style.setProperty('--s2-color-scheme',theme);
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en';
     try {localStorage.setItem('ownword-astra-locale', locale); localStorage.setItem('ownword-astra-theme', theme);} catch {setStorageError(true);}
   }, [locale, theme]);
@@ -178,8 +155,8 @@ function App() {
     if (Object.values(found).some(Boolean)) {setTimeout(() => document.querySelector('[aria-invalid="true"]')?.focus(), 0); return;}
     dispatch({type: 'REVIEW'});
   }
-  async function chooseFile(e) {
-    const file = e.target.files[0]; e.target.value = '';
+  async function chooseFile(files) {
+    const file = files?.[0];
     if (!file) return;
     const capturedEpoch = state.epoch;
     if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {setImageError('invalidImage'); return;}
@@ -202,25 +179,28 @@ function App() {
     : '';
   const retryError = toastError ? () => dispatch(toastError === 'connectFailed'
     ? {type: 'CONNECT'} : {type: 'AUTHORIZE', operation: toastError === 'createFailed' ? 'create' : 'save'}) : undefined;
-  return <div className={`app page-${state.page}`}>
+  return <S2.Provider locale={locale==='zh'?'zh-CN':'en-US'} colorScheme={theme} background="base"><div className={`app page-${state.page}`}>
     <a className="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
     <header className="topbar">
       <Button variant="quiet" className="brand" aria-label="ownword" onClick={() => navigate(state.wallet ? (state.published ? 'identity' : 'setup') : 'welcome')}><BrandMark /><span className="brand-wordmark">ownword</span></Button>
-      <div className="header-tools"><div className="workspace-switcher" ref={navigationRef}>
-      <Button variant="quiet" id="navigation-toggle" className="s2d-button workspace-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={t('switchWorkspace')+' · '+t(currentModule)} onClick={()=>{setMenuOpen(v=>!v);setPrefs(false);}} onKeyDown={e=>{if(e.key==='ArrowDown'){e.preventDefault();setMenuOpen(true);requestAnimationFrame(()=>navigationRef.current?.querySelector('nav button')?.focus());}}}>{t(currentModule)}<UiIcon name="ChevronDown"/></Button>
-      {menuOpen&&<nav id="primary-navigation" aria-label={t('navigationLabel')} className="topnav is-open" onKeyDown={e=>{if(e.target.closest('.preferences'))return;if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key))return;const items=[...e.currentTarget.querySelectorAll('button')].filter(el=>el.getClientRects().length);const i=items.indexOf(document.activeElement);e.preventDefault();items[e.key==='Home'?0:e.key==='End'?items.length-1:(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length]?.focus();}}>
-        {state.wallet&&state.published&&<div className="workspace-destinations">
-          <Button variant="quiet" data-action="nav-identity" aria-current={currentModule==='myIdentity'?'page':undefined} onClick={()=>navigate('identity')}>{t('myIdentity')}<span>{t('identityNavDescription')}</span></Button>
-          <Button variant="quiet" data-action="nav-artifacts" aria-current={currentModule==='myArtifacts'?'page':undefined} onClick={()=>openArtifacts()}>{t('myArtifacts')}<span>{t('artifactNavDescription')}</span></Button>
-          <Button variant="quiet" data-action="nav-content" aria-current={currentModule==='myContent'?'page':undefined} onClick={openContent}>{t('myContent')}<span>{t('contentNavDescription')}</span></Button>
-        </div>}
-        <Button variant="quiet" data-action="nav-find" aria-current={currentModule==='artifactFind'?'page':undefined} onClick={()=>openArtifacts('find')}>{t('artifactFind')}</Button>
-        {state.wallet && <Button data-action="disconnect" onClick={disconnect}>{t('disconnectWallet')}</Button>}
-      </nav>}
+      <div className="header-tools"><div className="workspace-switcher">
+      <S2.MenuTrigger isOpen={menuOpen} onOpenChange={open=>{setMenuOpen(open);if(open)setPrefs(false);}}>
+        <S2.ActionButton isQuiet id="navigation-toggle" aria-label={t('switchWorkspace')+' · '+t(currentModule)}><S2.Text>{t(currentModule)}</S2.Text><UiIcon name="ChevronDown"/></S2.ActionButton>
+        <S2.Menu aria-label={t('navigationLabel')} onAction={key=>{if(key==='identity')navigate('identity');if(key==='artifacts')openArtifacts();if(key==='content')openContent();if(key==='find')openArtifacts('find');if(key==='disconnect')disconnect();}}>
+          {state.wallet&&state.published&&<>
+            <S2.MenuItem id="identity" data-action="nav-identity"><S2.Text>{t('myIdentity')}</S2.Text><S2.Text slot="description">{t('identityNavDescription')}</S2.Text></S2.MenuItem>
+            <S2.MenuItem id="artifacts" data-action="nav-artifacts"><S2.Text>{t('myArtifacts')}</S2.Text><S2.Text slot="description">{t('artifactNavDescription')}</S2.Text></S2.MenuItem>
+            <S2.MenuItem id="content" data-action="nav-content"><S2.Text>{t('myContent')}</S2.Text><S2.Text slot="description">{t('contentNavDescription')}</S2.Text></S2.MenuItem>
+          </>}
+          <S2.MenuItem id="find" data-action="nav-find">{t('artifactFind')}</S2.MenuItem>
+          {state.wallet&&<S2.MenuItem id="disconnect" data-action="disconnect">{t('disconnectWallet')}</S2.MenuItem>}
+        </S2.Menu>
+      </S2.MenuTrigger>
       </div>
-        <div className="preference-anchor" ref={prefsRef}><Button iconOnly variant="quiet" className="header-preferences" aria-label={t('appearanceLanguage')} aria-expanded={prefs} aria-controls="preferences-panel" title={t('appearanceLanguage')} onClick={()=>{setMenuOpen(false);setPrefs(!prefs);}}><UiIcon name="Contrast"/></Button>
-          {prefs && <section className="preferences" id="preferences-panel" aria-label={t('preferences')}><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale === 'zh'} onClick={() => setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={() => setPrefs(false)}>{t('close')}</Button></section>}
-        </div>
+        <S2.DialogTrigger isOpen={prefs} onOpenChange={open=>{setPrefs(open);if(open)setMenuOpen(false);}}>
+          <S2.ActionButton isQuiet aria-label={t('appearanceLanguage')}><UiIcon name="Contrast"/></S2.ActionButton>
+          <S2.Popover placement="bottom end" hideArrow><section role="dialog" aria-label={t('preferences')} className="ownword-preferences" tabIndex="-1"><h2>{t('preferences')}</h2><p className="field-label">{t('language')}</p><div className="choice-row"><Button data-action="locale-en" aria-pressed={locale==='en'} onClick={()=>setLocale('en')}>English</Button><Button data-action="locale-zh" aria-pressed={locale==='zh'} onClick={()=>setLocale('zh')}>中文</Button></div><p className="field-label">{t('theme')}</p><div className="choice-row"><Button data-action="theme-light" aria-pressed={theme==='light'} onClick={()=>setTheme('light')}>{t('light')}</Button><Button data-action="theme-dark" aria-pressed={theme==='dark'} onClick={()=>setTheme('dark')}>{t('dark')}</Button></div><p className="hint">{t('preferenceHint')}</p><Button variant="quiet" onClick={()=>setPrefs(false)}>{t('close')}</Button></section></S2.Popover>
+        </S2.DialogTrigger>
     </div>
     </header>
     {state.page==='welcome'&&<Dome label={t('domeLabel')} />}
@@ -237,7 +217,7 @@ function App() {
         <div className="horizon" aria-hidden="true"></div>
       </section>}
       {state.page === 'welcome' && <WelcomeStory t={t} failCopy={failCopy} onIdentity={id => openArtifacts('identity-view', id)} onRead={id => contentRef.current?.go('read', id)}/>}
-      {state.page === 'resolving' && <section className="center-state">{heading('resolving', 'resolvingBody', 'connected')}<LoadingMark label={t('resolving')} /><span aria-hidden="true"><S2.Skeleton /></span><Button onClick={disconnect}>{t('disconnect')}</Button></section>}
+      {state.page === 'resolving' && <section className="center-state">{heading('resolving', 'resolvingBody', 'connected')}<LoadingMark label={t('resolving')} /><span aria-hidden="true"><S2.Skeleton isLoading><S2.Text>Loading identity…</S2.Text></S2.Skeleton></span><Button onClick={disconnect}>{t('disconnect')}</Button></section>}
       {state.page === 'resolve-error' && <section className="center-state">{heading('resolveFailed', 'resolveFailedBody', 'connected')}<div className="state-symbol error-symbol" aria-hidden="true">!</div><div className="action-row"><Button variant="accent" data-action="retry" onClick={resolveAgain}>{t('retry')}</Button><Button data-action="disconnect" onClick={disconnect}>{t('disconnect')}</Button></div></section>}
       {isFlow && <ol className="flow-steps" aria-label={t('setup')}>
         {['setupStep', 'reviewStep', 'confirmStep', 'doneStep'].map((step, i) => <li key={step} aria-current={(state.page === 'setup' ? 0 : state.page === 'review' ? (state.busy ? 2 : 1) : 3) === i ? 'step' : undefined}><span>{String(i + 1).padStart(2, '0')}</span>{t(step)}</li>)}
@@ -247,8 +227,7 @@ function App() {
           <div className="aside-identity"><span className="eyebrow">{t('currentIdentity')}</span><code>{bapId}</code><p>{t(state.published ? 'published' : 'localId')}</p></div>
         </aside>
         <form className="profile-form" noValidate onSubmit={e => {e.preventDefault(); checkForm();}}>
-          <div className="avatar-field"><Portrait profile={state.draft} /><div><span className="field-label">{t('avatar')}</span><div className="action-row"><Button onClick={() => upload.current.click()}>{t('chooseImage')}</Button>{state.draft.image && <Button variant="quiet" onClick={() => dispatch({type: 'DRAFT', field: 'image', value: ''})}>{t('removeImage')}</Button>}</div><p className="hint">{t('imageHint')}</p></div></div>
-          <input ref={upload} type="file" accept="image/png,image/jpeg,image/webp" onChange={chooseFile} hidden aria-label={t('chooseImage')} />
+          <div className="avatar-field"><Portrait profile={state.draft} /><div><span className="field-label">{t('avatar')}</span><div className="action-row"><S2.FileTrigger acceptedFileTypes={['image/png','image/jpeg','image/webp']} onSelect={chooseFile}><Button>{t('chooseImage')}</Button></S2.FileTrigger>{state.draft.image && <Button variant="quiet" onClick={() => dispatch({type: 'DRAFT', field: 'image', value: ''})}>{t('removeImage')}</Button>}</div><p className="hint">{t('imageHint')}</p></div></div>
           {imageError && <p className="field-error" role="alert" data-field-error={imageError}>{t(imageError)}</p>}
           <Field id="profile-name" label={`${t('name')} *`} value={state.draft.name} onChange={value => dispatch({type: 'DRAFT', field: 'name', value})} error={errors.name ? t(errors.name) : ''} errorKey={errors.name || ''} required />
           <fieldset className="type-choice"><legend>{t('type')} *</legend><div className="choice-row">{['Person', 'Organization'].map(type => <Button key={type} aria-pressed={state.draft.type === type} onClick={() => dispatch({type: 'DRAFT', field: 'type', value: type})}>{t(type)}</Button>)}</div>{errors.type && <p className="field-error" data-field-error={errors.type}>{t(errors.type)}</p>}</fieldset>
@@ -283,7 +262,7 @@ function App() {
       if (!toastError && !storageError) dispatch({type: 'CLEAR_NOTICE', notice: state.notice, epoch: state.epoch});
     }} />}
     <footer className="footer"><p>{t('footer')}</p><div className="footer-controls">{state.wallet && <span className="wallet-connected"><S2.StatusLight variant="positive">{t('connected')}</S2.StatusLight></span>}<Button variant="quiet" data-action="prototype-settings" onClick={() => setLab(!lab)} aria-expanded={lab}>{t('prototype')}<span className="prototype-dot" aria-hidden="true"></span></Button></div></footer>
-    {lab && <section ref={labRef} className="scenario-panel" aria-label={t('scenarios')} onPointerEnter={()=>clearTimeout(labLeave.current)} onPointerLeave={e=>{if(e.pointerType==='mouse'&&e.relatedTarget&&!document.querySelector('dialog[open]'))labLeave.current=setTimeout(()=>setLab(false),250);}}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><p>{t('sampleDataNote')}</p><p>{t('artifactNoFees')}</p><p>{t('proofSimulation')}</p><p>{t('readerLocalScope')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
+    {lab && <section ref={labRef} className="scenario-panel" aria-label={t('scenarios')} onPointerEnter={()=>clearTimeout(labLeave.current)} onPointerLeave={e=>{if(e.pointerType==='mouse'&&e.relatedTarget&&!document.querySelector('[role=dialog][aria-modal=true]'))labLeave.current=setTimeout(()=>setLab(false),250);}}><div className="panel-title"><h2>{t('scenarios')}</h2><Button variant="quiet" onClick={() => setLab(false)}>{t('close')}</Button></div><p>{t('simulatorNote')}</p><p>{t('sampleDataNote')}</p><p>{t('artifactNoFees')}</p><p>{t('proofSimulation')}</p><p>{t('readerLocalScope')}</p><label>{t('scenario')}<select data-scenario="identity" value={scenario} onChange={e => setScenario(e.target.value)}>{['new', 'existing', 'incomplete', 'resolveFail', 'missing'].map(key => <option value={key} key={key}>{t(key)}</option>)}</select></label><p className="hint">{t('simulatorHint')}</p>
       <label>{t('nextResult')}<select data-scenario="result" value={nextResult} onChange={e => setNextResult(e.target.value)}><option value="success">{t('resultSuccess')}</option><option value="failure">{t('simulateFailure')}</option></select></label>
       <p className="hint">{t('nextResultHint')}</p>
       <label>{t('accountEvent')}<select data-scenario="account-event" value={accountEvent} onChange={e => setAccountEvent(e.target.value)}>{['none', 'switch-confirm', 'switch-process', 'disconnect-confirm', 'disconnect-process'].map(value => <option key={value} value={value}>{t(value)}</option>)}</select></label>
@@ -299,6 +278,6 @@ function App() {
         <div className="action-row"><Button data-action="cancel" onClick={() => dispatch({type: 'CANCEL'})}>{t('cancel')}</Button><Button variant="accent" data-action="approve" onClick={() => state.modal === 'connect' ? confirmConnection() : approveOperation()}>{t(scenario === 'missing' && state.modal === 'connect' ? 'retry' : 'approve')}</Button></div>
       </>}
     </Modal>}
-  </div>;
+  </div></S2.Provider>;
 }
-ReactDOM.hydrateRoot(document.getElementById('root'), <App />);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);

@@ -1,0 +1,117 @@
+{
+  "runtime": "@react-spectrum/s2@1.6.0",
+  "session": "ownword-s2-check-1791874733032",
+  "checkedAt": "2026-10-13T06:59:14.238Z",
+  "checks": [
+    "授权弹窗有可访问名称",
+    "弹窗键盘焦点保留在弹窗内",
+    "Escape 关闭授权",
+    "官方字段显示错误并获得焦点",
+    "文件菜单使用官方菜单语义",
+    "取消 Artifact 授权保留草稿",
+    "复制控件为官方 ActionButton",
+    "详情关闭后焦点返回入口",
+    "官方 Tabs 支持方向键切换",
+    "内容读取失败保留身份主体",
+    "复制失败保留完整标识",
+    "深色业务正文和标题可见",
+    "中文和深色偏好生效"
+  ],
+  "screens": [
+    {
+      "name": "welcome",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "identity",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "editor",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "editor-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "reader",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifacts",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "artifacts-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "artifact-review",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "homepage",
+      "outside": [],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "name": "homepage-mobile",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "name": "homepage-zh-dark",
+      "outside": [],
+      "scroll": 320,
+      "width": 320
+    }
+  ],
+  "media": [
+    {
+      "height": 120,
+      "width": 160
+    },
+    {
+      "height": 120,
+      "width": 160
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "scope": "四模块主要流程、相关错误边界、双语深色、320px 移动端；未穷举原 PRD 全部 BDD。",
+  "supplemental": {
+    "checkedAt": "2026-10-13T07:04:25.476132+00:00",
+    "reason": "最终手机工具栏收纳与只读构建检查调整",
+    "checks": [
+      "320px 工具栏完整显示 Heading 与 More，页面宽度 320px",
+      "链接格式操作收纳于官方 More 菜单，菜单条目可达",
+      "手机编辑器浏览器错误为零",
+      "官方作品标题链接进入正文并可返回个人主页",
+      "最终 ../init.sh 通过"
+    ],
+    "screenshots": [
+      "editor-mobile-final.png",
+      "preview-zh.png"
+    ],
+    "runtimeSha256": "d20e144340f421e82fc6dc5345ade975709123f689453637f5e3d17453c0d2f9"
+  }
+}

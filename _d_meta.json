@@ -4,14 +4,18 @@
     {
       "name": "React Spectrum 2 / S2 Design System",
       "slug": "react-spectrum-s2",
-      "namespace": "ReactSpectrumS2_ad4872",
       "dsFolder": "_ds/react-spectrum-s2",
-      "sourcePath": "design-system/react-spectrum-s2"
+      "sourcePath": "node_modules/@react-spectrum/s2",
+      "package": "@react-spectrum/s2",
+      "version": "1.6.0",
+      "runtime": "official",
+      "entry": "official-s2.jsx",
+      "tokenSource": "_ds/react-spectrum-s2/tokens/s2-tokens.css"
     }
   ],
   "primaryDesignSystem": "react-spectrum-s2",
   "createdAt": "2026-09-05T14:25:19.554Z",
-  "updatedAt": "2026-10-13T04:28:12.999Z",
+  "updatedAt": "2026-10-13T06:56:58.275202+00:00",
   "assets": {
     "Ownword — Dome and Horizon": {
       "versions": [
@@ -103,8 +107,22 @@
           }
         }
       ]
+    },
+    "OwnWord — 官方组件改造版": {
+      "versions": [
+        {
+          "path": "index.html",
+          "createdAt": "2026-10-13T06:56:58.275202+00:00",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "evidence": "evidence/official-s2/verification.json"
+        }
+      ]
     }
   },
-  "title": "Ownword v0.4.0 — Identity Homepage",
-  "prompt": "当前 PRD v0.4.0：从最新 v0.3.0 继承公开主页、内容与关系交互；保持绑定 Spectrum S2，身份和交易使用确定性模拟。"
+  "title": "OwnWord — 官方组件改造版",
+  "prompt": "在独立 worktree 中以官方 Spectrum S2 运行时改造 v0.1.0 至 v0.4.0 四模块，保留业务事实、居中版式和受控媒体列表。"
 }

@@ -3,35 +3,19 @@ function WelcomeStory({t, onIdentity, onRead, failCopy}) {
   const [chapter, setChapter] = React.useState('identity');
   const record = React.useMemo(() => OwnwordContentModel.seed().records[0], []);
   const chapters = ['identity', 'words', 'proof'];
-  const id = React.useId(), base = S2.Tabs();
-  const list = React.Children.toArray(base.props.children)[0];
-  const tab = React.Children.toArray(list.props.children)[0];
-  function selectFromKeyboard(event, index) {
-    const next = event.key === 'ArrowRight' ? (index + 1) % 3
-      : event.key === 'ArrowLeft' ? (index + 2) % 3
-      : event.key === 'Home' ? 0 : event.key === 'End' ? 2 : null;
-    if (next === null) return;
-    event.preventDefault();
-    setChapter(chapters[next]);
-    document.getElementById(`${id}-${chapters[next]}`).focus();
-  }
+  const id=React.useId();
   return <section className="welcome-story" aria-labelledby={`${id}-heading`}>
     <div className="welcome-story-intro">
       <h2 id={`${id}-heading`}>{t('welcomeStoryTitle')}</h2>
       <p>{t('welcomeStoryBody')}</p>
     </div>
-    <div className="welcome-story-layout">
+    <S2.Tabs selectedKey={chapter} onSelectionChange={setChapter} aria-label={t('welcomeStoryTitle')} ><div className="welcome-story-layout">
       <div className="welcome-story-navigation">
-        {React.cloneElement(base, {}, React.cloneElement(list, {role:'tablist', 'aria-label':t('welcomeStoryTitle')}, chapters.map((item, index) => React.cloneElement(tab, {
-          key:item, id:`${id}-${item}`, role:'tab', 'aria-selected':chapter === item,
-          'aria-controls':`${id}-${item}-panel`, tabIndex:chapter === item ? 0 : -1,
-          className:chapter === item ? 'is-selected' : '', onClick:() => setChapter(item),
-          onKeyDown:event => selectFromKeyboard(event, index)
-        }, t('welcomeChapter-' + item)))))}
+        <S2.TabList>{chapters.map(item=><S2.Tab key={item} id={item}>{t('welcomeChapter-'+item)}</S2.Tab>)}</S2.TabList>
         <p className="welcome-chapter-description">{t('welcomeChapterBody-' + chapter)}</p>
         <p className="welcome-story-principle">{t('welcomeStoryPrinciple')}</p>
       </div>
-      {chapters.map(item => <div key={item} className="welcome-story-surface" id={`${id}-${item}-panel`} role="tabpanel" aria-labelledby={`${id}-${item}`} hidden={chapter !== item} tabIndex={0}>
+      {chapters.map(item => <S2.TabPanel key={item} id={item} UNSAFE_className="welcome-story-surface">
         {chapter === item && <>
           {item === 'identity' && <div className="welcome-identity-example">
             <div className="person-row"><Portrait profile={record.author} /><div><p className="profile-type">{t(record.author.type)}</p><h3>{record.author.name}</h3></div></div>
@@ -50,8 +34,8 @@ function WelcomeStory({t, onIdentity, onRead, failCopy}) {
           </div>}
           <div className="welcome-example-action"><Button variant="quiet" data-action={`welcome-open-${item}`} onClick={() => item === 'identity' ? onIdentity(record.authorBapId) : onRead(record.id)}>{t(item === 'identity' ? 'viewPublicIdentity' : 'welcomeReadWords')}</Button></div>
         </>}
-      </div>)}
-    </div>
+      </S2.TabPanel>)}
+    </div></S2.Tabs>
   </section>;
 }
 window.WelcomeStory = WelcomeStory;

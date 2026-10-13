@@ -1,92 +1,37 @@
-import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {build,transform} from 'esbuild';
 import {fileURLToPath} from 'node:url';
-import {createRequire} from 'node:module';
-import vm from 'node:vm';
-import {execFileSync} from 'node:child_process';
-
-const root = path.dirname(fileURLToPath(import.meta.url));
-execFileSync(process.execPath, [path.join(root, 'build-design-system.mjs'), '--check'], {stdio: 'inherit'});
-const files = ['components', 'content-editor', 'content-publication', 'content-reader', 'content',
-  'artifact-compose', 'artifact-components', 'artifact-operations', 'artifact-transfer', 'artifact-detail',
-  'artifact-find', 'artifact', 'welcome', 'homepage', 'app'].map(name => name + '.jsx');
-const styles = ['_ds/react-spectrum-s2/styles.css', 's2-adapter.css', 'app.css', 'content.css', 'artifact.css', 'welcome.css', 'homepage.css'];
-const dsStyles = ['tokens/font-faces.css', 'tokens/page.css', 'tokens/s2-tokens.css', 'tokens/semantic.css',
-  'components/components.css', 'guidelines/cards.css'].map(file => '_ds/react-spectrum-s2/' + file);
-const inputs = ['build-prototype.mjs', 'package.json', 'package-lock.json', 'editor-tools.js',
-  'markdown-tools.mjs', 'visual-editor.js', '_ds/react-spectrum-s2/_ds_bundle.js', 'index.template.html',
-  'model.js', 'content-model.js', 'artifact-model.js', 'homepage-model.js', 'copy.js', 'vendor/react.production.min.js',
-  'vendor/react-dom.production.min.js', 'vendor/react-dom-server.production.min.js', ...files, ...styles, ...dsStyles];
-const outputs = ['vendor/app.js', 'vendor/markdown-tools.js', 'vendor/editor-tools.js', 'vendor/styles.css', 'index.html', 'vendor/fonts.css', 'vendor/workspace.css', 'vendor/runtime.js'];
-const manifest = path.join(root, 'vendor/build-manifest.json');
-const hash = (file, text = false) => createHash('sha256').update(text ?
-  fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n') : fs.readFileSync(path.join(root, file))).digest('hex');
-const hashes = (names, text = false) => Object.fromEntries(names.map(file => [file, hash(file, text)]));
-assert.ok(process.argv.length <= 3 && (!process.argv[2] || process.argv[2] === '--check'), '用法：node build-prototype.mjs [--check]');
-if (process.argv[2] === '--check') {
-  const saved = JSON.parse(fs.readFileSync(manifest, 'utf8'));
-  assert.deepEqual(saved.inputs, hashes(inputs, true), '源码已变化，请在原型目录运行 npm run build');
-  assert.deepEqual(saved.outputs, hashes(outputs), '构建产物缺失或被修改，请运行 npm run build');
-  console.log('页面与阅读、编辑器构建产物均对应当前源码。');
-} else {
-  const esbuild = await import('esbuild');
-  const options = {target: 'es2020', minify: true, legalComments: 'eof', supported: {'template-literal': false}};
-  const source = files.map(file => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
-  const script = await esbuild.transform(source, {...options, loader: 'jsx', format: 'iife', sourcefile: 'ownword-app.jsx'});
-  fs.writeFileSync(path.join(root, outputs[0]), script.code);
-  const runtimeFiles = ['vendor/react.production.min.js', 'vendor/react-dom.production.min.js',
-    '_ds/react-spectrum-s2/_ds_bundle.js', 'model.js', 'content-model.js', 'artifact-model.js', 'homepage-model.js', 'copy.js', outputs[0]];
-  const runtime = runtimeFiles.map(file => fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n')).join('\n;\n');
-  fs.writeFileSync(path.join(root, outputs[7]), (await esbuild.transform(runtime, options)).code);
-  const integrity = 'sha384-' + createHash('sha384').update(fs.readFileSync(path.join(root, outputs[7]))).digest('base64');
-  for (const [entry, output] of [['markdown-tools.mjs', outputs[1]], ['editor-tools.js', outputs[2]]]) {
-    await esbuild.build({...options, absWorkingDir: root, entryPoints: [entry], outfile: output,
-      bundle: true, format: 'iife', globalName: entry === 'markdown-tools.mjs' ? 'OwnwordMarkdownTools' : 'OwnwordEditorTools'});
-  }
-  const tokenPath = '_ds/react-spectrum-s2/tokens/s2-tokens.css';
-  const tokenSource = fs.readFileSync(path.join(root, tokenPath), 'utf8');
-  const declarations = [...tokenSource.matchAll(/(--[\w-]+)\s*:[^;{}]+;/g)];
-  const references = source => [...source.matchAll(/var\((--[\w-]+)/g)].map(match => match[1]);
-  const consumers = inputs.filter(file => /\.(?:jsx|js|css)$/.test(file) && file !== tokenPath);
-  const used = new Set(consumers.flatMap(file => references(fs.readFileSync(path.join(root, file), 'utf8'))));
-  // 仅去掉没有消费者的 token 声明，保留被引用声明的原始值和全部模式。
-  let previous;
-  do {
-    previous = used.size;
-    for (const match of declarations) if (used.has(match[1])) for (const token of references(match[0])) used.add(token);
-  } while (used.size !== previous);
-  const cssFiles = [...dsStyles.filter(file => !file.endsWith('/font-faces.css')), 's2-adapter.css', 'app.css', 'welcome.css', 'homepage.css'];
-  const css = cssFiles.map(file => {
-    const source = fs.readFileSync(path.join(root, file), 'utf8');
-    if (file === tokenPath) return tokenSource.replace(/(--[\w-]+)\s*:[^;{}]+;/g,
-      (declaration, name) => used.has(name) ? declaration : '');
-    return source;
-  }).join('\n');
-  fs.writeFileSync(path.join(root, outputs[3]), (await esbuild.transform(css, {loader: 'css', minify: true, target: 'chrome120'})).code);
-  const workspaceCss = ['content.css', 'artifact.css'].map(file => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
-  fs.writeFileSync(path.join(root, outputs[6]), (await esbuild.transform(workspaceCss, {loader: 'css', minify: true, target: 'chrome120'})).code);
-  const fonts = fs.readFileSync(path.join(root, dsStyles[0]), 'utf8').replace(/font-display:\s*auto/g, 'font-display: optional');
-  fs.writeFileSync(path.join(root, outputs[5]), (await esbuild.transform(fonts, {loader: 'css', minify: true})).code);
-  const React = createRequire(import.meta.url)('./vendor/react.production.min.js');
-  const server = {exports: {}, module: {}, require: () => React};
-  vm.createContext(server);
-  vm.runInContext(fs.readFileSync(path.join(root, 'vendor/react-dom-server.production.min.js'), 'utf8'), server);
-  function render(locale) {
-    let html;
-    const context = {React, ReactDOM: {hydrateRoot: (_root, element) => {html = server.exports.renderToString(element);}},
-      console, localStorage: {getItem: key => key.endsWith('locale') ? locale : null}, location: {hash: ''},
-      document: {getElementById: () => ({})}, matchMedia: () => ({matches: false}), navigator: {}, setTimeout, clearTimeout};
-    context.window = context; vm.createContext(context);
-    for (const file of ['_ds/react-spectrum-s2/_ds_bundle.js', 'model.js', 'content-model.js', 'artifact-model.js', 'homepage-model.js', 'copy.js', outputs[0]]) {
-      vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
-    }
-    assert.ok(html?.includes('welcome-story'), '首页预生成失败');
-    return html;
-  }
-  const template = fs.readFileSync(path.join(root, 'index.template.html'), 'utf8').replace(/\r\n/g, '\n');
-  fs.writeFileSync(path.join(root, 'index.html'), template.replace('<!-- PRE_RENDER_EN -->', render('en')).replace('<!-- PRE_RENDER_ZH -->', render('zh')).replaceAll('<!-- RUNTIME_INTEGRITY -->', integrity));
-  fs.writeFileSync(manifest, JSON.stringify({esbuild: esbuild.version, inputs: hashes(inputs, true), outputs: hashes(outputs)}, null, 2) + '\n');
-  console.log('页面已预编译；公开阅读与完整编辑器分别构建。');
+const root=path.dirname(fileURLToPath(import.meta.url));
+const pages=['components','content-editor','content-publication','content-reader','content','artifact-compose','artifact-components','artifact-operations','artifact-transfer','artifact-detail','artifact-find','artifact','welcome','homepage','app'].map(x=>x+'.jsx');
+const models=['model.js','content-model.js','artifact-model.js','homepage-model.js','copy.js'];
+const css=['_ds/react-spectrum-s2/tokens/semantic.css','ownword-tokens.css','app.css','content.css','artifact.css','welcome.css','homepage.css','official-layout.css'];
+const tokens='_ds/react-spectrum-s2/tokens/s2-tokens.css';
+const inputs=['package.json','package-lock.json','build-prototype.mjs','official-s2.jsx','index.template.html','editor-tools.js','markdown-tools.mjs','visual-editor.js','_ds/react-spectrum-s2/tokens/page.css',tokens,...models,...pages,...css];
+const outputs=['vendor/runtime.js','vendor/runtime.css','vendor/styles.css','vendor/markdown-tools.js','vendor/editor-tools.js','index.html'];
+const hash=p=>createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
+const hashes=ps=>Object.fromEntries(ps.map(p=>[p,hash(p)]));
+const manifest='vendor/build-manifest.json';
+if(process.argv.includes('--check')){
+ const saved=JSON.parse(fs.readFileSync(manifest));assert.equal(saved.mode,'production');assert.deepEqual(saved.inputs,hashes(inputs));assert.deepEqual(saved.outputs,hashes(outputs));assert.ok(saved.officialInputs.some(p=>p.includes('@react-spectrum/s2/dist/')));assert.ok(!saved.officialInputs.some(p=>p.includes('_ds_bundle')));console.log('官方 S2 包来源及预编译产物与当前源码一致。');
+}else{
+ const {default:macros}=await import('unplugin-parcel-macros');
+ const source="import React from 'react';\nimport * as ReactDOM from 'react-dom/client';\nimport {S2,officialIcons,fullWidth} from './official-s2.jsx';\nwindow.React=React;\n"+models.map(p=>'(function(module){\n'+fs.readFileSync(p,'utf8')+'\n})(undefined);').join('\n')+'\n'+pages.map(p=>fs.readFileSync(p,'utf8')).join('\n');
+ const options={absWorkingDir:root,bundle:true,minify:!process.env.OWNWORD_DEBUG,target:'es2022',define:{'process.env.NODE_ENV':JSON.stringify(process.env.OWNWORD_DEBUG?'development':'production')},legalComments:'eof'};
+ const result=await build({...options,stdin:{contents:source,resolveDir:root,loader:'jsx',sourcefile:'ownword-official-app.jsx'},outfile:'vendor/runtime.js',format:'iife',plugins:[macros.esbuild()],metafile:true});
+ for(const [entry,out] of [['markdown-tools.mjs','vendor/markdown-tools.js'],['editor-tools.js','vendor/editor-tools.js']])await build({...options,entryPoints:[entry],outfile:out,format:'iife',globalName:entry==='markdown-tools.mjs'?'OwnwordMarkdownTools':'OwnwordEditorTools'});
+ // 页面仅继承 Token 与 OwnWord 布局；官方控件 CSS 由官方包构建，不引入本地仿制控件样式。
+ const appCss=css.map(p=>fs.readFileSync(p,'utf8')).join('\n');
+ const references=s=>[...s.matchAll(/var\((--[\w-]+)/g)].map(m=>m[1]);
+ const tokenSource=fs.readFileSync(tokens,'utf8'),decls=[...tokenSource.matchAll(/(--[\w-]+)\s*:[^;{}]+;/g)],used=new Set(references(appCss));
+ let old;do{old=used.size;for(const m of decls)if(used.has(m[1]))for(const ref of references(m[0]))used.add(ref);}while(old!==used.size);
+ const tokenCss=tokenSource.replace(/(--[\w-]+)\s*:[^;{}]+;/g,(decl,name)=>used.has(name)?decl:'');
+ const styles='@layer ownword, _;\n@layer ownword {\n'+fs.readFileSync('_ds/react-spectrum-s2/tokens/page.css','utf8')+'\n'+tokenCss+'\n'+appCss+'\n}';
+ fs.writeFileSync('vendor/styles.css',(await transform(styles,{loader:'css',minify:true,target:'chrome120'})).code);
+ const integrity='sha384-'+createHash('sha384').update(fs.readFileSync('vendor/runtime.js')).digest('base64');
+ fs.writeFileSync('index.html',fs.readFileSync('index.template.html','utf8').replaceAll('<!-- RUNTIME_INTEGRITY -->',integrity));
+ fs.writeFileSync(manifest,JSON.stringify({mode:process.env.OWNWORD_DEBUG?'development':'production',runtime:'official @react-spectrum/s2@1.6.0',react:JSON.parse(fs.readFileSync('node_modules/react/package.json')).version,inputs:hashes(inputs),outputs:hashes(outputs),officialInputs:Object.keys(result.metafile.inputs).filter(p=>p.includes('@react-spectrum/s2/'))},null,2)+'\n');
+ console.log('官方组件改造版构建完成；官方 S2 运行时与 CSS 已打包。');
 }

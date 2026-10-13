@@ -1,27 +1,31 @@
-# OwnWord v0.4.0 Identity 个人主页原型
+# OwnWord 官方组件改造版
 
-从 v0.3.0 的最终分支提交 `1355bdc4a14197d1d2dfec09e26096446d080be5` 继续制作，保留身份、内容、Artifact 与绑定的 Spectrum S2。旧 v0.4.0 已作废，本目录是按当前 P01–P10 / 32 条 BDD 制作的新原型。
+独立分支 `codex/prototype-official-s2`，基于 v0.4.0 提交 `5b3cdf8`。包含 v0.1.0 身份、v0.2.0 内容、v0.3.0 Artifact、v0.4.0 个人主页。产品事实和流程继续遵循核心认知及当前 v0.4.0 PRD。
 
-## 预览与检查
+## 预览与启动
 
-在任务容器（本目录的上一级）运行 `./init.sh --serve`，预览为 `http://127.0.0.1:4314/`。Windows 使用 `./init.ps1 -Serve`；普通检查使用 `./init.sh`。
+在上级任务目录运行 `./init.sh --serve`，打开 <http://127.0.0.1:4315/>。个人主页为 <http://127.0.0.1:4315/#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD>。
 
-公开主页：`http://127.0.0.1:4314/#/identity/2FfJxP9rMWqeBZQ3KxL2wZsLbS7xw8bVpD`。公开浏览不要求 Wallet。页脚的原型演练面板提供读取失败、签名不匹配、未知提交、索引延迟与账户变化场景。
+直接浏览已提交产物不需要安装依赖。开发时运行 `npm ci`，修改后运行 `npm run build`；`npm run check` 核对生产构建来源、输入及产物哈希，并验证四模块模型。`npm run verify:browser` 使用 agent-browser 独立会话验收当前迁移；要求 4315 预览正在运行。
 
-在原型目录运行 `npm ci --no-audit --no-fund` 安装锁定的构建依赖；修改 JSX、CSS、模型或模板后运行 `npm run build`。浏览器加载预编译资源，启动检查拒绝过期产物。直接浏览已提交产物不需要安装依赖。
+## 官方组件与业务组合
 
-模型检查为 `node check-homepage.cjs`，浏览器按功能运行 `node verify-homepage.mjs Pxx`，例如 `P07` 完成 A 申请、B 接受。需要 agent-browser；用 `OWNWORD_BROWSER_SESSION` 指定独立会话。验证命令与断言、截图见 `evidence/homepage-v040/`。
+运行时直接打包官方 `@react-spectrum/s2@1.6.0`，配套 `react@19.3.0`、`react-dom@19.3.0`，全部锁定于 package-lock。入口是 `official-s2.jsx`，样式由官方包及其 style 宏生成。原型不再加载 `_ds_bundle` 或本地仿制组件运行时。
 
-## 可操作范围
+- 官方组件负责 Provider、Button、ActionButton、ToggleButton、TextField、TextArea、Tooltip、ContextualHelp、Tabs、Link、Card、StatusLight、Skeleton、FileTrigger、Menu、ActionMenu、Popover、Dialog 和操作分组。
+- 按钮、字段、弹窗仅保留业务参数适配；官方组件负责内部样式、键盘、禁用、校验和焦点。宽度使用官方 `style()` 的公开布局能力，未修改 node_modules。
+- 工作流图标直接导入官方图标组件；返回箭头使用项目绑定的官方 S2 UI SVG。字体由官方 Provider 加载，保留系统回退。
+- OwnWord 保留身份、作品、关系、证明、媒体、编辑器和页面布局。业务 Token 别名引用既有 S2 Token；页面 CSS 放在官方组件 CSS 之前的 cascade layer，避免旧控件样式覆盖官方组件。
+- 个人主页与列表围绕居中内容轴组织。图片和视频预览保持桌面 160×120px、手机 96×72px；官方 Tabs 在窄屏自动收敛为选择菜单。
 
-公开身份介绍、完整 BAP ID 复制、有效 Current 编号、混合内容与筛选、不可变版本阅读、图片放大、视频与音频原生播放、关注/取消、好友申请/接受、公开关注与粉丝名单均可演练。列表分页、失败恢复、返回位置、语言和主题、键盘及原有模块入口保持连续。
+原型演练面板中的原生 select／checkbox 是测试场景控制器；媒体播放使用浏览器原生控件，Markdown 使用 CodeMirror／Milkdown。品牌穹顶、完整作品行和媒体入口是业务 HTML 组合。历史品牌探索页及旧验收脚本保留，未列入本次官方运行时交付范围。
 
-关系演练从“重置关系演练记录”选择初始或空场景。A 为 Maya Chen，B 为 North Studio；通过已有 Wallet 场景中的“切换账户”操作改变当前签名身份，访问另一方主页再接受。切换路由只改变主页目标。
+## 验收与边界
 
-身份、Wallet、签名、交易、索引与 Proof 使用确定性样例，不接生产 API，也不产生真实交易。公开关系事件同源共享；授权与恢复记录按操作 Identity 隔离。通信公钥不在本原型中派生，生产 Friend 与媒体适配继续按核心认知第 12 节验证。
+本次证据集中于 `evidence/official-s2/verification.json` 与同目录截图。覆盖四模块主要流程、字段错误、授权取消、文件上传、复制成功和失败、菜单／Tabs 键盘、弹窗焦点、内容读取失败、中文深色，以及桌面和 320px 手机。未穷举原 PRD 的全部 BDD、全部浏览器或全部语言与屏宽组合。
 
-图片、视频和音频实际工作。素材出处、许可与 SHA-256 在 `fixtures/homepage/sources.json`；原有字体按既有绑定加载并提供系统回退。生产实现应采用官方 S2 组件；本原型消费的是继承的轻量视觉运行时。
+`check-copy.cjs` 是继承的旧脚本，直接 require 浏览器字典时会报 window 未定义；它没有作为本轮迁移门禁。有效命令为上方的 `npm run check` 和 `npm run verify:browser`。继承的旧浏览器脚本指向 4314 和旧 DOM，不代表本次验收结果。
 
-当前页面以身份、作品和任务操作组织层级，设计依据见当前 PRD 第 4.2、4.4 节。混合内容使用文字主导的紧凑列表：图片和视频的预览窗口桌面 160×120px、手机 96×72px，加载失败时仍保留窗口与详情入口；标题最多两行，博客摘要桌面两行、手机一行。
+身份、钱包、签名、发布、索引、关系均使用确定性模拟，不产生真实交易。字体依赖官方外部资源；离线时使用系统字体。图片、视频、音频保留已有素材，出处和许可见 `fixtures/homepage/sources.json`。
 
-当前定向验收见 `evidence/homepage-v040/R05/verification.json`，包括连续四类内容、筛选、长标题、损坏预览、键盘播放、返回位置和手机首屏。按记录中的路由、操作及临时样例方式使用独立 agent-browser 会话复核。共用返回按钮证据见 R04，整站信息层级及复制检查脚本为 `node verify-experience.mjs`。按本次变更选择验证范围；当前成果等待用户视觉复核，资产保持 `needs-review`。
+实现状态以任务目录的 feature_list.json 为准；用户视觉复核前保持 `needs-review`。

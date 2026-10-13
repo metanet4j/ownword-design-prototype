@@ -1,0 +1,24 @@
+/* 此层只维护 OwnWord 组合布局，官方控件的内部视觉由上层官方 CSS 提供。 */
+.ownword-field { width:100%; }
+.field-wrap { min-width:0; }
+.ownword-dialog-content { display:grid; gap:var(--s2-spacing-300); overflow-wrap:anywhere; }
+.ownword-dialog-content > p { line-height:1.7; }
+.ownword-dialog-content .identifier { min-width:0; }
+.ownword-back-icon { display:inline-block; width:var(--s2-arrow-icon-size-400); height:var(--s2-arrow-icon-size-400); background:currentColor; mask:url('../_ds/react-spectrum-s2/assets/ui-icons/S2_ArrowSize400.svg') center/contain no-repeat; transform:rotate(180deg); }
+.ow-control { flex-shrink:0; }
+.copy-button { flex-shrink:0; }
+.content-heading>.ow-control { grid-column:2;grid-row:1; }
+.content-row { color:var(--s2-gray-900); text-decoration:none; }
+.content-row:focus-visible { outline:2px solid var(--s2-focus-indicator-color);outline-offset:2px; }
+.artifact-card-inner {display:flex;flex-direction:column;gap:var(--s2-spacing-300);min-width:0;}
+.homepage-tabs {width:100%;min-width:0;}
+.artifact-records {min-width:0;}
+@media(max-width:600px){.content-heading>.ow-control{justify-self:end;}}
+
+.ownword-button-label {display:inline-flex;align-items:center;gap:var(--s2-spacing-100);}
+
+.ownword-preferences {padding:var(--s2-spacing-400);width:296px;max-width:calc(100vw - 32px);display:grid;gap:var(--s2-spacing-200);outline:none;}
+.ownword-preferences h2 {font-size:var(--ownword-font-heading);}
+.ownword-preferences .choice-row {display:flex;gap:var(--s2-spacing-100);}
+
+.artifact-card-inner>.artifact-card-overview {padding:0;}

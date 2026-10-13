@@ -1,0 +1,29 @@
+/* OwnWord 页面语义别名；取值沿用绑定的官方 Token。 */
+.s2 {
+  --s2d-font-family: "adobe-clean-spectrum-vf", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* @kind font */
+  --s2d-font-serif: "adobe-clean-spectrum-srf-vf", Georgia, serif; /* @kind font */
+  --s2d-font-mono: "source-code-pro", "SFMono-Regular", Consolas, monospace; /* @kind font */
+  --s2d-background: var(--s2-background-base-color, light-dark(rgb(255, 255, 255), rgb(17, 17, 17)));
+  --s2d-layer: var(--s2-background-layer-1-color, light-dark(rgb(248, 248, 248), rgb(27, 27, 27)));
+  --s2d-layer-raised: var(--s2-background-layer-2-color, light-dark(rgb(255, 255, 255), rgb(34, 34, 34)));
+  --s2d-border: var(--s2-gray-200, light-dark(rgb(211, 211, 211), rgb(67, 67, 67)));
+  --s2d-border-strong: var(--s2-gray-300, light-dark(rgb(183, 183, 183), rgb(82, 82, 82)));
+  --s2d-text: var(--s2-neutral-content-color-default, light-dark(rgb(44, 44, 44), rgb(226, 226, 226)));
+  --s2d-text-muted: var(--s2-neutral-subdued-content-color-default, light-dark(rgb(94, 94, 94), rgb(173, 173, 173)));
+  --s2d-accent: var(--s2-accent-color-900, light-dark(rgb(59, 99, 251), rgb(86, 129, 255)));
+  --s2d-accent-hover: var(--s2-accent-color-1000, light-dark(rgb(39, 77, 234), rgb(105, 149, 254)));
+  --s2d-negative: var(--s2-negative-color-900, light-dark(rgb(211, 52, 62), rgb(239, 82, 91)));
+  --s2d-positive: var(--s2-positive-color-900, light-dark(rgb(27, 135, 98), rgb(49, 168, 125)));
+  --s2d-notice: var(--s2-notice-color-900, light-dark(rgb(183, 117, 0), rgb(231, 157, 14)));
+  --s2d-focus: var(--s2-focus-ring-color, var(--s2d-accent)); /* @kind other */
+  --s2d-radius-sm: 4px;
+  --s2d-radius: 8px;
+  --s2d-radius-lg: 10px;
+  --s2d-radius-xl: 16px;
+  --s2d-control-height: calc(32px * var(--s2-scale, 1));
+  color: var(--s2d-text);
+  background: var(--s2d-background);
+  font-family: var(--s2d-font-family);
+  font-size: calc(var(--s2-font-size-base, 14) * 1px);
+  line-height: 1.45;
+}

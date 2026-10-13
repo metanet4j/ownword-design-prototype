@@ -1,11 +1,11 @@
 {
-  "name": "ownword-content-prototype",
-  "version": "0.4.0",
+  "name": "ownword-official-s2-prototype",
+  "version": "0.4.0-official-s2",
   "private": true,
   "scripts": {
     "build": "node build-prototype.mjs",
-    "check": "node check-model.cjs && node check-content.cjs && node check-markdown.mjs",
-    "build:design-system": "node build-design-system.mjs"
+    "check": "node build-prototype.mjs --check && node check-model.cjs && node check-content.cjs && node check-markdown.mjs && node check-artifact.cjs && node check-homepage.cjs",
+    "verify:browser": "node verify-official.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "6.11.1",
@@ -16,6 +16,9 @@
     "@codemirror/view": "6.43.12",
     "@lezer/highlight": "1.2.3",
     "@milkdown/kit": "7.22.1",
+    "@react-spectrum/s2": "1.6.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "rehype-sanitize": "6.0.0",
     "rehype-stringify": "10.0.1",
     "remark-gfm": "4.0.1",
@@ -24,6 +27,7 @@
     "unified": "11.0.5"
   },
   "devDependencies": {
-    "esbuild": "0.28.2"
+    "esbuild": "0.28.2",
+    "unplugin-parcel-macros": "0.2.0"
   }
 }

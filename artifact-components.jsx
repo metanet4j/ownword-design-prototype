@@ -28,13 +28,13 @@ function ArtifactSummary({data,bapId,t,onManage,onOpen,readOnly=false}) {
 }
 function ArtifactCard({asset,data,bapId,t,onOpen,children}) {
   const b=OwnwordArtifactModel.binding(data,asset.id),isCurrent=b?.bapId===bapId;
-  return React.cloneElement(S2.Card(), {className:"s2d-card artifact-card","data-artifact-id":asset.id,"data-current":isCurrent}, <>
+  return <S2.Card styles={fullWidth} variant="secondary" UNSAFE_className="artifact-card" data-artifact-id={asset.id} data-current={isCurrent} density="compact"><div className="artifact-card-inner">
     <div className="artifact-card-overview">
       <div className="artifact-card-content"><div className="artifact-card-top"><NumberStatus asset={asset} t={t} compact/>{isCurrent&&<span className="artifact-current">{t('artifactCurrent')}</span>}</div><h2>{asset.name}</h2>{!isCurrent&&b&&<p className="hint">{t('artifactAssociated')}</p>}</div>
       {asset.content.kind!=='brand'&&<ArtifactArt asset={asset} compact t={t}/>}
     </div>
     <div className="artifact-card-actions">{!children&&<Button onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}>{t('artifactView')}</Button>}{children}{children&&<Button iconOnly variant="quiet" className="artifact-card-open" onClick={()=>onOpen(asset.id)} aria-label={t('artifactView')+' · '+asset.name}><UiIcon name="ChevronRight"/></Button>}</div>
-  </>);
+  </div></S2.Card>;
 }
 function ArtifactSettings({settings,setSettings,store,t}) {
   return <fieldset className="artifact-settings"><legend>{t('artifactLab')}</legend><ArtifactFixtureControls store={store} t={t}/><ArtifactReset store={store} t={t}/><label>{t('artifactInventory')}<select data-artifact-scenario="list" value={settings.list} onChange={e=>setSettings(s=>({...s,list:e.target.value}))}>{['all','empty','error'].map(v=><option key={v} value={v}>{t('artifactList-'+v)}</option>)}</select></label><label>{t('artifactStorage')}<select data-artifact-scenario="storage" value={settings.storage} onChange={e=>setSettings(s=>({...s,storage:e.target.value}))}><option value="normal">{t('contentScenario-normal')}</option><option value="failure">{t('draftStorageFailure')}</option></select></label>{[['lookup',['normal','error','reorg']],['ownership',['verified','unavailable']],['number',['record','pending','resolving','five','six','reorg','changed','error']],['preview',['record','html','svg','damaged','metadata']],['outcome',['success','invalid','missing','mismatch','spend-only','reject','unknown']],['binding',['success','reject','unknown']],['query',['accepted','unknown','not-received']],['account',['none','authorize-switch','submitting-switch']]].map(([key,values])=><label key={key}>{t('artifactScenario-'+key)}<select data-artifact-scenario={key} value={settings[key]} onChange={e=>setSettings(s=>({...s,[key]:e.target.value}))}>{values.map(v=><option key={v} value={v}>{t('artifactScenario-'+v)}</option>)}</select></label>)}</fieldset>;

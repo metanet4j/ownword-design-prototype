@@ -1,9 +1,9 @@
-const S2 = window.ReactSpectrumS2_ad4872;
 
-function UiIcon({name,className=''}) {
-  const directional={ArrowLeft:['S2_ArrowSize400','back'],ChevronRight:['S2_ChevronSize100','forward'],ChevronDown:['S2_ChevronSize100','down']}[name];
-  const asset=directional?`ui-icons/${directional[0]}.svg`:`workflow-icons/S2_Icon_${name}_20_N.svg`;
-  return <span className={'ui-icon '+(directional?'ui-direction ui-direction-'+directional[1]+' ':'')+className} aria-hidden="true" style={{maskImage:`url('_ds/react-spectrum-s2/assets/${asset}')`}}/>;
+
+function UiIcon({name}) {
+  if(name==='ArrowLeft')return <span slot="icon" aria-hidden="true" className="ownword-back-icon"/>;
+  const Icon=officialIcons[name];
+  return Icon ? <Icon/> : null;
 }
 window.UiIcon=UiIcon;
 function BackButton({children,className='',...props}) {return <Button variant="quiet" className={'back-button '+className} {...props}><UiIcon name="ArrowLeft"/>{children}</Button>;}
@@ -36,31 +36,26 @@ function LoadingMark({small = false, label}) {
   return <div className={`brand-loading ${small ? 'small' : ''}`} role={label ? 'status' : undefined} aria-label={label} aria-hidden={label ? undefined : true}><BrandMark /></div>;
 }
 
-// 页面在绑定原型组件上接入业务事件；组件通用样式由 design-system 可维护源提供。
-function Button({children, onClick, variant = 'secondary', className = '', iconOnly = false, tooltip = true, ...props}) {
-  const selected = props['aria-pressed'] === true || props['aria-current'] === 'page';
-  const Component = typeof props['aria-pressed'] === 'boolean' || selected ? S2.ToggleButton : iconOnly || variant === 'quiet' ? S2.ActionButton : S2.Button;
-  const base = Component({children, onPress: onClick, variant, isQuiet: variant === 'quiet', isSelected: selected, fillStyle: props.fillStyle || (variant === 'secondary' ? 'outline' : 'fill'), isDisabled: props.disabled});
-  // Keep the bundle's variant classes when callers add layout classes.
-  const layoutClasses = className.split(/\s+/).filter(name => name && !/^s2d-button(?:-|$)/.test(name));
-  const button = React.cloneElement(base, {...props, fillStyle: undefined, title: iconOnly ? undefined : props.title, className: [base.props.className, ...layoutClasses, iconOnly ? 'icon-button' : ''].filter(Boolean).join(' ')});
-  const tooltipLabel = tooltip && iconOnly && (props.title || props['aria-label']);
-  return tooltipLabel ? <S2.TooltipTrigger>{button}<S2.Tooltip>{tooltipLabel}</S2.Tooltip></S2.TooltipTrigger> : button;
+// 业务适配只转换调用属性，不读取或重写官方组件内部结构。
+function Button({children,onClick,variant='secondary',className='',iconOnly=false,tooltip=true,disabled,fillStyle,style,...props}) {
+  const toggle=typeof props['aria-pressed']==='boolean';
+  const selected=props['aria-pressed']===true;
+  const Component=toggle?S2.ToggleButton:iconOnly||variant==='quiet'?S2.ActionButton:S2.Button;
+  const label=props.title||props['aria-label'];
+  const classes=className.split(/\s+/).filter(n=>n&&!/^s2d-button/.test(n)).join(' ');
+  delete props['aria-pressed'];
+  const parts=React.Children.toArray(children);
+  const icons=parts.filter(child=>React.isValidElement(child)&&child.type===UiIcon);
+  const labels=parts.filter(child=>!icons.includes(child));
+  const button=<Component {...props} size="M" title={iconOnly?undefined:props.title} UNSAFE_className={'ow-control '+classes} isDisabled={disabled} isSelected={toggle?selected:undefined} isQuiet={variant==='quiet'} variant={variant==='quiet'?undefined:variant} fillStyle={fillStyle||(variant==='secondary'?'outline':'fill')} onPress={onClick?event=>onClick({...event,currentTarget:event.target}):undefined}>{icons}{labels.length>0&&<S2.Text><span className="ownword-button-label">{labels}</span></S2.Text>}</Component>;
+  return tooltip&&iconOnly&&label?<S2.TooltipTrigger>{button}<S2.Tooltip>{label}</S2.Tooltip></S2.TooltipTrigger>:button;
 }
-function Field({errorKey, id, label, contextualHelp, value, onChange, multiline, error, required, maxLength, ...inputProps}) {
-  const base = (multiline ? S2.TextArea : S2.TextField)({label, value: value || ' '});
-  function wire(node) {
-    if (!React.isValidElement(node)) return node;
-    // Keep contextual help beside the label, never inside a native label.
-    if (node.type === 'label') return <div className={node.props.className} onPointerDownCapture={e=>{if(!e.target.closest('button'))e.currentTarget.querySelector('input,textarea').dataset.pointerFocus='true';}} onBlurCapture={e=>{delete e.target.dataset.pointerFocus;}}><div className="field-label-row"><label htmlFor={id}>{label}</label>{contextualHelp}</div>{React.Children.map(React.Children.toArray(node.props.children).slice(1),wire)}</div>;
-    if (node.type === 'button') return null;
-    // The preview bundle adds a trailing action shell to every TextField.
-    // A plain field has no such action; retain the field's own border instead.
-    if (node.props.className === 's2d-field-shell') return <React.Fragment>{React.Children.map(node.props.children, wire)}</React.Fragment>;
-    if (node.type === 'input' || node.type === 'textarea') return React.cloneElement(node, {...inputProps, id, value, defaultValue: undefined, required, maxLength, 'aria-invalid': !!error, 'aria-describedby': error ? `${id}-error` : inputProps['aria-describedby'], onChange: e => onChange(e.target.value)});
-    return React.cloneElement(node, {}, React.Children.map(node.props.children, wire));
-  }
-  return <div className="field-wrap">{wire(base)}{error && <p id={`${id}-error`} className="field-error" role="alert" data-field-error={errorKey || ""}>{error}</p>}</div>;
+function Field({errorKey,id,label,contextualHelp,value,onChange,multiline,error,required,maxLength,...props}) {
+  const Component=multiline?S2.TextArea:S2.TextField;
+  return <div className="field-wrap" data-field-error={error?errorKey:undefined}><Component {...props} id={id} label={label} value={value||''} onChange={onChange} isRequired={required} maxLength={maxLength} isInvalid={!!error} errorMessage={error||undefined} validationBehavior="aria" contextualHelp={contextualHelp} styles={fullWidth} UNSAFE_className="ownword-field"/></div>;
+}
+function ContentRowLink({children,className='',onClick,href='#',...props}) {
+  return <a {...props} href={href} className={className.replace(/s2d-button(?:-quiet)?/g,'')} onClick={event=>{if(event.button||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();onClick?.(event);}}>{children}</a>;
 }
 function Portrait({profile, large = false}) {
   return <div className={`portrait ${large ? 'large' : ''}`}>
@@ -110,9 +105,9 @@ function useDismissable(open, onClose, ref, focusSelector='button') {
     if (!open) return undefined;
     // Escape and Tab-out are the keyboard equivalents of clicking away; the
     // dialog check keeps a modal confirmation in charge of its own dismissal.
-    const pointer = e => {if (!document.querySelector('dialog[open]') && ref.current && !ref.current.contains(e.target)) onClose();};
+    const pointer = e => {if (!document.querySelector('[role=dialog][aria-modal=true]') && ref.current && !ref.current.contains(e.target)) onClose();};
     const key = e => {
-      if (e.key !== 'Escape' || document.querySelector('dialog[open]')) return;
+      if (e.key !== 'Escape' || document.querySelector('[role=dialog][aria-modal=true]')) return;
       onClose();
       (ref.current?.querySelector(focusSelector)||document.querySelector(focusSelector))?.focus();
     };
@@ -127,46 +122,18 @@ function useDismissable(open, onClose, ref, focusSelector='button') {
     };
   }, [open, onClose, ref, focusSelector]);
 }
-function Modal({title, titleKey, children, onCancel, closeLabel, context = 'OWNWORD',returnFocus}) {
-  const dialog = React.useRef(null);
-  const parts=React.Children.toArray(children),actions=parts.findLast(child=>React.isValidElement(child)&&child.props.className==='action-row');
-  function containFocus(event) {
-    if(event.key!=='Tab')return;
-    const controls=[...dialog.current.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(node=>node.tabIndex>=0&&node.getClientRects().length);
-    const first=controls[0],last=controls[controls.length-1];
-    if(first&&((event.shiftKey&&document.activeElement===first)||(!event.shiftKey&&document.activeElement===last))){event.preventDefault();(event.shiftKey?last:first).focus();}
-  }
-  React.useEffect(() => {
-    const previous = returnFocus||document.activeElement;
-    dialog.current.showModal();
-    return () => {queueMicrotask(()=>{const target=previous?.isConnected&&previous.getClientRects().length&&!previous.disabled&&previous!==document.body&&previous.id!=='main'?previous:(document.querySelector('[data-artifact-screen] h1')||document.querySelector('#main h1')||document.getElementById('main'));target?.focus({preventScroll:true});});};
-  }, []);
-  return <dialog ref={dialog} className="modal" data-modal-title={titleKey || ""} aria-labelledby="dialog-title" onKeyDown={containFocus} onCancel={e => {e.preventDefault(); onCancel();}}>
-    <div className="modal-body"><div className="modal-top"><span className="eyebrow">{context}</span><Button variant="quiet" onClick={onCancel} aria-label={title + ' — ' + closeLabel}>{closeLabel}</Button></div>
-    <h2 id="dialog-title">{title}</h2>{parts.filter(child=>child!==actions)}</div>
-    {actions&&<div className="modal-footer">{actions}</div>}
-  </dialog>;
+function Modal({title,titleKey,children,onCancel,closeLabel,context='OWNWORD',returnFocus}) {
+  React.useEffect(()=>()=>{if(returnFocus)requestAnimationFrame(()=>{if(returnFocus.isConnected&&!document.querySelector('[role="dialog"]'))returnFocus.focus({preventScroll:true});});},[returnFocus]);
+  function flatten(nodes){return React.Children.toArray(nodes).flatMap(child=>React.isValidElement(child)&&child.type===React.Fragment?flatten(child.props.children):[child]);}
+  const parts=flatten(children),actions=parts.filter(child=>React.isValidElement(child)&&child.props.className==='action-row');
+  return <S2.DialogContainer onDismiss={onCancel}><S2.Dialog size="M" isDismissible={!actions.length} aria-label={title} data-modal-title={titleKey||''}>
+    <S2.Heading slot="title">{title}</S2.Heading><S2.Header>{context}</S2.Header>
+    <S2.Content><div className="ownword-dialog-content">{parts.filter(child=>!actions.includes(child))}</div></S2.Content>
+    <S2.ButtonGroup>{actions.flatMap(child=>React.Children.toArray(child.props.children))}</S2.ButtonGroup>
+  </S2.Dialog></S2.DialogContainer>;
 }
 function ContextHelp({label,children}) {
-  const [mode,setMode]=React.useState('closed'),[position,setPosition]=React.useState({left:16,top:16});
-  const wrapper=React.useRef(null),panel=React.useRef(null),suppressFocus=React.useRef(false),leaveTimer=React.useRef(0),hoverTimer=React.useRef(0),id=React.useId(),open=mode!=='closed';
-  function close(){clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);suppressFocus.current=true;setMode('closed');}
-  React.useEffect(()=>()=>{clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);},[]);
-  useDismissable(open,close,wrapper);
-  React.useLayoutEffect(()=>{
-    if(!open)return;
-    const button=wrapper.current.querySelector('button').getBoundingClientRect(),box=panel.current.getBoundingClientRect();
-    const below=button.bottom+8,top=below+box.height<=innerHeight-16?below:button.top-box.height-8;
-    setPosition({left:Math.max(16,Math.min(button.left,innerWidth-box.width-16)),top:Math.max(16,top)});
-    const dismiss=e=>{if(!panel.current?.contains(e.target))close();};
-    const escape=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close();wrapper.current.querySelector('button').focus({preventScroll:true});}};
-    window.addEventListener('resize',close);document.addEventListener('scroll',dismiss,true);document.addEventListener('keydown',escape,true);
-    return()=>{window.removeEventListener('resize',close);document.removeEventListener('scroll',dismiss,true);document.removeEventListener('keydown',escape,true);};
-  },[open]);
-  return <div className="context-help" ref={wrapper} onPointerEnter={e=>{clearTimeout(leaveTimer.current);clearTimeout(hoverTimer.current);if(e.pointerType==='mouse'){suppressFocus.current=false;hoverTimer.current=setTimeout(()=>setMode(v=>v==='closed'?'preview':v),300);}}} onPointerLeave={()=>{clearTimeout(hoverTimer.current);if(mode==='preview'&&!wrapper.current.contains(document.activeElement))leaveTimer.current=setTimeout(()=>setMode('closed'),180);}} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget)){suppressFocus.current=false;setMode('closed');}}}>
-    <Button iconOnly tooltip={false} variant="quiet" className="context-help-trigger" aria-label={label} aria-expanded={open} aria-controls={id} onFocus={()=>{if(!suppressFocus.current)setMode(v=>v==='closed'?'preview':v);}} onClick={()=>{suppressFocus.current=false;setMode(v=>v==='pinned'?'closed':'pinned');}}><UiIcon name="InfoCircle"/></Button>
-    {open&&React.cloneElement(S2.ContextualHelpPopover(),{ref:panel,id,role:'region','aria-label':label,className:'s2d-overlay context-help-panel',style:position},children)}
-  </div>;
+  return <S2.ContextualHelp aria-label={label}><S2.Heading slot="title">{label}</S2.Heading><S2.Content>{children}</S2.Content></S2.ContextualHelp>;
 }
 window.ContextHelp=ContextHelp;
 function Toast({message, body, error, notice, storageError, t, onRetry, onDismiss}) {

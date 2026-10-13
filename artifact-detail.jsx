@@ -24,20 +24,11 @@ function ArtifactDetail({asset,data,identity,resolveIdentity,t,failCopy,go,onBac
 }
 window.ArtifactDetail=ArtifactDetail;
 
-// The imported Tabs is a visual preview; wire selection and keyboard semantics here.
 function ArtifactRecordTabs({items,t}) {
-  const [selected,setSelected]=React.useState(items[0].id),id=React.useId(),base=S2.Tabs();
-  const list=React.Children.toArray(base.props.children)[0],button=React.Children.toArray(list.props.children)[0];
-  function keyDown(event,index) {
-    const next=event.key==='ArrowRight'?(index+1)%items.length:event.key==='ArrowLeft'?(index+items.length-1)%items.length:event.key==='Home'?0:event.key==='End'?items.length-1:null;
-    if(next===null)return;
-    event.preventDefault();setSelected(items[next].id);
-    const target=document.getElementById(`${id}-tab-${items[next].id}`);target.focus();target.scrollIntoView({block:'nearest',inline:'nearest'});
-  }
-  return <div className="artifact-records">
-    {React.cloneElement(base,{},React.cloneElement(list,{role:'tablist','aria-label':t('artifactRecords')},items.map((item,index)=>React.cloneElement(button,{key:item.id,id:`${id}-tab-${item.id}`,role:'tab','aria-selected':selected===item.id,'aria-controls':`${id}-panel-${item.id}`,tabIndex:selected===item.id?0:-1,className:selected===item.id?'is-selected':'',onClick:()=>setSelected(item.id),onKeyDown:event=>keyDown(event,index)},t('artifactTab-'+item.id)))))}
-    {items.map(item=><div key={item.id} id={`${id}-panel-${item.id}`} role="tabpanel" aria-labelledby={`${id}-tab-${item.id}`} tabIndex={0} hidden={selected!==item.id}>{React.cloneElement(S2.Card(),{className:'s2d-card artifact-record-panel'},<><h2>{item.title}</h2>{item.content}</>)}</div>)}
-  </div>;
+  return <S2.Tabs aria-label={t('artifactRecords')} UNSAFE_className="artifact-records">
+    <S2.TabList>{items.map(item=><S2.Tab id={item.id} key={item.id}>{t('artifactTab-'+item.id)}</S2.Tab>)}</S2.TabList>
+    {items.map(item=><S2.TabPanel id={item.id} key={item.id}><S2.Card styles={fullWidth} variant="quiet"><div className="artifact-record-panel"><h2>{item.title}</h2>{item.content}</div></S2.Card></S2.TabPanel>)}
+  </S2.Tabs>;
 }
 
 function ArtifactPublicIdentity({bapId,resolveIdentity,t,failCopy,onBack,backLabel,data,onOpenArtifact}) {

@@ -14,7 +14,7 @@ function ContentReader({record,t,locale,identity,go,onExport,failCopy,records,dr
     <div className="reader-layout">
       {!!toc.items.length && <nav className="reader-toc" ref={toc.nav} style={{top:toc.top}} aria-label={t('readerContents')}>
         {toc.wide ? <h2>{t('readerContents')}</h2> : <Button variant="quiet" className="s2d-button s2d-button-quiet reader-toc-toggle" data-action="reader-toc-toggle" aria-expanded={toc.expanded} aria-controls="reader-toc-items" onClick={()=>toc.setExpanded(!toc.expanded)}>{t('readerContents')}<span>{t(toc.expanded ? 'readerTocCollapse' : 'readerTocExpand')}</span></Button>}
-        <ol id="reader-toc-items" hidden={!toc.wide && !toc.expanded}>{toc.items.map(item=><li key={item.id}><Button variant="quiet" className="s2d-button s2d-button-quiet reader-toc-item" style={{paddingInlineStart:12+(item.depth-toc.minDepth)*12}} data-toc-target={item.id} aria-current={toc.current===item.id ? 'location' : undefined} onClick={()=>toc.jump(item)}>{item.text}</Button></li>)}</ol>
+        <ol id="reader-toc-items" hidden={!toc.wide && !toc.expanded}>{toc.items.map(item=><li key={item.id} style={{paddingInlineStart:(item.depth-toc.minDepth)*12}}><Button variant="quiet" className="s2d-button s2d-button-quiet reader-toc-item" data-toc-target={item.id} aria-current={toc.current===item.id ? 'location' : undefined} onClick={()=>toc.jump(item)}>{item.text}</Button></li>)}</ol>
       </nav>}
       <article className="reader-paper" ref={paper}>{!OwnwordContentModel.title(record.content) && <h1 tabIndex="-1">{t('contentUntitled')}</h1>}<MarkdownBody source={record.content} t={t} media={allowMedia}/></article>
     </div>
