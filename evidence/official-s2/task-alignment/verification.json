@@ -1,0 +1,220 @@
+{
+  "result": "passed",
+  "baselineCommit": "b4846d1",
+  "comparisonConditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "locale": "en",
+    "theme": "light",
+    "sameData": true,
+    "beforeImages": "evidence/official-s2/centering/after-*.png"
+  },
+  "sourceHashes": {
+    "app.css": "8eeab522d04e5864529f23221c4b42d9970f93ffb844c90cde8cf7b3418cd6da",
+    "content.css": "fe5e075ebffff6b34961a9e298a2a6324c19ad58d93007530445d3906a8b2a3e"
+  },
+  "layouts": [
+    {
+      "name": "after-identity-edit",
+      "width": 1440,
+      "overflow": false,
+      "frame": {
+        "left": 360,
+        "width": 720,
+        "centerDelta": 0
+      },
+      "heading": {
+        "left": 360,
+        "width": 720,
+        "centerDelta": 0
+      },
+      "title": {
+        "left": 360,
+        "width": 720,
+        "centerDelta": 0
+      },
+      "titleAlign": "start",
+      "headingAlign": "start",
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "centerDelta": 0
+      },
+      "language": "en",
+      "theme": "light",
+      "help": false
+    },
+    {
+      "name": "after-content-review",
+      "width": 1440,
+      "overflow": false,
+      "frame": {
+        "left": 360,
+        "width": 720,
+        "centerDelta": 0
+      },
+      "heading": {
+        "left": 360,
+        "width": 650,
+        "centerDelta": -35
+      },
+      "title": {
+        "left": 360,
+        "width": 650,
+        "centerDelta": -35
+      },
+      "titleAlign": "start",
+      "headingAlign": "start",
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "centerDelta": 0
+      },
+      "language": "en",
+      "theme": "light",
+      "help": false
+    },
+    {
+      "name": "after-artifact-create-preview",
+      "width": 1440,
+      "overflow": false,
+      "frame": {
+        "left": 240,
+        "width": 960,
+        "centerDelta": 0
+      },
+      "heading": {
+        "left": 240,
+        "width": 650,
+        "centerDelta": -155
+      },
+      "title": {
+        "left": 240,
+        "width": 167.953125,
+        "centerDelta": -396.0234375
+      },
+      "titleAlign": "start",
+      "headingAlign": "start",
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "centerDelta": 0
+      },
+      "language": "en",
+      "theme": "light",
+      "help": true
+    },
+    {
+      "name": "artifact-create-320",
+      "width": 320,
+      "overflow": false,
+      "frame": {
+        "left": 16,
+        "width": 288,
+        "centerDelta": 0
+      },
+      "heading": {
+        "left": 16,
+        "width": 288,
+        "centerDelta": 0
+      },
+      "title": {
+        "left": 16,
+        "width": 119.96875,
+        "centerDelta": -84.015625
+      },
+      "titleAlign": "start",
+      "headingAlign": "start",
+      "header": {
+        "left": 0,
+        "width": 320,
+        "centerDelta": 0
+      },
+      "language": "en",
+      "theme": "light",
+      "help": true
+    },
+    {
+      "name": "artifact-create-zh-dark",
+      "width": 1440,
+      "overflow": false,
+      "frame": {
+        "left": 240,
+        "width": 960,
+        "centerDelta": 0
+      },
+      "heading": {
+        "left": 240,
+        "width": 650,
+        "centerDelta": -155
+      },
+      "title": {
+        "left": 240,
+        "width": 167.609375,
+        "centerDelta": -396.1953125
+      },
+      "titleAlign": "start",
+      "headingAlign": "start",
+      "header": {
+        "left": 160,
+        "width": 1120,
+        "centerDelta": 0
+      },
+      "language": "zh-CN",
+      "theme": "dark",
+      "help": true
+    }
+  ],
+  "checks": [
+    "身份任务标题、说明与字段使用原有左侧基准",
+    "编辑正文进入确认页，标题恢复左对齐且正文保留",
+    "Artifact标题帮助按钮键盘打开、关闭及焦点返回正常"
+  ],
+  "a11y": {
+    "inapplicable": 46,
+    "incomplete": 0,
+    "passes": 43,
+    "violations": 0
+  },
+  "browserErrors": [],
+  "consoleErrors": [],
+  "build": "passed",
+  "models": "passed",
+  "comparisonPairs": 3,
+  "userVisualReview": "pending",
+  "scope": "撤回三类任务页的桌面标题居中规则，恢复既有左对齐；仅定向复核受影响页面。",
+  "delivery": {
+    "width": 320,
+    "overflow": false,
+    "pairs": 3,
+    "images": [
+      {
+        "src": "evidence/official-s2/centering/after-identity-edit.png",
+        "loaded": true
+      },
+      {
+        "src": "evidence/official-s2/task-alignment/after-identity-edit.png",
+        "loaded": true
+      },
+      {
+        "src": "evidence/official-s2/centering/after-content-review.png",
+        "loaded": true
+      },
+      {
+        "src": "evidence/official-s2/task-alignment/after-content-review.png",
+        "loaded": true
+      },
+      {
+        "src": "evidence/official-s2/centering/after-artifact-create-preview.png",
+        "loaded": true
+      },
+      {
+        "src": "evidence/official-s2/task-alignment/after-artifact-create-preview.png",
+        "loaded": true
+      }
+    ]
+  },
+  "deliveryDesktopOverflow": false
+}

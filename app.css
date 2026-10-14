@@ -498,11 +498,6 @@ main { position: relative; width: 100%; max-width: var(--ownword-page-width); ma
 /* 同一内容轴贯穿标题、表单和操作；文字保留左对齐。 */
 .app:has([data-editor-mode="split"]) main { max-width:1280px; }
 .flow-steps { max-width:var(--ownword-task-width); margin-inline:auto; justify-content:space-between; }
-@media(min-width:900px) {
- .workbench .page-heading,.content-review>.page-heading,.artifact-page>.page-heading { max-width:none; text-align:center; }
- .artifact-page>.page-heading.title-with-help,.artifact-page>.page-heading .title-with-help { justify-content:center; }
- .workbench .page-heading>p:last-child,.content-review>.page-heading>p:last-child,.artifact-page>.page-heading>p:last-child { margin-inline:auto; }
-}
 @media(min-width:701px) {
  .workbench .page-heading { max-width:none; }
  .workbench .aside-identity:not(.aside-identity-compact) { max-width:none; grid-template-columns:auto minmax(0,1fr) auto; align-items:baseline; }

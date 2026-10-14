@@ -35,7 +35,7 @@
     "app.jsx": "979158ac0d7ebe1e093199999f0ed5bef5e281e97e64ad29c6004194a48c6adf",
     "_ds/react-spectrum-s2/tokens/semantic.css": "dc79eb95039e3f091bcbf36289458b2b736a9d153d0551edf2d5b9a13153833f",
     "ownword-tokens.css": "b89fc63f133174f3d0c1f8b71df51855e6ba22e6a16e392c0f2a6dff5f3a50c5",
-    "app.css": "878cb3707ae91a56f2584fa3a316f0cb92865252f7c86f9c26f01b6788ecc105",
+    "app.css": "8eeab522d04e5864529f23221c4b42d9970f93ffb844c90cde8cf7b3418cd6da",
     "content.css": "fe5e075ebffff6b34961a9e298a2a6324c19ad58d93007530445d3906a8b2a3e",
     "artifact.css": "09f141888c2940957ee11eccf6801c3d4ce767e56716f7f67335291c1b07aa85",
     "welcome.css": "614776d6f36dfb5ce683a09168fcafde2916a2f95df56ed248da838a1700f858",
@@ -45,7 +45,7 @@
   "outputs": {
     "vendor/runtime.js": "ae05b7e72ce0ddce09741f4fe89b5467584cd27005b7ef375a86523b5dafbe45",
     "vendor/runtime.css": "8e40e014ed8340608001a66a3a9f032d0a9b092113709ef3740c7b73be48c0a2",
-    "vendor/styles.css": "b47d8f6b8d33c3f5069a3ddce4cd1c9530a4a2dcdb7a9e51be6f5c75d6a7eea9",
+    "vendor/styles.css": "6c719aef1add1e81e15bb76b0d33be2d70af078c8a7581515d573735853da8a7",
     "vendor/markdown-tools.js": "a1a3cda7695a95e86bab077e30eec14fa7048f8097863c2535e4e91e892a7f22",
     "vendor/editor-tools.js": "c8c9a2b7a313b69a5638914f174c361e6c00cfceec26039d90d16ece11585009",
     "index.html": "5f2b239920dbed1c730bf5aaee8d39f2e99b399eb726b31de4a2115326d4d704"
